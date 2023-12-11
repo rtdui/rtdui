@@ -1,0 +1,58 @@
+{
+  "name": "@rtdui/code-highlight",
+  "version": "1.0.0",
+  "description": "React code highlight component based on refractor",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css",
+    "./styles/*": "./styles/*"
+  },
+  "keywords": [
+    "react",
+    "remix",
+    "remixjs",
+    "next",
+    "nextjs",
+    "ui",
+    "ui-kit",
+    "components",
+    "library",
+    "frontend",
+    "design"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.dev/",
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/code-highlight"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "dependencies": {
+    "hast-util-to-jsx-runtime": "^2.2.0",
+    "refractor": "^4.8.1"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "1.0.0",
+    "@rtdui/hooks": "1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

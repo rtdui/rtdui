@@ -1,0 +1,31 @@
+{
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "strict": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"],
+      "@rtdui/code-highlight": ["../packages/code-highlight/src"],
+      "@rtdui/core": ["../packages/core/src"],
+      "@rtdui/datatable": ["../packages/datatable/src"],
+      "@rtdui/dialogs": ["../packages/dialogs/src"],
+      "@rtdui/editor": ["../packages/editor/src"],
+      "@rtdui/hooks": ["../packages/hooks/src"],
+      "@rtdui/notifications": ["../packages/notifications/src"],
+      "@rtdui/qr-code": ["../packages/qr-code/src"],
+      "@rtdui/tailwind-plugin": ["../packages/tailwind-plugin/src"]
+    },
+
+    // Remix takes care of building everything in `remix build`.
+    "noEmit": true
+  }
+}

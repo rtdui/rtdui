@@ -1,0 +1,26 @@
+{
+  "include": ["./src", "../../@types"],
+  "exclude": ["./lib", "./esm", "./cjs"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "lib",
+    "emitDeclarationOnly": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "target": "ES2015",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "composite": true,
+    "paths": {
+      "@rtdui/hooks": ["../hooks/src"]
+    }
+  },
+  "references": [{ "path": "../hooks" }]
+}

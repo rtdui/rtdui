@@ -1,0 +1,52 @@
+---
+meta:
+  - title: Accordion Component
+  - description: Accordion document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Accordion.tsx"
+  componentName: "Accordion"
+---
+
+import Demo from "../../src/Demo";
+import AccordionArrowIndicatorDemo from "./AccordionArrowIndicatorDemo";
+import AccordionInitExpandDemo from "./AccordionInitExpandDemo";
+import AccordionNoIndicatorDemo from "./AccordionNoIndicatorDemo";
+import AccordionPlusIndicatorDemo from "./AccordionPlusIndicatorDemo";
+
+# 使用
+
+Accordion 每次只能展开一项
+
+### 默认无展开图标
+
+<Demo
+  data={{
+    Component: AccordionNoIndicatorDemo,
+  }}
+/>
+
+### 箭头展开/收缩符
+
+<Demo
+  data={{
+    Component: AccordionArrowIndicatorDemo,
+  }}
+/>
+
+### 加/减号展开/收缩符
+
+<Demo
+  data={{
+    Component: AccordionPlusIndicatorDemo,
+  }}
+/>
+
+### 设置初始展开项
+
+<Demo
+  data={{
+    Component: AccordionInitExpandDemo,
+  }}
+/>

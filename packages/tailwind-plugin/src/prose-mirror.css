@@ -1,0 +1,189 @@
+.ProseMirror {
+  background-color: theme(colors.base-100);
+  padding: 32px;
+}
+
+/* 移除contenteditable的默认焦点样式 */
+.ProseMirror:focus {
+  outline: none;
+}
+
+.ProseMirror p {
+  margin: 0;
+}
+
+.ProseMirror > * + * {
+  margin-top: 0.5em;
+}
+
+.ProseMirror .ProseMirror-gapcursor::after {
+  top: 2px;
+}
+
+.ProseMirror img.ProseMirror-selectednode {
+  outline: 2px solid #68cef8;
+}
+
+.ProseMirror .collaboration-cursor__caret {
+  border-left: 1px solid #0d0d0d;
+  border-right: 1px solid #0d0d0d;
+  margin-left: -1px;
+  margin-right: -1px;
+  pointer-events: none;
+  position: relative;
+  word-break: normal;
+  opacity: 0.7;
+}
+
+.ProseMirror .collaboration-cursor__label {
+  border-radius: 3px 3px 3px 0;
+  color: #0d0d0d;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  left: -1px;
+  line-height: normal;
+  padding: 0.1rem 0.3rem;
+  position: absolute;
+  top: -1.4em;
+  user-select: none;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.ProseMirror pre {
+  white-space: pre-wrap;
+}
+
+.ProseMirror pre[data-math] {
+  background-color: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.ProseMirror a[href] {
+  cursor: pointer;
+}
+
+/* Placeholder扩展插件的样式 */
+.ProseMirror p.is-empty::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* 表格样式 */
+.ProseMirror table {
+  border-collapse: collapse;
+  margin: 0;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.ProseMirror table td,
+.ProseMirror table th {
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  min-width: 1em;
+  padding: 3px 5px;
+  position: relative;
+  vertical-align: top;
+}
+
+.ProseMirror table td > *,
+.ProseMirror table th > * {
+  margin-bottom: 0;
+}
+
+.ProseMirror table th {
+  background-color: #f1f3f5;
+  font-weight: 700;
+}
+
+.ProseMirror table .selectedCell::after {
+  background: rgba(200, 200, 255, 0.4);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.ProseMirror table .column-resize-handle {
+  background-color: #adf;
+  bottom: -2px;
+  position: absolute;
+  right: -2px;
+  pointer-events: none;
+  top: 0;
+  width: 4px;
+}
+
+.ProseMirror table p {
+  margin: 0;
+}
+
+.ProseMirror .tableWrapper {
+  padding: 1rem 0;
+  overflow-x: auto;
+}
+
+.ProseMirror.resize-cursor {
+  cursor: ew-resize;
+  cursor: col-resize;
+}
+
+/* Katex数学公式渲染器 */
+.ProseMirror .tiptap-math-render {
+  cursor: pointer;
+  padding: 0 0.25rem;
+  transition: background 0.2s;
+}
+
+.ProseMirror .tiptap-math-render:hover {
+  background: #eee;
+}
+
+.ProseMirror .titap-math-source {
+  background: #202020;
+  color: #fff;
+  font-family: monospace;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.ProseMirror .titap-math-source.hidden {
+  display: inline-block;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+}
+
+/* 任务列表样式 */
+.ProseMirror ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+
+.ProseMirror ul[data-type="taskList"] p {
+  margin: 0;
+}
+
+.ProseMirror ul[data-type="taskList"] li {
+  display: flex;
+}
+
+.ProseMirror ul[data-type="taskList"] li > label {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.ProseMirror ul[data-type="taskList"] li > div {
+  flex: 1 1 auto;
+}

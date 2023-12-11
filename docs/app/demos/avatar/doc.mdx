@@ -1,0 +1,48 @@
+---
+meta:
+  - title: Avatar Component
+  - description: Avatar document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Avatar.tsx"
+  componentName: "Avatar"
+---
+
+import Demo from "../../src/Demo";
+import AvatarVariantDemo from "./AvatarVariantDemo";
+import AvatarSizeDemo from "./AvatarSizeDemo";
+import AvatarIndicatorDemo from "./AvatarIndicatorDemo";
+import AvatarPlaceholderDemo from "./AvatarPlaceholderDemo";
+import AvatarIndicatorAndPlaceholderDemo from "./AvatarIndicatorAndPlaceholderDemo";
+import AvatarGroupDemo from "./AvatarGroupDemo";
+
+# 使用
+
+`Avatar`组件用于展示单个用户头像
+
+## 变体
+
+<Demo data={{ Component: AvatarVariantDemo }} />
+
+## 尺寸
+
+<Demo data={{ Component: AvatarSizeDemo }} />
+
+## 是否在线指示器
+
+<Demo data={{ Component: AvatarIndicatorDemo }} />
+
+## 字符占位
+
+<Demo data={{ Component: AvatarPlaceholderDemo }} />
+
+## 字符占位和指示器
+
+<Demo data={{ Component: AvatarIndicatorAndPlaceholderDemo }} />
+
+## 头像组
+
+`AvatarGroup`组件用于展示一组用户头像, 最多显示 4 个头像, 超出后会显示剩余的数量.
+
+<Demo data={{ Component: AvatarGroupDemo }} />

@@ -1,0 +1,300 @@
+## 支持粘贴 Markdown 内容
+
+复制 Markdown 内容粘贴到文本编辑器中, 会自动进行转换.
+
+粘贴的 Markdown 的语法遵循 VS Code 内置的 Markdwon 规范: 标准语法 + GFM 扩展语法 + Tatex 语法(`$文本$`和`$$文本$$`). 也就是说从 VS Code 中复制的 Markdown 内容可以直接粘贴到编辑器中, 唯一的例外是为了安全不支持 Markdown 中包含 html 标签.
+
+## 拖拉支持
+
+已插入的图片支持拖动到任意位置; 当鼠标移动到图片右下角会出现指示器, 拖动指示器可以调整图片大小.
+
+## Mardown 语法识别
+
+Mardown 语法识别遵循 Markdown 的规范
+
+**Mardown 输入规则自动转换需要紧跟空格加以确认**, 并且可以在转换后按<kbd>Backspace</kbd>取消自动转换.
+
+| 输入                          | 转换       | 说明                                                                                                                                     |
+| ----------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `#`+<kbd>空格</kbd>           | H1         | 必须在行头有效                                                                                                                           |
+| `##`+<kbd>空格</kbd>          | H2         | 必须在行头有效                                                                                                                           |
+| `###`+<kbd>空格</kbd>         | H3         | 必须在行头有效                                                                                                                           |
+| `####`+<kbd>空格</kbd>        | H4         | 必须在行头有效                                                                                                                           |
+| `#####`+<kbd>空格</kbd>       | H5         | 必须在行头有效                                                                                                                           |
+| `######`+<kbd>空格</kbd>      | H6         | 必须在行头有效                                                                                                                           |
+| `---`                         | 水平分割线 | 必须在行头有效                                                                                                                           |
+| `-`或`+`或`*`+<kbd>空格</kbd> | 符号列表   | 必须在行头有效                                                                                                                           |
+| `1.`+<kbd>空格</kbd>          | 序号列表   | 必须在行头有效, 任意数字均可                                                                                                             |
+| `[ ]`或`[x]`+<kbd>空格</kbd>  | 任务列表   | 必须在行头有效, `[ ]`中间有个空格,表示未选中状态; x 字符必须小写,表示选中状态                                                            |
+| \`\`\`                        | 围栏代码块 | 必须在行头有效, \`\`\`之后可以紧跟语言标识, 这会启用语法高亮. 支持的语言标识: txt,js,jsx,ts,tsx,html,css,c,cpp,md,java,csharp,sh,sql,ini |
+| `$$`+<kbd>空格</kbd>          | 数学公式块 | 必须在行头有效                                                                                                                           |
+| `[显示文本](链接)`            | 插入链接   | 可以在任意位置                                                                                                                           |
+| `![显示文本](链接)`           | 插入图片   | 可以在任意位置                                                                                                                           |
+
+**Mardown 包裹规则自动转换需要前导符之前至少有一个空格, 否则会识别为常规字符. 可以在行中任意位置**
+
+| 语法                      | 转换                      | 说明                                          |
+| ------------------------- | ------------------------- | --------------------------------------------- |
+| \`文本\`                  | 行内代码                  | 可以在行中任意位置,但前导符之前至少有一个空格 |
+| `_文本_` 或者`*文本*`     | 斜体文本                  | 可以在行中任意位置,但前导符之前至少有一个空格 |
+| `**文本**` 或者`__文本__` | 粗体文本                  | 可以在行中任意位置,但前导符之前至少有一个空格 |
+| `~~文本~~`                | 删除线文本                | 可以在行中任意位置,但前导符之前至少有一个空格 |
+| `==文本==`                | 高亮文本                  | 可以在行中任意位置,但前导符之前至少有一个空格 |
+| `$公式文本$`              | 内联的 Katex 数学公式     | 可以在任意位置                                |
+| `$$公式文本$$`            | 块级居中的 Katex 数学公式 | 可以在任意位置                                |
+
+## 快捷键
+
+注意: 编辑器的快捷键可能与操作系统的快捷键冲突, 如 Windows 下的<kbd>Ctrl</kbd>+<kbd>.</kbd>可能会与操作系统输入法的中英文标点切换的快捷键冲突导致不生效, 因为操作系统的优先级更高.
+
+### 基本
+
+| 命令       | Windows/Linux                                                           | MacOS                                                                  |
+| ---------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 复制       | <kbd>Ctrl</kbd>+<kbd>C</kbd>                                            | <kbd>Cmd</kbd>+<kbd>C</kbd>                                            |
+| 剪切       | <kbd>Ctrl</kbd>+<kbd>X</kbd>                                            | <kbd>Cmd</kbd>+<kbd>X</kbd>                                            |
+| 粘贴       | <kbd>Ctrl</kbd>+<kbd>V</kbd>                                            | <kbd>Cmd</kbd>+<kbd>V</kbd>                                            |
+| 无格式粘贴 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>                           | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>                           |
+| 撤销操作   | <kbd>Ctrl</kbd>+<kbd>Z</kbd>                                            | <kbd>Cmd</kbd>+<kbd>Z</kbd>                                            |
+| 重做操作   | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd>                           | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd>                           |
+| 段落内换行 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 或者 <kbd>Shift</kbd>+<kbd>Enter</kbd> | <kbd>Cmd</kbd>+<kbd>Enter</kbd> 或者 <kbd>Shift</kbd>+<kbd>Enter</kbd> |
+
+### 选择
+
+| 命令                   | Windows/Linux                 | MacOS                         |
+| ---------------------- | ----------------------------- | ----------------------------- |
+| 全选                   | <kbd>Ctrl</kbd>+<kbd>A</kbd>  | <kbd>Cmd</kbd>+<kbd>A</kbd>   |
+| 向左侧扩展选择一个字符 | <kbd>Shift</kbd>+<kbd>←</kbd> | <kbd>Shift</kbd>+<kbd>←</kbd> |
+| 向右侧扩展选择一个字符 | <kbd>Shift</kbd>+<kbd>→</kbd> | <kbd>Shift</kbd>+<kbd>→</kbd> |
+| 向上扩展选择一行       | <kbd>Shift</kbd>+<kbd>↑</kbd> | <kbd>Shift</kbd>+<kbd>↑</kbd> |
+| 向下扩展选择一行       | <kbd>Shift</kbd>+<kbd>↓</kbd> | <kbd>Shift</kbd>+<kbd>↓</kbd> |
+
+### 文本格式
+
+| 命令     | Windows/Linux                                 | MacOS                                        |
+| -------- | --------------------------------------------- | -------------------------------------------- |
+| 粗体     | <kbd>Ctrl</kbd>+<kbd>B</kbd>                  | <kbd>Cmd</kbd>+<kbd>B</kbd>                  |
+| 斜体     | <kbd>Ctrl</kbd>+<kbd>I</kbd>                  | <kbd>Cmd</kbd>+<kbd>I</kbd>                  |
+| 下划线   | <kbd>Ctrl</kbd>+<kbd>U</kbd>                  | <kbd>Cmd</kbd>+<kbd>U</kbd>                  |
+| 删除线   | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> |
+| 文本高亮 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> |
+| 内联代码 | <kbd>Ctrl</kbd>+<kbd>E</kbd>                  | <kbd>Cmd</kbd>+<kbd>E</kbd>                  |
+
+### 段落格式
+
+| 命令             | Windows/Linux                                 | MacOS                                        |
+| ---------------- | --------------------------------------------- | -------------------------------------------- |
+| 触发常规文本样式 | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>0</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>0</kbd>   |
+| 触发标题 1 样式  | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd>   |
+| 触发标题 2 样式  | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd>   |
+| 触发标题 3 样式  | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>3</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>3</kbd>   |
+| 触发标题 4 样式  | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>4</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>4</kbd>   |
+| 触发标题 5 样式  | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>5</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>5</kbd>   |
+| 触发标题 6 样式  | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>6</kbd>   | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>6</kbd>   |
+| 触发编号列表     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>7</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>7</kbd> |
+| 触发符号列表     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>8</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>8</kbd> |
+| 触发任务列表     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>9</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>9</kbd> |
+| 触发块引用       | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> |
+| 左对齐           | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> |
+| 居中对齐         | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> |
+| 右对齐           | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> |
+| 两端对齐         | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd> |
+| 行内代码         | <kbd>Ctrl</kbd>+<kbd>E</kbd>                  | <kbd>Cmd</kbd>+<kbd>E</kbd>                  |
+| 上标             | <kbd>Ctrl</kbd>+<kbd>.</kbd>                  | <kbd>Cmd</kbd>+<kbd>.</kbd>                  |
+| 下标             | <kbd>Ctrl</kbd>+<kbd>,</kbd>                  | <kbd>Cmd</kbd>+<kbd>,</kbd>                  |
+
+### 代码块
+
+| 命令       | Windows/Linux                                           | MacOS                                                 |
+| ---------- | ------------------------------------------------------- | ----------------------------------------------------- |
+| 代码块     | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>             | <kbd>Cmd</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>            |
+| 跳出代码块 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 或者在末尾连按三次回车 | <kbd>Cmd</kbd>+<kbd>Enter</kbd>或者在末尾连按三次回车 |
+
+### 列表
+
+| 命令               | Windows/Linux                   | MacOS                           |
+| ------------------ | ------------------------------- | ------------------------------- |
+| 列表项增加缩进层级 | <kbd>Tab</kbd>                  | <kbd>Tab</kbd>                  |
+| 列表项减少缩进层级 | <kbd>Shift</kbd>+<kbd>Tab</kbd> | <kbd>Shift</kbd>+<kbd>Tab</kbd> |
+
+## 其它操作
+
+- 在表格中
+
+  在**最右下角**的单元格中按下<kbd>Tab</kbd>键自动添加行.
+
+- 在列表中
+
+  在**末尾的空项**处, 每按一次<kbd>Enter</kbd>键会退出一级, 直至退出整个列表
+
+### 间隙光标
+
+正常的光标是闪烁的垂直线条, 间隙光标是闪烁的水平线条. 间隙光标不是真实的位置, 只有输入内容后才会在间隙光标处创建插入点.
+
+间隙光标出现时可以直接输入, 编辑器会自动创建插入点. 间隙光标是为解决在文档最前面或者最后面处没有插入点的问题, 当遇到这个问题时通过以下方式显示间隙光标:
+
+- 对于表格:
+  在**最左上角**的单元格中按<kbd>↑</kbd>键会显示表格上方的间隙光标
+  在**最右下角**的单元格中按<kbd>↓</kbd>键会显示表格下方的间隙光标
+
+- 对于图片
+  选定图片后按下<kbd>↑</kbd>键/<kbd>↓</kbd>键, 显示图片上方/下方的间隙光标
+
+## Markdown 测试
+
+复制以下 Markdown 源码, 然后粘贴到编辑中查看效果:
+
+<textarea style={{resize: "none", width: "100%", padding: "16px", outline: "2px auto gray", outlineOffset: "-2px"}}  rows="144" readOnly defaultValue={`# 标题
+
+# h1 Heading
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+# 水平线
+
+---
+
+# 文本强调
+
+**这是粗体文本**
+
+_这是斜体文本_
+
+~~删除线~~
+
+# 引用
+
+> 块引用可以嵌套...
+>
+> > 添加一个\u0060>\u0060 符号增加一层嵌套...
+> >
+> > > \u0060>\u0060 之间可以使用空格...
+
+# 列表
+
+## 无序列表
+
+- 每行以 \u0060+\u0060, \u0060-\u0060, 或\u0060\*\u0060 开头创建列表
+  启用了软换行
+- 缩进两个空格创建子列表 ↓:
+  - 修饰符改变会强制创建新的列表 ↓:
+    - Ac tristique libero volutpat at
+    * Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+- Very easy!
+
+## 有序列表
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+4. 可以使用顺序数字...
+5. ...或者全部使用\u00601.\u0060
+
+使用偏移起始数字:
+
+57. foo
+1. bar
+
+## 代码
+
+内联代码 \u0060code\u0060
+
+### 缩进代码块
+
+      // Some comments
+      line 1 of code
+      line 2 of code
+      line 3 of code
+
+### 围栏代码块
+
+\u0060\u0060\u0060
+Sample text here...
+\u0060\u0060\u0060
+
+### 围栏代码块语法高亮
+
+\u0060\u0060\u0060tsx
+function Foo(bar) {
+\ \ return bar++;
+};
+
+console.log(foo(5));
+\u0060\u0060\u0060
+
+\u0060\u0060\u0060diff
+const foo = function (bar) {
+\- return bar++;
+\+ return bar++;
+};
+
+console.log(foo(5));
+\u0060\u0060\u0060
+
+# 表格
+
+| Option | Description                                                               |
+| ------ | ------------------------------------------------------------------------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default.    |
+| ext    | extension to be used for dest files.                                      |
+
+## 单元格对齐
+
+| Option |                                Description                                |
+| :----: | :-----------------------------------------------------------------------: |
+|  data  | path to data files to supply the data that will be passed into templates. |
+| engine |  engine to be used for processing templates. Handlebars is the default.   |
+|  ext   |                   extension to be used for dest files.                    |
+
+# 嵌入链接
+
+[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+自动转换超链接 https://www.baidu.com (enable linkify to see)
+
+# 嵌入图片
+
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+和链接一样, 嵌入图片也支持引用语法: \u0060![label][id]\u0060
+
+![Alt text][id]
+
+在文档的后面定义引用的 url 位置: \u0060[id]:url\u0060
+
+[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
+
+# 数学公式
+
+内联数学公式: $E = mc^2$.
+
+块级数学公式
+
+$$
+\\begin{aligned}
+T( (v_1 + v_2) \\otimes w) &= T(v_1 \\otimes w) + T(v_2 \\otimes w) \\\\
+T( v \\otimes (w_1 + w_2)) &= T(v \\otimes w_1) + T(v \\otimes w_2) \\\\
+T( (\\alpha v) \\otimes w ) &= T( \\alpha ( v \\otimes w) ) \\\\
+T( v \\otimes (\\alpha w) ) &= T( \\alpha ( v \\otimes w) ) \\\\
+\\end{aligned}
+$$
+
+---
+
+结束
+`}
+/>

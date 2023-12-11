@@ -1,0 +1,57 @@
+---
+meta:
+  - title: QRCode Component
+  - description: QRCode document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/QRCode.tsx"
+  componentName: "QRCode"
+---
+
+import Demo from "../../src/Demo";
+import QRCodeBasicDemo from "./QRCodeBasicDemo";
+import QRCodeLevelDemo from "./QRCodeLevelDemo";
+import QRCodeSizeDemo from "./QRCodeSizeDemo";
+import QRCodeDownloadDemo from "./QRCodeDownloadDemo";
+import QRCodeColorDemo from "./QRCodeColorDemo";
+import QRCodeIconDemo from "./QRCodeIconDemo";
+import QRCodeRefreshDemo from "./QRCodeRefreshDemo";
+
+# 使用
+
+生成二维码组件.
+
+## 基本使用
+
+<Demo data={{ Component: QRCodeBasicDemo }} />
+
+## 二维码纠错级别
+
+`QRCode`支持四级纠错级别: L,M,Q,H, 分别对应: 低,中,高,超高. 默认为`M`
+
+纠错级别越高生成图像越复杂, 但具有较高的纠错能力, 因此中心可被遮挡的部分也就越大.
+
+<Demo data={{ Component: QRCodeLevelDemo }} />
+
+## 自定义颜色
+
+<Demo data={{ Component: QRCodeColorDemo }} />
+
+## 带图像
+
+<Demo data={{ Component: QRCodeIconDemo }} />
+
+## 尺寸
+
+<Demo data={{ Component: QRCodeSizeDemo }} />
+
+## 点击刷新
+
+<Demo data={{ Component: QRCodeRefreshDemo }} />
+
+## 下载二维码
+
+简单的客户端边下载二维码的例子
+
+<Demo data={{ Component: QRCodeDownloadDemo }} />

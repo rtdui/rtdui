@@ -1,0 +1,23 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../src/Demo";
+import DataTableGroupingDemo from "./DataTableGroupingDemo";
+
+# Grouping
+
+DataTable 支持用户拖拉列头进行数据分组
+
+设置`enableGrouping`属性为`true`开启用户数据分组功能. 可选的, 设置`autoExpandAll`为`true`分组后自动展开所有分组.
+
+默认的, 分组后在分组单元格内自动显示组内行数.
+
+<Demo data={{ Component: DataTableGroupingDemo }} />

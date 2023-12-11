@@ -1,0 +1,21 @@
+---
+meta:
+  - title: JsonInput Component
+  - description: JsonInput document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/JsonInput.tsx"
+  componentName: "JsonInput"
+---
+
+import Demo from "../../src/Demo";
+import JsonInputBasicDemo from "./JsonInputBasicDemo";
+
+# 使用
+
+`JsonInput`组件用于输入和验证JSON字符串. 默认情况下合法的JSON在失去焦点时会自动格式化.
+
+`JsonInput`组件基于`TextArea`, 因此继承了`TextArea`组件的属性
+
+<Demo data={{ Component: JsonInputBasicDemo }} />

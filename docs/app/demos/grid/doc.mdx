@@ -1,0 +1,109 @@
+---
+meta:
+  - title: Grid Component
+  - description: Grid document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Grid.tsx"
+  componentName: "Grid"
+---
+
+import Demo from "../../src/Demo";
+import GridBasicDemo from "./GridBasicDemo";
+import GridGrowDemo from "./GridGrowDemo";
+import GridOffsetDemo from "./GridOffsetDemo";
+import GridWrapDemo from "./GridWrapDemo";
+import GridAutoDemo from "./GridAutoDemo";
+import GridResponsiveSpanDemo from "./GridResponsiveSpanDemo";
+import GridResponsiveGutterDemo from "./GridResponsiveGutterDemo";
+
+# Grid
+
+Grid 组件实现了栅格布局,类似于`Bootstrap`中栅格布局系统. 默认分为`12`列
+
+## 基本
+
+<Demo data={{ Component: GridBasicDemo }} />
+
+## gutter 属性(间隙)
+
+Grid 的`gutter`属性控制着各行/各列之间的间隙. `gutter`属性同样支持响应式值
+
+## grow 属性
+
+Grid 的`grow`属性控制着如果行没有被完全分配给列, 是否将剩余空间均分给各列.
+
+<Demo data={{ Component: GridGrowDemo }} />
+
+## 换行
+
+一旦列的`span` 和 `offset`的值加起来超出了 Grid 的`columns`属性 (默认为 12), 列会被移动到下一行.
+
+<Demo data={{ Component: GridWrapDemo }} />
+
+---
+
+# Column
+
+## span
+
+`Grid.Col`的`span`属性控制着列宽占行宽的分数. 因此`span`属性值可以是 1 至 12 之间的任意值
+
+比如:
+
+- `<Grid.Col span={3} />`
+
+  3 / 12 = 25% 行宽
+
+- `<Grid.Col span={4} />`
+
+  4 / 12 = 33% 行宽
+
+- `<Grid.Col span={6} />`
+
+  6 / 12 = 50% 行宽
+
+- `<Grid.Col span={12} />`
+
+  12 / 12 = 100% 行宽
+
+### 列自动尺寸
+
+列的 span 属性值为"auto"时, 该列会增长直到充满行.
+
+<Demo data={{ Component: GridAutoDemo }} />
+
+## offset
+
+Grid 的`offset`属性控制着列的偏移, 取值和`span`相同.
+
+<Demo data={{ Component: GridOffsetDemo }} />
+
+---
+
+# 响应式支持
+
+Grid 的`gutter`属性以及 Column 的`span`,`offset`,`order`属性支持响应式.
+
+| 断点 | 最小宽度 | css 属性                             |
+| ---- | -------- | ------------------------------------ |
+| sm   | 640px    | `@media (min-width: 640px) { ... }`  |
+| md   | 768px    | `@media (min-width: 768px) { ... }`  |
+| lg   | 1024px   | `@media (min-width: 1024px) { ... }` |
+| xl   | 1280px   | `@media (min-width: 1280px) { ... }` |
+| 2xl  | 1536px   | `@media (min-width: 1536px) { ... }` |
+
+比如`span={{ base: 12, md: 6, lg: 3 }}`:
+
+- base - 12 / 12 = 100% 行宽, 当视口的宽度小于 md 时
+- md - 6 / 12 = 50% 行宽, 当视口的宽度在 md 和 lg 之间时
+- lg - 3 / 12 = 25% 行宽, 当视口的宽度在大于 lg 时(在没有指定更大的 xl 和 2xl 断点的情况下)
+
+改变浏览器窗口的大小查看下面例子中列变化:
+
+<Demo data={{ Component: GridResponsiveSpanDemo }} />
+
+改变浏览器窗口的大小查看下面例子中列间隙大小变化:
+
+<Demo data={{ Component: GridResponsiveGutterDemo }} />

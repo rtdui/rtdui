@@ -1,0 +1,59 @@
+---
+meta:
+  - title: Popover Component
+  - description: Popover document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Popover.tsx"
+  componentName: "Popover"
+---
+
+import Demo from "../../src/Demo";
+import PopoverBasicDemo from "./PopoverBasicDemo";
+import PopoverHoverDemo from "./PopoverHoverDemo";
+import PopoverFocusDemo from "./PopoverFocusDemo";
+import PopoverArrowDemo from "./PopoverArrowDemo";
+import PopoverControlledDemo from "./PopoverControlledDemo";
+import PopoverFocusTrapDemo from "./PopoverFocusTrapDemo";
+import PopoverTransitionDemo from "./PopoverTransitionDemo";
+
+# 使用
+
+Popover 基于 [floating-ui](https://floating-ui.com/) 实现. 可以完全自定义弹出的内容.
+
+`Tooltip`,`Select`,`AutoComplete`组件等都是基于`Popover`实现
+
+## 基本
+
+默认点击`target`时打开.
+
+<Demo data={{ Component: PopoverBasicDemo }} />
+
+## 鼠标覆盖时(hover)打开
+
+<Demo data={{ Component: PopoverHoverDemo }} />
+
+## 键盘导航得到焦点(tab focus)时打开
+
+<Demo data={{ Component: PopoverFocusDemo }} />
+
+## 显示箭头
+
+<Demo data={{ Component: PopoverArrowDemo }} />
+
+## 受控模式
+
+<Demo data={{ Component: PopoverControlledDemo }} />
+
+## 焦点围栏
+
+焦点围栏是指当弹出框显示时, 键盘`Tab`键的焦点跳转范围限定在弹出框内. 对于弹出框中带有输入控件时尤其有用.
+
+<Demo data={{ Component: PopoverFocusTrapDemo }} />
+
+## 过渡效果
+
+`Popover`支持`Transition`组件提供的预置过渡效果和自定义效果, 默认为"fade"
+
+<Demo data={{ Component: PopoverTransitionDemo }} />

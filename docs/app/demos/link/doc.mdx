@@ -1,0 +1,28 @@
+---
+meta:
+  - title: Link Component
+  - description: Link document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Link.tsx"
+  componentName: "Link"
+---
+
+import Demo from "../../src/Demo";
+import LinkBasicDemo from "./LinkBasicDemo";
+import LinkPolymorphicDemo from "./LinkPolymorphicDemo";
+
+# 使用
+
+## 基本
+
+<Demo data={{ Component: LinkBasicDemo }} />
+
+## 多态
+
+多态组件是可以使用多态属性更改根元素的组件。多态组件都有一个默认组件，当未提供多态属性时则使用该默认组件。
+
+`Link`是一个多态组件, 其`as`属性就是一个多态属性. 默认为HTML原生的`a`元素组件. 通过修改`as`属性, 可以很容易的与其它框架提供的组件进行集成. 如使用`Remix`提供的`Link`组件替代`a`组件.
+
+<Demo data={{ Component: LinkPolymorphicDemo }} />

@@ -1,0 +1,28 @@
+---
+meta:
+  - title: Steps Component
+  - description: Steps document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Steps.tsx"
+  componentName: "Steps"
+---
+
+import Demo from "../../src/Demo";
+import StepsBasicDemo from "./StepsBasicDemo";
+import StepsSequentialDemo from "./StepsSequentialDemo";
+
+# 使用
+
+## 基本
+
+默认是无序的, 也就是说用户可以跳到任意步骤
+
+<Demo data={{ Component: StepsBasicDemo }} />
+
+## 顺序性的
+
+顺序性的, 也就是说用户可必须一步一步的执行, 用户不能自己跳转, 必须为`Steps`组件设置`ref`引用, 然后调用引用的`next()`跳转到下一步.
+
+<Demo data={{ Component: StepsSequentialDemo }} />

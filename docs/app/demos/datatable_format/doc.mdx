@@ -1,0 +1,31 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../src/Demo";
+import DataTableFormatDemo from "./DataTableFormatDemo";
+
+# 单元格格式自定义
+
+可以通过传递给`DataTable`的`columns`属性的列定义中(ColumnDef)中自定义单元格的显示格式. 如:
+
+```tsx
+const columns: ColumnDef<Person>[] = [
+  // ...others column def
+  {
+    // ...others def
+    header: (cx) => <span className="text-secondary">整数</span>,
+    cell: (cx) => formatNumber(cx.getValue(), "integer"),
+    footer: (cx) => <span className="text-secondary">整数</span>,
+  },
+];
+```
+
+<Demo data={{ Component: DataTableFormatDemo }} />

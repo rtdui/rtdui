@@ -1,0 +1,54 @@
+---
+meta:
+  - title: Swap Component
+  - description: Swap document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Swap.tsx"
+  componentName: "Swap"
+---
+
+import Demo from "../../src/Demo";
+import SwapFlipDemo from "./SwapFlipDemo";
+import SwapIconRotateDemo from "./SwapIconRotateDemo";
+import SwapIconDemo from "./SwapIconDemo";
+import SwapIndeterminateDemo from "./SwapIndeterminateDemo";
+import SwapInFormDemo from "./SwapInFormDemo";
+import SwapTextDemo from "./SwapTextDemo";
+
+# 使用
+
+## 文本 Swap
+
+<Demo data={{ Component: SwapTextDemo }} />
+
+## 图标 Swap
+
+<Demo data={{ Component: SwapIconDemo }} />
+
+## 图标旋转过渡效果
+
+会在默认的 fade 的效果上叠加旋转效果.
+
+<Demo data={{ Component: SwapIconRotateDemo }} />
+
+## 旋转翻转效果
+
+Swap 的孩子可以是任意元素, 本例中使用了 div 元素作为孩子.
+
+<Demo data={{ Component: SwapFlipDemo }} />
+
+## 初始时为可以设置为中间状态
+
+要启用中间状态, 则必须提供三个孩子元素, 第三个元素将作为初始时的中间态显示元素
+
+> Tip: 一旦进行了点击则再也不会回到中间态.
+
+<Demo data={{ Component: SwapIndeterminateDemo }} />
+
+## Swap 可以作为 form 的控件使用
+
+Swap 在 form 中作为表单控件的使用和 React 原生的`<input type="checkbox">`元素完全相同. 同样支持受控属性(`checked`)和非受控属性(`defaultChecked`)以及`onChange`事件
+
+<Demo data={{ Component: SwapInFormDemo }} />

@@ -1,0 +1,123 @@
+---
+meta:
+  - title: RichTextEditor Component
+  - description: RichTextEditor document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/RichTextEditor.tsx"
+  componentName: "RichTextEditor"
+---
+
+import Demo from "../../src/Demo";
+import EditorBasicDemo from "./EditorBasicDemo";
+
+# 介绍
+
+RichTextEditor 组件是一个富文本编辑器, 基于`Tiptap`实现, 支持丰富的功能:
+
+- Markdown 语法识别
+
+  支持: h1-h6, 删除线文本，高亮文本，任务列表，块数学公式语法，支持按退格键取消转换。详情查看编辑器 demo 中的帮助。
+
+- 支持粘贴 Markdown
+
+  VS Code 内置的 Markdown 支持的语法(标准语法+GFM+Katex)均支持，除了嵌入 HTML 标签
+
+- 选定文本的工具栏按钮高亮
+- 撤销/重做
+- 基于`prism`的代码块语法高亮
+- 行内代码
+- 表格浮动工具栏
+
+  支持单元格合并/拆分，支持拖拉调整列宽，最后的单元格支持 Tab 键自动创建新行(MS-Word 表格的功能)。
+
+- 表格嵌套
+- 本地图片上传并插入
+  - 自动压缩后再上传
+  - 插入的图片支持拖动调整位置
+  - 插入的图片支持拖拉调整尺寸,传入的图片右下角有拖拉指示器
+- 文本对齐
+
+  支持左对齐，右对齐，居中对齐，两端对齐
+
+- 删除线文本
+- 文本高亮
+- 上标/下标
+- 行内/块级数学公式
+
+  块级公式自动居中显示
+
+- 数学公式内联编辑
+
+  可以直接在文档中修改公式
+
+- 空内容的占位文本
+- 丰富的键盘快捷键
+- JSON 格式保存或导出内容
+
+  减小内容后台保存的尺寸
+
+# 安装
+
+```sh
+npm i @rtd/editor
+```
+
+---
+
+# 使用
+
+`RichTextEditor`使用`Katex`渲染数学公式. 但没有内置`katex`的样式. 需要在页面中手动加载`katex`的样式,如:
+
+```html
+<link
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+  rel="stylesheet"
+/>
+```
+
+## 上传本地图片需要后端支持
+
+`RichTextEditor`组件支持上传本地图片至服务器, 这需要一些额外的要求:
+
+1. 服务器端需要支持上传图片文件功能, 同时要求服务端返回:`{imageUrl: <客户端访问地址>}`的`application/json`响应类型.
+
+   `RichTextEditor`使用标准的`multipart/form-data`内容类型, 并且使用`POST`请求方法上传文件.
+
+2. 设置`RichTextEditor`组件的`uploadImageUrl`属性为正确的后端上传地址.
+
+比如在`Remix`框架下, 添加`app/routes/api.editor.upload.tsx`文件用于服务器端处理文件上传:
+
+```tsx {14-15}
+import path from "path";
+import {
+  json,
+  unstable_createFileUploadHandler as createFileUploadHandler,
+  unstable_parseMultipartFormData as parseMultipartFormData,
+} from "@remix-run/node";
+import type { ActionFunctionArgs } from "@remix-run/node";
+
+export const action = async (args: ActionFunctionArgs) => {
+  const { request } = args;
+  const uploadHandler = createFileUploadHandler({
+    directory: () => path.join(process.cwd(), "public"),
+    maxPartSize: 10_000_000, //10M
+    filter: ({ filename, name, contentType }) =>
+      name === "upload" && ["image/jpeg", "image/png"].includes(contentType),
+  });
+  const formData = await parseMultipartFormData(request, uploadHandler);
+  const file = formData.get("upload") as File;
+  return json({ imageUrl: file.name });
+};
+```
+
+然后配置`RichTextEditor`组件的`uploadImageUrl`属性即可
+
+```tsx
+<RichTextEditor uploadImageUrl="/api/editor/upload" />
+```
+
+> 注意: 你有责任验证客户端上传的文件.
+
+<Demo data={{ Component: EditorBasicDemo }} notProse={false} />

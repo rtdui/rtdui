@@ -1,0 +1,36 @@
+---
+meta:
+  - title: Progress Component
+  - description: Progress document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Progress.tsx"
+  componentName: "Progress"
+---
+
+import Demo from "../../src/Demo";
+import ProgressValuesDemo from "./ProgressValuesDemo";
+import ProgressSizeDemo from "./ProgressSizeDemo";
+import ProgressColorDemo from "./ProgressColorDemo";
+import ProgressAnimationDemo from "./ProgressAnimationDemo";
+
+# 使用
+
+## 进度值
+
+<Demo data={{ Component: ProgressValuesDemo }} />
+
+## 尺寸
+
+<Demo data={{ Component: ProgressSizeDemo }} />
+
+## 颜色
+
+<Demo data={{ Component: ProgressColorDemo }} />
+
+## 动画
+
+`Progress`如果不提供`value`属性则会动画进度条表示不确定性
+
+<Demo data={{ Component: ProgressAnimationDemo }} />

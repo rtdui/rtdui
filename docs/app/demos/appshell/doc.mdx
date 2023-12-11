@@ -1,0 +1,38 @@
+# 使用
+
+`AppShell`是一个页面布局组件, 方便为你的App页面做布局.
+`AppShell`采用了最常用的布局形式, 由以下几部分组成:
+
+- header 顶部条, 通常用于顶部导航或常用动作.
+- footer 底部条, 通常用于说明版权或站点指引或快速链接.
+- main 页面的内容
+- drawer 抽屉, 通常用于菜单导航.
+
+`AppShell`使用响应式布局. 会根据断点自动显示或隐藏drawer. 也就是说在PC端常常显示抽屉; 在移动端抽屉默认隐藏, 可以点击按钮可使其显示.
+
+import { IconExternalLink } from "@tabler/icons-react";
+
+## 基本使用
+
+<a className="btn" href="/appshell" target="_black">
+  <span>在新窗口打开</span>
+  <IconExternalLink size={20} stroke={1.5} />
+</a>
+
+## drawer在header之下
+
+可以使用障眼法, 在drawer的顶部添加一个与header相同高度和相同背景的元素. footer延伸到drawer同理.
+
+<a className="btn" href="/appshellextend" target="_black">
+  <span>在新窗口打开</span>
+  <IconExternalLink size={20} stroke={1.5} />
+</a>
+
+## 高级使用
+
+可以为各个部分添加一些特性. 下面的例子中演示了当页面向下滚动时自动隐藏header, 向上滚动时立即显示header:
+
+<a className="btn" href="/appshellheadroom" target="_black">
+  <span>在新窗口打开</span>
+  <IconExternalLink size={20} stroke={1.5} />
+</a>

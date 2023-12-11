@@ -1,0 +1,151 @@
+import React, { forwardRef } from "react";
+import clsx from "clsx";
+import { Button, TextInput } from "@rtdui/core";
+import { IconX } from "@tabler/icons-react";
+import { useInputState } from "@rtdui/hooks";
+
+export interface DialogProps
+  extends Omit<React.ComponentPropsWithoutRef<"div">, "title" | "content"> {
+  /** Called when close button is clicked */
+  onClose?: (result?: any) => void;
+
+  /** Dialog title, displayed before body */
+  title?: React.ReactNode;
+
+  /** Dialog message, place main text here */
+  children?: React.ReactNode;
+
+  /** Dialog actions */
+  actions?: React.ReactNode;
+
+  /** Determines whether close button should be visible in title
+   * @default true
+   */
+  withCloseButton?: boolean;
+
+  /** full screen dialog */
+  fullScreen?: boolean;
+  /** dialog mode
+   * @default "dialog"
+   */
+  mode?: "alert" | "prompt" | "confirm" | "dialog";
+
+  /** confirm button text for mode confirm or prompt
+   * @default "OK"
+   */
+  confirmLabel?: string;
+  /** cancel button text for mode confirm or prompt
+   * @default "Cancel"
+   */
+  cancelLabel?: string;
+  /** close button text for mode alert
+   * @default "Close"
+   */
+  closeLabel?: string;
+
+  slots?: {
+    closeBtn?: string;
+    dialogTitle?: string;
+    title?: string;
+    dialogContent?: string;
+    dialogAction?: string;
+    okBtn?: string;
+    cancelBtn?: string;
+  };
+}
+
+export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+  const {
+    className,
+    color = "info",
+    withCloseButton = true,
+    title,
+    children,
+    actions,
+    onClose,
+    fullScreen,
+    mode = "dialog",
+    confirmLabel = "OK",
+    cancelLabel = "Cancel",
+    closeLabel = "Close",
+    slots,
+    ...others
+  } = props;
+
+  const [promptValue, setPromptValue] = useInputState("");
+
+  return (
+    <div className="modal modal-open">
+      <div
+        ref={ref}
+        className={clsx(
+          "modal-box p-0",
+          {
+            "w-screen max-w-full h-screen max-h-screen rounded-none":
+              fullScreen,
+          },
+          className
+        )}
+        {...others}
+      >
+        <div
+          className={clsx(
+            "dialog-title bg-base-200 px-6 py-2 pr-4 flex items-center justify-between",
+            slots?.dialogTitle
+          )}
+        >
+          <h3 className={clsx("font-bold", slots?.title)}>{title}</h3>
+          {withCloseButton && (
+            <Button
+              onClick={(e) => onClose?.()}
+              className={clsx("btn btn-sm btn-circle", slots?.closeBtn)}
+            >
+              <IconX />
+            </Button>
+          )}
+        </div>
+        <div
+          className={clsx(
+            "dialog-content p-6 overflow-auto",
+            slots?.dialogContent
+          )}
+        >
+          {mode === "prompt" ? (
+            <TextInput
+              label={children as string}
+              slots={{ input: "input-bordered" }}
+              value={promptValue}
+              onChange={setPromptValue}
+            />
+          ) : React.isValidElement(children) ? (
+            React.cloneElement(children as React.ReactElement<any>, {
+              onClose,
+            })
+          ) : (
+            children
+          )}
+        </div>
+        {mode !== "dialog" && (
+          <div className={clsx("modal-action px-6 pb-6", slots?.dialogAction)}>
+            {mode !== "alert" && (
+              <Button
+                className={clsx("btn-primary", slots?.okBtn)}
+                onClick={(e) =>
+                  onClose?.(mode === "confirm" ? "ok" : promptValue)
+                }
+              >
+                {confirmLabel}
+              </Button>
+            )}
+            <Button
+              className={clsx("", slots?.cancelBtn)}
+              onClick={(e) => onClose?.()}
+            >
+              {mode === "alert" ? closeLabel : cancelLabel}
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+});

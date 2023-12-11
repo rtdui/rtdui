@@ -1,0 +1,112 @@
+---
+meta:
+  - title: NumberInput Component
+  - description: NumberInput document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/NumberInput.tsx"
+  componentName: "NumberInput"
+---
+
+import Demo from "../../src/Demo";
+import NumberInputBasicDemo from "./NumberInputBasicDemo";
+import NumberInputPositiveDemo from "./NumberInputPositiveDemo";
+import NumberInputPositiveIntegerDemo from "./NumberInputPositiveIntegerDemo";
+import NumberInputPrefixDemo from "./NumberInputPrefixDemo";
+import NumberInputDecimalScaleDemo from "./NumberInputDecimalScaleDemo";
+import NumberInputThousandsGroupDemo from "./NumberInputThousandsGroupDemo";
+import NumberInputRangeDemo from "./NumberInputRangeDemo";
+import NumberInputDisabledDemo from "./NumberInputDisabledDemo";
+import NumberInputCustomDemo from "./NumberInputCustomDemo";
+
+# 使用
+
+只允许输入数字. 原生`type="number"`的`input`存在一些局限性. 它接受的输入可能不一定是合法的数字. 如`0000e123`
+
+`NumberInput`组件解决了这些问题. 它只接受常规的数字表示法, 不接受科学计数法等其它表示法
+
+## 基本使用
+
+默认情况下可以输入任意合法的数字. 包括负数, 任意小数, 整数等.
+
+<Demo data={{ Component: NumberInputBasicDemo }} />
+
+## 只允许输入自然数
+
+这对于输入银行卡号等场景尤其有用.
+
+此时移动端会显示系统数字键盘.
+
+<Demo data={{ Component: NumberInputPositiveIntegerDemo }} />
+
+## 不允许输入负数
+
+这对于输入付款金额等场景尤其有用.
+
+此时移动端会显示带小数点的系统数字键盘.
+
+<Demo data={{ Component: NumberInputPositiveDemo }} />
+
+## 前缀和后缀
+
+`prefix`和`suffix`属性可以设置自动显示的前缀和后缀.
+
+<Demo data={{ Component: NumberInputPrefixDemo }} />
+
+## 限制小数位数
+
+`decimalScale`属性用于设置最大的小数位数.
+
+<Demo data={{ Component: NumberInputDecimalScaleDemo }} />
+
+## 自定义验证逻辑
+
+`isAllowed`属性是一个方法, 用于自定义输入的验证逻辑. 它接受一个values对象参数. 如果函数的返回值为false, `onChange`方法不会触发, 并且输入值不会改变.
+`values`参数的类型是NumberFormatValues, 它的类型定义:
+
+```ts
+interface NumberFormatValues {
+  // 解析后的数值
+  floatValue: number | undefined;
+  // 格式化后的值
+  formattedValue: string;
+  // 字符串数字
+  value: string;
+}
+```
+
+<Demo data={{ Component: NumberInputCustomDemo }} />
+
+## 分位显示
+
+`thousandsGroupStyle`属性可以设置为自动分位显示, 支持的分位模式:
+
+- "thousand" 国际千分位
+- "lakh" 印度百分位
+- "wan" 中国万分位
+
+以下的例子使用国际通用的千分位显示
+
+<Demo data={{ Component: NumberInputThousandsGroupDemo }} />
+
+## 输入范围
+
+> tip: 如果是一个较小的范围, 可以考虑使用`Slider`组件替代.
+
+`min`和`max`属性控制着输入范围. `step`属性控制键盘上/下箭头快捷键的增加/减少的步长
+
+`clampBehavior`属性控制着当输入超出范围时的夹紧行为. 取值:
+
+- "strict" 严格模式, 意味着不可能输入超出范围的值.
+
+  **_注意: 在"strict"模式下, `min`必须小于等于`0`, 否则会导致问题._**
+
+- "blur" 会在输入框失去焦点时夹紧, 这是默认模式. 此模式下对`min`没有特殊要求.
+- "none" 不执行夹紧行为, 只有通过键盘快捷键增加/减少才会被限制在范围内.
+
+<Demo data={{ Component: NumberInputRangeDemo }} />
+
+## Disabled
+
+<Demo data={{ Component: NumberInputDisabledDemo }} />

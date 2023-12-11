@@ -1,0 +1,28 @@
+{
+  "include": ["./scripts", "./@types", "./packages/*/src"],
+  "exclude": [
+    "node_modules",
+    "./packages/*/esm/**/*",
+    "./packages/*/lib/**/*",
+    "./packages/*/cjs/**/*",
+    "./packages/tailwind-plugin/**/*"
+  ],
+  "compilerOptions": {
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "target": "ES2015",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmitOnError": true,
+    "allowJs": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rtdui/*": ["./packages/*/src"]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["./lib", "./esm", "./cjs", "**/*.test.tsx", "**/*.test.ts"],
+  "references": [{ "path": "../hooks" }]
+}

@@ -1,0 +1,44 @@
+---
+meta:
+  - title: RadialProgress Component
+  - description: RadialProgress document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/RadialProgress.tsx"
+  componentName: "RadialProgress"
+---
+
+import Demo from "../../src/Demo";
+import RadialProgressValueDemo from "./RadialProgressValueDemo";
+import RadialProgressColorDemo from "./RadialProgressColorDemo";
+import RadialProgressCustomBackgroundDemo from "./RadialProgressCustomBackgroundDemo";
+import RadialProgressCustomSizeDemo from "./RadialProgressCustomSizeDemo";
+
+# 使用
+
+进度环
+
+## 进度值
+
+<Demo data={{ Component: RadialProgressValueDemo }} />
+
+## 颜色
+
+使用内置的颜色值
+
+<Demo data={{ Component: RadialProgressColorDemo }} />
+
+## 自定义背景色
+
+使用`className`属性自定义背景色和前景色
+
+> 提示: Tailwindcss 的工具类前添加`!`会应用`!important`, 从而覆盖内置样式
+
+<Demo data={{ Component: RadialProgressCustomBackgroundDemo }} />
+
+## 自定义大小和厚度
+
+`size`和`thickness`属性支持任意的合法 CSS 长度及单位
+
+<Demo data={{ Component: RadialProgressCustomSizeDemo }} />

@@ -1,0 +1,56 @@
+---
+meta:
+  - title: Rating Component
+  - description: Rating document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Rating.tsx"
+  componentName: "Rating"
+---
+
+import Demo from "../../src/Demo";
+import RatingBasicDemo from "./RatingBasicDemo";
+import RatingControlledDemo from "./RatingControlledDemo";
+import RatingSizeDemo from "./RatingSizeDemo";
+import RatingCustomColorDemo from "./RatingCustomColorDemo";
+import RatingHalfDemo from "./RatingHalfDemo";
+import RatingStarDemo from "./RatingStarDemo";
+
+# 使用
+
+## 基本
+
+Rating 有五颗星, 默认 Rating 表示 5 分值.
+
+> Tip: 可以点击第一颗心的左侧空白处清除选择.
+
+<Demo data={{ Component: RatingBasicDemo }} />
+
+## 启用半星级
+
+如果`half`属性为 true, 则 Rating 表示 10 分值.
+
+<Demo data={{ Component: RatingHalfDemo }} />
+
+## 受控模式
+
+`defaultValue`属性为非受控属性, `value`属性为非受控属性
+
+<Demo data={{ Component: RatingControlledDemo }} />
+
+## 尺寸
+
+<Demo data={{ Component: RatingSizeDemo }} />
+
+## 自定义颜色
+
+使用`slots`属性可以为内部元素提供自定义 css 类名. `slots.star`可以为星级图案自定义背景色
+
+<Demo data={{ Component: RatingCustomColorDemo }} />
+
+## 星级图案
+
+`Rating`组件内置了几种星级图案.
+
+<Demo data={{ Component: RatingStarDemo }} />

@@ -1,0 +1,55 @@
+{
+  "name": "docs",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev --manual",
+    "start": "remix-serve ./build/index.js",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@mdi/js": "^7.3.67",
+    "@remix-run/css-bundle": "^2.3.1",
+    "@remix-run/node": "^2.3.1",
+    "@remix-run/react": "^2.3.1",
+    "@remix-run/serve": "^2.3.1",
+    "@rtdui/code-highlight": "^1.0.0",
+    "@rtdui/core": "^1.0.0",
+    "@rtdui/datatable": "^1.0.0",
+    "@rtdui/dialogs": "^1.0.0",
+    "@rtdui/editor": "^1.0.0",
+    "@rtdui/hooks": "^1.0.0",
+    "@rtdui/notifications": "^1.0.0",
+    "@rtdui/qr-code": "^1.0.0",
+    "@tabler/icons-react": "^2.42.0",
+    "clsx": "^2.0.0",
+    "i18next": "^23.7.7",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-fs-backend": "^2.3.0",
+    "i18next-http-backend": "^2.4.2",
+    "isbot": "^3.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
+    "remix-i18next": "^5.4.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.3.1",
+    "@remix-run/eslint-config": "^2.3.1",
+    "@rtdui/tailwind-plugin": "^1.0.0",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "rehype-katex": "^6.0.3",
+    "rehype-prism-plus": "^1.6.3",
+    "rehype-slug": "^5.1.0",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "^5.1.1",
+    "remark-toc": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,187 @@
+.slider {
+  --slider-size-xs: 4px;
+  --slider-size-sm: 6px;
+  --slider-size-md: 8px;
+  --slider-size-lg: 10px;
+  --slider-size-xl: 12px;
+
+  --slider-size: var(--slider-size-md);
+  --slider-radius: 999rem;
+  --slider-color: theme(colors.neutral);
+
+  --slider-thumb-size: calc(var(--slider-size) * 2);
+
+  --slider-track-bg: theme(colors.base-300);
+  --slider-bar-disabled-bg: darkgray;
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  width: 95%;
+  height: calc(var(--slider-size) * 2);
+  padding-left: var(--slider-size);
+  padding-right: var(--slider-size);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  touch-action: none;
+  position: relative;
+}
+
+.slider *:focus-visible {
+  outline: none;
+}
+
+.slider .label {
+  position: absolute;
+  transform: translateY(-100%);
+  background-color: theme(colors.neutral);
+  font-size: 0.875rem;
+  color: theme(colors.neutral-content);
+  padding: 2px 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+}
+
+.slider .thumb {
+  --_thumb-bd: var(--slider-color);
+  --_thumb-bg: theme(colors.base-100);
+  position: absolute;
+  display: var(--_thumb-display, flex);
+  height: var(--slider-thumb-size);
+  width: var(--slider-thumb-size);
+  background-color: var(--_thumb-bg);
+  border: 4px solid var(--_thumb-bd);
+  color: var(--_thumb-bd);
+  transform: var(--_thumb-transform, translate(-50%, -50%));
+  top: 50%;
+  cursor: pointer;
+  border-radius: var(--slider-radius);
+  align-items: center;
+  justify-content: center;
+  transition:
+    box-shadow 100ms ease,
+    transform 100ms ease;
+  z-index: 3;
+  user-select: none;
+  touch-action: none;
+  box-shadow: var(--_thumb-box-shadow, none);
+  outline-offset: 2px;
+  left: var(--slider-thumb-offset);
+
+  fieldset:disabled &,
+  &[data-disabled] {
+    --_thumb-display: none;
+  }
+
+  &[data-dragging] {
+    --_thumb-transform: translate(-50%, -50%) scale(1.05);
+    --_thumb-box-shadow: 2px;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--slider-color);
+    outline-offset: 2px;
+  }
+}
+
+.slider .trackContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: calc(var(--slider-size) * 2);
+  cursor: var(--_track-cursor, pointer);
+
+  fieldset:disabled &,
+  &[data-disabled] {
+    --_track-cursor: not-allowed;
+  }
+}
+
+.slider .track {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: var(--slider-size);
+
+  &[data-inverted]:not([data-disabled]) {
+    --_track-bg: var(--slider-color);
+  }
+
+  fieldset:disabled &[data-inverted],
+  &[data-inverted][data-disabled] {
+    --_track-bg: var(--slider-track-bg);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(var(--slider-size) * -1);
+    left: calc(var(--slider-size) * -1);
+    border-radius: var(--slider-radius);
+    background-color: var(--_track-bg, var(--slider-track-bg));
+    z-index: -1;
+  }
+}
+
+.slider .bar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  background-color: var(--_bar-bg, var(--slider-color));
+  border-radius: var(--slider-radius);
+  width: var(--slider-bar-width);
+  left: var(--slider-bar-offset);
+
+  &[data-inverted] {
+    --_bar-bg: var(--slider-track-bg);
+  }
+
+  fieldset:disabled &:not([data-inverted]),
+  &[data-disabled]:not([data-inverted]) {
+    --_bar-bg: var(--slider-bar-disabled-bg);
+  }
+}
+
+.slider .markWrapper {
+  position: absolute;
+  left: calc(var(--mark-offset) - var(--slider-size) / 2);
+  top: 0;
+  z-index: 2;
+  height: 0;
+  pointer-events: none;
+}
+
+.slider .mark {
+  --_mark-bd: var(--slider-track-bg);
+  border: 2px solid var(--_mark-bd);
+  height: var(--slider-size);
+  width: var(--slider-size);
+  border-radius: 1000px;
+  transform: translateX((calc(var(--slider-size) / -2)));
+  background-color: var(--_mark-bg, white);
+  pointer-events: none;
+
+  &[data-filled] {
+    --_mark-bd: var(--slider-color);
+
+    &[data-disabled] {
+      --_mark-bd: var(--slider-bar-disabled-bg);
+    }
+  }
+}
+
+.slider .markLabel {
+  --_mark-label-color: theme(colors.base-content);
+  transform: translate(calc(-50% + var(--slider-size) / 2), 4);
+  font-size: 14px;
+  color: var(--_mark-label-color);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}

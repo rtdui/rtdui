@@ -1,0 +1,93 @@
+{
+  "name": "@rtdui/editor",
+  "version": "1.0.0",
+  "description": "React rich text editor based on tiptap",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css",
+    "./styles/*": "./styles/*"
+  },
+  "keywords": [
+    "editor",
+    "rtd",
+    "rich",
+    "text",
+    "tiptap",
+    "react",
+    "remix",
+    "remixjs",
+    "next",
+    "nextjs",
+    "ui",
+    "ui-kit",
+    "components",
+    "library",
+    "frontend",
+    "design"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.dev/",
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/editor"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "dependencies": {
+    "@hocuspocus/extension-redis": "^2.3.1",
+    "@hocuspocus/provider": "^2.3.1",
+    "@hocuspocus/server": "^2.3.1",
+    "@tiptap/extension-collaboration": "^2.0.4",
+    "@tiptap/extension-collaboration-cursor": "^2.0.4",
+    "@tiptap/extension-floating-menu": "^2.0.4",
+    "@tiptap/extension-highlight": "^2.0.4",
+    "@tiptap/extension-link": "^2.0.4",
+    "@tiptap/extension-placeholder": "^2.0.4",
+    "@tiptap/extension-subscript": "^2.0.4",
+    "@tiptap/extension-superscript": "^2.0.4",
+    "@tiptap/extension-table": "^2.0.4",
+    "@tiptap/extension-table-cell": "^2.0.4",
+    "@tiptap/extension-table-header": "^2.0.4",
+    "@tiptap/extension-table-row": "^2.0.4",
+    "@tiptap/extension-task-item": "^2.0.4",
+    "@tiptap/extension-task-list": "^2.0.4",
+    "@tiptap/extension-text-align": "^2.0.4",
+    "@tiptap/pm": "^2.0.4",
+    "@tiptap/react": "^2.0.4",
+    "@tiptap/starter-kit": "^2.0.4",
+    "katex": "^0.16.8",
+    "markdown-it": "^13.0.2",
+    "rc-upload": "^4.3.5",
+    "re-resizable": "^6.9.11",
+    "refractor": "^4.8.1",
+    "y-indexeddb": "^9.0.11",
+    "yjs": "^13.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/markdown-it": "^12.2.3"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "1.0.0",
+    "@rtdui/hooks": "1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

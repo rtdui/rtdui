@@ -1,0 +1,14 @@
+import { CodeHighlight } from "@rtdui/code-highlight";
+
+export default function () {
+  const code = `
+import React from "react";
+
+function Demo(props) {
+  const {className} = props
+- return <div className={className}>hello world!</div>
++ return <span className={className}>hello world!</span>
+}
+`;
+  return <CodeHighlight code={code} language="jsx" diff />;
+}

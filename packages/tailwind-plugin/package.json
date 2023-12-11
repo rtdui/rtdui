@@ -1,0 +1,40 @@
+{
+  "name": "@rtdui/tailwind-plugin",
+  "version": "1.0.0",
+  "description": "tailwind plugin for Rtdui components",
+  "main": "./src/index.cjs",
+  "keywords": [
+    "tailwind",
+    "plugin",
+    "rtdui",
+    "react",
+    "remix",
+    "remixjs",
+    "next",
+    "nextjs",
+    "ui",
+    "ui-kit",
+    "components",
+    "library",
+    "frontend",
+    "design"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.dev/",
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/tailwind-plugin"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "dependencies": {
+    "postcss-js": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/postcss-js": "^4.0.3"
+  }
+}

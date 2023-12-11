@@ -1,0 +1,141 @@
+/** data-table 开始 **/
+
+/* 表格边框 */
+
+/* .data-table.table {
+    border-left: 1px solid theme(colors.base-200);
+    border-top: 1px solid theme(colors.base-200);
+  } */
+
+.data-table.table.no-border {
+  border: 0;
+}
+
+/* 先清除所有行和单元格的边框, daisyUI中tr有默认边框, 下面会用伪元素模拟单元格边框 */
+.data-table.table :where(tr, th, td) {
+  border: none;
+}
+
+/* 默认是非stick定位的单元格使用相对定位, 这是为了下面使用伪元素模拟边框 */
+.data-table.table :where(th, td):not(.sticky) {
+  position: relative;
+}
+
+/* 模拟单元格的右边框 */
+.data-table.table :where(th, td)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: theme(colors.base-200);
+}
+
+.data-table.table.no-border :where(th, td)::after {
+  content: none;
+}
+
+/* 水平滚动时为固定列的右边框加粗, 模拟提升效果 */
+.data-table.table :where(th, td).elevation::after {
+  width: 4px;
+}
+
+/* 模拟单元格的下边框 */
+.data-table.table :where(th, td)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: theme(colors.base-200);
+}
+
+.data-table.table.no-border :where(th, td)::before {
+  content: none;
+}
+
+/* 为表头的最后一行添加阴影效果 */
+.data-table.table thead tr:last-child {
+  @apply shadow;
+}
+
+/* 为所有单元格设置背景色 */
+.data-table.table :where(th, td) {
+  background-color: theme(colors.base-100);
+}
+
+/* 表尾中的单元格使用独立的背景色 */
+.data-table.table tfoot :where(th, td) {
+  background-color: theme(colors.base-200);
+}
+
+/* 拖拉列头调整列序时的过渡效果 */
+.data-table.table thead :where(th, td) {
+  transition: transform 0.2s ease-in-out;
+}
+
+.data-table.table :where(th, td).error {
+  outline: 1px solid red;
+  outline-offset: -4px;
+}
+
+/* 行选中时的设置单元格背景 */
+.data-table.table tr.selected td {
+  background-color: theme(colors.base-300);
+}
+
+/* 列宽调整指示器 */
+.resizer {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background: theme(colors.base-300);
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+  opacity: 0;
+}
+
+.resizer.resizing {
+  background: theme(colors.info);
+  opacity: 1;
+}
+
+:hover.resizer {
+  opacity: 1;
+}
+
+/* 单元格中的编辑控件 */
+.data-table.table td .select {
+  background-image: unset;
+  font-weight: inherit;
+  font-size: inherit;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+  background-position:
+    calc(100% - 8px) calc(1px + 50%),
+    calc(100% - 4px) calc(1px + 50%);
+}
+
+.data-table.table td .input {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.data-table.table td .select:focus {
+  background-image: linear-gradient(45deg, transparent 50%, currentcolor 50%),
+    linear-gradient(135deg, currentcolor 50%, transparent 50%);
+}
+
+/* css 长列表性能优化, 只支持Chrome 和 Microsoft Edge v85+ */
+.data-table.table tbody td {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 36px;
+}
+
+/** data-table 结束 **/
