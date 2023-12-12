@@ -8,6 +8,7 @@ const logger = createLogger("build-all-packages");
 
 export async function buildAllPackages() {
   const packages = await getPackagesBuildOrder();
+  const excludes = ["@rtdui/tailwind-plugin"];
 
   const startTime = Date.now();
   logger.log("Building all packages...");
@@ -15,6 +16,8 @@ export async function buildAllPackages() {
   for (const item of packages) {
     if (!item!.packageJson.name) {
       process.stdout.write(`Skipping ${item!.path} because it has no name\n`);
+    } else if (excludes.includes(item.packageJson.name)) {
+      process.stdout.write(`Skipping ${item!.path} because it is excluded\n`);
     } else {
       // eslint-disable-next-line no-await-in-loop
       await buildPackage(item!.packageJson.name);

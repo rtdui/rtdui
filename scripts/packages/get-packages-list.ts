@@ -12,16 +12,10 @@ export function getPackagesList() {
   const basePath = path.resolve("./packages");
   const srcPaths = fs.readdirSync(basePath);
   const packages: Package[] = [];
-  const exclude: string[] = [
-    path.join(basePath, "tailwind-plugin", "package.json"),
-  ];
 
   for (const srcPath of srcPaths) {
     const packageJsonPath = path.join(basePath, srcPath, "package.json");
-    if (
-      fs.pathExistsSync(packageJsonPath) &&
-      !exclude.includes(packageJsonPath)
-    ) {
+    if (fs.pathExistsSync(packageJsonPath)) {
       packages.push({
         path: path.join(basePath, srcPath),
         packageJsonPath,

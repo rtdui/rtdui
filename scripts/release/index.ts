@@ -73,8 +73,7 @@ async function release() {
   await git.add([
     getPath("packages"),
     getPath("package.json"),
-    getPath("yarn.lock"),
-    getPath("scripts/plop/templates/package.json"),
+    getPath("package-lock.json"),
   ]);
   await git.commit(`[release] Version: ${incrementedVersion}`);
   await git.push();
