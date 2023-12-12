@@ -6,4 +6,5 @@ cjs
 
 docs/.cache
 docs/build
-docs/public/build
+docs/functions
+docs/public

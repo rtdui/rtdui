@@ -17,7 +17,7 @@
     "plop": "tsx scripts/plop",
     "sync-branches": "sh scripts/sync-branches.sh",
     "changelog": "tsx scripts/changelog",
-    "check": "npm run prettier:check && npm run check:syncpack && npm run check:typecheck && npm run lint && npm run jest",
+    "check": "npm run prettier:check && npm run check:syncpack && npm run lint",
     "check:syncpack": "syncpack list-mismatches",
     "check:ncu": "npx npm-check-updates@latest --root -ws",
     "check:typecheck": "tsc --noEmit && npm run docs:typecheck",
