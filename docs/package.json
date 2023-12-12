@@ -35,7 +35,6 @@
     "@cloudflare/workers-types": "^4.20231121.0",
     "@remix-run/dev": "^2.3.1",
     "@remix-run/eslint-config": "^2.3.1",
-    "@rtdui/tailwind-plugin": "^1.0.0",
     "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.17",
     "rehype-katex": "^6.0.3",
@@ -45,6 +44,19 @@
     "remark-math": "^5.1.1",
     "remark-toc": "^8.0.1",
     "wrangler": "3.8.0"
+  },
+  "peerDependencies": {
+    "@rtdui/code-highlight": "1.0.0",
+    "@rtdui/core": "1.0.0",
+    "@rtdui/datatable": "1.0.0",
+    "@rtdui/dialogs": "1.0.0",
+    "@rtdui/editor": "1.0.0",
+    "@rtdui/hooks": "1.0.0",
+    "@rtdui/notifications": "1.0.0",
+    "@rtdui/qr-code": "1.0.0",
+    "@rtdui/tailwind-plugin": "1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "engines": {
     "node": ">=18.0.0"
