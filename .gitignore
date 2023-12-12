@@ -46,6 +46,5 @@ docs/.cache
 docs/build
 docs/public/build
 docs/.env
-docs/app/.docgen
 docs/.wrangler
 docs/functions
