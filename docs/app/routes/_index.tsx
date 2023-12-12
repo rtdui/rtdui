@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/cloudflare";
 import { AppShell, Button, Popover, TextInput } from "@rtdui/core";
 import { IconChevronDown, IconSearch } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";

@@ -9,8 +9,8 @@ import {
   IconChevronDown,
   IconAlertTriangle,
 } from "@tabler/icons-react";
-import { json } from "@remix-run/node";
-import type { ActionFunctionArgs } from "@remix-run/node";
+import { json } from "@remix-run/cloudflare";
+import type { ActionFunctionArgs } from "@remix-run/cloudflare";
 import { usePrevious } from "@rtdui/hooks";
 import { AppShell, Button, Popover, Tabs, TextInput } from "@rtdui/core";
 import { useTranslation } from "react-i18next";

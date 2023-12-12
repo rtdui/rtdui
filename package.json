@@ -10,7 +10,7 @@
   "main": "index.js",
   "type": "module",
   "repository": "https://github.com/rtdui/rtdui.git",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "author": "fuzhongwei <jackyleefzw@163.com>",
   "license": "MIT",
   "scripts": {
     "dev": "npm run docs:docgen && cd docs && npm run dev",

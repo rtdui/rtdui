@@ -3,7 +3,7 @@ import {
   json,
   type LinksFunction,
   type LoaderFunctionArgs,
-} from "@remix-run/node";
+} from "@remix-run/cloudflare";
 import {
   Links,
   LiveReload,

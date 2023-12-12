@@ -1,6 +1,7 @@
 node_modules
 
 /.cache
-/build
+/functions
+/.wrangler
 /public/build
-.env
+.dev.vars
