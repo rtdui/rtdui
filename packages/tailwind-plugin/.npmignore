@@ -1,1 +1,7 @@
 tsconfig.*
+postcss.*
+tailwind.*
+!/cjs/
+!/esm/
+!/lib/
+!/src
