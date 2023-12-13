@@ -6,7 +6,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
-    "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
+    "start": "wrangler pages dev --kv=RTDUI_KV --compatibility-date=2023-06-21  ./public",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -57,7 +57,7 @@
     "remark-math": "^5.1.1",
     "remark-toc": "^8.0.1",
     "tailwindcss": "^3.3.5",
-    "wrangler": "3.8.0"
+    "wrangler": "^3.20.0"
   },
   "engines": {
     "node": ">=18.0.0"
