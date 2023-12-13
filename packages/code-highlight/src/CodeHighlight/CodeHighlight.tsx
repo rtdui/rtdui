@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 //@ts-ignore
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import { refractor } from "refractor/lib/all.js";
+import { refractor } from "refractor";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
 import { IconClipboardCheck, IconCopy } from "@tabler/icons-react";
 import { Tooltip, Button, CopyButton } from "@rtdui/core";
