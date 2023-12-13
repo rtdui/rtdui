@@ -1,7 +1,7 @@
 import type { UploadHandler } from "@remix-run/cloudflare";
 
 export function createCloudflareKvUploadHandler(options: {
-  kv: any;
+  kv: KVNamespace;
 }): UploadHandler {
   const { kv } = options ?? {};
   return async ({ filename, contentType, name, data }) => {

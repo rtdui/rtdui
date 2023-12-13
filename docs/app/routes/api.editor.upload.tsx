@@ -4,13 +4,12 @@ import {
   unstable_parseMultipartFormData,
 } from "@remix-run/server-runtime";
 import { createCloudflareKvUploadHandler } from "~/src/createCloudflareKvUploadHandler";
-interface Env {
-  RTDUI_KV: KVNamespace;
-}
+import { type Env } from "~/src/kv";
+
 export const action = async (args: ActionFunctionArgs) => {
   const { request, context } = args;
 
-  let env = context.env as Env;
+  const env = context.env as Env;
 
   const uploadHandler = createCloudflareKvUploadHandler({
     kv: env.RTDUI_KV, // 由cloudflare管理平台上的kv绑定的名称
