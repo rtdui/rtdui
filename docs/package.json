@@ -18,14 +18,14 @@
     "@remix-run/node": "^2.3.1",
     "@remix-run/react": "^2.3.1",
     "@remix-run/serve": "^2.3.1",
-    "@rtdui/code-highlight": "1.0.2",
-    "@rtdui/core": "1.0.2",
-    "@rtdui/datatable": "1.0.2",
-    "@rtdui/dialogs": "1.0.2",
-    "@rtdui/editor": "1.0.2",
-    "@rtdui/hooks": "1.0.2",
-    "@rtdui/notifications": "1.0.2",
-    "@rtdui/qr-code": "1.0.2",
+    "@rtdui/code-highlight": "1.0.3",
+    "@rtdui/core": "1.0.3",
+    "@rtdui/datatable": "1.0.3",
+    "@rtdui/dialogs": "1.0.3",
+    "@rtdui/editor": "1.0.3",
+    "@rtdui/hooks": "1.0.3",
+    "@rtdui/notifications": "1.0.3",
+    "@rtdui/qr-code": "1.0.3",
     "@tabler/icons-react": "^2.42.0",
     "clsx": "^2.0.0",
     "i18next": "^23.7.7",
@@ -62,5 +62,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

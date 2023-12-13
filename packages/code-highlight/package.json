@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/code-highlight",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React code highlight component based on refractor",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -50,8 +50,8 @@
     "refractor": "^4.8.1"
   },
   "peerDependencies": {
-    "@rtdui/core": "1.0.2",
-    "@rtdui/hooks": "1.0.2",
+    "@rtdui/core": "1.0.3",
+    "@rtdui/hooks": "1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
