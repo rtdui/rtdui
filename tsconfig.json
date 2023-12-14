@@ -5,8 +5,7 @@
     "./packages/*/esm/**/*",
     "./packages/*/lib/**/*",
     "./packages/*/cjs/**/*",
-    "./packages/tailwind-plugin/**/*",
-    "./docs/functions/**/*"
+    "./packages/tailwind-plugin/**/*"
   ],
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom"],
@@ -20,6 +19,7 @@
     "skipLibCheck": true,
     "noEmitOnError": true,
     "allowJs": true,
+    "outDir": "dist",
     "strict": true,
     "baseUrl": ".",
     "paths": {
