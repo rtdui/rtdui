@@ -22,6 +22,14 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
     });
   }
 
+  if (current.devDependencies) {
+    Object.keys(current.devDependencies).forEach((packageName) => {
+      if (packageName.includes("@rtdui/")) {
+        current.devDependencies[packageName] = version;
+      }
+    });
+  }
+
   await fs.writeJSON(filePath, current, { spaces: 2 });
 }
 
