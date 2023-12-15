@@ -1,0 +1,26 @@
+---
+meta:
+  - title: JoinGroup Component
+  - description: JoinGroup document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/JoinGroup.tsx"
+  componentName: "JoinGroup"
+---
+
+import Demo from "../../components/Demo";
+import JoinGroupButtonsDemo from "./JoinGroupButtonsDemo";
+import JoinGroupInputsDemo from "./JoinGroupInputsDemo";
+
+# 使用
+
+`JoinGroup`会对第一个`join-item`和最后一个`join-item`应用圆角, 同时会自动合并`join-item`的边框
+
+## 按钮组
+
+<Demo data={{ Component: JoinGroupButtonsDemo }} />
+
+## 文本输入组
+
+<Demo data={{ Component: JoinGroupInputsDemo }} />

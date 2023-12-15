@@ -1,0 +1,66 @@
+---
+meta:
+  - title: Transition Component
+  - description: Transition document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Transition.tsx"
+  componentName: "Transition"
+---
+
+import Demo from "../../components/Demo";
+import TransitionBasicDemo from "./TransitionBasicDemo";
+import TransitionUnmountDemo from "./TransitionUnmountDemo";
+import TransitionAppearDemo from "./TransitionAppearDemo";
+import TransitionCustomDemo from "./TransitionCustomDemo";
+import TransitionGroupDemo from "./TransitionGroupDemo";
+
+# 使用
+
+`Transition`封装了[react-transition-group的Transition](https://reactcommunity.org/react-transition-group/transition), 用于应用过渡效果, 它使用内联样式实现过渡效果
+
+## 预置的过渡效果
+
+点击按钮查看效果
+
+<Demo data={{ Component: TransitionBasicDemo }} />
+
+## 过渡开始时挂载孩子组件并且过渡结束时卸载孩子组件
+
+设置`unmountOnExit`属性为`ture`即可.
+
+<Demo data={{ Component: TransitionUnmountDemo }} />
+
+## 组件挂载时`in`属性为`true`的情况
+
+组件挂载时`in`属性为`true`, 默认不会执行过渡, 如果想要执行过渡需要同时设置`appear`属性为`ture`
+
+刷新页面查看不同:
+
+<Demo data={{ Component: TransitionAppearDemo }} />
+
+## 自定义的过渡效果
+
+```jsx
+<Transition
+  //...other props
+  transition={{
+    in: { width: "400px", height: "200px" },
+    out: { width: "200px", height: "100px" },
+    transitionProperty: "width,height",
+  }}
+>
+  {(ref, styles) => <div ref={ref} style={styles}></div>}
+</Transition>
+```
+
+<Demo data={{ Component: TransitionCustomDemo }} />
+
+## TransitionGroup
+
+`TransitionGroup`直接导出于`react-transition-group`, 用于管理多个`Transition`列表
+
+`TransitionGroup`会自动管理其孩子`Transition`的`in`和`appear`属性.
+
+<Demo data={{ Component: TransitionGroupDemo }} />

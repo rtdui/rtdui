@@ -1,0 +1,39 @@
+---
+meta:
+  - title: Indicator Component
+  - description: Indicator document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Indicator.tsx"
+  componentName: "Indicator"
+---
+
+import Demo from "../../components/Demo";
+import IndicatorDotDemo from "./IndicatorDotDemo";
+import IndicatorTextDemo from "./IndicatorTextDemo";
+import IndicatorAnimationDemo from "./IndicatorAnimationDemo";
+import IndicatorColorDemo from "./IndicatorColorDemo";
+import IndicatorColorWithAnimationDemo from "./IndicatorColorWithAnimationDemo";
+
+# 使用
+
+## 原点指示符
+
+<Demo data={{ Component: IndicatorDotDemo }} />
+
+## 文本指示符
+
+<Demo data={{ Component: IndicatorTextDemo }} />
+
+## 动画原点指示符
+
+<Demo data={{ Component: IndicatorAnimationDemo }} />
+
+## 指示器颜色
+
+<Demo data={{ Component: IndicatorColorDemo }} />
+
+### 颜色带动画效果
+
+<Demo data={{ Component: IndicatorColorWithAnimationDemo }} />

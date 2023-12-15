@@ -1,0 +1,76 @@
+---
+meta:
+  - title: Dialogs Component
+  - description: Dialogs document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/dialogs/Dialogs.tsx"
+  componentName: "Dialogs"
+---
+
+import Demo from "../../components/Demo";
+import DialogBasicDemo from "./DialogBasicDemo";
+import DialogLocalizationDemo from "./DialogLocalizationDemo";
+
+# 使用
+
+使用命令方式打开对话框
+
+首先, 要求在App顶层中添加`Dialogs`组件, 注意该组件必须有且只有一次. 通常作为React项目根组件的第一个孩子, 如:
+
+```tsx
+import { Dialogs } from "@rtdui/dialogs";
+
+<App>
+  <Dialogs />
+  <Others />
+</App>;
+```
+
+之后就可以在App内的任意位置通过命令打开任意对话框:
+
+```jsx
+import { dialogs } from "@rtdui/dialogs";
+
+<button
+  onClick={() =>
+    dialogs.show({
+      title: "Title",
+      content: "Content", // 可以是任意React可以渲染的内容, 如React元素
+      mode: "alert",
+    });
+  }
+>Open</button>;
+```
+
+## 对话框模式
+
+可以通过`mode`选项指定对话框类型, 支持:
+
+- dialog 普通对话框, 这是默认模式. `dialog`模式同时支持全屏对话框.
+- alert 用于替换原生的window.alert().
+- prompt 用于替换原生的window.prompt().
+- confirm 用于替换原生的window.confirm().
+
+## 基本使用
+
+<Demo data={{ Component: DialogBasicDemo }} />
+
+## 本地化
+
+对话框的内建按钮的显示文本可以本地化.
+
+- confirmLabel
+
+  prompt和confirm对话框模式下的确认按钮的显示文本
+
+- cancelLabel
+
+  prompt和confirm对话框模式下的取消按钮的显示文本
+
+- closeLabel
+
+  alert对话框模式下的关闭按钮的显示文本
+
+<Demo data={{ Component: DialogLocalizationDemo }} />

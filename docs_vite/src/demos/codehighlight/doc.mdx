@@ -1,0 +1,90 @@
+---
+meta:
+  - title: Code Highlight Component
+  - description: Code Highlight document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "packages/code-hightlight/src/CodeHighlight/CodeHighlight.tsx"
+  componentName: "CodeHighlight"
+---
+
+import Demo from "../../components/Demo";
+import CodeHighlightBasicDemo from "./CodeHighlightBasicDemo";
+import CodeHighlightCopyBtnLabelDemo from "./CodeHighlightCopyBtnLabelDemo";
+import CodeHighlightHiddenCopyBtnDemo from "./CodeHighlightHiddenCopyBtnDemo";
+import CodeHighlightBadDemo from "./CodeHighlightBadDemo";
+import CodeHighlightShowLineNumbersDemo from "./CodeHighlightShowLineNumbersDemo";
+import CodeHighlightLinesHighlightDemo from "./CodeHighlightLinesHighlightDemo";
+import CodeHighlightDiffDemo from "./CodeHighlightDiffDemo";
+import CodeHighlightAllDemo from "./CodeHighlightAllDemo";
+
+# 使用
+
+CodeHighlight 组件基于`prism`及其样式展示语法高亮. 功能:
+
+1. 自带拷贝按钮, 可以快速将代码复制到剪贴板. 可以选择隐藏它
+2. 显示代码行号, 默认不显示. 通过属性开启.
+3. 代码行突出显示, 使用字符串范围表示法指定需要突出显示的行
+4. 支持差异行语法, 用于展示代码修改变化.
+5. 错误范例, 使用不同背景加以区分, 自动禁用拷贝按钮
+
+## 基本
+
+指定`code`属性和`language`属性即可, 默认带拷贝按钮
+
+<Demo data={{ Component: CodeHighlightBasicDemo }} />
+
+## 自定义拷贝按钮的提示文本
+
+可以通过`copyLabel`属性和`copiedLabel`属性自定义拷贝按钮的提示文本.
+
+<Demo data={{ Component: CodeHighlightCopyBtnLabelDemo }} />
+
+## 隐藏拷贝按钮
+
+拷贝按钮默认是显示的, 要想隐藏设置`withCopyButton`属性为`false`
+
+<Demo data={{ Component: CodeHighlightHiddenCopyBtnDemo }} />
+
+## 错误范例
+
+错误范例用于演示错误的代码, `bad`属性为`true`时表示错误范例, 同时会禁用拷贝按钮.
+
+<Demo data={{ Component: CodeHighlightBadDemo }} />
+
+## 显示行号
+
+`showLineNumbers`属性为`true`时会显示行号, 默认开启复制功能.
+
+<Demo data={{ Component: CodeHighlightShowLineNumbersDemo }} />
+
+## 行高亮
+
+`highlingtLines`属性可以指定某些行突出显示, 用于突出重要的行.
+
+`highlingtLines`属性值使用字符串范围语法: 用`{}`包裹, 用逗号(,)分隔不同的行, 可以指定使用`-`指定一个连续的范围. 如:
+
+```
+{1, 3, 5}
+
+{1, 2-4, 7}
+```
+
+<Demo data={{ Component: CodeHighlightLinesHighlightDemo }} />
+
+## 差异行
+
+1. 首先设置`diff`属性为`true`启用差异语法支持.
+2. 在`code`中, 如果行的第一个字符为`-`表示删除,`+`表示新增. 如:
+
+```
+- const a = 1;
++ const a = 2;
+```
+
+<Demo data={{ Component: CodeHighlightDiffDemo }} />
+
+## 行号、行高亮和差异语法可以同时启用
+
+<Demo data={{ Component: CodeHighlightAllDemo }} />

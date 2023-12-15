@@ -1,0 +1,39 @@
+---
+meta:
+  - title: StatPanel Component
+  - description: StatPanel document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/StatPanel.tsx"
+  componentName: "StatPanel"
+---
+
+import Demo from "../../components/Demo";
+import StatPanelBasicDemo from "./StatPanelBasicDemo";
+import StatPanelSlotsDemo from "./StatPanelSlotsDemo";
+import StatPanelItemsDemo from "./StatPanelItemsDemo";
+import StatPanelBackgroundDemo from "./StatPanelBackgroundDemo";
+import StatPanelActionDemo from "./StatPanelActionDemo";
+
+# 使用
+
+## 基本
+
+<Demo data={{ Component: StatPanelBasicDemo }} />
+
+## 通过 slots 属性自定义样式
+
+<Demo data={{ Component: StatPanelSlotsDemo }} />
+
+## 通过 items 属性自定义样式
+
+<Demo data={{ Component: StatPanelItemsDemo }} />
+
+## 自定义背景色
+
+<Demo data={{ Component: StatPanelBackgroundDemo }} />
+
+## action
+
+<Demo data={{ Component: StatPanelActionDemo }} />

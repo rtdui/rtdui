@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/favicon.ico",
+    "/build/*",
+    "/locales/*",
+    "/photo-*.jpg",
+    "/polymorphic.gif",
+    "/katex.min.css"
+  ]
+}

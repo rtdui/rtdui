@@ -1,0 +1,25 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../components/Demo";
+import DataTableVirtualizedDemo from "./DataTableVirtualizedDemo";
+
+# 行虚拟化
+
+行虚拟化技术是指只渲染滚动视口内可见的行, 其它行不会被渲染. 当有很多行时可以极大的提高性能.
+
+可以设置`enableVirtualized`属性为`true`开启行虚拟化.
+
+## 开启行虚拟化的例子
+
+本例中开启了行虚拟化, 数据表加载了 10,000 行数据.
+
+<Demo data={{ Component: DataTableVirtualizedDemo }} />

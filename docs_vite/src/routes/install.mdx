@@ -1,0 +1,107 @@
+# 安装指导
+
+Rtdui 包含了多个独立的包:
+
+| 包                     | 说明                                               |
+| ---------------------- | -------------------------------------------------- |
+| @rtdui/tailwind-plugin | 为Tailwindcss提供的rtdui插件, 方便与Tailwind集成   |
+| @rtdui/hooks           | 提供了一组有用的React Hooks, 下面的包都依赖于它    |
+| @rtdui/core            | 核心组件库, 包含了大量基础组件. 下面的包都依赖于它 |
+| @rtdui/code-highlight  | 呈现代码高亮的组件                                 |
+| @rtdui/datatable       | 全功能的数据表格组件, 以及数据表格下拉选择组件     |
+| @rtdui/dialogs         | 对话框系统, 可以使用命令方式打开对话框.            |
+| @rtdui/notifications   | 通知系统, 可以使用命令方式展示通知.                |
+| @rtdui/editor          | 全功能的富文本编辑器组件                           |
+
+注意: 为了减少安装包的尺寸. 所有包都将`react`和`react-dom`作为配对依赖, 你需要自己提前安装这两个包.
+
+另外: `@rtdui/*`的相互引用也作为配对依赖. 因此`@rtdui/hooks`和`@rtdui/core`对于其它包而言是必须的, 也需要提前安装.
+
+如果你只需使用基础组件, 则需要安装
+
+```sh
+npm i @rtdui/hooks @rtdui/core
+```
+
+其它的组件根据需要手动安装, 比如需要代码高亮组件, 还需安装
+
+```sh
+npm i @rtdui/code-highlight
+```
+
+当然, 也可以一次性安装:
+
+```sh
+npm i @rtdui/hooks @rtdui/core @rtdui/code-highlight ...
+```
+
+---
+
+# 使用指导
+
+Rtdui的组件的样式虽然是基于`TailwindCSS`的, 但`@rtdui/core`包中提供了编译好的css文件, 其包含了所有`@rtdui/*`包的样式.
+
+## 如果你的项目没有使用TailwindCSS
+
+你可以直接加载Rtdui提供的css样式:
+
+- 如果你的构建工具支持导入css文件:
+
+  ```tsx
+  // "@rtdui/core/styles.css"中包含了所有`@rtdui/*`包的样式, 使用其它包无需再导入样式
+  import "@rtdui/core/styles.css";
+  ```
+
+- 如果你的构建工具不支持导入css文件, 可以将rtdui的css文件作为静态资源加载:
+
+  1. 复制rtdui的css文件到你的站点资产目录下
+
+     比如将`./node_modules/@rtdui/core/styles.css`复制到你的项目的`public/assets/rtdui/`目录下
+
+  2. 在页面上加载css文件
+
+     ```html
+     <link href="https://xxx/assets/rtdui/styles.css" rel="stylesheet" />
+     ```
+
+## 如果你的项目也使用TailwindCSS
+
+你可以使用Rtdui提供的`@rtdui/tailwind-plugin`插件, 直接将rtdui的样式集成进你的项目中, 而无需加载rtdui的css文件:
+
+最低支持的 Tailwind CSS 版本是 v3, 因为 Rtdui 组件中使用了很多只在 v3 版本中存在的功能.
+
+> Tip: 如果你使用`VSCode`, 推荐安装 [Tailwind CSS IntelliSense 扩展](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) 以获得最佳的开发体验.
+
+1. 安装`@rtdui/tailwind-plugin`插件以及相关依赖
+
+   rtdui插件依赖daisyui插件, 如果还没有安装也需要安装
+
+   ```sh
+   npm i -D daisyui @rtdui/tailwind-plugin
+   ```
+
+2. 配置TailwindCSS
+
+   `tailwind.config.mjs`:
+
+   ```diff-js {1-2,9-10,15}
+   import daisyui from "daisyui";
+   import rtdui from "@rtdui/tailwind-plugin";
+
+   /** @type {import('tailwindcss').Config} */
+   export default {
+   + darkMode: ['[data-theme="dark"]'],
+     content: [
+       "./src/**/*.{ts,tsx,jsx,js}", // 这是你的项目源码目录
+   +   "./node_modules/@rtdui/**/*.mjs", // rtdui的所有包
+     ],
+     theme: {
+       extend: {},
+     },
+   + plugins: [daisyui, rtdui], // 顺序很重要
+   + // daisyUI config (optional)
+   + daisyui: {
+   +  logs: false, //禁用日志
+   + },
+   };
+   ```

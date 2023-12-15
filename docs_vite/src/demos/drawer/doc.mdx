@@ -1,0 +1,26 @@
+---
+meta:
+  - title: Drawer Component
+  - description: Drawer document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Drawer.tsx"
+  componentName: "Drawer"
+---
+
+import Demo from "../../components/Demo";
+import DrawerBasicDemo from "./DrawerBasicDemo";
+import DrawerTargetDemo from "./DrawerTargetDemo";
+
+# 使用
+
+默认的, Drawer会充满视口. (CSS的postion为fixed)
+
+<Demo data={{ Component: DrawerBasicDemo }} />
+
+可以给`Drawer`指定`target`属性, Drawer会定位在`target`内(CSS的postion为absolute)
+
+注意: `target`元素必须设置`relative`相对定位, 而且应该给它一个高度.
+
+<Demo data={{ Component: DrawerTargetDemo }} />

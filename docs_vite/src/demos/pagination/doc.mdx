@@ -1,0 +1,34 @@
+---
+meta:
+  - title: Pagination Component
+  - description: Pagination document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Pagination.tsx"
+  componentName: "Pagination"
+---
+
+import Demo from "../../components/Demo";
+import PaginationBasicDemo from "./PaginationBasicDemo";
+import PaginationHiddenFirstLastButtonDemo from "./PaginationHiddenFirstLastButtonDemo";
+import PaginationHiddenButtonsDemo from "./PaginationHiddenButtonsDemo";
+import PaginationSizeDemo from "./PaginationSizeDemo";
+
+# 使用
+
+## 基本
+
+<Demo data={{ Component: PaginationBasicDemo }} />
+
+## 隐藏 first 和 last 按钮
+
+<Demo data={{ Component: PaginationHiddenFirstLastButtonDemo }} />
+
+## 隐藏所有按钮
+
+<Demo data={{ Component: PaginationHiddenButtonsDemo }} />
+
+## 尺寸
+
+<Demo data={{ Component: PaginationSizeDemo }} />

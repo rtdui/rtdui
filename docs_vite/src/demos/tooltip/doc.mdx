@@ -1,0 +1,31 @@
+---
+meta:
+  - title: Tooltip Component
+  - description: Tooltip document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Tooltip.tsx"
+  componentName: "Tooltip"
+---
+
+import Demo from "../../components/Demo";
+import TooltipPositionDemo from "./TooltipPositionDemo";
+import TooltipColorDemo from "./TooltipColorDemo";
+import TooltipTransitionDemo from "./TooltipTransitionDemo";
+
+# 使用
+
+## 气泡提示位置
+
+<Demo data={{ Component: TooltipPositionDemo }} />
+
+## 气泡提示颜色
+
+<Demo data={{ Component: TooltipColorDemo }} />
+
+## 过渡效果
+
+`Tooltip`支持`Transition`组件提供的预置过渡效果和自定义效果, 默认为"fade"
+
+<Demo data={{ Component: TooltipTransitionDemo }} />

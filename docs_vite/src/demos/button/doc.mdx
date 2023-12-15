@@ -1,0 +1,54 @@
+---
+meta:
+  - title: AutoComplete Component
+  - description: AutoComplete document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Button.tsx"
+  componentName: "Button"
+---
+
+import Demo from "../../components/Demo";
+import ButtonSizeDemo from "./ButtonSizeDemo";
+import ButtonColorDemo from "./ButtonColorDemo";
+import ButtonGhostDemo from "./ButtonGhostDemo";
+import ButtonLinkDemo from "./ButtonLinkDemo";
+import ButtonGlassDemo from "./ButtonGlassDemo";
+import ButtonSharpDemo from "./ButtonSharpDemo";
+
+# 使用
+
+## 尺寸
+
+<Demo data={{ Component: ButtonSizeDemo }} />
+
+## 颜色
+
+<Demo data={{ Component: ButtonColorDemo }} />
+
+## 特殊样式
+
+### ghost(透明)
+
+<Demo data={{ Component: ButtonGhostDemo }} />
+
+### Link 型
+
+链接的样式
+
+<Demo data={{ Component: ButtonLinkDemo }} />
+
+### glass 型
+
+毛玻璃效果, 需要在图像背景下才能体现效果
+
+<Demo data={{ Component: ButtonGlassDemo }} />
+
+## 宽高相等的形状
+
+`Button`支持方形和圆形两种宽高相等的形状变体, 对于显示单个字符或者显示图标的按钮非常有用.
+
+`color`,`size`,`ghost`属性都可以运用到这两个形状上
+
+<Demo data={{ Component: ButtonSharpDemo }} />

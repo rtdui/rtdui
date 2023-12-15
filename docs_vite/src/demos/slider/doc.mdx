@@ -1,0 +1,91 @@
+---
+meta:
+  - title: RangeSlider Component
+  - description: RangeSlider document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/RangeSlider.tsx"
+  componentName: "RangeSlider"
+---
+
+import Demo from "../../components/Demo";
+import SliderBasicDemo from "./SliderBasicDemo";
+import SliderColorDemo from "./SliderColorDemo";
+import SliderMarksDemo from "./SliderMarksDemo";
+import SliderLabelsDeme from "./SliderLabelsDeme";
+import SliderOnChangeEndDemo from "./SliderOnChangeEndDemo";
+import SliderCustomDemo from "./SliderCustomDemo";
+import SliderDisabledDemo from "./SliderDisabledDemo";
+import SliderInvertedDemo from "./SliderInvertedDemo";
+import SliderSlotsDemo from "./SliderSlotsDemo";
+
+# 使用
+
+提供了两个滑块组件: `Slider`和`RangeSlider`
+
+## 基本
+
+<Demo data={{ Component: SliderBasicDemo }} />
+
+## 受控和非受控属性
+
+和React原生的`<input>`组件一样, `defaultValue`为非受控属性,`value`为受控属性.
+
+## onChange和onChangeEnd
+
+onChange是在滑动过程中触发, 而onChangeEnd是在滑动结束(如用户释放鼠标时)触发.
+
+<Demo data={{ Component: SliderOnChangeEndDemo }} />
+
+## Marks
+
+Marks是在轨道上定义标记, 标记由标记点和标记文本组成. Marks是一个对象数组: `{value: number; label?: string;}[]`
+
+其中: `value`在轨道上显示标记点; `label`是可选的, 如果定义则会在标记点下方显示文本.
+
+<Demo data={{ Component: SliderMarksDemo }} />
+
+## Label
+
+Label是当前值的文本表示, 它会显示在滑点的上方.
+
+Label可以是文本也可以是函数(参数为当前值). 函数形式更为有用.
+
+<Demo data={{ Component: SliderLabelsDeme }} />
+
+默认为当鼠标覆盖显示Label, 可以设置`labelAlwaysOn`为`true`使label常常显示.
+如果想完全不显示, 可以设置`label`为`null`
+
+## 样式槽
+
+<Demo data={{ Component: SliderSlotsDemo }} />
+
+可以通过样式槽自定义各组件的样式:
+
+<Demo data={{ Component: SliderCustomDemo }} />
+
+如果只想修改`bar`的颜色, 可以简单的通过`color`属性设置.
+
+<Demo data={{ Component: SliderColorDemo }} />
+
+## disabled
+
+<Demo data={{ Component: SliderDisabledDemo }} />
+
+## 反转
+
+`inverted`属性用于反转, 但值并未不会改变, 具体的意义需要由应用程序处理.
+
+<Demo data={{ Component: SliderInvertedDemo }} />
+
+## 键盘支持
+
+当`Slider`获得焦点后就可以通过键盘进行操作.
+
+| 键盘键              | 描述                                        |
+| ------------------- | ------------------------------------------- |
+| ArrowRight/ArrowUp  | 增加一步                                    |
+| ArrowLeft/ArrowDown | 减少一步                                    |
+| Home                | 滑到最小值, 仅Silder支持, RangeSlider不支持 |
+| End                 | 滑到最大值, 仅Silder支持, RangeSlider不支持 |

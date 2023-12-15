@@ -1,0 +1,52 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+# 介绍
+
+`@rtd/datatable`包提供的一个全功能的数据表格组件(DataTable)和下拉数据表选择组件(DataTableSelect)
+
+其中`DataTable`组件提供的功能:
+
+- ☑ 自定义单元格显示组件
+- ☑ 粘性列头/列脚
+- ☑ 多行列头(分组列头)
+- ☑ 隐藏/显示列
+- ☑ 拖拉列头调整列大小
+- ☑ 拖动列头调整列顺序
+- ☑ 固定列(置顶并冻结)
+- ☑ 数据表导出 Excel
+- ☑ 列过滤
+- ☑ 全局过滤
+- ☑ 数据排序, 支持多列排序(按住 shift 键点击列头进行级联排序)
+- ☑ 拖拉列头进行数据分组
+- ☑ 数据分页
+- ☑ 滚动虚拟化
+- ☑ 树形表格
+- ☑ 行选择(支持单选和多选, 多选时支持全选, 全选范围可以设置为全部行或是当页下的所有行)
+- ☑ 数据编辑, 支持自定义数据验证. 修改集返回一个数据库友好的数据结构
+- ☑ 移动端支持
+- ☑ SSR 支持, 也支持 React v18 的 Stream SSR 渲染
+
+`DataTableSelect`组件是基于 DataTable 组件实现的下拉选择.
+
+## 安装
+
+```sh
+npm i @rtd/datatable
+```
+
+## 使用说明
+
+为了支持表格的全功能, 数据源的字段的数据类型只应包含`string`, `number`, `boolean`类型. 其它数据类型不能被完整支持, 如`Date`类型的过滤,编辑等功能.
+
+如果数据源的字段类型不是`string`,`number`,`boolean`之一, 则可以通过列定义中的`accessorFn`属性自定义函数转换到`string`,`number`,`boolean`之一.
+
+默认情况下, `number`类型的列被分组时会自动计算各组的汇总值, 但默认不渲染, 如果想要显示分组列的组汇总值必须在列定义中通过`aggregatedCell`属性设置渲染组件.

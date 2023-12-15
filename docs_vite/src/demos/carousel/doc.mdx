@@ -1,0 +1,24 @@
+---
+meta:
+  - title: Carousel Component
+  - description: Carousel document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Carousel.tsx"
+  componentName: "Carousel"
+---
+
+import Demo from "../../components/Demo";
+import CarouselArrowDemo from "./CarouselArrowDemo";
+import CarouselNumberDemo from "./CarouselNumberDemo";
+
+# 使用
+
+### 默认使用 next/prev 箭头指示器
+
+<Demo data={{ Component: CarouselArrowDemo }} />
+
+### 使用数字指示器
+
+<Demo data={{ Component: CarouselNumberDemo }} />

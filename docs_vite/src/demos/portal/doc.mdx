@@ -1,0 +1,38 @@
+---
+meta:
+  - title: Portal Component
+  - description: Portal document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Portal.tsx"
+  componentName: "Portal"
+---
+
+import Demo from "../../components/Demo";
+
+# 使用
+
+`Portal`是 `ReactDOM.createPortal`API 的包装器组件。在给定元素或`document.body`的末尾位置呈现任意组件或元素。默认情况下`Dialog`,`Popover`等组件包装在`Portal`中。
+
+使用`Portal`可以在不同位置呈现组件或元素(默认为`document.body`的末尾)。
+
+当您想要防止父样式被子样式继承时`Portal`非常有用, 这些样式通常是与`position`和`z-index`相关的 CSS 属性
+
+## 服务器端渲染
+
+`Portal`在服务器端渲染期间不会渲染其内容。`Portal`中的所有组件仅在挂载到 dom 后呈现。
+
+## 指定 target
+
+你可以指定 DOM 节点作为 portal 渲染的目标.
+
+```tsx
+import Portal from "@rtdui/core/Portal";
+
+function Demo() {
+  return <Portal target="#portal-container">My portal</Portal>;
+}
+```
+
+如果未指定`target`属性, 则会将`Portal`渲染到`document.body`的末尾。
