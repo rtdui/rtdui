@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/hooks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React hooks library base on @mantine/hooks",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
