@@ -38,6 +38,7 @@ styles/
 storybook-static
 .next
 docs/components/___test.internal.tsx
+docs/app/.docgen
 packages/*/styles.css
 ____test.*
 

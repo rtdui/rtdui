@@ -1,18 +1,23 @@
 {
-  "include": ["./scripts", "./@types", "./packages/*/src"],
   "exclude": [
     "node_modules",
     "./packages/*/esm/**/*",
     "./packages/*/lib/**/*",
     "./packages/*/cjs/**/*",
-    "./packages/tailwind-plugin/**/*"
+    "./packages/tailwind-plugin/**/*",
+    "./docs/build/**/*",
+    "./docs/functions/**/*",
+    "./docs/public/**/*",
+    "./docs_vite/dist/**/*",
+    "./docs_vite/functions/**/*",
+    "./docs_vite/public/**/*"
   ],
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "target": "ES2015",
     "lib": ["DOM", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "resolveJsonModule": true,
     "esModuleInterop": true,
