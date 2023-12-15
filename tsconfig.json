@@ -4,7 +4,6 @@
     "./packages/*/esm/**/*",
     "./packages/*/lib/**/*",
     "./packages/*/cjs/**/*",
-    "./packages/tailwind-plugin/**/*",
     "./docs/build/**/*",
     "./docs/functions/**/*",
     "./docs/public/**/*",
