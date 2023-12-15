@@ -17,7 +17,7 @@ import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
 import { HocuspocusProvider } from "@hocuspocus/provider";
 import * as Y from "yjs";
 import type { Doc } from "yjs";
-import { refractor } from "refractor";
+import { refractor } from "refractor/lib/all.js";
 // import { IndexeddbPersistence } from "y-indexeddb";
 // 自定义扩展
 import { UploadImageWithResizable } from "./tiptap_extensions/extension-image-upload";
