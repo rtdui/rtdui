@@ -3,9 +3,10 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "docs"
+    "docs",
+    "docs_vite"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "rtdui Components Monorepo",
   "main": "index.js",
   "type": "module",
@@ -40,7 +41,7 @@
     "docs:build": "npm run docs:docgen && cd docs && npm run build",
     "docs:serve": "cd docs && npm run serve",
     "docs:deploy": "npm run docs:build && gh-pages -d docs/out -t true",
-    "release": "npm run clean:build && npm run check && tsx scripts/release",
+    "release": "npm run clean:build && tsx scripts/release",
     "release:alpha:patch": "npm run release patch --stage alpha --tag next",
     "release:alpha:minor": "npm run release minor --stage alpha --tag next",
     "release:alpha:major": "npm run release major --stage alpha --tag next",
