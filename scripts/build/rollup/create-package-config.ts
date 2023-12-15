@@ -10,6 +10,14 @@ import replace from "@rollup/plugin-replace";
 import postcss from "rollup-plugin-postcss";
 import esbuild from "rollup-plugin-esbuild";
 import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkBreaks from "remark-breaks";
+import remarkToc from "remark-toc";
+import remarkMath from "remark-math";
+import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
+import rehypePrism from "rehype-prism-plus";
 // import { getPackagesList } from "../../packages/get-packages-list";
 
 export async function createPackageConfig(
@@ -67,7 +75,16 @@ export async function createPackageConfig(
         ctx: {},
       },
     }), // 无缝集成postcss
-    mdx(), // 支持导入mdx
+    mdx({
+      remarkPlugins: [
+        [remarkToc as any, { heading: "toc|table[ -]of[ -]contents|目录?" }], // 指定特定的标题文本: toc或Table of contents或目录
+        remarkGfm as any,
+        remarkFrontmatter,
+        remarkBreaks,
+        remarkMath as any,
+      ],
+      rehypePlugins: [rehypeSlug as any, rehypePrism, rehypeKatex],
+    }), // 支持导入mdx
   ];
 
   const external: string[] = [];

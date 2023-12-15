@@ -1301,7 +1301,7 @@
         "name": "as",
         "required": false,
         "type": {
-          "name": "ElementType<any> | undefined"
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
         }
       },
       "color": {
@@ -2974,7 +2974,7 @@
         "name": "as",
         "required": false,
         "type": {
-          "name": "ElementType<any> | undefined"
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
         }
       },
       "color": {
@@ -3642,7 +3642,7 @@
         "name": "as",
         "required": false,
         "type": {
-          "name": "ElementType<any> | undefined"
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
         }
       }
     }
@@ -6024,7 +6024,7 @@
         "name": "ItemActionsComponent",
         "required": false,
         "type": {
-          "name": "ElementType<any> | undefined"
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
         }
       },
       "ItemIconComponent": {
@@ -6033,7 +6033,7 @@
         "name": "ItemIconComponent",
         "required": false,
         "type": {
-          "name": "ElementType<any> | undefined"
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
         }
       },
       "childrenField": {
