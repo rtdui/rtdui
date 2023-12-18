@@ -13,7 +13,7 @@ export default function EditorBasicDemo() {
     <div>
       <RichTextEditor
         ref={ref}
-        uploadImageUrl="/api/editor/upload"
+        uploadImageUrl="/kv/upload"
         className="border border-base-200 rounded-box bg-base-100 overflow-hidden"
         slots={{ toolbar: "border-b" }}
       />

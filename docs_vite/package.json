@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "wrangler pages dev --kv=RTDUI_KV --compatibility-date=2023-06-21 ./dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -22,6 +23,7 @@
     "@rtdui/notifications": "1.0.5",
     "@rtdui/qr-code": "1.0.5",
     "@tabler/icons-react": "^2.42.0",
+    "@web3-storage/multipart-parser": "^1.0.0",
     "clsx": "^2.0.0",
     "i18next": "^23.7.7",
     "i18next-browser-languagedetector": "^7.2.0",
@@ -58,6 +60,9 @@
     "typescript": "^5.1.6",
     "vite": "^5.0.8",
     "wrangler": "^3.20.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "version": "1.0.5"
 }
