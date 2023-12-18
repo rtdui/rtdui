@@ -31,6 +31,7 @@ async function init() {
           "path",
           "subdomain",
         ],
+        convertDetectedLanguage: (lng) => lng.split("-")[0],
       },
     });
   startTransition(() => {
