@@ -14,14 +14,14 @@
     "@faker-js/faker": "^8.3.1",
     "@mdi/js": "^7.3.67",
     "@mdx-js/rollup": "^3.0.0",
-    "@rtdui/code-highlight": "1.0.5",
-    "@rtdui/core": "1.0.5",
-    "@rtdui/datatable": "1.0.5",
-    "@rtdui/dialogs": "1.0.5",
-    "@rtdui/editor": "1.0.5",
-    "@rtdui/hooks": "1.0.5",
-    "@rtdui/notifications": "1.0.5",
-    "@rtdui/qr-code": "1.0.5",
+    "@rtdui/code-highlight": "1.0.6",
+    "@rtdui/core": "1.0.6",
+    "@rtdui/datatable": "1.0.6",
+    "@rtdui/dialogs": "1.0.6",
+    "@rtdui/editor": "1.0.6",
+    "@rtdui/hooks": "1.0.6",
+    "@rtdui/notifications": "1.0.6",
+    "@rtdui/qr-code": "1.0.6",
     "@tabler/icons-react": "^2.42.0",
     "@web3-storage/multipart-parser": "^1.0.0",
     "clsx": "^2.0.0",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231121.0",
-    "@rtdui/tailwind-plugin": "1.0.5",
+    "@rtdui/tailwind-plugin": "1.0.6",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.17",
@@ -64,5 +64,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
