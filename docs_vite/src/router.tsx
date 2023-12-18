@@ -1,46 +1,74 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root";
-import Index from "./routes/index";
-import Layout, { loader as layoutLoader } from "./routes/layout";
+import Index from "./routes/_index";
+import Layout, { loader as layoutLoader } from "./routes/_layout";
 
-const demos = import.meta.glob("./demos/**/*.mdx");
+const allMdxInDemos = import.meta.glob("./demos/**/*.mdx");
 
-const demosRoutes: any[] = Object.entries(demos).map((d) => {
-  const path = `components/${d[0].split("/").at(2)}`;
+const demosRoutes: any[] = Object.entries(allMdxInDemos).map((d) => {
+  const path = `components/${d[0].split("/").at(-2)}`;
   const lazy = async () => {
-    const mdxModule: any = await d[1]();
+    const module: any = await d[1]();
     return {
-      Component: mdxModule.default,
-      element: mdxModule.element,
-      ErrorBoundary: mdxModule.ErrorBoundary,
-      errorElement: mdxModule.errorElement,
-      loader: mdxModule.loader,
-      action: mdxModule.action,
+      Component: module.default,
+      element: module.element,
+      ErrorBoundary: module.ErrorBoundary,
+      errorElement: module.errorElement,
+      loader: module.loader,
+      action: module.action,
     };
   };
 
   return { path, lazy };
 });
 
-const docs = import.meta.glob("./routes/**/*.mdx");
-const docsRoutes: any[] = Object.entries(docs).map((d) => {
-  const path = `${d[0].split("/").at(2)?.split(".").at(0)}`;
-  const lazy = async () => {
-    const mdxModule: any = await d[1]();
-    return {
-      Component: mdxModule.default,
-      element: mdxModule.element,
-      ErrorBoundary: mdxModule.ErrorBoundary,
-      errorElement: mdxModule.errorElement,
-      loader: mdxModule.loader,
-      action: mdxModule.action,
+const allMdxInRoutes = import.meta.glob("./routes/**/*.mdx");
+const layoutRoutes: any[] = Object.entries(allMdxInRoutes)
+  .filter((d) => {
+    const first = d[0].split("/").at(-1)?.split(".").at(0);
+    return first === "_layout";
+  })
+  .map((d) => {
+    const path = `${d[0].split("/").at(-1)?.split(".").at(-2)}`;
+    const lazy = async () => {
+      const module: any = await d[1]();
+      return {
+        Component: module.default,
+        element: module.element,
+        ErrorBoundary: module.ErrorBoundary,
+        errorElement: module.errorElement,
+        loader: module.loader,
+        action: module.action,
+      };
     };
-  };
 
-  return { path, lazy };
-});
+    return { path, lazy };
+  });
 
-const allRoutes = [...docsRoutes, ...demosRoutes];
+const allLayoutRoutes = [...layoutRoutes, ...demosRoutes];
+
+const allTsx = import.meta.glob("./routes/**/*.tsx");
+const nolayoutRoutes: any[] = Object.entries(allTsx)
+  .filter((d) => {
+    const first = d[0].split("/").at(-1)?.split(".").at(0);
+    return first !== "_layout" && first !== "_index" && first !== "root";
+  })
+  .map((d) => {
+    const path = `${d[0].split("/").at(2)?.split(".").at(-2)}`;
+    const lazy = async () => {
+      const module: any = await d[1]();
+      return {
+        Component: module.default,
+        element: module.element,
+        ErrorBoundary: module.ErrorBoundary,
+        errorElement: module.errorElement,
+        loader: module.loader,
+        action: module.action,
+      };
+    };
+
+    return { path, lazy };
+  });
 
 export const router = createBrowserRouter([
   {
@@ -52,10 +80,11 @@ export const router = createBrowserRouter([
     children: [
       // 首页
       { index: true, element: <Index /> },
+      ...nolayoutRoutes,
       {
         element: <Layout />,
         loader: layoutLoader,
-        children: allRoutes,
+        children: allLayoutRoutes,
         // children: [
         //   {
         //     path: "install",
