@@ -2,24 +2,13 @@
   "name": "@rtdui/{{package}}",
   "version": "{{version}}",
   "description": "{{description}}",
-  "homepage": "https://rtdui.dev/",
-  "license": "MIT",
-  "author": "fu zhong wei <jackyleefzw@163.com>",
-  "keywords": [
-    "react",
-    "components",
-    "ui"
-  ],
-  "sideEffects": [
-    "*.css"
-  ],
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/index.d.mts",
+        "types": "./lib/index.d.ts",
         "default": "./esm/index.mjs"
       },
       "require": {
@@ -30,10 +19,25 @@
     "./styles.css": "./styles.css",
     "./styles.layer.css": "./styles.layer.css"
   },
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.com/",
+  "sideEffects": [
+    "*.css"
+  ],
   "repository": {
     "url": "https://github.com/rtdui/rtdui.git",
     "type": "git",
     "directory": "packages/{{package}}"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "peerDependencies": {
     "@rtdui/core": "{{version}}",
