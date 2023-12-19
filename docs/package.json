@@ -4,16 +4,14 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "dev": "remix dev --manual",
     "build": "remix build",
-    "dev": "remix dev --manual -c \"npm run start\"",
-    "start": "wrangler pages dev --kv=RTDUI_KV --compatibility-date=2023-06-21  ./public",
+    "start": "remix-serve ./build/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
     "@mdi/js": "^7.3.67",
-    "@remix-run/cloudflare": "^2.3.1",
-    "@remix-run/cloudflare-pages": "^2.3.1",
     "@remix-run/css-bundle": "^2.3.1",
     "@remix-run/node": "^2.3.1",
     "@remix-run/react": "^2.3.1",
@@ -32,7 +30,6 @@
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-fs-backend": "^2.3.0",
     "i18next-http-backend": "^2.4.2",
-    "i18next-resources-to-backend": "^1.2.0",
     "isbot": "^3.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,7 +37,6 @@
     "remix-i18next": "^5.4.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231121.0",
     "@remix-run/dev": "^2.3.1",
     "@remix-run/eslint-config": "^2.3.1",
     "@rtdui/tailwind-plugin": "1.0.6",
@@ -56,8 +52,7 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "remark-toc": "^8.0.1",
-    "tailwindcss": "^3.3.5",
-    "wrangler": "^3.20.0"
+    "tailwindcss": "^3.3.5"
   },
   "engines": {
     "node": ">=18.0.0"

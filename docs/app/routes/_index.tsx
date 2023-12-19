@@ -1,10 +1,13 @@
 import React from "react";
 import clsx from "clsx";
-import type { MetaFunction } from "@remix-run/cloudflare";
+import type { MetaFunction } from "@remix-run/node";
 import { AppShell, Button, Popover, TextInput } from "@rtdui/core";
 import { IconChevronDown, IconSearch } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
+import { Spotlight, spotlight } from "@rtdui/spotlight";
 import { IconTranslate } from "~/src/asserts/IconTranslate";
+import menuData from "~/src/menuData.json";
+import { useNavigate } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -20,6 +23,8 @@ export default function Index() {
     setLangOpen(false);
     i18n.changeLanguage(lang);
   };
+
+  const navigate = useNavigate();
   return (
     <AppShell
       slots={{
@@ -45,6 +50,22 @@ export default function Index() {
                 </>
               }
               rightSectionWidth={74}
+              onMouseDown={(e) => {
+                spotlight.open();
+                e.preventDefault();
+              }}
+            />
+            <Spotlight
+              nothingFound="未找到内容"
+              limit={5}
+              highlightQuery
+              actions={menuData
+                .flatMap((d) => d.items)
+                .map((d) => ({
+                  id: d.label,
+                  label: d.label,
+                  onClick: () => navigate(d.url),
+                }))}
             />
           </div>
           <div className="flex items-center gap-1">

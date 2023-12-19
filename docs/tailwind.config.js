@@ -14,6 +14,7 @@ export default {
     "../packages/editor/**/*.{ts,tsx,jsx,js}",
     "../packages/notifications/**/*.{ts,tsx,jsx,js}",
     "../packages/qr-code/**/*.{ts,tsx,jsx,js}",
+    "../packages/spotlight/**/*.{ts,tsx,jsx,js}",
   ],
   theme: {
     extend: {},

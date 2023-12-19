@@ -1,24 +1,20 @@
-import type { ActionFunctionArgs } from "@remix-run/server-runtime";
+import path from "path";
+import type { ActionFunctionArgs } from "@remix-run/node";
 import {
   json,
-  unstable_parseMultipartFormData,
-} from "@remix-run/server-runtime";
-import { createCloudflareKvUploadHandler } from "~/src/createCloudflareKvUploadHandler";
-import { type Env } from "~/src/kv";
+  unstable_createFileUploadHandler as createFileUploadHandler,
+  unstable_parseMultipartFormData as parseMultipartFormData,
+} from "@remix-run/node";
 
 export const action = async (args: ActionFunctionArgs) => {
-  const { request, context } = args;
-
-  const env = context.env as Env;
-
-  const uploadHandler = createCloudflareKvUploadHandler({
-    kv: env.RTDUI_KV, // 由cloudflare管理平台上的kv绑定的名称
+  const { request } = args;
+  const uploadHandler = createFileUploadHandler({
+    directory: () => path.join(process.cwd(), "public"),
+    maxPartSize: 10_000_000, //10M
+    filter: ({ filename, name, contentType }) =>
+      name === "upload" && ["image/jpeg", "image/png"].includes(contentType),
   });
-  const formData = await unstable_parseMultipartFormData(
-    request,
-    uploadHandler
-  );
-
-  const fileName = formData.get("upload");
-  return json({ imageUrl: fileName });
+  const formData = await parseMultipartFormData(request, uploadHandler);
+  const file = formData.get("upload") as File;
+  return json({ imageUrl: file.name });
 };
