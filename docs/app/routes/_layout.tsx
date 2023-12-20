@@ -1,6 +1,11 @@
 import React from "react";
 import clsx from "clsx";
-import { Outlet, useLoaderData, useLocation } from "@remix-run/react";
+import {
+  Outlet,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "@remix-run/react";
 import {
   IconMenu2,
   IconSun,
@@ -14,6 +19,7 @@ import type { ActionFunctionArgs } from "@remix-run/node";
 import { usePrevious } from "@rtdui/hooks";
 import { AppShell, Button, Popover, Tabs, TextInput } from "@rtdui/core";
 import { useTranslation } from "react-i18next";
+import { Spotlight, spotlight } from "@rtdui/spotlight";
 import ApiDoc from "~/src/Api";
 import apidocs from "../.docgen/docgen.json";
 import democodes from "../.docgen/codegen.json";
@@ -68,6 +74,8 @@ export default function DocLayout() {
     i18n.changeLanguage(lang);
   };
 
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     if (i18n.language === "en") {
       notifications.show({
@@ -105,7 +113,6 @@ export default function DocLayout() {
             <TextInput
               slots={{ input: "w-40" }}
               ghost
-              bordered={false}
               leftSection={<IconSearch />}
               rightSection={
                 <>
@@ -114,6 +121,22 @@ export default function DocLayout() {
                 </>
               }
               rightSectionWidth={74}
+              onMouseDown={(e) => {
+                spotlight.open();
+                e.preventDefault();
+              }}
+            />
+            <Spotlight
+              nothingFound="未找到内容"
+              limit={5}
+              highlightQuery
+              actions={menuData
+                .flatMap((d) => d.items)
+                .map((d) => ({
+                  id: d.label,
+                  label: d.label,
+                  onClick: () => navigate(d.url),
+                }))}
             />
           </div>
           <div className="flex items-center gap-1">
@@ -185,7 +208,7 @@ export default function DocLayout() {
       drawer={
         <>
           <div className="h-16 bg-base-200 flex items-center p-4 sticky top-0 z-20">
-            RTD UI
+            <a href="/">RTD UI</a>
           </div>
           <NavMenu data={menuData} onClick={() => toggleRef.current.toggle()} />
         </>
