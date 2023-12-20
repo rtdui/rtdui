@@ -33,6 +33,6 @@ export default defineConfig({
     open: true,
   },
   ssr: {
-    noExternal: [/^qrcode.react/],
+    noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
   },
 });
