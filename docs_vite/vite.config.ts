@@ -32,4 +32,7 @@ export default defineConfig({
     host: "0.0.0.0",
     open: true,
   },
+  ssr: {
+    noExternal: [/^qrcode.react/],
+  },
 });

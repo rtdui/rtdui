@@ -1,13 +1,15 @@
 import React, { startTransition } from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import i18next from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import httpBackend from "i18next-http-backend";
 import i18nConfig from "./i18n/config";
-import { router } from "./router";
+import { routes } from "./router";
 import "./tailwind.css";
+
+const router = createBrowserRouter(routes);
 
 async function init() {
   await i18next
@@ -35,13 +37,27 @@ async function init() {
       },
     });
   startTransition(() => {
-    ReactDOM.createRoot(document.getElementById("root")!).render(
-      <I18nextProvider i18n={i18next}>
-        <React.StrictMode>
-          <RouterProvider router={router} />
-        </React.StrictMode>
-      </I18nextProvider>
-    );
+    // 开发时使用SPA
+    if (import.meta.env.DEV) {
+      ReactDOM.createRoot(document.getElementById("root")!).render(
+        <I18nextProvider i18n={i18next}>
+          <React.StrictMode>
+            <RouterProvider router={router} />
+          </React.StrictMode>
+        </I18nextProvider>
+      );
+    }
+    // 部署时使用SSR构建SSG
+    else {
+      ReactDOM.hydrateRoot(
+        document.getElementById("root")!,
+        <I18nextProvider i18n={i18next}>
+          <React.StrictMode>
+            <RouterProvider router={router} />
+          </React.StrictMode>
+        </I18nextProvider>
+      );
+    }
   });
 }
 

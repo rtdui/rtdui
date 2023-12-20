@@ -1,4 +1,3 @@
-import { createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root";
 import Index from "./routes/_index";
 import Layout from "./routes/_layout";
@@ -42,9 +41,8 @@ const routesInLayout: any[] = Object.entries(allMdxInLayout).map((d) => {
 const allRoutesInLayout = [...routesInLayout, ...demosRoutesInLayout];
 
 const allTsxInRoot = import.meta.glob("./routes/**/root.*.tsx");
-const routesInRoot: any[] = Object.entries(allTsxInRoot)
-.map((d) => {
-  const path = `${d[0].split("/").at(2)?.split(".").at(-2)}`;
+const routesInRoot: any[] = Object.entries(allTsxInRoot).map((d) => {
+  const path = `${d[0].split("/").at(-1)?.split(".").at(-2)}`;
   const lazy = async () => {
     const module: any = await d[1]();
     return {
@@ -60,7 +58,7 @@ const routesInRoot: any[] = Object.entries(allTsxInRoot)
   return { path, lazy };
 });
 
-export const router = createBrowserRouter([
+export const routes = [
   {
     path: "/",
     element: <Root />,
@@ -83,4 +81,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
