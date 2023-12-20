@@ -22,6 +22,7 @@
     "@rtdui/hooks": "1.0.7",
     "@rtdui/notifications": "1.0.7",
     "@rtdui/qr-code": "1.0.7",
+    "@rtdui/spotlight": "1.0.7",
     "@tabler/icons-react": "^2.42.0",
     "@web3-storage/multipart-parser": "^1.0.0",
     "clsx": "^2.0.0",
