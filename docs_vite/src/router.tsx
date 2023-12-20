@@ -4,8 +4,7 @@ import Index from "./routes/_index";
 import Layout from "./routes/_layout";
 
 const allMdxInDemos = import.meta.glob("./demos/**/*.mdx");
-
-const demosRoutes: any[] = Object.entries(allMdxInDemos).map((d) => {
+const demosRoutesInLayout: any[] = Object.entries(allMdxInDemos).map((d) => {
   const path = `components/${d[0].split("/").at(-2)}`;
   const lazy = async () => {
     const module: any = await d[1]();
@@ -22,53 +21,44 @@ const demosRoutes: any[] = Object.entries(allMdxInDemos).map((d) => {
   return { path, lazy };
 });
 
-const allMdxInRoutes = import.meta.glob("./routes/**/*.mdx");
-const layoutRoutes: any[] = Object.entries(allMdxInRoutes)
-  .filter((d) => {
-    const first = d[0].split("/").at(-1)?.split(".").at(0);
-    return first === "_layout";
-  })
-  .map((d) => {
-    const path = `${d[0].split("/").at(-1)?.split(".").at(-2)}`;
-    const lazy = async () => {
-      const module: any = await d[1]();
-      return {
-        Component: module.default,
-        element: module.element,
-        ErrorBoundary: module.ErrorBoundary,
-        errorElement: module.errorElement,
-        loader: module.loader,
-        action: module.action,
-      };
+const allMdxInLayout = import.meta.glob("./routes/**/_layout.*.mdx");
+const routesInLayout: any[] = Object.entries(allMdxInLayout).map((d) => {
+  const path = `${d[0].split("/").at(-1)?.split(".").at(-2)}`;
+  const lazy = async () => {
+    const module: any = await d[1]();
+    return {
+      Component: module.default,
+      element: module.element,
+      ErrorBoundary: module.ErrorBoundary,
+      errorElement: module.errorElement,
+      loader: module.loader,
+      action: module.action,
     };
+  };
 
-    return { path, lazy };
-  });
+  return { path, lazy };
+});
 
-const allLayoutRoutes = [...layoutRoutes, ...demosRoutes];
+const allRoutesInLayout = [...routesInLayout, ...demosRoutesInLayout];
 
-const allTsx = import.meta.glob("./routes/**/*.tsx");
-const nolayoutRoutes: any[] = Object.entries(allTsx)
-  .filter((d) => {
-    const first = d[0].split("/").at(-1)?.split(".").at(0);
-    return first !== "_layout" && first !== "_index" && first !== "root";
-  })
-  .map((d) => {
-    const path = `${d[0].split("/").at(2)?.split(".").at(-2)}`;
-    const lazy = async () => {
-      const module: any = await d[1]();
-      return {
-        Component: module.default,
-        element: module.element,
-        ErrorBoundary: module.ErrorBoundary,
-        errorElement: module.errorElement,
-        loader: module.loader,
-        action: module.action,
-      };
+const allTsxInRoot = import.meta.glob("./routes/**/root.*.tsx");
+const routesInRoot: any[] = Object.entries(allTsxInRoot)
+.map((d) => {
+  const path = `${d[0].split("/").at(2)?.split(".").at(-2)}`;
+  const lazy = async () => {
+    const module: any = await d[1]();
+    return {
+      Component: module.default,
+      element: module.element,
+      ErrorBoundary: module.ErrorBoundary,
+      errorElement: module.errorElement,
+      loader: module.loader,
+      action: module.action,
     };
+  };
 
-    return { path, lazy };
-  });
+  return { path, lazy };
+});
 
 export const router = createBrowserRouter([
   {
@@ -80,10 +70,10 @@ export const router = createBrowserRouter([
     children: [
       // 首页
       { index: true, element: <Index /> },
-      ...nolayoutRoutes,
+      ...routesInRoot,
       {
         element: <Layout />,
-        children: allLayoutRoutes,
+        children: allRoutesInLayout,
         // children: [
         //   {
         //     path: "install",
