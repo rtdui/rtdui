@@ -15,6 +15,7 @@ export default {
     "../packages/editor/**/*.{ts,tsx,jsx,js}",
     "../packages/notifications/**/*.{ts,tsx,jsx,js}",
     "../packages/qr-code/**/*.{ts,tsx,jsx,js}",
+    "../packages/spotlight/**/*.{ts,tsx,jsx,js}",
     "./node_modules/@rtdui/code-highlight/**/*.{ts,tsx,jsx,js,mjs,cjs}",
     "./node_modules/@rtdui/core/**/*.{ts,tsx,jsx,js,mjs,cjs}",
     "./node_modules/@rtdui/datatable/**/*.{ts,tsx,jsx,js,mjs,cjs}",
@@ -22,6 +23,7 @@ export default {
     "./node_modules/@rtdui/editor/**/*.{ts,tsx,jsx,js,mjs,cjs}",
     "./node_modules/@rtdui/notifications/**/*.{ts,tsx,jsx,js,mjs,cjs}",
     "./node_modules/@rtdui/qr-code/**/*.{ts,tsx,jsx,js,mjs,cjs}",
+    "./node_modules/@rtdui/spotlight/**/*.{ts,tsx,jsx,js,mjs,cjs}",
   ],
   theme: {
     extend: {},

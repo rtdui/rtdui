@@ -8,6 +8,9 @@
     "readOnly": "ReadOnly",
     "start": "Start",
     "about": "About",
+    "documentation": "Documentation",
+    "organization": "Organization",
+    "discussions": "Discussions",
     "install": "Install",
     "custom": "Custom",
     "polymorphic": "Polymorphic",
@@ -107,6 +110,22 @@
   "rtdui": {
     "introduce": "A fully featured React component library",
     "describe": "Focusing on providing excellent development and user experiences",
-    "get-started": "get started"
+    "get-started": "get started",
+    "about": "$t(common.about)",
+    "documentation": "$t(common.documentation)",
+    "organization": "$t(common.organization)",
+    "discussions": "$t(common.discussions)",
+    "community": "Community",
+    "project": "Project",
+    "follow": "follow on",
+    "freeAndOpenSource": "Free and open source",
+    "freeAndOpenSource-desc": "All packages have MIT license, you can use rtdui in any project",
+    "typescript-based": "TypeScript based",
+    "typescript-based-desc": "Build type safe applications, all components and hooks export types",
+    "tailwindCSS-based": "TailwindCSS based",
+    "tailwindCSS-based-desc": "Easily integrate into your app which base on TailwindCSS",
+    "nearly-100-components": "nearly 100 components",
+    "framework-support": "Framework support",
+    "framework-support-desc": "rtdui works in all modern environments, Including but not limited to: Next.js, Vite, Remix"
   }
 }

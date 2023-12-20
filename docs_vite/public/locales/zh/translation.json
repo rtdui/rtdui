@@ -8,6 +8,9 @@
     "readOnly": "只读",
     "start": "开始",
     "about": "关于",
+    "documentation": "文档",
+    "organization": "组织",
+    "discussions": "讨论",
     "install": "安装",
     "custom": "自定义",
     "polymorphic": "多态",
@@ -107,6 +110,22 @@
   "rtdui": {
     "introduce": "一个全功能的React组件库",
     "describe": "专注于提供出色的开发和使用体验",
-    "get-started": "$t(common.start)"
+    "get-started": "$t(common.start)",
+    "about": "$t(common.about)",
+    "documentation": "$t(common.documentation)",
+    "organization": "$t(common.organization)",
+    "discussions": "$t(common.discussions)",
+    "community": "社区",
+    "project": "项目",
+    "follow": "跟随",
+    "freeAndOpenSource": "免费并且开源",
+    "freeAndOpenSource-desc": "所有软件包都是MIT许可证, 你可以在任何项目中使用rtdui",
+    "typescript-based": "基于Typescript",
+    "typescript-based-desc": "构建类型安全的应用程序, 所有组件和钩子都导出类型",
+    "tailwindCSS-based": "基于tailwindCSS",
+    "tailwindCSS-based-desc": "轻松集成到你的基于TailwindCSS的应用程序中",
+    "nearly-100-components": "近100个组件",
+    "framework-support": "框架支持",
+    "framework-support-desc": "rtdui适用于所有现代环境, 包括但不仅限于: Next.js, Vite, Remix"
   }
 }

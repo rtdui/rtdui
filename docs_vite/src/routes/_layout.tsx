@@ -14,11 +14,14 @@ import {
   IconSearch,
   IconChevronDown,
   IconAlertTriangle,
+  IconBrandGithub,
 } from "@tabler/icons-react";
 import { usePrevious } from "@rtdui/hooks";
 import { notifications } from "@rtdui/notifications";
 import { AppShell, Button, Popover, Tabs, TextInput } from "@rtdui/core";
 import { useTranslation } from "react-i18next";
+import { Spotlight, spotlight } from "@rtdui/spotlight";
+import { useNavigate } from "react-router-dom";
 import ApiDoc from "../components/Api";
 import NavMenu from "../components/NavMenu";
 import apidocs from "../assets/docgen.json";
@@ -26,17 +29,8 @@ import democodes from "../assets/codegen.json";
 import menuData from "../assets/menuData.json";
 import { IconTranslate } from "../assets/IconTranslate";
 
-export const loader = async (_args: LoaderFunctionArgs) => {
-  return json({ apidocs, democodes, menuData });
-};
-
 export default function Layout() {
   const toggleRef = React.useRef<any>(null!);
-  const {
-    apidocs: allComponentDoc,
-    democodes,
-    menuData,
-  } = useLoaderData() as any;
 
   const handleThemeChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (ev.target.checked) {
@@ -53,10 +47,10 @@ export default function Layout() {
   const isComponentPage = location.pathname.includes("/components/");
 
   const componentName = location.pathname.split("/").reverse()[0];
-  const componentRealName: any = Object.keys(allComponentDoc).find(
+  const componentRealName: any = Object.keys(apidocs).find(
     (d) => d.toLowerCase() === componentName.toLowerCase()
   );
-  const apiDoc = (allComponentDoc as any)[componentRealName];
+  const apiDoc = (apidocs as any)[componentRealName];
 
   const preLocation = usePrevious(location.pathname);
   React.useEffect(() => {
@@ -85,6 +79,8 @@ export default function Layout() {
       notifications.clean();
     }
   }, [i18n.language]);
+
+  const navigate = useNavigate();
 
   return (
     <AppShell
@@ -118,9 +114,33 @@ export default function Layout() {
                 </>
               }
               rightSectionWidth={74}
+              onMouseDown={(e) => {
+                spotlight.open();
+                e.preventDefault();
+              }}
+            />
+            <Spotlight
+              nothingFound="未找到内容"
+              limit={5}
+              highlightQuery
+              actions={menuData
+                .flatMap((d: any) => d.items)
+                .map((d: any) => ({
+                  id: d.label,
+                  label: d.label,
+                  onClick: () => navigate(d.url),
+                }))}
             />
           </div>
           <div className="flex items-center gap-1">
+            {/* github */}
+            <a
+              className="btn"
+              href="https://github.com/rtdui/rtdui"
+              target="_blank"
+            >
+              <IconBrandGithub />
+            </a>
             {/* 主题切换 */}
             <label className="swap swap-rotate btn btn-ghost btn-circle">
               <input
@@ -189,7 +209,7 @@ export default function Layout() {
       drawer={
         <>
           <div className="h-16 bg-base-200 flex items-center p-4 sticky top-0 z-20">
-            RTD UI
+            <a href="/">RTD UI</a>
           </div>
           <NavMenu data={menuData} onClick={() => toggleRef.current.toggle()} />
         </>

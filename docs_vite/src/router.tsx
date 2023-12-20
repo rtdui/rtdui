@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./routes/root";
 import Index from "./routes/_index";
-import Layout, { loader as layoutLoader } from "./routes/_layout";
+import Layout from "./routes/_layout";
 
 const allMdxInDemos = import.meta.glob("./demos/**/*.mdx");
 
@@ -83,7 +83,6 @@ export const router = createBrowserRouter([
       ...nolayoutRoutes,
       {
         element: <Layout />,
-        loader: layoutLoader,
         children: allLayoutRoutes,
         // children: [
         //   {
