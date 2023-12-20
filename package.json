@@ -6,7 +6,7 @@
     "docs",
     "docs_vite"
   ],
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "rtdui Components Monorepo",
   "main": "index.js",
   "type": "module",
