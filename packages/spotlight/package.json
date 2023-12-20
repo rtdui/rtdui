@@ -1,0 +1,52 @@
+{
+  "name": "@rtdui/spotlight",
+  "version": "1.0.6",
+  "description": "A search center of your application",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.com/",
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/spotlight"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "dependencies": {
+    "@tabler/icons-react": "^2.42.0",
+    "clsx": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "1.0.6",
+    "@rtdui/hooks": "1.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
