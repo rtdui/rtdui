@@ -1,12 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import {
-  Outlet,
-  useLoaderData,
-  useLocation,
-  json,
-  type LoaderFunctionArgs,
-} from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import {
   IconMenu2,
   IconSun,
@@ -20,8 +14,7 @@ import { usePrevious } from "@rtdui/hooks";
 import { notifications } from "@rtdui/notifications";
 import { AppShell, Button, Popover, Tabs, TextInput } from "@rtdui/core";
 import { useTranslation } from "react-i18next";
-import { Spotlight, spotlight } from "@rtdui/spotlight";
-import { useNavigate } from "react-router-dom";
+import { spotlight } from "@rtdui/spotlight";
 import ApiDoc from "../components/Api";
 import NavMenu from "../components/NavMenu";
 import apidocs from "../assets/docgen.json";
@@ -80,11 +73,10 @@ export default function Layout() {
     }
   }, [i18n.language]);
 
-  const navigate = useNavigate();
-
   return (
     <AppShell
       ref={toggleRef}
+      className="z-0"
       slots={{
         header: "sticky top-0 z-20 w-full bg-base-200 px-4",
         main: "relative z-0 prose max-w-none p-8 pb-16",
@@ -118,18 +110,6 @@ export default function Layout() {
                 spotlight.open();
                 e.preventDefault();
               }}
-            />
-            <Spotlight
-              nothingFound="未找到内容"
-              limit={5}
-              highlightQuery
-              actions={menuData
-                .flatMap((d: any) => d.items)
-                .map((d: any) => ({
-                  id: d.label,
-                  label: d.label,
-                  onClick: () => navigate(d.url),
-                }))}
             />
           </div>
           <div className="flex items-center gap-1">

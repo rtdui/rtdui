@@ -11,11 +11,9 @@ import {
   IconScale,
   IconSearch,
 } from "@tabler/icons-react";
-import { Spotlight, spotlight } from "@rtdui/spotlight";
-import { useNavigate } from "react-router-dom";
+import { spotlight } from "@rtdui/spotlight";
 import { useTranslation } from "react-i18next";
 import { IconTranslate } from "../assets/IconTranslate";
-import menuData from "../assets/menuData.json";
 
 export default function Index() {
   const { t, i18n } = useTranslation();
@@ -24,8 +22,6 @@ export default function Index() {
     setLangOpen(false);
     i18n.changeLanguage(lang);
   };
-
-  const navigate = useNavigate();
 
   return (
     <AppShell
@@ -55,18 +51,6 @@ export default function Index() {
                 spotlight.open();
                 e.preventDefault();
               }}
-            />
-            <Spotlight
-              nothingFound="未找到内容"
-              limit={5}
-              highlightQuery
-              actions={menuData
-                .flatMap((d) => d.items)
-                .map((d) => ({
-                  id: d.label,
-                  label: d.label,
-                  onClick: () => navigate(d.url),
-                }))}
             />
           </div>
           <div className="flex items-center gap-1">
