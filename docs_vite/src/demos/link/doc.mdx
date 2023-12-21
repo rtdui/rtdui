@@ -21,8 +21,6 @@ import LinkPolymorphicDemo from "./LinkPolymorphicDemo";
 
 ## 多态
 
-多态组件是可以使用多态属性更改根元素的组件。多态组件都有一个默认组件，当未提供多态属性时则使用该默认组件。
-
-`Link`是一个多态组件, 其`as`属性就是一个多态属性. 默认为HTML原生的`a`元素组件. 通过修改`as`属性, 可以很容易的与其它框架提供的组件进行集成. 如使用`react-router-dom`提供的`Link`组件替代`a`组件.
+`Link`是一个[多态组件](/polymorphic), 其`as`属性是多态属性. 默认为HTML原生的`a`元素组件. 通过修改`as`属性, 可以很容易的与其它框架提供的组件进行集成. 如使用`react-router-dom`提供的`Link`组件替代`a`组件.
 
 <Demo data={{ Component: LinkPolymorphicDemo }} />
