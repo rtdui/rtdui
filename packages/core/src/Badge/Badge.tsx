@@ -1,7 +1,10 @@
-import clsx from "clsx";
 import React from "react";
+import clsx from "clsx";
+import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
 
-export interface BadgeProps extends React.ComponentPropsWithoutRef<"div"> {
+// Component-specific props should be specified separately
+export type BadgeOwnProps = {
+  /** theme color */
   color?:
     | "primary"
     | "secondary"
@@ -11,31 +14,51 @@ export interface BadgeProps extends React.ComponentPropsWithoutRef<"div"> {
     | "warning"
     | "error"
     | "neutral";
-  /**
-   * @default md
+  /** 尺寸大小
+   *  @default "md"
    */
   size?: "xs" | "sm" | "md" | "lg";
-  ghost?: boolean; // 无边框和背景
-  outline?: boolean; // border without background
+  /** no background and no border */
+  ghost?: boolean;
+  /** border without background */
+  outline?: boolean;
   icon?: React.ReactNode;
-  as?: React.ElementType;
-}
-export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  (props, ref) => {
+};
+
+// Merge own props with others inherited from the underlying element type
+export type BadgeProps<E extends React.ElementType> = PolymorphicComponentProps<
+  E,
+  BadgeOwnProps
+>;
+
+// An HTML tag or a different React component can be rendered by default
+const defaultElement = "span";
+
+/** 多态组件, ref会转发给实际的组件 */
+export const Badge: <E extends React.ElementType = typeof defaultElement>(
+  props: BadgeProps<E>
+) => React.ReactNode = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    props: BadgeProps<E>,
+    ref: typeof props.ref
+  ) => {
     const {
       color,
       size = "md",
       icon,
       ghost,
       outline,
-      as: Component = "span",
       className,
       children,
       ...other
     } = props;
 
+    const boxProps = other as BoxProps<E>;
+
     return (
-      <Component
+      <Box
+        as={defaultElement}
+        ref={ref}
         className={clsx(
           "badge",
           {
@@ -56,6 +79,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
           },
           className
         )}
+        {...boxProps}
       >
         {icon &&
           React.isValidElement(icon) &&
@@ -64,7 +88,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
               size === "xs" ? 12 : size === "sm" ? 14 : size === "md" ? 16 : 18,
           })}
         {children}
-      </Component>
+      </Box>
     );
   }
 );
