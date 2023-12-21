@@ -1,6 +1,6 @@
 import { Grid } from "@rtdui/core";
 
-export default function GridResponsiveSpanDemo() {
+export default function Demo() {
   return (
     <Grid>
       <Grid.Col span={{ base: 12, sm: 6, md: 4, lg: 3, xl: 2, "2xl": 1 }}>
@@ -18,3 +18,4 @@ export default function GridResponsiveSpanDemo() {
     </Grid>
   );
 }
+Demo.displayName = "GridResponsiveSpanDemo";

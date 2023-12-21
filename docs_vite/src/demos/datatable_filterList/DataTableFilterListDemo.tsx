@@ -23,7 +23,7 @@ const columns: ColumnDef<Person>[] = [
   },
 ];
 
-export default function DataTableFilterListDemo() {
+export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
@@ -36,3 +36,4 @@ export default function DataTableFilterListDemo() {
     </div>
   );
 }
+Demo.displayName = "DataTableFilterListDemo";

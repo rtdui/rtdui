@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@rtdui/core";
 import { dialogs } from "@rtdui/dialogs";
 
-export default function DialogLocalizationDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Button
@@ -48,3 +48,4 @@ export default function DialogLocalizationDemo() {
     </div>
   );
 }
+Demo.displayName = "DialogLocalizationDemo";

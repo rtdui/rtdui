@@ -1,7 +1,7 @@
 import React from "react";
 import { Progress } from "@rtdui/core";
 
-export default function ProgressAnimationDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-center">
       <Progress color="primary" />
@@ -14,3 +14,4 @@ export default function ProgressAnimationDemo() {
     </div>
   );
 }
+Demo.displayName = "ProgressAnimationDemo";

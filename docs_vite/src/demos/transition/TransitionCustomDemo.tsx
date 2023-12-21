@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Transition } from "@rtdui/core";
 
-export default function TransitionCustomDemo() {
+export default function Demo() {
   const [inState, setInState] = React.useState(false);
   return (
     <div className="flex flex-col gap-4 rounded-lg items-center">
@@ -29,3 +29,4 @@ export default function TransitionCustomDemo() {
     </div>
   );
 }
+Demo.displayName = "TransitionCustomDemo";

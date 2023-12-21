@@ -1,6 +1,6 @@
 import { Rating } from "@rtdui/core";
 
-export default function RatingSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Rating size="xs" defaultValue={2} />
@@ -10,3 +10,4 @@ export default function RatingSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "RatingSizeDemo";

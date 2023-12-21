@@ -1,6 +1,6 @@
 import { Tooltip, Button } from "@rtdui/core";
 
-export default function TooltipPositionDemo() {
+export default function Demo() {
   return (
     <div className="flex justify-center">
       <div>
@@ -26,3 +26,4 @@ export default function TooltipPositionDemo() {
     </div>
   );
 }
+Demo.displayName = "TooltipPositionDemo";

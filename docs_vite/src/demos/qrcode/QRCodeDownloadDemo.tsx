@@ -2,7 +2,7 @@ import React from "react";
 import { QRCode } from "@rtdui/qr-code";
 import { Button, TextInput } from "@rtdui/core";
 
-export default function QRCodeDownloadDemo() {
+export default function Demo() {
   const [value, setValue] = React.useState("https://example.com/?query=1");
   const id = React.useId();
   const downloadQRCode = () => {
@@ -34,3 +34,4 @@ export default function QRCodeDownloadDemo() {
     </div>
   );
 }
+Demo.displayName = "QRCodeDownloadDemo";

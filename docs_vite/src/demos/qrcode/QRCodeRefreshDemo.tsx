@@ -9,7 +9,7 @@ function randomString(length: number, chars = "abcdefghijklmnopqrstuvwxyz") {
   return result;
 }
 
-export default function QRCodeRefreshDemo() {
+export default function Demo() {
   const [value, setValue] = React.useState("https://example.com/?query=1");
   const noise = randomString(6);
   return (
@@ -24,3 +24,4 @@ export default function QRCodeRefreshDemo() {
     </div>
   );
 }
+Demo.displayName = "QRCodeRefreshDemo";

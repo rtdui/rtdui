@@ -136,7 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Select size="xs" options={fruits} />
@@ -146,3 +146,4 @@ export default function SelectSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "SelectSizeDemo";

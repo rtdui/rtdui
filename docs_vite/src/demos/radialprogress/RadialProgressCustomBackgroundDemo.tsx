@@ -1,7 +1,7 @@
 import React from "react";
 import { RadialProgress } from "@rtdui/core";
 
-export default function RadialProgressCustomBackgroundDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-center">
       <RadialProgress value={70} className="!bg-blue-600 !text-blue-300" />
@@ -12,3 +12,4 @@ export default function RadialProgressCustomBackgroundDemo() {
     </div>
   );
 }
+Demo.displayName = "RadialProgressCustomBackgroundDemo";

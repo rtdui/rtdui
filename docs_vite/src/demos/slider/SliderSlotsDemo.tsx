@@ -8,7 +8,7 @@ const marks = [
 ];
 
 const outline = "!outline !outline-2 !outline-offset-1 !outline-red-500";
-export default function SliderSlotsDemo() {
+export default function Demo() {
   const [slots, setSlots] = React.useState({});
   return (
     <div className="flex flex-col gap-12 py-4">
@@ -104,3 +104,4 @@ export default function SliderSlotsDemo() {
     </div>
   );
 }
+Demo.displayName = "SliderSlotsDemo";

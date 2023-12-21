@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover, Button, TextInput } from "@rtdui/core";
 
-export default function PopoverFocusTrapDemo() {
+export default function Demo() {
   return (
     <Popover focusTrap>
       <Popover.Trigger>
@@ -22,3 +22,4 @@ export default function PopoverFocusTrapDemo() {
     </Popover>
   );
 }
+Demo.displayName = "PopoverFocusTrapDemo";

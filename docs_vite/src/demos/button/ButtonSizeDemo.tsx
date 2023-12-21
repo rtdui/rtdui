@@ -1,6 +1,6 @@
 import { Button } from "@rtdui/core";
 
-export default function ButtonSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex items-center gap-4">
       <Button color="primary" size="xs">
@@ -18,3 +18,4 @@ export default function ButtonSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "ButtonSizeDemo";

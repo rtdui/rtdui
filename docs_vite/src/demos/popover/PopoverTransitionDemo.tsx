@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover, Button } from "@rtdui/core";
 
-export default function PopoverTransitionDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-8 items-center">
       <Popover transition="slide-up">
@@ -28,3 +28,4 @@ export default function PopoverTransitionDemo() {
     </div>
   );
 }
+Demo.displayName = "PopoverTransitionDemo";

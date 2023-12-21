@@ -27,6 +27,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function AutoCompleteReadonlyDemo() {
+export default function Demo() {
   return <AutoComplete options={fruits} readOnly />;
 }
+Demo.displayName = "AutoCompleteReadonlyDemo";

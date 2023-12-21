@@ -1,6 +1,6 @@
 import { NumberInput } from "@rtdui/core";
 
-export default function NumberInputCustomDemo() {
+export default function Demo() {
   return (
     <NumberInput
       placeholder="请输入支付金额(无法输入负数或0)"
@@ -13,3 +13,4 @@ export default function NumberInputCustomDemo() {
     />
   );
 }
+Demo.displayName = "NumberInputCustomDemo";

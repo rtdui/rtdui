@@ -1,6 +1,6 @@
 import { NumberInput } from "@rtdui/core";
 
-export default function NumberInputPrefixDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-2">
       <NumberInput prefix="￥" placeholder="自动带￥前缀" />
@@ -8,3 +8,4 @@ export default function NumberInputPrefixDemo() {
     </div>
   );
 }
+Demo.displayName = "NumberInputPrefixDemo";

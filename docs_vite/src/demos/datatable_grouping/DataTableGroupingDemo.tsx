@@ -18,7 +18,7 @@ const columns: ColumnDef<Person>[] = [
   },
 ];
 
-export default function DataTableGroupingDemo() {
+export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
@@ -31,3 +31,4 @@ export default function DataTableGroupingDemo() {
     </div>
   );
 }
+Demo.displayName = "DataTableGroupingDemo";

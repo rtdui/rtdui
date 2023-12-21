@@ -1,7 +1,7 @@
 import { Swap } from "@rtdui/core";
 import { IconMoon, IconSun, IconMenu2, IconX } from "@tabler/icons-react";
 
-export default function SwapIconRotateDemo() {
+export default function Demo() {
   return (
     <>
       <Swap transitionEffect="rotate">
@@ -15,3 +15,4 @@ export default function SwapIconRotateDemo() {
     </>
   );
 }
+Demo.displayName = "SwapIconRotateDemo";

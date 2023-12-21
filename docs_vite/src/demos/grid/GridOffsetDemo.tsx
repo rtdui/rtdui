@@ -1,6 +1,6 @@
 import { Grid } from "@rtdui/core";
 
-export default function GridOffsetDemo() {
+export default function Demo() {
   return (
     <Grid>
       <Grid.Col span={3}>
@@ -15,3 +15,4 @@ export default function GridOffsetDemo() {
     </Grid>
   );
 }
+Demo.displayName = "GridOffsetDemo";

@@ -1,6 +1,6 @@
 import { Slider, RangeSlider } from "@rtdui/core";
 
-export default function SliderLabelsDeme() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-10 py-8">
       no label
@@ -30,3 +30,4 @@ export default function SliderLabelsDeme() {
     </div>
   );
 }
+Demo.displayName = "SliderLabelsDeme";

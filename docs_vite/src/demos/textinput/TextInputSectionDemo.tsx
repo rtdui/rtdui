@@ -1,7 +1,7 @@
 import { IconAt, IconSend } from "@tabler/icons-react";
 import { TextInput, Button } from "@rtdui/core";
 
-export default function TextInputSectionDemo() {
+export default function Demo() {
   return (
     <TextInput
       type="search"
@@ -19,3 +19,4 @@ export default function TextInputSectionDemo() {
     />
   );
 }
+Demo.displayName = "TextInputSectionDemo";

@@ -136,6 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectReadonlyDemo() {
+export default function Demo() {
   return <Select readOnly options={fruits} />;
 }
+Demo.displayName = "SelectReadonlyDemo";

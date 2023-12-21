@@ -22,7 +22,7 @@ const items = [
   },
 ];
 
-export default function StatPanelSlotsDemo() {
+export default function Demo() {
   return (
     <StatPanel
       items={items}
@@ -35,3 +35,4 @@ export default function StatPanelSlotsDemo() {
     />
   );
 }
+Demo.displayName = "StatPanelSlotsDemo";

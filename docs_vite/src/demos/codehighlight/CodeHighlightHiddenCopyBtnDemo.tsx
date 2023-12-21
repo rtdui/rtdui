@@ -1,6 +1,6 @@
 import { CodeHighlight } from "@rtdui/code-highlight";
 
-export default function CodeHighlightHiddenCopyBtnDemo() {
+export default function Demo() {
   const code = `
 import React from "react";
 
@@ -11,3 +11,4 @@ function Demo(props) {
 `;
   return <CodeHighlight code={code} language="jsx" withCopyButton={false} />;
 }
+Demo.displayName = "CodeHighlightHiddenCopyBtnDemo";

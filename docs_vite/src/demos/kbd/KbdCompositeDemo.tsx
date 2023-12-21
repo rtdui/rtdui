@@ -1,7 +1,7 @@
 import React from "react";
 import { Kbd } from "@rtdui/core";
 
-export default function KbdCompositeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4">
       <div>
@@ -14,3 +14,4 @@ export default function KbdCompositeDemo() {
     </div>
   );
 }
+Demo.displayName = "KbdCompositeDemo";

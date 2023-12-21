@@ -1,7 +1,7 @@
 import React from "react";
 import { Kbd } from "@rtdui/core";
 
-export default function KbdSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center">
       <Kbd size="lg">Shift</Kbd>
@@ -11,3 +11,4 @@ export default function KbdSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "KbdSizeDemo";

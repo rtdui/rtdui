@@ -1,6 +1,6 @@
 import { Grid } from "@rtdui/core";
 
-export default function GridResponsiveGutterDemo() {
+export default function Demo() {
   return (
     <Grid gutter={{ base: "4px", md: "16px", lg: "48px" }}>
       <Grid.Col span={4}>
@@ -15,3 +15,4 @@ export default function GridResponsiveGutterDemo() {
     </Grid>
   );
 }
+Demo.displayName = "GridResponsiveGutterDemo";

@@ -1,6 +1,6 @@
 import { Indicator } from "@rtdui/core";
 
-export default function IndicatorColorWithAnimationDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-center">
       <Indicator badgeColor="primary" animation>
@@ -41,3 +41,4 @@ export default function IndicatorColorWithAnimationDemo() {
     </div>
   );
 }
+Demo.displayName = "IndicatorColorWithAnimationDemo";

@@ -1,6 +1,6 @@
 import { Button } from "@rtdui/core";
 
-export default function ButtonGlassDemo() {
+export default function Demo() {
   return (
     <div
       className="flex justify-center items-center w-56 h-56"
@@ -12,3 +12,4 @@ export default function ButtonGlassDemo() {
     </div>
   );
 }
+Demo.displayName = "ButtonGlassDemo";

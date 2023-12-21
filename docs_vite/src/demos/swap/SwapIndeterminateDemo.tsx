@@ -1,6 +1,6 @@
 import { Swap } from "@rtdui/core";
 
-export default function SwapIndeterminateDemo() {
+export default function Demo() {
   return (
     <Swap transitionEffect="flip" className="text-9xl" indeterminate>
       <div>😈</div>
@@ -9,3 +9,4 @@ export default function SwapIndeterminateDemo() {
     </Swap>
   );
 }
+Demo.displayName = "SwapIndeterminateDemo";

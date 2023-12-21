@@ -1,6 +1,6 @@
 import { Swap } from "@rtdui/core";
 
-export default function SwapTextDemo() {
+export default function Demo() {
   return (
     <Swap>
       <span>ON</span>
@@ -8,3 +8,4 @@ export default function SwapTextDemo() {
     </Swap>
   );
 }
+Demo.displayName = "SwapTextDemo";

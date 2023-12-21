@@ -1,6 +1,6 @@
 import { TextInput } from "@rtdui/core";
 
-export default function TextInputColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <TextInput placeholder="请输入" color="primary" />
@@ -13,3 +13,4 @@ export default function TextInputColorDemo() {
     </div>
   );
 }
+Demo.displayName = "TextInputColorDemo";

@@ -137,7 +137,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectSectionDemo() {
+export default function Demo() {
   return (
     <Select
       required
@@ -155,3 +155,4 @@ export default function SelectSectionDemo() {
     />
   );
 }
+Demo.displayName = "SelectSectionDemo";

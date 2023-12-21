@@ -1,6 +1,6 @@
 import { NumberInput } from "@rtdui/core";
 
-export default function NumberInputPositiveIntegerDemo() {
+export default function Demo() {
   return (
     <NumberInput
       allowNegative={false}
@@ -9,3 +9,4 @@ export default function NumberInputPositiveIntegerDemo() {
     />
   );
 }
+Demo.displayName = "NumberInputPositiveIntegerDemo";

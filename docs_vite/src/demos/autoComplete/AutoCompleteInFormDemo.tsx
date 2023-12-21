@@ -27,7 +27,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function AutoCompleteInFormDemo() {
+export default function Demo() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -47,3 +47,4 @@ export default function AutoCompleteInFormDemo() {
     </form>
   );
 }
+Demo.displayName = "AutoCompleteInFormDemo";

@@ -1,7 +1,7 @@
 import { IconBell, IconCamera, IconX } from "@tabler/icons-react";
 import { Badge } from "@rtdui/core";
 
-export default function BadgeIconsDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
       <Badge icon={<IconX />} color="info">
@@ -16,3 +16,4 @@ export default function BadgeIconsDemo() {
     </div>
   );
 }
+Demo.displayName = "BadgeIconsDemo";

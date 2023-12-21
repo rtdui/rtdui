@@ -1,6 +1,6 @@
 import { Tooltip, Button } from "@rtdui/core";
 
-export default function TooltipColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 pt-8 lg:flex-row ">
       <Tooltip tip="气泡提示" color="primary">
@@ -27,3 +27,4 @@ export default function TooltipColorDemo() {
     </div>
   );
 }
+Demo.displayName = "TooltipColorDemo";

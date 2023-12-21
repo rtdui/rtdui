@@ -1,6 +1,6 @@
 import { TextInput } from "@rtdui/core";
 
-export default function TextInputSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <TextInput placeholder="请输入" bordered size="xs" />
@@ -10,3 +10,4 @@ export default function TextInputSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "TextInputSizeDemo";

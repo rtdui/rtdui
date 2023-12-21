@@ -7,7 +7,7 @@ const marksWithLabel = [
   { value: 50, label: "50%" },
   { value: 80, label: "80%" },
 ];
-export default function SliderMarksDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-10 py-8">
       <Slider defaultValue={35} marks={marks} />
@@ -17,3 +17,4 @@ export default function SliderMarksDemo() {
     </div>
   );
 }
+Demo.displayName = "SliderMarksDemo";

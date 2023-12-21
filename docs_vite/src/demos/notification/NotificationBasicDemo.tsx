@@ -3,7 +3,7 @@ import { Button } from "@rtdui/core";
 import { IconX, IconCheck } from "@tabler/icons-react";
 import { notifications } from "@rtdui/notifications";
 
-export default function NotificationBasicDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Button
@@ -64,3 +64,4 @@ export default function NotificationBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "NotificationBasicDemo";

@@ -127,7 +127,7 @@ const handleMenuItemClick = (item: any) => {
   }
 };
 
-export default function TreeBasicDemo() {
+export default function Demo() {
   return (
     <Tree
       className="bg-base-100"
@@ -140,3 +140,4 @@ export default function TreeBasicDemo() {
     />
   );
 }
+Demo.displayName = "TreeBasicDemo";

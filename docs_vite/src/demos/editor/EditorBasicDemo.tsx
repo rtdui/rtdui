@@ -2,7 +2,7 @@ import { RichTextEditor } from "@rtdui/editor";
 import { Button } from "@rtdui/core";
 import React from "react";
 
-export default function EditorBasicDemo() {
+export default function Demo() {
   const ref = React.useRef<any>(null!);
   const refTarget = React.useRef<any>(null!);
 
@@ -36,3 +36,4 @@ export default function EditorBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "EditorBasicDemo";

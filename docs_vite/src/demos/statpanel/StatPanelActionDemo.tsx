@@ -2,7 +2,7 @@ import React from "react";
 import { IconInfoCircle } from "@tabler/icons-react";
 import { StatPanel, Button } from "@rtdui/core";
 
-export default function StatPanelActionDemo() {
+export default function Demo() {
   const handleActionClick = (val: any) => {
     ref.current.innerText = val;
   };
@@ -56,3 +56,4 @@ export default function StatPanelActionDemo() {
     </>
   );
 }
+Demo.displayName = "StatPanelActionDemo";

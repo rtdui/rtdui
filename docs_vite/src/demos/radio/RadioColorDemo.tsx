@@ -1,6 +1,6 @@
 import { Radio } from "@rtdui/core";
 
-export default function RadioColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Radio defaultChecked label="default" />
@@ -14,3 +14,4 @@ export default function RadioColorDemo() {
     </div>
   );
 }
+Demo.displayName = "RadioColorDemo";

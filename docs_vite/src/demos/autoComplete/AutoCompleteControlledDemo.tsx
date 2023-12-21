@@ -28,7 +28,8 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function AutoCompleteControlledDemo() {
+export default function Demo() {
   const [value, setValue] = React.useState("");
   return <AutoComplete options={fruits} value={value} onChange={setValue} />;
 }
+Demo.displayName = "AutoCompleteControlledDemo";

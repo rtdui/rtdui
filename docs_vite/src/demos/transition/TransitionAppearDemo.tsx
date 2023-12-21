@@ -1,7 +1,7 @@
 import React from "react";
 import { Transition } from "@rtdui/core";
 
-export default function TransitionAppearDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Transition in transition="fade" duration={1000}>
@@ -30,3 +30,4 @@ export default function TransitionAppearDemo() {
     </div>
   );
 }
+Demo.displayName = "TransitionAppearDemo";

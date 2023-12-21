@@ -1,7 +1,7 @@
 import React from "react";
 import { Loading } from "@rtdui/core";
 
-export default function LoadingBallDemo() {
+export default function Demo() {
   return (
     <>
       <div className="flex gap-4">
@@ -22,3 +22,4 @@ export default function LoadingBallDemo() {
     </>
   );
 }
+Demo.displayName = "LoadingBallDemo";

@@ -1,6 +1,6 @@
 import { Checkbox } from "@rtdui/core";
 
-export default function CheckboxColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4">
       <Checkbox defaultChecked label="default" />
@@ -14,3 +14,4 @@ export default function CheckboxColorDemo() {
     </div>
   );
 }
+Demo.displayName = "CheckboxColorDemo";

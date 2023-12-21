@@ -1,6 +1,6 @@
 import { Button, Divider } from "@rtdui/core";
 
-export default function ButtonColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4">
       <Divider>default</Divider>
@@ -46,3 +46,4 @@ export default function ButtonColorDemo() {
     </div>
   );
 }
+Demo.displayName = "ButtonColorDemo";

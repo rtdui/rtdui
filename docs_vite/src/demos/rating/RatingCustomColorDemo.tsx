@@ -1,6 +1,6 @@
 import { Rating } from "@rtdui/core";
 
-export default function RatingCustomColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Rating defaultValue={2} slots={{ star: "bg-primary" }} />
@@ -12,3 +12,4 @@ export default function RatingCustomColorDemo() {
     </div>
   );
 }
+Demo.displayName = "RatingCustomColorDemo";

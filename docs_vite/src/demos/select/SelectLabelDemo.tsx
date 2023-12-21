@@ -136,7 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectLabelDemo() {
+export default function Demo() {
   return (
     <Select
       required
@@ -146,3 +146,4 @@ export default function SelectLabelDemo() {
     />
   );
 }
+Demo.displayName = "SelectLabelDemo";

@@ -1,7 +1,7 @@
 import React from "react";
 import { RadioGroup, Radio } from "@rtdui/core";
 
-export default function RadioGroupDemo() {
+export default function Demo() {
   const [radioGroupValue, setRadioGroupValue] = React.useState<string | number>(
     1
   );
@@ -21,3 +21,4 @@ export default function RadioGroupDemo() {
     </RadioGroup>
   );
 }
+Demo.displayName = "RadioGroupDemo";

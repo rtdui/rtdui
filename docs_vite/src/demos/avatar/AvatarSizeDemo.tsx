@@ -1,6 +1,6 @@
 import { Avatar } from "@rtdui/core";
 
-export default function AvatarSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
       <Avatar size="lg" src="/photo-1534528741775-53994a69daeb.jpg" />
@@ -10,3 +10,4 @@ export default function AvatarSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "AvatarSizeDemo";

@@ -1,7 +1,7 @@
 import React from "react";
 import { RadioGroup, Radio } from "@rtdui/core";
 
-export default function RadioGroupColorAndSizeDemo() {
+export default function Demo() {
   return (
     <>
       <RadioGroup
@@ -87,3 +87,4 @@ export default function RadioGroupColorAndSizeDemo() {
     </>
   );
 }
+Demo.displayName = "RadioGroupColorAndSizeDemo";

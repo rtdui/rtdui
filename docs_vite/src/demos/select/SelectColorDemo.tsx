@@ -136,7 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Select color="primary" options={fruits} />
@@ -149,3 +149,4 @@ export default function SelectColorDemo() {
     </div>
   );
 }
+Demo.displayName = "SelectColorDemo";

@@ -27,6 +27,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function AutoCompleteBasicDemo() {
+export default function Demo() {
   return <AutoComplete options={fruits} />;
 }
+Demo.displayName = "AutoCompleteBasicDemo";

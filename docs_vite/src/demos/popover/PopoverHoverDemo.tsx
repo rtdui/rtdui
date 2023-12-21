@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover, Button } from "@rtdui/core";
 
-export default function PopoverHoverDemo() {
+export default function Demo() {
   return (
     <Popover openOnHover>
       <Popover.Trigger>
@@ -15,3 +15,4 @@ export default function PopoverHoverDemo() {
     </Popover>
   );
 }
+Demo.displayName = "PopoverHoverDemo";

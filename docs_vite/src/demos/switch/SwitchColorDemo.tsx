@@ -1,6 +1,6 @@
 import { Switch } from "@rtdui/core";
 
-export default function SwitchColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-center">
       <Switch defaultChecked />
@@ -14,3 +14,4 @@ export default function SwitchColorDemo() {
     </div>
   );
 }
+Demo.displayName = "SwitchColorDemo";

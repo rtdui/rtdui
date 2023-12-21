@@ -1,6 +1,6 @@
 import { JionGroup, Button } from "@rtdui/core";
 
-export default function JoinGroupButtonsDemo() {
+export default function Demo() {
   return (
     <JionGroup>
       <Button className="join-item">a</Button>
@@ -9,3 +9,4 @@ export default function JoinGroupButtonsDemo() {
     </JionGroup>
   );
 }
+Demo.displayName = "JoinGroupButtonsDemo";

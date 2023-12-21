@@ -2,7 +2,7 @@ import React from "react";
 import { Popover, Button } from "@rtdui/core";
 import { IconBell } from "@tabler/icons-react";
 
-export default function PopoverBasicDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-8 items-center">
       <Popover>
@@ -31,3 +31,4 @@ export default function PopoverBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "PopoverBasicDemo";

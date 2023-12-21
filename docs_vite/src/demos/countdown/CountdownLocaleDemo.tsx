@@ -1,6 +1,6 @@
 import { Countdown } from "@rtdui/core";
 
-export default function CountdownLocaleDemo() {
+export default function Demo() {
   const now = new Date();
   const end = now.setFullYear(now.getFullYear() + 2); // 2年倒计时
   const endDate = new Date(end);
@@ -44,3 +44,4 @@ export default function CountdownLocaleDemo() {
     </div>
   );
 }
+Demo.displayName = "CountdownLocaleDemo";

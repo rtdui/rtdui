@@ -1,7 +1,7 @@
 import React from "react";
 import { Kbd } from "@rtdui/core";
 
-export default function KbdSymbolDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center">
       <Kbd>⌘</Kbd>
@@ -11,3 +11,4 @@ export default function KbdSymbolDemo() {
     </div>
   );
 }
+Demo.displayName = "KbdSymbolDemo";

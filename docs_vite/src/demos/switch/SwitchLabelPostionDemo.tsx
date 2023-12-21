@@ -1,6 +1,6 @@
 import { Switch } from "@rtdui/core";
 
-export default function SwitchLabelPostionDemo() {
+export default function Demo() {
   return (
     <Switch
       required
@@ -10,3 +10,4 @@ export default function SwitchLabelPostionDemo() {
     />
   );
 }
+Demo.displayName = "SwitchLabelPostionDemo";

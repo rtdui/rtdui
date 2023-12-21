@@ -51,7 +51,7 @@ function reducer(state: typeof initial, action: Record<string, any>) {
   return { ...state, [name]: value };
 }
 
-export default function TransitionBasicDemo() {
+export default function Demo() {
   const [state, dispatch] = React.useReducer(reducer, initial);
   return (
     <div className="flex flex-wrap gap-4 items-center">
@@ -91,3 +91,4 @@ export default function TransitionBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "TransitionBasicDemo";

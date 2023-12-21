@@ -1,6 +1,6 @@
 import { Tooltip, Button } from "@rtdui/core";
 
-export default function TooltipTransitionDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 pt-8 lg:flex-row ">
       <Tooltip tip="fade" transition="fade">
@@ -27,3 +27,4 @@ export default function TooltipTransitionDemo() {
     </div>
   );
 }
+Demo.displayName = "TooltipTransitionDemo";

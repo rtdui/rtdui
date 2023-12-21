@@ -136,7 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function AutoCompleteLongListDemo() {
+export default function Demo() {
   return (
     <AutoComplete
       name="input2"
@@ -145,3 +145,4 @@ export default function AutoCompleteLongListDemo() {
     />
   );
 }
+Demo.displayName = "AutoCompleteLongListDemo";

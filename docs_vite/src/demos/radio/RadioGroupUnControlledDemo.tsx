@@ -1,6 +1,6 @@
 import { RadioGroup, Radio } from "@rtdui/core";
 
-export default function RadioGroupUnControlledDemo() {
+export default function Demo() {
   return (
     <RadioGroup
       color="primary"
@@ -15,3 +15,4 @@ export default function RadioGroupUnControlledDemo() {
     </RadioGroup>
   );
 }
+Demo.displayName = "RadioGroupUnControlledDemo";

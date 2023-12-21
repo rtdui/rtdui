@@ -1,6 +1,6 @@
 import { Badge } from "@rtdui/core";
 
-export default function BadgeSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
       <Badge size="lg">New</Badge>
@@ -10,3 +10,4 @@ export default function BadgeSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "BadgeSizeDemo";

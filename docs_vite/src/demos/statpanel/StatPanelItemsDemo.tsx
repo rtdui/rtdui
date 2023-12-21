@@ -23,6 +23,7 @@ const items = [
   },
 ];
 
-export default function StatPanelItemsDemo() {
+export default function Demo() {
   return <StatPanel items={items} />;
 }
+Demo.displayName = "StatPanelItemsDemo";

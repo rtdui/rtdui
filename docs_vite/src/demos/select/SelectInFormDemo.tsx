@@ -136,7 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectInFormDemo() {
+export default function Demo() {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = Object.fromEntries(
@@ -151,3 +151,4 @@ export default function SelectInFormDemo() {
     </form>
   );
 }
+Demo.displayName = "SelectInFormDemo";

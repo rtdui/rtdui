@@ -1,6 +1,6 @@
 import { Pagination } from "@rtdui/core";
 
-export default function PaginationSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Pagination size="xs" count={10} />
@@ -53,3 +53,4 @@ export default function PaginationSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "PaginationSizeDemo";

@@ -1,7 +1,7 @@
 import React from "react";
 import { DebouncedInput } from "@rtdui/core";
 
-export default function DebouncedInputWaitDemo() {
+export default function Demo() {
   const [output, setOutput] = React.useState("");
   return (
     <>
@@ -14,3 +14,4 @@ export default function DebouncedInputWaitDemo() {
     </>
   );
 }
+Demo.displayName = "DebouncedInputWaitDemo";

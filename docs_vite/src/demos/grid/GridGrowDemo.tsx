@@ -1,6 +1,6 @@
 import { Grid } from "@rtdui/core";
 
-export default function GridGrowDemo() {
+export default function Demo() {
   return (
     <Grid grow>
       <Grid.Col span={4}>
@@ -21,3 +21,4 @@ export default function GridGrowDemo() {
     </Grid>
   );
 }
+Demo.displayName = "GridGrowDemo";

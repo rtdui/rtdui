@@ -1,7 +1,7 @@
 import React from "react";
 import { RadialProgress } from "@rtdui/core";
 
-export default function RadialProgressColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-center">
       <RadialProgress value={10} color="primary" />
@@ -14,3 +14,4 @@ export default function RadialProgressColorDemo() {
     </div>
   );
 }
+Demo.displayName = "RadialProgressColorDemo";

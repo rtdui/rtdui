@@ -1,6 +1,6 @@
 import { Avatar, AvatarGroup } from "@rtdui/core";
 
-export default function AvatarGroupDemo() {
+export default function Demo() {
   return (
     <>
       <AvatarGroup size="lg">
@@ -26,3 +26,4 @@ export default function AvatarGroupDemo() {
     </>
   );
 }
+Demo.displayName = "AvatarGroupDemo";

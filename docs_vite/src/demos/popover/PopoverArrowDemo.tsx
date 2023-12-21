@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover, Button } from "@rtdui/core";
 
-export default function PopoverArrowDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-8 items-center">
       <Popover>
@@ -17,3 +17,4 @@ export default function PopoverArrowDemo() {
     </div>
   );
 }
+Demo.displayName = "PopoverArrowDemo";

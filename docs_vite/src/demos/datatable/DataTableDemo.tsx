@@ -316,7 +316,7 @@ const columns: ColumnDef<Person>[] = [
   },
 ];
 
-export default function DataTableDemo() {
+export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
@@ -381,3 +381,4 @@ export default function DataTableDemo() {
     </div>
   );
 }
+Demo.displayName = "DataTableDemo";

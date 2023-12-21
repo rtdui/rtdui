@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover, Button } from "@rtdui/core";
 
-export default function PopoverControlledDemo() {
+export default function Demo() {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -15,3 +15,4 @@ export default function PopoverControlledDemo() {
     </Popover>
   );
 }
+Demo.displayName = "PopoverControlledDemo";

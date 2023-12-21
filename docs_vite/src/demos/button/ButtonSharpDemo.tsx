@@ -1,7 +1,7 @@
 import { Button } from "@rtdui/core";
 import { IconBell } from "@tabler/icons-react";
 
-export default function ButtonSharpDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-4">
@@ -89,3 +89,4 @@ export default function ButtonSharpDemo() {
     </div>
   );
 }
+Demo.displayName = "ButtonSharpDemo";

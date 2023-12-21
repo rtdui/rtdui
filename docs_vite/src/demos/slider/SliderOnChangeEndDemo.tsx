@@ -1,7 +1,7 @@
 import React from "react";
 import { Slider } from "@rtdui/core";
 
-export default function SliderOnChangeEndDemo() {
+export default function Demo() {
   const [value, setValue] = React.useState(35);
   const [endValue, setEndValue] = React.useState(35);
   return (
@@ -16,3 +16,4 @@ export default function SliderOnChangeEndDemo() {
     </div>
   );
 }
+Demo.displayName = "SliderOnChangeEndDemo";

@@ -1,6 +1,6 @@
 import { Checkbox } from "@rtdui/core";
 
-export default function CheckboxSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4">
       <Checkbox size="xs" label="xs" />
@@ -10,3 +10,4 @@ export default function CheckboxSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "CheckboxSizeDemo";

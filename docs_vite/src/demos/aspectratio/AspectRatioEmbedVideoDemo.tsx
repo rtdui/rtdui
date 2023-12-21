@@ -1,6 +1,6 @@
 import { AspectRatio } from "@rtdui/core";
 
-export default function AspectRatioEmbedVideoDemo() {
+export default function Demo() {
   return (
     <AspectRatio ratio="16/9">
       <video controls>
@@ -16,3 +16,4 @@ export default function AspectRatioEmbedVideoDemo() {
     </AspectRatio>
   );
 }
+Demo.displayName = "AspectRatioEmbedVideoDemo";

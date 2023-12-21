@@ -1,6 +1,6 @@
 import { Chip } from "@rtdui/core";
 
-export default function ChipColorDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Chip label="default" />
@@ -14,3 +14,4 @@ export default function ChipColorDemo() {
     </div>
   );
 }
+Demo.displayName = "ChipColorDemo";

@@ -13,7 +13,8 @@ interface DemoProps {
 export default function Demo(props: DemoProps) {
   const { data = {}, notProse = true } = props;
   const { Component } = data;
-  const componentName = ((Component as any).name as string).split("_")[0];
+  const componentName =
+    (Component as any).displayName ?? (Component as any).name;
 
   const codes = useOutletContext() as any[];
   return (

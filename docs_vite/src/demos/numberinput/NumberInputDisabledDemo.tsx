@@ -1,6 +1,6 @@
 import { NumberInput } from "@rtdui/core";
 
-export default function NumberInputDisabledDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-2">
       readOnly:
@@ -10,3 +10,4 @@ export default function NumberInputDisabledDemo() {
     </div>
   );
 }
+Demo.displayName = "NumberInputDisabledDemo";

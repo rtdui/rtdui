@@ -1,6 +1,6 @@
 import { Badge, Button } from "@rtdui/core";
 
-export default function BadgeInButtonDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
       <Button>
@@ -14,3 +14,4 @@ export default function BadgeInButtonDemo() {
     </div>
   );
 }
+Demo.displayName = "BadgeInButtonDemo";

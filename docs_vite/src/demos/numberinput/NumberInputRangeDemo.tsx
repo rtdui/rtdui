@@ -1,6 +1,6 @@
 import { NumberInput } from "@rtdui/core";
 
-export default function NumberInputRangeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-2">
       blur模式(默认模式)
@@ -21,3 +21,4 @@ export default function NumberInputRangeDemo() {
     </div>
   );
 }
+Demo.displayName = "NumberInputRangeDemo";

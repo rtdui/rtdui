@@ -136,6 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectDisabledDemo() {
+export default function Demo() {
   return <Select disabled options={fruits} />;
 }
+Demo.displayName = "SelectDisabledDemo";

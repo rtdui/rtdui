@@ -1,6 +1,6 @@
 import { Avatar } from "@rtdui/core";
 
-export default function AvatarIndicatorAndPlaceholderDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center justify-center">
       <Avatar online placeholder="A" />
@@ -8,3 +8,4 @@ export default function AvatarIndicatorAndPlaceholderDemo() {
     </div>
   );
 }
+Demo.displayName = "AvatarIndicatorAndPlaceholderDemo";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Swap } from "@rtdui/core";
 
-export default function SwapInFormDemo() {
+export default function Demo() {
   // 作为Swap的受控属性
   const [swapChecked, setSwapChecked] = React.useState(false);
 
@@ -44,3 +44,4 @@ export default function SwapInFormDemo() {
     </>
   );
 }
+Demo.displayName = "SwapInFormDemo";

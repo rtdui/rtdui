@@ -1,6 +1,6 @@
 import { Radio } from "@rtdui/core";
 
-export default function RadioSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <Radio size="xs" label="xs" />
@@ -10,3 +10,4 @@ export default function RadioSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "RadioSizeDemo";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Slider, RangeSlider } from "@rtdui/core";
 
-export default function SliderColorDemo() {
+export default function Demo() {
   const [color, setColor] = React.useState("#0000ff");
   return (
     <div className="flex flex-col gap-10 py-8">
@@ -15,3 +15,4 @@ export default function SliderColorDemo() {
     </div>
   );
 }
+Demo.displayName = "SliderColorDemo";

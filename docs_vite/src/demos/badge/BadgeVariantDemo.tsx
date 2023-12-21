@@ -1,6 +1,6 @@
 import { Badge } from "@rtdui/core";
 
-export default function BadgeVariantDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
       <Badge>New</Badge>
@@ -9,3 +9,4 @@ export default function BadgeVariantDemo() {
     </div>
   );
 }
+Demo.displayName = "BadgeVariantDemo";

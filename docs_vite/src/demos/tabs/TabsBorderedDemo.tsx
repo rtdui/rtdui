@@ -1,6 +1,6 @@
 import { Tabs } from "@rtdui/core";
 
-export default function TabsBorderedDemo() {
+export default function Demo() {
   return (
     <Tabs variant="bordered">
       <Tabs.TabPanel label="tab1">tab1 content</Tabs.TabPanel>
@@ -8,3 +8,4 @@ export default function TabsBorderedDemo() {
     </Tabs>
   );
 }
+Demo.displayName = "TabsBorderedDemo";

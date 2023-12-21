@@ -1,7 +1,7 @@
 import React from "react";
 import { JionGroup, Button, TextInput, Select, Indicator } from "@rtdui/core";
 
-export default function JoinGroupInputsDemo() {
+export default function Demo() {
   return (
     <JionGroup>
       <TextInput
@@ -31,3 +31,4 @@ export default function JoinGroupInputsDemo() {
     </JionGroup>
   );
 }
+Demo.displayName = "JoinGroupInputsDemo";

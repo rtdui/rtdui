@@ -1,6 +1,6 @@
 import { Grid } from "@rtdui/core";
 
-export default function GridWrapDemo() {
+export default function Demo() {
   return (
     <Grid>
       <Grid.Col span={4}>
@@ -18,3 +18,4 @@ export default function GridWrapDemo() {
     </Grid>
   );
 }
+Demo.displayName = "GridWrapDemo";

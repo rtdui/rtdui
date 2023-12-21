@@ -1,7 +1,7 @@
 import React from "react";
 import { Kbd } from "@rtdui/core";
 
-export default function KbdCharacterDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center">
       <Kbd>A</Kbd>
@@ -11,3 +11,4 @@ export default function KbdCharacterDemo() {
     </div>
   );
 }
+Demo.displayName = "KbdCharacterDemo";

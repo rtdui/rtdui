@@ -1,6 +1,6 @@
 import { CodeHighlight } from "@rtdui/code-highlight";
 
-export default function CodeHighlightLinesHighlightDemo() {
+export default function Demo() {
   const code = `
 import React from "react";
 
@@ -11,3 +11,4 @@ function Demo(props) {
 `;
   return <CodeHighlight code={code} language="jsx" highlingtLines="{1,4-5}" />;
 }
+Demo.displayName = "CodeHighlightLinesHighlightDemo";

@@ -1,6 +1,6 @@
 import { Watermark } from "@rtdui/core";
 
-export default function WatermarkImageDemo() {
+export default function Demo() {
   return (
     <Watermark
       width={200}
@@ -11,3 +11,4 @@ export default function WatermarkImageDemo() {
     </Watermark>
   );
 }
+Demo.displayName = "WatermarkImageDemo";

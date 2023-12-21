@@ -1,7 +1,7 @@
-import React, { useId } from "react";
+import React from "react";
 import { Button, Drawer } from "@rtdui/core";
 
-export default function DrawerBasicDemo() {
+export default function Demo() {
   const [leftDrawerOpen, setLeftDrawerOpen] = React.useState(false);
   const [rightDrawerOpen, setRightDrawerOpen] = React.useState(false);
 
@@ -31,3 +31,4 @@ export default function DrawerBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "DrawerBasicDemo";

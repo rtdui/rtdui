@@ -136,7 +136,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function SelectMultipleDemo() {
+export default function Demo() {
   return (
     <Select
       multiple
@@ -145,3 +145,4 @@ export default function SelectMultipleDemo() {
     />
   );
 }
+Demo.displayName = "SelectMultipleDemo";

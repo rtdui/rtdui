@@ -1,7 +1,7 @@
 import React from "react";
 import { Rating } from "@rtdui/core";
 
-export default function RatingControlledDemo() {
+export default function Demo() {
   const [value, setValue] = React.useState(2);
   return (
     <>
@@ -10,3 +10,4 @@ export default function RatingControlledDemo() {
     </>
   );
 }
+Demo.displayName = "RatingControlledDemo";

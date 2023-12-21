@@ -18,7 +18,7 @@ const columns: ColumnDef<Person>[] = [
   },
 ];
 
-export default function DataTableVirtualizedDemo() {
+export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
@@ -31,3 +31,4 @@ export default function DataTableVirtualizedDemo() {
     </div>
   );
 }
+Demo.displayName = "DataTableVirtualizedDemo";

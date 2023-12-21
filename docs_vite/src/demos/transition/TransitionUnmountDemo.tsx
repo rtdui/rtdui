@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Transition } from "@rtdui/core";
 
-export default function TransitionUnmountDemo() {
+export default function Demo() {
   const [state, setState] = React.useState(false);
   return (
     <div className="flex flex-col items-center">
@@ -28,3 +28,4 @@ export default function TransitionUnmountDemo() {
     </div>
   );
 }
+Demo.displayName = "TransitionUnmountDemo";

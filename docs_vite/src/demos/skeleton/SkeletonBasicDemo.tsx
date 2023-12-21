@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "@rtdui/core";
 
-export default function SkeletonBasicDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-4 bg-base-100 p-4">
       <div className="flex gap-4">
@@ -18,3 +18,4 @@ export default function SkeletonBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "SkeletonBasicDemo";

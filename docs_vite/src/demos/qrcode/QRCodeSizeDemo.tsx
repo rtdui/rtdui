@@ -2,7 +2,7 @@ import React from "react";
 import { QRCode } from "@rtdui/qr-code";
 import { TextInput, Slider } from "@rtdui/core";
 
-export default function QRCodeSizeDemo() {
+export default function Demo() {
   const [value, setValue] = React.useState("https://example.com/?query=1");
   const [size, setSize] = React.useState(160);
   return (
@@ -25,3 +25,4 @@ export default function QRCodeSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "QRCodeSizeDemo";

@@ -3,7 +3,7 @@ import { Steps, Button } from "@rtdui/core";
 
 const items = ["步骤1", "步骤2", "步骤3", "步骤4", "步骤5", "步骤6", "步骤7"];
 
-export default function StepsSequentialDemo() {
+export default function Demo() {
   const ref = React.useRef(null!);
   return (
     <>
@@ -12,3 +12,4 @@ export default function StepsSequentialDemo() {
     </>
   );
 }
+Demo.displayName = "StepsSequentialDemo";

@@ -1,6 +1,6 @@
 import { Badge } from "@rtdui/core";
 
-export default function BadgeInTextDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <h2>
@@ -27,3 +27,4 @@ export default function BadgeInTextDemo() {
     </div>
   );
 }
+Demo.displayName = "BadgeInTextDemo";

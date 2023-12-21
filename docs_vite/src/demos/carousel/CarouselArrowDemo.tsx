@@ -6,6 +6,7 @@ const items = [
   { imageSrc: "/photo-1414694762283-acccc27bca85.jpg" },
   { imageSrc: "/photo-1665553365602-b2fb8e5d1707.jpg" },
 ];
-export default function CarouselArrowDemo() {
+export default function Demo() {
   return <Carousel items={items} />;
 }
+Demo.displayName = "CarouselArrowDemo";

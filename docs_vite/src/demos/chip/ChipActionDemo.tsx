@@ -1,7 +1,7 @@
 import React from "react";
 import { Chip } from "@rtdui/core";
 
-export default function ChipActionDemo() {
+export default function Demo() {
   const [output, setOutput] = React.useState("");
   return (
     <div>
@@ -15,3 +15,4 @@ export default function ChipActionDemo() {
     </div>
   );
 }
+Demo.displayName = "ChipActionDemo";

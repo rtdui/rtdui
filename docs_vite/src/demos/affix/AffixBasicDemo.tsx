@@ -2,7 +2,7 @@ import { useWindowScroll } from "@rtdui/hooks";
 import { IconArrowUp } from "@tabler/icons-react";
 import { Affix, Button } from "@rtdui/core";
 
-export default function AffixBasicDemo() {
+export default function Demo() {
   const [scroll, scrollTo] = useWindowScroll();
   return (
     <div style={{ height: 1000 }}>
@@ -19,3 +19,4 @@ export default function AffixBasicDemo() {
     </div>
   );
 }
+Demo.displayName = "AffixBasicDemo";

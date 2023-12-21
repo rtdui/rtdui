@@ -1,6 +1,6 @@
 import { Switch } from "@rtdui/core";
 
-export default function SwitchSizeDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col items-start gap-4">
       <Switch size="xs" label="xs" />
@@ -10,3 +10,4 @@ export default function SwitchSizeDemo() {
     </div>
   );
 }
+Demo.displayName = "SwitchSizeDemo";

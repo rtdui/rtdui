@@ -1,6 +1,6 @@
 import { Slider, RangeSlider } from "@rtdui/core";
 
-export default function SliderDisabledDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-10 py-4">
       <Slider disabled labelAlwaysOn defaultValue={35} />
@@ -8,3 +8,4 @@ export default function SliderDisabledDemo() {
     </div>
   );
 }
+Demo.displayName = "SliderDisabledDemo";

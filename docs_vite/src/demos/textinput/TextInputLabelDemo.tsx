@@ -1,6 +1,6 @@
 import { TextInput } from "@rtdui/core";
 
-export default function TextInputLabelDemo() {
+export default function Demo() {
   return (
     <TextInput
       placeholder="请输入"
@@ -10,3 +10,4 @@ export default function TextInputLabelDemo() {
     />
   );
 }
+Demo.displayName = "TextInputLabelDemo";

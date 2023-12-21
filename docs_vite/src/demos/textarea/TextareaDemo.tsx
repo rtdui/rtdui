@@ -1,6 +1,6 @@
 import { TextArea } from "@rtdui/core";
 
-export default function TextareaDemo() {
+export default function Demo() {
   return (
     <div className="flex flex-col gap-2">
       不限行数:
@@ -10,3 +10,4 @@ export default function TextareaDemo() {
     </div>
   );
 }
+Demo.displayName = "TextareaDemo";

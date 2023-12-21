@@ -1,7 +1,7 @@
 import { Swap } from "@rtdui/core";
 import { IconVolume3 as IconVolumeMute, IconVolume } from "@tabler/icons-react";
 
-export default function SwapIconDemo() {
+export default function Demo() {
   return (
     <Swap>
       <IconVolumeMute size={36} />
@@ -9,3 +9,4 @@ export default function SwapIconDemo() {
     </Swap>
   );
 }
+Demo.displayName = "SwapIconDemo";

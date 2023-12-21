@@ -1,6 +1,6 @@
 import { Badge } from "@rtdui/core";
 
-export default function BadgePolymorphicDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
       <Badge as="span">+99</Badge>
@@ -8,3 +8,4 @@ export default function BadgePolymorphicDemo() {
     </div>
   );
 }
+Demo.displayName = "BadgePolymorphicDemo";

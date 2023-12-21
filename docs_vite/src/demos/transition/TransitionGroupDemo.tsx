@@ -2,7 +2,7 @@ import React from "react";
 import { Button, TransitionGroup, Transition } from "@rtdui/core";
 
 let count = 100;
-export default function TransitionGroupDemo() {
+export default function Demo() {
   const [items, setItems] = React.useState(["Item 1", "Item 2", "Item 3"]);
 
   return (
@@ -41,3 +41,4 @@ export default function TransitionGroupDemo() {
     </div>
   );
 }
+Demo.displayName = "TransitionGroupDemo";

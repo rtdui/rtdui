@@ -22,6 +22,7 @@ const items = [
   },
 ];
 
-export default function StatPanelBackgroundDemo() {
+export default function Demo() {
   return <StatPanel items={items} className="bg-info" />;
 }
+Demo.displayName = "StatPanelBackgroundDemo";

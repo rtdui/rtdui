@@ -1,6 +1,6 @@
 import { ButtonCheckbox } from "@rtdui/core";
 
-export default function ButtonCheckboxGroupDemo() {
+export default function Demo() {
   return (
     <div className="join">
       <ButtonCheckbox required label="label1" className="join-item" />
@@ -10,3 +10,4 @@ export default function ButtonCheckboxGroupDemo() {
     </div>
   );
 }
+Demo.displayName = "ButtonCheckboxGroupDemo";

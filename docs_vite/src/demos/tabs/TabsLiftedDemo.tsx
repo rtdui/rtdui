@@ -1,6 +1,6 @@
 import { Tabs } from "@rtdui/core";
 
-export default function TabsLiftedDemo() {
+export default function Demo() {
   return (
     <Tabs>
       <Tabs.TabPanel label="tab1">tab1 content</Tabs.TabPanel>
@@ -8,3 +8,4 @@ export default function TabsLiftedDemo() {
     </Tabs>
   );
 }
+Demo.displayName = "TabsLiftedDemo";

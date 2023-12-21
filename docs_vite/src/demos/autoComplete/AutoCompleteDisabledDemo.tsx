@@ -27,6 +27,7 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-export default function AutoCompleteDisabledDemo() {
+export default function Demo() {
   return <AutoComplete options={fruits} disabled />;
 }
+Demo.displayName = "AutoCompleteDisabledDemo";

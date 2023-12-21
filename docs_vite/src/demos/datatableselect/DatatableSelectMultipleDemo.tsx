@@ -16,7 +16,7 @@ const dataTableColumns: ColumnDef<Person>[] = [
 
 const getRowId = (row: any) => row.id;
 
-export default function DatatableSelectBasicDemo() {
+export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
   React.useEffect(() => {
     setData(makeData(20, 3));
@@ -36,3 +36,4 @@ export default function DatatableSelectBasicDemo() {
     />
   );
 }
+Demo.displayName = "DatatableSelectMultipleDemo";
