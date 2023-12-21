@@ -121,7 +121,7 @@ export const SpotlightRoot = React.forwardRef<
         closeOnActionTrigger,
       }}
     >
-      <Portal type="spotlight" className="relative z-[9999]">
+      <Portal type="spotlight" className="relative z-[999]">
         <div
           ref={ref}
           className={clsx("modal", { "modal-open": opened || !!forceOpened })}
