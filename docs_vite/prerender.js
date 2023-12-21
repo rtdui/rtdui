@@ -14,11 +14,11 @@ const { render } = await import("./dist/server/entry-server.js");
 
 // determine routes to pre-render from ./routes
 const routesToPrerender = fg
-  .sync("./src/routes/*")
-  .filter((d) => {
-    const name = d.split("/").at(-1)?.split(".").at(-2).toLowerCase();
-    return name !== "root" && name !== "_layout";
-  })
+  .sync([
+    "./src/routes/*",
+    "!./src/routes/_layout.tsx",
+    "!./src/routes/root.tsx",
+  ])
   .map((d) => {
     const name = d.split("/").at(-1)?.split(".").at(-2).toLowerCase();
     return name === "_index" ? `/` : `/${name}`;
