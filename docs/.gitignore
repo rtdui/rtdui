@@ -1,7 +1,0 @@
-node_modules
-
-/.cache
-/functions
-/.wrangler
-/public/build
-.dev.vars
