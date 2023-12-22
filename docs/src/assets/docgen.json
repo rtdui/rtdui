@@ -595,6 +595,710 @@
       }
     }
   },
+  "Spotlight": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/Spotlight.tsx",
+    "description": "",
+    "displayName": "Spotlight",
+    "props": {
+      "actions": {
+        "defaultValue": null,
+        "description": "Actions data, passed down to <code>Spotlight.Action</code> component",
+        "name": "actions",
+        "required": true,
+        "type": {
+          "name": "SpotlightActions[]"
+        }
+      },
+      "clearQueryOnClose": {
+        "defaultValue": null,
+        "description": "Determines whether the search query should be cleared when the spotlight is closed, <code>true</code> by default",
+        "name": "clearQueryOnClose",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "closeOnActionTrigger": {
+        "defaultValue": null,
+        "description": "Determines whether spotlight should be closed when one of the actions is triggered, <code>true</code> by default",
+        "name": "closeOnActionTrigger",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "If set, spotlight will not be rendered",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "filter": {
+        "defaultValue": null,
+        "description": "Function to filter actions data based on search query, by default actions are filtered by title, description and keywords",
+        "name": "filter",
+        "required": false,
+        "type": {
+          "name": "SpotlightFilterFunction | undefined"
+        }
+      },
+      "forceOpened": {
+        "defaultValue": null,
+        "description": "Forces opened state, useful for tests",
+        "name": "forceOpened",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "highlightQuery": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether search query should be highlighted in action label",
+        "name": "highlightQuery",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "limit": {
+        "defaultValue": {
+          "value": "Infinity"
+        },
+        "description": "Maximum number of actions displayed at a time",
+        "name": "limit",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "maxHeight": {
+        "defaultValue": null,
+        "description": "Spotlight content max-height. Ignored unless <code>scrollable</code> prop is set. <code>400</code> by default",
+        "name": "maxHeight",
+        "required": false,
+        "type": {
+          "name": "MaxHeight<number | (string & {})> | undefined"
+        }
+      },
+      "nothingFound": {
+        "defaultValue": null,
+        "description": "Message displayed when none of the actions match given <code>filter</code>",
+        "name": "nothingFound",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "onQueryChange": {
+        "defaultValue": null,
+        "description": "Called when query changes",
+        "name": "onQueryChange",
+        "required": false,
+        "type": {
+          "name": "((query: string) => void) | undefined"
+        }
+      },
+      "onSpotlightClose": {
+        "defaultValue": null,
+        "description": "Called when spotlight closes",
+        "name": "onSpotlightClose",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onSpotlightOpen": {
+        "defaultValue": null,
+        "description": "Called when spotlight opens",
+        "name": "onSpotlightOpen",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "query": {
+        "defaultValue": null,
+        "description": "Controlled Spotlight search query",
+        "name": "query",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "scrollable": {
+        "defaultValue": null,
+        "description": "Determines whether the actions list should be scrollable. If not set, <code>maxHeight</code> is ignored, <code>false</code> by default",
+        "name": "scrollable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "searchProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Spotlight.Search</code>",
+        "name": "searchProps",
+        "required": false,
+        "type": {
+          "name": "SpotlightSearchProps | undefined"
+        }
+      },
+      "shortcut": {
+        "defaultValue": null,
+        "description": "Keyboard shortcut or a list of shortcuts to trigger spotlight, <code>'mod + K'</code> by default",
+        "name": "shortcut",
+        "required": false,
+        "type": {
+          "name": "string | string[] | null | undefined"
+        }
+      },
+      "store": {
+        "defaultValue": null,
+        "description": "Spotlight store, can be used to create multiple instances of spotlight",
+        "name": "store",
+        "required": false,
+        "type": {
+          "name": "SpotlightStore | undefined"
+        }
+      },
+      "tagsToIgnore": {
+        "defaultValue": null,
+        "description": "A list of tags which when focused will be ignored by shortcut, <code>['input', 'textarea', 'select']</code> by default",
+        "name": "tagsToIgnore",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "triggerOnContentEditable": {
+        "defaultValue": null,
+        "description": "Determines whether shortcut should trigger based in contentEditable, <code>false</code> by default",
+        "name": "triggerOnContentEditable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
+  "SpotlightAction": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightAction.tsx",
+    "description": "",
+    "displayName": "SpotlightAction",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Children override default action elements, if passed, label, description and sections are hidden",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "closeSpotlightOnTrigger": {
+        "defaultValue": null,
+        "description": "Determines whether the spotlight should be closed when action is triggered, overrides <code>closeOnActionTrigger</code> prop set on <code>Spotlight</code>",
+        "name": "closeSpotlightOnTrigger",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            },
+            {
+              "value": "\"neutral\""
+            }
+          ]
+        }
+      },
+      "description": {
+        "defaultValue": null,
+        "description": "Action description, pass string to use in default filter",
+        "name": "description",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "dimmedSections": {
+        "defaultValue": null,
+        "description": "Determines whether left and right sections should have dimmed styles, <code>true</code> by default",
+        "name": "dimmedSections",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "highlightColor": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.colors</code> of any valid CSS color that will be used to highlight search query, <code>'yellow'</code> by default",
+        "name": "highlightColor",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            },
+            {
+              "value": "\"neutral\""
+            }
+          ]
+        }
+      },
+      "highlightQuery": {
+        "defaultValue": null,
+        "description": "Determines whether search query should be highlighted in action label, <code>false</code> by default",
+        "name": "highlightQuery",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "keywords": {
+        "defaultValue": null,
+        "description": "Keywords that are used for default filtering, not displayed anywhere, can be a string: \"react,router,javascript\" or an array: ['react', 'router', 'javascript']",
+        "name": "keywords",
+        "required": false,
+        "type": {
+          "name": "string | string[] | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Action label, pass string to use in default filter",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "leftSection": {
+        "defaultValue": null,
+        "description": "Section displayed on the left side of the label, for example, icon",
+        "name": "leftSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "rightSection": {
+        "defaultValue": null,
+        "description": "Section displayed on the right side of the label, for example, hotkey",
+        "name": "rightSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      }
+    }
+  },
+  "SpotlightActionsGroup": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightActionsGroup.tsx",
+    "description": "",
+    "displayName": "SpotlightActionsGroup",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "<code>Spotlight.Action</code> components",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Group label",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      }
+    }
+  },
+  "SpotlightActionsList": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightActionsList.tsx",
+    "description": "",
+    "displayName": "SpotlightActionsList",
+    "props": {}
+  },
+  "SpotlightEmpty": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightEmpty.tsx",
+    "description": "",
+    "displayName": "SpotlightEmpty",
+    "props": {}
+  },
+  "SpotlightFooter": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightFooter.tsx",
+    "description": "",
+    "displayName": "SpotlightFooter",
+    "props": {}
+  },
+  "SpotlightRoot": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightRoot.tsx",
+    "description": "",
+    "displayName": "SpotlightRoot",
+    "props": {
+      "clearQueryOnClose": {
+        "defaultValue": null,
+        "description": "Determines whether the search query should be cleared when the spotlight is closed, <code>true</code> by default",
+        "name": "clearQueryOnClose",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "closeOnActionTrigger": {
+        "defaultValue": null,
+        "description": "Determines whether spotlight should be closed when one of the actions is triggered, <code>true</code> by default",
+        "name": "closeOnActionTrigger",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "If set, spotlight will not be rendered",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "forceOpened": {
+        "defaultValue": null,
+        "description": "Forces opened state, useful for tests",
+        "name": "forceOpened",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "maxHeight": {
+        "defaultValue": null,
+        "description": "Spotlight content max-height. Ignored unless <code>scrollable</code> prop is set. <code>400</code> by default",
+        "name": "maxHeight",
+        "required": false,
+        "type": {
+          "name": "MaxHeight<number | (string & {})> | undefined"
+        }
+      },
+      "onQueryChange": {
+        "defaultValue": null,
+        "description": "Called when query changes",
+        "name": "onQueryChange",
+        "required": false,
+        "type": {
+          "name": "((query: string) => void) | undefined"
+        }
+      },
+      "onSpotlightClose": {
+        "defaultValue": null,
+        "description": "Called when spotlight closes",
+        "name": "onSpotlightClose",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onSpotlightOpen": {
+        "defaultValue": null,
+        "description": "Called when spotlight opens",
+        "name": "onSpotlightOpen",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "query": {
+        "defaultValue": null,
+        "description": "Controlled Spotlight search query",
+        "name": "query",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "scrollable": {
+        "defaultValue": null,
+        "description": "Determines whether the actions list should be scrollable. If not set, <code>maxHeight</code> is ignored, <code>false</code> by default",
+        "name": "scrollable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "shortcut": {
+        "defaultValue": null,
+        "description": "Keyboard shortcut or a list of shortcuts to trigger spotlight, <code>'mod + K'</code> by default",
+        "name": "shortcut",
+        "required": false,
+        "type": {
+          "name": "string | string[] | null | undefined"
+        }
+      },
+      "store": {
+        "defaultValue": null,
+        "description": "Spotlight store, can be used to create multiple instances of spotlight",
+        "name": "store",
+        "required": false,
+        "type": {
+          "name": "SpotlightStore | undefined"
+        }
+      },
+      "tagsToIgnore": {
+        "defaultValue": null,
+        "description": "A list of tags which when focused will be ignored by shortcut, <code>['input', 'textarea', 'select']</code> by default",
+        "name": "tagsToIgnore",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "triggerOnContentEditable": {
+        "defaultValue": null,
+        "description": "Determines whether shortcut should trigger based in contentEditable, <code>false</code> by default",
+        "name": "triggerOnContentEditable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
+  "SpotlightSearch": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/SpotlightSearch.tsx",
+    "description": "",
+    "displayName": "SpotlightSearch",
+    "props": {
+      "bordered": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "是否显示边框",
+        "name": "bordered",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            }
+          ]
+        }
+      },
+      "error": {
+        "defaultValue": null,
+        "description": "",
+        "name": "error",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "ghost": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ghost",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "helperText": {
+        "defaultValue": null,
+        "description": "",
+        "name": "helperText",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "leftSection": {
+        "defaultValue": null,
+        "description": "",
+        "name": "leftSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "leftSectionWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "leftSectionWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "placeholder": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placeholder",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "rightSection": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rightSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "rightSectionWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rightSectionWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            }
+          ]
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "可以通过槽为内部组件添加自定义className",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ input?: string | undefined; left?: string | undefined; right?: string | undefined; label?: string | undefined; helperText?: string | undefined; } | undefined"
+        }
+      }
+    }
+  },
   "CodeHighlight": {
     "filePath": "D:/sources/rtdui/packages/code-highlight/src/CodeHighlight/CodeHighlight.tsx",
     "description": "",
@@ -1113,23 +1817,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -1183,23 +1887,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -1267,23 +1971,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -1292,7 +1996,7 @@
   },
   "Badge": {
     "filePath": "D:/sources/rtdui/packages/core/src/Badge/Badge.tsx",
-    "description": "",
+    "description": "多态组件, ref会转发给实际的组件",
     "displayName": "Badge",
     "props": {
       "as": {
@@ -1306,7 +2010,7 @@
       },
       "color": {
         "defaultValue": null,
-        "description": "",
+        "description": "theme color",
         "name": "color",
         "required": false,
         "type": {
@@ -1345,7 +2049,7 @@
       },
       "ghost": {
         "defaultValue": null,
-        "description": "",
+        "description": "no background and no border",
         "name": "ghost",
         "required": false,
         "type": {
@@ -1363,7 +2067,7 @@
       },
       "outline": {
         "defaultValue": null,
-        "description": "",
+        "description": "border without background",
         "name": "outline",
         "required": false,
         "type": {
@@ -1372,29 +2076,29 @@
       },
       "size": {
         "defaultValue": {
-          "value": "md"
+          "value": "\"md\""
         },
-        "description": "",
+        "description": "尺寸大小",
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -1544,23 +2248,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -1719,23 +2423,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -1816,11 +2520,17 @@
         "name": "shadowSize",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
           "value": [
             {
               "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
             },
             {
               "value": "\"md\""
@@ -1833,12 +2543,6 @@
             },
             {
               "value": "\"2xl\""
-            },
-            {
-              "value": "\"xs\""
-            },
-            {
-              "value": "\"sm\""
             }
           ]
         }
@@ -1967,23 +2671,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -2351,23 +3055,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -2888,23 +3592,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -2940,23 +3644,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -3022,23 +3726,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -3095,23 +3799,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -3568,23 +4272,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -3602,11 +4306,17 @@
         "name": "elevation",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
           "value": [
             {
               "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
             },
             {
               "value": "\"md\""
@@ -3619,12 +4329,6 @@
             },
             {
               "value": "\"2xl\""
-            },
-            {
-              "value": "\"xs\""
-            },
-            {
-              "value": "\"sm\""
             }
           ]
         }
@@ -4195,23 +4899,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -4362,23 +5066,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -4468,23 +5172,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -4560,23 +5264,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -4804,23 +5508,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -4982,23 +5686,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -5059,11 +5763,17 @@
         "name": "elevation",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
           "value": [
             {
               "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
             },
             {
               "value": "\"md\""
@@ -5076,12 +5786,6 @@
             },
             {
               "value": "\"2xl\""
-            },
-            {
-              "value": "\"xs\""
-            },
-            {
-              "value": "\"sm\""
             }
           ]
         }
@@ -5346,23 +6050,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -5631,23 +6335,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -5802,23 +6506,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -6701,23 +7405,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -7208,23 +7912,23 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
           "value": [
             {
               "value": "undefined"
-            },
-            {
-              "value": "\"md\""
-            },
-            {
-              "value": "\"lg\""
             },
             {
               "value": "\"xs\""
             },
             {
               "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
             }
           ]
         }
@@ -7433,6 +8137,70 @@
         "required": true,
         "type": {
           "name": "string"
+        }
+      }
+    }
+  },
+  "Highlight": {
+    "filePath": "D:/sources/rtdui/packages/spotlight/src/Hightlight/Highlight.tsx",
+    "description": "",
+    "displayName": "Highlight",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "String parts of which must be highlighted",
+        "name": "children",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            },
+            {
+              "value": "\"neutral\""
+            }
+          ]
+        }
+      },
+      "highlight": {
+        "defaultValue": null,
+        "description": "Substring or an array of substrings to highlight in <code>children</code>",
+        "name": "highlight",
+        "required": true,
+        "type": {
+          "name": "string | string[]"
         }
       }
     }
@@ -7765,11 +8533,17 @@
         "name": "radius",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
           "value": [
             {
               "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
             },
             {
               "value": "\"md\""
@@ -7782,12 +8556,6 @@
             },
             {
               "value": "\"2xl\""
-            },
-            {
-              "value": "\"xs\""
-            },
-            {
-              "value": "\"sm\""
             }
           ]
         }
@@ -7822,7 +8590,7 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "number | (string & {}) | \"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined"
+          "name": "number | (string & {}) | \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined"
         }
       },
       "slots": {
@@ -8056,11 +8824,17 @@
         "name": "radius",
         "required": false,
         "type": {
-          "name": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
-          "raw": "\"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined",
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
           "value": [
             {
               "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
             },
             {
               "value": "\"md\""
@@ -8073,12 +8847,6 @@
             },
             {
               "value": "\"2xl\""
-            },
-            {
-              "value": "\"xs\""
-            },
-            {
-              "value": "\"sm\""
             }
           ]
         }
@@ -8113,7 +8881,7 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "number | (string & {}) | \"md\" | \"lg\" | \"xl\" | \"2xl\" | \"xs\" | \"sm\" | undefined"
+          "name": "number | (string & {}) | \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined"
         }
       },
       "slots": {

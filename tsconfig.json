@@ -4,12 +4,9 @@
     "./packages/*/esm/**/*",
     "./packages/*/lib/**/*",
     "./packages/*/cjs/**/*",
-    "./docs/build/**/*",
+    "./docs/dist/**/*",
     "./docs/functions/**/*",
-    "./docs/public/**/*",
-    "./docs_vite/dist/**/*",
-    "./docs_vite/functions/**/*",
-    "./docs_vite/public/**/*"
+    "./docs/public/**/*"
   ],
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom"],

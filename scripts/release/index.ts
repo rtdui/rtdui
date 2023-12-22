@@ -75,7 +75,6 @@ async function release() {
     getPath("package.json"),
     getPath("package-lock.json"),
     getPath("docs/package.json"),
-    getPath("docs_vite/package.json"),
   ]);
   await git.commit(`[release] Version: ${incrementedVersion}`);
   await git.push();
