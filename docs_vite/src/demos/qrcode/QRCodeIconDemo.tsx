@@ -7,7 +7,7 @@ export default function Demo() {
   return (
     <div className="flex flex-col gap-2">
       <TextInput value={value} onChange={(e) => setValue(e.target.value)} />
-      <QRCode value={value} icon="/favicon.ico" />
+      <QRCode value={value} icon="/rtdui.svg" />
     </div>
   );
 }

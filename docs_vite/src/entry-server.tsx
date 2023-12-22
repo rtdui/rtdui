@@ -27,7 +27,7 @@ export async function render(url: string) {
 
   const handler = createStaticHandler(routes);
   const context: any = await handler.query(
-    new Request(`http://localhost${url}`, { method: "get" })
+    new Request(`http://localhost${url}`, { method: "GET" })
   );
 
   const router = createStaticRouter(handler.dataRoutes, context);

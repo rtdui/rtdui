@@ -2,11 +2,11 @@ import Root from "./routes/root";
 import Index from "./routes/_index";
 import Layout from "./routes/_layout";
 
-const allMdxInDemos = import.meta.glob("./demos/**/*.mdx");
+const allMdxInDemos = import.meta.glob("./demos/**/*.mdx", { eager: true });
 const demosRoutesInLayout: any[] = Object.entries(allMdxInDemos).map((d) => {
   const path = `components/${d[0].split("/").at(-2)}`;
   const lazy = async () => {
-    const module: any = await d[1]();
+    const module: any = d[1];
     return {
       Component: module.default,
       element: module.element,
@@ -20,11 +20,13 @@ const demosRoutesInLayout: any[] = Object.entries(allMdxInDemos).map((d) => {
   return { path, lazy };
 });
 
-const allMdxInLayout = import.meta.glob("./routes/**/_layout.*.mdx");
+const allMdxInLayout = import.meta.glob("./routes/**/_layout.*.mdx", {
+  eager: true,
+});
 const routesInLayout: any[] = Object.entries(allMdxInLayout).map((d) => {
   const path = `${d[0].split("/").at(-1)?.split(".").at(-2)}`;
   const lazy = async () => {
-    const module: any = await d[1]();
+    const module: any = d[1];
     return {
       Component: module.default,
       element: module.element,
@@ -40,15 +42,14 @@ const routesInLayout: any[] = Object.entries(allMdxInLayout).map((d) => {
 
 const allRoutesInLayout = [...routesInLayout, ...demosRoutesInLayout];
 
-const allTsxInRoot = import.meta.glob([
-  "./routes/**/*.tsx",
-  "!**/_*",
-  "!./routes/root.tsx",
-]);
+const allTsxInRoot = import.meta.glob(
+  ["./routes/**/*.tsx", "!**/_*", "!./routes/root.tsx"],
+  { eager: true }
+);
 const routesInRoot: any[] = Object.entries(allTsxInRoot).map((d) => {
   const path = `${d[0].split("/").at(-1)?.split(".").at(-2)}`;
   const lazy = async () => {
-    const module: any = await d[1]();
+    const module: any = d[1];
     return {
       Component: module.default,
       element: module.element,
