@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import remarkBreaks from "remark-breaks";
 import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
@@ -19,7 +20,8 @@ export default defineConfig({
         remarkPlugins: [
           [remarkToc as any, { heading: "toc|table[ -]of[ -]contents|目录?" }], // 指定特定的标题文本: toc或Table of contents或目录
           remarkGfm as any,
-          remarkFrontmatter,
+          remarkFrontmatter, // 只是让mdx识别markdown中的frontmatter
+          remarkMdxFrontmatter, // 必须依赖remarkFrontmatter, 将frontmatter metadata转换到mdx模块的export
           remarkBreaks,
           remarkMath as any,
         ],

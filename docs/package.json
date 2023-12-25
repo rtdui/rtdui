@@ -42,6 +42,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
+    "remark-mdx-frontmatter": "^4.0.0",
     "remark-toc": "^9.0.0"
   },
   "devDependencies": {
