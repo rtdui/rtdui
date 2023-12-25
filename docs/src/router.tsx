@@ -67,22 +67,14 @@ export const routes = [
   {
     path: "/",
     element: <Root />,
-    // errorElement: <ErrorPage />,
-    // loader: rootLoader,
-    // action: rootAction,
     children: [
       // 首页
       { index: true, element: <Index /> },
+      // 根路径下的路由
       ...routesInRoot,
       {
         element: <Layout />,
         children: allRoutesInLayout,
-        // children: [
-        //   {
-        //     path: "install",
-        //     lazy: () => import(`./routes/${route}.tsx`),
-        //   },
-        // ],
       },
     ],
   },

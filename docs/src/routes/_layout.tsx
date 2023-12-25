@@ -21,6 +21,7 @@ import apidocs from "../assets/docgen.json";
 import democodes from "../assets/codegen.json";
 import menuData from "../assets/menuData.json";
 import { IconTranslate } from "../assets/IconTranslate";
+import "katex/dist/katex.css";
 
 export default function Layout() {
   const toggleRef = React.useRef<any>(null!);
