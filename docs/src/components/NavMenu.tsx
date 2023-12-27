@@ -12,7 +12,7 @@ export default function NavMenu(props: NavMenuProps) {
   const { data = [], onClick, className } = props;
   const { t } = useTranslation();
   return (
-    <ul className={clsx("menu", className)}>
+    <ul className={clsx("menu", "pb-9", className)}>
       {data.map((d) => (
         <React.Fragment key={d.group}>
           <li className="menu-title">{t(`navMenu.group.${d.group}`)}</li>
