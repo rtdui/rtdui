@@ -8,7 +8,7 @@
     "build": "npm run build:ssg",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:ssg": "vite build --outDir dist/static && npm run build:ssr && node prerender",
-    "start": "wrangler pages dev --kv=RTDUI_KV --compatibility-date=2023-06-21 ./dist/static",
+    "start": "wrangler pages dev --ip=0.0.0.0 --kv=RTDUI_KV --compatibility-date=2023-06-21 ./dist/static",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
