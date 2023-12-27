@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
 import { Notifications } from "@rtdui/notifications";
 import { Dialogs } from "@rtdui/dialogs";
 import { Spotlight } from "@rtdui/spotlight";
@@ -14,6 +14,7 @@ export default function Root() {
 
   return (
     <>
+      <ScrollRestoration />
       <Dialogs />
       <Notifications />
       <Spotlight
