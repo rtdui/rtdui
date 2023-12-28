@@ -63,7 +63,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
 
     return (
       <RadioGroupProvider value={contextValue}>
-        <div>
+        <div className="flex flex-col gap-2">
           {label && <span>{label}</span>}
           <div className="flex flex-col gap-1 justify-items-center">
             {children}
