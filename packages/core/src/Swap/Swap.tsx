@@ -41,9 +41,7 @@ export const Swap = React.forwardRef<HTMLInputElement, SwapProps>(
 
     React.useEffect(() => {
       // 初始时设置中间态
-      if (indeterminate) {
-        inputRef.current.indeterminate = true;
-      }
+      inputRef.current.indeterminate = indeterminate;
     }, [indeterminate]);
     return (
       <label
@@ -56,7 +54,7 @@ export const Swap = React.forwardRef<HTMLInputElement, SwapProps>(
           className
         )}
       >
-        <input {...other} ref={mergedRef} type="checkbox" />
+        <input {...other} ref={mergedRef} type="checkbox" className="hidden" />
         {React.Children.toArray(children)
           .slice(0, indeterminate ? 3 : 2)
           .map((d, index) => (
