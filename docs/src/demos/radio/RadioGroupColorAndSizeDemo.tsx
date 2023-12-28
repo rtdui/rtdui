@@ -1,9 +1,10 @@
 import React from "react";
-import { RadioGroup, Radio } from "@rtdui/core";
+import { RadioGroup, Radio, Divider } from "@rtdui/core";
 
 export default function Demo() {
   return (
-    <>
+    <div className="flex flex-col gap-8">
+      <Divider>Size</Divider>
       <RadioGroup
         size="xs"
         color="primary"
@@ -51,6 +52,8 @@ export default function Demo() {
         <Radio value={3} label="Radio标签3" />
         <Radio value={4} label="Radio标签4" />
       </RadioGroup>
+
+      <Divider>Color</Divider>
       <RadioGroup
         color="success"
         name="radioGroup5"
@@ -84,7 +87,7 @@ export default function Demo() {
         <Radio value={3} label="Radio标签3" />
         <Radio value={4} label="Radio标签4" />
       </RadioGroup>
-    </>
+    </div>
   );
 }
 Demo.displayName = "RadioGroupColorAndSizeDemo";
