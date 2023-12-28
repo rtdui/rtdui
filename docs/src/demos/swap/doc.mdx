@@ -27,21 +27,21 @@ import SwapTextDemo from "./SwapTextDemo";
 
 <Demo data={{ Component: SwapIconDemo }} />
 
-## 图标旋转过渡效果
+## 旋转特效
 
-会在默认的 fade 的效果上叠加旋转效果.
+旋转特效会在fade 特效上叠加旋转特效.
 
 <Demo data={{ Component: SwapIconRotateDemo }} />
 
-## 旋转翻转效果
+## 翻转特效
 
-Swap 的孩子可以是任意元素, 本例中使用了 div 元素作为孩子.
+Swap 的孩子可以是任意元素, 本例中使用了 div 元素作为孩子. 并给它设置了翻转特效
 
 <Demo data={{ Component: SwapFlipDemo }} />
 
-## 初始时为可以设置为中间状态
+## 初始时可以设置中间态
 
-要启用中间状态, 则必须提供三个孩子元素, 第三个元素将作为初始时的中间态显示元素
+要启用中间状态, `indeterminate`属性设置为`true`, 并且必须提供三个孩子元素, 第三个元素将作为初始时的中间态
 
 > Tip: 一旦进行了点击则再也不会回到中间态.
 
