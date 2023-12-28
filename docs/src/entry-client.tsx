@@ -1,6 +1,10 @@
 import React, { startTransition } from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  matchRoutes,
+} from "react-router-dom";
 import i18next from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
@@ -9,9 +13,29 @@ import i18nConfig from "./i18n/config";
 import { routes } from "./router";
 import "./tailwind.css";
 
-const router = createBrowserRouter(routes);
-
 async function init() {
+  //#region 消除route.lazy防止router fallback
+  // Determine if any of the initial routes are lazy
+  const lazyMatches = matchRoutes(routes, window.location)?.filter(
+    (m: any) => m.route.lazy
+  );
+
+  // Load the lazy matches and update the routes before creating your router
+  // so we can hydrate the SSR-rendered content synchronously
+  if (lazyMatches && lazyMatches?.length > 0) {
+    await Promise.all(
+      lazyMatches.map(async (m: any) => {
+        const routeModule = await m.route.lazy();
+        Object.assign(m.route, {
+          ...routeModule,
+          lazy: undefined,
+        });
+      })
+    );
+  }
+  //#endregion 消除route.lazy防止router fallback
+  const router = createBrowserRouter(routes);
+
   await i18next
     .use(initReactI18next) // Tell i18next to use the react-i18next plugin
     .use(LanguageDetector) // Setup a client-side language detector
