@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useSpotlightContext } from "./Spotlight.context";
 
 export type SpotlightActionsGroupStylesNames = "actionsGroup";
@@ -22,7 +23,15 @@ export const SpotlightActionsGroup = React.forwardRef<
   const ctx = useSpotlightContext();
 
   return (
-    <div ref={ref} {...others}>
+    <div
+      ref={ref}
+      className={clsx(
+        "before:content-[--spotlight-group-label] before:text-gray-400 before:text-sm",
+        className
+      )}
+      {...others}
+      style={{ ...style, "--spotlight-group-label": `'${label}'` } as any}
+    >
       {children}
     </div>
   );

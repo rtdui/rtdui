@@ -3,7 +3,7 @@ import { useUncontrolled } from "@rtdui/hooks";
 import { defaultSpotlightFilter } from "./default-spotlight-filter";
 import { isActionsGroup } from "./is-actions-group";
 import { limitActions } from "./limit-actions";
-import { spotlight, spotlightStore } from "./spotlight.store";
+import { spotlightStore } from "./spotlight.store";
 import { SpotlightAction, SpotlightActionProps } from "./SpotlightAction";
 import { SpotlightActionsGroup } from "./SpotlightActionsGroup";
 import { SpotlightActionsList } from "./SpotlightActionsList";

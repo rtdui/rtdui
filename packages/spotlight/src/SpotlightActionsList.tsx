@@ -1,4 +1,5 @@
 import React, { useEffect, useId } from "react";
+import clsx from "clsx";
 import { useSpotlightContext } from "./Spotlight.context";
 import { spotlightActions } from "./spotlight.store";
 
@@ -27,7 +28,12 @@ export const SpotlightActionsList = React.forwardRef<
   }, [listId]);
 
   return (
-    <div ref={ref} id={listId} {...others}>
+    <div
+      ref={ref}
+      id={listId}
+      {...others}
+      className={clsx("max-h-96 overflow-y-auto", className)}
+    >
       {children}
     </div>
   );

@@ -128,12 +128,7 @@ export const SpotlightRoot = React.forwardRef<
           {...others}
           data-scrollable={scrollable || undefined}
         >
-          <div
-            className="modal-box"
-            style={{ "--tw-translate-y": "-50%" } as any}
-          >
-            {children}
-          </div>
+          <div className="modal-box">{children}</div>
           <label
             className="modal-backdrop backdrop-blur"
             onClick={() => spotlightActions.close(store!)}

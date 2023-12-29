@@ -125,7 +125,9 @@ export const SpotlightAction = React.forwardRef<
 
           <span>
             {labelNode}
-            <span>{description}</span>
+            <span className="block text-xs text-gray-400 text-left">
+              {description}
+            </span>
           </span>
 
           {rightSection && (
