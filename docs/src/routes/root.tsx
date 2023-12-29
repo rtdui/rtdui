@@ -21,13 +21,15 @@ export default function Root() {
         nothingFound="未找到内容"
         limit={5}
         highlightQuery
-        actions={menuData
-          .flatMap((d) => d.items)
-          .map((d) => ({
-            id: d.label,
-            label: d.label,
-            onClick: () => navigate(d.url),
-          }))}
+        actions={menuData.map((d: any) => {
+          const actions = d.items.map((dd: any) => ({
+            id: dd.label,
+            label: dd.label,
+            // description: dd.label,
+            onClick: () => navigate(dd.url),
+          }));
+          return { group: d.group, actions };
+        })}
       />
       <Outlet />
     </>
