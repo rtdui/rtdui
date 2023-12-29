@@ -85,20 +85,20 @@ notifications.show({
 ```jsx
 import { notifications } from "@rtdui/notifications";
 
-// 保存通知自动生成的id
+// show()方法会返回自动生成的id, 将它保存起来
 const myId = notifications.show({
   title: "Title",
   content: "Processing",
   autoClose: false, // 禁止自动关闭
 });
 notifications.update({
-  id: { myId }, // 更新指定id的通知
+  id: myId, // 更新指定id的通知
   title: "Title",
   content: "Success",
   autoClose: 4000, // 更新可以开启自动关闭
 });
 
-// 或者手动指定id
+// 或者在show方法的选项参数中手动指定id
 notifications.show({
   id: "my-id", // 手动指定id
   title: "Title",
