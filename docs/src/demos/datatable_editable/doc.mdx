@@ -1,0 +1,23 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../components/Demo";
+import DataTableEditableDemo from "./DataTableEditableDemo";
+
+# 使用
+
+## 可编辑表格
+
+在列定义为列定义编辑组件和显示组件即可实现可编辑表格的功能.
+`datatable`组件内置了改变集缓存功能, 且只有发生改变的行会被缓存, 网络传输只会传输改变集, 未修改的数据不会传输, 因此即便数据源很大也不受其影响.
+`datatable`组件会将改变集分门别类为: 新增的, 修改的, 删除的三类. 方便执行数据库的映射修改工作.
+
+<Demo data={{ Component: DataTableEditableDemo }} />

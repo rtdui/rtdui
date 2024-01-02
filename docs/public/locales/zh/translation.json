@@ -99,7 +99,8 @@
       "columnDef": "列定义",
       "grouping": "数据分组",
       "virtualized": "行虚拟化",
-      "filterList": "过滤列表"
+      "filterList": "过滤列表",
+      "editable": "可编辑表格"
     },
     "dataTableSelect": "DataTable Select (数据表格选择器)"
   },

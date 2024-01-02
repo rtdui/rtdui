@@ -99,7 +99,8 @@
       "columnDef": "columnDefs",
       "grouping": "grouping",
       "virtualized": "virtualized",
-      "filterList": "filter list"
+      "filterList": "filter list",
+      "editable": "editable"
     },
     "dataTableSelect": "DataTable Select"
   },

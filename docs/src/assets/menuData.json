@@ -111,6 +111,10 @@
         "label": "dataTable.filterList",
         "url": "/components/datatable_filterList"
       },
+      {
+        "label": "dataTable.editable",
+        "url": "/components/datatable_editable"
+      },
       { "label": "dataTableSelect", "url": "/components/datatableselect" }
     ]
   }
