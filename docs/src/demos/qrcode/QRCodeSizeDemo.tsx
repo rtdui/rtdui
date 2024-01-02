@@ -16,12 +16,7 @@ export default function Demo() {
         value={size}
         onChange={setSize}
       />
-      <QRCode
-        value={value}
-        size={size}
-        icon="/favicon.ico"
-        iconSize={size / 4}
-      />
+      <QRCode value={value} size={size} icon="/rtdui.svg" iconSize={size / 4} />
     </div>
   );
 }
