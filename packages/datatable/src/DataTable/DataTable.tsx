@@ -508,31 +508,39 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     ) {
       const validateResult = validate?.(params) ?? "";
       if (validateResult === "") {
+        // 清除错误
         setErrorRow({
           rowId: row.id,
-          field: (column.columnDef as AccessorKeyColumnDef<any, any>)
-            .accessorKey as string,
+          field: field as string,
           errorMsg: "",
         });
-        changesRef.current.changes.changed[rowId] = {
-          ...changesRef.current.changes.changed[rowId],
-          [field]: value,
-        };
+        // 如果修改的值在新增集中则直接更新新增行的字段值
+        const addedRow = changesRef.current.changes.added.find(
+          (d) => getRowId(d) === rowId
+        );
+        if (addedRow) {
+          addedRow[field] = fieldDataType === "Number" ? Number(value) : value;
+        } else {
+          // 如果不在新增集中则加入到修改集对应id键的字段中.
+          changesRef.current.changes.changed[rowId] = {
+            ...changesRef.current.changes.changed[rowId],
+            [field]: fieldDataType === "Number" ? Number(value) : value,
+          };
+        }
       } else {
         setErrorRow({
           rowId: row.id,
-          field: (column.columnDef as AccessorKeyColumnDef<any, any>)
-            .accessorKey as string,
+          field: field as string,
           errorMsg: validateResult,
         });
       }
       setData((prev) =>
         prev.map((row) => {
           if (getRowId(row) === rowId) {
-            changesRef.current.changes.changed[rowId] = {
-              ...changesRef.current.changes.changed[rowId],
-              [field]: fieldDataType === "Number" ? Number(value) : value,
-            };
+            // changesRef.current.changes.changed[rowId] = {
+            //   ...changesRef.current.changes.changed[rowId],
+            //   [field]: fieldDataType === "Number" ? Number(value) : value,
+            // };
             return {
               ...row,
               [field]: fieldDataType === "Number" ? Number(value) : value,
