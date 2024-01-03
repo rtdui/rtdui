@@ -712,6 +712,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
         header: ({ table }) => (
           <IndeterminateCheckbox
             className="checkbox-sm"
+            disabled={!enableMultiRowSelection}
             checked={
               selectAllForAllPages
                 ? table.getIsAllRowsSelected()
@@ -766,6 +767,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     selectAllForAllPages,
     enableClickRowSelection,
     enableAutoRowNumber,
+    enableMultiRowSelection,
   ]);
 
   const tableOptions: TableOptions<any> = {
