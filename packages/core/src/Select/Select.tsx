@@ -130,7 +130,7 @@ export function Select(props: SelectProps) {
         />
       </Popover.Trigger>
       <Popover.Dropdown>
-        <ul className="menu bg-base-100 rounded-box flex-nowrap w-fit">
+        <ul className="menu bg-base-100 rounded-box flex-nowrap">
           {standardizedOptions.map((d, index) => (
             <li
               key={d.value}
