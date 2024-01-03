@@ -15,6 +15,7 @@ import type {
   RowSelectionState,
   RowSelectionTableState,
   SortingTableState,
+  TableOptions,
   VisibilityTableState,
 } from "@tanstack/react-table";
 import {
@@ -41,7 +42,7 @@ import {
 } from "@tabler/icons-react";
 import deepCopy from "lodash.clonedeep";
 import { useScrollTrigger } from "@rtdui/hooks";
-import { Checkbox, isMobile, getType } from "@rtdui/core";
+import { Checkbox, isMobile, getType, filterProps } from "@rtdui/core";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
 import { getLeafColumns, getColumnDefId } from "../utils";
@@ -409,8 +410,8 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     columns: columnsProp,
     data: dataProp,
     getRowId = (row: any) => row.id,
-    initialState = {},
-    state = {},
+    initialState,
+    state,
     onStateChange,
     enableColumnReorder = true,
     enableColumnResizing = true,
@@ -730,11 +731,11 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
         ),
         cell: ({ row }) => (
           <div className="flex justify-center">
-            <Checkbox
-              size="sm"
+            <IndeterminateCheckbox
+              className="rounded"
               checked={row.getIsSelected()}
               disabled={!row.getCanSelect()}
-              // indeterminate={row.getIsSomeSelected()}
+              indeterminate={row.getIsSomeSelected()}
               onChange={row.getToggleSelectedHandler()}
               onClick={(ev) => ev.stopPropagation()}
             />
@@ -767,9 +768,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     enableAutoRowNumber,
   ]);
 
-  // `@tanstack/react-table` 所有功能默认都是启用的, 除非手动禁用
-  // `@tanstack/react-table` 的rowModel的处理顺序: CoreRowModel=>FilteredRowModel=>GroupedRowModel=>SortedRowModel=>ExpandedRowModel=>PaginationRowModel
-  const table = useReactTable({
+  const tableOptions: TableOptions<any> = {
     columns,
     data,
     getRowId,
@@ -849,7 +848,11 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
       getChanges,
       getSelectedRowIds,
     },
-  });
+  };
+  // `@tanstack/react-table` 所有功能默认都是启用的, 除非手动禁用
+  // `@tanstack/react-table` 的rowModel的处理顺序: CoreRowModel=>FilteredRowModel=>GroupedRowModel=>SortedRowModel=>ExpandedRowModel=>PaginationRowModel
+  // 必须清除tableOptions中的undefined的键, 否则useReactTable会有异常情况发生.
+  const table = useReactTable(filterProps(tableOptions));
 
   const getLeftPinning = () => {
     const result: string[] = [];

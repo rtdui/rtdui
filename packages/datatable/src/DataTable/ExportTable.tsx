@@ -2,6 +2,7 @@ import React from "react";
 import type { Table } from "@tanstack/react-table";
 import { utils as xlsxUtils, writeFileXLSX } from "xlsx";
 import { IconDownload } from "@tabler/icons-react";
+import { Button, Popover } from "@rtdui/core";
 
 export function ExportTable(props: { table: Table<any> }) {
   const { table } = props;
@@ -19,17 +20,21 @@ export function ExportTable(props: { table: Table<any> }) {
     writeFileXLSX(wb, "表格导出.xlsx");
   }, []);
   return (
-    <div className="dropdown dropdown-end">
-      <label className="btn btn-ghost btn-circle btn-sm">
-        <IconDownload />
-      </label>
-      <ul className="dropdown-content menu menu-sm p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a className="w-full" onClick={exportXLSX}>
-            导出为Excel
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Popover placement="bottom">
+      <Popover.Trigger>
+        <Button size="sm" ghost sharp="circle">
+          <IconDownload />
+        </Button>
+      </Popover.Trigger>
+      <Popover.Dropdown>
+        <ul className="menu p-2 shadow bg-base-100 rounded-box">
+          <li>
+            <a className="w-full" onClick={exportXLSX}>
+              导出为Excel
+            </a>
+          </li>
+        </ul>
+      </Popover.Dropdown>
+    </Popover>
   );
 }
