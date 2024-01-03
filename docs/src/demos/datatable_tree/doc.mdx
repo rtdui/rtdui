@@ -1,0 +1,62 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../components/Demo";
+import DataTableTreeDemo from "./DataTableTreeDemo";
+
+# 使用
+
+## 基本
+
+DataTable 支持树形数据表格功能. 只要给`DataTable`设置了`getSubRows`属性便启用了树形表格.
+
+> tip: 树形表格和数据分组不能同时启用.
+
+理论上树可以有无限层级. 但建议不超过三级为佳.
+
+1. 数据源应该具有层级结构. 如果是`id-parentId`型的平面数据, 可以使用`@rtdui/core`包中的`flatToTree`工具方法转换为层级结构. 层级结构如:
+
+   ```js
+   [
+     {
+       id: 1,
+       children: [
+         {
+           id: 11,
+           children: [
+             {
+               id: 111,
+             },
+           ],
+         },
+       ],
+     },
+     {
+       id: 2,
+       children: [
+         {
+           id: 22,
+           children: [{ id: 222 }],
+         },
+       ],
+     },
+   ];
+   ```
+
+   其中: `children`字段可以是任意字段名. 只要在`getSubRows`正确指定即可.
+
+2. `getSubRows`属性是一个方法, 用于指定如何访问数据源中的孩子属性. 参数一个row对象参数. 如:
+
+   ```js
+   <DataTable getSubRows={(row) => row.children} />
+   ```
+
+<Demo data={{ Component: DataTableTreeDemo }} />

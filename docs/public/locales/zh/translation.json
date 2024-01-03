@@ -100,7 +100,10 @@
       "grouping": "数据分组",
       "virtualized": "行虚拟化",
       "filterList": "过滤列表",
-      "editable": "可编辑表格"
+      "editable": "可编辑表格",
+      "tree": "树形表格",
+      "pagination": "分页",
+      "selection": "行选择"
     },
     "dataTableSelect": "DataTable Select (数据表格选择器)"
   },

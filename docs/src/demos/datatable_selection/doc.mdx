@@ -1,0 +1,56 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../components/Demo";
+import DataTableSelectionDemo from "./DataTableSelectionDemo";
+import DataTableMultiSelectionDemo from "./DataTableMultiSelectionDemo";
+import DataTableClickRowSelectionDemo from "./DataTableClickRowSelectionDemo";
+import DataTableConditioinSelectionDemo from "./DataTableConditioinSelectionDemo";
+
+# 使用
+
+## 基本
+
+DataTable 支持行选择功能. 给`DataTable`设置`enableRowSelection`属性启用行选择功能
+
+选择状态以行id作为对象的键名. 因此需要给`DataTable`的`getRowId`属性设置正确的数据源行id标识. 默认为: `(row)=>row.id`, 假如你的数据源中以uid字段是行的id:
+
+```jsx
+<DataTable getRowId={(row) => row.uid} />
+```
+
+## 单选
+
+默认用单独的复选框列作为行选择器.
+
+<Demo data={{ Component: DataTableSelectionDemo }} />
+
+## 多选
+
+`enableRowSelection`和`enableMultiRowSelection`属性都为true时即可多选
+
+<Demo data={{ Component: DataTableMultiSelectionDemo }} />
+
+## 点击行选择
+
+`enableRowSelection`启用, 并且`enableClickRowSelection`启用时, 不会显示复选框列, 而是直接点击行即可选择行.
+
+<Demo data={{ Component: DataTableClickRowSelectionDemo }} />
+
+## 根据条件启用行选择
+
+`enableRowSelection`和`enableMultiRowSelection`都可以设置了一个函数, 函数签名: `(row: Row<TData>) => boolean`
+
+当设置为一个函数时可以根据条件设置行是否可被选择.
+
+下面的例子中, 只有行的id为偶数的行才允许被选择.
+
+<Demo data={{ Component: DataTableConditioinSelectionDemo }} />

@@ -100,7 +100,10 @@
       "grouping": "grouping",
       "virtualized": "virtualized",
       "filterList": "filter list",
-      "editable": "editable"
+      "editable": "editable",
+      "tree": "tree Table",
+      "pagination": "pagination",
+      "selection": "row selection"
     },
     "dataTableSelect": "DataTable Select"
   },

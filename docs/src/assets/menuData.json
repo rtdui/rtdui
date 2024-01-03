@@ -112,6 +112,18 @@
         "url": "/components/datatable_filterList"
       },
       {
+        "label": "dataTable.pagination",
+        "url": "/components/datatable_pagination"
+      },
+      {
+        "label": "dataTable.selection",
+        "url": "/components/datatable_selection"
+      },
+      {
+        "label": "dataTable.tree",
+        "url": "/components/datatable_tree"
+      },
+      {
         "label": "dataTable.editable",
         "url": "/components/datatable_editable"
       },

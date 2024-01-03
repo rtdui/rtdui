@@ -1,0 +1,21 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../components/Demo";
+import DataTablePaginationDemo from "./DataTablePaginationDemo";
+
+# 使用
+
+## 基本
+
+DataTable 支持分页功能. 只要给`DataTable`设置`enablePagination`属性为true即可
+
+<Demo data={{ Component: DataTablePaginationDemo }} />
