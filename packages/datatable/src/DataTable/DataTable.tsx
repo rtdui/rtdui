@@ -16,6 +16,8 @@ import type {
   RowSelectionTableState,
   SortingTableState,
   TableOptions,
+  TableState,
+  Updater,
   VisibilityTableState,
 } from "@tanstack/react-table";
 import {
@@ -63,12 +65,16 @@ if (typeof document !== "undefined") {
 
 export interface DataTableProps {
   className?: string;
+  /** 样式槽 */
   slots?: {
     container: string;
     toolbar: string;
     groupDropArea: string;
     table: string;
   };
+  /** 表行的高度
+   * @default "sm"
+   */
   size?: "xs" | "sm" | "md" | "lg";
   /**
    * 是否显示表头行
@@ -101,13 +107,13 @@ export interface DataTableProps {
    */
   enableExport?: boolean;
   /**
-   * 用户输入生效的延迟毫秒数
+   * 过滤编辑器中用户输入生效的延迟毫秒数
    * @default 500
    */
   debouncedWait?: number;
   /**
    * 滚动虚拟化器
-   * @default true
+   * @default false
    */
   enableVirtualized?: boolean;
   /**
@@ -152,20 +158,19 @@ export interface DataTableProps {
    * 数据行对象数组
    *
    * 注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.
-   * 可以使用工具函数:flatToTree() 方法先将ip-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性
+   * 可以使用@rtdui/core包中的工具函数`flatToTree()`先将id-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性
    */
   data: any[];
 
   /**
-   * 定义如何获得行Id
-   * @default (row: any) => row.id
+   * 定义如何获得行id
+   * @default (row) => row.id
    */
   getRowId?: (row: any) => any;
 
   /**
    * 获取每行孩子的方法,如果定义该函数则启用可展示/收缩的树形展示, 列定义中第一个定义了id属性的列为可展开列
    * 注意: 当启用数据分组时不能设置该属性, 否则会有冲突.
-   *
    */
   getSubRows?: (row: any) => any[];
 
@@ -203,9 +208,9 @@ export interface DataTableProps {
   >;
 
   /**
-   * 当数据表的状态改变时的事件
+   * 当数据表的状态改变时的事件, 如果提供则会覆盖内部默认的状态管理, 你需要将你的状态传回给state属性
    */
-  onStateChange?: (pre: any) => void;
+  onStateChange?: (updater: Updater<TableState>) => void;
   //#endregion 核心选项
 
   //#region 功能: Column Ordering
@@ -235,7 +240,7 @@ export interface DataTableProps {
   enableColumnResizing?: boolean;
   /**
    * 调整列宽时状态在何时生效, 'onEnd'表示在释放拖动时生效, 'onChange'表示在拖动过程中生效
-   * @default onEnd
+   * @default "onChange"
    */
   columnResizeMode?: "onChange" | "onEnd";
   /**
@@ -259,7 +264,7 @@ export interface DataTableProps {
   //#region 功能: Filters
   /**
    * 是否启用过滤功能
-   * @default true
+   * @default false
    */
   enableFilters?: boolean;
   /**
@@ -267,13 +272,13 @@ export interface DataTableProps {
    */
   // filterFns?: Record<string, FilterFn>;
   /**
-   * 过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行,
+   * 过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行.
    * 注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.
    * @default false
    */
   filterFromLeafRows?: boolean;
   /**
-   * 是否启用列头过滤功能, 列的过函数由列定义中的filterFn字段指定
+   * 是否启用列头过滤功能, 列的过滤函数由列定义中的filterFn字段指定
    * @default true
    */
   enableColumnFilters?: boolean;
@@ -314,11 +319,13 @@ export interface DataTableProps {
    */
   enableSortingRemoval?: boolean;
   /**
-   * 是否启用多列排序, 默认为true
+   * 是否启用多列排序
+   * @default true
    */
   enableMultiSort?: boolean;
   /**
-   * 首次排序是否降序, 默认为false,表示首次按升序排序.
+   * 首次排序是否降序, false 表示首次按升序排序. true表示首次按降序排序
+   * @default false
    */
   sortDescFirst?: boolean;
   /**
@@ -340,9 +347,9 @@ export interface DataTableProps {
   // onGroupingChange?: OnChangeFn<GroupingState>;
   /**
    * 被分组的列的处理模式, 'reorder'表示放到首列并固定, false与'reorder'一致. 'remove'移除被分组的列
-   * @default reorder
+   * @default "reorder"
    */
-  groupedColumnMode?: false | "reorder" | "remove"; // default: `reorder`
+  groupedColumnMode?: false | "reorder" | "remove";
   //#endregion 功能: Grouping
 
   //#region 功能: Expanding
@@ -399,7 +406,7 @@ export interface DataTableProps {
    */
   enableSubRowSelection?: boolean | ((row: Row<any>) => boolean);
   /**
-   * 行选择改变时触发, 注意定义了该属性后列序的行选择改变不会触发onStateChange事件
+   * 行选择改变时触发, 注意定义了该属性后会覆盖内部默认的状态管理, 需要将你的行选择状态传回给state属性.
    */
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
   //#endregion 功能: Row Selection
@@ -414,8 +421,13 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     state,
     onStateChange,
     enableColumnReorder = true,
+    groupedColumnMode = "reorder",
     enableColumnResizing = true,
+    columnResizeMode = "onChange",
     enableSorting = true,
+    enableMultiSort = true,
+    enableSortingRemoval = true,
+    sortDescFirst = false,
     getSubRows,
     enableGrouping: enableGroupingProp = false,
     enableFilters = false,
@@ -804,7 +816,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     enableHiding,
     // 设置列宽调整选项
     enableColumnResizing,
-    columnResizeMode: "onChange",
+    columnResizeMode,
     // 行选择
     enableRowSelection,
     enableMultiRowSelection,
@@ -827,12 +839,13 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
       : undefined,
     // 数据分组功能
     enableGrouping,
-    groupedColumnMode: "reorder",
+    groupedColumnMode,
     getGroupedRowModel: enableGrouping ? getGroupedRowModel() : undefined,
     // 数据排序功能
     enableSorting,
-    enableSortingRemoval: true,
-    enableMultiSort: true,
+    enableSortingRemoval,
+    enableMultiSort,
+    sortDescFirst,
     getSortedRowModel: enableSorting ? getSortedRowModel() : undefined,
     // 展开功能, 树行表格和数据分组功能依赖该功能.
     enableExpanding: enableTree || enableGrouping,
@@ -864,7 +877,8 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     }
     if (enableTree) {
       result.push(
-        flattenBy(columns, (item: any) => item.columns).find((d) => d.id)!.id!
+        flattenBy(columnsProp, (item: any) => item.columns).find((d) => d.id)!
+          .id!
       );
     } else if (!enableTree && enableRowSelection && !enableClickRowSelection) {
       result.push("选择");
