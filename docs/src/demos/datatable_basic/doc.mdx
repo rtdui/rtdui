@@ -16,7 +16,9 @@ import DataTableBasicDemo from "./DataTableBasicDemo";
 
 ## 基本
 
-DataTable 默认启用的功能: 固定表头行, 多列排序, 显示边框, 隐藏/显示列, 列宽调整(用户可以拖拉列头调整列宽), 列序调整(用户可以拖放调整列顺序),
+DataTable 默认启用的功能: 固定表头行, 多列排序, 显示边框, 隐藏/显示列, 列宽调整(用户可以拖拉列头调整列宽), 列序调整(用户可以拖放调整列顺序)
+
+所有的功能都可以通过`enable*`属性开启或关闭. 比如关闭列序调整: `<DataTable enableColumnReorder={false} />`
 
 排序支撑多列排序. 按住`Shift`键然后点击列头会按点击的先后顺序级联排序.
 

@@ -94,6 +94,7 @@
     "group": "dataTables",
     "items": [
       { "label": "dataTable.introduce", "url": "/components/datatable_about" },
+      { "label": "dataTable.api", "url": "/components/datatable" },
       { "label": "dataTable.basic", "url": "/components/datatable_basic" },
       {
         "label": "dataTable.columnDef",

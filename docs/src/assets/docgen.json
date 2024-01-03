@@ -6978,7 +6978,7 @@
       },
       "columnResizeMode": {
         "defaultValue": {
-          "value": "onEnd"
+          "value": "\"onChange\""
         },
         "description": "调整列宽时状态在何时生效, 'onEnd'表示在释放拖动时生效, 'onChange'表示在拖动过程中生效",
         "name": "columnResizeMode",
@@ -7010,7 +7010,7 @@
       },
       "data": {
         "defaultValue": null,
-        "description": "数据行对象数组\n\n注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.\n可以使用工具函数:flatToTree() 方法先将ip-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性",
+        "description": "数据行对象数组\n\n注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.\n可以使用@rtdui/core包中的工具函数<code>flatToTree()</code>先将id-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性",
         "name": "data",
         "required": true,
         "type": {
@@ -7021,7 +7021,7 @@
         "defaultValue": {
           "value": "500"
         },
-        "description": "用户输入生效的延迟毫秒数",
+        "description": "过滤编辑器中用户输入生效的延迟毫秒数",
         "name": "debouncedWait",
         "required": false,
         "type": {
@@ -7054,7 +7054,7 @@
         "defaultValue": {
           "value": "true"
         },
-        "description": "是否启用列头过滤功能, 列的过函数由列定义中的filterFn字段指定",
+        "description": "是否启用列头过滤功能, 列的过滤函数由列定义中的filterFn字段指定",
         "name": "enableColumnFilters",
         "required": false,
         "type": {
@@ -7105,7 +7105,7 @@
       },
       "enableFilters": {
         "defaultValue": {
-          "value": "true"
+          "value": "false"
         },
         "description": "是否启用过滤功能",
         "name": "enableFilters",
@@ -7159,8 +7159,10 @@
         }
       },
       "enableMultiSort": {
-        "defaultValue": null,
-        "description": "是否启用多列排序, 默认为true",
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "是否启用多列排序",
         "name": "enableMultiSort",
         "required": false,
         "type": {
@@ -7246,7 +7248,7 @@
       },
       "enableVirtualized": {
         "defaultValue": {
-          "value": "true"
+          "value": "false"
         },
         "description": "滚动虚拟化器",
         "name": "enableVirtualized",
@@ -7259,7 +7261,7 @@
         "defaultValue": {
           "value": "false"
         },
-        "description": "过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行,\n注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.",
+        "description": "过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行.\n注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.",
         "name": "filterFromLeafRows",
         "required": false,
         "type": {
@@ -7268,9 +7270,9 @@
       },
       "getRowId": {
         "defaultValue": {
-          "value": "(row: any) => row.id"
+          "value": "(row) => row.id"
         },
-        "description": "定义如何获得行Id",
+        "description": "定义如何获得行id",
         "name": "getRowId",
         "required": false,
         "type": {
@@ -7288,7 +7290,7 @@
       },
       "groupedColumnMode": {
         "defaultValue": {
-          "value": "reorder"
+          "value": "\"reorder\""
         },
         "description": "被分组的列的处理模式, 'reorder'表示放到首列并固定, false与'reorder'一致. 'remove'移除被分组的列",
         "name": "groupedColumnMode",
@@ -7319,7 +7321,7 @@
       },
       "onRowSelectionChange": {
         "defaultValue": null,
-        "description": "行选择改变时触发, 注意定义了该属性后列序的行选择改变不会触发onStateChange事件",
+        "description": "行选择改变时触发, 注意定义了该属性后会覆盖内部默认的状态管理, 需要将你的行选择状态传回给state属性.",
         "name": "onRowSelectionChange",
         "required": false,
         "type": {
@@ -7328,11 +7330,11 @@
       },
       "onStateChange": {
         "defaultValue": null,
-        "description": "当数据表的状态改变时的事件",
+        "description": "当数据表的状态改变时的事件, 如果提供则会覆盖内部默认的状态管理, 你需要将你的状态传回给state属性",
         "name": "onStateChange",
         "required": false,
         "type": {
-          "name": "((pre: any) => void) | undefined"
+          "name": "((updater: Updater<TableState>) => void) | undefined"
         }
       },
       "pageCount": {
@@ -7400,8 +7402,10 @@
         }
       },
       "size": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": {
+          "value": "\"sm\""
+        },
+        "description": "表行的高度",
         "name": "size",
         "required": false,
         "type": {
@@ -7428,7 +7432,7 @@
       },
       "slots": {
         "defaultValue": null,
-        "description": "",
+        "description": "样式槽",
         "name": "slots",
         "required": false,
         "type": {
@@ -7436,8 +7440,10 @@
         }
       },
       "sortDescFirst": {
-        "defaultValue": null,
-        "description": "首次排序是否降序, 默认为false,表示首次按升序排序.",
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "首次排序是否降序, false 表示首次按升序排序. true表示首次按降序排序",
         "name": "sortDescFirst",
         "required": false,
         "type": {
@@ -7740,7 +7746,7 @@
       },
       "data": {
         "defaultValue": null,
-        "description": "数据行对象数组\n\n注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.\n可以使用工具函数:flatToTree() 方法先将ip-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性",
+        "description": "数据行对象数组\n\n注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.\n可以使用@rtdui/core包中的工具函数<code>flatToTree()</code>先将id-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性",
         "name": "data",
         "required": true,
         "type": {
@@ -7767,7 +7773,7 @@
       },
       "enableFilters": {
         "defaultValue": {
-          "value": "true"
+          "value": "false"
         },
         "description": "是否启用过滤功能",
         "name": "enableFilters",
@@ -7798,9 +7804,9 @@
       },
       "getRowId": {
         "defaultValue": {
-          "value": "(row: any) => row.id"
+          "value": "(row) => row.id"
         },
-        "description": "定义如何获得行Id",
+        "description": "定义如何获得行id",
         "name": "getRowId",
         "required": false,
         "type": {

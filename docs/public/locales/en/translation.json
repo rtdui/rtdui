@@ -95,6 +95,7 @@
     "qrCode": "QRCode",
     "dataTable": {
       "introduce": "$t(common.introduce)",
+      "api": "API",
       "basic": "basic",
       "columnDef": "columnDefs",
       "grouping": "grouping",
