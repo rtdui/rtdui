@@ -11,17 +11,21 @@ export function TablePagination(props: { table: Table<any> }) {
         count={table.getPageCount()}
         size="sm"
         page={page}
+        showFirstButton={false}
+        showPrevButton={false}
+        showNextButton={false}
+        showLastButton={false}
         onChange={(page) => {
           setPage(page);
           table.setPageIndex(page - 1);
         }}
       />
-      <span className="flex items-center gap-1">
+      {/* <span className="flex items-center gap-1">
         <div>Page</div>
         <strong>
           {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </strong>
-      </span>
+      </span> */}
       <div className="divider divider-horizontal mx-0"></div>
       <span className="flex items-center gap-1">
         Go to page:

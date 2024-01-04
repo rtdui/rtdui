@@ -571,7 +571,9 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     );
     changesRef.current.changes.deleted.push(...selectedRowId);
     table.resetRowSelection(true);
-    setData((prev) => prev.filter((d) => !selectedRowId.includes(getRowId(d))));
+    setData((prev) =>
+      prev.filter((d) => !selectedRowId.includes(String(getRowId(d))))
+    );
   };
   const getChanges = () => {
     if (Object.keys(changesRef.current.errors).length) {
@@ -793,7 +795,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     // 默认列定义, 会和columns中每个列定义进行合并,为列定义提供缺省属性
     defaultColumn: {
       size: 140,
-      minSize: 140,
+      minSize: 80,
       maxSize: Number.MAX_SAFE_INTEGER,
       cell: (cx) => {
         const value = cx.getValue() as any;
