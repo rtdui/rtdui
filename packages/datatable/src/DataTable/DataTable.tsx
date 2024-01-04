@@ -615,14 +615,16 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     const cloneColumns = deepCopy(columnsProp) as ColumnDef<any, any>[];
 
     if (enableTree) {
-      // 用户列中第一个定义了id属性的列为tree的可展开列
+      // 用户列中第一个定义了meta.expandable为true的列为tree的可展开列
       const expandColumnDef = flattenBy(
         cloneColumns,
         (item: any) => item.columns
-      ).find((d) => d.id);
+      ).find((d) => d.meta?.expandable);
 
       if (!expandColumnDef) {
-        throw new Error("启用树形表格时必须提供至少一个定义了id属性的column");
+        throw new Error(
+          "启用树形表格时必须提供至少一个定义了meta.expandable为true的column"
+        );
       }
       expandColumnDef.enableHiding = false;
 
@@ -723,6 +725,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
         id: "选择",
         size: 50,
         minSize: 50,
+        enableHiding: false,
         header: ({ table }) => (
           <IndeterminateCheckbox
             className="checkbox-sm"
