@@ -1,20 +1,20 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 import { DataTable, DataTableProps } from "@rtdui/datatable";
-import { makeData, type Person } from "../../demoData/makeData";
+import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [
   {
-    accessorKey: "id",
     header: "ID",
+    accessorKey: "id",
   },
   {
-    id: "姓名",
-    accessorFn: (row) => `${row.firstName}${row.lastName}`,
+    header: "姓名",
+    accessorKey: "fullName",
   },
   {
-    accessorKey: "age",
     header: "年龄",
+    accessorKey: "age",
   },
 ];
 const tableProps: Partial<DataTableProps> = {
@@ -42,7 +42,7 @@ export default function Demo() {
   const [rowSelection, setRowSelection] = React.useState({});
 
   React.useEffect(() => {
-    setData(makeData(50));
+    setData(makePersonData(50));
   }, []);
 
   const ref = React.useRef<any>();

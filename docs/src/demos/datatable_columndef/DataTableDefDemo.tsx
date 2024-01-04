@@ -5,7 +5,7 @@ import type {
 } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
-import { makeData, type Person } from "../../demoData/makeData";
+import { makeDatumData, type Datum } from "../../demoData/makeData";
 
 const integerFormatter = new Intl.NumberFormat("zh-Hans-CN");
 const decimalFormatter = new Intl.NumberFormat("zh-Hans-CN", {
@@ -62,11 +62,11 @@ const formatDate = (date: Date, style: "date" | "time" | "datetime") => {
     case "time":
       return timeFormatter.format(date);
     default:
-      break;
+      return datetimeFormatter.format(date).replace(/\//g, "-");
   }
 };
 
-const DefaultFooterSumCell = (props: HeaderContext<Person, any>) => (
+const DefaultFooterSumCell = (props: HeaderContext<Datum, any>) => (
   <div className="flex justify-between">
     <span>总计:</span>
     <span>
@@ -82,14 +82,14 @@ const DefaultFooterSumCell = (props: HeaderContext<Person, any>) => (
   </div>
 );
 
-const DefaultAggregatedCell = (props: CellContext<Person, any>) => (
+const DefaultAggregatedCell = (props: CellContext<Datum, any>) => (
   <div className="flex justify-between">
     <span>小计:</span>
     {decimalFormatter.format(props.getValue())}
   </div>
 );
 
-const columns: ColumnDef<Person>[] = [
+const columns: ColumnDef<Datum>[] = [
   {
     id: "ID",
     header: "ID",
@@ -100,23 +100,32 @@ const columns: ColumnDef<Person>[] = [
     columns: [
       {
         id: "枚举",
-        size: 100,
-        minSize: 100,
-        accessorFn: (row) => (row.enum === "m" ? "男" : "女"),
+        header: (cx) => <span className="text-secondary">枚举</span>,
         accessorKey: "enum",
         meta: {
           align: "center",
           showFilterList: true,
         },
+        size: 100,
+        minSize: 100,
         filterFn: "equalsString",
-        cell: (cx) => cx.getValue().toString(),
-        header: (cx) => <span className="text-secondary">枚举</span>,
+      },
+      {
+        id: "枚举映射",
+        header: (cx) => <span className="text-secondary">枚举映射</span>,
+        accessorFn: (row) => (row.enum === "m" ? "男" : "女"),
+        meta: {
+          align: "center",
+          showFilterList: true,
+        },
+        size: 100,
+        minSize: 100,
+        filterFn: "equalsString",
       },
       {
         id: "布尔",
         size: 100,
         minSize: 100,
-        accessorFn: (row) => (row.boolean ? "是" : "否"),
         accessorKey: "boolean",
         meta: {
           align: "center",
@@ -127,10 +136,23 @@ const columns: ColumnDef<Person>[] = [
         // cell: (cx) => cx.column.columnDef.meta?.mapping?.[cx.getValue()],
       },
       {
+        id: "布尔映射",
+        size: 100,
+        minSize: 100,
+        accessorFn: (row) => (row.boolean ? "是" : "否"),
+        meta: {
+          align: "center",
+          showFilterList: true,
+        },
+        filterFn: "equalsString",
+        header: (cx) => <span className="text-secondary">布尔映射</span>,
+        // cell: (cx) => cx.column.columnDef.meta?.mapping?.[cx.getValue()],
+      },
+      {
         id: "整数",
         meta: { align: "right" },
         size: 250,
-        accessorFn: (row) => row.integer,
+        accessorKey: "int",
         header: (cx) => <span className="text-secondary">整数</span>,
         cell: (cx) => formatNumber(cx.getValue(), "integer"),
         aggregatedCell: DefaultAggregatedCell,
@@ -145,7 +167,7 @@ const columns: ColumnDef<Person>[] = [
       },
       {
         id: "数字",
-        accessorKey: "number",
+        accessorKey: "float",
         meta: { align: "right" },
         header: (cx) => <span className="text-secondary">数字</span>,
         cell: (cx) => formatNumber(cx.getValue(), "decimal"),
@@ -158,57 +180,38 @@ const columns: ColumnDef<Person>[] = [
         header: (cx) => <span className="text-secondary">字符串数字</span>,
       },
       {
-        id: "字符串日期",
-        accessorFn: (row) =>
-          dateFormatter.format(row.birthdate).replace(/\//g, "-"),
-        meta: {
-          align: "center",
-        },
-        header: (cx) => <span className="text-secondary">字符串日期</span>,
-      },
-      {
-        id: "字符串日期和时间",
-        accessorFn: (row) =>
-          datetimeFormatter.format(row.birthdate).replace(/\//g, "-"),
+        id: "Date映射为字符串日期",
+        accessorFn: (row) => dateFormatter.format(row.date).replace(/\//g, "-"),
         meta: {
           align: "center",
         },
         header: (cx) => (
-          <span className="text-secondary">字符串日期和时间</span>
+          <span className="text-secondary">Date映射为字符串日期</span>
         ),
       },
       {
-        id: "Date对象",
-        accessorKey: "birthdate",
-        header: (cx) => <span className="text-secondary">Date对象</span>,
+        id: "Date映射为字符串日期时间",
+        accessorFn: (row) =>
+          datetimeFormatter.format(row.date).replace(/\//g, "-"),
+        meta: {
+          align: "center",
+        },
+        size: 200,
+        header: (cx) => (
+          <span className="text-secondary">Date映射为字符串日期时间</span>
+        ),
+      },
+      {
+        id: "Date未映射",
+        accessorKey: "date",
+        size: 250,
+        header: (cx) => (
+          <span className="text-secondary">
+            Date未映射但通过单元格格式化显示
+          </span>
+        ),
         cell: (cx) => (
           <div className="text-center">{formatDate(cx.getValue(), "time")}</div>
-        ),
-      },
-    ],
-  },
-  {
-    header: "个人信息",
-    columns: [
-      {
-        id: "姓名",
-        accessorFn: (row) => `${row.firstName}${row.lastName}`,
-        header: "姓名",
-        meta: {
-          showFilterList: true,
-        },
-      },
-      {
-        id: "年龄",
-        accessorKey: "age",
-        header: () => "年龄",
-        cell: (cx) => cx.getValue().toString(),
-        aggregationFn: "mean",
-        aggregatedCell: ({ getValue }: any) => (
-          <div className="flex justify-between">
-            <span>平均:</span>
-            <span>{Math.round(getValue() * 100) / 100}</span>
-          </div>
         ),
       },
     ],
@@ -216,10 +219,10 @@ const columns: ColumnDef<Person>[] = [
 ];
 
 export default function Demo() {
-  const [data, setData] = React.useState<Person[]>([]);
+  const [data, setData] = React.useState<Datum[]>([]);
 
   React.useEffect(() => {
-    setData(makeData(50));
+    setData(makeDatumData(50));
   }, []);
 
   return (

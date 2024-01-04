@@ -9,6 +9,7 @@ const columns: ColumnDef<Person>[] = [
     accessorKey: "id",
   },
   {
+    id: "姓名",
     header: "姓名",
     accessorKey: "fullName",
   },
@@ -19,7 +20,7 @@ const columns: ColumnDef<Person>[] = [
 ];
 const tableProps: Partial<DataTableProps> = {
   enableVirtualized: false,
-  enablePagination: false,
+  enablePagination: true,
   enableColumnReorder: true,
   enableColumnResizing: true,
   enableSorting: true,
@@ -27,42 +28,27 @@ const tableProps: Partial<DataTableProps> = {
   enableFilters: true,
   filterFromLeafRows: false,
   enableHiding: true,
-  enableRowSelection: true,
+  enableRowSelection: false,
   enableMultiRowSelection: false,
   enableSubRowSelection: false,
   enableClickRowSelection: false,
-  selectAllForAllPages: true,
+  selectAllForAllPages: false,
   enableStickyHeader: true,
   enableAutoRowNumber: false,
   enableExport: true,
+  getSubRows: (row) => row.subRows,
 };
 export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
-    setData(makePersonData(50));
+    setData(makePersonData(50, 3, 2));
   }, []);
 
-  const ref = React.useRef<any>();
-
-  const [rowSelection, setRowSelection] = React.useState({});
-
   return (
-    <div className="flex flex-col gap-4">
-      <div className="h-96">
-        <DataTable
-          ref={ref}
-          data={data}
-          columns={columns}
-          {...tableProps}
-          onRowSelectionChange={setRowSelection}
-          state={{
-            rowSelection,
-          }}
-        />
-      </div>
-      <output>当前的选择: {JSON.stringify(rowSelection, undefined, 2)}</output>
+    <div className="h-[600px]">
+      <DataTable data={data} columns={columns} {...tableProps} />
     </div>
   );
 }
-Demo.displayName = "DataTableSelectionDemo";
+Demo.displayName = "DataTableTreePaginationDemo";

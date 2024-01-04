@@ -18,20 +18,34 @@ import DataTableDefDemo from "./DataTableDefDemo";
 
 1. 定义分组列头
 2. 决定列是数据列、计算列、还是显示列。
-   如果是数据列必须对应的数据源字段. 计算列根据数据列计算得到，显示列不跟数据源相关。
-3. 列数据单元格的自定义显示内容
-   甚至可以定义显示组件和编辑组件。通过赋值一个React组件。
+
+   - 数据列
+
+     必须对应到数据源字段, 在列定义中由`accessorKey`指定
+
+   - 计算列
+
+     根据数据源字段计算得到, 在列定义中由`accessorFn`指定
+
+   - 显示列
+
+     不跟数据源相关,如选择列等. 在列定义中既没有指定`accessorKey`, 也没有指定`accessorFn`的即为显示列
+
+   数据列和计算列支持排序,过滤,分组等数据处理, 显示列不支持数据处理操作.
+
+3. 单元格的自定义显示内容
+   可以定义单元格的显示组件和编辑组件。可以是任意的React组件。
 4. 列头/列脚的显示名
-   甚至可以完全自定义显示内容。通过赋值一个React组件。
-5. 设置列单元格的对齐方式
-6. 单独控制列的功能：是否可冻结，是否可过滤，是否可排序，是否可隐藏，是否可分组(分组的统计公式，分组单元格的显示内容)，是否可调整宽度(控制最小/默认/最大列宽)
+   甚至可以完全自定义显示内容。可以是任意的React组件。
+5. 单元格的对齐方式
+6. 单独控制列级别的功能：是否可冻结，是否可过滤，是否可排序，是否可隐藏，是否可分组(分组的统计公式，分组单元格的显示内容)，是否可调整宽度(控制最小/默认/最大列宽)
 
 **ColumnDef 接口定义**
 
 ```ts
 interface ColumnDef {
-  //基本属性:
-  id: string; // 列唯一标识
+  /** 基本属性: */
+  id: string; // 列唯一标识, 如果不指定则会从accessorKey或header中自动设置
   accessorKey?: string; // 指定数据源中的字段名
   accessorFn?: (originalRow: TData, index: number) => any; //自定义获取数据的函数
   columns?: ColumnDef<TData>[]; // 分组列的孩子列定义
@@ -57,23 +71,25 @@ interface ColumnDef {
     getValue: () => any;
     renderValue: () => any;
   }) => unknown; // 单元格的显示或编辑组件
-  meta?: ColumnMeta; // 用于附加任意元数据.
 
-  // Pinning功能:
+  /** 列的额外元数据 */
+  meta?: { align?: "right" | "center"; showFilterList?: boolean };
+
+  /** Pinning功能: */
   enablePinning?: boolean; // 列是否可以置顶并冻结, 默认true
 
-  // Resize功能:
+  /** Resize功能: */
   enableResizing?: boolean; // 列是否可以调整列宽, 默认true
   minSize?: nubmer; // 最小列宽, 默认20,
   size?: nubmer; // 初始列宽, 默认150,
   maxSize?: nubmer; // 最大列宽, 默认Number.MAX_SAFE_INTEGER
 
-  // Visibility功能:
+  /** Visibility功能: */
   enableHiding?: boolean; // 列是否可以隐藏/显示, 默认true
 
-  //Filter功能:
-  enableColumnFilter?: boolean; // 列是否过滤, 默认为true
-  enableGlobalFilter?: boolean; // 列是否被全局过滤, 默认为true
+  /** Filter功能: */
+  enableColumnFilter?: boolean; // 列是否可以过滤, 默认为true
+  enableGlobalFilter?: boolean; // 列是否可以被全局过滤, 默认为true
   // 使用的过滤函数, 默认为"auto", "auto"会根据列的数据类型决定:
   // - string     "includesString"
   // - number     "inNumberRange"
@@ -91,9 +107,9 @@ interface ColumnDef {
   // - "equals" (===),
   // - "weakEquals" (==)
   // - "inNumberRange"
-  filterFn?: FilterFn | keyof FilterFns | keyof BuiltInFilterFns;
+  filterFn?: "auto" | FilterFn | BuiltInFilterFns;
 
-  //Sorting功能:
+  /** Sorting功能: */
   enableSorting?: boolean; // 列是否可以排序, 默认为true
   // 使用排序函数, 默认为"auto". "auto"会根据列的数据类型决定:
   // - Date               "datetime",
@@ -106,28 +122,24 @@ interface ColumnDef {
   // - "text"(速度快,但包含数字会不精确)
   // - "datetime"(专用于Date类型)
   // - "basic" js默认排序
-  sortingFn?: SortingFn | keyof SortingFns | keyof BuiltInSortingFns;
+  sortingFn?: "auto" | SortingFn | BuiltInSortingFns;
 
-  //Grouping功能:
+  /** Grouping功能: */
   enableGrouping?: boolean; // 列是否可以分组, 默认为true
   // 使用的汇聚函数, 默认为"auto", "auto"会根据列的数据类型决定:
   // - number "sum",
-  // - Date   "extent"
   // - 其它    undefined
   // 内置的汇聚函数:
   // - "sum"
   // - "min"
   // - "max"
   // - "count"
-  // - "extent",
+  // - "extent"(范围),
   // - "mean"(算术平均),
   // - "median"(中值),
   // - "unique",
   // - "uniqueCount"
-  aggregationFn?:
-    | AggregationFn
-    | keyof AggregationFns
-    | keyof BuiltInAggregationFns;
+  aggregationFn?: "auto" | AggregationFn | BuiltInAggregationFns;
   aggregatedCell?: (props: {
     table: Table<TData>;
     row: Row<TData>;

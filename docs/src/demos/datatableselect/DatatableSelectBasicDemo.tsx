@@ -2,7 +2,7 @@ import React from "react";
 import { DataTableSelect } from "@rtdui/datatable";
 import { IconAt } from "@tabler/icons-react";
 import type { ColumnDef } from "@tanstack/react-table";
-import { makeData, type Person } from "../../demoData/makeData";
+import { makePersonData, type Person } from "../../demoData/makeData";
 
 const dataTableColumns: ColumnDef<Person>[] = [
   {
@@ -19,7 +19,7 @@ const getRowId = (row: any) => row.id;
 export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
   React.useEffect(() => {
-    setData(makeData(20, 3));
+    setData(makePersonData(20, 3));
   }, []);
 
   return (

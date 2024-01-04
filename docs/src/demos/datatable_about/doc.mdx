@@ -42,11 +42,3 @@ handle:
 ```sh
 npm i @rtdui/datatable
 ```
-
-## 使用说明
-
-为了支持表格的全功能, 数据源的字段的数据类型只应包含`string`, `number`, `boolean`类型. 其它数据类型不能被完整支持, 如`Date`类型的过滤,编辑等功能.
-
-如果数据源的字段类型不是`string`,`number`,`boolean`之一, 则可以通过列定义中的`accessorFn`属性自定义函数转换到`string`,`number`,`boolean`之一.
-
-默认情况下, `number`类型的列被分组时会自动计算各组的汇总值, 但默认不渲染, 如果想要显示分组列的组汇总值必须在列定义中通过`aggregatedCell`属性设置渲染组件.

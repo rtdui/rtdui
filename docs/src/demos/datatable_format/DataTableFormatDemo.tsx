@@ -5,7 +5,7 @@ import type {
 } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
-import { makeData, type Person } from "../../demoData/makeData";
+import { makePersonData, type Person } from "../../demoData/makeData";
 
 const integerFormatter = new Intl.NumberFormat("zh-Hans-CN");
 const decimalFormatter = new Intl.NumberFormat("zh-Hans-CN", {
@@ -219,7 +219,7 @@ export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
-    setData(makeData(50));
+    setData(makePersonData(50));
   }, []);
 
   return (

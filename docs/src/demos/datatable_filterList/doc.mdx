@@ -16,7 +16,9 @@ import DataTableFilterListDemo from "./DataTableFilterListDemo";
 
 ## 基本
 
-DataTable 列过滤支持类似于`Excel`过滤列表的功能. 要想启用功能,只要在列定义中的 meta 元属性中启用`showFilterList`即可:
+DataTable 列过滤不仅支持常规的过滤, 还支持类似于`Excel`过滤列表的功能. DataTable 会自动根据数据源中该列的唯一值生成过滤列表.
+
+要想启用列的过滤列表功能, 需要在列定义中的 meta 元属性中启用`showFilterList`:
 
 ```js
 {
@@ -27,6 +29,6 @@ DataTable 列过滤支持类似于`Excel`过滤列表的功能. 要想启用功�
 }
 ```
 
-DataTable 会自动根据数据源中该列的唯一值生成过滤列表.
+下面的例子为`姓名`列和`性别`列启用了过滤列表功能:
 
 <Demo data={{ Component: DataTableFilterListDemo }} />

@@ -25,28 +25,66 @@ export interface User {
 
 export interface Person {
   id?: string | number;
-  integer: number;
-  number: number;
-  stringNumber: string;
-  percent: number;
-  enum: string;
-  boolean: boolean;
-  firstName: string;
-  lastName: string;
-  fullName: string;
+  fullName: string; // 中文姓名
+  gender: "male" | "female";
   age: number;
   birthdate: Date;
+  deposit: number;
   subRows?: Person[];
 }
 
 export const newPerson = (id?: number): Person => {
-  const firstName = faker.person.lastName();
-  const lastName = faker.person.firstName();
-  const fullName = firstName + lastName;
+  const sex = faker.person.sex() as "male" | "female";
   return {
     id: id ?? faker.string.numeric({ length: 8, allowLeadingZeros: false }),
-    integer: faker.number.int(),
-    number: faker.number.float({
+    fullName: faker.person.fullName({ sex }),
+    gender: sex,
+    age: faker.number.int({ min: 25, max: 35 }),
+    deposit: faker.number.float({
+      max: 5000000,
+      precision: 0.01,
+    }),
+    birthdate: faker.date.birthdate(),
+  };
+};
+
+/**
+ * 创建分成数据, 第一个参数表示第一层的数量,第二个参数表示第二层的数量, 依此类推.
+ * @param lens
+ * @returns
+ */
+export function makePersonData(...lens: number[]) {
+  let id = 0;
+  const makeDataLevel = (depth = 0) => {
+    const len = lens[depth]!;
+    return Array.from({ length: len }).map(
+      (d, index): Person => ({
+        ...newPerson(++id),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
+      })
+    );
+  };
+
+  return makeDataLevel();
+}
+
+export interface Datum {
+  id?: string | number;
+  int: number;
+  float: number;
+  stringNumber: string;
+  percent: number;
+  enum: string;
+  boolean: boolean;
+  date: Date;
+  subRows?: Datum[];
+}
+
+export const newDatum = (id?: number): Datum => {
+  return {
+    id: id ?? faker.string.numeric({ length: 8, allowLeadingZeros: false }),
+    int: faker.number.int(),
+    float: faker.number.float({
       max: 5000000,
       precision: 0.01,
     }),
@@ -63,11 +101,7 @@ export const newPerson = (id?: number): Person => {
     }),
     enum: faker.helpers.arrayElement(["m", "f"]),
     boolean: faker.datatype.boolean(),
-    firstName,
-    lastName,
-    fullName,
-    age: faker.number.int({ min: 12, max: 55 }),
-    birthdate: faker.date.birthdate(),
+    date: faker.date.anytime(),
   };
 };
 
@@ -76,13 +110,13 @@ export const newPerson = (id?: number): Person => {
  * @param lens
  * @returns
  */
-export function makeData(...lens: number[]) {
+export function makeDatumData(...lens: number[]) {
   let id = 0;
   const makeDataLevel = (depth = 0) => {
     const len = lens[depth]!;
     return Array.from({ length: len }).map(
-      (d, index): Person => ({
-        ...newPerson(++id),
+      (d, index): Datum => ({
+        ...newDatum(++id),
         subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
       })
     );

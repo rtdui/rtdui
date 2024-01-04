@@ -2,13 +2,17 @@ import type { ColumnDef, CellContext } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
 import { IconX } from "@tabler/icons-react";
-import { makeData, type Person, newPerson } from "../../demoData/makeData";
+import {
+  makePersonData as makePersonData,
+  type Person,
+  newPerson,
+} from "../../demoData/makeData";
 import { NumberInput, TextInput } from "@rtdui/core";
 import clsx from "clsx";
 
 const getRowId = (row: Person) => row.id;
 
-function LastNameEditableInputCell(props: CellContext<any, any>) {
+function FullNameEditableInputCell(props: CellContext<any, any>) {
   const { table, getValue } = props;
   const initialValue = getValue();
   // We need to keep and update the state of the cell normally
@@ -19,7 +23,7 @@ function LastNameEditableInputCell(props: CellContext<any, any>) {
   ) => {
     // 验证
     if (params.value.trim() === "") {
-      return "名字不能为空";
+      return "姓名不能为空";
     }
     return "";
   };
@@ -34,13 +38,7 @@ function LastNameEditableInputCell(props: CellContext<any, any>) {
     table.options.meta?.changeRow?.({
       ...props,
       value: newValue,
-      validate: (params: any) => {
-        // 验证
-        if (Number(params.value) > 1000) {
-          return "值不能大于1000";
-        }
-        return "";
-      },
+      validate,
     });
   };
 
@@ -113,7 +111,7 @@ function GenderEditableSelectCell(props: CellContext<any, any>) {
     setValue(newValue);
     table.options.meta?.changeRow?.({
       ...props,
-      value: newValue === "男" ? "m" : "f",
+      value: newValue === "男" ? "male" : "female",
     });
   };
 
@@ -148,16 +146,15 @@ const columns: ColumnDef<Person>[] = [
     header: "个人信息",
     columns: [
       {
-        id: "名",
-        accessorKey: "lastName",
-        header: "名",
-        cell: LastNameEditableInputCell,
+        header: "姓名",
+        accessorKey: "fullName",
+        cell: FullNameEditableInputCell,
       },
       {
         id: "年龄",
-        minSize: 230,
+        size: 230,
         accessorKey: "age",
-        header: () => "年龄",
+        header: "年龄",
         cell: AgeEditableInputWithValidateCell,
         aggregationFn: "mean",
         aggregatedCell: ({ getValue }) => (
@@ -171,14 +168,13 @@ const columns: ColumnDef<Person>[] = [
         id: "gender",
         size: 120,
         minSize: 120,
-        accessorFn: (row) => (row.enum === "m" ? "男" : "女"),
-        accessorKey: "enum",
+        accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
         meta: {
           showFilterList: true,
         },
         filterFn: "equalsString",
+        header: "性别",
         cell: GenderEditableSelectCell,
-        header: (cx) => <span className="text-secondary">性别</span>,
         aggregatedCell: "",
       },
     ],
@@ -215,7 +211,7 @@ export default function Demo() {
 
   React.useEffect(() => {
     // setData(makeData(50, 2));
-    setData(makeData(10));
+    setData(makePersonData(10));
   }, []);
 
   const ref = React.useRef<any>(null!);
@@ -228,13 +224,15 @@ export default function Demo() {
   const handleSaveClick = () => {
     try {
       const changes = ref.current.getChanges();
-      console.log(changes);
+      outputRef.current!.innerHTML = JSON.stringify(changes, undefined, 2);
     } catch (ex: any) {
       setError(ex.message);
     }
   };
 
   const [error, setError] = React.useState("");
+
+  const outputRef = React.useRef<HTMLPreElement>(null);
 
   return (
     <div className="flex-1 overflow-hidden flex flex-col">
@@ -251,7 +249,7 @@ export default function Demo() {
         <button className="btn btn-info btn-sm" onClick={handleSaveClick}>
           保存
         </button>
-        (打开浏览器的开发工具(F12)的console中查看将要保存的数据结构)
+        保存的数据结构查看底部的输出
       </div>
       <ul className="text-xs">
         <li>名字,年龄和性别列允许编辑: </li>
@@ -263,6 +261,11 @@ export default function Demo() {
       </ul>
 
       <DataTable ref={ref} data={data} columns={columns} {...defaultProps} />
+
+      <output className="mt-4 flex flex-col gap-4">
+        output:
+        <pre ref={outputRef} className="bg-base-100"></pre>
+      </output>
 
       <div className={clsx("toast z-10", { hidden: !error })}>
         <div className="alert alert-error">

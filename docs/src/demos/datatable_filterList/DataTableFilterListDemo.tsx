@@ -1,7 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
-import { makeData, type Person } from "../../demoData/makeData";
+import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [
   {
@@ -10,15 +10,23 @@ const columns: ColumnDef<Person>[] = [
     enableColumnFilter: false,
   },
   {
-    id: "姓名",
-    accessorFn: (row) => `${row.firstName}${row.lastName}`,
+    header: "姓名",
+    accessorKey: "fullName",
     meta: {
       showFilterList: true,
     },
   },
   {
-    accessorKey: "age",
+    header: "性别",
+    accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
+    meta: {
+      align: "center",
+      showFilterList: true,
+    },
+  },
+  {
     header: "年龄",
+    accessorKey: "age",
     enableColumnFilter: false,
   },
 ];
@@ -27,7 +35,7 @@ export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
-    setData(makeData(50));
+    setData(makePersonData(50));
   }, []);
 
   return (

@@ -12,16 +12,29 @@ handle:
 import Demo from "../../components/Demo";
 import DataTableBasicDemo from "./DataTableBasicDemo";
 
-# 使用
+# 使用说明
 
-## 基本
+为了支持表格的全功能, 数据源的字段的数据类型只应包含`string`, `number`, `boolean`类型. 其它数据类型不能被完整支持, 如`Date`类型的过滤,编辑等功能.
 
-DataTable 默认启用的功能: 固定表头行, 多列排序, 显示边框, 隐藏/显示列, 列宽调整(用户可以拖拉列头调整列宽), 列序调整(用户可以拖放调整列顺序)
+如果数据源的字段类型不是`string`,`number`,`boolean`之一, 则可以通过列定义中的`accessorFn`属性自定义函数转换到`string`,`number`,`boolean`.
+
+默认情况下, `number`类型的列被分组时会自动计算各组的汇总值, 但默认不渲染, 如果想要显示分组列的组汇总值必须在列定义中通过`aggregatedCell`属性设置渲染组件.
+
+DataTable 组件只有两个必须的属性: `data`, `columns`
+
+## 基本功能
+
+DataTable 基本功能默认启用: 固定表头行, 多列排序, 显示边框, 隐藏/显示列, 列宽调整(用户可以拖拉列头调整列宽), 列序调整(用户可以拖放调整列顺序)
 
 所有的功能都可以通过`enable*`属性开启或关闭. 比如关闭列序调整: `<DataTable enableColumnReorder={false} />`
 
 排序支撑多列排序. 按住`Shift`键然后点击列头会按点击的先后顺序级联排序.
 
-DataTable组件必须的属性: `data`, `columns`
+> tips: 下面的例子可以尝试一下:
+
+- 点击列头会进行排序;
+- 鼠标移动到列边界处会显示调整列宽指示器,按住指示器可以调整列的宽度;
+- 拖动列头可以调整列的顺序;
+- 点击工具栏的眼睛图标可以选择显示或隐藏指定列.
 
 <Demo data={{ Component: DataTableBasicDemo }} />

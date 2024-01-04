@@ -1,20 +1,31 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
-import { makeData, type Person } from "../../demoData/makeData";
+import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [
   {
-    accessorKey: "id",
     header: "ID",
+    accessorKey: "id",
   },
   {
-    id: "姓名",
-    accessorFn: (row) => `${row.firstName}${row.lastName}`,
+    header: "姓名",
+    accessorKey: "fullName",
   },
   {
-    accessorKey: "age",
+    header: "性别",
+    accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
+    meta: {
+      align: "center",
+    },
+    size: 80,
+    minSize: 80,
+  },
+  {
     header: "年龄",
+    accessorKey: "age",
+    size: 80,
+    minSize: 80,
   },
 ];
 
@@ -22,7 +33,7 @@ export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
   React.useEffect(() => {
-    setData(makeData(50));
+    setData(makePersonData(50));
   }, []);
 
   return (
