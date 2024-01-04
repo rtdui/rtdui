@@ -13,6 +13,10 @@ const columns: ColumnDef<Person>[] = [
     id: "姓名",
     header: "姓名",
     accessorKey: "fullName",
+    size: 220,
+    meta: {
+      expandable: true,
+    },
   },
   {
     id: "年龄",
