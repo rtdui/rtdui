@@ -11,18 +11,22 @@ const DepositAggregatedCell = (props: CellContext<Person, any>) => (
 
 const columns: ColumnDef<Person>[] = [
   {
-    accessorKey: "id",
+    id: "ID",
     header: "ID",
+    accessorKey: "id",
   },
   {
+    id: "姓名",
     header: "姓名",
     accessorKey: "fullName",
   },
   {
+    id: "年龄",
     header: "年龄",
     accessorKey: "age",
   },
   {
+    id: "存款",
     header: "存款",
     size: 280,
     accessorKey: "deposit",

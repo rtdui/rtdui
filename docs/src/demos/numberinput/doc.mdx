@@ -36,7 +36,7 @@ import NumberInputCustomDemo from "./NumberInputCustomDemo";
 
 这对于输入银行卡号等场景尤其有用.
 
-此时移动端会显示系统数字键盘.
+> tip: 此时移动端会显示系统数字键盘.
 
 <Demo data={{ Component: NumberInputPositiveIntegerDemo }} />
 
@@ -44,7 +44,7 @@ import NumberInputCustomDemo from "./NumberInputCustomDemo";
 
 这对于输入付款金额等场景尤其有用.
 
-此时移动端会显示带小数点的系统数字键盘.
+> tip: 此时移动端会显示带小数点的系统数字键盘.
 
 <Demo data={{ Component: NumberInputPositiveDemo }} />
 
@@ -58,6 +58,8 @@ import NumberInputCustomDemo from "./NumberInputCustomDemo";
 
 `decimalScale`属性用于设置最大的小数位数.
 
+下面的例子最大只能有两位小数.
+
 <Demo data={{ Component: NumberInputDecimalScaleDemo }} />
 
 ## 自定义验证逻辑
@@ -67,11 +69,11 @@ import NumberInputCustomDemo from "./NumberInputCustomDemo";
 
 ```ts
 interface NumberFormatValues {
-  // 解析后的数值
+  // 解析后的数值, 如果是不可转换为数字会是undefined
   floatValue: number | undefined;
   // 格式化后的值
   formattedValue: string;
-  // 字符串数字
+  // 用户输入的值
   value: string;
 }
 ```
@@ -86,7 +88,7 @@ interface NumberFormatValues {
 - "lakh" 印度百分位
 - "wan" 中国万分位
 
-以下的例子使用国际通用的千分位显示
+以下的例子使用国际通用的千分位显示和中国的万分位显示
 
 <Demo data={{ Component: NumberInputThousandsGroupDemo }} />
 

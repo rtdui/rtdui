@@ -12,11 +12,11 @@ handle:
 import Demo from "../../components/Demo";
 import DataTableFormatDemo from "./DataTableFormatDemo";
 
-# 单元格格式自定义
+# 单元格自定义
 
-可以通过传递给`DataTable`的`columns`属性的列定义中(ColumnDef)中自定义单元格的显示格式. 如:
+可以在列定义中(ColumnDef)中自定义单元格的显示格式. 如:
 
-```tsx
+```tsx {5-7}
 const columns: ColumnDef<Person>[] = [
   // ...others column def
   {
@@ -27,5 +27,9 @@ const columns: ColumnDef<Person>[] = [
   },
 ];
 ```
+
+> 注意: 一旦自定义了单元格组件, 列定义中的`meta.align`将不再起作用. 你需要在你的单元格组件中自己设置对齐方式.
+
+下面的例子中, 年龄大于30岁的显示红色.
 
 <Demo data={{ Component: DataTableFormatDemo }} />

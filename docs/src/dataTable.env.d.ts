@@ -5,6 +5,7 @@ declare module "@tanstack/table-core" {
   interface ColumnMeta<TData extends RowData, TValue> {
     align?: "left" | "center" | "right";
     showFilterList?: boolean;
+    expandable?: boolean;
   }
   interface TableMeta<TData extends RowData> {
     addRow?: (newRow: TData) => void;

@@ -96,113 +96,28 @@ const columns: ColumnDef<Person>[] = [
     accessorKey: "id",
   },
   {
-    header: "数据类型",
-    columns: [
-      {
-        id: "枚举",
-        size: 100,
-        minSize: 100,
-        accessorFn: (row) => (row.enum === "m" ? "男" : "女"),
-        accessorKey: "enum",
-        meta: {
-          align: "center",
-          showFilterList: true,
-        },
-        filterFn: "equalsString",
-        cell: (cx) => cx.getValue().toString(),
-        header: (cx) => <span className="text-secondary">枚举</span>,
-      },
-      {
-        id: "布尔",
-        size: 100,
-        minSize: 100,
-        accessorFn: (row) => (row.boolean ? "是" : "否"),
-        accessorKey: "boolean",
-        meta: {
-          align: "center",
-          showFilterList: true,
-        },
-        filterFn: "equalsString",
-        header: (cx) => <span className="text-secondary">布尔</span>,
-        // cell: (cx) => cx.column.columnDef.meta?.mapping?.[cx.getValue()],
-      },
-      {
-        id: "整数",
-        meta: { align: "right" },
-        size: 250,
-        accessorFn: (row) => row.integer,
-        header: (cx) => <span className="text-secondary">整数</span>,
-        cell: (cx) => formatNumber(cx.getValue(), "integer"),
-        aggregatedCell: DefaultAggregatedCell,
-        footer: DefaultFooterSumCell,
-      },
-      {
-        id: "数字百分比",
-        accessorKey: "percent",
-        meta: { align: "right" },
-        header: (cx) => <span className="text-secondary">数字百分比</span>,
-        cell: (cx) => formatNumber(cx.getValue(), "percent"),
-      },
-      {
-        id: "数字",
-        accessorKey: "number",
-        meta: { align: "right" },
-        header: (cx) => <span className="text-secondary">数字</span>,
-        cell: (cx) => formatNumber(cx.getValue(), "decimal"),
-        aggregatedCell: DefaultAggregatedCell,
-      },
-      {
-        id: "字符串数字",
-        accessorKey: "stringNumber",
-        meta: { align: "right" },
-        header: (cx) => <span className="text-secondary">字符串数字</span>,
-      },
-      {
-        id: "字符串日期",
-        accessorFn: (row) =>
-          dateFormatter.format(row.birthdate).replace(/\//g, "-"),
-        meta: {
-          align: "center",
-        },
-        header: (cx) => <span className="text-secondary">字符串日期</span>,
-      },
-      {
-        id: "字符串日期和时间",
-        accessorFn: (row) =>
-          datetimeFormatter.format(row.birthdate).replace(/\//g, "-"),
-        meta: {
-          align: "center",
-        },
-        header: (cx) => (
-          <span className="text-secondary">字符串日期和时间</span>
-        ),
-      },
-      {
-        id: "Date对象",
-        accessorKey: "birthdate",
-        header: (cx) => <span className="text-secondary">Date对象</span>,
-        cell: (cx) => (
-          <div className="text-center">{formatDate(cx.getValue(), "time")}</div>
-        ),
-      },
-    ],
-  },
-  {
     header: "个人信息",
     columns: [
       {
         id: "姓名",
-        accessorFn: (row) => `${row.firstName}${row.lastName}`,
         header: "姓名",
+        accessorKey: "fullName",
         meta: {
           showFilterList: true,
         },
       },
       {
         id: "年龄",
-        accessorKey: "age",
         header: () => "年龄",
-        cell: (cx) => cx.getValue().toString(),
+        accessorKey: "age",
+        cell: (cx) => {
+          const value = cx.getValue();
+          return value > 30 ? (
+            <span className="text-red-500">{value}</span>
+          ) : (
+            value
+          );
+        },
         aggregationFn: "mean",
         aggregatedCell: ({ getValue }: any) => (
           <div className="flex justify-between">

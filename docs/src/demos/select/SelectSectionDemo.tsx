@@ -2,7 +2,7 @@ import { Select, Button } from "@rtdui/core";
 import { IconAt, IconSend } from "@tabler/icons-react";
 
 const fruits = [
-  "Alfalfa Sprouts xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "Alfalfa",
   "Apple",
   "Apricot",
   "Artichoke",

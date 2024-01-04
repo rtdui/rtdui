@@ -98,6 +98,7 @@
       "api": "API文档",
       "basic": "基本使用",
       "columnDef": "列定义",
+      "format": "单元格组件",
       "grouping": "数据分组",
       "virtualized": "行虚拟化",
       "filterList": "过滤列表",

@@ -5,11 +5,13 @@ import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [
   {
-    accessorKey: "id",
+    id: "ID",
     header: "ID",
+    accessorKey: "id",
     enableColumnFilter: false,
   },
   {
+    id: "姓名",
     header: "姓名",
     accessorKey: "fullName",
     meta: {
@@ -17,6 +19,7 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
+    id: "性别",
     header: "性别",
     accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
     meta: {
@@ -25,6 +28,7 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
+    id: "年龄",
     header: "年龄",
     accessorKey: "age",
     enableColumnFilter: false,

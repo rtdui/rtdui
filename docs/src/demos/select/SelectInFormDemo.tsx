@@ -1,3 +1,4 @@
+import React from "react";
 import { Select, Button } from "@rtdui/core";
 
 const fruits = [
@@ -137,17 +138,22 @@ const fruits = [
 ];
 
 export default function Demo() {
+  const [output, setOutput] = React.useState("");
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = Object.fromEntries(
       new FormData(e.target as HTMLFormElement).entries()
     );
-    console.log(data);
+    setOutput(JSON.stringify(data, undefined, 2));
   };
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-      <Select name="abc" color="primary" options={fruits} />
+      <Select name="mySelect" color="primary" options={fruits} />
       <Button type="submit">提交</Button>
+      <output className="my-4 flex flex-col gap-4">
+        output:
+        <pre className="bg-base-100">{output}</pre>
+      </output>
     </form>
   );
 }

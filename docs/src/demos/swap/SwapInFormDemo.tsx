@@ -15,7 +15,7 @@ export default function Demo() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const jsonObj = Object.fromEntries(formData.entries());
-    setOutput(JSON.stringify(jsonObj));
+    setOutput(JSON.stringify(jsonObj, undefined, 2));
   };
 
   return (
@@ -40,7 +40,10 @@ export default function Demo() {
           提交
         </button>
       </form>
-      <div className="mt-4">输出: {output}</div>
+      <output className="my-4 flex flex-col gap-4">
+        output:
+        <pre className="bg-base-100">{output}</pre>
+      </output>
     </>
   );
 }

@@ -98,6 +98,7 @@
       "api": "API",
       "basic": "basic",
       "columnDef": "columnDefs",
+      "format": "cell format",
       "grouping": "grouping",
       "virtualized": "virtualized",
       "filterList": "filter list",

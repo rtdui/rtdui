@@ -151,6 +151,14 @@ interface ColumnDef {
 }
 ```
 
+## 列定义中关于id字段的说明
+
+id字段定义了列的唯一标识, 会在很多地方用到, 比如作为列的显示/隐藏下拉列表中的显示名.
+
+如果没有手动指定id字段, 如果有指定accessorKey则取accessorKey的值, 否则如果header是文本值则取header的文本. 也就是说accessorKey优先级比header高. 这就是即便在header中指定了中文, 在其它地方却没有显示中文的原因.
+
+> tip: 最简单的记忆方式: 不管什么情况下都手动指定id字段和header字段. 即使它们是相同的.
+
 ## 列定义的例子
 
 <Demo data={{ Component: DataTableDefDemo }} />

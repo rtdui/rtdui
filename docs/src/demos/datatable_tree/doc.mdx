@@ -59,4 +59,20 @@ DataTable 支持树形数据表格功能. 只要给`DataTable`设置了`getSubRo
    <DataTable getSubRows={(row) => row.children} />
    ```
 
+3. 在列定义中对于展开列定义`meta.expandable`为`true`(如果存在多个列则只有第一个有效), 用于指定可展开的列.
+
+   ```js {7}
+    {
+      id: "姓名",
+      header: "姓名",
+      accessorKey: "fullName",
+      size: 180,
+      meta: {
+        expandable: true,
+      },
+    },
+   ```
+
+4. 树形表格导出的行为是展开到哪就导出到哪. 也就是说未展开的行不会被导出.
+
 <Demo data={{ Component: DataTableTreeDemo }} />

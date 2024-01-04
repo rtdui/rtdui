@@ -1,7 +1,7 @@
 import { Select } from "@rtdui/core";
 
 const fruits = [
-  "Alfalfa Sprouts xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "Alfalfa",
   "Apple",
   "Apricot",
   "Artichoke",

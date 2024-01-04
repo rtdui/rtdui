@@ -5,6 +5,7 @@ import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [
   {
+    id: "ID",
     header: "ID",
     accessorKey: "id",
   },
@@ -13,8 +14,12 @@ const columns: ColumnDef<Person>[] = [
     header: "姓名",
     accessorKey: "fullName",
     size: 180,
+    meta: {
+      expandable: true,
+    },
   },
   {
+    id: "年龄",
     header: "年龄",
     accessorKey: "age",
   },

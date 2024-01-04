@@ -124,6 +124,7 @@ const columns: ColumnDef<Datum>[] = [
       },
       {
         id: "布尔",
+        header: (cx) => <span className="text-secondary">布尔</span>,
         size: 100,
         minSize: 100,
         accessorKey: "boolean",
@@ -132,11 +133,11 @@ const columns: ColumnDef<Datum>[] = [
           showFilterList: true,
         },
         filterFn: "equalsString",
-        header: (cx) => <span className="text-secondary">布尔</span>,
         // cell: (cx) => cx.column.columnDef.meta?.mapping?.[cx.getValue()],
       },
       {
         id: "布尔映射",
+        header: (cx) => <span className="text-secondary">布尔映射</span>,
         size: 100,
         minSize: 100,
         accessorFn: (row) => (row.boolean ? "是" : "否"),
@@ -145,71 +146,70 @@ const columns: ColumnDef<Datum>[] = [
           showFilterList: true,
         },
         filterFn: "equalsString",
-        header: (cx) => <span className="text-secondary">布尔映射</span>,
         // cell: (cx) => cx.column.columnDef.meta?.mapping?.[cx.getValue()],
       },
       {
         id: "整数",
+        header: (cx) => <span className="text-secondary">整数</span>,
         meta: { align: "right" },
         size: 250,
         accessorKey: "int",
-        header: (cx) => <span className="text-secondary">整数</span>,
         cell: (cx) => formatNumber(cx.getValue(), "integer"),
         aggregatedCell: DefaultAggregatedCell,
         footer: DefaultFooterSumCell,
       },
       {
         id: "数字百分比",
+        header: (cx) => <span className="text-secondary">数字百分比</span>,
         accessorKey: "percent",
         meta: { align: "right" },
-        header: (cx) => <span className="text-secondary">数字百分比</span>,
         cell: (cx) => formatNumber(cx.getValue(), "percent"),
       },
       {
         id: "数字",
+        header: (cx) => <span className="text-secondary">数字</span>,
         accessorKey: "float",
         meta: { align: "right" },
-        header: (cx) => <span className="text-secondary">数字</span>,
         cell: (cx) => formatNumber(cx.getValue(), "decimal"),
         aggregatedCell: DefaultAggregatedCell,
       },
       {
         id: "字符串数字",
+        header: (cx) => <span className="text-secondary">字符串数字</span>,
         accessorKey: "stringNumber",
         meta: { align: "right" },
-        header: (cx) => <span className="text-secondary">字符串数字</span>,
       },
       {
         id: "Date映射为字符串日期",
+        header: (cx) => (
+          <span className="text-secondary">Date映射为字符串日期</span>
+        ),
         accessorFn: (row) => dateFormatter.format(row.date).replace(/\//g, "-"),
         meta: {
           align: "center",
         },
-        header: (cx) => (
-          <span className="text-secondary">Date映射为字符串日期</span>
-        ),
       },
       {
         id: "Date映射为字符串日期时间",
+        header: (cx) => (
+          <span className="text-secondary">Date映射为字符串日期时间</span>
+        ),
         accessorFn: (row) =>
           datetimeFormatter.format(row.date).replace(/\//g, "-"),
         meta: {
           align: "center",
         },
         size: 200,
-        header: (cx) => (
-          <span className="text-secondary">Date映射为字符串日期时间</span>
-        ),
       },
       {
         id: "Date未映射",
-        accessorKey: "date",
-        size: 250,
         header: (cx) => (
           <span className="text-secondary">
             Date未映射但通过单元格格式化显示
           </span>
         ),
+        accessorKey: "date",
+        size: 250,
         cell: (cx) => (
           <div className="text-center">{formatDate(cx.getValue(), "time")}</div>
         ),

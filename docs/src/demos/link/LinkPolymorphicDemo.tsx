@@ -2,7 +2,7 @@ import React from "react";
 import { Link as RouterLink, NavLink } from "react-router-dom";
 import { Link } from "@rtdui/core";
 
-export default function LinkBasicDemo() {
+export default function Demo() {
   return (
     <div className="flex gap-4 items-center">
       <Link as="a" href="/">
@@ -17,3 +17,5 @@ export default function LinkBasicDemo() {
     </div>
   );
 }
+
+Demo.displayName = "LinkPolymorphicDemo";

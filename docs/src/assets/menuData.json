@@ -101,6 +101,10 @@
         "url": "/components/datatable_columndef"
       },
       {
+        "label": "dataTable.format",
+        "url": "/components/datatable_format"
+      },
+      {
         "label": "dataTable.virtualized",
         "url": "/components/datatable_virtualized"
       },

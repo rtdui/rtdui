@@ -11,6 +11,9 @@ const dataTableColumns: ColumnDef<Person>[] = [
     accessorKey: "fullName",
     size: 260,
     minSize: 260,
+    meta: {
+      expandable: true,
+    },
   },
 ];
 

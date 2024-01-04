@@ -146,15 +146,16 @@ const columns: ColumnDef<Person>[] = [
     header: "个人信息",
     columns: [
       {
+        id: "姓名",
         header: "姓名",
         accessorKey: "fullName",
         cell: FullNameEditableInputCell,
       },
       {
         id: "年龄",
+        header: "年龄",
         size: 230,
         accessorKey: "age",
-        header: "年龄",
         cell: AgeEditableInputWithValidateCell,
         aggregationFn: "mean",
         aggregatedCell: ({ getValue }) => (
@@ -165,7 +166,8 @@ const columns: ColumnDef<Person>[] = [
         ),
       },
       {
-        id: "gender",
+        id: "性别",
+        header: "性别",
         size: 120,
         minSize: 120,
         accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
@@ -173,7 +175,6 @@ const columns: ColumnDef<Person>[] = [
           showFilterList: true,
         },
         filterFn: "equalsString",
-        header: "性别",
         cell: GenderEditableSelectCell,
         aggregatedCell: "",
       },
