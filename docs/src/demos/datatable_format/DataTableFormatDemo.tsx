@@ -10,6 +10,7 @@ import { makePersonData, type Person } from "../../demoData/makeData";
 const integerFormatter = new Intl.NumberFormat("zh-Hans-CN");
 const decimalFormatter = new Intl.NumberFormat("zh-Hans-CN", {
   minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 });
 const percentFormatter = new Intl.NumberFormat("zh-Hans-CN", {
   style: "percent",
@@ -119,8 +120,26 @@ const columns: ColumnDef<Person>[] = [
         id: "性别",
         header: () => "性别",
         accessorKey: "gender",
-        cell: (cx) =>
-          cx.getValue() === "male" ? "男\u{1F466}" : "女\u{1F469}",
+        cell: (cx) => (
+          <div className="text-center">
+            {cx.getValue() === "male" ? "男 \u{1F466}" : "女 \u{1F469}"}
+          </div>
+        ),
+        footer: (cx) => (
+          <div className="flex justify-between">
+            <span>男女比例:</span>
+            <span>
+              {decimalFormatter.format(
+                cx.table
+                  .getRowModel()
+                  .rows.filter((d) => d.original.gender === "male").length /
+                  cx.table
+                    .getRowModel()
+                    .rows.filter((d) => d.original.gender === "female").length
+              )}
+            </span>
+          </div>
+        ),
       },
       {
         id: "年龄",
