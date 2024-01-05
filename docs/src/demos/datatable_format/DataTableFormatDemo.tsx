@@ -116,15 +116,22 @@ const columns: ColumnDef<Person>[] = [
         ),
       },
       {
+        id: "性别",
+        header: () => "性别",
+        accessorKey: "gender",
+        cell: (cx) =>
+          cx.getValue() === "male" ? "男\u{1F466}" : "女\u{1F469}",
+      },
+      {
         id: "年龄",
         header: () => "年龄",
         accessorKey: "age",
         cell: (cx) => {
           const value = cx.getValue();
           return value > 30 ? (
-            <span className="text-red-500">{value}</span>
+            <span className="text-red-500">{value} ↑</span>
           ) : (
-            value
+            <span className="text-green-500">{value} ↓</span>
           );
         },
         footer: (cx) => (
@@ -148,6 +155,11 @@ const columns: ColumnDef<Person>[] = [
         header: (cx) => <span className="text-pink-500">存款</span>,
         size: 200,
         accessorKey: "deposit",
+        cell: (cx) => (
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+            {decimalFormatter.format(cx.getValue())}
+          </span>
+        ),
         footer: (cx) => (
           <div className="flex justify-between text-pink-500">
             <span>总计:</span>
