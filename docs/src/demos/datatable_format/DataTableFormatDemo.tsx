@@ -94,6 +94,7 @@ const columns: ColumnDef<Person>[] = [
     id: "ID",
     header: "ID",
     accessorKey: "id",
+    size: 80,
   },
   {
     header: "个人信息",
@@ -105,6 +106,14 @@ const columns: ColumnDef<Person>[] = [
         meta: {
           showFilterList: true,
         },
+        footer: (cx) => (
+          <div className="flex justify-between">
+            <span>总人数:</span>
+            <span>
+              {integerFormatter.format(cx.table.getRowModel().rows.length)}
+            </span>
+          </div>
+        ),
       },
       {
         id: "年龄",
@@ -118,11 +127,40 @@ const columns: ColumnDef<Person>[] = [
             value
           );
         },
-        aggregationFn: "mean",
-        aggregatedCell: ({ getValue }: any) => (
+        footer: (cx) => (
           <div className="flex justify-between">
-            <span>平均:</span>
-            <span>{Math.round(getValue() * 100) / 100}</span>
+            <span>平均年龄: </span>
+            <span>
+              {decimalFormatter.format(
+                cx.table
+                  .getRowModel()
+                  .rows.reduce(
+                    (pre, cur) => pre + (cur.getValue(cx.column.id) as number),
+                    0
+                  ) / cx.table.getRowModel().rows.length
+              )}
+            </span>
+          </div>
+        ),
+      },
+      {
+        id: "存款",
+        header: (cx) => <span className="text-pink-500">存款</span>,
+        size: 200,
+        accessorKey: "deposit",
+        footer: (cx) => (
+          <div className="flex justify-between text-pink-500">
+            <span>总计:</span>
+            <span>
+              {decimalFormatter.format(
+                cx.table
+                  .getRowModel()
+                  .rows.reduce(
+                    (pre, cur) => pre + (cur.getValue(cx.column.id) as number),
+                    0
+                  )
+              )}
+            </span>
           </div>
         ),
       },
