@@ -10,7 +10,7 @@
 
 - [Documentation](https://rtdui.com/)
 - [Ask question or give feedback](https://github.com/rtdui/rtdui/discussions)
-- [Changelog](https://rtdui.com/changelog/previous-versions)
+- [Changelog](https://rtdui.com/changelog)
 
 ## Packages
 
