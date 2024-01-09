@@ -1,8 +1,4 @@
-import type {
-  CellContext,
-  ColumnDef,
-  HeaderContext,
-} from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
@@ -33,63 +29,6 @@ const formatNumber = (
   }
 };
 
-const dateFormatter = new Intl.DateTimeFormat("zh-Hans-CN", {
-  hour12: false,
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-});
-const timeFormatter = new Intl.DateTimeFormat("zh-Hans-CN", {
-  hour12: false,
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-});
-const datetimeFormatter = new Intl.DateTimeFormat("zh-Hans-CN", {
-  hour12: false,
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-});
-const formatDate = (date: Date, style: "date" | "time" | "datetime") => {
-  switch (style) {
-    case "date":
-      return dateFormatter.format(date).replace(/\//g, "-");
-    case "datetime":
-      return datetimeFormatter.format(date).replace(/\//g, "-");
-    case "time":
-      return timeFormatter.format(date);
-    default:
-      break;
-  }
-};
-
-const DefaultFooterSumCell = (props: HeaderContext<Person, any>) => (
-  <div className="flex justify-between">
-    <span>总计:</span>
-    <span>
-      {decimalFormatter.format(
-        props.table
-          .getRowModel()
-          .rows.reduce(
-            (pre, cur) => pre + (cur.getValue(props.column.id) as number),
-            0
-          )
-      )}
-    </span>
-  </div>
-);
-
-const DefaultAggregatedCell = (props: CellContext<Person, any>) => (
-  <div className="flex justify-between">
-    <span>小计:</span>
-    {decimalFormatter.format(props.getValue())}
-  </div>
-);
-
 const columns: ColumnDef<Person>[] = [
   {
     id: "ID",
@@ -111,7 +50,7 @@ const columns: ColumnDef<Person>[] = [
           <div className="flex justify-between">
             <span>总人数:</span>
             <span>
-              {integerFormatter.format(cx.table.getRowModel().rows.length)}
+              {formatNumber(cx.table.getRowModel().rows.length, "integer")}
             </span>
           </div>
         ),
@@ -122,20 +61,21 @@ const columns: ColumnDef<Person>[] = [
         accessorKey: "gender",
         cell: (cx) => (
           <div className="text-center">
-            {cx.getValue() === "male" ? "男 \u{1F466}" : "女 \u{1F469}"}
+            {cx.getValue() === "male" ? "男 👨" : "女 👩"}
           </div>
         ),
         footer: (cx) => (
           <div className="flex justify-between">
             <span>男女比例:</span>
             <span>
-              {decimalFormatter.format(
+              {formatNumber(
                 cx.table
                   .getRowModel()
                   .rows.filter((d) => d.original.gender === "male").length /
                   cx.table
                     .getRowModel()
-                    .rows.filter((d) => d.original.gender === "female").length
+                    .rows.filter((d) => d.original.gender === "female").length,
+                "decimal"
               )}
             </span>
           </div>
@@ -157,13 +97,14 @@ const columns: ColumnDef<Person>[] = [
           <div className="flex justify-between">
             <span>平均年龄: </span>
             <span>
-              {decimalFormatter.format(
+              {formatNumber(
                 cx.table
                   .getRowModel()
                   .rows.reduce(
                     (pre, cur) => pre + (cur.getValue(cx.column.id) as number),
                     0
-                  ) / cx.table.getRowModel().rows.length
+                  ) / cx.table.getRowModel().rows.length,
+                "decimal"
               )}
             </span>
           </div>
@@ -176,20 +117,21 @@ const columns: ColumnDef<Person>[] = [
         accessorKey: "deposit",
         cell: (cx) => (
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-            {decimalFormatter.format(cx.getValue())}
+            {formatNumber(cx.getValue(), "decimal")}
           </span>
         ),
         footer: (cx) => (
           <div className="flex justify-between text-pink-500">
             <span>总计:</span>
             <span>
-              {decimalFormatter.format(
+              {formatNumber(
                 cx.table
                   .getRowModel()
                   .rows.reduce(
                     (pre, cur) => pre + (cur.getValue(cx.column.id) as number),
                     0
-                  )
+                  ),
+                "decimal"
               )}
             </span>
           </div>
