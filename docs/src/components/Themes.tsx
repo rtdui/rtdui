@@ -30,9 +30,9 @@ const themes = [
   "night",
   "coffee",
   "winter",
-  // "dim",
-  // "nord",
-  // "sunset",
+  "dim", //v4+
+  "nord", //v4+
+  "sunset", //v4+
 ];
 
 function Theme(props: { themeName: string }) {

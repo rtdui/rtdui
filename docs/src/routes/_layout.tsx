@@ -63,7 +63,7 @@ export default function Layout() {
   React.useEffect(() => {
     if (i18n.language === "en") {
       notifications.show({
-        icon: <IconAlertTriangle color="hsl(var(--wa))" />,
+        icon: <IconAlertTriangle color="oklch(var(--wa))" />,
         content:
           "The current translation of the English document is incomplete",
         autoClose: false,
@@ -116,7 +116,7 @@ export default function Layout() {
           <div className="flex items-center gap-1">
             {/* github */}
             <a
-              className="btn"
+              className="btn btn-ghost btn-circle"
               href="https://github.com/rtdui/rtdui"
               target="_blank"
             >
@@ -139,7 +139,7 @@ export default function Layout() {
               transitionDuration={{ exit: 0 }}
             >
               <Popover.Trigger>
-                <Button sharp="square" className="gap-0.5">
+                <Button sharp="square" ghost className="gap-0.5">
                   <IconTranslate
                     viewBox="0 0 512 512"
                     fill="currentColor"

@@ -3179,27 +3179,6 @@
           "name": "boolean | undefined"
         }
       },
-      "position": {
-        "defaultValue": null,
-        "description": "",
-        "name": "position",
-        "required": false,
-        "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
-          "value": [
-            {
-              "value": "undefined"
-            },
-            {
-              "value": "\"right\""
-            },
-            {
-              "value": "\"left\""
-            }
-          ]
-        }
-      },
       "slots": {
         "defaultValue": null,
         "description": "",
@@ -6148,11 +6127,40 @@
           "name": "number | undefined"
         }
       },
+      "size": {
+        "defaultValue": {
+          "value": "\"md\""
+        },
+        "description": "尺寸",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            }
+          ]
+        }
+      },
       "variant": {
         "defaultValue": {
           "value": "lifted"
         },
-        "description": "",
+        "description": "变体",
         "name": "variant",
         "required": false,
         "type": {

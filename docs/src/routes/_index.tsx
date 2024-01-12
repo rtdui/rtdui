@@ -56,7 +56,7 @@ export default function Index() {
           <div className="flex items-center gap-1">
             {/* github */}
             <a
-              className="btn"
+              className="btn btn-ghost btn-circle"
               href="https://github.com/rtdui/rtdui"
               target="_blank"
             >
@@ -69,7 +69,7 @@ export default function Index() {
               transitionDuration={{ exit: 0 }}
             >
               <Popover.Trigger>
-                <Button className="gap-0.5">
+                <Button ghost sharp="square" className="gap-0.5">
                   <IconTranslate
                     viewBox="0 0 512 512"
                     fill="currentColor"

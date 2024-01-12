@@ -8,8 +8,8 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{ts,tsx,jsx,js}",
-    "../packages/**/*.{ts,tsx,jsx,js}",
-    "./node_modules/@rtdui/**/*.{ts,tsx,jsx,js,mjs,cjs}",
+    "../packages/**/*.{ts,tsx}",
+    "./node_modules/@rtdui/**/*.mjs",
   ],
   theme: {
     extend: {},
