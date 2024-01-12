@@ -9,7 +9,6 @@ export interface DrawerProps {
   defaultOpen?: boolean;
   open?: boolean;
   onChange?: (open: boolean) => void;
-  position?: "left" | "right";
   slots?: { side: string };
   className?: string;
   children?: React.ReactNode;
@@ -60,6 +59,7 @@ export function Drawer(props: DrawerProps) {
         <div
           className={clsx(
             "drawer-side",
+            "overflow-hidden",
             { "absolute h-full": !!target },
             slots?.side
           )}

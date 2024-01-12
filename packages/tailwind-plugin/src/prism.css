@@ -6,31 +6,23 @@
  */
 
 :root {
-  --prism-color-1: hsl(230, 8%, 24%);
-  --prism-color-2: hsl(230, 1%, 98%);
-  --prism-color-3: hsl(240, 2%, 90%);
-  --prism-color-4: hsl(230, 4%, 64%);
-  --prism-color-5: hsl(230, 8%, 24%);
-  --prism-color-6: hsl(301, 63%, 40%);
-  --prism-color-7: hsl(5, 74%, 59%);
-  --prism-color-8: hsl(198, 99%, 37%);
-  --prism-color-9: hsl(119, 34%, 47%);
-  --prism-color-10: #986801;
-  --prism-color-11: hsl(35, 99%, 36%);
-  --prism-color-12: hsl(221, 87%, 60%);
-  --prism-color-13: hsl(344, 84%, 43%);
-  --prism-color-14: hsl(230, 1%, 62%);
-  --prism-color-15: hsl(0, 0, 95%);
-  --prism-color-16: hsl(230, 6%, 44%);
-  --prism-color-17: hsla(230, 8%, 24%, 0.05);
+  --prism-color-1: hsl(230, 8%, 24%); /* pre color */
+  --prism-color-2: hsl(230, 1%, 98%); /* pre bg */
+  --prism-color-3: hsl(230, 1%, 90%); /* selection bg*/
+  --prism-color-4: hsl(230, 4%, 64%); /* comment color */
+  --prism-color-5: hsl(230, 8%, 24%); /* punctuation color */
+  --prism-color-6: hsl(301, 63%, 40%); /* keyword color */
+  --prism-color-7: hsl(5, 74%, 59%); /* symbol color */
+  --prism-color-8: hsl(198, 99%, 37%); /* url color */
+  --prism-color-9: hsl(119, 34%, 47%); /* attr-value color */
+  --prism-color-11: hsl(35, 99%, 36%); /* attr-name color */
+  --prism-color-12: hsl(221, 87%, 60%); /* variable name color */
+  --prism-color-13: hsl(344, 84%, 43%); /* template-string color*/
   /* 插件 */
-  --prism-color-18: hsl(230, 1%, 78%);
-  --prism-color-19: hsla(230, 8%, 24%, 0.2);
-  --prism-color-20: hsla(353, 100%, 66%, 0.15);
-  --prism-color-21: hsla(353, 95%, 66%, 0.25);
-  --prism-color-22: hsla(137, 100%, 55%, 0.15);
-  --prism-color-23: hsla(135, 73%, 55%, 0.25);
-  --prism-color-24: hsl(0, 0%, 100%);
+  --prism-color-16: hsl(230, 6%, 44%); /** line-number color*/
+  --prism-color-17: hsla(230, 8%, 24%, 0.05); /** highlight-line bg */
+  --prism-color-20: hsla(353, 100%, 66%, 0.15); /** diff-deleted line bg */
+  --prism-color-22: hsla(137, 100%, 55%, 0.15); /** diff-inserted line bg */
 }
 
 [data-theme="dark"] {
@@ -43,21 +35,14 @@
   --prism-color-7: hsl(355, 65%, 65%);
   --prism-color-8: hsl(187, 47%, 55%);
   --prism-color-9: hsl(95, 38%, 62%);
-  --prism-color-10: #986801;
   --prism-color-11: hsl(29, 54%, 61%);
   --prism-color-12: hsl(207, 82%, 66%);
   --prism-color-13: hsl(5, 48%, 51%);
-  --prism-color-14: hsl(220, 14%, 45%);
-  --prism-color-15: hsl(0, 0, 95%);
+  /* 插件 */
   --prism-color-16: hsl(220, 9%, 55%);
   --prism-color-17: hsla(220, 100%, 80%, 0.04);
-  --prism-color-18: hsl(220, 13%, 28%);
-  --prism-color-19: hsla(220, 14%, 71%, 0.15);
   --prism-color-20: hsla(353, 100%, 66%, 0.15);
-  --prism-color-21: hsla(353, 95%, 66%, 0.25);
   --prism-color-22: hsla(137, 100%, 55%, 0.15);
-  --prism-color-23: hsla(135, 73%, 55%, 0.25);
-  --prism-color-24: hsl(219, 13%, 22%);
 }
 
 code[class*="language-"],
@@ -274,197 +259,6 @@ pre[class*="language-"] {
 .token.namespace {
   opacity: 0.8;
 }
-
-/* #region Plugin overrides */
-/* Selectors should have higher specificity than those in the plugins' default stylesheets */
-/* Show Invisibles plugin overrides */
-.token.token.tab:not(:empty):before,
-.token.token.cr:before,
-.token.token.lf:before,
-.token.token.space:before {
-  color: var(--prism-color-19);
-}
-
-/* Toolbar plugin overrides */
-/* Space out all buttons and move them away from the right edge of the code block */
-div.code-toolbar > .toolbar.toolbar > .toolbar-item {
-  margin-right: 0.4em;
-}
-
-/* Styling the buttons */
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
-  background: var(--prism-color-3);
-  color: var(--prism-color-16);
-  padding: 0.1em 0.4em;
-  border-radius: 0.3em;
-}
-
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
-  background: var(--prism-color-18); /* custom: darken(--syntax-bg, 20%) */
-  color: var(--prism-color-5);
-}
-
-/* Line Highlight plugin overrides */
-/* The highlighted line itself */
-.line-highlight.line-highlight {
-  background: var(--prism-color-17);
-}
-
-/* Default line numbers in Line Highlight plugin */
-.line-highlight.line-highlight:before,
-.line-highlight.line-highlight[data-end]:after {
-  background: var(--prism-color-3);
-  color: var(--prism-color-5);
-  padding: 0.1em 0.6em;
-  border-radius: 0.3em;
-  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); /* same as Toolbar plugin default */
-}
-
-/* Hovering over a linkable line number (in the gutter area) */
-/* Requires Line Numbers plugin as well */
-pre[id].linkable-line-numbers.linkable-line-numbers
-  span.line-numbers-rows
-  > span:hover:before {
-  background-color: var(--prism-color-17);
-}
-
-/* Line Numbers and Command Line plugins overrides */
-/* Line separating gutter from coding area */
-.line-numbers.line-numbers .line-numbers-rows,
-.command-line .command-line-prompt {
-  border-right-color: var(--prism-color-19);
-}
-
-/* Stuff in the gutter */
-.line-numbers .line-numbers-rows > span:before,
-.command-line .command-line-prompt > span:before {
-  color: var(--prism-color-14);
-}
-
-/* Match Braces plugin overrides */
-/* Note: Outline colour is inherited from the braces */
-.rainbow-braces .token.token.punctuation.brace-level-1,
-.rainbow-braces .token.token.punctuation.brace-level-5,
-.rainbow-braces .token.token.punctuation.brace-level-9 {
-  color: var(--prism-color-7);
-}
-
-.rainbow-braces .token.token.punctuation.brace-level-2,
-.rainbow-braces .token.token.punctuation.brace-level-6,
-.rainbow-braces .token.token.punctuation.brace-level-10 {
-  color: var(--prism-color-9);
-}
-
-.rainbow-braces .token.token.punctuation.brace-level-3,
-.rainbow-braces .token.token.punctuation.brace-level-7,
-.rainbow-braces .token.token.punctuation.brace-level-11 {
-  color: var(--prism-color-12);
-}
-
-.rainbow-braces .token.token.punctuation.brace-level-4,
-.rainbow-braces .token.token.punctuation.brace-level-8,
-.rainbow-braces .token.token.punctuation.brace-level-12 {
-  color: var(--prism-color-6);
-}
-
-/* Diff Highlight plugin overrides */
-/* Taken from https://github.com/atom/github/blob/master/styles/variables.less */
-pre.diff-highlight > code .token.token.deleted:not(.prefix),
-pre > code.diff-highlight .token.token.deleted:not(.prefix) {
-  background-color: var(--prism-color-20);
-}
-
-pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection,
-pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection {
-  background-color: var(--prism-color-21);
-}
-
-pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection,
-pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection {
-  background-color: var(--prism-color-21);
-}
-
-pre.diff-highlight > code .token.token.inserted:not(.prefix),
-pre > code.diff-highlight .token.token.inserted:not(.prefix) {
-  background-color: var(--prism-color-22);
-}
-
-pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection,
-pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection {
-  background-color: var(--prism-color-23);
-}
-
-pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection,
-pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
-  background-color: var(--prism-color-23);
-}
-
-/* Previewers plugin overrides */
-/* Based on https://github.com/atom-community/atom-ide-datatip/blob/master/styles/atom-ide-datatips.less and https://github.com/atom/atom/blob/master/packages/one-light-ui */
-/* Border around popup */
-.prism-previewer.prism-previewer:before,
-.prism-previewer-gradient.prism-previewer-gradient div {
-  border-color: var(--prism-color-15);
-}
-
-/* Angle and time should remain as circles and are hence not included */
-.prism-previewer-color.prism-previewer-color:before,
-.prism-previewer-gradient.prism-previewer-gradient div,
-.prism-previewer-easing.prism-previewer-easing:before {
-  border-radius: 0.3em;
-}
-
-/* Triangles pointing to the code */
-.prism-previewer.prism-previewer:after {
-  border-top-color: var(--prism-color-15);
-}
-
-.prism-previewer-flipped.prism-previewer-flipped.after {
-  border-bottom-color: var(--prism-color-15);
-}
-
-/* Background colour within the popup */
-.prism-previewer-angle.prism-previewer-angle:before,
-.prism-previewer-time.prism-previewer-time:before,
-.prism-previewer-easing.prism-previewer-easing {
-  background: var(--prism-color-24);
-}
-
-/* For angle, this is the positive area (eg. 90deg will display one quadrant in this colour) */
-/* For time, this is the alternate colour */
-.prism-previewer-angle.prism-previewer-angle circle,
-.prism-previewer-time.prism-previewer-time circle {
-  stroke: var(--prism-color-5);
-  stroke-opacity: 1;
-}
-
-/* Stroke colours of the handle, direction point, and vector itself */
-.prism-previewer-easing.prism-previewer-easing circle,
-.prism-previewer-easing.prism-previewer-easing path,
-.prism-previewer-easing.prism-previewer-easing line {
-  stroke: var(--prism-color-5);
-}
-
-/* Fill colour of the handle */
-.prism-previewer-easing.prism-previewer-easing circle {
-  fill: transparent;
-}
-/* #endregion Plugin overrides */
 
 /* #region rehype-prism-plus */
 pre {

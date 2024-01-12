@@ -5,21 +5,21 @@ export function getColor(color: unknown): string | undefined {
 
   switch (color as string) {
     case "neutral":
-      return "hsl(var(--n))";
+      return "oklch(var(--n))";
     case "primary":
-      return "hsl(var(--p))";
+      return "oklch(var(--p))";
     case "secondary":
-      return "hsl(var(--s))";
+      return "oklch(var(--s))";
     case "accent":
-      return "hsl(var(--a))";
+      return "oklch(var(--a))";
     case "info":
-      return "hsl(var(--in))";
+      return "oklch(var(--in))";
     case "success":
-      return "hsl(var(--su))";
+      return "oklch(var(--su))";
     case "warning":
-      return "hsl(var(--wa))";
+      return "oklch(var(--wa))";
     case "error":
-      return "hsl(var(--er))";
+      return "oklch(var(--er))";
     default:
       return color as string;
   }
