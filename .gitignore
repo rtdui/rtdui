@@ -41,6 +41,7 @@ docs/components/___test.internal.tsx
 docs/app/.docgen
 packages/*/styles.css
 ____test.*
+package-lock.json
 
 # remix
 docs/.cache
