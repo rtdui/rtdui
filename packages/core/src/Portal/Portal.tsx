@@ -39,8 +39,8 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
             className,
           })
         : typeof target === "string"
-        ? document.querySelector(target)
-        : target;
+          ? document.querySelector(target)
+          : target;
 
       // DOM节点赋值给引用
       assignRef(ref, nodeRef.current);

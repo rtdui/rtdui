@@ -203,8 +203,8 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
       allowNegative === false && allowDecimal === false
         ? "numeric"
         : allowNegative === false && allowDecimal === true
-        ? "decimal"
-        : "text";
+          ? "decimal"
+          : "text";
 
     return (
       <NumericFormat

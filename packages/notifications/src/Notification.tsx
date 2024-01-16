@@ -57,23 +57,15 @@ export const Notification = React.forwardRef<HTMLDivElement, NotificationProps>(
       ...others
     } = props;
 
-    const colorClass = [
-      color === "primary"
-        ? "bg-primary text-primary-content"
-        : color === "secondary"
-        ? "bg-secondary text-secondary-content"
-        : color === "accent"
-        ? "bg-accent text-accent-content"
-        : color === "info"
-        ? "bg-info text-info-content"
-        : color === "success"
-        ? "bg-success text-success-content"
-        : color === "warning"
-        ? "bg-warning text-warning-content"
-        : color === "error"
-        ? "bg-error text-error-content"
-        : "",
-    ];
+    const colorClass = {
+      "bg-primary text-primary-content": color === "primary",
+      "bg-secondary text-secondary-content": color === "secondary",
+      "bg-accent text-accent-content": color === "accent",
+      "bg-info text-info-content": color === "info",
+      "bg-success text-success-content": color === "success",
+      "bg-warning text-warning-content": color === "warning",
+      "bg-error text-error-content": color === "error",
+    };
 
     return (
       <div

@@ -715,8 +715,8 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
             {typeof oldCellDef === "function"
               ? oldCellDef(cx)
               : oldCellDef === undefined
-              ? cx.getValue()
-              : oldCellDef}
+                ? cx.getValue()
+                : oldCellDef}
           </div>
         );
       };
