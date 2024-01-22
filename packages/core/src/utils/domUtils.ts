@@ -276,12 +276,14 @@ export function urlSearchParamsToObject(url: string) {
  * 长按事件处理器
  * @returns
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function longtap(handler: Function, options?: { threshold: number }) {
   const cancelEvents = ["pointermove", "pointerup", "pointercancel"];
   const defaultThreshold = 500;
   const threshold = options?.threshold ?? defaultThreshold;
 
   function listener(this: any, ...args: any[]) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const context = this;
     function done() {
       handler.apply(context, args);

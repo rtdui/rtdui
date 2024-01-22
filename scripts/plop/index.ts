@@ -3,7 +3,7 @@ import path from "node:path";
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import chalk from "chalk";
-import execa from "execa";
+import { execa } from "execa";
 import { createLogger } from "../utils/signale";
 import { getPath } from "../utils/get-path";
 import rootPackageJson from "../../package.json";

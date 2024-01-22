@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { intervalToDuration } from "date-fns";
+import { intervalToDuration, type Duration } from "date-fns";
 import React from "react";
 
 export interface CountdownProps {

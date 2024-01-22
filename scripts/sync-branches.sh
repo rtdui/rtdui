@@ -1,11 +1,11 @@
 # 首先将master同步至最新
-git checkout master
+git checkout main
 git pull
 
 # master分支合并到dev分支
 git checkout dev
 git pull
-git merge master
+git merge main
 git push
 
 # 将dev分支合并到其它分支

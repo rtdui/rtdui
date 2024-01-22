@@ -71,7 +71,8 @@ function getDecorations({
   return DecorationSet.create(doc, decorations);
 }
 
-function isFunction(param: Function) {
+// eslint-disable-next-line @typescript-eslint/ban-types
+function isFunction(param: any) {
   return typeof param === "function";
 }
 

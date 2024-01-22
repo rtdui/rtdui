@@ -1,5 +1,5 @@
 import path from "node:path";
-import execa from "execa";
+import { execa } from "execa";
 
 export async function generateDts(packagePath: string) {
   await execa("tsc", [

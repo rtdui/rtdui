@@ -3,7 +3,7 @@ import simpleGit from "simple-git";
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import { getNextVersion } from "version-next";
-import execa from "execa";
+import { execa } from "execa";
 import { createLogger } from "../utils/signale";
 import { buildAllPackages } from "../build/build-all-packages";
 import { getPackagesList } from "../packages/get-packages-list";

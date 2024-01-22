@@ -40,7 +40,7 @@ export interface RangeSliderProps
   /** Controls size of the track
    * @default 'md'
    */
-  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | (string & {}) | number;
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | string | number;
 
   /** Minimal possible value
    * @default 0
