@@ -21,13 +21,13 @@ module.exports = {
     "at-rule-no-unknown": [
       true,
       {
-        ignoreAtRules: ["tailwind", "apply", "config"], // 支持tailwind
+        ignoreAtRules: ["tailwind", "apply", "config"], // 支持tailwindcss中的@指令
       },
     ],
     "function-no-unknown": [
       true,
       {
-        ignoreFunctions: ["theme", "screen"],
+        ignoreFunctions: ["theme", "screen"], // 支持tailwindcss中的函数指令
       },
     ],
     // postcss-import

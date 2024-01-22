@@ -8,7 +8,7 @@
 :root {
   --prism-color-1: hsl(230, 8%, 24%); /* pre color */
   --prism-color-2: hsl(230, 1%, 98%); /* pre bg */
-  --prism-color-3: hsl(230, 1%, 90%); /* selection bg*/
+  --prism-color-3: hsl(230, 1%, 90%); /* selection bg */
   --prism-color-4: hsl(230, 4%, 64%); /* comment color */
   --prism-color-5: hsl(230, 8%, 24%); /* punctuation color */
   --prism-color-6: hsl(301, 63%, 40%); /* keyword color */
@@ -17,9 +17,9 @@
   --prism-color-9: hsl(119, 34%, 47%); /* attr-value color */
   --prism-color-11: hsl(35, 99%, 36%); /* attr-name color */
   --prism-color-12: hsl(221, 87%, 60%); /* variable name color */
-  --prism-color-13: hsl(344, 84%, 43%); /* template-string color*/
+  --prism-color-13: hsl(344, 84%, 43%); /* template-string color */
   /* 插件 */
-  --prism-color-16: hsl(230, 6%, 44%); /** line-number color*/
+  --prism-color-16: hsl(230, 6%, 44%); /** line-number color */
   --prism-color-17: hsla(230, 8%, 24%, 0.05); /** highlight-line bg */
   --prism-color-20: hsla(353, 100%, 66%, 0.15); /** diff-deleted line bg */
   --prism-color-22: hsla(137, 100%, 55%, 0.15); /** diff-inserted line bg */
