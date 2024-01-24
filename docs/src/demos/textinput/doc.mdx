@@ -18,6 +18,7 @@ import TextInputLabelDemo from "./TextInputLabelDemo";
 import TextInputSectionDemo from "./TextInputSectionDemo";
 import TextInputNoborderDemo from "./TextInputNoborderDemo";
 import TextInputGhostDemo from "./TextInputGhostDemo";
+import TextInputErrorDemo from "./TextInputErrorDemo";
 import DebouncedInputBasicDemo from "./DebouncedInputBasicDemo";
 import DebouncedInputWaitDemo from "./DebouncedInputWaitDemo";
 import DebouncedInputDefaultValueDemo from "./DebouncedInputDefaultValueDemo";
@@ -57,6 +58,12 @@ import DebouncedInputDefaultValueDemo from "./DebouncedInputDefaultValueDemo";
 透明模式下输入框无背景色. 考虑同时禁用`bordered`属性.
 
 <Demo data={{ Component: TextInputGhostDemo }} />
+
+## error属性
+
+`error`属性可以为组件设置错误消息, `TextInput`会自动应用错误样式
+
+<Demo data={{ Component: TextInputErrorDemo }} />
 
 ## 自定义样式
 
