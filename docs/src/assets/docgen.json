@@ -682,7 +682,7 @@
         "name": "maxHeight",
         "required": false,
         "type": {
-          "name": "MaxHeight<number | (string & {})> | undefined"
+          "name": "MaxHeight<string | number> | undefined"
         }
       },
       "nothingFound": {
@@ -1042,7 +1042,7 @@
         "name": "maxHeight",
         "required": false,
         "type": {
-          "name": "MaxHeight<number | (string & {})> | undefined"
+          "name": "MaxHeight<string | number> | undefined"
         }
       },
       "onQueryChange": {
@@ -1186,7 +1186,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "ghost": {
@@ -1718,7 +1718,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "ghost": {
@@ -2965,7 +2965,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "ghost": {
@@ -3924,7 +3924,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "ghost": {
@@ -4477,8 +4477,8 @@
         "name": "placement",
         "required": false,
         "type": {
-          "name": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"top-start\" | \"top-end\" | \"right-start\" | \"right-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\" | undefined",
-          "raw": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"top-start\" | \"top-end\" | \"right-start\" | \"right-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\" | undefined",
+          "name": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"bottom-end\" | \"bottom-start\" | \"right-end\" | \"right-start\" | \"left-end\" | \"left-start\" | \"top-end\" | \"top-start\" | undefined",
+          "raw": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"bottom-end\" | \"bottom-start\" | \"right-end\" | \"right-start\" | \"left-end\" | \"left-start\" | \"top-end\" | \"top-start\" | undefined",
           "value": [
             {
               "value": "undefined"
@@ -4496,28 +4496,28 @@
               "value": "\"top\""
             },
             {
-              "value": "\"top-start\""
-            },
-            {
-              "value": "\"top-end\""
-            },
-            {
-              "value": "\"right-start\""
-            },
-            {
-              "value": "\"right-end\""
+              "value": "\"bottom-end\""
             },
             {
               "value": "\"bottom-start\""
             },
             {
-              "value": "\"bottom-end\""
+              "value": "\"right-end\""
+            },
+            {
+              "value": "\"right-start\""
+            },
+            {
+              "value": "\"left-end\""
             },
             {
               "value": "\"left-start\""
             },
             {
-              "value": "\"left-end\""
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
             }
           ]
         }
@@ -4704,8 +4704,8 @@
         "name": "placement",
         "required": false,
         "type": {
-          "name": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"top-start\" | \"top-end\" | \"right-start\" | \"right-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\" | undefined",
-          "raw": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"top-start\" | \"top-end\" | \"right-start\" | \"right-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\" | undefined",
+          "name": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"bottom-end\" | \"bottom-start\" | \"right-end\" | \"right-start\" | \"left-end\" | \"left-start\" | \"top-end\" | \"top-start\" | undefined",
+          "raw": "\"bottom\" | \"right\" | \"left\" | \"top\" | \"bottom-end\" | \"bottom-start\" | \"right-end\" | \"right-start\" | \"left-end\" | \"left-start\" | \"top-end\" | \"top-start\" | undefined",
           "value": [
             {
               "value": "undefined"
@@ -4723,28 +4723,28 @@
               "value": "\"top\""
             },
             {
-              "value": "\"top-start\""
-            },
-            {
-              "value": "\"top-end\""
-            },
-            {
-              "value": "\"right-start\""
-            },
-            {
-              "value": "\"right-end\""
+              "value": "\"bottom-end\""
             },
             {
               "value": "\"bottom-start\""
             },
             {
-              "value": "\"bottom-end\""
+              "value": "\"right-end\""
+            },
+            {
+              "value": "\"right-start\""
+            },
+            {
+              "value": "\"left-end\""
             },
             {
               "value": "\"left-start\""
             },
             {
-              "value": "\"left-end\""
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
             }
           ]
         }
@@ -5379,7 +5379,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "ghost": {
@@ -6433,7 +6433,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "ghost": {
@@ -7807,7 +7807,7 @@
         "name": "error",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "string | undefined"
         }
       },
       "getRowId": {
@@ -8604,7 +8604,7 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "number | (string & {}) | \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined"
+          "name": "string | number | undefined"
         }
       },
       "slots": {
@@ -8895,7 +8895,7 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "number | (string & {}) | \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined"
+          "name": "string | number | undefined"
         }
       },
       "slots": {

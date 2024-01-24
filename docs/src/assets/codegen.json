@@ -792,6 +792,10 @@
     "code": "import { TextInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4 items-start\">\n      <TextInput placeholder=\"请输入\" color=\"primary\" />\n      <TextInput placeholder=\"请输入\" color=\"secondary\" />\n      <TextInput placeholder=\"请输入\" color=\"accent\" />\n      <TextInput placeholder=\"请输入\" color=\"info\" />\n      <TextInput placeholder=\"请输入\" color=\"success\" />\n      <TextInput placeholder=\"请输入\" color=\"warning\" />\n      <TextInput placeholder=\"请输入\" color=\"error\" />\n    </div>\n  );\n}\nDemo.displayName = \"TextInputColorDemo\";\n"
   },
   {
+    "name": "TextInputErrorDemo",
+    "code": "import { TextInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4 items-start\">\n      <TextInput label=\"用户名\" required error=\"必须的\" bordered size=\"xs\" />\n    </div>\n  );\n}\nDemo.displayName = \"TextInputErrorDemo\";\n"
+  },
+  {
     "name": "TextInputGhostDemo",
     "code": "import { TextInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return <TextInput ghost bordered={false} placeholder=\"请输入\" />;\n}\nDemo.displayName = \"TextInputGhostDemo\";\n"
   },
