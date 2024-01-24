@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/editor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React rich text editor based on tiptap",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -85,8 +85,8 @@
     "@types/markdown-it": "^12.2.3"
   },
   "peerDependencies": {
-    "@rtdui/core": "2.0.0",
-    "@rtdui/hooks": "2.0.0",
+    "@rtdui/core": "2.0.1",
+    "@rtdui/hooks": "2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
