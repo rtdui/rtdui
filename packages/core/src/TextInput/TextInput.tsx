@@ -25,7 +25,7 @@ export interface TextInputProps
   leftSectionWidth?: number;
   rightSection?: React.ReactNode;
   rightSectionWidth?: number;
-  error?: boolean;
+  error?: string;
   /** 可以通过槽为内部组件添加自定义className */
   slots?: {
     input?: string;
@@ -57,6 +57,8 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       slots,
       ...other
     } = props;
+
+    const hasError = !!error;
 
     const sizes = {
       xs: "1.5rem",
@@ -120,7 +122,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
                 "input-info": color === "info",
                 "input-success": color === "success",
                 "input-warning": color === "warning",
-                "input-error": color === "error",
+                "input-error": color === "error" || hasError,
                 "input-xs": size === "xs",
                 "input-sm": size === "sm",
                 "input-md": size === "md",
@@ -148,9 +150,13 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             </div>
           )}
         </div>
-        {helperText && (
-          <label className={clsx("label", slots?.helperText)}>
-            <span className="label-text-alt">{helperText}</span>
+        {(helperText || hasError) && (
+          <label className={clsx("label py-1", slots?.helperText)}>
+            {hasError ? (
+              <span className="label-text-alt text-error">{error}</span>
+            ) : (
+              <span className="label-text-alt">{helperText}</span>
+            )}
           </label>
         )}
       </div>

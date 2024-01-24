@@ -42,7 +42,7 @@ import {
   IconChevronRight,
   IconDirection,
 } from "@tabler/icons-react";
-import deepCopy from "lodash.clonedeep";
+import { klona } from "klona/full";
 import { useScrollTrigger } from "@rtdui/hooks";
 import { Checkbox, isMobile, getType, filterProps } from "@rtdui/core";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -612,7 +612,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
 
   // 微调列定义
   const columns = React.useMemo(() => {
-    const cloneColumns = deepCopy(columnsProp) as ColumnDef<any, any>[];
+    const cloneColumns = klona(columnsProp);
 
     if (enableTree) {
       // 用户列中第一个定义了meta.expandable为true的列为tree的可展开列
