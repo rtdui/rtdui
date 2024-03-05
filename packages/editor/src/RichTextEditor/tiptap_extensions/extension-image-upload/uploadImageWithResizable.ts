@@ -238,7 +238,7 @@ export const UploadImageWithResizable = Node.create<ImageOptions>({
                       .insertContent({
                         type: this.name,
                         attrs: {
-                          src: `/${result.imageUrl}`,
+                          src: result.imageUrl,
                           alt: options.alt ?? newFile.name,
                           title: options.title ?? newFile.name,
                           width: newWidth,
