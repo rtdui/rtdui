@@ -946,6 +946,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
   return (
     <DndProvider
       backend={isMobileDevice ? TouchBackend : HTML5Backend}
+      context={window}
       options={{
         delayTouchStart: 200,
         ignoreContextMenu: true,
