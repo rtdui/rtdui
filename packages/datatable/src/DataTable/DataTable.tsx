@@ -811,7 +811,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
               "text-center": valueType === "Boolean" || align === "center",
             })}
           >
-            {String(value)}
+            {cx.renderValue<any>()?.toString() ?? ""}
           </div>
         );
       },
