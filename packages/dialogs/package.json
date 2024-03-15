@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/dialogs",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "React dialogs base on Rtdui components",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -48,8 +48,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@rtdui/hooks": "2.0.2",
-    "@rtdui/core": "2.0.2",
+    "@rtdui/hooks": "2.0.3",
+    "@rtdui/core": "2.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
