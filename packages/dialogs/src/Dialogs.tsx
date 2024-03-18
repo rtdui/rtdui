@@ -46,7 +46,7 @@ export function Dialogs(props: DialogsProps) {
   ));
 
   return (
-    <Portal target={target} type="dialogs" className={`relative ${className}"`}>
+    <Portal target={target} type="dialogs" className={`relative ${className}`}>
       <TransitionGroup component={null}>{items}</TransitionGroup>
     </Portal>
   );
