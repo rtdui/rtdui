@@ -946,7 +946,8 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
   return (
     <DndProvider
       backend={isMobileDevice ? TouchBackend : HTML5Backend}
-      context={window}
+      // 防止同一页面放置多个报错问题
+      context={typeof document !== "undefined" ? window : undefined}
       options={{
         delayTouchStart: 200,
         ignoreContextMenu: true,

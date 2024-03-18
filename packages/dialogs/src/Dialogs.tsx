@@ -12,6 +12,7 @@ import { useDialogs, hideDialog } from "./dialogs.store";
 export interface DialogsProps {
   /** Target element of Portal component */
   target?: PortalProps["target"];
+  className?: string;
 }
 
 /**
@@ -25,7 +26,7 @@ export interface DialogsProps {
  * 然后就可以在App内的任意位置调用
  */
 export function Dialogs(props: DialogsProps) {
-  const { target } = props;
+  const { target, className = "z-40" } = props;
 
   const data = useDialogs();
   const shouldReduceMotion = useReducedMotion();
@@ -45,7 +46,7 @@ export function Dialogs(props: DialogsProps) {
   ));
 
   return (
-    <Portal target={target} type="dialogs" className="relative z-40">
+    <Portal target={target} type="dialogs" className={`relative ${className}"`}>
       <TransitionGroup component={null}>{items}</TransitionGroup>
     </Portal>
   );

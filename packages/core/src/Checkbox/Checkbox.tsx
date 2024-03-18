@@ -15,6 +15,11 @@ export interface CheckboxProps
   label?: string;
   helperText?: string;
   onChange?: (checked: boolean) => void;
+  slots?: {
+    input?: string;
+    label?: string;
+    helperText?: string;
+  };
 }
 
 /** ref属性会转发至内部的input元素 */
@@ -29,6 +34,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       onChange,
       className,
       children,
+      slots,
       ...other
     } = props;
 
@@ -42,7 +48,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     );
 
     return (
-      <div className="form-control">
+      <div className={clsx("form-control", className)}>
         <div className="flex items-center gap-3">
           <input
             ref={ref}
@@ -62,12 +68,12 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
                 "checkbox-md": size === "md",
                 "checkbox-lg": size === "lg",
               },
-              className
+              slots?.input
             )}
             onChange={handleCheckedChange}
             {...other}
           />
-          {label && <span>{label}</span>}
+          {label && <span className={clsx(slots?.label)}>{label}</span>}
         </div>
         {helperText && (
           <span className="label-text-alt pt-0.5">{helperText}</span>

@@ -112,6 +112,7 @@ export const DataTableSelect = React.forwardRef<
           }}
           rightSection={right}
           value={displayValue}
+          className={className}
           {...other}
         />
       </Popover.Trigger>

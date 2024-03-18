@@ -1,6 +1,7 @@
 import React from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { RadioGroupProvider } from "./RadioGroup.context";
+import clsx from "clsx";
 
 export interface RadioGroupProps
   extends Omit<
@@ -21,6 +22,10 @@ export interface RadioGroupProps
   value?: string | number;
   defaultValue?: string | number;
   onChange?: (value: string | number) => void;
+  slots?: {
+    label?: string;
+    helperText?: string;
+  };
 }
 
 /** ref属性会转发至内部的input元素 */
@@ -38,6 +43,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
       onChange,
       className,
       children,
+      slots,
       ...other
     } = props;
 
@@ -63,13 +69,15 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
 
     return (
       <RadioGroupProvider value={contextValue}>
-        <div className="flex flex-col gap-2">
-          {label && <span>{label}</span>}
+        <div className={clsx("flex flex-col gap-2", className)}>
+          {label && <span className={clsx(slots?.label)}>{label}</span>}
           <div className="flex flex-col gap-1 justify-items-center">
             {children}
           </div>
           {helperText && (
-            <span className="label-text-alt pt-0.5">{helperText}</span>
+            <span className={clsx("label-text-alt pt-0.5", slots?.helperText)}>
+              {helperText}
+            </span>
           )}
         </div>
       </RadioGroupProvider>

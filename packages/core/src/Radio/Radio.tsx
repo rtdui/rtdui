@@ -25,6 +25,11 @@ export interface RadioProps
   size?: "xs" | "sm" | "md" | "lg";
   label?: string;
   helperText?: string;
+  slots?: {
+    input?: string;
+    label?: string;
+    helperText?: string;
+  };
 }
 
 /**
@@ -46,6 +51,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       onChange: onChangeProp,
       className,
       children,
+      slots,
       ...other
     } = props;
 
@@ -67,7 +73,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     }
 
     return (
-      <div className="form-control">
+      <div className={clsx("form-control", className)}>
         <div className="flex items-center gap-3">
           <input
             ref={ref}
@@ -87,7 +93,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
                 "radio-md": size === "md",
                 "radio-lg": size === "lg",
               },
-              className
+              slots?.input
             )}
             name={name}
             value={valueProp}
@@ -95,10 +101,12 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             onChange={onChange}
             {...other}
           />
-          {label && <span>{label}</span>}
+          {label && <span className={clsx(slots?.label)}>{label}</span>}
         </div>
         {helperText && (
-          <span className="label-text-alt pt-0.5">{helperText}</span>
+          <span className={clsx("label-text-alt pt-0.5", slots?.helperText)}>
+            {helperText}
+          </span>
         )}
       </div>
     );
