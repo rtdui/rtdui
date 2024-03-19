@@ -572,7 +572,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     selectedRowId.forEach((d) => {
       // 如果删除的行在新增集中则直接删除新增集中的行
       const addedRowIndex = changesRef.current.changes.added.findIndex(
-        (d) => getRowId(d) === d
+        (d2) => getRowId(d2).toString() === d
       );
       if (addedRowIndex >= 0) {
         changesRef.current.changes.added.splice(addedRowIndex, 1);
