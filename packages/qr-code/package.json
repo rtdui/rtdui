@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/qr-code",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "React QR Code component",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -50,8 +50,8 @@
     "qrcode.react": "^3.1.0"
   },
   "peerDependencies": {
-    "@rtdui/core": "2.0.6",
-    "@rtdui/hooks": "2.0.6",
+    "@rtdui/core": "2.0.7",
+    "@rtdui/hooks": "2.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/datatable",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "React DataTable component based on Rtdui components",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -59,8 +59,8 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "peerDependencies": {
-    "@rtdui/core": "2.0.6",
-    "@rtdui/hooks": "2.0.6",
+    "@rtdui/core": "2.0.7",
+    "@rtdui/hooks": "2.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
