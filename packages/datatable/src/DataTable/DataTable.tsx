@@ -569,7 +569,18 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     const selectedRowId = Object.keys(rowSelection).filter(
       (d) => rowSelection[d] === true
     );
-    changesRef.current.changes.deleted.push(...selectedRowId);
+    selectedRowId.forEach((d) => {
+      // 如果删除的行在新增集中则直接删除新增集中的行
+      const addedRowIndex = changesRef.current.changes.added.findIndex(
+        (d) => getRowId(d) === d
+      );
+      if (addedRowIndex >= 0) {
+        changesRef.current.changes.added.splice(addedRowIndex, 1);
+      } else {
+        // 如果不在新增集中则加入到删除集.
+        changesRef.current.changes.deleted.push(d);
+      }
+    });
     table.resetRowSelection(true);
     setData((prev) =>
       prev.filter((d) => !selectedRowId.includes(String(getRowId(d))))
