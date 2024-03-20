@@ -8,7 +8,7 @@ import { getSelectedRows } from "../utils/getSelectedRows";
 import type { DataTableProps } from "../DataTable/DataTable";
 
 export interface DataTableSelectProps
-  extends Omit<TextInputProps, "value" | "defaultValue" | "onChange">,
+  extends Omit<TextInputProps, "value" | "defaultValue" | "onChange" | "slots">,
     Pick<
       DataTableProps,
       | "columns"
@@ -24,6 +24,9 @@ export interface DataTableSelectProps
   value?: string;
   defaultValue?: string;
   onChange?: (ids: string | string[]) => void;
+  slots?: TextInputProps["slots"] & {
+    dropdown?: string;
+  };
 }
 
 /** ref属性会转发至内部的input元素 */
@@ -118,7 +121,10 @@ export const DataTableSelect = React.forwardRef<
       </Popover.Trigger>
       <Popover.Dropdown
         showArrow
-        className="h-96 shadow-md rounded-md overflow-hidden"
+        className={clsx(
+          "h-60 shadow-md rounded-md overflow-hidden",
+          slots?.dropdown
+        )}
       >
         <DataTable
           ref={tableRef}
@@ -151,6 +157,7 @@ export const DataTableSelect = React.forwardRef<
           enableExport={false}
           debouncedWait={500}
           autoExpandAll={autoExpandAll}
+          className="bg-base-100"
         />
       </Popover.Dropdown>
     </Popover>

@@ -3,21 +3,32 @@ import type {
   AccessorKeyColumnDef,
   CellContext,
   ColumnDef,
+  ColumnFiltersState,
+  ColumnOrderState,
   ColumnOrderTableState,
+  ColumnPinningState,
   ColumnPinningTableState,
+  ColumnSizingInfoState,
+  ColumnSizingState,
   ColumnSizingTableState,
+  ExpandedState,
   ExpandedTableState,
   FiltersTableState,
+  GroupingState,
   GroupingTableState,
   OnChangeFn,
+  PaginationState,
   PaginationTableState,
   Row,
+  RowPinningState,
   RowSelectionState,
   RowSelectionTableState,
+  SortingState,
   SortingTableState,
   TableOptions,
   TableState,
   Updater,
+  VisibilityState,
   VisibilityTableState,
 } from "@tanstack/react-table";
 import {
@@ -176,7 +187,7 @@ export interface DataTableProps {
 
   /**
    * 数据表的初始状态, 这个属性是非受控的. 数据表组件挂载后更新该属性不会导致数据表状态改变.
-   * 注意: 该属性和state属性不是互斥的. 最终会合并到table.options.state属性中
+   * 注意: 不要同时对某项状态同时在initialState和state指定. state会覆盖initialState中的相应的值
    */
   initialState?: Partial<
     VisibilityTableState &
@@ -193,6 +204,8 @@ export interface DataTableProps {
 
   /**
    * 数据表的状态, 这个属性是受控属性. 必须通过onStateChange事件更新
+   * 注意: 不要对某项状态在initialState和state同时指定, state会覆盖initialState中的相应的值
+   *
    */
   state?: Partial<
     VisibilityTableState &
@@ -208,7 +221,38 @@ export interface DataTableProps {
   >;
 
   /**
-   * 当数据表的状态改变时的事件, 如果提供则会覆盖内部默认的状态管理, 你需要将你的状态传回给state属性
+   * 各类功能项的单独状态处理.
+   * 这是推荐方式, 这样只会控制单独功能项的状态. 并且只需在state中设置你想管理的那些状态即可.
+   * @example
+    const [sorting, setSorting] = React.useState([])
+    // 方式1, 直接赋值给React的setState
+    onSortingChange: setSorting;
+    // 方式2, 需要对状态做额外处理
+    onSortingChange: (updater) => {
+      // 必须这样得到表的新状态值
+      const newSortingValue = updater instanceof Function ? updater(sorting) : updater
+      //do something with the new sorting value
+      //...
+      setSorting(updater) //normal state update
+    }
+   */
+  onColumnFiltersChange?: OnChangeFn<ColumnFiltersState>;
+  onGlobalFilterChange?: OnChangeFn<any>;
+  onColumnOrderChange?: OnChangeFn<ColumnOrderState>;
+  onColumnSizingChange?: OnChangeFn<ColumnSizingState>;
+  onColumnSizingInfoChange?: OnChangeFn<ColumnSizingInfoState>;
+  onColumnVisibilityChange?: OnChangeFn<VisibilityState>;
+  onExpandedChange?: OnChangeFn<ExpandedState>;
+  onGroupingChange?: OnChangeFn<GroupingState>;
+  onPaginationChange?: OnChangeFn<PaginationState>;
+  onColumnPinningChange?: OnChangeFn<ColumnPinningState>;
+  onRowPinningChange?: OnChangeFn<RowPinningState>;
+  onSortingChange?: OnChangeFn<SortingState>;
+  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
+
+  /**
+   * 所有功能状态的完全控制处理.
+   * 注意: 这会完全接管表的所有功能状态, 这要求在state中设置所有功能项的状态值. 这样做既不方便也存在性能问题. 不推荐使用.
    */
   onStateChange?: (updater: Updater<TableState>) => void;
   //#endregion 核心选项
@@ -405,10 +449,7 @@ export interface DataTableProps {
    * @default false
    */
   enableSubRowSelection?: boolean | ((row: Row<any>) => boolean);
-  /**
-   * 行选择改变时触发, 注意定义了该属性后会覆盖内部默认的状态管理, 需要将你的行选择状态传回给state属性.
-   */
-  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
+
   //#endregion 功能: Row Selection
 }
 
@@ -419,6 +460,19 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     getRowId = (row: any) => row.id,
     initialState,
     state,
+    onColumnFiltersChange,
+    onColumnOrderChange,
+    onColumnPinningChange,
+    onColumnSizingChange,
+    onColumnSizingInfoChange,
+    onColumnVisibilityChange,
+    onExpandedChange,
+    onGlobalFilterChange,
+    onGroupingChange,
+    onPaginationChange,
+    onRowPinningChange,
+    onSortingChange,
+    onRowSelectionChange,
     onStateChange,
     enableColumnReorder = true,
     groupedColumnMode = "reorder",
@@ -439,7 +493,6 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     enableSubRowSelection = false,
     enableClickRowSelection = true,
     selectAllForAllPages = true,
-    onRowSelectionChange,
     enableStickyHeader = true,
     enableAutoRowNumber = false,
     enableExport = false,
@@ -837,7 +890,6 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     enableRowSelection,
     enableMultiRowSelection,
     enableSubRowSelection,
-    onRowSelectionChange,
     // 核心行模型, 这是必须的
     getCoreRowModel: getCoreRowModel(),
     getSubRows: enableTree ? getSubRows : undefined, // 注意, 启用数据分组时不能设置该属性, 否则会有冲突.
@@ -871,6 +923,20 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     getPaginationRowModel: enablePagination
       ? getPaginationRowModel()
       : undefined,
+    // 受控状态处理
+    onColumnFiltersChange,
+    onColumnOrderChange,
+    onColumnPinningChange,
+    onColumnSizingChange,
+    onColumnSizingInfoChange,
+    onColumnVisibilityChange,
+    onExpandedChange,
+    onGlobalFilterChange,
+    onGroupingChange,
+    onPaginationChange,
+    onRowPinningChange,
+    onSortingChange,
+    onRowSelectionChange,
     // 用于列定义中访问表的自定义元数据
     meta: {
       addRow,
