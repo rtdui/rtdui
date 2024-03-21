@@ -9,7 +9,7 @@ import { Transition } from "../../Transition";
 export interface PopoverDropdownProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "slot"> {
   showArrow?: boolean;
-  slots?: { arrow: string };
+  slots?: { arrow?: string };
 }
 export const PopoverDropdown = React.forwardRef<
   HTMLDivElement,

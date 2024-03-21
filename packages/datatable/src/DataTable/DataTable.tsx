@@ -78,10 +78,10 @@ export interface DataTableProps {
   className?: string;
   /** 样式槽 */
   slots?: {
-    container: string;
-    toolbar: string;
-    groupDropArea: string;
-    table: string;
+    container?: string;
+    toolbar?: string;
+    groupDropArea?: string;
+    table?: string;
   };
   /** 表行的高度
    * @default "sm"

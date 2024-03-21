@@ -9,7 +9,7 @@ export interface DrawerProps {
   defaultOpen?: boolean;
   open?: boolean;
   onChange?: (open: boolean) => void;
-  slots?: { side: string };
+  slots?: { side?: string };
   className?: string;
   children?: React.ReactNode;
 }

@@ -107,6 +107,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           )}
           <input
             ref={ref}
+            size={1}
             placeholder={placeholder}
             className={clsx(
               "input",

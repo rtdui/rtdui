@@ -54,7 +54,7 @@ export interface QRCodeProps
    * @default () => void
    */
   onRefresh?: () => void;
-  slots?: { qr: string };
+  slots?: { qr?: string };
 }
 
 export function QRCode(props: QRCodeProps) {
