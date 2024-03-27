@@ -90,8 +90,8 @@ export function Select(props: SelectProps) {
       apply({ rects, elements, availableHeight, placement }) {
         Object.assign(elements.floating.style, {
           maxHeight: "296px", // 8个列表项(每个36)+padding(8)
-          width: `${rects.reference.width}px`,
-          minWidth: "200px",
+          // width: `${rects.reference.width}px`,
+          minWidth: `${rects.reference.width}px`,
           overflow: "auto",
         });
       },

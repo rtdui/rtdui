@@ -42,10 +42,10 @@ async function getChangelog() {
     .join("\n");
 
   if (changeLogs) {
-    fs.ensureFileSync(path.resolve("docs/src/assets/changelog.mdx"));
+    fs.ensureFileSync(path.resolve("docs-site/app/src/assets/changelog.mdx"));
 
     const prevContent = fs.readFileSync(
-      path.resolve("docs/src/assets/changelog.mdx"),
+      path.resolve("docs-site/app/src/assets/changelog.mdx"),
       "utf-8"
     );
 
@@ -55,7 +55,10 @@ async function getChangelog() {
 ${changeLogs}\n
 ${prevContent}`;
 
-    fs.writeFileSync(path.resolve("docs/src/assets/changelog.mdx"), newContent);
+    fs.writeFileSync(
+      path.resolve("docs-site/app/src/assets/changelog.mdx"),
+      newContent
+    );
   }
   process.stdout.write(`${changeLogs || "No significant changes yet"}\n\n`);
 }

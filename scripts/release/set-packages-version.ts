@@ -46,7 +46,7 @@ export async function setPackagesVersion(version: string) {
     )
   );
 
-  await writeVersionToPackageJson(getPath("docs/package.json"), version);
+  await writeVersionToPackageJson(getPath("docs-site/package.json"), version);
 
   await writeVersionToPackageJson(getPath("package.json"), version);
 }

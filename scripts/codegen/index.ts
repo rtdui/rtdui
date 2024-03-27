@@ -10,12 +10,16 @@ function getDemoSourceCode(filePathOrPaths: string | string[]) {
     name: path.basename(filePath, ".tsx"),
     code: fs.readFileSync(filePath, "utf-8"),
   }));
-  fs.writeJsonSync(path.resolve("docs/src/assets/codegen.json"), codes, {
-    spaces: 2,
-  });
+  fs.writeJsonSync(
+    path.resolve("docs-site/app/src/assets/codegen.json"),
+    codes,
+    {
+      spaces: 2,
+    }
+  );
 }
 
-const pattern = "docs/src/demos/**/*.tsx";
+const pattern = "docs-site/app/src/demos/**/*.tsx";
 const demoPaths = fg.sync(pattern, { absolute: true });
 
 getDemoSourceCode(demoPaths);

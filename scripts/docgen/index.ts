@@ -10,7 +10,7 @@ const EXTRA_FILES_PATHS: string[] = [
 const PATHS = ["packages/*/src/**/*.tsx", ...EXTRA_FILES_PATHS];
 
 fs.writeJSONSync(
-  path.resolve("docs/src/assets/docgen.json"),
+  path.resolve("docs-site/app/src/assets/docgen.json"),
   generateDeclarations(PATHS),
   {
     spaces: 2,

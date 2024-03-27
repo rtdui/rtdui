@@ -73,7 +73,7 @@ async function release() {
   await git.add([
     getPath("packages"),
     getPath("package.json"),
-    getPath("docs/package.json"),
+    getPath("docs-site/package.json"),
   ]);
   await git.commit(`[release] Version: ${incrementedVersion}`);
   await git.push();
