@@ -10,7 +10,7 @@ function createCloudflareKvUploadHandler(options) {
     }
     const blob = new Blob(chunks, { type: contentType });
 
-    const key = `${filename}-${Date.now()}`;
+    const key = `${Date.now()}-${filename}`;
     // 保存到cloudflare的kv中
     await kv.put(key, blob.stream(), {
       expirationTtl, // 生存时间(秒)
