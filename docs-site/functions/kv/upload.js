@@ -20,7 +20,13 @@ function createCloudflareKvUploadHandler(options) {
   };
 }
 
-// upload to kv
+/**
+ * upload to cloudflare kv
+ *
+ * 注意: 生成分支和预览分支都需要独立的在cloudflare dashborad上配置kv binding
+ * @param {*} context
+ * @returns
+ */
 export async function onRequest(context) {
   const { request, params, env } = context;
   const uploadHandler = createCloudflareKvUploadHandler({
@@ -30,9 +36,9 @@ export async function onRequest(context) {
   const formData = await parseMultipartFormData(request, uploadHandler);
 
   const fileName = formData.get("upload");
-  return new Response(JSON.stringify({ imageUrl: `kv/${fileName}` }), {
+  return new Response(JSON.stringify({ imageUrl: `/kv/${fileName}` }), {
     headers: {
-      "Content-Type": "application/json; utf-8",
+      "Content-Type": "application/json",
     },
   });
 }

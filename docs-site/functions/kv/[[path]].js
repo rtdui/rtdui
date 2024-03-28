@@ -12,7 +12,7 @@ export async function onRequest(context) {
   if (value) {
     return new Response(value, {
       headers: {
-        "content-type": metadata.contentType,
+        "Content-Type": metadata.contentType,
       },
     });
   }
