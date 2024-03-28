@@ -120,4 +120,6 @@ export const action = async (args: ActionFunctionArgs) => {
 
 > 注意: 你有责任验证客户端上传的文件.
 
+下面的例子允许上传本地图片到服务器, 但上传的图片在服务端只会保留 1 个小时. 另外, 图片文件太大也会被拒绝.
+
 <Demo data={{ Component: EditorBasicDemo }} notProse={false} />
