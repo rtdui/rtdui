@@ -4,7 +4,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "rtdui Components Monorepo",
   "main": "index.js",
   "type": "module",
