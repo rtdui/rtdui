@@ -19,47 +19,88 @@ const routes = fs.readdirSync(path.resolve("app/src/demos")).map((d) => ({
   file: `src/demos/${d}/doc.mdx`,
 }));
 
-export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
-  return {
-    plugins: [
-      mdx({
-        remarkPlugins: [
-          remarkFrontmatter, // 只是让mdx识别markdown中的frontmatter
-          remarkMdxFrontmatter, // 必须依赖remarkFrontmatter, 将frontmatter metadata转换到mdx模块的export
-          remarkGfm,
-          remarkToc, // 指定特定的标题文本: toc或Table of contents或contents
-          remarkBreaks,
-          remarkMath,
-        ],
-        rehypePlugins: [
-          rehypeSlug, // 为Headings生成id特性
-          [rehypePrismPlus, { ignoreMissing: true }], // 注意需要手动生成PrismPlus的css样式并导入
-          [rehypeKatex, { output: "html" }], // 只输出html,默认为"htmlAndMathml", 注意需要导入katex的css样式
-        ],
-      }),
-      remix({
-        ssr: false,
-        routes(defineRoutes) {
-          return defineRoutes((route) => {
-            routes.forEach((d) => {
-              route(
-                "/components/*",
-                "routes/_layout.tsx",
-                { id: d.route },
-                () => {
-                  route(`${d.route}`, d.file);
-                }
-              );
-            });
+export default defineConfig({
+  plugins: [
+    mdx({
+      remarkPlugins: [
+        remarkFrontmatter, // 只是让mdx识别markdown中的frontmatter
+        remarkMdxFrontmatter, // 必须依赖remarkFrontmatter, 将frontmatter metadata转换到mdx模块的export
+        remarkGfm,
+        remarkToc, // 指定特定的标题文本: toc或Table of contents或contents
+        remarkBreaks,
+        remarkMath,
+      ],
+      rehypePlugins: [
+        rehypeSlug, // 为Headings生成id特性
+        [rehypePrismPlus, { ignoreMissing: true }], // 注意需要手动生成PrismPlus的css样式并导入
+        [rehypeKatex, { output: "html" }], // 只输出html,默认为"htmlAndMathml", 注意需要导入katex的css样式
+      ],
+    }),
+    remix({
+      ssr: false,
+      routes(defineRoutes) {
+        return defineRoutes((route) => {
+          routes.forEach((d) => {
+            route(
+              "/components/*",
+              "routes/_layout.tsx",
+              { id: d.route },
+              () => {
+                route(`${d.route}`, d.file);
+              }
+            );
           });
-        },
-      }),
-      command === "serve"
-        ? tsconfigPaths({ projects: ["./tsconfig.json"] })
-        : undefined,
-    ],
-    ssr: {
-      noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
-    },
-  };
+        });
+      },
+    }),
+    tsconfigPaths({ projects: ["./tsconfig.json"] }),
+  ],
+  ssr: {
+    noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
+  },
 });
+
+// export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
+//   return {
+//     plugins: [
+//       mdx({
+//         remarkPlugins: [
+//           remarkFrontmatter, // 只是让mdx识别markdown中的frontmatter
+//           remarkMdxFrontmatter, // 必须依赖remarkFrontmatter, 将frontmatter metadata转换到mdx模块的export
+//           remarkGfm,
+//           remarkToc, // 指定特定的标题文本: toc或Table of contents或contents
+//           remarkBreaks,
+//           remarkMath,
+//         ],
+//         rehypePlugins: [
+//           rehypeSlug, // 为Headings生成id特性
+//           [rehypePrismPlus, { ignoreMissing: true }], // 注意需要手动生成PrismPlus的css样式并导入
+//           [rehypeKatex, { output: "html" }], // 只输出html,默认为"htmlAndMathml", 注意需要导入katex的css样式
+//         ],
+//       }),
+//       remix({
+//         ssr: false,
+//         routes(defineRoutes) {
+//           return defineRoutes((route) => {
+//             routes.forEach((d) => {
+//               route(
+//                 "/components/*",
+//                 "routes/_layout.tsx",
+//                 { id: d.route },
+//                 () => {
+//                   route(`${d.route}`, d.file);
+//                 }
+//               );
+//             });
+//           });
+//         },
+//       }),
+//       command === "serve"
+//         ? tsconfigPaths({ projects: ["./tsconfig.json"] })
+//         : undefined,
+//     ],
+//     ssr: {
+//       noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
+//     },
+//   };
+// });
