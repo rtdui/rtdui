@@ -123,8 +123,6 @@ function processImage(
   };
 }
 
-let input: HTMLInputElement;
-
 // Markdown嵌入图片的语法: ![图片alt](图片链接 "图片title")
 export const inputRegex =
   /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
@@ -208,49 +206,48 @@ export const UploadImageWithResizable = Node.create<ImageOptions>({
       uploadImage:
         (options) =>
         ({ chain }) => {
-          if (!input) {
-            input = document.createElement("input");
-            input.type = "file";
-            input.accept = "image/*";
-            input.onchange = async (ev: Event) => {
-              const file = (ev.target as HTMLInputElement).files![0];
-              if (file) {
-                // 在上传前对图片进行压缩处理
-                processImage(
-                  file,
-                  this.options,
-                  async (newFile, newWidth, newHeight) => {
-                    const formData = new FormData();
-                    formData.append("upload", newFile);
-                    if (!this.options.url)
-                      throw new Error(
-                        "no configure 'url' for UploadImage extension"
-                      );
-                    // 上传
-                    const res = await fetch(this.options.url, {
-                      method: this.options.method,
-                      body: formData,
-                    });
-                    const result = await res.json();
-                    this.editor
-                      .chain()
-                      .focus()
-                      .insertContent({
-                        type: this.name,
-                        attrs: {
-                          src: result.imageUrl,
-                          alt: options.alt ?? newFile.name,
-                          title: options.title ?? newFile.name,
-                          width: newWidth,
-                          height: newHeight,
-                        },
-                      })
-                      .run();
-                  }
-                );
-              }
-            };
-          }
+          const input = document.createElement("input");
+          input.type = "file";
+          input.accept = "image/*";
+          input.onchange = async (ev: Event) => {
+            const file = (ev.target as HTMLInputElement).files![0];
+            if (file) {
+              // 在上传前对图片进行压缩处理
+              processImage(
+                file,
+                this.options,
+                async (newFile, newWidth, newHeight) => {
+                  const formData = new FormData();
+                  formData.append("upload", newFile);
+                  if (!this.options.url)
+                    throw new Error(
+                      "no configure 'url' for UploadImage extension"
+                    );
+                  // 上传
+                  const res = await fetch(this.options.url, {
+                    method: this.options.method,
+                    body: formData,
+                  });
+                  const result = await res.json();
+                  this.editor
+                    .chain()
+                    .focus()
+                    .insertContent({
+                      type: this.name,
+                      attrs: {
+                        src: result.imageUrl,
+                        alt: options.alt ?? newFile.name,
+                        title: options.title ?? newFile.name,
+                        width: newWidth,
+                        height: newHeight,
+                      },
+                    })
+                    .run();
+                }
+              );
+            }
+          };
+
           input.click();
           return true;
         },
