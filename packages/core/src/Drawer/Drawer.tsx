@@ -9,6 +9,11 @@ export interface DrawerProps {
   defaultOpen?: boolean;
   open?: boolean;
   onChange?: (open: boolean) => void;
+  /**
+   * click drawer outside close drawer
+   * @default true
+   */
+  clickOutsideClose?: boolean;
   slots?: { side?: string };
   className?: string;
   children?: React.ReactNode;
@@ -22,6 +27,7 @@ export function Drawer(props: DrawerProps) {
     open: openProp,
     defaultOpen,
     onChange,
+    clickOutsideClose = true,
     children,
     className,
     slots,
@@ -64,7 +70,12 @@ export function Drawer(props: DrawerProps) {
             slots?.side
           )}
         >
-          <label htmlFor={inputId} className="drawer-overlay"></label>
+          <label
+            htmlFor={clickOutsideClose ? inputId : undefined}
+            className={clsx("drawer-overlay", {
+              "!cursor-default": clickOutsideClose === false,
+            })}
+          />
           {children}
         </div>
       </div>
