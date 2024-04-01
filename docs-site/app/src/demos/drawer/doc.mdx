@@ -12,6 +12,7 @@ handle:
 import Demo from "../../components/Demo";
 import DrawerBasicDemo from "./DrawerBasicDemo";
 import DrawerTargetDemo from "./DrawerTargetDemo";
+import DrawerDisabledClickOutsideCloseDemo from "./DrawerDisabledClickOutsideCloseDemo";
 
 # 使用
 
@@ -24,3 +25,9 @@ import DrawerTargetDemo from "./DrawerTargetDemo";
 注意: `target`元素必须设置`relative`相对定位, 而且应该给它一个高度.
 
 <Demo data={{ Component: DrawerTargetDemo }} />
+
+## 禁用点击幕布关闭抽屉
+
+默认情况下, 点击背景幕布会关闭抽屉, 可以将`clickOutsideClose`属性设置为`false`可以禁用默认行为.
+
+<Demo data={{ Component: DrawerDisabledClickOutsideCloseDemo }} />

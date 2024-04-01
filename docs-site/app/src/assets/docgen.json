@@ -3161,6 +3161,17 @@
           ]
         }
       },
+      "clickOutsideClose": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "click drawer outside close drawer",
+        "name": "clickOutsideClose",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "defaultOpen": {
         "defaultValue": null,
         "description": "",
