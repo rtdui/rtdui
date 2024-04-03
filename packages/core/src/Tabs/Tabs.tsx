@@ -82,9 +82,4 @@ const Tabs_ = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   );
 });
 
-type TabsType = typeof Tabs_ & {
-  TabPanel: typeof TabPanel;
-};
-
-export const Tabs = Tabs_ as TabsType;
-Tabs.TabPanel = TabPanel;
+export const Tabs = Object.assign(Tabs_, { TabPanel });

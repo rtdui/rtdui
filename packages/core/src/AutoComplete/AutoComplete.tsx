@@ -129,8 +129,12 @@ export const AutoComplete = React.forwardRef<
           {...other}
         />
       </Popover.Trigger>
-      <Popover.Dropdown>
-        <ul className="menu bg-base-100 rounded-box flex-nowrap">
+      <Popover.Dropdown
+        slots={{
+          dropPanel: "shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md",
+        }}
+      >
+        <ul className="menu flex-nowrap">
           {items.length === 0 && (
             <li
               id="combobox-no-results"

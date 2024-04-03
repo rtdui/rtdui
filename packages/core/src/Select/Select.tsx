@@ -16,13 +16,16 @@ export interface ItemOption {
 export interface SelectProps
   extends Omit<
     React.ComponentPropsWithoutRef<typeof TextInput>,
-    "value" | "defaultValue" | "onChange"
+    "value" | "defaultValue" | "onChange" | "slots"
   > {
   options: ItemOption[] | string[];
   multiple?: boolean;
   value?: string | string[];
   defaultValue?: string | string[];
   onChange?: (val: string | string[]) => void;
+  slots?: React.ComponentPropsWithoutRef<typeof TextInput>["slots"] & {
+    menu?: string;
+  };
 }
 
 const padding = 24;
@@ -129,8 +132,12 @@ export function Select(props: SelectProps) {
           {...other}
         />
       </Popover.Trigger>
-      <Popover.Dropdown>
-        <ul className="menu bg-base-100 rounded-box flex-nowrap">
+      <Popover.Dropdown
+        slots={{
+          dropPanel: "shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md",
+        }}
+      >
+        <ul className={clsx("menu flex-nowrap", slots?.menu)}>
           {standardizedOptions.map((d, index) => (
             <li
               key={d.value}
