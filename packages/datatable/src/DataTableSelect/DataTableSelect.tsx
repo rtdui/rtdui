@@ -121,10 +121,10 @@ export const DataTableSelect = React.forwardRef<
       </Popover.Trigger>
       <Popover.Dropdown
         showArrow
-        className={clsx(
-          "h-60 shadow-md rounded-md overflow-hidden",
-          slots?.dropdown
-        )}
+        slots={{
+          dropPanel: "shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md",
+        }}
+        className={clsx("h-60", slots?.dropdown)}
       >
         <DataTable
           ref={tableRef}
