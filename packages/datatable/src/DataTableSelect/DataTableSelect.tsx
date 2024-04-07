@@ -125,7 +125,7 @@ export const DataTableSelect = React.forwardRef<
           arrow: "fill-base-100",
         }}
         className={clsx(
-          "max-h-60 shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md overflow-auto",
+          "max-h-60 shadow dark:shadow-base-300 bg-base-100 rounded-md overflow-auto",
           slots?.dropdown
         )}
       >
