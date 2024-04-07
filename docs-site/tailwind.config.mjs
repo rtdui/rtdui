@@ -5,10 +5,7 @@ import rtdui from "@rtdui/tailwind-plugin";
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ['[data-theme="dark"]'],
-  content: [
-    "./app/**/*.{tsx,ts,jsx.js}",
-    "../node_modules/@rtdui/*/src/**/*.{tsx,ts}",
-  ],
+  content: ["./app/**/*.{tsx,ts,jsx.js}", "./node_modules/@rtdui/**/*.mjs"],
   theme: {
     extend: {},
   },
