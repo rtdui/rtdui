@@ -134,7 +134,7 @@ export const AutoComplete = React.forwardRef<
         slots={{
           arrow: "fill-base-100",
         }}
-        className="max-h-60 shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md overflow-auto"
+        className="max-h-60 shadow dark:shadow-base-300 bg-base-100 rounded-md overflow-auto"
       >
         <ul className="menu flex-nowrap">
           {items.length === 0 && (
