@@ -72,10 +72,10 @@ export const AutoComplete = React.forwardRef<
     size({
       apply({ rects, elements, availableHeight, placement }) {
         Object.assign(elements.floating.style, {
-          maxHeight: "296px", // 8个列表项(每个36)+padding(8)
-          width: `${rects.reference.width}px`,
-          minWidth: "200px",
-          overflow: "auto",
+          // maxHeight: "296px", // 8个列表项(每个36)+padding(8)
+          // width: `${rects.reference.width}px`,
+          minWidth: `${rects.reference.width}px`,
+          // overflow: "auto",
         });
       },
       padding,
@@ -130,9 +130,11 @@ export const AutoComplete = React.forwardRef<
         />
       </Popover.Trigger>
       <Popover.Dropdown
+        showArrow
         slots={{
-          dropPanel: "shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md",
+          arrow: "fill-base-100",
         }}
+        className="max-h-60 shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md overflow-auto"
       >
         <ul className="menu flex-nowrap">
           {items.length === 0 && (

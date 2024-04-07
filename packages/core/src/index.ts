@@ -1,5 +1,3 @@
-import "../tailwind.css";
-
 export * from "./Accordion";
 export * from "./Affix";
 export * from "./Alert";

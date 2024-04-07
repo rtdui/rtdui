@@ -9,7 +9,7 @@ import { Transition } from "../../Transition";
 export interface PopoverDropdownProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "slot"> {
   showArrow?: boolean;
-  slots?: { arrow?: string; dropPanel?: string };
+  slots?: { arrow?: string };
 }
 export const PopoverDropdown = React.forwardRef<
   HTMLDivElement,
@@ -30,7 +30,6 @@ export const PopoverDropdown = React.forwardRef<
       <Portal type="popover">
         <div
           ref={mergedRef}
-          className={clsx(slots?.dropPanel)}
           style={otherContext.floatingStyles}
           {...otherContext.getFloatingProps(other)}
         >

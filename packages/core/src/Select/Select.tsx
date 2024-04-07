@@ -92,10 +92,10 @@ export function Select(props: SelectProps) {
     size({
       apply({ rects, elements, availableHeight, placement }) {
         Object.assign(elements.floating.style, {
-          maxHeight: "296px", // 8个列表项(每个36)+padding(8)
+          // maxHeight: "296px", // 8个列表项(每个36)+padding(8)
           // width: `${rects.reference.width}px`,
           minWidth: `${rects.reference.width}px`,
-          overflow: "auto",
+          // overflow: "hidden",
         });
       },
       padding,
@@ -133,9 +133,11 @@ export function Select(props: SelectProps) {
         />
       </Popover.Trigger>
       <Popover.Dropdown
+        showArrow
         slots={{
-          dropPanel: "shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md",
+          arrow: "fill-base-100",
         }}
+        className="max-h-60 shadow-[0_0_10px] shadow-gray-400 bg-base-100 rounded-md overflow-auto"
       >
         <ul className={clsx("menu flex-nowrap", slots?.menu)}>
           {standardizedOptions.map((d, index) => (
