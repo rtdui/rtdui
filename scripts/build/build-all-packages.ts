@@ -3,6 +3,7 @@ import { buildPackage } from "./build-package";
 import { getPackagesBuildOrder } from "./get-packages-build-order";
 import { createLogger } from "../utils/signale";
 import { getBuildTime } from "./get-build-time";
+import { buildCSS } from "./build-css";
 
 const logger = createLogger("build-all-packages");
 
@@ -24,7 +25,7 @@ export async function buildAllPackages() {
     }
   }
 
-  // await generateCSS();
+  await buildCSS();
 
   logger.success(
     `All packages have been built in ${chalk.green(getBuildTime(startTime))}`
