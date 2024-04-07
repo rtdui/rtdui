@@ -2,7 +2,8 @@
   "name": "@rtdui/monorepo",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "docs-site"
   ],
   "version": "2.0.12",
   "description": "rtdui Components Monorepo",
