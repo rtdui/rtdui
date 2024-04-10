@@ -59,6 +59,7 @@ export default function Index() {
               className="btn btn-ghost btn-circle"
               href="https://github.com/rtdui/rtdui"
               target="_blank"
+              rel="noreferrer"
             >
               <IconBrandGithub />
             </a>
@@ -131,6 +132,7 @@ export default function Index() {
                     href="https://github.com/rtdui/rtdui"
                     className="btn btn-neutral min-w-[140px]"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <IconBrandGithub />
                     github

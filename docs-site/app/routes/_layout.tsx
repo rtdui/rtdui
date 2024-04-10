@@ -49,7 +49,7 @@ export default function Layout() {
   const preLocation = usePrevious(location.pathname);
   React.useEffect(() => {
     if (isComponentPage && location.pathname !== preLocation) {
-      tabsRef.current.setIndex(0); // 页面切换重置tabs的激活索引
+      tabsRef.current.setCurrentTab("文档"); // 页面切换重置tabs的激活索引
     }
   }, [location, preLocation, isComponentPage]);
 
@@ -177,13 +177,17 @@ export default function Layout() {
       }
       main={
         isComponentPage ? (
-          <Tabs ref={tabsRef}>
-            <Tabs.TabPanel label="文档">
+          <Tabs defaultValue="文档" variant="outline" ref={tabsRef}>
+            <Tabs.List>
+              <Tabs.Tab value="文档">文档</Tabs.Tab>
+              <Tabs.Tab value="组件属性">组件属性</Tabs.Tab>
+            </Tabs.List>
+            <Tabs.Panel value="文档" className="py-4">
               <Outlet context={democodes} />
-            </Tabs.TabPanel>
-            <Tabs.TabPanel label="组件属性">
+            </Tabs.Panel>
+            <Tabs.Panel value="组件属性" className="py-4">
               <ApiDoc apiDoc={apiDoc} />
-            </Tabs.TabPanel>
+            </Tabs.Panel>
           </Tabs>
         ) : (
           <Outlet />
@@ -194,7 +198,10 @@ export default function Layout() {
           <div className="h-16 bg-base-200 flex items-center p-4 sticky top-0 z-20">
             <a href="/">RTD UI</a>
           </div>
-          <NavMenu data={menuData} onClick={() => toggleRef.current.toggle()} />
+          <NavMenu
+            data={menuData as any}
+            onClick={() => toggleRef.current.toggle()}
+          />
         </>
       }
     />

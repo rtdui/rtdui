@@ -2808,6 +2808,598 @@
       }
     }
   },
+  "ColorInput": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorInput/ColorInput.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/ColorInput",
+    "props": {
+      "bordered": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "是否显示边框",
+        "name": "bordered",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "closeOnColorSwatchClick": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether the dropdown should be closed when one of the color swatches is clicked",
+        "name": "closeOnColorSwatchClick",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            }
+          ]
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Uncontrolled component default value",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disallowInput": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "If input is not allowed, the user can only pick value with color picker and swatches",
+        "name": "disallowInput",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "error": {
+        "defaultValue": null,
+        "description": "",
+        "name": "error",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "fixOnBlur": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether the input value should be reset to the last known valid value when the input loses focusable",
+        "name": "fixOnBlur",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "format": {
+        "defaultValue": {
+          "value": "hex"
+        },
+        "description": "Color format",
+        "name": "format",
+        "required": false,
+        "type": {
+          "name": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
+          "raw": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"rgb\""
+            },
+            {
+              "value": "\"rgba\""
+            },
+            {
+              "value": "\"hex\""
+            },
+            {
+              "value": "\"hexa\""
+            },
+            {
+              "value": "\"hsl\""
+            },
+            {
+              "value": "\"hsla\""
+            }
+          ]
+        }
+      },
+      "ghost": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ghost",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "helperText": {
+        "defaultValue": null,
+        "description": "",
+        "name": "helperText",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "leftSection": {
+        "defaultValue": null,
+        "description": "",
+        "name": "leftSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "leftSectionWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "leftSectionWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called when value changes",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "Called when the user stops dragging one of the sliders or changes the value with arrow keys",
+        "name": "onChangeEnd",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "placeholder": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placeholder",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "rightSection": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rightSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "rightSectionWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rightSectionWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            }
+          ]
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "可以通过槽为内部组件添加自定义className",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ input?: string | undefined; left?: string | undefined; right?: string | undefined; label?: string | undefined; helperText?: string | undefined; } | undefined"
+        }
+      },
+      "swatches": {
+        "defaultValue": null,
+        "description": "An array of colors in one of the supported formats. Used to render swatches list below the color picker.",
+        "name": "swatches",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "swatchesPerRow": {
+        "defaultValue": {
+          "value": "7"
+        },
+        "description": "Number of swatches per row",
+        "name": "swatchesPerRow",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Controlled component value",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "withEyeDropper": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether eye dropper button should be displayed in the right section",
+        "name": "withEyeDropper",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "withPicker": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether the color picker should be displayed",
+        "name": "withPicker",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "withPreview": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether the preview color swatch should be displayed in the left section of the input",
+        "name": "withPreview",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
+  "ColorPicker": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/ColorPicker.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/ColorPicker",
+    "props": {
+      "alphaLabel": {
+        "defaultValue": null,
+        "description": "Alpha slider <code>aria-label</code> prop",
+        "name": "alphaLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Uncontrolled component default value",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "focusable": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether interactive elements (sliders thumbs and swatches) should be focusable",
+        "name": "focusable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "format": {
+        "defaultValue": {
+          "value": "hex"
+        },
+        "description": "Color format",
+        "name": "format",
+        "required": false,
+        "type": {
+          "name": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
+          "raw": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"rgb\""
+            },
+            {
+              "value": "\"rgba\""
+            },
+            {
+              "value": "\"hex\""
+            },
+            {
+              "value": "\"hexa\""
+            },
+            {
+              "value": "\"hsl\""
+            },
+            {
+              "value": "\"hsla\""
+            }
+          ]
+        }
+      },
+      "fullWidth": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether the component should take 100% width of its container",
+        "name": "fullWidth",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "hueLabel": {
+        "defaultValue": null,
+        "description": "Hue slider <code>aria-label</code> prop",
+        "name": "hueLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called when value changes",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "Called when the user stops dragging one of the sliders or changes the value with arrow keys",
+        "name": "onChangeEnd",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "onColorSwatchClick": {
+        "defaultValue": null,
+        "description": "Called when one of the color swatches is clicked",
+        "name": "onColorSwatchClick",
+        "required": false,
+        "type": {
+          "name": "((color: string) => void) | undefined"
+        }
+      },
+      "saturationLabel": {
+        "defaultValue": null,
+        "description": "Saturation slider <code>aria-label</code> prop",
+        "name": "saturationLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "\"md\""
+        },
+        "description": "Controls size of hue, alpha and saturation sliders",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "swatches": {
+        "defaultValue": null,
+        "description": "An array of colors in one of the supported formats. Used to render swatches list below the color picker.",
+        "name": "swatches",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "swatchesPerRow": {
+        "defaultValue": {
+          "value": "7"
+        },
+        "description": "Number of swatches per row",
+        "name": "swatchesPerRow",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Controlled component value",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "withPicker": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether the color picker should be displayed",
+        "name": "withPicker",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
+  "ColorSwatch": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorSwatch/ColorSwatch.tsx",
+    "description": "polymorphic",
+    "displayName": "ColorSwatch",
+    "props": {
+      "as": {
+        "defaultValue": null,
+        "description": "",
+        "name": "as",
+        "required": false,
+        "type": {
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Content rendered inside the swatch",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "Color to display, Key of theme colors or any valid CSS color values",
+        "name": "color",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "radius": {
+        "defaultValue": {
+          "value": "\"circle\""
+        },
+        "description": "Key of <code>radius</code> or any valid CSS value to set <code>border-radius</code>",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "\"circle\" | \"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"circle\" | \"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"circle\""
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            }
+          ]
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Controls <code>width</code> and <code>height</code> of the swatch, any valid CSS value",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "Width<string | number> | undefined"
+        }
+      },
+      "withShadow": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether the swatch should have inner <code>box-shadow</code>",
+        "name": "withShadow",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
   "CopyButton": {
     "filePath": "D:/sources/rtdui/packages/core/src/CopyButton/CopyButton.tsx",
     "description": "",
@@ -5548,11 +6140,11 @@
       },
       "slots": {
         "defaultValue": null,
-        "description": "可以通过槽为内部组件添加自定义className",
+        "description": "",
         "name": "slots",
         "required": false,
         "type": {
-          "name": "{ input?: string | undefined; left?: string | undefined; right?: string | undefined; label?: string | undefined; helperText?: string | undefined; } | undefined"
+          "name": "({ input?: string | undefined; left?: string | undefined; right?: string | undefined; label?: string | undefined; helperText?: string | undefined; } & { menu?: string | undefined; }) | undefined"
         }
       },
       "value": {
@@ -6099,8 +6691,141 @@
       }
     }
   },
+  "Tab": {
+    "filePath": "D:/sources/rtdui/packages/core/src/Tabs/Tab.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/Tab",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Tab label",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "controls control color based on <code>variant</code>",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            },
+            {
+              "value": "\"neutral\""
+            }
+          ]
+        }
+      },
+      "leftSection": {
+        "defaultValue": null,
+        "description": "Content displayed on the left side of the label, for example, icon",
+        "name": "leftSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "rightSection": {
+        "defaultValue": null,
+        "description": "Content displayed on the right side of the label, for example, icon",
+        "name": "rightSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Value of associated panel",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      }
+    }
+  },
+  "TabList": {
+    "filePath": "D:/sources/rtdui/packages/core/src/Tabs/TabList.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/TabList",
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "<code>Tabs.Tab</code> components",
+        "name": "children",
+        "required": true,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "grow": {
+        "defaultValue": null,
+        "description": "Determines whether tabs should take all available space, <code>false</code> by default",
+        "name": "grow",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "justify": {
+        "defaultValue": {
+          "value": "'start'"
+        },
+        "description": "Tabs alignment",
+        "name": "justify",
+        "required": false,
+        "type": {
+          "name": "\"center\" | \"end\" | \"start\" | undefined",
+          "raw": "\"center\" | \"end\" | \"start\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"center\""
+            },
+            {
+              "value": "\"end\""
+            },
+            {
+              "value": "\"start\""
+            }
+          ]
+        }
+      }
+    }
+  },
   "TabPanel": {
-    "filePath": "D:/sources/rtdui/packages/core/src/Tabs/TabPanel.tsx",
+    "filePath": "D:/sources/rtdui/packages/core/src/Tabs_old/TabPanel.tsx",
     "description": "",
     "displayName": "TabPanel",
     "props": {
@@ -6161,7 +6886,7 @@
     }
   },
   "Tabs": {
-    "filePath": "D:/sources/rtdui/packages/core/src/Tabs/Tabs.tsx",
+    "filePath": "D:/sources/rtdui/packages/core/src/Tabs_old/Tabs.tsx",
     "description": "",
     "displayName": "Tabs",
     "props": {
@@ -8370,6 +9095,453 @@
         "required": true,
         "type": {
           "name": "string | string[]"
+        }
+      }
+    }
+  },
+  "AlphaSlider": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/AlphaSlider/AlphaSlider.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/AlphaSlider",
+    "props": {
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "focusable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "focusable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | undefined"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChangeEnd",
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | undefined"
+        }
+      },
+      "onScrubEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubEnd",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onScrubStart": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubStart",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "thumbColor": {
+        "defaultValue": null,
+        "description": "",
+        "name": "thumbColor",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  },
+  "ColorSlider": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/ColorSlider/ColorSlider.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/ColorSlider",
+    "props": {
+      "focusable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "focusable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "maxValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxValue",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | undefined"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChangeEnd",
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | undefined"
+        }
+      },
+      "onScrubEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubEnd",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onScrubStart": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubStart",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "overlays": {
+        "defaultValue": null,
+        "description": "",
+        "name": "overlays",
+        "required": true,
+        "type": {
+          "name": "CSSProperties[]"
+        }
+      },
+      "round": {
+        "defaultValue": null,
+        "description": "",
+        "name": "round",
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "thumbColor": {
+        "defaultValue": null,
+        "description": "",
+        "name": "thumbColor",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  },
+  "HueSlider": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/HueSlider/HueSlider.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/HueSlider",
+    "props": {
+      "focusable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "focusable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | undefined"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChangeEnd",
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | undefined"
+        }
+      },
+      "onScrubEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubEnd",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onScrubStart": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubStart",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "thumbColor": {
+        "defaultValue": null,
+        "description": "",
+        "name": "thumbColor",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  },
+  "Saturation": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/Saturation/Saturation.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/Saturation",
+    "props": {
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "focusable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "focusable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "required": true,
+        "type": {
+          "name": "(color: Partial<HsvaColor>) => void"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChangeEnd",
+        "required": true,
+        "type": {
+          "name": "(color: Partial<HsvaColor>) => void"
+        }
+      },
+      "onScrubEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubEnd",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onScrubStart": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onScrubStart",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "saturationLabel": {
+        "defaultValue": null,
+        "description": "",
+        "name": "saturationLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "HsvaColor"
+        }
+      }
+    }
+  },
+  "Swatches": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/Swatches/Swatches.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/Swatches",
+    "props": {
+      "data": {
+        "defaultValue": null,
+        "description": "",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "focusable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "focusable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onChangeEnd": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChangeEnd",
+        "required": false,
+        "type": {
+          "name": "((color: string) => void) | undefined"
+        }
+      },
+      "setValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "setValue",
+        "required": true,
+        "type": {
+          "name": "(value: string) => void"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | number | undefined"
+        }
+      },
+      "swatchesPerRow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "swatchesPerRow",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      }
+    }
+  },
+  "ColorPickerThumb": {
+    "filePath": "D:/sources/rtdui/packages/core/src/ColorPicker/Thumb/Thumb.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/ColorPickerThumb",
+    "props": {
+      "position": {
+        "defaultValue": null,
+        "description": "",
+        "name": "position",
+        "required": true,
+        "type": {
+          "name": "{ x: number; y: number; }"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "",
+        "name": "variant",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
         }
       }
     }

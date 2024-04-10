@@ -5,7 +5,8 @@
       { "label": "about", "url": "/getting-started" },
       { "label": "install", "url": "/install" },
       { "label": "custom", "url": "/custom" },
-      { "label": "polymorphic", "url": "/polymorphic" }
+      { "label": "polymorphic", "url": "/polymorphic" },
+      { "label": "changelog", "url": "/changelog" }
     ]
   },
   {
@@ -40,7 +41,13 @@
       { "label": "swap", "url": "/components/swap" },
       { "label": "switch", "url": "/components/switch" },
       { "label": "radio", "url": "/components/radio" },
-      { "label": "rating", "url": "/components/rating" }
+      { "label": "rating", "url": "/components/rating" },
+      {
+        "label": "colorPicker",
+        "url": "/components/colorpicker",
+        "flag": "new"
+      },
+      { "label": "colorInput", "url": "/components/colorinput", "flag": "new" }
     ]
   },
   {
@@ -67,7 +74,7 @@
       { "label": "tree", "url": "/components/tree" },
       { "label": "pagination", "url": "/components/pagination" },
       { "label": "steps", "url": "/components/steps" },
-      { "label": "tabs", "url": "/components/tabs" }
+      { "label": "tabs", "url": "/components/tabs", "flag": "rewrite" }
     ]
   },
   {

@@ -95,9 +95,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
           });
         },
       }),
-      command === "serve"
-        ? tsconfigPaths({ projects: ["./tsconfig.json"] })
-        : undefined,
+      // command === "serve"
+      //   ? tsconfigPaths({ projects: ["./tsconfig.json"] })
+      //   : undefined,
+      tsconfigPaths({ projects: ["./tsconfig.json"] }),
     ],
     ssr: {
       noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],

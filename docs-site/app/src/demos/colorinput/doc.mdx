@@ -1,0 +1,44 @@
+---
+meta:
+  - title: ColorInput Component
+  - description: ColorInput document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/ColorInput.tsx"
+  componentName: "ColorInput"
+---
+
+import Demo from "../../components/Demo";
+import ColorInputBasicDemo from "./ColorInputBasicDemo";
+import ColorInputFixOnBlurDemo from "./ColorInputFixOnBlurDemo";
+
+# 使用
+
+`ColorInput`组件继承了`TextInput`组件的属性和`ColorPicker`的属性, 本文档没有包含所有的功能, 可以查看`TextInput`和`ColorPicker`的文档了解更多功能.
+
+<Demo data={{ Component: ColorInputBasicDemo }} />
+
+## 禁止自由输入
+
+设置`disallowInput`属性可以禁止用户自由输入
+
+## 错误输入时恢复
+
+当用户自由输入时, 如果输入的是错误的颜色值, 默认会自动恢复为上一次正确的颜色值. 设置`fixOnBlur={false}`可以覆盖默认行为, 这会保留不正确的颜色值:
+
+<Demo data={{ Component: ColorInputFixOnBlurDemo }} />
+
+## 滑块和色板
+
+- `withPicker`属性设置为`true`, 并且不提供`swatches`属性, 则用户只能通过颜色滑块选择.
+- `withPicker`属性设置为`false`, 并且提供`swatches`属性, 则用户只能在预定义的色板中选择.
+- `withPicker`属性设置为`false`, 并且不提供`swatches`属性, 则下拉不显示.
+
+## 点击色板自动关闭下拉框
+
+当提供了`swatches`属性, 默认点击色板不会自动关闭下拉框, 可以设置`closeOnColorSwatchClick`属性可以覆盖默认行为.
+
+## 拾色器
+
+`ColorInput`组件默认右侧带有拾色器按钮. 它依赖于浏览器的`EyeDropper Web API`, 检查[浏览器的支持](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API)

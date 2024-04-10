@@ -4,7 +4,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 interface NavMenuProps {
-  data?: { group: string; items: { label: string; url: string }[] }[];
+  data?: {
+    group: string;
+    items: { label: string; url: string; flag?: "string" }[];
+  }[];
   onClick?: () => void;
   className?: string;
 }
@@ -20,6 +23,9 @@ export default function NavMenu(props: NavMenuProps) {
             <li key={`${d.group}-${dd.label}`}>
               <NavLink to={dd.url} onClick={onClick}>
                 {t(`navMenu.${dd.label}`)}
+                {dd.flag && (
+                  <span className="text-secondary text-right">{dd.flag}</span>
+                )}
               </NavLink>
             </li>
           ))}

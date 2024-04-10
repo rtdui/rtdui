@@ -1,0 +1,60 @@
+---
+meta:
+  - title: ColorPicker Component
+  - description: ColorPicker document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/ColorPicker.tsx"
+  componentName: "ColorPicker"
+---
+
+import Demo from "../../components/Demo";
+import ColorPickerBasicDemo from "./ColorPickerBasicDemo";
+
+# 使用
+
+<Demo data={{ Component: ColorPickerBasicDemo }} />
+
+## 颜色格式
+
+`ColorPicker` 支持 `hex`, `hexa`, `rgb`, `rgba`, `hsl` 和 `hsla` 颜色格式.
+
+透明度滑块和颜色预览只在 `hexa`, `rgba` 和 `hsla` 格式下才显示
+
+## 预定义色板
+
+使用`swatches`属性, 可以显示预定义的色板, 方便用户直接选择.
+
+`swatches`属性是一个颜色数组.
+
+`ColorPicker`预定义了8个主题色板: "primary", "secondary", "accent", "info", "warning", "error","success", "neutral", 可以和自定义颜色组合使用:
+
+```tsx
+<ColorPicker
+  swatches={[
+    "primary",
+    "secondary",
+    "accent",
+    "info",
+    "warning",
+    "error",
+    "success",
+    "neutral",
+    "#2e2e2e",
+    "#868e96",
+    "#fa5252",
+    "#e64980",
+  ]}
+/>
+```
+
+## 尺寸
+
+`ColorPicker`的`size`属性支持 `xs`, `sm`, `md`, `lg`, `xl`预定义的尺寸. 也支持任意CSS长度
+
+额外的`fullWidth`属性直接设置宽度为`100%`.
+
+## 受控与非受控模式
+
+与原生input组件类似, `ColorPicker`的`value`为受控属性, `defaultValue`为非受控属性. `onChange`回调属性, 额外的`onChangeEnd`回调属性会在结束拖拉后触发.

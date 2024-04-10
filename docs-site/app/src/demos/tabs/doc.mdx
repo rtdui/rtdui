@@ -10,22 +10,15 @@ handle:
 ---
 
 import Demo from "../../components/Demo";
-import TabsLiftedDemo from "./TabsLiftedDemo";
-import TabsBorderedDemo from "./TabsBorderedDemo";
-import TabsBoxedDemo from "./TabsBoxedDemo";
+import TabsBasicDemo from "./TabsBasicDemo";
+import TabsinvertedDemo from "./TabsInvertedDemo";
 
 # 使用
 
-## 变体
+<Demo data={{ Component: TabsBasicDemo }} />
 
-### lifted(默认)
+## Invert tabs
 
-<Demo data={{ Component: TabsLiftedDemo }} />
+当`orientation`为`horizontal`时, 支持反转模式. 可以实现底部导航布局.
 
-### bordered
-
-<Demo data={{ Component: TabsBorderedDemo }} />
-
-### boxed
-
-<Demo data={{ Component: TabsBoxedDemo }} />
+<Demo data={{ Component: TabsinvertedDemo }} />
