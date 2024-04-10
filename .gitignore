@@ -35,18 +35,9 @@ styles/
 # project
 .eslintcache
 .stylelintcache
-storybook-static
-.next
-docs/components/___test.internal.tsx
-docs/app/.docgen
 packages/*/styles.css
 ____test.*
 package-lock.json
 
-# remix
-docs/.cache
-docs/build
-docs/public/build
-docs/.env
-docs/.wrangler
-docs/functions
+# docs-site
+docs-site/build
