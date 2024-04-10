@@ -28,7 +28,9 @@ import ColorPickerBasicDemo from "./ColorPickerBasicDemo";
 
 `swatches`属性是一个颜色数组.
 
-`ColorPicker`预定义了8个主题色板: "primary", "secondary", "accent", "info", "warning", "error","success", "neutral", 可以和自定义颜色组合使用:
+注意: 色板颜色格式应该和`format`相匹配.
+
+`ColorPicker`预定义了8个主题色板: "primary", "secondary", "accent", "info", "warning", "error","success", "neutral", 如果是为@rtdui的组件提供颜色就非常有用. 可以和自定义颜色组合使用:
 
 ```tsx
 <ColorPicker
@@ -51,7 +53,7 @@ import ColorPickerBasicDemo from "./ColorPickerBasicDemo";
 
 ## 尺寸
 
-`ColorPicker`的`size`属性支持 `xs`, `sm`, `md`, `lg`, `xl`预定义的尺寸. 也支持任意CSS长度
+`ColorPicker`的`size`属性支持 `xs`, `sm`, `md`, `lg`, `xl`预定义的尺寸. 也支持任意CSS长度.
 
 额外的`fullWidth`属性直接设置宽度为`100%`.
 

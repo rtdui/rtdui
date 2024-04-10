@@ -9,6 +9,7 @@ import {
   Popover,
   ColorPicker,
   TextInput,
+  Divider,
 } from "@rtdui/core";
 import { IconCheck, IconPalette } from "@tabler/icons-react";
 import { useState } from "react";
@@ -52,8 +53,8 @@ function Demo() {
 `;
   return (
     <div>
-      <div className="flex gap-32 p-4 bg-base-100">
-        <div className="flex-1 flex">
+      <div className="flex">
+        <div className="flex-1 flex bg-base-100 p-4">
           <Tabs
             value={state.activedTab}
             onChange={(val) =>
@@ -84,7 +85,8 @@ function Demo() {
             </Tabs.Panel>
           </Tabs>
         </div>
-        <div className="flex flex-col gap-4 w-64">
+        <Divider direction="horizontal" />
+        <div className="flex flex-col gap-4 w-72 bg-base-100 p-4">
           Color
           <div className="colors flex flex-wrap gap-0.5">
             {[

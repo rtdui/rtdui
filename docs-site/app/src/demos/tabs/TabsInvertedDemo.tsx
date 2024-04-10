@@ -1,5 +1,5 @@
 import { CodeHighlight } from "@rtdui/code-highlight";
-import { Radio, RadioGroup, Slider, Switch, Tabs } from "@rtdui/core";
+import { Divider, Radio, RadioGroup, Slider, Switch, Tabs } from "@rtdui/core";
 import { useState } from "react";
 
 const radius = ["xs", "sm", "md", "lg", "circle"];
@@ -39,8 +39,8 @@ function Demo() {
 `;
   return (
     <div>
-      <div className="inverted-demo flex gap-64 p-4 bg-base-100">
-        <div className="flex-1 flex">
+      <div className="inverted-demo flex">
+        <div className="flex-1 flex bg-base-100">
           <Tabs
             value={state.activedTab}
             onChange={(val) =>
@@ -69,7 +69,8 @@ function Demo() {
             </Tabs.List>
           </Tabs>
         </div>
-        <div className="flex flex-col gap-4 w-96">
+        <Divider direction="horizontal" />
+        <div className="flex flex-col gap-4 w-72 bg-base-100 p-4">
           <RadioGroup
             value={state.variant}
             onChange={(val) =>

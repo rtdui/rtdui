@@ -6825,70 +6825,244 @@
     }
   },
   "TabPanel": {
-    "filePath": "D:/sources/rtdui/packages/core/src/Tabs_old/TabPanel.tsx",
+    "filePath": "D:/sources/rtdui/packages/core/src/Tabs/TabPanel.tsx",
     "description": "",
-    "displayName": "TabPanel",
+    "displayName": "@rtdui/core/TabPanel",
     "props": {
-      "disabled": {
+      "children": {
         "defaultValue": null,
-        "description": "",
-        "name": "disabled",
-        "required": false,
+        "description": "Panel content",
+        "name": "children",
+        "required": true,
         "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "index": {
-        "defaultValue": null,
-        "description": "",
-        "name": "index",
-        "required": false,
-        "type": {
-          "name": "number | undefined"
+          "name": "React.ReactNode"
         }
       },
       "keepMounted": {
         "defaultValue": null,
-        "description": "",
+        "description": "If set to <code>true</code>, the content will be kept mounted, even if <code>keepMounted</code> is set <code>false</code> in the parent <code>Tabs</code> component",
         "name": "keepMounted",
         "required": false,
         "type": {
           "name": "boolean | undefined"
         }
       },
-      "label": {
+      "value": {
         "defaultValue": null,
-        "description": "",
-        "name": "label",
+        "description": "Value of associated control",
+        "name": "value",
         "required": true,
         "type": {
           "name": "string"
-        }
-      },
-      "value": {
-        "defaultValue": null,
-        "description": "",
-        "name": "value",
-        "required": false,
-        "type": {
-          "name": "number | undefined"
-        }
-      },
-      "variant": {
-        "defaultValue": null,
-        "description": "",
-        "name": "variant",
-        "required": false,
-        "type": {
-          "name": "string | undefined"
         }
       }
     }
   },
   "Tabs": {
-    "filePath": "D:/sources/rtdui/packages/core/src/Tabs_old/Tabs.tsx",
+    "filePath": "D:/sources/rtdui/packages/core/src/Tabs/Tabs.tsx",
     "description": "",
-    "displayName": "Tabs",
+    "displayName": "@rtdui/core/Tabs",
+    "props": {
+      "activateTabWithKeyboard": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether tab should be activated with arrow key press",
+        "name": "activateTabWithKeyboard",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "allowTabDeactivation": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether tab can be deactivated",
+        "name": "allowTabDeactivation",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tabs content",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "color": {
+        "defaultValue": {
+          "value": "\"primary\""
+        },
+        "description": "Changes colors of <code>Tabs.Tab</code> components when variant is <code>pills</code> or <code>default</code>, does nothing for other variants",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Default value for uncontrolled component",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string | null | undefined"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "Base id, used to generate ids to connect labels with controls, generated randomly by default",
+        "name": "id",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "inverted": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether tabs should have inverted styles",
+        "name": "inverted",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "keepMounted": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "If set to <code>false</code>, <code>Tabs.Panel</code> content will be unmounted when the associated tab is not active",
+        "name": "keepMounted",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loop": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether arrow key presses should loop though items (first to last and last to first)",
+        "name": "loop",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called when value changes",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: string | null) => void) | undefined"
+        }
+      },
+      "orientation": {
+        "defaultValue": {
+          "value": "'horizontal'"
+        },
+        "description": "Tabs orientation",
+        "name": "orientation",
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\" | undefined",
+          "raw": "\"horizontal\" | \"vertical\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"horizontal\""
+            },
+            {
+              "value": "\"vertical\""
+            }
+          ]
+        }
+      },
+      "placement": {
+        "defaultValue": {
+          "value": "'left'"
+        },
+        "description": "<code>Tabs.List</code> placement relative to <code>Tabs.Panel</code>, applicable only when <code>orientation=\"vertical\"</code>",
+        "name": "placement",
+        "required": false,
+        "type": {
+          "name": "\"right\" | \"left\" | undefined",
+          "raw": "\"right\" | \"left\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"right\""
+            },
+            {
+              "value": "\"left\""
+            }
+          ]
+        }
+      },
+      "radius": {
+        "defaultValue": {
+          "value": "'md'"
+        },
+        "description": "\"xs\",\"sm\",\"md\",\"lg\" or any valid CSS value to set <code>border-radius</code>",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Value for controlled component",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | null | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": {
+          "value": "'default'"
+        },
+        "description": "variant",
+        "name": "variant",
+        "required": false,
+        "type": {
+          "name": "\"outline\" | \"default\" | \"pills\" | undefined",
+          "raw": "\"outline\" | \"default\" | \"pills\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"outline\""
+            },
+            {
+              "value": "\"default\""
+            },
+            {
+              "value": "\"pills\""
+            }
+          ]
+        }
+      }
+    }
+  },
+  "TabsSimple": {
+    "filePath": "D:/sources/rtdui/packages/core/src/TabsSimple/TabsSimple.tsx",
+    "description": "",
+    "displayName": "TabsSimple",
     "props": {
       "initIndex": {
         "defaultValue": null,
@@ -6952,6 +7126,67 @@
               "value": "\"boxed\""
             }
           ]
+        }
+      }
+    }
+  },
+  "TabsSimplePanel": {
+    "filePath": "D:/sources/rtdui/packages/core/src/TabsSimple/TabsSimplePanel.tsx",
+    "description": "",
+    "displayName": "TabsSimplePanel",
+    "props": {
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "index": {
+        "defaultValue": null,
+        "description": "",
+        "name": "index",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "keepMounted": {
+        "defaultValue": null,
+        "description": "",
+        "name": "keepMounted",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "",
+        "name": "label",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "",
+        "name": "variant",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
         }
       }
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorPicker, Select, Slider, Switch } from "@rtdui/core";
+import { ColorPicker, Divider, Select, Slider, Switch } from "@rtdui/core";
 import { CodeHighlight } from "@rtdui/code-highlight";
 
 const size = ["xs", "sm", "md", "lg", "xl"];
@@ -48,7 +48,7 @@ function Demo() {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-8">
+      <div className="flex">
         <div className="flex-1">
           <ColorPicker
             color={state.color}
@@ -57,10 +57,11 @@ function Demo() {
             size={state.size}
             fullWidth={state.fullWidth}
             swatches={state.withSwatches ? swatches : undefined}
+            className="bg-base-100"
           />
           <p className="ml-1 mt-4">{state.color}</p>
         </div>
-
+        <Divider direction="horizontal" />
         <div className="flex flex-col gap-4 w-64 bg-base-100 p-4">
           <Select
             label="Format"

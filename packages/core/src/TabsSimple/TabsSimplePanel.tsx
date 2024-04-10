@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface TabPanelProps {
+export interface TabsSimplePanelProps {
   label: string;
   value?: number;
   index?: number;
@@ -12,7 +12,7 @@ export interface TabPanelProps {
   children?: React.ReactNode;
 }
 
-export function TabPanel(props: TabPanelProps) {
+export function TabsSimplePanel(props: TabsSimplePanelProps) {
   const {
     label,
     value,

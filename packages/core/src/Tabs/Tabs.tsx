@@ -82,8 +82,6 @@ export interface TabsProps
    */
   keepMounted?: boolean;
 
-  /** Determines whether active item text color should depend on `background-color` of the indicator. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. Only applicable when `variant="pills"` */
-  autoContrast?: boolean;
   /**
    * variant
    * @default 'default'
@@ -93,18 +91,6 @@ export interface TabsProps
 
 const VALUE_ERROR =
   "Tabs.Tab or Tabs.Panel component was rendered with invalid value or without value";
-
-// const varsResolver = createVarsResolver<TabsFactory>(
-//   (theme, { radius, color, autoContrast }) => ({
-//     root: {
-//       "--tabs-radius": getRadius(radius),
-//       "--tabs-color": getThemeColor(color, theme),
-//       "--tabs-text-color": getAutoContrastValue(autoContrast, theme)
-//         ? getContrastColor({ color, theme })
-//         : undefined,
-//     },
-//   })
-// );
 
 const Tabs_ = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const {
@@ -125,7 +111,6 @@ const Tabs_ = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     keepMounted = true,
     className,
     style,
-    autoContrast,
     ...others
   } = props;
 
