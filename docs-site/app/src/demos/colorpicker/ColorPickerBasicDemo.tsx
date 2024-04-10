@@ -59,7 +59,7 @@ function Demo() {
             swatches={state.withSwatches ? swatches : undefined}
             className="bg-base-100"
           />
-          <p className="ml-1 mt-4">{state.color}</p>
+          <p className="ml-1 mt-4 bg-base-100">{state.color}</p>
         </div>
         <Divider direction="horizontal" />
         <div className="flex flex-col gap-4 w-64 bg-base-100 p-4">
