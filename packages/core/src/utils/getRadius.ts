@@ -5,17 +5,13 @@ export function getRadius(radius: unknown): string | undefined {
 
   switch (radius as string) {
     case "xs":
-      return "calc(2 / 1rem)";
+      return "calc(1rem / 8)";
     case "sm":
-      return "calc(4 / 1rem)";
+      return "calc(1rem /4)";
     case "md":
-      return "calc(8 / 1rem)";
+      return "calc(1rem / 2)";
     case "lg":
-      return "calc(16 / 1rem)";
-    case "xl":
-      return "calc(24 / 1rem)";
-    case "2xl":
-      return "calc(32 / 1rem)";
+      return "1rem";
     case "circle":
       return "9999rem";
     default:

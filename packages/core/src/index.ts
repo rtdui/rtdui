@@ -53,3 +53,7 @@ export * from "./Transition";
 export * from "./Watermark";
 
 export * from "./utils";
+
+export * from "./ColorSwatch";
+export * from "./ColorPicker";
+export * from "./ColorInput";

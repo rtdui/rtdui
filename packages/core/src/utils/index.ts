@@ -12,3 +12,4 @@ export * from "./getSize";
 export * from "./getColor";
 export * from "./getRadius";
 export * from "./getDataProps";
+export * from "./getSafeId";

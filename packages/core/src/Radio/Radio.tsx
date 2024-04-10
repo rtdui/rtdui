@@ -49,6 +49,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       value: valueProp,
       checked: checkedProp,
       onChange: onChangeProp,
+      disabled: disabledProp,
       className,
       children,
       slots,
@@ -62,6 +63,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     let onChange = onChangeProp;
     let size = sizeProp;
     let color = colorProp;
+    let disabled = disabledProp;
 
     // 在RadioGroup下时, 忽略自身的name,checked,size和color属性值, 优先使用RadioGroup上下文提供的值, 自身的onChange事件会保留
     if (radioGroup) {
@@ -70,6 +72,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       onChange = createChainedFunction(onChangeProp, radioGroup?.onChange);
       size = radioGroup.size;
       color = radioGroup.color;
+      disabled = radioGroup.disabled;
     }
 
     return (
@@ -99,9 +102,21 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             value={valueProp}
             checked={checked}
             onChange={onChange}
+            disabled={disabled}
             {...other}
           />
-          {label && <span className={clsx(slots?.label)}>{label}</span>}
+          {label && (
+            <span
+              className={clsx(
+                {
+                  "text-gray-400": disabled,
+                },
+                slots?.label
+              )}
+            >
+              {label}
+            </span>
+          )}
         </div>
         {helperText && (
           <span className={clsx("label-text-alt pt-0.5", slots?.helperText)}>

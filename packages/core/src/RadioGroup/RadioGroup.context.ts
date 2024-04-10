@@ -17,6 +17,7 @@ export interface RadioGroupContextValue {
     | "success"
     | "warning"
     | "error";
+  disabled?: boolean;
 }
 
 export const [RadioGroupProvider, useRadioGroupContext] =

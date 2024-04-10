@@ -41,6 +41,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
       defaultValue: defaultValueProp,
       value: valueProp,
       onChange,
+      disabled,
       className,
       children,
       slots,
@@ -63,14 +64,26 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
         },
         size: sizeProp,
         color: colorProp,
+        disabled,
       }),
-      [nameProp, setValue, value, sizeProp, colorProp]
+      [nameProp, setValue, value, sizeProp, colorProp, disabled]
     );
 
     return (
       <RadioGroupProvider value={contextValue}>
         <div className={clsx("flex flex-col gap-2", className)}>
-          {label && <span className={clsx(slots?.label)}>{label}</span>}
+          {label && (
+            <span
+              className={clsx(
+                {
+                  "text-gray-400": disabled,
+                },
+                slots?.label
+              )}
+            >
+              {label}
+            </span>
+          )}
           <div className="flex flex-col gap-1 justify-items-center">
             {children}
           </div>

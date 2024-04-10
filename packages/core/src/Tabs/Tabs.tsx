@@ -1,85 +1,206 @@
-import React from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import clsx from "clsx";
-import { TabPanel, type TabPanelProps } from "./TabPanel";
+import { useId, useUncontrolled } from "@rtdui/hooks";
+import { getColor, getRadius, getSafeId } from "../utils";
+import { TabsProvider } from "./context";
+import { TabList } from "./TabList";
+import { TabPanel } from "./TabPanel";
+import { Tab } from "./Tab";
 
-export interface TabsProps {
+export interface TabsProps
+  extends Omit<
+    React.ComponentPropsWithoutRef<"div">,
+    "defaultValue" | "value" | "onChange"
+  > {
+  /** Default value for uncontrolled component */
+  defaultValue?: string | null;
+
+  /** Value for controlled component */
+  value?: string | null;
+
+  /** Called when value changes */
+  onChange?: (value: string | null) => void;
+
+  /** Tabs orientation
+   * @default 'horizontal'
+   */
+  orientation?: "vertical" | "horizontal";
+
+  /** `Tabs.List` placement relative to `Tabs.Panel`, applicable only when `orientation="vertical"`
+   * @default 'left'
+   */
+  placement?: "left" | "right";
+
+  /** Base id, used to generate ids to connect labels with controls, generated randomly by default
+   */
+  id?: string;
+
+  /** Determines whether arrow key presses should loop though items (first to last and last to first)
+   * @default true
+   */
+  loop?: boolean;
+
+  /** Determines whether tab should be activated with arrow key press
+   * @default true
+   */
+  activateTabWithKeyboard?: boolean;
+
+  /** Determines whether tab can be deactivated
+   * @default false
+   */
+  allowTabDeactivation?: boolean;
+
+  /** Tabs content */
+  children?: React.ReactNode;
+
+  /** Changes colors of `Tabs.Tab` components when variant is `pills` or `default`, does nothing for other variants
+   * @default "primary"
+   */
+  color?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "info"
+    | "success"
+    | "warning"
+    | "error"
+    | "neutral"
+    | string;
+
+  /** "xs","sm","md","lg" or any valid CSS value to set `border-radius`
+   * @default 'md'
+   */
+  radius?: string;
+
+  /** Determines whether tabs should have inverted styles
+   * @default false
+   */
+  inverted?: boolean;
+
+  /** If set to `false`, `Tabs.Panel` content will be unmounted when the associated tab is not active
+   * @default true
+   */
+  keepMounted?: boolean;
+
+  /** Determines whether active item text color should depend on `background-color` of the indicator. If luminosity of the `color` prop is less than `theme.luminosityThreshold`, then `theme.white` will be used for text color, otherwise `theme.black`. Overrides `theme.autoContrast`. Only applicable when `variant="pills"` */
+  autoContrast?: boolean;
   /**
-   * 变体
-   * @default lifted
+   * variant
+   * @default 'default'
    */
-  variant?: "bordered" | "lifted" | "boxed";
-  /** 尺寸
-   * @default "md"
-   */
-  size?: "xs" | "sm" | "md" | "lg";
-  children: React.ReactElement<TabPanelProps, typeof TabPanel>[];
-  className?: string;
-  initIndex?: number;
+  variant?: "default" | "outline" | "pills";
 }
 
-const Tabs_ = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
+const VALUE_ERROR =
+  "Tabs.Tab or Tabs.Panel component was rendered with invalid value or without value";
+
+// const varsResolver = createVarsResolver<TabsFactory>(
+//   (theme, { radius, color, autoContrast }) => ({
+//     root: {
+//       "--tabs-radius": getRadius(radius),
+//       "--tabs-color": getThemeColor(color, theme),
+//       "--tabs-text-color": getAutoContrastValue(autoContrast, theme)
+//         ? getContrastColor({ color, theme })
+//         : undefined,
+//     },
+//   })
+// );
+
+const Tabs_ = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const {
-    initIndex = 0,
-    variant = "lifted",
-    size = "md",
+    id,
+    defaultValue,
+    value,
+    onChange,
+    orientation = "horizontal",
     children,
+    loop = true,
+    activateTabWithKeyboard = true,
+    allowTabDeactivation = false,
+    variant = "default",
+    color = "primary",
+    radius = "md",
+    inverted = false,
+    placement = "left",
+    keepMounted = true,
     className,
-    ...other
+    style,
+    autoContrast,
+    ...others
   } = props;
 
-  const [activeIndex, setActiveIndex] = React.useState(initIndex);
+  const uid = useId(id);
 
-  React.useImperativeHandle<HTMLDivElement, any>(ref, () => ({
-    setIndex(index: number) {
-      setActiveIndex(index);
-    },
-  }));
+  const [currentTab, setCurrentTab] = useUncontrolled({
+    value,
+    defaultValue,
+    finalValue: null,
+    onChange,
+  });
+
+  useImperativeHandle(
+    ref,
+    () =>
+      ({
+        setCurrentTab,
+      }) as any
+  );
 
   return (
-    <div className="grid">
+    <TabsProvider
+      value={{
+        placement,
+        value: currentTab,
+        orientation,
+        id: uid,
+        loop,
+        activateTabWithKeyboard,
+        getTabId: getSafeId(`${uid}-tab`, VALUE_ERROR),
+        getPanelId: getSafeId(`${uid}-panel`, VALUE_ERROR),
+        onChange: setCurrentTab,
+        allowTabDeactivation,
+        variant,
+        color,
+        radius,
+        inverted,
+        keepMounted,
+      }}
+    >
       <div
+        ref={ref}
+        id={uid}
+        data-variant={variant}
+        data-orientation={orientation}
+        data-inverted={orientation === "horizontal" && inverted}
+        data-placement={orientation === "vertical" && placement}
         className={clsx(
-          "tabs",
-          "justify-self-start",
           {
-            "tabs-bordered": variant === "bordered",
-            "tabs-lifted": variant === "lifted",
-            "tabs-boxed": variant === "boxed",
-            "tabs-xs": size === "xs",
-            "tabs-sm": size === "sm",
-            "tabs-md": size === "md",
-            "tabs-lg": size === "lg",
-            "-mb-[var(--tab-border)]": variant === "lifted",
+            flex: orientation === "vertical",
+            "flex-row-reverse":
+              orientation === "vertical" && placement === "right",
           },
           className
         )}
+        style={
+          {
+            ...style,
+            "--tabs-radius": getRadius(radius),
+            "--tabs-color": getColor(color),
+            "--tabs-text-color": "white",
+          } as any
+        }
+        {...others}
       >
-        {React.Children.map(children, (child, index) => (
-          <button
-            key={index}
-            type="button"
-            className={clsx("tab", {
-              "tab-disabled": child.props.disabled,
-              "tab-active": activeIndex === index,
-              "[--tab-border-color:transparent]": activeIndex !== index,
-            })}
-            disabled={child.props.disabled}
-            onClick={(e) => setActiveIndex(index)}
-          >
-            {child.props.label}
-          </button>
-        ))}
-        {/* 占位tab */}
-        {/* {variant === "lifted" && (
-          <div className="tab mr-6 flex-1 cursor-default [--tab-border-color:transparent]" />
-        )} */}
+        {children}
       </div>
-
-      {React.Children.map(children, (child, index) =>
-        React.cloneElement(child, { index, value: activeIndex, variant })
-      )}
-    </div>
+    </TabsProvider>
   );
 });
 
-export const Tabs = Object.assign(Tabs_, { TabPanel });
+export const Tabs = Object.assign(Tabs_, {
+  List: TabList,
+  Panel: TabPanel,
+  Tab,
+});
+
+Tabs.displayName = "@rtdui/core/Tabs";

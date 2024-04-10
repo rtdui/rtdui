@@ -1,2 +1,1 @@
-export * from "./Tabs";
-export type { TabPanelProps } from "./TabPanel";
+export { Tabs } from "./Tabs";
