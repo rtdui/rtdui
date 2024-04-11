@@ -1,5 +1,5 @@
 import { CodeHighlight } from "@rtdui/code-highlight";
-import { Divider, Radio, RadioGroup, Slider, Switch, Tabs } from "@rtdui/core";
+import { Divider, FloatingSelect, Slider, Switch, Tabs } from "@rtdui/core";
 import { useState } from "react";
 
 const radius = ["xs", "sm", "md", "lg", "circle"];
@@ -71,18 +71,14 @@ function Demo() {
         </div>
         <Divider direction="horizontal" />
         <div className="flex flex-col gap-4 w-72 bg-base-100 p-4">
-          <RadioGroup
+          Variant:
+          <FloatingSelect
             value={state.variant}
             onChange={(val) =>
               setState((prev) => ({ ...prev, variant: val as string }))
             }
-            label="Variant"
-          >
-            <Radio value="default" label="default" />
-            <Radio value="outline" label="outline" />
-            <Radio value="pills" label="pills" />
-          </RadioGroup>
-
+            data={["default", "outline", "pills"]}
+          />
           <div className="flex flex-col gap-8">
             Radius
             <Slider
@@ -104,20 +100,14 @@ function Demo() {
               label="Grow"
             />
           </div>
-          <div className="flex flex-col gap-8">
-            <RadioGroup
-              disabled={state.grow}
-              value={state.justify}
-              onChange={(val) =>
-                setState((prev) => ({ ...prev, justify: val as string }))
-              }
-              label="Justify"
-            >
-              <Radio value="start" label="start" />
-              <Radio value="center" label="center" />
-              <Radio value="end" label="end" />
-            </RadioGroup>
-          </div>
+          Justify:
+          <FloatingSelect
+            value={state.justify}
+            onChange={(val) =>
+              setState((prev) => ({ ...prev, justify: val as string }))
+            }
+            data={["start", "center", "end"]}
+          />
           <div className="flex flex-col gap-8">
             <Switch
               color="secondary"

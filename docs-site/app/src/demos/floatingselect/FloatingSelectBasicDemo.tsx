@@ -16,7 +16,7 @@ export default function Demo() {
     radius: "sm",
     disabled: false,
     readOnly: false,
-    transitionDuration: 150,
+    transitionDuration: 200,
   });
   return (
     <div className="flex">

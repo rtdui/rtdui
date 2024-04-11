@@ -1,17 +1,5 @@
 import { CodeHighlight } from "@rtdui/code-highlight";
-import {
-  Radio,
-  RadioGroup,
-  Slider,
-  Switch,
-  Tabs,
-  ColorSwatch,
-  Popover,
-  ColorPicker,
-  TextInput,
-  Divider,
-} from "@rtdui/core";
-import { IconCheck, IconPalette } from "@tabler/icons-react";
+import { Slider, Switch, Tabs, Divider, FloatingSelect } from "@rtdui/core";
 import { useState } from "react";
 import ColorControl from "~/src/components/ColorControl";
 
@@ -93,42 +81,30 @@ function Demo() {
             value={state.color}
             onChange={(val) => setState((prev) => ({ ...prev, color: val }))}
           />
-          <RadioGroup
+          Variant:
+          <FloatingSelect
             value={state.variant}
             onChange={(val) =>
               setState((prev) => ({ ...prev, variant: val as string }))
             }
-            label="Variant"
-          >
-            <Radio value="default" label="default" />
-            <Radio value="outline" label="outline" />
-            <Radio value="pills" label="pills" />
-          </RadioGroup>
-          <div className="flex flex-col gap-8">
-            <RadioGroup
-              value={state.orientation}
-              onChange={(val) =>
-                setState((prev) => ({ ...prev, orientation: val as string }))
-              }
-              label="Orientation"
-            >
-              <Radio value="horizontal" label="horizontal" />
-              <Radio value="vertical" label="vertical" />
-            </RadioGroup>
-          </div>
-          <div className="flex flex-col gap-8">
-            <RadioGroup
-              value={state.placement}
-              onChange={(val) =>
-                setState((prev) => ({ ...prev, placement: val as string }))
-              }
-              label="Placement"
-              disabled={state.orientation === "horizontal"}
-            >
-              <Radio value="left" label="left" />
-              <Radio value="right" label="right" />
-            </RadioGroup>
-          </div>
+            data={["default", "outline", "pills"]}
+          />
+          Orientation:
+          <FloatingSelect
+            value={state.orientation}
+            onChange={(val) =>
+              setState((prev) => ({ ...prev, orientation: val as string }))
+            }
+            data={["horizontal", "vertical"]}
+          />
+          Placement:
+          <FloatingSelect
+            value={state.placement}
+            onChange={(val) =>
+              setState((prev) => ({ ...prev, placement: val as string }))
+            }
+            data={["left", "right"]}
+          />
           <div className="flex flex-col gap-8">
             Radius
             <Slider
@@ -150,20 +126,14 @@ function Demo() {
               label="Grow"
             />
           </div>
-          <div className="flex flex-col gap-8">
-            <RadioGroup
-              disabled={state.grow}
-              value={state.justify}
-              onChange={(val) =>
-                setState((prev) => ({ ...prev, justify: val as string }))
-              }
-              label="Justify"
-            >
-              <Radio value="start" label="start" />
-              <Radio value="center" label="center" />
-              <Radio value="end" label="end" />
-            </RadioGroup>
-          </div>
+          Justify:
+          <FloatingSelect
+            value={state.justify}
+            onChange={(val) =>
+              setState((prev) => ({ ...prev, justify: val as string }))
+            }
+            data={["start", "center", "end"]}
+          />
           <div className="flex flex-col gap-8">
             <Switch
               color="secondary"
