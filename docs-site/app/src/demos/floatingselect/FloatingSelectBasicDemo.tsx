@@ -115,4 +115,4 @@ export default function Demo() {
   );
 }
 
-Demo.displayName = "SegmentedControlBasicDemo";
+Demo.displayName = "FloatingSelectBasicDemo";
