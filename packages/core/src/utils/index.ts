@@ -13,3 +13,5 @@ export * from "./getColor";
 export * from "./getRadius";
 export * from "./getDataProps";
 export * from "./getSafeId";
+export * from "./isLightColor";
+export * from "./toRgba";

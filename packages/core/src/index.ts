@@ -57,3 +57,6 @@ export * from "./utils";
 export * from "./ColorSwatch";
 export * from "./ColorPicker";
 export * from "./ColorInput";
+
+export * from "./FloatingIndicator";
+export * from "./FloatingSelect";
