@@ -41,6 +41,11 @@
       { "label": "swap", "url": "/components/swap" },
       { "label": "switch", "url": "/components/switch" },
       { "label": "radio", "url": "/components/radio" },
+      {
+        "label": "floatingSelect",
+        "url": "/components/floatingselect",
+        "flag": "new"
+      },
       { "label": "rating", "url": "/components/rating" },
       {
         "label": "colorPicker",

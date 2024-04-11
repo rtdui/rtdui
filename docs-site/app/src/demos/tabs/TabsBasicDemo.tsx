@@ -13,12 +13,13 @@ import {
 } from "@rtdui/core";
 import { IconCheck, IconPalette } from "@tabler/icons-react";
 import { useState } from "react";
+import ColorControl from "~/src/components/ColorControl";
 
 const radius = ["xs", "sm", "md", "lg", "circle"];
 export default function Demo() {
   const [state, setState] = useState({
     activedTab: "tab1",
-    selectedColor: "primary",
+    color: "primary",
     variant: "default",
     orientation: "horizontal",
     placement: "left",
@@ -32,7 +33,7 @@ import { Tabs } from '@rtdui/core';
 
 function Demo() {
   return (
-    <Tabs defaultValue="tab1"${state.variant !== "default" ? ' variant="' + state.variant + '"' : ""}${state.orientation !== "horizontal" ? ' orientation="' + state.orientation + '"' : ""}${state.placement !== "left" && state.orientation !== "horizontal" ? ' placement="' + state.placement + '"' : ""}${state.radius !== "md" ? ' radius="' + state.radius + '"' : ""}${state.selectedColor !== "primary" ? ' color="' + state.selectedColor + '"' : ""}>
+    <Tabs defaultValue="tab1"${state.variant !== "default" ? ' variant="' + state.variant + '"' : ""}${state.orientation !== "horizontal" ? ' orientation="' + state.orientation + '"' : ""}${state.placement !== "left" && state.orientation !== "horizontal" ? ' placement="' + state.placement + '"' : ""}${state.radius !== "md" ? ' radius="' + state.radius + '"' : ""}${state.color !== "primary" ? ' color="' + state.color + '"' : ""}>
       <Tabs.Panel value="tab1">
         tab1 content
       </Tabs.Panel>
@@ -62,7 +63,7 @@ function Demo() {
             }
             variant={state.variant as any}
             radius={state.radius}
-            color={state.selectedColor}
+            color={state.color}
             orientation={state.orientation as any}
             placement={state.placement as any}
             className="flex-1"
@@ -88,51 +89,10 @@ function Demo() {
         <Divider direction="horizontal" />
         <div className="flex flex-col gap-4 w-72 bg-base-100 p-4">
           Color
-          <div className="colors flex flex-wrap gap-0.5">
-            {[
-              "primary",
-              "secondary",
-              "accent",
-              "info",
-              "warning",
-              "error",
-              "success",
-              "neutral",
-            ].map((d) => (
-              <ColorSwatch
-                size="28px"
-                radius="sm"
-                key={d}
-                color={d}
-                onClick={() =>
-                  setState((prev) => ({ ...prev, selectedColor: d }))
-                }
-              >
-                {d === state.selectedColor && (
-                  <IconCheck size="20" color="white" />
-                )}
-              </ColorSwatch>
-            ))}
-            <Popover>
-              <Popover.Trigger>
-                <ColorSwatch withShadow size="28px" radius="sm" color="white">
-                  <IconPalette className="stroke-amber-500" />
-                </ColorSwatch>
-              </Popover.Trigger>
-              <Popover.Dropdown>
-                <div className="flex flex-col gap-2 bg-base-100 p-4 border border-base-300 rounded shadow">
-                  <ColorPicker
-                    format="hexa"
-                    value={state.selectedColor}
-                    onChange={(val) =>
-                      setState((prev) => ({ ...prev, selectedColor: val }))
-                    }
-                  />
-                  <TextInput value={state.selectedColor} readOnly />
-                </div>
-              </Popover.Dropdown>
-            </Popover>
-          </div>
+          <ColorControl
+            value={state.color}
+            onChange={(val) => setState((prev) => ({ ...prev, color: val }))}
+          />
           <RadioGroup
             value={state.variant}
             onChange={(val) =>

@@ -59,6 +59,7 @@
     "jsonInput": "JsonInput",
     "numberInput": "NumberInput",
     "select": "Select",
+    "floatingSelect": "FloatingSelect",
     "slider": "Slider",
     "swap": "Swap",
     "switch": "Switch",

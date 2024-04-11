@@ -1,0 +1,89 @@
+---
+meta:
+  - title: FloatingSelect Component
+  - description: FloatingSelect document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/FloatingSelect.tsx"
+  componentName: "FloatingSelect"
+---
+
+import Demo from "../../components/Demo";
+import FloatingSelectBasicDemo from "./FloatingSelectBasicDemo";
+import FloatingSelectLabelDemo from "./FloatingSelectLabelDemo";
+
+# 使用
+
+<Demo data={{ Component: FloatingSelectBasicDemo }} />
+
+## 受控与非受控模式
+
+与原生`input`类似, `value`属性是受控属性, `defaultValue`为非受控属性. `onChange`为回调属性, 接受激活项的value作为参数.
+
+## Data属性
+
+`FloatingSelect`的`data`属性支持两种数据结构:
+
+- 字符串数组: 当`value`和`label`相同时使用
+- 对象数组: 当`value`和`label`不相同时使用
+
+```jsx
+import { FloatingSelect } from "@mantine/core";
+
+function ArrayOfStrings() {
+  return <FloatingSelect data={["React", "Angular", "Svelte", "Vue"]} />;
+}
+
+function ArrayOfObjects() {
+  return (
+    <FloatingSelect
+      data={[
+        { value: "val1", label: "React" },
+        { value: "val2", label: "Angular" },
+        { value: "val3", label: "Svelte" },
+        { value: "val4", label: "Vue" },
+      ]}
+    />
+  );
+}
+```
+
+### React元素作为数据项的label
+
+<Demo data={{ Component: FloatingSelectLabelDemo }} />
+
+```tsx
+export default function Demo() {
+  const data = [
+    {
+      value: "preview",
+      label: (
+        <div className="flex items-center gap-0.5">
+          <IconEye size={16} />
+          <span>Preview</span>
+        </div>
+      ),
+    },
+    {
+      value: "code",
+      label: (
+        <div className="flex items-center gap-0.5">
+          <IconCode size={16} />
+          <span>Code</span>
+        </div>
+      ),
+    },
+    {
+      value: "export",
+      label: (
+        <div className="flex items-center gap-0.5">
+          <IconExternalLink size={16} />
+          <span>Export</span>
+        </div>
+      ),
+    },
+  ];
+  return <FloatingSelect data={data} />;
+}
+```

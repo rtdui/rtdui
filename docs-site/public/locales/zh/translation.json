@@ -59,6 +59,7 @@
     "jsonInput": "JsonInput (JSON输入)",
     "numberInput": "NumberInput (数字输入)",
     "select": "Select (选择)",
+    "floatingSelect": "FloatingSelect (浮动选择)",
     "slider": "Slider (滑块)",
     "swap": "Swap (切换)",
     "switch": "Switch (开关)",
