@@ -197,7 +197,7 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
         ref={mergedRef}
         {...others}
         className={clsx(
-          "segmented-control-root",
+          "floating-select",
           "relative bg-base-200 overflow-hidden p-1 rounded-[--sc-radius] text-[length:--sc-font-size]",
           {
             "inline-flex w-auto": !fullWidth,
