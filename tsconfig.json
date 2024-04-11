@@ -24,6 +24,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
+      "~/*": ["./docs-site/app/*"],
       "@rtdui/*": ["./packages/*/src"]
     }
   }
