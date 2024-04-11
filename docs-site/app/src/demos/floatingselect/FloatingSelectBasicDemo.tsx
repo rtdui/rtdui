@@ -1,7 +1,6 @@
 import { Divider, FloatingSelect, Slider, Switch } from "@rtdui/core";
 import { useState } from "react";
 import ColorControl from "~/src/components/ColorControl";
-import { transitions } from "../../../../../packages/core/src/Transition/transitions";
 
 const size = ["xs", "sm", "md", "lg", "xl"];
 const radius = ["xs", "sm", "md", "lg"];
