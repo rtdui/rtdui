@@ -3811,6 +3811,257 @@
       }
     }
   },
+  "FloatingIndicator": {
+    "filePath": "D:/sources/rtdui/packages/core/src/FloatingIndicator/FloatingIndicator.tsx",
+    "description": "多态组件, ref会转发给实际的组件",
+    "displayName": "FloatingIndicator",
+    "props": {
+      "as": {
+        "defaultValue": null,
+        "description": "",
+        "name": "as",
+        "required": false,
+        "type": {
+          "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+        }
+      },
+      "displayAfterTransitionEnd": {
+        "defaultValue": null,
+        "description": "Determines whether indicator should be displayed after transition ends, should be set if used inside a container that has <code>transform: scale(n)</code> styles",
+        "name": "displayAfterTransitionEnd",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "parent": {
+        "defaultValue": null,
+        "description": "Parent element with relative position based on which indicator position should be calculated",
+        "name": "parent",
+        "required": true,
+        "type": {
+          "name": "HTMLElement | null | undefined"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "Target element over which indicator should be displayed",
+        "name": "target",
+        "required": true,
+        "type": {
+          "name": "HTMLElement | null | undefined"
+        }
+      },
+      "transitionDuration": {
+        "defaultValue": {
+          "value": "150"
+        },
+        "description": "Transition duration in ms",
+        "name": "transitionDuration",
+        "required": false,
+        "type": {
+          "name": "string | number | undefined"
+        }
+      }
+    }
+  },
+  "FloatingSelect": {
+    "filePath": "D:/sources/rtdui/packages/core/src/FloatingSelect/FloatingSelect.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/FloatingSelect",
+    "props": {
+      "color": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.colors</code> or any valid CSS color, changes color of indicator, by default color is based on current color scheme",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Data based on which controls are rendered",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "(string | FloatingSelectItem)[]"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Uncontrolled component default value",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Determines whether the component is disabled",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "fullWidth": {
+        "defaultValue": null,
+        "description": "Determines whether the component should take 100% width of its parent, <code>false</code> by default",
+        "name": "fullWidth",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "name": {
+        "defaultValue": null,
+        "description": "Name of the radio group, by default random name is generated",
+        "name": "name",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called when value changes",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "orientation": {
+        "defaultValue": {
+          "value": "\"horizontal\""
+        },
+        "description": "Determines in which orientation component id displayed",
+        "name": "orientation",
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\" | undefined",
+          "raw": "\"horizontal\" | \"vertical\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"horizontal\""
+            },
+            {
+              "value": "\"vertical\""
+            }
+          ]
+        }
+      },
+      "radius": {
+        "defaultValue": {
+          "value": "\"sm\""
+        },
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "\"circle\" | \"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "raw": "\"circle\" | \"xs\" | \"sm\" | \"md\" | \"lg\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"circle\""
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            }
+          ]
+        }
+      },
+      "readOnly": {
+        "defaultValue": null,
+        "description": "Determines whether the value can be changed",
+        "name": "readOnly",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "\"sm\""
+        },
+        "description": "Controls <code>font-size</code>, <code>padding</code> and <code>height</code> properties",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | undefined",
+          "raw": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            },
+            {
+              "value": "\"xl\""
+            }
+          ]
+        }
+      },
+      "transitionDuration": {
+        "defaultValue": {
+          "value": "200"
+        },
+        "description": "Indicator <code>transition-duration</code> in ms, set <code>0</code> to turn off transitions",
+        "name": "transitionDuration",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Controlled component value",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "withItemsSeparator": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether there should be borders between items",
+        "name": "withItemsSeparator",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
   "Grid": {
     "filePath": "D:/sources/rtdui/packages/core/src/Grid/Grid.tsx",
     "description": "",
