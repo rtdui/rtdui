@@ -4,5 +4,4 @@ export * from "./useScrollTrigger";
 export * from "./useStore";
 export * from "./useCssSupport";
 export * from "./useRafDebounce";
-export * from "./useMutateObserver";
 export * from "./useHeadRoom2";
