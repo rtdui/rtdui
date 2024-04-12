@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { useMutateObserver, useRafDebounce } from "@rtdui/hooks";
+import { useMutationObserver, useRafDebounce } from "@rtdui/hooks";
 import { drawWatermark } from "./drawWatermark";
 import { useWatermark } from "./useWatermark";
 
@@ -214,7 +214,15 @@ export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
         }
       });
     };
-    useMutateObserver(containerRef.current, onMutate);
+
+    useMutationObserver(
+      onMutate,
+      {
+        attributes: true,
+        childList: true,
+      },
+      () => containerRef.current
+    );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(syncWatermark, [
