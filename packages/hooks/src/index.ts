@@ -5,3 +5,5 @@ export * from "./useStore";
 export * from "./useCssSupport";
 export * from "./useRafDebounce";
 export * from "./useHeadRoom2";
+
+export * from "./useDirection";
