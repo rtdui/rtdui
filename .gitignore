@@ -28,6 +28,8 @@ lib/
 cjs/
 esm/
 styles/
+packages/*/styles.css
+packages/*/styles.layer.css
 
 # typescript
 *.tsbuildinfo
@@ -35,7 +37,6 @@ styles/
 # project
 .eslintcache
 .stylelintcache
-packages/*/styles.css
 ____test.*
 package-lock.json
 
