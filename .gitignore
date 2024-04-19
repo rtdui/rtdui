@@ -7,6 +7,15 @@
 .nova/
 .gitpod.yml
 
+# project
+.eslintcache
+.stylelintcache
+package-lock.json
+/.cache
+
+# typescript
+*.tsbuildinfo
+
 # node
 node_modules/
 
@@ -31,14 +40,5 @@ styles/
 packages/*/styles.css
 packages/*/styles.layer.css
 
-# typescript
-*.tsbuildinfo
-
-# project
-.eslintcache
-.stylelintcache
-____test.*
-package-lock.json
-
-# docs-site
+## docs-site build
 docs-site/build
