@@ -20,7 +20,7 @@
     "check": "npm run prettier:check && npm run check:syncpack && npm run lint",
     "check:syncpack": "syncpack list-mismatches",
     "check:typecheck": "tsc --noEmit && npm run docs:typecheck",
-    "lint": "eslint --cache ./packages/*/src/**/*.{ts,tsx}",
+    "lint": "eslint --cache ./packages/*/src/**/*.{ts,tsx} ./docs-site/app/**/*.{ts,tsx}",
     "build": "npm run clean:build && tsx scripts/build all",
     "clean": "npm run clean:build && npm run clean:docs",
     "clean:build": "rimraf --glob ./packages/*/{esm,cjs,lib,node_modules} ./packages/*/styles.css ./packages/**/*.tsbuildinfo",
