@@ -1,17 +1,17 @@
-import StarterKit from "@tiptap/starter-kit";
+import { StarterKit } from "@tiptap/starter-kit";
 // import Table from "@tiptap/extension-table";
-import TableCell from "@tiptap/extension-table-cell";
-import TableHeader from "@tiptap/extension-table-header";
-import TableRow from "@tiptap/extension-table-row";
-import Link from "@tiptap/extension-link";
-import TextAlign from "@tiptap/extension-text-align";
-import Highlight from "@tiptap/extension-highlight";
+import { TableCell } from "@tiptap/extension-table-cell";
+import { TableHeader } from "@tiptap/extension-table-header";
+import { TableRow } from "@tiptap/extension-table-row";
+import { Link } from "@tiptap/extension-link";
+import { TextAlign } from "@tiptap/extension-text-align";
+import { Highlight } from "@tiptap/extension-highlight";
 import SuperScript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
-import Placeholder from "@tiptap/extension-placeholder";
-import FloatingMenu from "@tiptap/extension-floating-menu";
-import TaskList from "@tiptap/extension-task-list";
-import TaskItem from "@tiptap/extension-task-item";
+import { Placeholder } from "@tiptap/extension-placeholder";
+// import { FloatingMenu } from "@tiptap/extension-floating-menu";
+import { TaskList } from "@tiptap/extension-task-list";
+import { TaskItem } from "@tiptap/extension-task-item";
 // import Collaboration from "@tiptap/extension-collaboration";
 // import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
 // import { HocuspocusProvider } from "@hocuspocus/provider";
@@ -82,7 +82,7 @@ export {
   Highlight,
   TextAlign,
   Placeholder,
-  FloatingMenu,
+  // FloatingMenu,
   CodeBlockPrismjs,
   MathKatexInline,
   MathKatexBlock,

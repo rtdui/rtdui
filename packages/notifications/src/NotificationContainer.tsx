@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import { Notification, type NotificationProps } from "./Notification";
 import { getAutoClose } from "./getAutoClose";
 import type { NotificationData } from "./notifications.store";
@@ -9,7 +9,7 @@ export interface NotificationContainerProps extends NotificationProps {
   autoClose: false | number;
 }
 
-export const NotificationContainer = React.forwardRef<
+export const NotificationContainer = forwardRef<
   HTMLDivElement,
   NotificationContainerProps
 >((props, ref) => {
@@ -60,3 +60,5 @@ export const NotificationContainer = React.forwardRef<
     </Notification>
   );
 });
+
+NotificationContainer.displayName = "@rtdui/NotificationContainer";

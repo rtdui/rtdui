@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef, isValidElement, cloneElement } from "react";
 import clsx from "clsx";
 import { Button, TextInput } from "@rtdui/core";
 import { IconX } from "@tabler/icons-react";
@@ -117,8 +117,8 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
               value={promptValue}
               onChange={setPromptValue}
             />
-          ) : React.isValidElement(children) ? (
-            React.cloneElement(children as React.ReactElement<any>, {
+          ) : isValidElement(children) ? (
+            cloneElement(children as React.ReactElement<any>, {
               onClose,
             })
           ) : (
@@ -149,3 +149,5 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     </div>
   );
 });
+
+Dialog.displayName = "@rtdui/Dialog";

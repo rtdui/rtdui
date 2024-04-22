@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 import { Portal } from "@rtdui/core";
 import { useDidUpdate, useHotkeys } from "@rtdui/hooks";
@@ -65,76 +65,77 @@ const defaultProps: Partial<SpotlightRootProps> = {
   scrollable: false,
 };
 
-export const SpotlightRoot = React.forwardRef<
-  HTMLDivElement,
-  SpotlightRootProps
->((props, ref) => {
-  props = { ...defaultProps, ...props };
-  const {
-    className,
-    style,
-    store,
-    children,
-    query,
-    onQueryChange,
-    clearQueryOnClose,
-    shortcut,
-    tagsToIgnore,
-    triggerOnContentEditable,
-    disabled,
-    onSpotlightOpen,
-    onSpotlightClose,
-    forceOpened,
-    closeOnActionTrigger,
-    maxHeight,
-    scrollable,
-    ...others
-  } = props;
+export const SpotlightRoot = forwardRef<HTMLDivElement, SpotlightRootProps>(
+  (props, ref) => {
+    props = { ...defaultProps, ...props };
+    const {
+      className,
+      style,
+      store,
+      children,
+      query,
+      onQueryChange,
+      clearQueryOnClose,
+      shortcut,
+      tagsToIgnore,
+      triggerOnContentEditable,
+      disabled,
+      onSpotlightOpen,
+      onSpotlightClose,
+      forceOpened,
+      closeOnActionTrigger,
+      maxHeight,
+      scrollable,
+      ...others
+    } = props;
 
-  const { opened, query: storeQuery } = useSpotlight(store!);
-  const _query = query || storeQuery;
-  const setQuery = (q: string) => {
-    onQueryChange?.(q);
-    spotlightActions.setQuery(q, store!);
-  };
+    const { opened, query: storeQuery } = useSpotlight(store!);
+    const _query = query || storeQuery;
+    const setQuery = (q: string) => {
+      onQueryChange?.(q);
+      spotlightActions.setQuery(q, store!);
+    };
 
-  useHotkeys(
-    getHotkeys(shortcut, store!),
-    tagsToIgnore,
-    triggerOnContentEditable
-  );
+    useHotkeys(
+      getHotkeys(shortcut, store!),
+      tagsToIgnore,
+      triggerOnContentEditable
+    );
 
-  useDidUpdate(() => {
-    opened ? onSpotlightOpen?.() : onSpotlightClose?.();
-  }, [opened]);
+    useDidUpdate(() => {
+      opened ? onSpotlightOpen?.() : onSpotlightClose?.();
+    }, [opened]);
 
-  if (disabled) {
-    return null;
+    if (disabled) {
+      return null;
+    }
+
+    return (
+      <SpotlightProvider
+        value={{
+          query: _query,
+          setQuery,
+          store: store!,
+          closeOnActionTrigger,
+        }}
+      >
+        <Portal type="spotlight" className="relative z-[999]">
+          <div
+            ref={ref}
+            className={clsx("modal", { "modal-open": opened || !!forceOpened })}
+            {...others}
+            data-scrollable={scrollable || undefined}
+          >
+            <div className="modal-box">{children}</div>
+            <label
+              className="modal-backdrop backdrop-blur"
+              onClick={() => spotlightActions.close(store!)}
+            />
+          </div>
+        </Portal>
+      </SpotlightProvider>
+    );
   }
+);
 
-  return (
-    <SpotlightProvider
-      value={{
-        query: _query,
-        setQuery,
-        store: store!,
-        closeOnActionTrigger,
-      }}
-    >
-      <Portal type="spotlight" className="relative z-[999]">
-        <div
-          ref={ref}
-          className={clsx("modal", { "modal-open": opened || !!forceOpened })}
-          {...others}
-          data-scrollable={scrollable || undefined}
-        >
-          <div className="modal-box">{children}</div>
-          <label
-            className="modal-backdrop backdrop-blur"
-            onClick={() => spotlightActions.close(store!)}
-          />
-        </div>
-      </Portal>
-    </SpotlightProvider>
-  );
-});
+SpotlightRoot.displayName = "@rtdui/SpotlightRoot";

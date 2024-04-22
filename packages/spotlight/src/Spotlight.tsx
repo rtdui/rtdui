@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { defaultSpotlightFilter } from "./default-spotlight-filter";
 import { isActionsGroup } from "./is-actions-group";
@@ -63,74 +63,74 @@ const defaultProps: Partial<SpotlightProps> = {
   highlightQuery: false,
 };
 
-const Spotlight_ = React.forwardRef<HTMLDivElement, SpotlightProps>(
-  (props, ref) => {
-    props = { ...defaultProps, ...props };
-    const {
-      searchProps,
-      filter,
-      query,
-      onQueryChange,
-      actions,
-      nothingFound,
-      highlightQuery,
-      limit,
-      ...others
-    } = props;
+const Spotlight_ = forwardRef<HTMLDivElement, SpotlightProps>((props, ref) => {
+  props = { ...defaultProps, ...props };
+  const {
+    searchProps,
+    filter,
+    query,
+    onQueryChange,
+    actions,
+    nothingFound,
+    highlightQuery,
+    limit,
+    ...others
+  } = props;
 
-    const [_query, setQuery] = useUncontrolled({
-      value: query,
-      defaultValue: "",
-      finalValue: "",
-      onChange: onQueryChange,
-    });
+  const [_query, setQuery] = useUncontrolled({
+    value: query,
+    defaultValue: "",
+    finalValue: "",
+    onChange: onQueryChange,
+  });
 
-    const filteredActions = limitActions(filter!(_query, actions), limit!).map(
-      (item) => {
-        if (isActionsGroup(item)) {
-          const items = item.actions.map(({ id, ...actionData }) => (
-            <SpotlightAction
-              key={id}
-              highlightQuery={highlightQuery}
-              {...actionData}
-            />
-          ));
-
-          return (
-            <SpotlightActionsGroup key={item.group} label={item.group}>
-              {items}
-            </SpotlightActionsGroup>
-          );
-        }
+  const filteredActions = limitActions(filter!(_query, actions), limit!).map(
+    (item) => {
+      if (isActionsGroup(item)) {
+        const items = item.actions.map(({ id, ...actionData }) => (
+          <SpotlightAction
+            key={id}
+            highlightQuery={highlightQuery}
+            {...actionData}
+          />
+        ));
 
         return (
-          <SpotlightAction
-            key={item.id}
-            highlightQuery={highlightQuery}
-            {...item}
-          />
+          <SpotlightActionsGroup key={item.group} label={item.group}>
+            {items}
+          </SpotlightActionsGroup>
         );
       }
-    );
 
-    return (
-      <SpotlightRoot
-        {...others}
-        query={_query}
-        onQueryChange={setQuery}
-        ref={ref}
-      >
-        <SpotlightSearch {...searchProps} />
-        <SpotlightActionsList>
-          {filteredActions}
-          {filteredActions.length === 0 && nothingFound && (
-            <SpotlightEmpty>{nothingFound}</SpotlightEmpty>
-          )}
-        </SpotlightActionsList>
-      </SpotlightRoot>
-    );
-  }
-);
+      return (
+        <SpotlightAction
+          key={item.id}
+          highlightQuery={highlightQuery}
+          {...item}
+        />
+      );
+    }
+  );
+
+  return (
+    <SpotlightRoot
+      {...others}
+      query={_query}
+      onQueryChange={setQuery}
+      ref={ref}
+    >
+      <SpotlightSearch {...searchProps} />
+      <SpotlightActionsList>
+        {filteredActions}
+        {filteredActions.length === 0 && nothingFound && (
+          <SpotlightEmpty>{nothingFound}</SpotlightEmpty>
+        )}
+      </SpotlightActionsList>
+    </SpotlightRoot>
+  );
+});
+
+Spotlight_.displayName = "@rtdui/Spotlight";
 
 export const Spotlight = Object.assign(Spotlight_, {
   Root: SpotlightRoot,

@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
 import { TextInput } from "@rtdui/core";
 import { useSpotlightContext } from "./Spotlight.context";
@@ -11,14 +11,14 @@ const defaultProps: Partial<SpotlightSearchProps> = {
   size: "lg",
 };
 
-export const SpotlightSearch = React.forwardRef<
+export const SpotlightSearch = forwardRef<
   HTMLInputElement,
   SpotlightSearchProps
 >((props, ref) => {
   props = { ...defaultProps, ...props };
   const { onKeyDown, onChange, value, ...others } = props;
   const ctx = useSpotlightContext();
-  const [isComposing, setIsComposing] = React.useState(false); // IME
+  const [isComposing, setIsComposing] = useState(false); // IME
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     onKeyDown?.(event);
@@ -46,8 +46,7 @@ export const SpotlightSearch = React.forwardRef<
       slots={{ input: "focus-within:outline-none" }}
       {...others}
       size="md"
-      ghost
-      bordered={false}
+      variant="ghost"
       leftSection={<IconSearch />}
       placeholder="Search..."
       value={value ?? ctx.query}
@@ -61,3 +60,5 @@ export const SpotlightSearch = React.forwardRef<
     />
   );
 });
+
+SpotlightSearch.displayName = "@rtdui/SpotlightSearch";

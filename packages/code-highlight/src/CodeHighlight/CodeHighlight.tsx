@@ -1,6 +1,6 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
-//@ts-ignore
+//@ts-expect-error no export member
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { refractor } from "refractor/lib/all.js";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
@@ -53,74 +53,78 @@ export interface CodeHighlightProps {
    */
   bad?: boolean;
 }
-export const CodeHighlight = React.forwardRef<
-  HTMLDivElement,
-  CodeHighlightProps
->((props, ref) => {
-  const {
-    code,
-    language = "tsx",
-    withCopyButton = true,
-    copyLabel = "Copy code",
-    copiedLabel = "Copied",
-    diff = false,
-    showLineNumbers = false,
-    highlingtLines = "",
-    bad = false,
-  } = props;
+export const CodeHighlight = forwardRef<HTMLDivElement, CodeHighlightProps>(
+  (props, ref) => {
+    const {
+      code,
+      language = "tsx",
+      withCopyButton = true,
+      copyLabel = "Copy code",
+      copiedLabel = "Copied",
+      diff = false,
+      showLineNumbers = false,
+      highlingtLines = "",
+      bad = false,
+    } = props;
 
-  const ast: any = refractor.highlight(code.trim(), language);
-  if (diff || showLineNumbers || highlingtLines) {
-    const meta = `${highlingtLines} ${
-      showLineNumbers ? "showLineNumbers" : ""
-    }`;
-    decorator(ast, diff, meta);
-  }
+    const ast: any = refractor.highlight(code.trim(), language);
+    if (diff || showLineNumbers || highlingtLines) {
+      const meta = `${highlingtLines} ${
+        showLineNumbers ? "showLineNumbers" : ""
+      }`;
+      decorator(ast, diff, meta);
+    }
 
-  const elements = toJsxRuntime(ast, { Fragment, jsx, jsxs });
+    const elements = toJsxRuntime(ast, { Fragment, jsx, jsxs });
 
-  return (
-    <div ref={ref}>
-      <div className="flex items-start w-full bg-[--prism-color-2]">
-        <small className="bg-base-300 uppercase font-bold text-xs rounded-br-md px-2 py-1">
-          {language}
-        </small>
-        <span className="flex-1"></span>
-        {withCopyButton && bad === false && (
-          <CopyButton value={code.trim()}>
-            {({ copied, copy }) => (
-              <Tooltip
-                tip={copied ? copiedLabel : copyLabel}
-                position="left"
-                color={copied ? "success" : "info"}
-              >
-                <Button size="xs" ghost sharp="square" onClick={copy}>
-                  {copied ? (
-                    <IconClipboardCheck size={20} className="stroke-success" />
-                  ) : (
-                    <IconCopy size={20} />
-                  )}
-                </Button>
-              </Tooltip>
-            )}
-          </CopyButton>
-        )}
-      </div>
-      <pre
-        className={clsx(`language-${language}`, "!mt-0", {
-          "!bg-red-100": bad === true,
-          "dark:!bg-red-950": bad === true,
-        })}
-      >
-        <code
-          className={clsx(`language-${language}`, "code-highlight", {
+    return (
+      <div ref={ref}>
+        <div className="flex items-start w-full bg-[--prism-color-2]">
+          <small className="bg-base-300 uppercase font-bold text-xs rounded-br-md px-2 py-1">
+            {language}
+          </small>
+          <span className="flex-1"></span>
+          {withCopyButton && bad === false && (
+            <CopyButton value={code.trim()}>
+              {({ copied, copy }) => (
+                <Tooltip
+                  tip={copied ? copiedLabel : copyLabel}
+                  position="left"
+                  color={copied ? "success" : "info"}
+                >
+                  <Button size="xs" ghost sharp="square" onClick={copy}>
+                    {copied ? (
+                      <IconClipboardCheck
+                        size={20}
+                        className="stroke-success"
+                      />
+                    ) : (
+                      <IconCopy size={20} />
+                    )}
+                  </Button>
+                </Tooltip>
+              )}
+            </CopyButton>
+          )}
+        </div>
+        <pre
+          className={clsx(`language-${language}`, "!mt-0", {
             "!bg-red-100": bad === true,
             "dark:!bg-red-950": bad === true,
           })}
         >
-          {elements}
-        </code>
-      </pre>
-    </div>
-  );
-});
+          <code
+            className={clsx(`language-${language}`, "code-highlight", {
+              "!bg-red-100": bad === true,
+              "dark:!bg-red-950": bad === true,
+            })}
+          >
+            {elements}
+          </code>
+        </pre>
+      </div>
+    );
+  }
+);
+
+CodeHighlight.displayName = "@rtdui/CodeHighlight";

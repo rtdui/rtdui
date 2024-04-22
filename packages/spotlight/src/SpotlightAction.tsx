@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { Button, getDataProps } from "@rtdui/core";
 import { useSpotlightContext } from "./Spotlight.context";
 import { spotlightActions } from "./spotlight.store";
@@ -60,7 +60,7 @@ const defaultProps: Partial<SpotlightActionProps> = {
   highlightQuery: false,
 };
 
-export const SpotlightAction = React.forwardRef<
+export const SpotlightAction = forwardRef<
   HTMLAnchorElement,
   SpotlightActionProps
 >((props, ref) => {
@@ -142,3 +142,5 @@ export const SpotlightAction = React.forwardRef<
     </a>
   );
 });
+
+SpotlightAction.displayName = "@rtdui/SpotlightAction";

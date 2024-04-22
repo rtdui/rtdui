@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { useSpotlightContext } from "./Spotlight.context";
 
 export type SpotlightFooterStylesNames = "footer";
@@ -8,11 +8,12 @@ export interface SpotlightFooterProps
 
 const defaultProps: Partial<SpotlightFooterProps> = {};
 
-export const SpotlightFooter = React.forwardRef<
-  HTMLDivElement,
-  SpotlightFooterProps
->((props, ref) => {
-  const { className, style, ...others } = props;
-  const ctx = useSpotlightContext();
-  return <div ref={ref} {...others} />;
-});
+export const SpotlightFooter = forwardRef<HTMLDivElement, SpotlightFooterProps>(
+  (props, ref) => {
+    const { className, style, ...others } = props;
+    const ctx = useSpotlightContext();
+    return <div ref={ref} {...others} />;
+  }
+);
+
+SpotlightFooter.displayName = "@rtdui/SpotlightFooter";

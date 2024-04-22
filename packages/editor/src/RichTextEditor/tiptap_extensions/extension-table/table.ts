@@ -1,4 +1,4 @@
-import Table from "@tiptap/extension-table";
+import { Table } from "@tiptap/extension-table";
 import { Plugin } from "@tiptap/pm/state";
 
 export const CustomTable = Table.extend({

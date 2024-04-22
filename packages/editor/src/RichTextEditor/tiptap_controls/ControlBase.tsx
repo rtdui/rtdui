@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 
 export interface ControlBaseProps
@@ -12,7 +12,7 @@ export interface ControlBaseProps
   interactive?: boolean;
 }
 
-export default React.forwardRef<HTMLButtonElement, ControlBaseProps>(
+export const ControlBase = forwardRef<HTMLButtonElement, ControlBaseProps>(
   (props, ref) => {
     const {
       className,
@@ -40,3 +40,5 @@ export default React.forwardRef<HTMLButtonElement, ControlBaseProps>(
     );
   }
 );
+
+ControlBase.displayName = "@rtdui/ControlBase";

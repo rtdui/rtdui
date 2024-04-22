@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { highlighter } from "./highlighter";
 
 export interface HighlightProps
@@ -20,9 +20,7 @@ export interface HighlightProps
   children: string;
 }
 
-const defaultProps: Partial<HighlightProps> = {};
-
-export const Highlight = React.forwardRef<HTMLSpanElement, HighlightProps>(
+export const Highlight = forwardRef<HTMLSpanElement, HighlightProps>(
   (props, ref) => {
     const { children, highlight, color, ...others } = props;
 
@@ -43,3 +41,5 @@ export const Highlight = React.forwardRef<HTMLSpanElement, HighlightProps>(
     );
   }
 );
+
+Highlight.displayName = "@rtdui/Highlight";

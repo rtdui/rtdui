@@ -8,14 +8,14 @@ export function ColumnsVisibility(props: { table: Table<any> }) {
   const columns = getAllLeafOrderColumns(table);
 
   return (
-    <Popover placement="bottom">
-      <Popover.Trigger>
+    <Popover position="bottom">
+      <Popover.Target>
         <Button size="sm" ghost sharp="circle">
           <IconEyeCheck />
         </Button>
-      </Popover.Trigger>
+      </Popover.Target>
       <Popover.Dropdown>
-        <ul className="menu p-2 shadow bg-base-100 rounded-box">
+        <ul className="menu p-2">
           {columns.map((column) => (
             <li
               key={column.id}

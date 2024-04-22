@@ -20,14 +20,14 @@ export function ExportTable(props: { table: Table<any> }) {
     writeFileXLSX(wb, "表格导出.xlsx");
   }, []);
   return (
-    <Popover placement="bottom">
-      <Popover.Trigger>
+    <Popover position="bottom">
+      <Popover.Target>
         <Button size="sm" ghost sharp="circle">
           <IconDownload />
         </Button>
-      </Popover.Trigger>
+      </Popover.Target>
       <Popover.Dropdown>
-        <ul className="menu p-2 shadow bg-base-100 rounded-box">
+        <ul className="menu p-2">
           <li>
             <a className="w-full" onClick={exportXLSX}>
               导出为Excel

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { IconHelp, IconX } from "@tabler/icons-react";
 import clsx from "clsx";
 import TiptapEditorHelpMDX from "./editorMan.mdx";
@@ -6,7 +6,7 @@ import TiptapEditorHelpMDX from "./editorMan.mdx";
 export interface HelperControlProps
   extends React.ComponentPropsWithoutRef<"div"> {}
 
-export default forwardRef<HTMLButtonElement, HelperControlProps>(
+export const HelperControl = forwardRef<HTMLButtonElement, HelperControlProps>(
   (props, ref) => {
     const { className, ...other } = { ...props };
     return (
@@ -46,3 +46,5 @@ export default forwardRef<HTMLButtonElement, HelperControlProps>(
     );
   }
 );
+
+HelperControl.displayName = "@rtdui/editor/HelperControl";

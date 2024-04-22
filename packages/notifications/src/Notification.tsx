@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 import { Button } from "@rtdui/core";
 import { IconX } from "@tabler/icons-react";
@@ -42,7 +42,7 @@ export interface NotificationProps
   };
 }
 
-export const Notification = React.forwardRef<HTMLDivElement, NotificationProps>(
+export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
   (props, ref) => {
     const {
       className,

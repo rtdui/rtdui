@@ -1,4 +1,4 @@
-import React, { useEffect, useId } from "react";
+import { forwardRef, useEffect, useId } from "react";
 import clsx from "clsx";
 import { useSpotlightContext } from "./Spotlight.context";
 import { spotlightActions } from "./spotlight.store";
@@ -12,7 +12,7 @@ export interface SpotlightActionsListProps
 
 const defaultProps: Partial<SpotlightActionsListProps> = {};
 
-export const SpotlightActionsList = React.forwardRef<
+export const SpotlightActionsList = forwardRef<
   HTMLDivElement,
   SpotlightActionsListProps
 >((props, ref) => {
@@ -38,3 +38,5 @@ export const SpotlightActionsList = React.forwardRef<
     </div>
   );
 });
+
+SpotlightActionsList.displayName = "@rtdui/SpotlightActionsList";

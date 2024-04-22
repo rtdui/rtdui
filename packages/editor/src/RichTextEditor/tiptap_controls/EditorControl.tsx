@@ -1,9 +1,9 @@
-import React, { useMemo, forwardRef } from "react";
+import { useMemo, forwardRef } from "react";
 import type { Editor as EditorType } from "@tiptap/react";
 import { EditorProvider } from "./ControlContext";
 import * as controls from "./tiptapControls";
 import { ControlsGroup } from "./ControlsGroup";
-import Toolbar from "./ToolbarControl";
+import { ToolbarControl } from "./ToolbarControl";
 
 import type { ControlLabels } from "./constrolLabels";
 import { DEFAULT_CN_LABELS } from "./constrolLabels";
@@ -19,7 +19,7 @@ export interface TiptapEditorProps
   /** Child editor components */
   children: React.ReactNode;
 }
-export const EditorControl = forwardRef<HTMLDivElement, TiptapEditorProps>(
+export const EditorControl_ = forwardRef<HTMLDivElement, TiptapEditorProps>(
   (props, ref) => {
     const { editor, children, labels, ...others } = props;
 
@@ -41,43 +41,46 @@ export const EditorControl = forwardRef<HTMLDivElement, TiptapEditorProps>(
       </EditorProvider>
     );
   }
-) as any;
+);
 
-// Generic components
-// EditorControl.Content = Content;
-// EditorControl.Control = Control;
-EditorControl.ControlsGroup = ControlsGroup;
-EditorControl.Toolbar = Toolbar;
+EditorControl_.displayName = "@rtdui/editor/EditorControl";
 
-// Controls components
-EditorControl.Bold = controls.BoldControl;
-EditorControl.Italic = controls.ItalicControl;
-EditorControl.Strikethrough = controls.StrikeThroughControl;
-EditorControl.Underline = controls.UnderlineControl;
-EditorControl.ClearFormatting = controls.ClearFormattingControl;
-EditorControl.H1 = controls.H1Control;
-EditorControl.H2 = controls.H2Control;
-EditorControl.H3 = controls.H3Control;
-EditorControl.H4 = controls.H4Control;
-EditorControl.H5 = controls.H5Control;
-EditorControl.H6 = controls.H6Control;
-EditorControl.BulletList = controls.BulletListControl;
-EditorControl.OrderedList = controls.OrderedListControl;
-// EditorControl.Link = controls.LinkControl;
-EditorControl.Unlink = controls.UnlinkControl;
-EditorControl.Blockquote = controls.BlockquoteControl;
-EditorControl.AlignLeft = controls.AlignLeftControl;
-EditorControl.AlignRight = controls.AlignRightControl;
-EditorControl.AlignCenter = controls.AlignCenterControl;
-EditorControl.AlignJustify = controls.AlignJustifyControl;
-EditorControl.Superscript = controls.SuperscriptControl;
-EditorControl.Subscript = controls.SubscriptControl;
-EditorControl.Code = controls.CodeControl;
-EditorControl.CodeBlock = controls.CodeBlockControl;
-// EditorControl.ColorPicker = controls.ColorPickerControl;
-// EditorControl.Color = controls.ColorControl;
-EditorControl.Highlight = controls.HighlightControl;
-EditorControl.Hr = controls.HrControl;
-EditorControl.UnsetColor = controls.UnsetColorControl;
-EditorControl.Image = controls.ImageControl;
-EditorControl.Table = controls.TableControl;
+export const EditorControl = Object.assign(EditorControl_, {
+  // Content = Content,
+  // Control = Control,
+  ControlsGroup,
+  Toolbar: ToolbarControl,
+
+  // Controls components
+  Bold: controls.BoldControl,
+  Italic: controls.ItalicControl,
+  Strikethrough: controls.StrikeThroughControl,
+  Underline: controls.UnderlineControl,
+  ClearFormatting: controls.ClearFormattingControl,
+  H1: controls.H1Control,
+  H2: controls.H2Control,
+  H3: controls.H3Control,
+  H4: controls.H4Control,
+  H5: controls.H5Control,
+  H6: controls.H6Control,
+  BulletList: controls.BulletListControl,
+  OrderedList: controls.OrderedListControl,
+  // Link: controls.LinkControl,
+  Unlink: controls.UnlinkControl,
+  Blockquote: controls.BlockquoteControl,
+  AlignLeft: controls.AlignLeftControl,
+  AlignRight: controls.AlignRightControl,
+  AlignCenter: controls.AlignCenterControl,
+  AlignJustify: controls.AlignJustifyControl,
+  Superscript: controls.SuperscriptControl,
+  Subscript: controls.SubscriptControl,
+  Code: controls.CodeControl,
+  CodeBlock: controls.CodeBlockControl,
+  Highlight: controls.HighlightControl,
+  Hr: controls.HrControl,
+  // ColorPicker: controls.ColorPickerControl,
+  // Color: controls.ColorControl,
+  UnsetColor: controls.UnsetColorControl,
+  Image: controls.ImageControl,
+  Table: controls.TableControl,
+});

@@ -1,4 +1,4 @@
-import CodeBlock, { CodeBlockOptions } from "@tiptap/extension-code-block";
+import { CodeBlock, CodeBlockOptions } from "@tiptap/extension-code-block";
 import { RefractorPlugin } from "./refractor-plugin.js";
 
 export interface CodeBlockPrismOptions extends CodeBlockOptions {

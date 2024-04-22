@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import clsx from "clsx";
 import type { EditorOptions } from "@tiptap/core";
 import {
@@ -49,7 +49,7 @@ import {
   MathKatexBlock,
 } from "./tiptap";
 import { EditorControl } from "./tiptap_controls/EditorControl";
-import HelperControl from "./tiptap_controls/HelperControl";
+import { HelperControl } from "./tiptap_controls/HelperControl";
 
 export interface RichTextEditorProps
   extends React.ComponentPropsWithoutRef<"div"> {
@@ -59,7 +59,7 @@ export interface RichTextEditorProps
   imageResizable?: boolean;
   slots?: { toolbar?: string; content?: string };
 }
-export const RichTextEditor = React.forwardRef<any, RichTextEditorProps>(
+export const RichTextEditor = forwardRef<any, RichTextEditorProps>(
   (props, ref) => {
     const {
       slots,
@@ -132,7 +132,7 @@ export const RichTextEditor = React.forwardRef<any, RichTextEditorProps>(
     };
     const editor = useEditor(editorOptions);
 
-    React.useImperativeHandle<any, any>(ref, () => ({
+    useImperativeHandle<any, any>(ref, () => ({
       getJSON: () => {
         if (editor) {
           return editor.getJSON();
@@ -387,3 +387,5 @@ export const RichTextEditor = React.forwardRef<any, RichTextEditorProps>(
     );
   }
 );
+
+RichTextEditor.displayName = "@rtdui/RichTextEditor";

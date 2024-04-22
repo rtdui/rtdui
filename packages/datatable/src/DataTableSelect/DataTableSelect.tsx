@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useState, useRef } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { Popover, TextInput, type TextInputProps } from "@rtdui/core";
 import clsx from "clsx";
@@ -30,7 +30,7 @@ export interface DataTableSelectProps
 }
 
 /** ref属性会转发至内部的input元素 */
-export const DataTableSelect = React.forwardRef<
+export const DataTableSelect = forwardRef<
   HTMLInputElement,
   DataTableSelectProps
 >((props, ref) => {
@@ -57,7 +57,7 @@ export const DataTableSelect = React.forwardRef<
     ...other
   } = props;
 
-  const tableRef = React.useRef<any>();
+  const tableRef = useRef<any>();
 
   const right = (
     <>
@@ -65,7 +65,7 @@ export const DataTableSelect = React.forwardRef<
       <IconChevronDown size="1rem" />
     </>
   );
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [valueState, handleChange] = useUncontrolled({
     defaultValue,
     value,
@@ -102,9 +102,9 @@ export const DataTableSelect = React.forwardRef<
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
+    <Popover withArrow opened={open} onChange={setOpen} position="bottom-start">
       <input type="hidden" name={name} value={selectedIds} />
-      <Popover.Trigger>
+      <Popover.Target>
         <TextInput
           ref={ref}
           readOnly
@@ -116,18 +116,12 @@ export const DataTableSelect = React.forwardRef<
           rightSection={right}
           value={displayValue}
           className={className}
+          onFocus={() => setOpen(true)}
           {...other}
         />
-      </Popover.Trigger>
+      </Popover.Target>
       <Popover.Dropdown
-        showArrow
-        slots={{
-          arrow: "fill-base-100",
-        }}
-        className={clsx(
-          "max-h-60 shadow dark:shadow-base-300 bg-base-100 rounded-md overflow-auto",
-          slots?.dropdown
-        )}
+        className={clsx("max-h-60 overflow-auto", slots?.dropdown)}
       >
         <DataTable
           ref={tableRef}
@@ -165,3 +159,5 @@ export const DataTableSelect = React.forwardRef<
     </Popover>
   );
 });
+
+DataTableSelect.displayName = "@rtdui/DataTableSelect";

@@ -48,7 +48,7 @@ export function TablePagination(props: { table: Table<any> }) {
           table.setPageSize(Number(val));
         }}
         className="w-20"
-        options={["10", "20", "30", "40", "50"]}
+        data={["10", "20", "30", "40", "50"]}
       />
     </div>
   );

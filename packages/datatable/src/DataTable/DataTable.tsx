@@ -1,4 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
+import {
+  forwardRef,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  useImperativeHandle,
+} from "react";
 import type {
   AccessorKeyColumnDef,
   CellContext,
@@ -47,7 +56,7 @@ import {
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import { DndProvider } from "react-dnd";
-import React from "react";
+
 import {
   IconChevronDown,
   IconChevronRight,
@@ -453,7 +462,7 @@ export interface DataTableProps {
   //#endregion 功能: Row Selection
 }
 
-export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
+export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   const {
     columns: columnsProp,
     data: dataProp,
@@ -510,9 +519,9 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
   const enableTree = !!getSubRows;
   const enableGrouping = enableTree ? false : enableGroupingProp;
 
-  const [data, setData] = React.useState(dataProp);
+  const [data, setData] = useState(dataProp);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setData(dataProp);
   }, [dataProp]);
 
@@ -524,7 +533,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     throw new Error("行虚拟化和导出不能同时启用");
   }
 
-  const changesRef = React.useRef({
+  const changesRef = useRef({
     changes: { added: [], changed: {}, deleted: [] } as {
       added: any[];
       changed: Record<string, any>;
@@ -659,7 +668,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     return table.getState();
   };
 
-  React.useImperativeHandle(
+  useImperativeHandle(
     ref,
     () => ({
       addRow,
@@ -675,7 +684,7 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
   );
 
   // 微调列定义
-  const columns = React.useMemo(() => {
+  const columns = useMemo(() => {
     const cloneColumns = klona(columnsProp);
 
     if (enableTree) {
@@ -982,16 +991,16 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
     return prev;
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     // 自动展开所有
     if (autoExpandAll) {
       table.toggleAllRowsExpanded(true);
     }
   }, [autoExpandAll, table]);
 
-  const tableContainerRef = React.useRef<HTMLDivElement>(null);
+  const tableContainerRef = useRef<HTMLDivElement>(null);
   //#region 行虚拟化
-  const estimateRowHeight = React.useCallback(
+  const estimateRowHeight = useCallback(
     () => (size === "sm" ? 36 : 56),
     [size]
   );
@@ -1213,3 +1222,5 @@ export const DataTable = React.forwardRef<any, DataTableProps>((props, ref) => {
 });
 
 // export default React.memo(DataTable);
+
+DataTable.displayName = "@rtdui/DataTable";

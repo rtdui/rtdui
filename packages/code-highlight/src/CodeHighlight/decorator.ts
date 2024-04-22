@@ -128,7 +128,7 @@ const calculateStartingLine = (meta: string) => {
   // pick the line number after = using a named capturing group
   if (RE.test(meta)) {
     const {
-      //@ts-ignore
+      //@ts-expect-error undefined
       groups: { lines },
     } = RE.exec(meta)!;
     return Number(lines);
@@ -191,7 +191,7 @@ const addNodePositionClosure = () => {
 
       if (Object.prototype.hasOwnProperty.call(node, "children")) {
         const initialLineNum = startLineNum;
-        // @ts-ignore
+        //@ts-expect-error arg count
         node.children = addNodePosition(node.children, startLineNum);
         result.push(node);
         node.position = {
