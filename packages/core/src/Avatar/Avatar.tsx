@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 import { useAvatarGroupContext } from "../AvatarGroup/AvatarGroup.context";
 
 export interface AvatarProps {
@@ -20,67 +20,67 @@ export interface AvatarProps {
    */
   placeholder?: string;
 }
-export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-  (props, ref) => {
-    const {
-      src,
-      size: sizeProp = "md",
-      variant = "circle",
-      online,
-      placeholder,
-      className,
-      ...other
-    } = props;
+export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+  const {
+    src,
+    size: sizeProp = "md",
+    variant = "circle",
+    online,
+    placeholder,
+    className,
+    ...other
+  } = props;
 
-    const avatarGroup = useAvatarGroupContext();
+  const avatarGroup = useAvatarGroupContext();
 
-    let size = sizeProp;
+  let size = sizeProp;
 
-    // 在AvatarGroup下时, 忽略自身的size属性值, 优先使用AvatarGroup上下文提供的值
-    if (avatarGroup) {
-      size = avatarGroup.size ?? size;
-    }
-
-    return (
-      <div
-        className={clsx(
-          "avatar",
-          {
-            online: online === true,
-            offline: online === false,
-            placeholder: Boolean(placeholder),
-          },
-          className
-        )}
-        {...other}
-      >
-        <div
-          className={clsx({
-            "w-8": size === "xs",
-            "w-12": size === "sm",
-            "w-16": size === "md",
-            "w-24": size === "lg",
-            "rounded-xl": variant === "square",
-            "rounded-full": variant === "circle",
-            "bg-neutral text-neutral-content": Boolean(!src && placeholder),
-          })}
-        >
-          {src ? (
-            <img src={src} alt="avatar" />
-          ) : (
-            <span
-              className={clsx({
-                "text-base": size === "xs",
-                "text-xl": size === "sm",
-                "text-2xl": size === "md",
-                "text-3xl": size === "lg",
-              })}
-            >
-              {placeholder}
-            </span>
-          )}
-        </div>
-      </div>
-    );
+  // 在AvatarGroup下时, 忽略自身的size属性值, 优先使用AvatarGroup上下文提供的值
+  if (avatarGroup) {
+    size = avatarGroup.size ?? size;
   }
-);
+
+  return (
+    <div
+      className={clsx(
+        "avatar",
+        {
+          online: online === true,
+          offline: online === false,
+          placeholder: Boolean(placeholder),
+        },
+        className
+      )}
+      {...other}
+    >
+      <div
+        className={clsx({
+          "w-8": size === "xs",
+          "w-12": size === "sm",
+          "w-16": size === "md",
+          "w-24": size === "lg",
+          "rounded-xl": variant === "square",
+          "rounded-full": variant === "circle",
+          "bg-neutral text-neutral-content": Boolean(!src && placeholder),
+        })}
+      >
+        {src ? (
+          <img src={src} alt="avatar" />
+        ) : (
+          <span
+            className={clsx({
+              "text-base": size === "xs",
+              "text-xl": size === "sm",
+              "text-2xl": size === "md",
+              "text-3xl": size === "lg",
+            })}
+          >
+            {placeholder}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+});
+
+Avatar.displayName = "@rtdui/Avatar";

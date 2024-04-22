@@ -1,168 +1,60 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 import TextareaAutosize from "react-textarea-autosize";
+import { InputBase, InputBaseOwnProps } from "../InputBase";
 
 export interface TextAreaProps
-  extends Omit<React.ComponentPropsWithoutRef<"textarea">, "size"> {
-  color?:
-    | "primary"
-    | "secondary"
-    | "accent"
-    | "info"
-    | "success"
-    | "warning"
-    | "error";
-  size?: "xs" | "sm" | "md" | "lg";
-  ghost?: boolean;
-  /**
-   * 是否显示边框
-   * @default true
+  extends InputBaseOwnProps,
+    React.ComponentPropsWithoutRef<"textarea"> {
+  /** Determines whether the textarea height should grow with its content
+   * @default faslse
    */
-  bordered?: boolean;
-  placeholder?: string;
-  label?: string;
-  helperText?: string;
-  leftSection?: React.ReactNode;
-  leftSectionWidth?: number;
-  rightSection?: React.ReactNode;
-  rightSectionWidth?: number;
-  error?: boolean;
+  autosize?: boolean;
 
-  /** Minimum rows of autosize textarea
-   * @default 2
-   */
-  minRows?: number;
-  /** Maximum rows for autosize textarea to grow */
+  /** Maximum rows for autosize textarea to grow, ignored if `autosize` prop is not set */
   maxRows?: number;
 
-  slots?: {
-    textarea?: string;
-    left?: string;
-    right?: string;
-    label?: string;
-    helperText?: string;
-  };
+  /** Minimum rows of autosize textarea, ignored if `autosize` prop is not set */
+  minRows?: number;
+
+  /** Controls `resize` CSS property
+   * @default "none"
+   */
+  resize?: React.CSSProperties["resize"];
 }
 
 /** TextArea继承了textarea的所有属性 */
-export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref) => {
     const {
-      required,
-      color,
-      size = "sm",
-      ghost,
-      bordered = true,
-      label,
-      helperText,
-      leftSection,
-      leftSectionWidth,
-      rightSection,
-      rightSectionWidth,
-      className,
-      children,
-      slots,
-      error,
+      autosize = false,
       minRows = 2,
-      ...other
+      maxRows,
+      resize = "none",
+      style,
+      ...others
     } = props;
 
-    const sizes = {
-      xs: "1.5rem",
-      sm: "2rem",
-      md: "3rem",
-      lg: "4rem",
-    };
-
-    const getSize = (size: "xs" | "sm" | "md" | "lg") => {
-      if (size in sizes) {
-        return sizes[size];
-      }
-      return sizes.md;
-    };
-
-    const paddingLeft = leftSection
-      ? leftSectionWidth || getSize(size ?? "md")
-      : undefined;
-    const paddingRight = rightSection
-      ? rightSectionWidth || getSize(size ?? "md")
-      : undefined;
+    const shouldAutosize = autosize;
+    const autosizeProps = shouldAutosize ? { maxRows, minRows } : {};
 
     return (
-      <div className={clsx("form-control", className)}>
-        {label && (
-          <label className={clsx("label justify-start", slots?.label)}>
-            <span className="label-text">{label}</span>
-            {required && (
-              <span className="text-base font-bold text-red-500 ml-0.5">*</span>
-            )}
-          </label>
-        )}
-        <div className="relative z-0">
-          {leftSection && (
-            <div
-              className={clsx(
-                "absolute left-0 top-0 bottom-0 flex items-center justify-center text-neutral-400",
-                slots?.left
-              )}
-              style={{ width: paddingLeft }}
-            >
-              {leftSection}
-            </div>
-          )}
-          <TextareaAutosize
-            ref={ref}
-            minRows={minRows}
-            className={clsx(
-              "textarea",
-              "w-full resize-none min-h-0 leading-normal",
-              "focus:outline-offset-0",
-              "focus:outline-1",
-              "focus-within:outline-offset-0",
-              "focus-within:outline-1",
-              {
-                "textarea-primary": color === "primary",
-                "textarea-secondary": color === "secondary",
-                "textarea-accent": color === "accent",
-                "textarea-info": color === "info",
-                "textarea-success": color === "success",
-                "textarea-warning": color === "warning",
-                "textarea-error": color === "error" || error,
-                "textarea-xs": size === "xs",
-                "textarea-sm": size === "sm",
-                "textarea-md": size === "md",
-                "textarea-lg": size === "lg",
-                "textarea-ghost": ghost,
-                "textarea-bordered": bordered,
-              },
-              slots?.textarea
-            )}
-            style={
-              {
-                paddingLeft,
-                paddingRight,
-              } as any
-            }
-            {...other}
-          />
-          {rightSection && (
-            <div
-              className={clsx(
-                "absolute right-0 top-0 bottom-0 flex items-center justify-center text-neutral-400",
-                slots?.right
-              )}
-              style={{ width: paddingRight }}
-            >
-              {rightSection}
-            </div>
-          )}
-        </div>
-        {helperText && (
-          <label className={clsx("label", slots?.helperText)}>
-            <span className="label-text-alt">{helperText}</span>
-          </label>
-        )}
-      </div>
+      <InputBase
+        as={shouldAutosize ? TextareaAutosize : "textarea"}
+        ref={ref}
+        {...others}
+        multiline
+        data-no-overflow={(autosize && maxRows === undefined) || undefined}
+        style={
+          {
+            ...style,
+            "--input-resize": resize,
+          } as any
+        }
+        {...autosizeProps}
+      />
     );
   }
 );
+
+TextArea.displayName = "@rtdui/TextArea";

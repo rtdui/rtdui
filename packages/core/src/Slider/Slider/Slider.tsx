@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import { forwardRef, useCallback, useRef, useState } from "react";
 import clsx from "clsx";
 import { clamp, useMergedRef, useMove, useUncontrolled } from "@rtdui/hooks";
 import { Track } from "../Track/Track";
@@ -137,194 +137,192 @@ export interface SliderProps
   };
 }
 
-export const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
-  (props, ref) => {
-    const {
-      value,
-      onChange,
-      onChangeEnd,
-      size = "md",
-      min = 0,
-      max = 100,
-      step = 1,
-      precision: _precision,
-      defaultValue,
-      name,
-      marks = [],
-      label = (v) => v,
-      labelTransitionProps = { transition: "fade", duration: 0 },
-      labelAlwaysOn = false,
-      thumbLabel,
-      showLabelOnHover = true,
-      thumbChildren,
-      disabled,
-      scale = (v) => v,
-      inverted,
-      className,
-      style,
-      hiddenInputProps,
-      color = "primary",
-      radius = "9999rem",
-      thumbSize,
-      slots,
-      ...others
-    } = props;
+export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
+  const {
+    value,
+    onChange,
+    onChangeEnd,
+    size = "md",
+    min = 0,
+    max = 100,
+    step = 1,
+    precision: _precision,
+    defaultValue,
+    name,
+    marks = [],
+    label = (v) => v,
+    labelTransitionProps = { transition: "fade", duration: 0 },
+    labelAlwaysOn = false,
+    thumbLabel,
+    showLabelOnHover = true,
+    thumbChildren,
+    disabled,
+    scale = (v) => v,
+    inverted,
+    className,
+    style,
+    hiddenInputProps,
+    color = "primary",
+    radius = "9999rem",
+    thumbSize,
+    slots,
+    ...others
+  } = props;
 
-    const [hovered, setHovered] = useState(false);
-    const [_value, setValue] = useUncontrolled({
-      value: typeof value === "number" ? clamp(value, min!, max!) : value,
-      defaultValue:
-        typeof defaultValue === "number"
-          ? clamp(defaultValue, min!, max!)
-          : defaultValue,
-      finalValue: clamp(0, min!, max!),
-      onChange,
-    });
+  const [hovered, setHovered] = useState(false);
+  const [_value, setValue] = useUncontrolled({
+    value: typeof value === "number" ? clamp(value, min!, max!) : value,
+    defaultValue:
+      typeof defaultValue === "number"
+        ? clamp(defaultValue, min!, max!)
+        : defaultValue,
+    finalValue: clamp(0, min!, max!),
+    onChange,
+  });
 
-    const valueRef = useRef(_value);
-    const thumb = useRef<HTMLDivElement>();
-    const position = getPosition({ value: _value, min: min!, max: max! });
-    const scaledValue = scale!(_value);
-    const _label = typeof label === "function" ? label(scaledValue) : label;
-    const precision = _precision ?? getPrecision(step!);
+  const valueRef = useRef(_value);
+  const thumb = useRef<HTMLDivElement>();
+  const position = getPosition({ value: _value, min: min!, max: max! });
+  const scaledValue = scale!(_value);
+  const _label = typeof label === "function" ? label(scaledValue) : label;
+  const precision = _precision ?? getPrecision(step!);
 
-    const handleChange = useCallback(
-      ({ x }: { x: number }) => {
-        if (!disabled) {
-          const nextValue = getChangeValue({
-            value: x,
-            min: min!,
-            max: max!,
-            step: step!,
-            precision,
-          });
-          setValue(nextValue);
-          valueRef.current = nextValue;
-        }
-      },
-      [disabled, min, max, step, precision, setValue]
-    );
-
-    const { ref: container, active } = useMove(handleChange, {
-      onScrubEnd: () => onChangeEnd?.(valueRef.current),
-    });
-
-    const handleTrackKeydownCapture = (
-      event: React.KeyboardEvent<HTMLDivElement>
-    ) => {
+  const handleChange = useCallback(
+    ({ x }: { x: number }) => {
       if (!disabled) {
-        switch (event.key) {
-          case "ArrowUp":
-          case "ArrowRight": {
-            event.preventDefault();
-            thumb.current?.focus();
-            const nextValue = getFloatingValue(
-              Math.min(Math.max(_value + step!, min!), max!),
-              precision
-            );
-            onChangeEnd?.(nextValue);
-            setValue(nextValue);
-            break;
-          }
-          case "ArrowDown":
-          case "ArrowLeft": {
-            event.preventDefault();
-            thumb.current?.focus();
-            const nextValue = getFloatingValue(
-              Math.min(Math.max(_value - step!, min!), max!),
-              precision
-            );
-            onChangeEnd?.(nextValue);
-            setValue(nextValue);
-            break;
-          }
+        const nextValue = getChangeValue({
+          value: x,
+          min: min!,
+          max: max!,
+          step: step!,
+          precision,
+        });
+        setValue(nextValue);
+        valueRef.current = nextValue;
+      }
+    },
+    [disabled, min, max, step, precision, setValue]
+  );
 
-          case "Home": {
-            event.preventDefault();
-            thumb.current?.focus();
-            onChangeEnd?.(min!);
-            setValue(min!);
-            break;
-          }
+  const { ref: container, active } = useMove(handleChange, {
+    onScrubEnd: () => onChangeEnd?.(valueRef.current),
+  });
 
-          case "End": {
-            event.preventDefault();
-            thumb.current?.focus();
-            onChangeEnd?.(max!);
-            setValue(max!);
-            break;
-          }
+  const handleTrackKeydownCapture = (
+    event: React.KeyboardEvent<HTMLDivElement>
+  ) => {
+    if (!disabled) {
+      switch (event.key) {
+        case "ArrowUp":
+        case "ArrowRight": {
+          event.preventDefault();
+          thumb.current?.focus();
+          const nextValue = getFloatingValue(
+            Math.min(Math.max(_value + step!, min!), max!),
+            precision
+          );
+          onChangeEnd?.(nextValue);
+          setValue(nextValue);
+          break;
+        }
+        case "ArrowDown":
+        case "ArrowLeft": {
+          event.preventDefault();
+          thumb.current?.focus();
+          const nextValue = getFloatingValue(
+            Math.min(Math.max(_value - step!, min!), max!),
+            precision
+          );
+          onChangeEnd?.(nextValue);
+          setValue(nextValue);
+          break;
+        }
 
-          default: {
-            break;
-          }
+        case "Home": {
+          event.preventDefault();
+          thumb.current?.focus();
+          onChangeEnd?.(min!);
+          setValue(min!);
+          break;
+        }
+
+        case "End": {
+          event.preventDefault();
+          thumb.current?.focus();
+          onChangeEnd?.(max!);
+          setValue(max!);
+          break;
+        }
+
+        default: {
+          break;
         }
       }
-    };
+    }
+  };
 
-    return (
-      <div
-        {...others}
-        ref={ref}
-        tabIndex={-1}
-        className={clsx("slider", slots?.root, className)}
-        style={
-          {
-            "--slider-size": getSize(size, "slider-size"),
-            "--slider-color": getColor(color),
-            "--slider-radius": getRadius(radius),
-            "--slider-thumb-size": getSize(thumbSize, "slider-size"),
-          } as any
-        }
+  return (
+    <div
+      {...others}
+      ref={ref}
+      tabIndex={-1}
+      className={clsx("slider", slots?.root, className)}
+      style={
+        {
+          "--slider-size": getSize(size, "slider-size"),
+          "--slider-color": getColor(color),
+          "--slider-radius": getRadius(radius),
+          "--slider-thumb-size": getSize(thumbSize, "slider-size"),
+        } as any
+      }
+    >
+      <Track
+        inverted={inverted}
+        offset={0}
+        filled={position}
+        marks={marks}
+        min={min!}
+        max={max!}
+        value={scaledValue}
+        disabled={disabled}
+        containerProps={{
+          ref: container as any,
+          onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
+          onMouseLeave: showLabelOnHover ? () => setHovered(false) : undefined,
+          onTouchStartCapture: () => container.current?.focus(),
+          onMouseDownCapture: () => container.current?.focus(),
+          onKeyDownCapture: handleTrackKeydownCapture,
+        }}
+        slots={slots}
       >
-        <Track
-          inverted={inverted}
-          offset={0}
-          filled={position}
-          marks={marks}
-          min={min!}
+        <Thumb
           max={max!}
+          min={min!}
           value={scaledValue}
+          position={position}
+          dragging={active}
+          label={_label}
+          ref={thumb as any}
+          labelTransitionProps={labelTransitionProps}
+          labelAlwaysOn={labelAlwaysOn}
+          thumbLabel={thumbLabel}
+          showLabelOnHover={showLabelOnHover}
+          isHovered={hovered}
           disabled={disabled}
-          containerProps={{
-            ref: container as any,
-            onMouseEnter: showLabelOnHover ? () => setHovered(true) : undefined,
-            onMouseLeave: showLabelOnHover
-              ? () => setHovered(false)
-              : undefined,
-            onTouchStartCapture: () => container.current?.focus(),
-            onMouseDownCapture: () => container.current?.focus(),
-            onKeyDownCapture: handleTrackKeydownCapture,
-          }}
           slots={slots}
         >
-          <Thumb
-            max={max!}
-            min={min!}
-            value={scaledValue}
-            position={position}
-            dragging={active}
-            label={_label}
-            ref={thumb as any}
-            labelTransitionProps={labelTransitionProps}
-            labelAlwaysOn={labelAlwaysOn}
-            thumbLabel={thumbLabel}
-            showLabelOnHover={showLabelOnHover}
-            isHovered={hovered}
-            disabled={disabled}
-            slots={slots}
-          >
-            {thumbChildren}
-          </Thumb>
-        </Track>
+          {thumbChildren}
+        </Thumb>
+      </Track>
 
-        <input
-          type="hidden"
-          name={name}
-          value={scaledValue}
-          {...hiddenInputProps}
-        />
-      </div>
-    );
-  }
-);
+      <input
+        type="hidden"
+        name={name}
+        value={scaledValue}
+        {...hiddenInputProps}
+      />
+    </div>
+  );
+});
+
+Slider.displayName = "@rtdui/Slider";

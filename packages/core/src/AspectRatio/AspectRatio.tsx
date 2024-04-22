@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface AspectRatioProps {
   /**
@@ -11,7 +11,7 @@ export interface AspectRatioProps {
   className?: string;
   children?: React.ReactNode;
 }
-export const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(
+export const AspectRatio = forwardRef<HTMLDivElement, AspectRatioProps>(
   (props, ref) => {
     const { ratio, className, children } = props;
     return (
@@ -30,3 +30,5 @@ export const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(
     );
   }
 );
+
+AspectRatio.displayName = "@rtdui/AspectRatio";

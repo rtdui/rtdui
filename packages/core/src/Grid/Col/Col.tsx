@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 import { useRandomClassName } from "@rtdui/hooks";
 import {
@@ -8,7 +8,7 @@ import {
   getSortedBreakpoints,
 } from "../../utils";
 import type { ResponsiveProp } from "../../utils";
-import { useGridContext } from "../Grid.context";
+import { useGridContext } from "../context";
 import { InlineStyles } from "../../InlineStyles/InlineStyles";
 
 export type ColSpan = number | "auto" | "content";
@@ -137,22 +137,36 @@ export interface GridColProps {
   children?: React.ReactNode;
 }
 
-export const Col = React.forwardRef<HTMLDivElement, GridColProps>(
-  (props, ref) => {
-    const { span = 12, offset, order, children } = props;
+export const Col = forwardRef<HTMLDivElement, GridColProps>((props, ref) => {
+  const { span = 12, offset, order, children } = props;
 
-    const responsiveClassName = useRandomClassName();
+  const responsiveClassName = useRandomClassName();
 
-    return (
-      <>
-        <GridColVariables
-          selector={`.${responsiveClassName}`}
-          span={span}
-          order={order}
-          offset={offset}
-        />
-        <div className={clsx(responsiveClassName, "gridx-col")}>{children}</div>
-      </>
-    );
-  }
-);
+  return (
+    <>
+      <GridColVariables
+        selector={`.${responsiveClassName}`}
+        span={span}
+        order={order}
+        offset={offset}
+      />
+      <div
+        className={clsx(
+          responsiveClassName,
+          "gridx-col",
+          "flex-shrink-0 [flex-grow:var(--col-flex-grow,0)]",
+          "[order:var(--col-order)]",
+          "[flex-basis:var(--col-flex-basis)]",
+          "[width:var(--col-width)]",
+          "[max-width:var(--col-max-width)]",
+          String.raw`[margin-left:var(--\_col-ml,var(--col-offset,0))] [margin-right:var(--\_col-mr,0)]`,
+          "[padding:calc(var(--grid-gutter)/2)]"
+        )}
+      >
+        {children}
+      </div>
+    </>
+  );
+});
+
+Col.displayName = "@rtdui/Col";

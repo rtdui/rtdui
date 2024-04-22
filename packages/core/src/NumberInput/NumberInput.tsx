@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { clamp, useUncontrolled } from "@rtdui/hooks";
 import {
   NumericFormat,
@@ -116,7 +116,7 @@ export interface NumberInputProps
   isAllowed?: (values: NumberFormatValues) => boolean;
 }
 /** NumberInput继承了TextInput的所有属性 */
-export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
+export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   (props, ref) => {
     const {
       value,
@@ -236,3 +236,5 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
     );
   }
 );
+
+NumberInput.displayName = "@rtdui/NumberInput";

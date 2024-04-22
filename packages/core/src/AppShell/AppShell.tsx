@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useId, useRef, useImperativeHandle } from "react";
 import clsx from "clsx";
 
 export interface AppShellProps
@@ -21,7 +21,7 @@ export interface AppShellProps
   };
 }
 
-export const AppShell = React.forwardRef<HTMLDivElement, AppShellProps>(
+export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
   (props, ref) => {
     const {
       header,
@@ -34,10 +34,10 @@ export const AppShell = React.forwardRef<HTMLDivElement, AppShellProps>(
       ...other
     } = props;
 
-    const id = React.useId();
-    const toggleRef = React.useRef<HTMLInputElement>(null!);
+    const id = useId();
+    const toggleRef = useRef<HTMLInputElement>(null!);
 
-    React.useImperativeHandle(
+    useImperativeHandle(
       ref,
       () =>
         ({
@@ -85,3 +85,5 @@ export const AppShell = React.forwardRef<HTMLDivElement, AppShellProps>(
     );
   }
 );
+
+AppShell.displayName = "@rtdui/AppShell";

@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useUncontrolled } from "@rtdui/hooks";
-import { Portal } from "../Portal/Portal";
+import { Portal } from "../Portal";
 
 export interface DrawerProps {
   anchor?: "left" | "right";

@@ -1,6 +1,6 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
-import { Portal } from "../Portal/Portal";
+import { Portal } from "../Portal";
 
 export interface AffixProps {
   /**
@@ -20,31 +20,31 @@ export interface AffixProps {
   };
   children?: React.ReactNode;
 }
-export const Affix = React.forwardRef<HTMLDivElement, AffixProps>(
-  (props, ref) => {
-    const {
-      zIndex = 200,
-      position = { bottom: 24, right: 16 },
-      children,
-    } = props;
+export const Affix = forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
+  const {
+    zIndex = 200,
+    position = { bottom: 24, right: 16 },
+    children,
+  } = props;
 
-    return (
-      <Portal type="affix">
-        <div
-          style={
-            {
-              position: "fixed",
-              zIndex,
-              top: position?.top,
-              left: position?.left,
-              right: position?.right,
-              bottom: position?.bottom,
-            } as React.CSSProperties
-          }
-        >
-          {children}
-        </div>
-      </Portal>
-    );
-  }
-);
+  return (
+    <Portal type="affix">
+      <div
+        style={
+          {
+            position: "fixed",
+            zIndex,
+            top: position?.top,
+            left: position?.left,
+            right: position?.right,
+            bottom: position?.bottom,
+          } as React.CSSProperties
+        }
+      >
+        {children}
+      </div>
+    </Portal>
+  );
+});
+
+Affix.displayName = "@rtdui/Affix";

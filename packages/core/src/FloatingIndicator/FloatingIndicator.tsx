@@ -32,57 +32,59 @@ export const FloatingIndicator: <
   E extends React.ElementType = typeof defaultElement,
 >(
   props: FloatingIndicatorProps<E>
-) => React.ReactNode = forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: FloatingIndicatorProps<E>,
-    ref: typeof props.ref
-  ) => {
-    const {
-      className,
-      style,
-      target,
-      parent,
-      transitionDuration = 150,
-      displayAfterTransitionEnd,
-      ...others
-    } = props;
-    const boxProps = others as BoxProps<E>;
+) => React.ReactNode =
+  // eslint-disable-next-line react/display-name
+  forwardRef(
+    <E extends React.ElementType = typeof defaultElement>(
+      props: FloatingIndicatorProps<E>,
+      ref: typeof props.ref
+    ) => {
+      const {
+        className,
+        style,
+        target,
+        parent,
+        transitionDuration = 150,
+        displayAfterTransitionEnd,
+        ...others
+      } = props;
+      const boxProps = others as BoxProps<E>;
 
-    const innerRef = useRef<HTMLDivElement>(null);
-    const { initialized, hidden } = useFloatingIndicator({
-      target,
-      parent,
-      ref: innerRef,
-      displayAfterTransitionEnd,
-    });
-    const mergedRef = useMergedRef(ref, innerRef);
+      const innerRef = useRef<HTMLDivElement>(null);
+      const { initialized, hidden } = useFloatingIndicator({
+        target,
+        parent,
+        ref: innerRef,
+        displayAfterTransitionEnd,
+      });
+      const mergedRef = useMergedRef(ref, innerRef);
 
-    if (!target || !parent) {
-      return null;
+      if (!target || !parent) {
+        return null;
+      }
+
+      return (
+        <Box
+          as={defaultElement}
+          ref={mergedRef}
+          className={clsx(
+            "floating-indicator",
+            "absolute left-0 top-0",
+            "transition-[transform,width,height] duration-0",
+            {
+              "duration-[--transition-duration]": initialized,
+              hidden,
+            },
+            className
+          )}
+          style={
+            {
+              ...style,
+              "--transition-duration": transitionDuration,
+            } as any
+          }
+          {...boxProps}
+        />
+      );
     }
-
-    return (
-      <Box
-        as={defaultElement}
-        ref={mergedRef}
-        className={clsx(
-          "floating-indicator",
-          "absolute left-0 top-0",
-          "transition-[transform,width,height] duration-0",
-          {
-            "duration-[--transition-duration]": initialized,
-            hidden,
-          },
-          className
-        )}
-        style={
-          {
-            ...style,
-            "--transition-duration": transitionDuration,
-          } as any
-        }
-        {...boxProps}
-      />
-    );
-  }
-);
+  );

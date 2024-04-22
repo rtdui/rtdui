@@ -1,5 +1,5 @@
+import { forwardRef, Children, cloneElement, useMemo } from "react";
 import clsx from "clsx";
-import React from "react";
 import { AvatarGroupProvider } from "./AvatarGroup.context";
 
 export interface AvatarGroupProps {
@@ -9,12 +9,12 @@ export interface AvatarGroupProps {
   /** avatars */
   children?: React.ReactNode;
 }
-export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
+export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
   (props, ref) => {
     const { max = 4, size = "md", className, children } = props;
-    const leftCount = React.Children.count(children) - max;
+    const leftCount = Children.count(children) - max;
 
-    const contextValue = React.useMemo(
+    const contextValue = useMemo(
       () => ({
         size,
       }),
@@ -35,17 +35,16 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         )}
       >
         <AvatarGroupProvider value={contextValue}>
-          {React.Children.toArray(children).slice(0, max)}
+          {Children.toArray(children).slice(0, max)}
           {leftCount > 0 &&
-            React.cloneElement(
-              React.Children.toArray(children)[0] as React.ReactElement,
-              {
-                placeholder: `+${leftCount}`,
-                src: undefined,
-              }
-            )}
+            cloneElement(Children.toArray(children)[0] as React.ReactElement, {
+              placeholder: `+${leftCount}`,
+              src: undefined,
+            })}
         </AvatarGroupProvider>
       </div>
     );
   }
 );
+
+AvatarGroup.displayName = "@rtdui/AvatarGroup";

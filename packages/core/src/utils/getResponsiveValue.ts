@@ -1,3 +1,5 @@
+import { ThemeBreakpoint } from "../theme.types";
+
 /**
  * 默认的Tailwindcss的断点
  * Breakpoint   Minimum_width     CSS
@@ -7,11 +9,11 @@
  * xl           1280px            @media (min-width: 1280px) { ... }
  * 2xl          1536px            @media (min-width: 1536px) { ... }
  */
-export type TailwindBreakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
+
 /**
  * @example {xs: abc, sm: xyz, "2xl": aaa}
  */
-export type BreakpointsValues = Record<TailwindBreakpoint, string>;
+export type BreakpointsValues = Record<ThemeBreakpoint, string>;
 export type Breakpoint = keyof BreakpointsValues;
 
 export type ResponsiveProp<TValue> =

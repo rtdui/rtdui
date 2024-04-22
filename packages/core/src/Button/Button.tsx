@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface ButtonProps
   extends Omit<React.ComponentPropsWithoutRef<"button">, "size"> {
@@ -40,7 +40,7 @@ export interface ButtonProps
 
 // 默认导出forwardRef组件必须要有JSDoc注释, 否则会被文档生成器忽略
 /** ref属性会转发至button元素 */
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     const {
       color,
@@ -100,3 +100,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
+Button.displayName = "@rtdui/Button";

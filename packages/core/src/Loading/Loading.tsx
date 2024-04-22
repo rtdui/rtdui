@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface LoadingProps {
   color?:
@@ -17,7 +17,7 @@ export interface LoadingProps {
    */
   variant?: "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity";
 }
-export const Loading = React.forwardRef<HTMLSpanElement, LoadingProps>(
+export const Loading = forwardRef<HTMLSpanElement, LoadingProps>(
   (props, ref) => {
     const { size, color, variant = "spinner" } = props;
 
@@ -48,3 +48,5 @@ export const Loading = React.forwardRef<HTMLSpanElement, LoadingProps>(
     );
   }
 );
+
+Loading.displayName = "@rtdui/Loading";

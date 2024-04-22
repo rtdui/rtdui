@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 
 export interface IndicatorProps {
@@ -18,7 +18,7 @@ export interface IndicatorProps {
   className?: string;
   children?: React.ReactNode;
 }
-export const Indicator = React.forwardRef<HTMLDivElement, IndicatorProps>(
+export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
   (props, ref) => {
     const {
       animation,
@@ -63,3 +63,5 @@ export const Indicator = React.forwardRef<HTMLDivElement, IndicatorProps>(
     );
   }
 );
+
+Indicator.displayName = "@rtdui/Indicator";

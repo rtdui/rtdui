@@ -1,5 +1,5 @@
+import { forwardRef, useRef } from "react";
 import clsx from "clsx";
-import React from "react";
 import { Button } from "../Button/Button";
 
 export interface CarouselProps {
@@ -11,11 +11,11 @@ export interface CarouselProps {
   indicator?: "arrow" | "number";
   className?: string;
 }
-export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
+export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
   (props, ref) => {
     const { items, indicator = "arrow", className } = props;
 
-    const innerRef = React.useRef<HTMLDivElement[]>([]);
+    const innerRef = useRef<HTMLDivElement[]>([]);
 
     const next = (index: number) => {
       innerRef.current[index + 1].scrollIntoView(false);
@@ -77,3 +77,5 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     );
   }
 );
+
+Carousel.displayName = "@rtdui/Carousel";

@@ -3,7 +3,9 @@ import { Transition as ReactTransition } from "react-transition-group";
 import { getTransitionStyles } from "./get-transition-styles";
 import { type TransitionType } from "./transitions";
 
-export type TransitionDuration = number | { enter?: number; exit?: number };
+export type TransitionDuration =
+  | number
+  | { appear?: number; enter?: number; exit?: number };
 export interface TransitionProps {
   /** 进入过渡 */
   in?: boolean;
@@ -47,12 +49,17 @@ export function Transition(props: TransitionProps) {
 
   const ref = useRef(null!);
 
+  const transitionDuration =
+    typeof duration === "number"
+      ? { appear: 0, enter: duration, exit: duration }
+      : duration;
+
   return (
     <ReactTransition
       in={inProp}
       nodeRef={ref}
       appear={appear}
-      timeout={duration}
+      timeout={transitionDuration}
       unmountOnExit={unmountOnExit}
     >
       {(status) =>

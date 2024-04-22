@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useEffect, useRef, useMemo, useState } from "react";
 import clsx from "clsx";
 import { useMutationObserver, useRafDebounce } from "@rtdui/hooks";
 import { drawWatermark } from "./drawWatermark";
@@ -35,7 +35,7 @@ export interface WatermarkProps {
   className?: string;
 }
 
-export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
+export const Watermark = forwardRef<HTMLDivElement, WatermarkProps>(
   (props, ref) => {
     const {
       imageSrc,
@@ -63,9 +63,9 @@ export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
     const offsetLeft = offset?.[0] ?? gapXCenter;
     const offsetTop = offset?.[1] ?? gapYCenter;
 
-    const containerRef = React.useRef<HTMLDivElement>(null!);
+    const containerRef = useRef<HTMLDivElement>(null!);
 
-    const markStyle = React.useMemo(() => {
+    const markStyle = useMemo(() => {
       const mergedStyle: React.CSSProperties = {
         zIndex: 99999,
         position: "absolute",
@@ -117,7 +117,7 @@ export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
       return [width ?? defaultWidth, height ?? defaultHeight] as const;
     };
 
-    const [watermarkInfo, setWatermarkInfo] = React.useState<
+    const [watermarkInfo, setWatermarkInfo] = useState<
       [base64: string, contentWidth: number]
     >(null!);
 
@@ -177,7 +177,7 @@ export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
     const [appendWatermark, removeWatermark, isWatermarkEle] =
       useWatermark(markStyle);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (watermarkInfo) {
         appendWatermark(
           watermarkInfo[0],
@@ -225,7 +225,7 @@ export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    React.useEffect(syncWatermark, [
+    useEffect(syncWatermark, [
       rotate,
       width,
       height,
@@ -247,3 +247,5 @@ export const Watermark = React.forwardRef<HTMLDivElement, WatermarkProps>(
     );
   }
 );
+
+Watermark.displayName = "@rtdui/Watermark";

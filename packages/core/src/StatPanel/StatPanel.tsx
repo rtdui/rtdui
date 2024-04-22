@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface StatPanelProps {
   items: {
@@ -20,7 +20,7 @@ export interface StatPanelProps {
     actions?: string;
   };
 }
-export const StatPanel = React.forwardRef<HTMLDivElement, StatPanelProps>(
+export const StatPanel = forwardRef<HTMLDivElement, StatPanelProps>(
   (props, ref) => {
     const { items, elevation = "md", slots, className } = props;
 
@@ -62,3 +62,5 @@ export const StatPanel = React.forwardRef<HTMLDivElement, StatPanelProps>(
     );
   }
 );
+
+StatPanel.displayName = "@rtdui/StatPanel";

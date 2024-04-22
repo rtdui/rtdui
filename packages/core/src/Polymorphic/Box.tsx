@@ -1,4 +1,4 @@
-import * as React from "react";
+import { forwardRef } from "react";
 
 export type BoxOwnProps<E extends React.ElementType = React.ElementType> = {
   as?: E;
@@ -11,9 +11,11 @@ const defaultElement = "div";
 
 export const Box: <E extends React.ElementType = typeof defaultElement>(
   props: BoxProps<E>
-) => React.ReactNode = React.forwardRef(
-  (props: BoxOwnProps, ref: React.Ref<Element>) => {
+) => React.ReactNode =
+  // eslint-disable-next-line react/display-name
+  forwardRef((props: BoxOwnProps, ref: React.Ref<Element>) => {
     const Component = props.as || defaultElement;
     return <Component ref={ref} {...props} as={undefined} />;
-  }
-);
+  });
+
+(Box as React.FC).displayName = "@rtdui/Box";

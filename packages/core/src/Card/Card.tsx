@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface CardProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "title" | "content"> {
@@ -14,52 +14,52 @@ export interface CardProps
 }
 
 /** ref属性会转发至内部的根div元素 */
-export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  (props, ref) => {
-    const {
-      title,
-      content,
-      action,
-      imageSrc,
-      imageOverlay,
-      imageSide,
-      shadowSize,
-      glass,
-      className,
-      children,
-      ...other
-    } = props;
+export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
+  const {
+    title,
+    content,
+    action,
+    imageSrc,
+    imageOverlay,
+    imageSide,
+    shadowSize,
+    glass,
+    className,
+    children,
+    ...other
+  } = props;
 
-    return (
-      <div
-        ref={ref}
-        className={clsx(
-          "card bg-base-200",
-          {
-            "card-side": imageSide === true,
-            "image-full": imageOverlay === true,
-            shadow: shadowSize === "xs",
-            "shadow-sm": shadowSize === "sm",
-            "shadow-md": shadowSize === "md",
-            "shadow-lg": shadowSize === "lg",
-            "shadow-xl": shadowSize === "xl",
-            "shadow-2xl": shadowSize === "2xl",
-            glass: glass === true,
-          },
-          className
-        )}
-      >
-        {imageSrc && (
-          <figure>
-            <img src={imageSrc} alt="" />
-          </figure>
-        )}
-        <div className="card-body">
-          {title && <h2 className="card-title">{title}</h2>}
-          {content}
-          {action && <div className="card-actions justify-end">{action}</div>}
-        </div>
+  return (
+    <div
+      ref={ref}
+      className={clsx(
+        "card bg-base-200",
+        {
+          "card-side": imageSide === true,
+          "image-full": imageOverlay === true,
+          shadow: shadowSize === "xs",
+          "shadow-sm": shadowSize === "sm",
+          "shadow-md": shadowSize === "md",
+          "shadow-lg": shadowSize === "lg",
+          "shadow-xl": shadowSize === "xl",
+          "shadow-2xl": shadowSize === "2xl",
+          glass: glass === true,
+        },
+        className
+      )}
+    >
+      {imageSrc && (
+        <figure>
+          <img src={imageSrc} alt="" />
+        </figure>
+      )}
+      <div className="card-body">
+        {title && <h2 className="card-title">{title}</h2>}
+        {content}
+        {action && <div className="card-actions justify-end">{action}</div>}
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
+
+Card.displayName = "@rtdui/Card";

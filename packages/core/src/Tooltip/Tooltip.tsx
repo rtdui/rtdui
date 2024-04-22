@@ -5,6 +5,7 @@ import {
   type TransitionDuration,
   type TransitionType,
 } from "../Transition/transitions";
+import { useDisclosure } from "@rtdui/hooks";
 
 export interface TooltipProps {
   tip?: string;
@@ -31,47 +32,33 @@ export interface TooltipProps {
   transitionTimingFunction?: string;
 }
 export function Tooltip(props: TooltipProps) {
-  const { tip, color, position, className, children, ...other } = props;
+  const {
+    tip,
+    color = "neutral",
+    position,
+    transition,
+    className,
+    children,
+    ...other
+  } = props;
+
+  const [opened, { close, open }] = useDisclosure(false);
 
   return (
     <Popover
-      placement={position}
-      openOnHover
-      openOnFocus
-      openOnClick={false}
+      withArrow
+      radius="sm"
+      position={position}
+      transitionProps={{ transition }}
+      opened={opened}
+      dropdownColor={color}
       {...other}
     >
-      <Popover.Trigger>{children}</Popover.Trigger>
+      <Popover.Target onMouseEnter={open} onMouseLeave={close}>
+        {children}
+      </Popover.Target>
       <Popover.Dropdown
-        showArrow
-        className={clsx(
-          "px-2 py-1",
-          "rounded",
-          "text-sm",
-          {
-            "bg-neutral text-neutral-content": color === undefined,
-            "bg-primary text-primary-content": color === "primary",
-            "bg-secondary text-secondary-content": color === "secondary",
-            "bg-accent text-accent-content": color === "accent",
-            "bg-info text-info-content": color === "info",
-            "bg-success text-success-content": color === "success",
-            "bg-warning text-warning-content": color === "warning",
-            "bg-error text-error-content": color === "error",
-          },
-          className
-        )}
-        slots={{
-          arrow: clsx({
-            "fill-neutral": color === undefined,
-            "fill-primary": color === "primary",
-            "fill-secondary": color === "secondary",
-            "fill-accent": color === "accent",
-            "fill-info": color === "info",
-            "fill-success": color === "success",
-            "fill-warning": color === "warning",
-            "fill-error": color === "error",
-          }),
-        }}
+        className={clsx("px-2 py-1", "rounded", "text-sm", className)}
       >
         {tip}
       </Popover.Dropdown>

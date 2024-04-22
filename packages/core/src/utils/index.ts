@@ -15,3 +15,4 @@ export * from "./getDataProps";
 export * from "./getSafeId";
 export * from "./isLightColor";
 export * from "./toRgba";
+export * from "./rem";

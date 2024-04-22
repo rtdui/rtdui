@@ -20,6 +20,12 @@ export function getColor(color: unknown): string | undefined {
       return "oklch(var(--wa))";
     case "error":
       return "oklch(var(--er))";
+    case "base1":
+      return "oklch(var(--b1))";
+    case "base2":
+      return "oklch(var(--b2))";
+    case "base3":
+      return "oklch(var(--b3))";
     default:
       return color as string;
   }

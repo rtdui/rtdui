@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { forwardRef, useState } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { TextArea, TextAreaProps } from "../TextArea";
 import { validateJson } from "./validate-json";
@@ -19,7 +19,7 @@ export interface JsonInputProps extends Omit<TextAreaProps, "onChange"> {
   formatOnBlur?: boolean;
 }
 /** `JsonInput`继承了`TextArea`组件的属性 */
-export const JsonInput = React.forwardRef<HTMLTextAreaElement, JsonInputProps>(
+export const JsonInput = forwardRef<HTMLTextAreaElement, JsonInputProps>(
   (props, ref) => {
     const {
       value,
@@ -75,3 +75,5 @@ export const JsonInput = React.forwardRef<HTMLTextAreaElement, JsonInputProps>(
     );
   }
 );
+
+JsonInput.displayName = "@rtdui/JsonInput";

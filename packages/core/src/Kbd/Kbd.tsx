@@ -1,12 +1,12 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface KbdProps {
   size?: "xs" | "sm" | "md" | "lg";
   className?: string;
   children: React.ReactNode;
 }
-export const Kbd = React.forwardRef<HTMLElement, KbdProps>((props, ref) => {
+export const Kbd = forwardRef<HTMLElement, KbdProps>((props, ref) => {
   const { size, className, children } = props;
 
   return (
@@ -27,3 +27,5 @@ export const Kbd = React.forwardRef<HTMLElement, KbdProps>((props, ref) => {
     </kbd>
   );
 });
+
+Kbd.displayName = "@rtdui/Kbd";

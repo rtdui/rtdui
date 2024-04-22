@@ -1,5 +1,5 @@
+import { forwardRef, useState } from "react";
 import clsx from "clsx";
-import React, { useState, forwardRef } from "react";
 import { getDataProps } from "../../utils";
 import { Transition, type TransitionProps } from "../../Transition";
 
@@ -102,3 +102,5 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>((props, ref) => {
     </div>
   );
 });
+
+Thumb.displayName = "@rtdui/Thumb";

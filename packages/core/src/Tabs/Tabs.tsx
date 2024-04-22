@@ -182,10 +182,10 @@ const Tabs_ = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   );
 });
 
+Tabs_.displayName = "@rtdui/Tabs";
+
 export const Tabs = Object.assign(Tabs_, {
   List: TabList,
   Panel: TabPanel,
   Tab,
 });
-
-Tabs.displayName = "@rtdui/core/Tabs";

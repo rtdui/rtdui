@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 import { useRandomClassName } from "@rtdui/hooks";
 import {
@@ -9,7 +9,7 @@ import {
 } from "../utils";
 import type { ResponsiveProp } from "../utils";
 import { InlineStyles } from "../InlineStyles/InlineStyles";
-import { GridProvider } from "./Grid.context";
+import { GridProvider } from "./context";
 import { Col, type GridColProps } from "./Col";
 
 interface GridVariablesProps extends GridProps {
@@ -83,7 +83,7 @@ export interface GridProps {
   children?: React.ReactElement<GridColProps, typeof Col>[];
 }
 
-const Grid_ = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => {
+const Grid_ = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
   const {
     columns = 12,
     grow = false,
@@ -103,11 +103,24 @@ const Grid_ = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => {
         justify={justify}
         align={align}
       />
-      <div className={clsx("gridx-root", responsiveClassName)}>
-        <div className={clsx("gridx-inner")}>{children}</div>
+      <div
+        className={clsx("grid-root", "overflow-hidden", responsiveClassName)}
+      >
+        <div
+          className={clsx(
+            "grid-inner",
+            "flex flex-wrap [justify-content:var(--grid-justify)] [align-items:var(--grid-align)]",
+            "[width:calc(100%+var(--grid-gutter))]",
+            "margin:calc(var(--grid-gutter)/-2);"
+          )}
+        >
+          {children}
+        </div>
       </div>
     </GridProvider>
   );
 });
+
+Grid_.displayName = "@rtdui/Grid";
 
 export const Grid = Object.assign(Grid_, { Col });

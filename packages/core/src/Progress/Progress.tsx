@@ -1,5 +1,5 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface ProgressProps
   extends React.ComponentPropsWithoutRef<"progress"> {
@@ -25,7 +25,7 @@ export interface ProgressProps
   value?: number;
   className?: string;
 }
-export const Progress = React.forwardRef<HTMLProgressElement, ProgressProps>(
+export const Progress = forwardRef<HTMLProgressElement, ProgressProps>(
   (props, ref) => {
     const { size, color, max = 100, value, className, children } = props;
 
@@ -56,3 +56,5 @@ export const Progress = React.forwardRef<HTMLProgressElement, ProgressProps>(
     );
   }
 );
+
+Progress.displayName = "@rtdui/Progress";

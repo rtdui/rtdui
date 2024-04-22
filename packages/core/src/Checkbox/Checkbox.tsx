@@ -1,5 +1,5 @@
+import { forwardRef, useCallback } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface CheckboxProps
   extends Omit<React.ComponentPropsWithoutRef<"input">, "onChange" | "size"> {
@@ -23,7 +23,7 @@ export interface CheckboxProps
 }
 
 /** ref属性会转发至内部的input元素 */
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (props, ref) => {
     const {
       required,
@@ -38,7 +38,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       ...other
     } = props;
 
-    const handleCheckedChange = React.useCallback(
+    const handleCheckedChange = useCallback(
       (ev: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
           onChange(ev.target.checked);
@@ -82,3 +82,5 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     );
   }
 );
+
+Checkbox.displayName = "@rtdui/Checkbox";

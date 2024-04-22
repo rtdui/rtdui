@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useEffect, useState, memo } from "react";
 import { useDidUpdate } from "@rtdui/hooks";
 import { TextInput } from "../TextInput/TextInput";
 import type { TextInputProps } from "../TextInput/TextInput";
@@ -15,12 +15,10 @@ export interface DebouncedInputProps extends Omit<TextInputProps, "onChange"> {
 }
 
 /** ref属性会转发至内部的input元素 */
-const DebouncedInput_ = React.forwardRef<HTMLInputElement, DebouncedInputProps>(
+const DebouncedInput_ = forwardRef<HTMLInputElement, DebouncedInputProps>(
   (props, ref) => {
     const { defaultValue, value, onChange, wait = 500, ...other } = props;
-    const [innerValue, setInnerValue] = React.useState(
-      value ?? defaultValue ?? ""
-    );
+    const [innerValue, setInnerValue] = useState(value ?? defaultValue ?? "");
 
     // 受控属性改变,同步内部状态
     useDidUpdate(() => {
@@ -28,7 +26,7 @@ const DebouncedInput_ = React.forwardRef<HTMLInputElement, DebouncedInputProps>(
     }, [value]);
 
     // 延迟执行onChange属性
-    React.useEffect(() => {
+    useEffect(() => {
       const timeout = setTimeout(() => {
         onChange(innerValue as string);
       }, wait);
@@ -47,5 +45,6 @@ const DebouncedInput_ = React.forwardRef<HTMLInputElement, DebouncedInputProps>(
     );
   }
 );
+DebouncedInput_.displayName = "@rtdui/DebouncedInput";
 
-export const DebouncedInput = React.memo(DebouncedInput_);
+export const DebouncedInput = memo(DebouncedInput_);

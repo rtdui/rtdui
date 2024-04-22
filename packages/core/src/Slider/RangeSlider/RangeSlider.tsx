@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { useMove, useUncontrolled } from "@rtdui/hooks";
 import { getColor, getRadius, getSize } from "../../utils";
@@ -153,7 +153,7 @@ export interface RangeSliderProps
   };
 }
 
-export const RangeSlider = React.forwardRef<HTMLDivElement, RangeSliderProps>(
+export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>(
   (props, ref) => {
     const {
       value,
@@ -492,3 +492,5 @@ export const RangeSlider = React.forwardRef<HTMLDivElement, RangeSliderProps>(
     );
   }
 );
+
+RangeSlider.displayName = "@rtdui/RangeSlider";

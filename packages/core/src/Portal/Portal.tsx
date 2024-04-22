@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useIsomorphicEffect, assignRef } from "@rtdui/hooks";
 
@@ -25,42 +25,42 @@ export interface PortalProps extends React.ComponentPropsWithoutRef<"div"> {
   type?: string;
 }
 
-export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
-  (props, ref) => {
-    const { children, target, className = "relative z-10", ...others } = props;
-    const [mounted, setMounted] = React.useState(false);
-    const nodeRef = React.useRef<HTMLElement | null>(null);
+export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
+  const { children, target, className, ...others } = props;
+  const [mounted, setMounted] = useState(false);
+  const nodeRef = useRef<HTMLElement | null>(null);
 
-    useIsomorphicEffect(() => {
-      setMounted(true);
-      nodeRef.current = !target
-        ? createPortalNode({
-            ...others,
-            className,
-          })
-        : typeof target === "string"
-          ? document.querySelector(target)
-          : target;
+  useIsomorphicEffect(() => {
+    setMounted(true);
+    nodeRef.current = !target
+      ? createPortalNode({
+          ...others,
+          className,
+        })
+      : typeof target === "string"
+        ? document.querySelector(target)
+        : target;
 
-      // DOM节点赋值给引用
-      assignRef(ref, nodeRef.current);
+    // DOM节点赋值给引用
+    assignRef(ref, nodeRef.current);
 
-      if (!target && nodeRef.current) {
-        document.body.appendChild(nodeRef.current);
-      }
-
-      return () => {
-        if (!target && nodeRef.current) {
-          document.body.removeChild(nodeRef.current);
-        }
-      };
-    }, [target]);
-
-    // SSR
-    if (!mounted || !nodeRef.current) {
-      return null;
+    if (!target && nodeRef.current) {
+      document.body.appendChild(nodeRef.current);
     }
 
-    return createPortal(<>{children}</>, nodeRef.current);
+    return () => {
+      if (!target && nodeRef.current) {
+        document.body.removeChild(nodeRef.current);
+      }
+    };
+  }, [target]);
+
+  // SSR
+  if (!mounted || !nodeRef.current) {
+    return null;
   }
-);
+
+  return createPortal(<>{children}</>, nodeRef.current);
+});
+
+Portal.displayName = "@rtdui/Portal";

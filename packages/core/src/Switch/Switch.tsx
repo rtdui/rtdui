@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef, useCallback } from "react";
 import clsx from "clsx";
 import type { CheckboxProps } from "../Checkbox/Checkbox";
 
@@ -13,7 +13,7 @@ export interface SwitchProps extends CheckboxProps {
   labelPosition?: "left" | "right";
 }
 
-export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {
     const {
       required,
@@ -28,7 +28,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       ...other
     } = props;
 
-    const handleCheckedChange = React.useCallback(
+    const handleCheckedChange = useCallback(
       (ev: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
           onChange(ev.target.checked);
@@ -76,3 +76,5 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     );
   }
 );
+
+Switch.displayName = "@rtdui/Switch";

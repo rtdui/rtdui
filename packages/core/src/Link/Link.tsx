@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
 import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
 
@@ -29,39 +29,43 @@ const defaultElement = "a";
 /** 多态组件, ref会转发给实际的组件 */
 export const Link: <E extends React.ElementType = typeof defaultElement>(
   props: LinkProps<E>
-) => React.ReactNode = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: LinkProps<E>,
-    ref: typeof props.ref
-  ) => {
-    const { color, size, className, children, ...other } = props;
-    const boxProps = other as BoxProps<E>;
-    return (
-      <Box
-        as={defaultElement}
-        ref={ref}
-        className={clsx(
-          "btn btn-link normal-case",
-          {
-            "btn-primary": color === "primary",
-            "btn-secondary": color === "secondary",
-            "btn-accent": color === "accent",
-            "btn-info": color === "info",
-            "btn-success": color === "success",
-            "btn-warning": color === "warning",
-            "btn-error": color === "error",
-            "btn-neutral": color === "neutral",
-            "btn-xs": size === "xs",
-            "btn-sm": size === "sm",
-            "btn-md": size === "md",
-            "btn-lg": size === "lg",
-          },
-          className
-        )}
-        {...boxProps}
-      >
-        {children}
-      </Box>
-    );
-  }
-);
+) => React.ReactNode =
+  // eslint-disable-next-line react/display-name
+  forwardRef(
+    <E extends React.ElementType = typeof defaultElement>(
+      props: LinkProps<E>,
+      ref: typeof props.ref
+    ) => {
+      const { color, size, className, children, ...other } = props;
+      const boxProps = other as BoxProps<E>;
+      return (
+        <Box
+          as={defaultElement}
+          ref={ref}
+          className={clsx(
+            "btn btn-link normal-case",
+            {
+              "btn-primary": color === "primary",
+              "btn-secondary": color === "secondary",
+              "btn-accent": color === "accent",
+              "btn-info": color === "info",
+              "btn-success": color === "success",
+              "btn-warning": color === "warning",
+              "btn-error": color === "error",
+              "btn-neutral": color === "neutral",
+              "btn-xs": size === "xs",
+              "btn-sm": size === "sm",
+              "btn-md": size === "md",
+              "btn-lg": size === "lg",
+            },
+            className
+          )}
+          {...boxProps}
+        >
+          {children}
+        </Box>
+      );
+    }
+  );
+
+(Link as React.FC).displayName = "@rtdui/Link";

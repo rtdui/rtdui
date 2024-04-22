@@ -122,6 +122,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
       if (isColorFormatValid(_value, format) || _value.trim() === "") {
         setLastValidValue(_value);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_value]);
 
     useDidUpdate(() => {
@@ -132,9 +133,9 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
 
     return (
       <Popover
-        open={dropdownOpened}
-        onOpenChange={setDropdownOpened}
-        placement="bottom-start"
+        opened={dropdownOpened}
+        onChange={setDropdownOpened}
+        position="bottom-start"
         offset={5}
         disabled={
           disabled ||
@@ -143,7 +144,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
             (!Array.isArray(swatches) || swatches.length === 0))
         }
       >
-        <Popover.Trigger>
+        <Popover.Target>
           <TextInput
             size="sm"
             autoComplete="off"
@@ -176,9 +177,16 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
                 ? eyeDropper
                 : null)
             }
+            rightSectionPointerEvents="auto"
+            onFocus={(event) => {
+              if (readOnly || disabled) {
+                return;
+              }
+              setDropdownOpened(true);
+              onFocus?.(event);
+            }}
           />
-        </Popover.Trigger>
-
+        </Popover.Target>
         <Popover.Dropdown>
           <div className="bg-base-100 shadow">
             <ColorPicker

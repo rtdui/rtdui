@@ -1,7 +1,7 @@
-import React from "react";
+import { forwardRef, useMemo } from "react";
+import clsx from "clsx";
 import { useUncontrolled } from "@rtdui/hooks";
 import { RadioGroupProvider } from "./RadioGroup.context";
-import clsx from "clsx";
 
 export interface RadioGroupProps
   extends Omit<
@@ -29,7 +29,7 @@ export interface RadioGroupProps
 }
 
 /** ref属性会转发至内部的input元素 */
-export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   (props, ref) => {
     const {
       required,
@@ -55,7 +55,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
       onChange,
     });
 
-    const contextValue = React.useMemo(
+    const contextValue = useMemo(
       () => ({
         name: nameProp,
         value,
@@ -97,3 +97,5 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
     );
   }
 );
+
+RadioGroup.displayName = "@rtdui/RadioGroup";

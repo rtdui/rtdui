@@ -1,6 +1,6 @@
+import { forwardRef, useImperativeHandle } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import clsx from "clsx";
-import React from "react";
 
 export interface StepsProps {
   color?:
@@ -25,54 +25,54 @@ export interface StepsProps {
   /** 步骤改变时 */
   onChange?: (step: number) => void;
 }
-export const Steps = React.forwardRef<HTMLUListElement, StepsProps>(
-  (props, ref) => {
-    const {
-      steps,
-      color = "success",
-      sequential = false,
-      defaultStep,
-      step: stepProp,
-      onChange,
-    } = props;
+export const Steps = forwardRef<HTMLUListElement, StepsProps>((props, ref) => {
+  const {
+    steps,
+    color = "success",
+    sequential = false,
+    defaultStep,
+    step: stepProp,
+    onChange,
+  } = props;
 
-    const [step, setStep] = useUncontrolled({
-      defaultValue: defaultStep,
-      value: stepProp,
-      finalValue: 1,
-      onChange,
-    });
+  const [step, setStep] = useUncontrolled({
+    defaultValue: defaultStep,
+    value: stepProp,
+    finalValue: 1,
+    onChange,
+  });
 
-    React.useImperativeHandle<HTMLUListElement, any>(ref, () => ({
-      next: () => {
-        setStep(step + 1);
-      },
-    }));
+  useImperativeHandle<HTMLUListElement, any>(ref, () => ({
+    next: () => {
+      setStep(step + 1);
+    },
+  }));
 
-    return (
-      <div className="overflow-y-auto md:overflow-x-auto">
-        <ul ref={ref} className="steps steps-vertical md:steps-horizontal">
-          {steps.map((d, index) => (
-            <li
-              key={index}
-              className={clsx("step", {
-                "cursor-pointer": sequential === false,
-                "step-primary": color === "primary" && index < step,
-                "step-secondary": color === "secondary" && index < step,
-                "step-accent": color === "accent" && index < step,
-                "step-info": color === "info" && index < step,
-                "step-success": color === "success" && index < step,
-                "step-warning": color === "warning" && index < step,
-                "step-error": color === "error" && index < step,
-                "after:!bg-info": index + 1 === step,
-              })}
-              onClick={(e) => (sequential ? undefined : setStep(index + 1))}
-            >
-              {d}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-);
+  return (
+    <div className="overflow-y-auto md:overflow-x-auto">
+      <ul ref={ref} className="steps steps-vertical md:steps-horizontal">
+        {steps.map((d, index) => (
+          <li
+            key={index}
+            className={clsx("step", {
+              "cursor-pointer": sequential === false,
+              "step-primary": color === "primary" && index < step,
+              "step-secondary": color === "secondary" && index < step,
+              "step-accent": color === "accent" && index < step,
+              "step-info": color === "info" && index < step,
+              "step-success": color === "success" && index < step,
+              "step-warning": color === "warning" && index < step,
+              "step-error": color === "error" && index < step,
+              "after:!bg-info": index + 1 === step,
+            })}
+            onClick={(e) => (sequential ? undefined : setStep(index + 1))}
+          >
+            {d}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+});
+
+Steps.displayName = "@rtdui/Steps";

@@ -1,12 +1,12 @@
+import { forwardRef } from "react";
 import clsx from "clsx";
-import React from "react";
 
 export interface DividerProps extends React.ComponentPropsWithoutRef<"div"> {
   direction?: "horizontal" | "vertical";
 }
 
 /** ref属性会转发至内部的根div元素 */
-export const Divider = React.forwardRef<HTMLInputElement, DividerProps>(
+export const Divider = forwardRef<HTMLInputElement, DividerProps>(
   (props, ref) => {
     const { direction, children, className, ...other } = props;
 
@@ -26,3 +26,5 @@ export const Divider = React.forwardRef<HTMLInputElement, DividerProps>(
     );
   }
 );
+
+Divider.displayName = "@rtdui/Divider";

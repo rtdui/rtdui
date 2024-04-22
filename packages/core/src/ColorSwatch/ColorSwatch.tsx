@@ -34,81 +34,84 @@ const defaultElement = "div";
 /** polymorphic */
 export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
   props: ColorSwatchProps<E>
-) => React.ReactNode = forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: ColorSwatchProps<E>,
-    ref: typeof props.ref
-  ) => {
-    const {
-      className,
-      style,
-      color,
-      size,
-      radius = "circle",
-      withShadow = true,
-      children,
-      ...others
-    } = props;
-    const boxProps = others as BoxProps<E>;
+) => React.ReactNode =
+  // eslint-disable-next-line react/display-name
+  forwardRef(
+    <E extends React.ElementType = typeof defaultElement>(
+      props: ColorSwatchProps<E>,
+      ref: typeof props.ref
+    ) => {
+      const {
+        className,
+        style,
+        color,
+        size,
+        radius = "circle",
+        withShadow = true,
+        children,
+        ...others
+      } = props;
+      const boxProps = others as BoxProps<E>;
 
-    return (
-      <Box
-        ref={ref}
-        title={color}
-        className={clsx(
-          "relative cursor-pointer",
-          "w-[--cs-size] h-[--cs-size] rounded-[--cs-radius]",
-          className
-        )}
-        style={
-          {
-            ...style,
-            "--cs-radius": radius === undefined ? undefined : getRadius(radius),
-            "--cs-size": getSize(size, "cs-size"),
-          } as any
-        }
-        {...boxProps}
-      >
-        <span
+      return (
+        <Box
+          ref={ref}
+          title={color}
           className={clsx(
-            "alphaOverlay",
-            "absolute inset-0 rounded-[--cs-radius]"
+            "relative cursor-pointer",
+            "w-[--cs-size] h-[--cs-size] rounded-[--cs-radius]",
+            className
           )}
           style={
             {
-              "--alpha-overlay-color": "#dee2e6",
-              "--alpha-overlay-bg": "white",
-              backgroundImage:
-                "linear-gradient(45deg, var(--alpha-overlay-color) 25%, transparent 25%), linear-gradient(-45deg, var(--alpha-overlay-color) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--alpha-overlay-color) 75%), linear-gradient(-45deg, var(--alpha-overlay-bg) 75%, var(--alpha-overlay-color) 75%)",
-              backgroundSize: `8px 8px`,
-              backgroundPosition: `0 0, 0 4px, 4px -4px, -4px 0`,
+              ...style,
+              "--cs-radius":
+                radius === undefined ? undefined : getRadius(radius),
+              "--cs-size": getSize(size, "cs-size"),
             } as any
           }
-        />
-        {withShadow && (
+          {...boxProps}
+        >
           <span
             className={clsx(
-              "shadowOverlay",
-              "absolute z-10 inset-0 border border-gray-400 rounded-[--cs-radius]"
+              "alphaOverlay",
+              "absolute inset-0 rounded-[--cs-radius]"
             )}
+            style={
+              {
+                "--alpha-overlay-color": "#dee2e6",
+                "--alpha-overlay-bg": "white",
+                backgroundImage:
+                  "linear-gradient(45deg, var(--alpha-overlay-color) 25%, transparent 25%), linear-gradient(-45deg, var(--alpha-overlay-color) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--alpha-overlay-color) 75%), linear-gradient(-45deg, var(--alpha-overlay-bg) 75%, var(--alpha-overlay-color) 75%)",
+                backgroundSize: `8px 8px`,
+                backgroundPosition: `0 0, 0 4px, 4px -4px, -4px 0`,
+              } as any
+            }
           />
-        )}
-        <span
-          className={clsx(
-            "colorOverlay",
-            "absolute inset-0 bg-[--bg-color] rounded-[--cs-radius]"
+          {withShadow && (
+            <span
+              className={clsx(
+                "shadowOverlay",
+                "absolute z-10 inset-0 border border-gray-400 rounded-[--cs-radius]"
+              )}
+            />
           )}
-          style={{ "--bg-color": getColor(color) } as any}
-        />
-        <span
-          className={clsx(
-            "childrenOverlay",
-            "absolute inset-0 bg-[--bg-color] rounded-[--cs-radius] flex justify-center items-center"
-          )}
-        >
-          {children}
-        </span>
-      </Box>
-    );
-  }
-);
+          <span
+            className={clsx(
+              "colorOverlay",
+              "absolute inset-0 bg-[--bg-color] rounded-[--cs-radius]"
+            )}
+            style={{ "--bg-color": getColor(color) } as any}
+          />
+          <span
+            className={clsx(
+              "childrenOverlay",
+              "absolute inset-0 bg-[--bg-color] rounded-[--cs-radius] flex justify-center items-center"
+            )}
+          >
+            {children}
+          </span>
+        </Box>
+      );
+    }
+  );

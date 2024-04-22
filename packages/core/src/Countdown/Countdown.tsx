@@ -1,6 +1,6 @@
+import { forwardRef, useState, useEffect } from "react";
 import clsx from "clsx";
 import { intervalToDuration, type Duration } from "date-fns";
-import React from "react";
 
 export interface CountdownProps {
   endDate: Date;
@@ -20,7 +20,7 @@ export interface CountdownProps {
     seconds: string;
   };
 }
-export const Countdown = React.forwardRef<HTMLDivElement, CountdownProps>(
+export const Countdown = forwardRef<HTMLDivElement, CountdownProps>(
   (props, ref) => {
     const {
       endDate,
@@ -37,12 +37,12 @@ export const Countdown = React.forwardRef<HTMLDivElement, CountdownProps>(
     } = props;
 
     // 防止SSR和client的截止时间不一致
-    const [duration, setDuration] = React.useState<Duration>({});
+    const [duration, setDuration] = useState<Duration>({});
 
     // const duration = intervalToDuration({ start: new Date(), end: endDate });
     // const [, updateSelf] = React.useState({});
 
-    React.useEffect(() => {
+    useEffect(() => {
       const timer = setInterval(
         () =>
           setDuration(intervalToDuration({ start: new Date(), end: endDate })),
@@ -163,3 +163,5 @@ export const Countdown = React.forwardRef<HTMLDivElement, CountdownProps>(
     );
   }
 );
+
+Countdown.displayName = "@rtdui/Countdown";

@@ -1,4 +1,4 @@
-import React from "react"; // forwardRef的组件必须是这种形式, 否则gendoc生成会忽略该组件.
+import { forwardRef, useRef, useEffect, Children } from "react"; // forwardRef的组件必须是这种形式, 否则gendoc生成会忽略该组件.
 import clsx from "clsx";
 import { useMergedRef } from "@rtdui/hooks";
 
@@ -26,7 +26,7 @@ export interface SwapProps extends React.ComponentPropsWithoutRef<"input"> {
   children: React.ReactNode;
 }
 
-export const Swap = React.forwardRef<HTMLInputElement, SwapProps>(
+export const Swap = forwardRef<HTMLInputElement, SwapProps>(
   (props, forwardRef) => {
     const {
       indeterminate = false,
@@ -36,10 +36,10 @@ export const Swap = React.forwardRef<HTMLInputElement, SwapProps>(
       ...other
     } = props;
 
-    const inputRef = React.useRef<HTMLInputElement>(null!);
+    const inputRef = useRef<HTMLInputElement>(null!);
     const mergedRef = useMergedRef<HTMLInputElement>(inputRef, forwardRef);
 
-    React.useEffect(() => {
+    useEffect(() => {
       // 初始时设置中间态
       inputRef.current.indeterminate = indeterminate;
     }, [indeterminate]);
@@ -55,7 +55,7 @@ export const Swap = React.forwardRef<HTMLInputElement, SwapProps>(
         )}
       >
         <input {...other} ref={mergedRef} type="checkbox" className="hidden" />
-        {React.Children.toArray(children)
+        {Children.toArray(children)
           .slice(0, indeterminate ? 3 : 2)
           .map((d, index) => (
             <div
@@ -73,3 +73,5 @@ export const Swap = React.forwardRef<HTMLInputElement, SwapProps>(
     );
   }
 );
+
+Swap.displayName = "@rtdui/Swap";

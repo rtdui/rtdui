@@ -99,6 +99,7 @@ export function useFloatingIndicator({
     }
 
     return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parent, target]);
 
   useEffect(() => {
@@ -117,6 +118,7 @@ export function useFloatingIndicator({
     }
 
     return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parent]);
 
   useTimeout(
