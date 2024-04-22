@@ -5,7 +5,14 @@ const path = require("node:path");
 const plugin = require("tailwindcss/plugin");
 
 module.exports = plugin((args) => {
+  // eslint-disable-next-line no-unused-vars
   const { addBase, addComponents, config } = args;
+
+  const themeCSS = fs.readFileSync(
+    path.resolve(__dirname, "./theme.css"),
+    "utf-8"
+  );
+  addBase(postcssJs.objectify(postcss.parse(themeCSS)));
 
   const prismCSS = fs.readFileSync(
     path.resolve(__dirname, "./prism.css"),
@@ -24,12 +31,6 @@ module.exports = plugin((args) => {
     "utf-8"
   );
   addComponents(postcssJs.objectify(postcss.parse(dataTableCSS)));
-
-  const gridxCSS = fs.readFileSync(
-    path.resolve(__dirname, "./grid-x.css"),
-    "utf-8"
-  );
-  addComponents(postcssJs.objectify(postcss.parse(gridxCSS)));
 
   const sliderCSS = fs.readFileSync(
     path.resolve(__dirname, "./slider.css"),

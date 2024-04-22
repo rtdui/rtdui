@@ -1,0 +1,27 @@
+:root {
+  --theme-radius-size-xs: calc(1rem / 8);
+  --theme-radius-size-sm: calc(1rem / 4);
+  --theme-radius-size-md: calc(1rem / 2);
+  --theme-radius-size-lg: 1rem;
+  --theme-radius-size-xl: 2rem;
+  --theme-radius-size-circle: 9999rem;
+  --theme-radius-size: var(--theme-radius-size-md);
+
+  --theme-font-size-xs: 0.75rem;
+  --theme-font-size-sm: 0.875rem;
+  --theme-font-size-md: 1rem;
+  --theme-font-size-lg: 1.25rem;
+  --theme-font-size-xl: 1.5rem;
+  --theme-font-size: var(--theme-font-size-md);
+}
+
+/*prettier-ignore */
+:root:has(:is(.modal-open,.modal:target,.modal-toggle:checked + .modal,.modal[open])) {
+  scrollbar-gutter: auto !important;
+}
+
+*,
+*::before,
+*::after {
+  scrollbar-width: thin;
+}
