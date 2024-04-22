@@ -9,13 +9,14 @@ export default function Demo() {
       size="sm"
       placeholder="这是占位文本"
       label="这是标签"
-      helperText="(这是帮助文本)"
+      description="(这是帮助文本)"
       leftSection={<IconAt strokeWidth={1} size="1.2rem" />}
       rightSection={
-        <Button color="primary" size="sm" sharp="square">
-          <IconSend size="1rem" />
+        <Button color="primary" size="xs" sharp="square">
+          <IconSend size="16" />
         </Button>
       }
+      rightSectionPointerEvents="auto"
     />
   );
 }

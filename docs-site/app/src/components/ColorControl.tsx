@@ -30,11 +30,11 @@ export default function ColorControl(props: ColorControlProps) {
         </ColorSwatch>
       ))}
       <Popover>
-        <Popover.Trigger>
+        <Popover.Target>
           <ColorSwatch withShadow size="28px" radius="sm" color="white">
             <IconPalette className="stroke-amber-500" />
           </ColorSwatch>
-        </Popover.Trigger>
+        </Popover.Target>
         <Popover.Dropdown>
           <div className="flex flex-col gap-2 bg-base-100 p-4 border border-base-300 rounded shadow">
             <ColorPicker

@@ -14,16 +14,16 @@ import TextInputBasicDemo from "./TextInputBasicDemo";
 import TextInputBackgroundDemo from "./TextInputBackgroundDemo";
 import TextInputSizeDemo from "./TextInputSizeDemo";
 import TextInputColorDemo from "./TextInputColorDemo";
-import TextInputLabelDemo from "./TextInputLabelDemo";
+import TextInputMemberDemo from "./TextInputMemberDemo";
 import TextInputSectionDemo from "./TextInputSectionDemo";
-import TextInputNoborderDemo from "./TextInputNoborderDemo";
-import TextInputGhostDemo from "./TextInputGhostDemo";
-import TextInputErrorDemo from "./TextInputErrorDemo";
+import TextInputVariantDemo from "./TextInputVariantDemo";
 import DebouncedInputBasicDemo from "./DebouncedInputBasicDemo";
 import DebouncedInputWaitDemo from "./DebouncedInputWaitDemo";
 import DebouncedInputDefaultValueDemo from "./DebouncedInputDefaultValueDemo";
 
 # TextInput
+
+`TextInput`基于`Input`构建, 本文档没有包含所有的用例, 详细功能请查看`Input`.
 
 ## 基本
 
@@ -31,7 +31,7 @@ import DebouncedInputDefaultValueDemo from "./DebouncedInputDefaultValueDemo";
 
 ### 边框颜色
 
-`color`属性只作用于边框. 因此只要设置了`color`属性值, 即便没有设置`bordered`属性也会呈现边框.
+`color`属性只作用于边框.
 
 <Demo data={{ Component: TextInputColorDemo }} />
 
@@ -39,31 +39,23 @@ import DebouncedInputDefaultValueDemo from "./DebouncedInputDefaultValueDemo";
 
 <Demo data={{ Component: TextInputSizeDemo }} />
 
-## 标签和帮助文本
+## 组成元素
 
-<Demo data={{ Component: TextInputLabelDemo }} />
+`TextInput`基于`TextBase`构建, 包含了`label`,`description`,`error`,`input`组件
+
+<Demo data={{ Component: TextInputMemberDemo }} />
 
 ## 左侧节和右侧节
 
 <Demo data={{ Component: TextInputSectionDemo }} />
 
-## 无边框
+## 变体
 
-无边框模式下可能因为`TextInput`组件的背景色与父元素相同导致不是显而易见. 可以为父元素设置不同的背景色或者使用自定义样式设置背景色解决.
+`TextInput`支持`Input`的变体
 
-<Demo data={{ Component: TextInputNoborderDemo }} />
+default变体是无边框模式, 注意: 在无边框模式可能因为`TextInput`组件的背景色与父元素相同导致不是显而易见. 可以为父元素设置不同的背景色或者使用自定义样式设置背景色解决.
 
-## 透明
-
-透明模式下输入框无背景色. 考虑同时禁用`bordered`属性.
-
-<Demo data={{ Component: TextInputGhostDemo }} />
-
-## error属性
-
-`error`属性可以为组件设置错误消息, `TextInput`会自动应用错误样式
-
-<Demo data={{ Component: TextInputErrorDemo }} />
+<Demo data={{ Component: TextInputVariantDemo }} />
 
 ## 自定义样式
 

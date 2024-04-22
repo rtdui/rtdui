@@ -38,7 +38,7 @@ export default function Index() {
           <div className="flex-1 px-2 mx-2">
             <TextInput
               slots={{ input: "w-40" }}
-              ghost
+              variant="ghost"
               leftSection={<IconSearch />}
               rightSection={
                 <>
@@ -64,13 +64,14 @@ export default function Index() {
               <IconBrandGithub />
             </a>
             {/* 语言切换 */}
-            <Popover
-              open={langOpen}
-              onOpenChange={setLangOpen}
-              transitionDuration={{ exit: 0 }}
-            >
-              <Popover.Trigger>
-                <Button ghost sharp="square" className="gap-0.5">
+            <Popover opened={langOpen} onChange={setLangOpen}>
+              <Popover.Target>
+                <Button
+                  ghost
+                  sharp="square"
+                  className="gap-0.5"
+                  onClick={() => setLangOpen(true)}
+                >
                   <IconTranslate
                     viewBox="0 0 512 512"
                     fill="currentColor"
@@ -79,9 +80,9 @@ export default function Index() {
                   />
                   <IconChevronDown size={14} stroke={2.5} color="gray" />
                 </Button>
-              </Popover.Trigger>
+              </Popover.Target>
               <Popover.Dropdown>
-                <ul className="menu menu-sm gap-1 bg-base-300 rounded-box">
+                <ul className="menu menu-sm gap-1">
                   <li>
                     <button
                       className={clsx({ active: i18n.language === "en" })}

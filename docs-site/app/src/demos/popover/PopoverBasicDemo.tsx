@@ -6,26 +6,22 @@ export default function Demo() {
   return (
     <div className="flex gap-8 items-center">
       <Popover>
-        <Popover.Trigger>
+        <Popover.Target>
           <Button>popover</Button>
-        </Popover.Trigger>
+        </Popover.Target>
         <Popover.Dropdown>
-          <div className="w-72 h-40 bg-base-200 p-8 rounded-box">
-            dropdown content
-          </div>
+          <div className="w-72 h-40 p-8">dropdown content</div>
         </Popover.Dropdown>
       </Popover>
 
       <Popover>
-        <Popover.Trigger>
+        <Popover.Target>
           <Button ghost sharp="circle">
             <IconBell />
           </Button>
-        </Popover.Trigger>
+        </Popover.Target>
         <Popover.Dropdown>
-          <div className="w-72 h-40 bg-base-200 p-8 rounded-box">
-            dropdown content
-          </div>
+          <div className="w-72 h-40 p-8">dropdown content</div>
         </Popover.Dropdown>
       </Popover>
     </div>

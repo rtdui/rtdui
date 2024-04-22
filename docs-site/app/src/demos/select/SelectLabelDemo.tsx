@@ -141,8 +141,9 @@ export default function Demo() {
     <Select
       required
       label="这是标签"
-      helperText="(这是帮助文本)"
-      options={fruits}
+      // helperText="(这是帮助文本)"
+      description="(这是帮助文本)"
+      data={fruits}
     />
   );
 }

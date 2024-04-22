@@ -30,6 +30,6 @@ const fruits = [
 
 export default function Demo() {
   const [value, setValue] = React.useState("");
-  return <AutoComplete options={fruits} value={value} onChange={setValue} />;
+  return <AutoComplete data={fruits} value={value} onChange={setValue} />;
 }
 Demo.displayName = "AutoCompleteControlledDemo";

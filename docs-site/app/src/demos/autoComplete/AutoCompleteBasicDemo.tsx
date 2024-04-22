@@ -28,6 +28,6 @@ const fruits = [
 ];
 
 export default function Demo() {
-  return <AutoComplete options={fruits} />;
+  return <AutoComplete data={fruits} />;
 }
 Demo.displayName = "AutoCompleteBasicDemo";

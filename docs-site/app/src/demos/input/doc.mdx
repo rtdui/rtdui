@@ -1,0 +1,125 @@
+---
+meta:
+  - title: Input Component
+  - description: Input document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Input.tsx"
+  componentName: "Input"
+---
+
+import Demo from "../../components/Demo";
+import InputBasicDemo from "./InputBasicDemo";
+import InputSectionsDemo from "./InputSectionsDemo";
+import InputAsDemo from "./InputAsDemo";
+import InputErrorDemo from "./InputErrorDemo";
+import InputBaseBasicDemo from "./InputBaseBasicDemo";
+import InputCustomDemo from "./InputCustomDemo";
+
+# 声明
+
+**!重要提醒:** 在绝大多数情况下在应用程序中都不应该直接使用`Input`组件, 而应使用`TextInput`等其它封装好组件. `Input`组件存在的目的是用于创建自定义的输入组件, 它提供共享的样式和功能. 它没有被设计用于直接使用.
+
+`Input`组件是一个多态组件, 因此并不一定渲染为`input`元素(虽然大多数情况下如此). 它可以渲染为任意元素, 同时具有输入的外观.
+
+`@rtdui/*`中的 TextInput,NumberInput, Textarea, JsonInput, Select等等具有输入外观的组件都是基于`Input`组件构建的.
+
+# 功能
+
+`Input`组件提供了共享的样式和功能.
+
+<Demo data={{ Component: InputBasicDemo }} />
+
+## 左侧和右侧节
+
+`Input`组件支持 `leftSection` 和 `rightSection` 属性. 可以在输入框左右两侧自定义的渲染任意内容. 两侧的内容会被绝对定位分别放置到包裹容器的两侧.
+
+- `leftSection` / `rightSection`属性
+  React.ReactNode 类型, 渲染自定义内容
+- `leftSectionWidth` / `rightSectionWidth`属性
+  输入元素会使用`paddingLeft`和`paddingRight`为左右两侧的留出空间. 由于左右两侧是自定义的内容, 输入元素的`padding`大小未知. 因此需要使用`leftSectionWidth`和`rightSectionWidth`属性指明宽度.
+- `leftSectionPointerEvents` / `rightSectionPointerEvents`属性
+  控制CSS的`pointer-events`值.
+  大多数情况, 你只想在左或右侧渲染一个图标, 这种情况下应该忽略左或右侧元素的指针事件, 防止干扰到输入元素. 这是默认设置.
+  如果左或右侧是一个按钮, 则不应该忽略指针事件, 此时可以设置`leftSectionPointerEvents`/`rightSectionPointerEvents`为"auto"
+
+<Demo data={{ Component: InputSectionsDemo }} />
+
+### pointer属性
+
+不同的渲染元素应具有不同的鼠标形态. 比如, input元素应该是输入形态, select元素应该是手指形态.
+
+由于`Input`组件是多态的, 因此无法确定鼠标应具有的形态, `Input`组件的`pointer`属性用于指明是否将鼠标显示为手指形态.
+
+### error以及error样式
+
+`Input`组件的`error`属性可以是任意的React内容.
+
+<Demo data={{ Component: InputErrorDemo }} />
+
+## 多态
+
+`Input`组件是一个多态组件, `as`属性的默认值为`input`, 可以设置为任意元素
+
+<Demo data={{ Component: InputAsDemo }} />
+
+---
+
+# Input子组件
+
+Input附带了一组子组件:
+
+- `Input.Wrapper` 封装组件
+  `Input.Wrapper`内部已经包含了Input.Label,Input.Error,Input.Description组件.
+  `Input.Wrapper`使用垂直布局模式, 这种布局模式适用于绝大多数场景, 无论是移动端还是PC端.
+- `Input.Placeholder` 当输入不是input或原生不支持placeholder属性时, 用于模拟原生占位内容
+  `Input.Placeholder`应当作为`Input`的孩子元素
+- `Input.Label` 用于脱离Input.Wrapper独立的显示标签内容
+- `Input.Error` 用于脱离Input.Wrapper独立的显示错误内容
+- `Input.Description` 用于脱离Input.Wrapper独立的显示帮助或描述内容
+
+注意正确的使用:
+
+```tsx
+import { Input, TextInput } from "@mantine/core";
+
+// Incorrect usage, input is not accessible
+function Incorrect() {
+  return (
+    <Input.Wrapper label="Input label">
+      <Input />
+    </Input.Wrapper>
+  );
+}
+
+// Use InputBase or TextInput instead of Input everywhere you want to use Input,
+// it is accessible by default and includes Input.Wrapper
+function Correct() {
+  return <InputBase label="Input label" description="Input description" />;
+}
+```
+
+---
+
+# InputBase 组件
+
+`InputBase`组件是用`Input.Wrapper`和`Input`正确封装好了的组件, 所有高层的输入组件(如:TextInput,NumberInput,JsonInput,Textarea,Select等)都基于`InputBase`构建的.
+
+你可以基于`InputBase`组件构建自己的输入组件.
+
+`InputBase`组件的`inputWrapperOrder`属性(会传递给`Input.Wrapper`)用于配置label, input, error 和 description顺序. 默认顺序为: `["label", "description", "input", "error"]`
+
+> tips: 不必指定所有部分, 可以只指定需要的部分, 未指定部分或者未指定对应的属性值都不会渲染.
+
+<Demo data={{ Component: InputBaseBasicDemo }} />
+
+---
+
+# 自定义布局
+
+当`Input.Wrapper`的垂直布局不满足你的要求时, `Input.Label`, `Input.Description`, `Input.Error` 和 `Input.Placeholder`组件可用于构建自定义的表单布局.
+
+比如下面的例子使用按钮作为输入, 标签和输入使用水平布局模式, 由于按钮不支持placeholder特性, 因此还使用了`Input.Placeholder`模拟占位内容:
+
+<Demo data={{ Component: InputCustomDemo }} />

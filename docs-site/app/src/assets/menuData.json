@@ -28,15 +28,35 @@
     ]
   },
   {
+    "group": "inputBase",
+    "items": [
+      { "label": "input", "url": "/components/input", "flag": "v4 new" }
+    ]
+  },
+  {
     "group": "inputs",
     "items": [
-      { "label": "autoComplete", "url": "/components/autocomplete" },
       { "label": "checkbox", "url": "/components/checkbox" },
-      { "label": "textInput", "url": "/components/textinput" },
-      { "label": "textArea", "url": "/components/textarea" },
-      { "label": "jsonInput", "url": "/components/jsoninput" },
-      { "label": "numberInput", "url": "/components/numberinput" },
-      { "label": "select", "url": "/components/select" },
+      {
+        "label": "textInput",
+        "url": "/components/textinput",
+        "flag": "v4 update"
+      },
+      {
+        "label": "textArea",
+        "url": "/components/textarea",
+        "flag": "v4 update"
+      },
+      {
+        "label": "jsonInput",
+        "url": "/components/jsoninput",
+        "flag": "v4 update"
+      },
+      {
+        "label": "numberInput",
+        "url": "/components/numberinput",
+        "flag": "v4 update"
+      },
       { "label": "slider", "url": "/components/slider" },
       { "label": "swap", "url": "/components/swap" },
       { "label": "switch", "url": "/components/switch" },
@@ -44,15 +64,36 @@
       {
         "label": "floatingSelect",
         "url": "/components/floatingselect",
-        "flag": "new"
+        "flag": "v3 new"
       },
       { "label": "rating", "url": "/components/rating" },
       {
         "label": "colorPicker",
         "url": "/components/colorpicker",
-        "flag": "new"
+        "flag": "v3 new"
       },
-      { "label": "colorInput", "url": "/components/colorinput", "flag": "new" }
+      {
+        "label": "colorInput",
+        "url": "/components/colorinput",
+        "flag": "v3 new"
+      }
+    ]
+  },
+  {
+    "group": "comboBox",
+    "items": [
+      { "label": "combobox", "url": "/components/combobox", "flag": "v4 new" },
+      {
+        "label": "autoComplete",
+        "url": "/components/autocomplete",
+        "flag": "v4 rewrite"
+      },
+      { "label": "select", "url": "/components/select", "flag": "v4 rewrite" },
+      {
+        "label": "multiSelect",
+        "url": "/components/multiselect",
+        "flag": "v4 new"
+      }
     ]
   },
   {
@@ -79,7 +120,7 @@
       { "label": "tree", "url": "/components/tree" },
       { "label": "pagination", "url": "/components/pagination" },
       { "label": "steps", "url": "/components/steps" },
-      { "label": "tabs", "url": "/components/tabs", "flag": "rewrite" }
+      { "label": "tabs", "url": "/components/tabs", "flag": "v3 rewrite" }
     ]
   },
   {

@@ -42,7 +42,7 @@ export const newPerson = (id?: number): Person => {
     age: faker.number.int({ min: 25, max: 35 }),
     deposit: faker.number.float({
       max: 5000000,
-      precision: 0.01,
+      fractionDigits: 2,
     }),
     birthdate: faker.date.birthdate(),
   };

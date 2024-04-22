@@ -138,21 +138,25 @@ const fruits = [
 ];
 
 export default function Demo() {
-  const [output, setOutput] = React.useState("");
+  const [submitData, setSubmitData] = React.useState<FormData | null>(null);
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = Object.fromEntries(
-      new FormData(e.target as HTMLFormElement).entries()
-    );
-    setOutput(JSON.stringify(data, undefined, 2));
+    const formData = new FormData(e.target as HTMLFormElement);
+    setSubmitData(formData);
   };
+  let output = "";
+  if (submitData) {
+    for (const [key, value] of submitData) {
+      output += `${key}: ${value}\n`;
+    }
+  }
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-      <Select name="mySelect" color="primary" options={fruits} />
+      <Select name="mySelect" color="primary" data={fruits} />
       <Button type="submit">提交</Button>
-      <output className="my-4 flex flex-col gap-4">
-        output:
-        <pre className="bg-base-100">{output}</pre>
+      <output className="bg-base-100 mt-4 p-4">
+        提交的数据:
+        <pre>{output}</pre>
       </output>
     </form>
   );

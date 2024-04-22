@@ -70,7 +70,7 @@ function Demo() {
                 format: val as string,
               }))
             }
-            options={[
+            data={[
               { value: "hex", label: "HEX" },
               { value: "hexa", label: "HEXA" },
               { value: "rgb", label: "RGB" },

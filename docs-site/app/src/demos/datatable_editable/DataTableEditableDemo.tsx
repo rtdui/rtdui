@@ -44,8 +44,7 @@ function FullNameEditableInputCell(props: CellContext<any, any>) {
 
   return (
     <TextInput
-      ghost
-      bordered={false}
+      variant="ghost"
       value={value}
       onChange={(e) => setValue(e.currentTarget.value)}
       onClick={(ev) => ev.stopPropagation()}
@@ -88,10 +87,9 @@ function AgeEditableInputWithValidateCell(props: CellContext<any, any>) {
 
   return (
     <NumberInput
-      ghost
+      variant="ghost"
       allowNegative={false}
       allowDecimal={false}
-      bordered={false}
       value={value}
       onChange={setValue}
       onBlur={onBlur}

@@ -28,6 +28,6 @@ const fruits = [
 ];
 
 export default function Demo() {
-  return <AutoComplete options={fruits} disabled />;
+  return <AutoComplete data={fruits} disabled />;
 }
 Demo.displayName = "AutoCompleteDisabledDemo";

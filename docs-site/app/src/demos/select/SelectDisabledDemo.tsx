@@ -137,6 +137,6 @@ const fruits = [
 ];
 
 export default function Demo() {
-  return <Select disabled options={fruits} />;
+  return <Select disabled data={fruits} />;
 }
 Demo.displayName = "SelectDisabledDemo";

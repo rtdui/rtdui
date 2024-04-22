@@ -21,7 +21,7 @@ import AutoCompleteInFormDemo from "./AutoCompleteInFormDemo";
 
 AutoComplete 支持键盘导航:
 
-- 在 AutoComplete 得到焦点时, 下拉列表不会立即显示(此时可以按下键盘的上/下箭头键手动显示下拉列表), 一旦用户开始输入则自动显示下拉列表, 并且会随着用户的输入自动过滤列表项.
+- 在 AutoComplete 得到焦点时, 下拉列表会立即显示(可以按键盘的上/下箭头键滚动下拉列表), 一旦用户输入会随着输入自动过滤列表项.
 
 - 当下拉列表的某一项被键盘导航激活时, 按下键盘的回车键(`Enter`)则会自动将其作为输入值
 
@@ -47,6 +47,6 @@ AutoComplete 支持键盘导航:
 
 ## 在 form 中使用 AutoComplete
 
-AutoComplete 可以作为`<from>`表单控件使用, 使用方式与`input`元素一样, 例子中表单提交的数据可通过 F12 查看 console 的输出.
+AutoComplete 可以作为`<from>`表单控件使用, 使用方式与`input`元素一样:
 
 <Demo data={{ Component: AutoCompleteInFormDemo }} />

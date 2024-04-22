@@ -28,6 +28,6 @@ const fruits = [
 ];
 
 export default function Demo() {
-  return <AutoComplete options={fruits} readOnly />;
+  return <AutoComplete data={fruits} readOnly />;
 }
 Demo.displayName = "AutoCompleteReadonlyDemo";

@@ -42,7 +42,7 @@ export default function Layout() {
 
   const componentName = location.pathname.split("/").reverse()[0];
   const componentRealName: any = Object.keys(apidocs).find(
-    (d) => d.toLowerCase() === componentName.toLowerCase()
+    (d) => d.toLowerCase().split("/").at(-1)! === componentName.toLowerCase()
   );
   const apiDoc = (apidocs as any)[componentRealName];
 
@@ -97,8 +97,7 @@ export default function Layout() {
             {/* 搜索框 */}
             <TextInput
               slots={{ input: "w-40" }}
-              ghost
-              bordered={false}
+              variant="ghost"
               leftSection={<IconSearch />}
               rightSection={
                 <>
@@ -135,13 +134,14 @@ export default function Layout() {
               <IconMoon className="swap-off" />
             </label>
             {/* 语言切换 */}
-            <Popover
-              open={langOpen}
-              onOpenChange={setLangOpen}
-              transitionDuration={{ exit: 0 }}
-            >
-              <Popover.Trigger>
-                <Button sharp="square" ghost className="gap-0.5">
+            <Popover opened={langOpen} onChange={setLangOpen}>
+              <Popover.Target>
+                <Button
+                  sharp="square"
+                  ghost
+                  className="gap-0.5"
+                  onClick={() => setLangOpen(true)}
+                >
                   <IconTranslate
                     viewBox="0 0 512 512"
                     fill="currentColor"
@@ -150,9 +150,9 @@ export default function Layout() {
                   />
                   <IconChevronDown size={14} stroke={2.5} color="gray" />
                 </Button>
-              </Popover.Trigger>
+              </Popover.Target>
               <Popover.Dropdown>
-                <ul className="menu menu-sm gap-1 bg-base-300 rounded-box">
+                <ul className="menu menu-sm gap-1">
                   <li>
                     <button
                       className={clsx({ active: i18n.language === "en" })}

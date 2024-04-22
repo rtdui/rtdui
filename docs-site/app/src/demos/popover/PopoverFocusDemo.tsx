@@ -1,16 +1,16 @@
 import React from "react";
 import { Popover, Button } from "@rtdui/core";
+import { useDisclosure } from "@rtdui/hooks";
 
 export default function Demo() {
+  const [opened, { close, open }] = useDisclosure(false);
   return (
-    <Popover openOnFocus>
-      <Popover.Trigger>
+    <Popover opened={opened}>
+      <Popover.Target onFocus={open} onBlur={close}>
         <Button>popover</Button>
-      </Popover.Trigger>
+      </Popover.Target>
       <Popover.Dropdown>
-        <div className="w-72 h-40 bg-base-200 p-8 rounded-box">
-          dropdown content
-        </div>
+        <div className="w-72 h-40 p-8">dropdown content</div>
       </Popover.Dropdown>
     </Popover>
   );

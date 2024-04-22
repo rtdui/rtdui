@@ -4,25 +4,29 @@ import { Popover, Button } from "@rtdui/core";
 export default function Demo() {
   return (
     <div className="flex gap-8 items-center">
-      <Popover transition="slide-up">
-        <Popover.Trigger>
+      <Popover
+        withArrow
+        transitionProps={{ transition: "slide-up" }}
+        dropdownColor="primary"
+      >
+        <Popover.Target>
           <Button>popover</Button>
-        </Popover.Trigger>
-        <Popover.Dropdown showArrow slots={{ arrow: "fill-primary" }}>
-          <div className="w-56 h-30 bg-primary text-primary-content p-8 rounded-box">
-            slide-up
-          </div>
+        </Popover.Target>
+        <Popover.Dropdown>
+          <div className="w-56 h-30 p-8">slide-up</div>
         </Popover.Dropdown>
       </Popover>
 
-      <Popover transition="scale">
-        <Popover.Trigger>
+      <Popover
+        withArrow
+        transitionProps={{ transition: "scale" }}
+        dropdownColor="primary"
+      >
+        <Popover.Target>
           <Button>popover</Button>
-        </Popover.Trigger>
-        <Popover.Dropdown showArrow slots={{ arrow: "fill-primary" }}>
-          <div className="w-56 h-30 bg-primary text-primary-content p-8 rounded-box">
-            scale
-          </div>
+        </Popover.Target>
+        <Popover.Dropdown>
+          <div className="w-56 h-30 p-8">scale</div>
         </Popover.Dropdown>
       </Popover>
     </div>

@@ -6,7 +6,8 @@ export default function Demo() {
       placeholder="请输入"
       required
       label="这是标签"
-      helperText="(这是帮助文本)"
+      description="(这是帮助文本)"
+      error="错误消息"
     />
   );
 }

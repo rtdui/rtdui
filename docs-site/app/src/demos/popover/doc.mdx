@@ -17,12 +17,14 @@ import PopoverArrowDemo from "./PopoverArrowDemo";
 import PopoverControlledDemo from "./PopoverControlledDemo";
 import PopoverFocusTrapDemo from "./PopoverFocusTrapDemo";
 import PopoverTransitionDemo from "./PopoverTransitionDemo";
+import PopoverDisabledDemo from "./PopoverDisabledDemo";
+import PopoverKeepMountedDemo from "./PopoverKeepMountedDemo";
 
 # 使用
 
-Popover 基于 [floating-ui](https://floating-ui.com/) 实现. 可以完全自定义弹出的内容.
+Popover 基于 [Floating UI](https://floating-ui.com/) 实现. 可以完全自定义弹出的内容.
 
-`Tooltip`,`Select`,`AutoComplete`组件等都是基于`Popover`实现
+`Tooltip`,`Combobox`等组件都是基于`Popover`实现
 
 ## 基本
 
@@ -40,14 +42,45 @@ Popover 基于 [floating-ui](https://floating-ui.com/) 实现. 可以完全自�
 
 ## 显示箭头
 
+`Popover`的`withArrow`属性控制着是否显示箭头
+
+`withArrow`为`true`时
+
+- 当`Popover`的`position`属性设置为`*-start`和`*-end`值时, 并且`arrowPosition`属性为`side`时, 箭头会被定位在目标元素的边, `arrowOffset`属性可以对其进行偏移.
+
+- 其它情况下, 箭头会被定位在目标元素的中心。`arrowOffset`属性会被忽略.
+
 <Demo data={{ Component: PopoverArrowDemo }} />
 
-## 受控模式
+## 受控和非受控模式
+
+`opened`为受控属性, `defaultOpened`为非受控属性. 不提供`opened`属性则在非受控模式下, 此时点击Target内孩子则会打开弹出框.
+当提供了`opened`属性则在受控模式下, 此时不会自动打开弹出框, 必须使用手动设置受控属性值为`true`才会打开弹出框
+
+```tsx
+import { Popover, Button } from "@rtdui/core";
+
+export default function Demo() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <Popover opened={open} onChange={setOpen}>
+      <Popover.Target>
+        <Button onClick={(e) => setOpen(true)}>popover</Button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <div className="w-80 h-40 bg-base-200 p-8 rounded-box">abcdefg</div>
+      </Popover.Dropdown>
+    </Popover>
+  );
+}
+```
 
 <Demo data={{ Component: PopoverControlledDemo }} />
 
 ## 焦点围栏
 
+`Popover`的`trapFocus`属性控制是否启用焦点围栏, 默认为`false`.
 焦点围栏是指当弹出框显示时, 键盘`Tab`键的焦点跳转范围限定在弹出框内. 对于弹出框中带有输入控件时尤其有用.
 
 <Demo data={{ Component: PopoverFocusTrapDemo }} />
@@ -57,3 +90,41 @@ Popover 基于 [floating-ui](https://floating-ui.com/) 实现. 可以完全自�
 `Popover`支持`Transition`组件提供的预置过渡效果和自定义效果, 默认为"fade"
 
 <Demo data={{ Component: PopoverTransitionDemo }} />
+
+## 禁用
+
+`Popover`的`disabled`属性控制着是否禁止弹出.
+
+<Demo data={{ Component: PopoverDisabledDemo }} />
+
+## 保持挂载
+
+`Popover`的`keepMounted`属性控制着弹出框关闭时是否保持挂载, 默认为`false`, 表示弹出框关闭时卸载组件. 如果为`true`,表示弹出框关闭时不卸载组件,但不可见.
+
+<Demo data={{ Component: PopoverKeepMountedDemo }} />
+
+## Middlewares
+
+`Popover`是基于[Floating UI](https://floating-ui.com/docs/middleware)实现的, `Popover`支持的Floating UI中间件:
+
+- [shift](https://floating-ui.com/docs/shift) 中间件在主轴方向移位弹出框使其保持在视口中. 该中间件默认启用.
+- [flip](https://floating-ui.com/docs/flip) 中间件改变弹出框的定位位置使其保持在视口中. 该中间件默认启用
+- [inline](https://floating-ui.com/docs/inline) 中间件改进对内联元素的定位. 该中间件默认未启用.
+- [size](https://floating-ui.com/docs/size) 中间件管理弹出框的尺寸. 默认当`Popover`的`width`属性为`target`自动启用, 否则未启用.
+
+启用或禁用中间件:
+
+```tsx
+import { Popover } from "@mantine/core";
+
+function Demo() {
+  return (
+    <Popover
+      middlewares={{ flip: false, shift: { padding: 20 } }} // 禁用flip中间件, 设置shift中间件的自定义选项.
+      position="bottom"
+    >
+      {/* Popover content */}
+    </Popover>
+  );
+}
+```

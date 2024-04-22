@@ -1,0 +1,150 @@
+---
+meta:
+  - title: NativeSelect Component
+  - description: NativeSelect document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/NativeSelect.tsx"
+  componentName: "NativeSelect"
+---
+
+import Demo from "../../components/Demo";
+import NativeSelectDataDemo from "./NativeSelectDataDemo";
+import NativeSelectChildrenDemo from "./NativeSelectChildrenDemo";
+
+# 使用
+
+`NativeSelect`组件也是基于`InputBase`构建, 本文档没有包含所有的功能和用例, 详细请查看`Input`文档.
+
+`Input`的功能全部支持.
+
+`NativeSelect`组件下拉使用原生`option`元素渲染, 但提供了额外的功能.
+
+`NativeSelect`支持两种形式提供选项:
+
+- 通过`data`属性传递数组
+- 使用children原生option组件
+
+注意: 如果`children`被使用, 则`data`属性会被忽略
+
+## 通过`data`属性
+
+`NativeSelect`的`data`属性和`Select`组件一样支持字符串数组和对象数组.
+
+1. data属性为字符串数组
+
+```tsx
+import { NativeSelect } from "@rtdui/core";
+
+function Demo() {
+  return <NativeSelect data={["React", "Angular", "Svelte", "Vue"]} />;
+}
+```
+
+2. data属性为对象数组
+
+```tsx
+import { NativeSelect } from "@rtdui/core";
+
+function Demo() {
+  return (
+    <NativeSelect
+      data={[
+        { label: "React", value: "react" },
+        { label: "Angular", value: "angular" },
+        { label: "Svelte", value: "svelte", disabled: true },
+        { label: "Vue", value: "vue" },
+      ]}
+    />
+  );
+}
+```
+
+### data属性支持选项分组
+
+`NativeSelect`的`data`属性和`Select`组件一样支持选项分组.
+
+1. data属性为分组数据(字符串形式)
+
+```tsx
+import { NativeSelect } from "@mantine/core";
+
+function Demo() {
+  return (
+    <NativeSelect
+      data={[
+        {
+          group: "Frontend libraries",
+          items: ["React", "Angular", "Svelte", "Vue"],
+        },
+        {
+          group: "Backend libraries",
+          items: ["Express", "Koa", "Django"],
+        },
+      ]}
+    />
+  );
+}
+```
+
+2. data属性为分组数据(对象形式)
+
+```tsx
+import { NativeSelect } from "@mantine/core";
+
+function Demo() {
+  return (
+    <NativeSelect
+      data={[
+        {
+          group: "Frontend libraries",
+          items: [
+            { label: "React", value: "react" },
+            { label: "Angular", value: "angular" },
+            { label: "Vue", value: "vue", disabled: true },
+          ],
+        },
+        {
+          group: "Backend libraries",
+          items: [
+            { label: "Express", value: "express" },
+            { label: "Koa", value: "koa" },
+            { label: "Django", value: "django" },
+          ],
+        },
+      ]}
+    />
+  );
+}
+```
+
+<Demo data={{ Component: NativeSelectDataDemo }} />
+
+## 通过children
+
+```tsx
+import { NativeSelect } from "@mantine/core";
+
+function Demo() {
+  return (
+    <NativeSelect label="With children options">
+      <optgroup label="Frontend libraries">
+        <option value="react">React</option>
+        <option value="angular">Angular</option>
+        <option value="vue" disabled>
+          Vue
+        </option>
+      </optgroup>
+
+      <optgroup label="Backend libraries">
+        <option value="express">Express</option>
+        <option value="koa">Koa</option>
+        <option value="django">Django</option>
+      </optgroup>
+    </NativeSelect>
+  );
+}
+```
+
+<Demo data={{ Component: NativeSelectChildrenDemo }} />

@@ -62,6 +62,7 @@ const routes = fs.readdirSync(path.resolve("app/src/demos")).map((d) => ({
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   return {
+    preserveSymlinks: true,
     plugins: [
       mdx({
         remarkPlugins: [

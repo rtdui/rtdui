@@ -140,7 +140,7 @@ export default function Demo() {
   return (
     <AutoComplete
       name="input2"
-      options={fruits}
+      data={fruits}
       placeholder="this is autocomplete"
     />
   );

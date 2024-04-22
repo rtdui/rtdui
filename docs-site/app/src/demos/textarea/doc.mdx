@@ -14,6 +14,11 @@ import TextareaDemo from "./TextareaDemo";
 
 # 使用
 
-`Textarea`组件使用了`react-textarea-autosize`包自动扩展高度.
+`autoSize`属性控制着是否自动扩展高度, 默认为`false`, 此时使用原生`textarea`, 如果为true, 则使用`react-textarea-autosize`包提供的组件自动扩展高度.
+
+- 当`autoSize`属性为`true`时, `minRows`和`maxRows`属性控制着自动增长高度的限制. `minRows`默认为2行, `maxRows`默认为无限.
+- 当`autoSize`属性未设置或为`false`时, `minRows`和`maxRows`属性会被忽略.
+
+`resize`属性控制着用户是否可以手动调整元素的高度. 取值与CSS的resize相同, 默认为"none"
 
 <Demo data={{ Component: TextareaDemo }} />

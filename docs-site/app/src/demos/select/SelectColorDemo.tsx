@@ -139,13 +139,13 @@ const fruits = [
 export default function Demo() {
   return (
     <div className="flex flex-col gap-4 items-start">
-      <Select color="primary" options={fruits} className="min-w-52" />
-      <Select color="secondary" options={fruits} className="min-w-52" />
-      <Select color="accent" options={fruits} className="min-w-52" />
-      <Select color="info" options={fruits} className="min-w-52" />
-      <Select color="success" options={fruits} className="min-w-52" />
-      <Select color="warning" options={fruits} className="min-w-52" />
-      <Select color="error" options={fruits} className="min-w-52" />
+      <Select color="primary" data={fruits} className="min-w-52" />
+      <Select color="secondary" data={fruits} className="min-w-52" />
+      <Select color="accent" data={fruits} className="min-w-52" />
+      <Select color="info" data={fruits} className="min-w-52" />
+      <Select color="success" data={fruits} className="min-w-52" />
+      <Select color="warning" data={fruits} className="min-w-52" />
+      <Select color="error" data={fruits} className="min-w-52" />
     </div>
   );
 }

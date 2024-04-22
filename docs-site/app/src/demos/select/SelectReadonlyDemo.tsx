@@ -137,6 +137,6 @@ const fruits = [
 ];
 
 export default function Demo() {
-  return <Select readOnly options={fruits} />;
+  return <Select readOnly data={fruits} />;
 }
 Demo.displayName = "SelectReadonlyDemo";

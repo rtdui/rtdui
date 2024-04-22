@@ -2,15 +2,15 @@ import React from "react";
 import { Popover, Button } from "@rtdui/core";
 
 export default function Demo() {
-  const [open, setOpen] = React.useState(false);
+  const [opened, setOpened] = React.useState(false);
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <Popover.Trigger>
-        <Button onClick={(e) => setOpen(true)}>popover</Button>
-      </Popover.Trigger>
+    <Popover opened={opened} onChange={setOpened}>
+      <Popover.Target>
+        <Button onClick={(e) => setOpened(true)}>popover</Button>
+      </Popover.Target>
       <Popover.Dropdown>
-        <div className="w-80 h-40 bg-base-200 p-8 rounded-box">abcdefg</div>
+        <div className="w-80 h-40 p-8">abcdefg</div>
       </Popover.Dropdown>
     </Popover>
   );

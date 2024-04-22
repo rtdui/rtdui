@@ -32,7 +32,7 @@ export default function AppShellExtendDemo() {
           />
           <div className="flex-grow">
             <TextInput
-              ghost
+              variant="ghost"
               leftSection={<IconSearch />}
               rightSectionWidth={72}
               rightSection={
@@ -161,7 +161,7 @@ export default function AppShellExtendDemo() {
           />
           <div className="flex-grow">
             <TextInput
-              ghost
+              variant="ghost"
               leftSection={<IconSearch />}
               rightSectionWidth={72}
               rightSection={
