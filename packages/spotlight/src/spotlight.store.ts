@@ -1,4 +1,4 @@
-import { clamp } from "@mantine/hooks";
+import { clamp } from "@rtdui/hooks";
 import { createStore, type RtdStore, useStore } from "@rtdui/hooks";
 
 export interface SpotlightState {

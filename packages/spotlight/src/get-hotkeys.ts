@@ -1,4 +1,4 @@
-import { HotkeyItem } from "@mantine/hooks";
+import { HotkeyItem } from "@rtdui/hooks";
 import { spotlightActions, SpotlightStore } from "./spotlight.store";
 
 export function getHotkeys(
