@@ -14,15 +14,15 @@
     "@faker-js/faker": "^8.3.1",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
-    "@rtdui/code-highlight": "3.1.1",
-    "@rtdui/core": "3.1.1",
-    "@rtdui/datatable": "3.1.1",
-    "@rtdui/dialogs": "3.1.1",
-    "@rtdui/editor": "3.1.1",
-    "@rtdui/hooks": "3.1.1",
-    "@rtdui/notifications": "3.1.1",
-    "@rtdui/qr-code": "3.1.1",
-    "@rtdui/spotlight": "3.1.1",
+    "@rtdui/code-highlight": "4.0.0",
+    "@rtdui/core": "4.0.0",
+    "@rtdui/datatable": "4.0.0",
+    "@rtdui/dialogs": "4.0.0",
+    "@rtdui/editor": "4.0.0",
+    "@rtdui/hooks": "4.0.0",
+    "@rtdui/notifications": "4.0.0",
+    "@rtdui/qr-code": "4.0.0",
+    "@rtdui/spotlight": "4.0.0",
     "@tabler/icons-react": "^2.42.0",
     "clsx": "^2.1.0",
     "i18next": "^23.10.1",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.0.1",
     "@remix-run/dev": "^2.8.1",
-    "@rtdui/tailwind-plugin": "3.1.1",
+    "@rtdui/tailwind-plugin": "4.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -67,5 +67,5 @@
   "engines": {
     "node": ">=20"
   },
-  "version": "3.1.1"
+  "version": "4.0.0"
 }
