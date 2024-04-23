@@ -21,5 +21,16 @@
 
     // Remix takes care of building everything in `remix build`.
     "noEmit": true
-  }
+  },
+  "references": [
+    { "path": "../packages/code-highlight" },
+    { "path": "../packages/core" },
+    { "path": "../packages/datatable" },
+    { "path": "../packages/dialogs" },
+    { "path": "../packages/editor" },
+    { "path": "../packages/hooks" },
+    { "path": "../packages/notifications" },
+    { "path": "../packages/qr-code" },
+    { "path": "../packages/spotlight" }
+  ]
 }

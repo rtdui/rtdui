@@ -23,7 +23,7 @@
     "lint": "eslint --cache ./packages/*/src/**/*.{ts,tsx} ./docs-site/app/**/*.{ts,tsx}",
     "build": "npm run clean:build && tsx scripts/build all",
     "clean": "npm run clean:build && npm run clean:docs",
-    "clean:build": "rimraf --glob ./packages/*/{esm,cjs,lib,node_modules} ./packages/*/styles.css ./packages/**/*.tsbuildinfo",
+    "clean:build": "rimraf --glob ./packages/*/{esm,cjs,lib,node_modules} ./packages/*/styles.css ./packages/*/styles.layer.css ./packages/**/*.tsbuildinfo",
     "clean:docs": "rimraf --glob ./docs/app/.docgen/*",
     "clean:tsbuildinfo": "rimraf --glob ./packages/**/*.tsbuildinfo",
     "clean:npm": "rimraf --glob ./**/node_modules",
