@@ -3365,6 +3365,15 @@
           "name": "React.ReactNode"
         }
       },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "label": {
         "defaultValue": null,
         "description": "",
@@ -12857,6 +12866,706 @@
         "required": false,
         "type": {
           "name": "string | undefined"
+        }
+      }
+    }
+  },
+  "TagsInput": {
+    "filePath": "D:/sources/rtdui/packages/core/src/TagsInput/Tagsinput.tsx",
+    "description": "",
+    "displayName": "@rtdui/core/TagsInput",
+    "props": {
+      "allowDuplicates": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether duplicate tags are allowed",
+        "name": "allowDuplicates",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "clearButtonProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the clear button",
+        "name": "clearButtonProps",
+        "required": false,
+        "type": {
+          "name": "ComboboxClearButtonProps | undefined"
+        }
+      },
+      "clearable": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether the clear button should be displayed in the right section when the component has value",
+        "name": "clearable",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "comboboxProps": {
+        "defaultValue": null,
+        "description": "Props passed down to <code>Combobox</code> component",
+        "name": "comboboxProps",
+        "required": false,
+        "type": {
+          "name": "ComboboxProps | undefined"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Data displayed in the dropdown",
+        "name": "data",
+        "required": false,
+        "type": {
+          "name": "ComboboxStringData | undefined"
+        }
+      },
+      "defaultDropdownOpened": {
+        "defaultValue": null,
+        "description": "Uncontrolled dropdown initial opened state",
+        "name": "defaultDropdownOpened",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "defaultSearchValue": {
+        "defaultValue": null,
+        "description": "Default search value",
+        "name": "defaultSearchValue",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Default value for uncontrolled component",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "description": {
+        "defaultValue": null,
+        "description": "Contents of <code>Input.Description</code> component. If not set, description is not rendered.",
+        "name": "description",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "descriptionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Description</code> component",
+        "name": "descriptionProps",
+        "required": false,
+        "type": {
+          "name": "Record<string, any> | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Sets <code>disabled</code> attribute on the <code>input</code> element",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "dropdownOpened": {
+        "defaultValue": null,
+        "description": "Controlled dropdown opened state",
+        "name": "dropdownOpened",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "error": {
+        "defaultValue": null,
+        "description": "Determines whether the input should have error styles and <code>aria-invalid</code> attribute",
+        "name": "error",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "errorProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Error</code> component",
+        "name": "errorProps",
+        "required": false,
+        "type": {
+          "name": "Record<string, any> | undefined"
+        }
+      },
+      "filter": {
+        "defaultValue": null,
+        "description": "Function based on which items are filtered and sorted",
+        "name": "filter",
+        "required": false,
+        "type": {
+          "name": "OptionsFilter | undefined"
+        }
+      },
+      "hiddenInputProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the hidden input",
+        "name": "hiddenInputProps",
+        "required": false,
+        "type": {
+          "name": "Omit<Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, \"ref\">, \"value\"> | undefined"
+        }
+      },
+      "hiddenInputValuesDivider": {
+        "defaultValue": {
+          "value": "\",\""
+        },
+        "description": "Divider used to separate values in the hidden input <code>value</code> attribute, <code>','</code> by default",
+        "name": "hiddenInputValuesDivider",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "Static id used as base to generate <code>aria-</code> attributes, by default generates random id",
+        "name": "id",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "inputContainer": {
+        "defaultValue": {
+          "value": "(children) => children"
+        },
+        "description": "Input container component",
+        "name": "inputContainer",
+        "required": false,
+        "type": {
+          "name": "((children: ReactNode) => ReactNode) | undefined"
+        }
+      },
+      "inputWrapperOrder": {
+        "defaultValue": {
+          "value": "['label', 'description', 'input', 'error']"
+        },
+        "description": "Controls order of the elements",
+        "name": "inputWrapperOrder",
+        "required": false,
+        "type": {
+          "name": "(\"input\" | \"label\" | \"error\" | \"description\")[] | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Contents of <code>Input.Label</code> component. If not set, label is not rendered.",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "labelElement": {
+        "defaultValue": {
+          "value": "\"label\""
+        },
+        "description": "<code>Input.Label</code> root element",
+        "name": "labelElement",
+        "required": false,
+        "type": {
+          "name": "\"div\" | \"label\" | undefined",
+          "raw": "\"div\" | \"label\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"div\""
+            },
+            {
+              "value": "\"label\""
+            }
+          ]
+        }
+      },
+      "labelProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Label</code> component",
+        "name": "labelProps",
+        "required": false,
+        "type": {
+          "name": "Record<string, any> | undefined"
+        }
+      },
+      "leftSection": {
+        "defaultValue": null,
+        "description": "Content section rendered on the left side of the input",
+        "name": "leftSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "leftSectionPointerEvents": {
+        "defaultValue": {
+          "value": "\"none\""
+        },
+        "description": "Sets <code>pointer-events</code> styles on the <code>rightSection</code> element",
+        "name": "leftSectionPointerEvents",
+        "required": false,
+        "type": {
+          "name": "PointerEvents | undefined",
+          "raw": "PointerEvents | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"inherit\""
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"all\""
+            },
+            {
+              "value": "\"-moz-initial\""
+            },
+            {
+              "value": "\"initial\""
+            },
+            {
+              "value": "\"revert\""
+            },
+            {
+              "value": "\"revert-layer\""
+            },
+            {
+              "value": "\"unset\""
+            },
+            {
+              "value": "\"auto\""
+            },
+            {
+              "value": "\"fill\""
+            },
+            {
+              "value": "\"painted\""
+            },
+            {
+              "value": "\"stroke\""
+            },
+            {
+              "value": "\"visible\""
+            },
+            {
+              "value": "\"visibleFill\""
+            },
+            {
+              "value": "\"visiblePainted\""
+            },
+            {
+              "value": "\"visibleStroke\""
+            }
+          ]
+        }
+      },
+      "leftSectionWidth": {
+        "defaultValue": null,
+        "description": "Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height",
+        "name": "leftSectionWidth",
+        "required": false,
+        "type": {
+          "name": "Width<string | number> | undefined"
+        }
+      },
+      "limit": {
+        "defaultValue": null,
+        "description": "Maximum number of options displayed at a time, <code>Infinity</code> by default",
+        "name": "limit",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "maxDropdownHeight": {
+        "defaultValue": null,
+        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default",
+        "name": "maxDropdownHeight",
+        "required": false,
+        "type": {
+          "name": "string | number | undefined"
+        }
+      },
+      "maxTags": {
+        "defaultValue": {
+          "value": "Infinity"
+        },
+        "description": "Maximum number of tags",
+        "name": "maxTags",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "multiline": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether the input can have multiple lines, for example when <code>component=\"textarea\"</code>",
+        "name": "multiline",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called whe value changes",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((value: string[]) => void) | undefined"
+        }
+      },
+      "onClear": {
+        "defaultValue": null,
+        "description": "Called whe the clear button is clicked",
+        "name": "onClear",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onDropdownClose": {
+        "defaultValue": null,
+        "description": "Called when dropdown closes",
+        "name": "onDropdownClose",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onDropdownOpen": {
+        "defaultValue": null,
+        "description": "Called when dropdown opens",
+        "name": "onDropdownOpen",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onDuplicate": {
+        "defaultValue": null,
+        "description": "Called when user tries to submit a duplicated tag",
+        "name": "onDuplicate",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "onOptionSubmit": {
+        "defaultValue": null,
+        "description": "Called when option is submitted from dropdown with mouse click or <code>Enter</code> key",
+        "name": "onOptionSubmit",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "onRemove": {
+        "defaultValue": null,
+        "description": "Called when tag is removed",
+        "name": "onRemove",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "onSearchChange": {
+        "defaultValue": null,
+        "description": "Called when search changes",
+        "name": "onSearchChange",
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "pointer": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether the input should have <code>cursor: pointer</code> style",
+        "name": "pointer",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "radius": {
+        "defaultValue": {
+          "value": "\"md\""
+        },
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "renderOption": {
+        "defaultValue": null,
+        "description": "A function to render content of the option, replaces the default content of the option",
+        "name": "renderOption",
+        "required": false,
+        "type": {
+          "name": "((input: ComboboxLikeRenderOptionInput<ComboboxStringItem>) => ReactNode) | undefined"
+        }
+      },
+      "required": {
+        "defaultValue": null,
+        "description": "Sets <code>required</code> attribute on the <code>input</code> element",
+        "name": "required",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "rightSection": {
+        "defaultValue": null,
+        "description": "Content section rendered on the right side of the input",
+        "name": "rightSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "rightSectionPointerEvents": {
+        "defaultValue": {
+          "value": "\"none\""
+        },
+        "description": "Sets <code>pointer-events</code> styles on the <code>rightSection</code> element",
+        "name": "rightSectionPointerEvents",
+        "required": false,
+        "type": {
+          "name": "PointerEvents | undefined",
+          "raw": "PointerEvents | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"inherit\""
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"all\""
+            },
+            {
+              "value": "\"-moz-initial\""
+            },
+            {
+              "value": "\"initial\""
+            },
+            {
+              "value": "\"revert\""
+            },
+            {
+              "value": "\"revert-layer\""
+            },
+            {
+              "value": "\"unset\""
+            },
+            {
+              "value": "\"auto\""
+            },
+            {
+              "value": "\"fill\""
+            },
+            {
+              "value": "\"painted\""
+            },
+            {
+              "value": "\"stroke\""
+            },
+            {
+              "value": "\"visible\""
+            },
+            {
+              "value": "\"visibleFill\""
+            },
+            {
+              "value": "\"visiblePainted\""
+            },
+            {
+              "value": "\"visibleStroke\""
+            }
+          ]
+        }
+      },
+      "rightSectionWidth": {
+        "defaultValue": null,
+        "description": "Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height",
+        "name": "rightSectionWidth",
+        "required": false,
+        "type": {
+          "name": "Width<string | number> | undefined"
+        }
+      },
+      "searchValue": {
+        "defaultValue": null,
+        "description": "Controlled search value",
+        "name": "searchValue",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "selectFirstOptionOnChange": {
+        "defaultValue": null,
+        "description": "Determines whether the first option should be selected when value changes, <code>false</code> by default",
+        "name": "selectFirstOptionOnChange",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "\"sm\""
+        },
+        "description": "Controls input <code>height</code> and horizontal <code>padding</code>",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ left?: string | undefined; input?: string | undefined; right?: string | undefined; } | undefined"
+        }
+      },
+      "splitChars": {
+        "defaultValue": {
+          "value": "[',']"
+        },
+        "description": "Characters that should trigger tags split",
+        "name": "splitChars",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Controlled component value",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": {
+          "value": "\"outline\""
+        },
+        "description": "input variant",
+        "name": "variant",
+        "required": false,
+        "type": {
+          "name": "\"outline\" | \"default\" | \"ghost\" | undefined",
+          "raw": "\"outline\" | \"default\" | \"ghost\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"outline\""
+            },
+            {
+              "value": "\"default\""
+            },
+            {
+              "value": "\"ghost\""
+            }
+          ]
+        }
+      },
+      "withAria": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether <code>aria-</code> and other accessibility attributes should be added to the input",
+        "name": "withAria",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "withAsterisk": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Determines whether the required asterisk should be displayed. Overrides <code>required</code> prop. Does not add required attribute to the input.",
+        "name": "withAsterisk",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "withErrorStyles": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether the input should have red border and red text color when the <code>error</code> prop is set",
+        "name": "withErrorStyles",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "withScrollArea": {
+        "defaultValue": null,
+        "description": "Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default",
+        "name": "withScrollArea",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "wrapperProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the root element of the <code>Input</code> component",
+        "name": "wrapperProps",
+        "required": false,
+        "type": {
+          "name": "Record<string, any> | undefined"
         }
       }
     }
