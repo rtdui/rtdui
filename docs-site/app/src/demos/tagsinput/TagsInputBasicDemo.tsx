@@ -30,9 +30,7 @@ export default function Demo() {
         <Switch
           label="Clearable"
           checked={state.clearable}
-          onChange={(val) =>
-            setState((prev) => ({ ...prev, allowDuplicates: val }))
-          }
+          onChange={(val) => setState((prev) => ({ ...prev, clearable: val }))}
         />
         <Switch
           label="Allow duplicates"
