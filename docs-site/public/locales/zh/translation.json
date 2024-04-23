@@ -64,6 +64,7 @@
     "autoComplete": "AutoComplete (自动完成)",
     "select": "Select (单选框)",
     "multiSelect": "MutilSelect (多选框)",
+    "tagsInput": "TagsInput (标记输入)",
     "floatingSelect": "FloatingSelect (浮动选择)",
     "slider": "Slider (滑块)",
     "swap": "Swap (切换)",

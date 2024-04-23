@@ -22,6 +22,7 @@ import democodes from "../src/assets/codegen.json";
 import menuData from "../src/assets/menuData.json";
 import { IconTranslate } from "../src/assets/IconTranslate";
 import "katex/dist/katex.css";
+import { Link } from "@remix-run/react";
 
 export default function Layout() {
   const toggleRef = React.useRef<any>(null!);
@@ -196,7 +197,12 @@ export default function Layout() {
       drawer={
         <>
           <div className="h-16 bg-base-200 flex items-center p-4 sticky top-0 z-20">
-            <a href="/">RTD UI</a>
+            <a href="/" className="flex-1">
+              RTD UI
+            </a>
+            <Link to="/changelog" className="link">
+              v4.1
+            </Link>
           </div>
           <NavMenu
             data={menuData as any}

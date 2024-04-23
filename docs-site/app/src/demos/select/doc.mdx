@@ -13,13 +13,94 @@ import Demo from "../../components/Demo";
 import SelectSizeDemo from "./SelectSizeDemo";
 import SelectColorDemo from "./SelectColorDemo";
 import SelectLabelDemo from "./SelectLabelDemo";
-import SelectMultipleDemo from "./SelectMultipleDemo";
 import SelectSectionDemo from "./SelectSectionDemo";
 import SelectDisabledDemo from "./SelectDisabledDemo";
 import SelectReadonlyDemo from "./SelectReadonlyDemo";
 import SelectInFormDemo from "./SelectInFormDemo";
 
 # 使用
+
+`Select`组件由`InputBase`和`Combobox`构建
+
+## Data 格式
+
+`MultiSelect`的`data`属性支持下列格式:
+
+字符串数组:
+
+```tsx
+import { Select } from "@rtdui/core";
+
+function Demo() {
+  return <Select data={["React", "Angular"]} />;
+}
+```
+
+对象数组, 对象包含value, label 和可选的disabled键:
+
+```tsx
+import { Select } from "@rtdui/core";
+
+function Demo() {
+  return (
+    <Select
+      data={[
+        { value: "react", label: "React" },
+        { value: "vue", label: "Vue" },
+        { value: "ng", label: "Angular", disabled: true },
+      ]}
+    />
+  );
+}
+```
+
+分组对象数组, 分组对象包含group, items键, items的值为字符串数组或对象数组.
+
+分组对象数组, items为字符串数组:
+
+```tsx
+import { Select } from "@rtdui/core";
+
+function Demo() {
+  return (
+    <Select
+      data={[
+        { group: "Frontend", items: ["React", "Angular"] },
+        { group: "Backend", items: ["Express", "Django"] },
+      ]}
+    />
+  );
+}
+```
+
+分组对象数组, items为对象数组:
+
+```tsx
+import { Select } from "@rtdui/core";
+
+function Demo() {
+  return (
+    <Select
+      data={[
+        {
+          group: "Frontend",
+          items: [
+            { value: "react", label: "React" },
+            { value: "ng", label: "Angular", disabled: true },
+          ],
+        },
+        {
+          group: "Backend",
+          items: [
+            { value: "express", label: "Express" },
+            { value: "django", label: "Django" },
+          ],
+        },
+      ]}
+    />
+  );
+}
+```
 
 ## 尺寸
 
@@ -32,10 +113,6 @@ import SelectInFormDemo from "./SelectInFormDemo";
 ## 标签和帮助文本
 
 <Demo data={{ Component: SelectLabelDemo }} />
-
-## 多选
-
-<Demo data={{ Component: SelectMultipleDemo }} />
 
 ## 左侧节和右侧节
 
@@ -52,3 +129,55 @@ import SelectInFormDemo from "./SelectInFormDemo";
 ## 在`<form>`中使用
 
 <Demo data={{ Component: SelectInFormDemo }} />
+
+## 用在`Popover`内
+
+嵌套`Popover`要求子`Popover`必须禁用`withPortal`属性. 如果`Portal`没有被禁用, 点击子`Popover`外部会关闭嵌套的所有`Popover`
+
+所有基于`Combobox`的组件(间接基于`Popover`), 如`AutoComplete`,`Select`,`MultiSelect`, `TagsInput`内部都使用了`Popover`, 以及直接基于`Popover`构建的组件, 如`Tooltip`组件, 这些组件用在`Popover`组件内, 必须设置它们的`withPortal`属性为`false`
+
+```tsx
+import { Button, Popover, Select } from "@rtdui/core";
+
+function Demo() {
+  return (
+    <Popover width={300} position="bottom" withArrow shadow="md">
+      <Popover.Target>
+        <Button>Toggle popover</Button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <AutoComplete
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="DatePickerInput within Popover"
+          placeholder="DatePickerInput within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <Select
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="Select within Popover"
+          placeholder="Select within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <MultiSelect
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="Select within Popover"
+          placeholder="Select within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <TagsInput
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="Select within Popover"
+          placeholder="Select within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <Tooltip
+          withinPortal={false} // 直接基于Popover的通过withinPortal禁用
+          tip="click me"
+        >
+          <button></button>
+        </Tooltip>
+      </Popover.Dropdown>
+    </Popover>
+  );
+}
+```

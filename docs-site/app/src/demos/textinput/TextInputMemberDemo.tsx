@@ -11,4 +11,4 @@ export default function Demo() {
     />
   );
 }
-Demo.displayName = "TextInputLabelDemo";
+Demo.displayName = "TextInputMemberDemo";

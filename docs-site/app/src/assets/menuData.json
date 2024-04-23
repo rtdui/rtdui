@@ -93,6 +93,11 @@
         "label": "multiSelect",
         "url": "/components/multiselect",
         "flag": "v4 new"
+      },
+      {
+        "label": "tagsInput",
+        "url": "/components/tagsinput",
+        "flag": "v4 new"
       }
     ]
   },

@@ -115,7 +115,7 @@ export default function Demo() {
 启用或禁用中间件:
 
 ```tsx
-import { Popover } from "@mantine/core";
+import { Popover } from "@rtdui/core";
 
 function Demo() {
   return (
@@ -124,6 +124,58 @@ function Demo() {
       position="bottom"
     >
       {/* Popover content */}
+    </Popover>
+  );
+}
+```
+
+## 嵌套使用
+
+嵌套`Popover`要求子`Popover`必须禁用`withPortal`属性. 如果子`Portal`没有被禁用, 点击子`Popover`外部会关闭嵌套的所有`Popover`
+
+所有基于`Combobox`的组件(间接基于`Popover`), 如`AutoComplete`,`Select`,`MultiSelect`, `TagsInput`内部都使用了`Popover`, 以及直接基于`Popover`构建的组件, 如`Tooltip`组件, 这些组件用在`Popover`组件内, 必须设置它们的`withPortal`属性为`false`
+
+```tsx
+import { Button, Popover, Select } from "@rtdui/core";
+
+function Demo() {
+  return (
+    <Popover width={300} position="bottom" withArrow shadow="md">
+      <Popover.Target>
+        <Button>Toggle popover</Button>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <AutoComplete
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="DatePickerInput within Popover"
+          placeholder="DatePickerInput within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <Select
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="Select within Popover"
+          placeholder="Select within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <MultiSelect
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="Select within Popover"
+          placeholder="Select within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <TagsInput
+          comboboxProps={{ withinPortal: false }} // 基于Combobox的通过comboboxProps.withinPortal禁用
+          label="Select within Popover"
+          placeholder="Select within Popover"
+          data={["React", "Angular", "Svelte", "Vue"]}
+        />
+        <Tooltip
+          withinPortal={false} // 直接基于Popover的通过withinPortal禁用
+          tip="click me"
+        >
+          <button></button>
+        </Tooltip>
+      </Popover.Dropdown>
     </Popover>
   );
 }

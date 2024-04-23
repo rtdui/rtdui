@@ -1,48 +1,63 @@
 ---
 meta:
-  - title: AutoComplete Component
-  - description: AutoComplete document, demo and API
+  - title: TagsInput Component
+  - description: TagsInput document, demo and API
 headers:
   Cache-Control: no-cache
 handle:
-  source: "app/src/components/core/AutoComplete.tsx"
-  componentName: "AutoComplete"
+  source: "app/src/components/core/TagsInput.tsx"
+  componentName: "TagsInput"
 ---
 
 import Demo from "../../components/Demo";
-import AutoCompleteBasicDemo from "./AutoCompleteBasicDemo";
-import AutoCompleteDisabledDemo from "./AutoCompleteDisabledDemo";
-import AutoCompleteReadonlyDemo from "./AutoCompleteReadonlyDemo";
-import AutoCompleteLongListDemo from "./AutoCompleteLongListDemo";
-import AutoCompleteControlledDemo from "./AutoCompleteControlledDemo";
-import AutoCompleteInFormDemo from "./AutoCompleteInFormDemo";
+import TagsInputBasicDemo from "./TagsInputBasicDemo";
+import TagsInputSuggestionsDemo from "./TagsInputSuggestionsDemo";
+import TagsInputRenderOptionDemo from "./TagsInputRenderOptionDemo";
 
 # 基本
 
-`AutoComplete`组件由`TextInput`和`Combobox`构建.
+`TagsInput`组件基于`ChipsInput`(基于`InputBase`)和`Combobox`构建, 功能上就像是`AutoComponent`和`MultiSelect`的混合体, 既能提供下列建议列表和自由输入, 也渲染为一个个的Chip.
+
+`TagsInput`组件继承了`InputBase`和`Combobox`的功能, 本文档没有包含所有用例, 详细请查看`Input`和`Combobox`文档
+
+# 使用
+
+<Demo data={{ Component: TagsInputBasicDemo }} />
+
+## 受控与非受控模式
+
+`TagsInput`的 `value`属性为受控属性, `defaultValue`属性为非受控属性. `onChange`是回调属性.
+
+> 注意: `value`属性必须是字符串数组, 其它类型不受支持. `onChange`函数的参数也是字符串数组.
+
+## 下拉建议列表
+
+和`AutoComplete`组件一样, 使用`TagsInput`的`data`属性可以实现带下拉建议列表, 同时可以自由输入.
+
+<Demo data={{ Component: TagsInputSuggestionsDemo }} />
 
 ## Data 格式
 
-`MultiSelect`的`data`属性支持下列格式:
+`TagsInput`的`data`属性与`AutoComplete`的`data`属性相同, 支持下列格式:
 
 字符串数组:
 
 ```tsx
-import { AutoComplete } from "@rtdui/core";
+import { TagsInput } from "@rtdui/core";
 
 function Demo() {
-  return <AutoComplete data={["React", "Angular"]} />;
+  return <TagsInput data={["React", "Angular"]} />;
 }
 ```
 
 分组对象数组, 分组对象包含group, items键, items的值为字符串数组:
 
 ```tsx
-import { AutoComplete } from "@rtdui/core";
+import { TagsInput } from "@rtdui/core";
 
 function Demo() {
   return (
-    <AutoComplete
+    <TagsInput
       data={[
         { group: "Frontend", items: ["React", "Angular"] },
         { group: "Backend", items: ["Express", "Django"] },
@@ -52,39 +67,35 @@ function Demo() {
 }
 ```
 
-# 使用
+## 分片字符
 
-AutoComplete 支持键盘导航:
+默认的, `TagsInput`使用逗号(`,`)作为分片字符, 可以通过`splitChars`属性修改.
 
-- 在 AutoComplete 得到焦点时, 下拉列表会立即显示(可以按键盘的上/下箭头键滚动下拉列表), 一旦用户输入会随着输入自动过滤列表项.
+> 注意: `splitChars`属性中的字符将不可作为最终的输入值, 因此需谨慎选择.
 
-- 当下拉列表的某一项被键盘导航激活时, 按下键盘的回车键(`Enter`)则会自动将其作为输入值
+`splitChars`同时支持输入和粘贴操作, 输入时作为分片确认键, 粘贴时会根据`splitChars`属性进行分片.
 
-## 基本例子
+> tips: 输入时键盘的Enter键也可作为分片确认键.
 
-<Demo data={{ Component: AutoCompleteBasicDemo }} />
+```tsx
+import { TagsInput } from "@rtdui/core";
 
-## disabled(禁用)
+function Demo() {
+  return (
+    <TagsInput
+      label="Press Enter to submit a tag"
+      placeholder="Enter tag"
+      splitChars={[",", ";"]}
+    />
+  );
+}
+```
 
-<Demo data={{ Component: AutoCompleteDisabledDemo }} />
+## renderOption
 
-## 只读
+`renderOption`回调属性允许你自定义option的渲染. 它会被传递一个对象, 包含解析后的option对象. 这个函数必须返回一个React node.
 
-<Demo data={{ Component: AutoCompleteReadonlyDemo }} />
-
-## 长列表滚动
-
-<Demo data={{ Component: AutoCompleteLongListDemo }} />
-
-## 受控模式
-
-<Demo data={{ Component: AutoCompleteControlledDemo }} />
-
-## 在 form 中使用 AutoComplete
-
-AutoComplete 可以作为`<from>`表单控件使用, 使用方式与`input`元素一样:
-
-<Demo data={{ Component: AutoCompleteInFormDemo }} />
+<Demo data={{ Component: TagsInputRenderOptionDemo }} />
 
 ## 用在`Popover`内
 

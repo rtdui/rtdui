@@ -47,7 +47,7 @@ Combobox.HiddenInput - 隐藏的表单域, 用于存储选择的实际值用于�
 `useCombobox` 钩子用于创建 combobox 的存储对象. 该存储对象包含了组件的当前状态和更新处理函数. 创建的存储必须传递给Combobox的`store`属性:
 
 ```tsx
-import { Combobox, useCombobox } from "@mantine/core";
+import { Combobox, useCombobox } from "@rtdui/core";
 
 function Demo() {
   const combobox = useCombobox();
@@ -173,7 +173,7 @@ import type { ComboboxStore } from "@rtdui/core";
 可以在`useCombobox`的选项参数中使用存储中的处理函数, 如:
 
 ```tsx
-import { Combobox, useCombobox } from "@mantine/core";
+import { Combobox, useCombobox } from "@rtdui/core";
 
 function Demo() {
   const combobox = useCombobox({

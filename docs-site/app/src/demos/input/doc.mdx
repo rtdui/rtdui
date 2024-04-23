@@ -82,7 +82,7 @@ Input附带了一组子组件:
 注意正确的使用:
 
 ```tsx
-import { Input, TextInput } from "@mantine/core";
+import { Input, TextInput } from "@rtdui/core";
 
 // Incorrect usage, input is not accessible
 function Incorrect() {
@@ -105,6 +105,8 @@ function Correct() {
 # InputBase 组件
 
 `InputBase`组件是用`Input.Wrapper`和`Input`正确封装好了的组件, 所有高层的输入组件(如:TextInput,NumberInput,JsonInput,Textarea,Select等)都基于`InputBase`构建的.
+
+`InputBase`组件也是一个多态组件.
 
 你可以基于`InputBase`组件构建自己的输入组件.
 

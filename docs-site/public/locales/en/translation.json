@@ -64,6 +64,7 @@
     "autoComplete": "AutoComplete",
     "select": "Select",
     "multiSelect": "MutilSelect",
+    "tagsInput": "TagsInput",
     "floatingSelect": "FloatingSelect",
     "slider": "Slider",
     "swap": "Swap",
