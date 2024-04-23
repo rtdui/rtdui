@@ -23,6 +23,7 @@ export interface ChipProps
   deleteIcon?: React.ReactNode;
   label?: React.ReactNode;
   onDelete?: (e?: any) => void;
+  disabled?: boolean;
 }
 
 /** ref属性会转发至内部的button元素 */
@@ -36,6 +37,7 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
     onClick,
     onDelete,
     deleteIcon,
+    disabled,
     children,
     ...other
   } = props;
@@ -61,7 +63,7 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
         },
         className
       )}
-      onClick={onClick}
+      onClick={!disabled ? onClick : undefined}
       {...other}
     >
       {startIcon}
@@ -73,10 +75,15 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
             "w-4 h-4": size === "small",
           })}
           color={color}
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete();
-          }}
+          disabled={disabled}
+          onClick={
+            !disabled
+              ? (e) => {
+                  e.stopPropagation();
+                  onDelete();
+                }
+              : undefined
+          }
         >
           {deleteIcon || (
             <IconX

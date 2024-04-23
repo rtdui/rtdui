@@ -1,5 +1,5 @@
 import { forwardRef, useEffect } from "react";
-import { useId, useUncontrolled } from "@mantine/hooks";
+import { useId, useUncontrolled } from "@rtdui/hooks";
 import {
   Combobox,
   ComboboxLikeProps,

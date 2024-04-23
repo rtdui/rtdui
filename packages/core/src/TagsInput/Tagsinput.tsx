@@ -1,28 +1,33 @@
-import { forwardRef, useEffect } from "react";
+import { forwardRef } from "react";
 import { useId, useUncontrolled } from "@rtdui/hooks";
 import {
   Combobox,
   ComboboxClearButtonProps,
-  ComboboxItem,
   ComboboxLikeProps,
   ComboboxLikeRenderOptionInput,
+  ComboboxStringData,
+  ComboboxStringItem,
   getOptionsLockup,
   getParsedComboboxData,
   OptionsDropdown,
   useCombobox,
 } from "../Combobox";
+import { InputBaseOwnProps } from "../InputBase";
 import { Chip } from "../Chip";
 import { ChipsInput } from "../ChipsInput";
-import { filterPickedValues } from "./filter-picked-values";
-import { InputBaseOwnProps } from "../InputBase";
+import { filterPickedTags } from "./filter-picked-tags";
+import { getSplittedTags } from "./get-splitted-tags";
 
-export interface MultiSelectProps
-  extends ComboboxLikeProps,
-    Omit<InputBaseOwnProps, "value" | "defaultValue" | "onChange">,
+export interface TagsInputProps
+  extends InputBaseOwnProps,
+    Omit<ComboboxLikeProps, "data">,
     Omit<
       React.ComponentPropsWithoutRef<"input">,
       "size" | "value" | "defaultValue" | "onChange"
     > {
+  /** Data displayed in the dropdown */
+  data?: ComboboxStringData;
+
   /** Controlled component value */
   value?: string[];
 
@@ -32,13 +37,11 @@ export interface MultiSelectProps
   /** Called whe value changes */
   onChange?: (value: string[]) => void;
 
-  /** Called when the clear button is clicked */
-  onClear?: () => void;
+  /** Called when tag is removed */
+  onRemove?: (value: string) => void;
 
-  /** Determines whether the select should be searchable
-   * @default false
-   */
-  searchable?: boolean;
+  /** Called whe the clear button is clicked */
+  onClear?: () => void;
 
   /** Controlled search value */
   searchValue?: string;
@@ -49,18 +52,23 @@ export interface MultiSelectProps
   /** Called when search changes */
   onSearchChange?: (value: string) => void;
 
-  /** Determines whether check icon should be displayed near the selected option label
-   * @default true
+  /** Maximum number of tags
+   * @default Infinity
    */
-  withCheckIcon?: boolean;
+  maxTags?: number;
 
-  /** Position of the check icon relative to the option label
-   * @default "left"
+  /** Determines whether duplicate tags are allowed
+   * @default false
    */
-  checkIconPosition?: "left" | "right";
+  allowDuplicates?: boolean;
 
-  /** Message displayed when no option matched current search query, only applicable when `searchable` prop is set */
-  nothingFoundMessage?: React.ReactNode;
+  /** Called when user tries to submit a duplicated tag */
+  onDuplicate?: (value: string) => void;
+
+  /** Characters that should trigger tags split
+   * @default[',']
+   */
+  splitChars?: string[];
 
   /** Determines whether the clear button should be displayed in the right section when the component has value
    * @default false
@@ -73,41 +81,31 @@ export interface MultiSelectProps
   /** Props passed down to the hidden input */
   hiddenInputProps?: Omit<React.ComponentPropsWithoutRef<"input">, "value">;
 
-  /** Divider used to separate values in the hidden input `value` attribute
+  /** Divider used to separate values in the hidden input `value` attribute, `','` by default
    * @default ","
    */
   hiddenInputValuesDivider?: string;
 
   /** A function to render content of the option, replaces the default content of the option */
   renderOption?: (
-    item: ComboboxLikeRenderOptionInput<ComboboxItem>
+    input: ComboboxLikeRenderOptionInput<ComboboxStringItem>
   ) => React.ReactNode;
-
-  autoComplete?: string;
-
-  /** Called with `value` of the removed item */
-  onRemove?: (value: string) => void;
-
-  /** Maximum number of values
-   * @default Infinity
-   */
-  maxValues?: number;
-  /** Determines whether picked options should be removed from the options list
-   * @default false
-   */
-  hidePickedOptions?: boolean;
 }
 
-export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
+export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>(
   (props, ref) => {
     const {
       className,
       style,
-      size = "sm",
+      size,
       value,
       defaultValue,
       onChange,
       onKeyDown,
+      maxTags = Infinity,
+      allowDuplicates = false,
+      onDuplicate,
+      variant,
       data,
       dropdownOpened,
       defaultDropdownOpened,
@@ -125,32 +123,41 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
       onSearchChange,
       readOnly,
       disabled,
+      splitChars = [","],
       onFocus,
       onBlur,
       onPaste,
+      radius,
       rightSection,
+      rightSectionWidth,
+      rightSectionPointerEvents,
       leftSection,
+      leftSectionWidth,
+      leftSectionPointerEvents,
+      inputContainer,
+      inputWrapperOrder,
+      withAsterisk,
+      required,
+      labelProps,
+      descriptionProps,
+      errorProps,
+      wrapperProps,
+      description,
       label,
       error,
-      maxValues = Infinity,
-      searchable,
-      nothingFoundMessage,
-      withCheckIcon = true,
-      checkIconPosition = "left",
-      hidePickedOptions,
+      withErrorStyles,
       name,
       form,
       id,
+      autoComplete,
+      type,
       clearable,
       clearButtonProps,
       hiddenInputProps,
-      placeholder,
       hiddenInputValuesDivider = ",",
-      required,
       renderOption,
       onRemove,
       onClear,
-      autoComplete = "off",
       ...others
     } = props;
 
@@ -187,62 +194,111 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
     ) => {
       onKeyDown?.(event);
 
-      if (event.key === " " && !searchable) {
+      const inputValue = _searchValue.trim();
+      const { length } = inputValue;
+
+      if (splitChars!.includes(event.key) && length > 0) {
+        setValue(
+          getSplittedTags({
+            splitChars,
+            allowDuplicates,
+            maxTags,
+            value: _searchValue,
+            currentTags: _value,
+          })
+        );
+        setSearchValue("");
         event.preventDefault();
-        combobox.toggleDropdown();
+      }
+
+      if (
+        event.key === "Enter" &&
+        length > 0 &&
+        !event.nativeEvent.isComposing
+      ) {
+        event.preventDefault();
+        const isDuplicate = _value.some(
+          (tag) => tag.toLowerCase() === inputValue.toLowerCase()
+        );
+
+        if (isDuplicate) {
+          onDuplicate?.(inputValue);
+        }
+
+        if (
+          (!isDuplicate || (isDuplicate && allowDuplicates)) &&
+          _value.length < maxTags!
+        ) {
+          onOptionSubmit?.(inputValue);
+          setSearchValue("");
+
+          if (inputValue.length > 0) {
+            setValue([..._value, inputValue]);
+          }
+        }
       }
 
       if (
         event.key === "Backspace" &&
-        _searchValue.length === 0 &&
-        _value.length > 0
+        length === 0 &&
+        _value.length > 0 &&
+        !event.nativeEvent.isComposing
       ) {
         onRemove?.(_value[_value.length - 1]);
         setValue(_value.slice(0, _value.length - 1));
       }
     };
 
+    const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+      onPaste?.(event);
+      event.preventDefault();
+
+      if (event.clipboardData) {
+        const pastedText = event.clipboardData.getData("text/plain");
+        setValue(
+          getSplittedTags({
+            splitChars,
+            allowDuplicates,
+            maxTags,
+            value: pastedText,
+            currentTags: _value,
+          })
+        );
+        setSearchValue("");
+      }
+    };
+
     const values = _value.map((item, index) => (
       <Chip
-        key={`${item}-${index}`}
         size="small"
+        key={`${item}-${index}`}
         onDelete={
-          !readOnly && !optionsLockup[item]?.disabled
+          !readOnly
             ? () => {
                 setValue(_value.filter((i) => item !== i));
                 onRemove?.(item);
               }
             : undefined
         }
-        label={optionsLockup[item]?.label || item}
+        label={item}
+        disabled={disabled}
       />
     ));
-
-    useEffect(() => {
-      if (selectFirstOptionOnChange) {
-        combobox.selectFirstOption();
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectFirstOptionOnChange, _value]);
 
     const clearButton = clearable &&
       _value.length > 0 &&
       !disabled &&
       !readOnly && (
         <Combobox.ClearButton
+          size={size as string}
           {...clearButtonProps}
           onClear={() => {
-            onClear?.();
             setValue([]);
             setSearchValue("");
+            onClear?.();
           }}
         />
       );
-
-    const filteredData = filterPickedValues({
-      data: parsedData,
-      value: _value,
-    });
 
     return (
       <>
@@ -253,14 +309,8 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
           onOptionSubmit={(val) => {
             onOptionSubmit?.(val);
             setSearchValue("");
-            combobox.updateSelectedOptionIndex("selected");
-
-            if (_value.includes(optionsLockup[val].value)) {
-              setValue(_value.filter((v) => v !== optionsLockup[val].value));
-              onRemove?.(optionsLockup[val].value);
-            } else if (_value.length < maxValues!) {
-              setValue([..._value, optionsLockup[val].value]);
-            }
+            _value.length < maxTags! &&
+              setValue([..._value, optionsLockup[val].label]);
           }}
           {...comboboxProps}
         >
@@ -269,27 +319,31 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
               size={size}
               className={className}
               style={style}
+              variant={variant}
               disabled={disabled}
-              rightSection={
-                rightSection ||
-                clearButton || <Combobox.Chevron size={size} error={error} />
+              radius={radius}
+              rightSection={rightSection || clearButton}
+              rightSectionWidth={rightSectionWidth}
+              rightSectionPointerEvents={
+                clearButton ? "auto" : rightSectionPointerEvents
               }
-              rightSectionPointerEvents={clearButton ? "auto" : undefined}
-              rightSectionWidth="32px"
               leftSection={leftSection}
+              leftSectionWidth={leftSectionWidth}
+              leftSectionPointerEvents={leftSectionPointerEvents}
+              inputContainer={inputContainer}
+              inputWrapperOrder={inputWrapperOrder}
+              withAsterisk={withAsterisk}
+              required={required}
+              labelProps={labelProps}
+              descriptionProps={descriptionProps}
+              errorProps={errorProps}
+              wrapperProps={wrapperProps}
+              description={description}
               label={label}
               error={error}
               multiline
-              slots={{
-                input: !searchable ? "cursor-pointer" : undefined,
-              }}
-              pointer={!searchable}
-              onClick={() =>
-                searchable ? combobox.openDropdown() : combobox.toggleDropdown()
-              }
-              data-expanded={combobox.dropdownOpened || undefined}
+              withErrorStyles={withErrorStyles}
               id={_id}
-              required={required}
             >
               <Chip.Group disabled={disabled}>
                 {values}
@@ -297,28 +351,24 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
                   <ChipsInput.Field
                     {...others}
                     ref={ref}
-                    id={_id}
-                    placeholder={placeholder}
-                    type={!searchable && !placeholder ? "hidden" : "visible"}
+                    onKeyDown={handleInputKeydown}
                     onFocus={(event) => {
                       onFocus?.(event);
-                      searchable && combobox.openDropdown();
+                      combobox.openDropdown();
                     }}
                     onBlur={(event) => {
                       onBlur?.(event);
                       combobox.closeDropdown();
-                      setSearchValue("");
                     }}
-                    onKeyDown={handleInputKeydown}
+                    onPaste={handlePaste}
                     value={_searchValue}
-                    onChange={(event) => {
-                      setSearchValue(event.currentTarget.value);
-                      searchable && combobox.openDropdown();
-                      selectFirstOptionOnChange && combobox.selectFirstOption();
-                    }}
+                    onChange={(event) =>
+                      setSearchValue(event.currentTarget.value)
+                    }
+                    required={required && _value.length === 0}
                     disabled={disabled}
-                    readOnly={readOnly || !searchable}
-                    pointer={!searchable}
+                    readOnly={readOnly}
+                    id={_id}
                   />
                 </Combobox.EventsTarget>
               </Chip.Group>
@@ -326,33 +376,22 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
           </Combobox.DropdownTarget>
 
           <OptionsDropdown
-            data={hidePickedOptions ? filteredData : parsedData}
+            data={filterPickedTags({ data: parsedData, value: _value })}
             hidden={readOnly || disabled}
             filter={filter}
             search={_searchValue}
             limit={limit}
-            hiddenWhenEmpty={
-              !searchable ||
-              !nothingFoundMessage ||
-              (hidePickedOptions &&
-                filteredData.length === 0 &&
-                _searchValue.trim().length === 0)
-            }
+            hiddenWhenEmpty
             maxDropdownHeight={maxDropdownHeight}
-            filterOptions={searchable}
-            value={_value}
-            checkIconPosition={checkIconPosition}
-            withCheckIcon={withCheckIcon}
-            nothingFoundMessage={nothingFoundMessage}
             labelId={`${_id}-label`}
             renderOption={renderOption}
           />
         </Combobox>
         <Combobox.HiddenInput
           name={name}
-          valuesDivider={hiddenInputValuesDivider}
-          value={_value}
           form={form}
+          value={_value}
+          valuesDivider={hiddenInputValuesDivider}
           disabled={disabled}
           {...hiddenInputProps}
         />
@@ -361,4 +400,4 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>(
   }
 );
 
-MultiSelect.displayName = "@rtdui/core/MultiSelect";
+TagsInput.displayName = "@rtdui/core/TagsInput";

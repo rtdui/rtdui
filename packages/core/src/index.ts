@@ -66,3 +66,5 @@ export * from "./MultiSelect";
 export * from "./VisuallyHidden";
 export * from "./Input";
 export * from "./InputBase";
+
+export * from "./TagsInput";

@@ -1,5 +1,5 @@
 import { forwardRef, useRef } from "react";
-import { useMergedRef } from "@mantine/hooks";
+import { useMergedRef } from "@rtdui/hooks";
 import clsx from "clsx";
 import { useFloatingIndicator } from "./use-floating-indicator";
 import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";

@@ -39,6 +39,7 @@ export const ChipsInputField = forwardRef<
           "absolute left-0 top-0 h-px w-px opacity-0 pointer-events-none":
             type === "hidden" || type === "auto",
           "focus:static focus:h-4 focus:opacity-100": type === "auto",
+          "input-disabled": disabled,
         },
         className
       )}

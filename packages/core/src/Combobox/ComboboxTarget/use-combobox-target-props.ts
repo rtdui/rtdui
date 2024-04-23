@@ -99,7 +99,7 @@ export function useComboboxTargetProps({
           : undefined,
         autoComplete,
         "data-expanded": ctx.store.dropdownOpened || undefined,
-        "data-mantine-stop-propagation": ctx.store.dropdownOpened || undefined,
+        "data-stop-propagation": ctx.store.dropdownOpened || undefined,
       }
     : {};
 

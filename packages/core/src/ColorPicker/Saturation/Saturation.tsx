@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import { clampUseMovePosition, useMove, UseMovePosition } from "@mantine/hooks";
+import { clampUseMovePosition, useMove, UseMovePosition } from "@rtdui/hooks";
 import { HsvaColor } from "../ColorPicker.types";
 import { convertHsvaTo } from "../converters";
 import { Thumb } from "../Thumb/Thumb";

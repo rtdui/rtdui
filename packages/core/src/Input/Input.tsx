@@ -189,7 +189,7 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
                 "pointer-events-none",
                 {
                   "[&]:pointer-events-auto":
-                    leftSectionPointerEvents === "auto",
+                    leftSectionPointerEvents === "auto" && !disabled,
                 },
                 slots?.left
               )}
@@ -236,6 +236,7 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
                 "cursor-pointer": pointer,
                 "text-error": !!error,
                 "placeholder:text-error": !!error,
+                "input-disabled": disabled,
               },
               slots?.input
             )}
@@ -256,7 +257,7 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
                 "pointer-events-none",
                 {
                   "[&]:pointer-events-auto":
-                    rightSectionPointerEvents === "auto",
+                    rightSectionPointerEvents === "auto" && !disabled,
                 },
                 slots?.right
               )}
