@@ -1,4 +1,5 @@
 import React, { forwardRef, useEffect, useState } from "react";
+import clsx from "clsx";
 import { useDidUpdate, useEyeDropper, useUncontrolled } from "@rtdui/hooks";
 import { IconColorPicker } from "@tabler/icons-react";
 import {
@@ -50,6 +51,9 @@ export interface ColorInputProps
    * @default false
    */
   closeOnColorSwatchClick?: boolean;
+  slots?: TextInputProps["slots"] & {
+    eyeDropper?: string;
+  };
 }
 
 export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
@@ -75,6 +79,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
       leftSection,
       rightSection,
       swatchesPerRow = 7,
+      slots,
       ...others
     } = props;
 
@@ -95,6 +100,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
         size="xs"
         ghost
         sharp="square"
+        className={clsx("colorinput-eyedropper", slots?.eyeDropper)}
         onClick={() =>
           openEyeDropper()
             .then((payload) => {
@@ -185,6 +191,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
               setDropdownOpened(true);
               onFocus?.(event);
             }}
+            slots={slots}
           />
         </Popover.Target>
         <Popover.Dropdown>

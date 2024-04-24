@@ -30,7 +30,7 @@ export const Indicator = forwardRef<HTMLDivElement, IndicatorProps>(
     return (
       <div className={clsx("indicator", className)}>
         <span
-          className={clsx("indicator-item badge badge-xs", {
+          className={clsx("indicator-item", "badge badge-xs", {
             "badge-primary": badgeColor === "primary",
             "badge-secondary": badgeColor === "secondary",
             "badge-accent": badgeColor === "accent",

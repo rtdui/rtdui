@@ -5,12 +5,21 @@ export interface CardProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "title" | "content"> {
   glass?: boolean; // 毛玻璃效果, 需要有背景才有效果
   imageSrc?: string;
-  imageSide?: boolean; // 图像在两边
-  imageOverlay?: boolean; // 图像作为Card背景
-  shadowSize?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl"; // Card阴影尺寸
+  /** image positon
+   * @default "top"
+   */
+  imagePositon?: "top" | "right" | "bottom" | "left" | "overlay"; // 图像在两边
+  shadow?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl"; // Card阴影尺寸
   title?: React.ReactNode;
   content?: React.ReactNode;
   action?: React.ReactNode;
+  slots?: {
+    figure?: string;
+    body?: string;
+    title?: string;
+    content?: string;
+    actions?: string;
+  };
 }
 
 /** ref属性会转发至内部的根div元素 */
@@ -20,44 +29,61 @@ export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     content,
     action,
     imageSrc,
-    imageOverlay,
-    imageSide,
-    shadowSize,
+    imagePositon = "top",
+    shadow,
     glass,
     className,
+    slots,
     children,
-    ...other
+    ...others
   } = props;
+
+  const figure = (
+    <figure className={clsx("figure", slots?.figure)}>
+      <img className="object-cover w-full h-full" src={imageSrc} alt="" />
+    </figure>
+  );
 
   return (
     <div
       ref={ref}
       className={clsx(
-        "card bg-base-200",
+        "card",
         {
-          "card-side": imageSide === true,
-          "image-full": imageOverlay === true,
-          shadow: shadowSize === "xs",
-          "shadow-sm": shadowSize === "sm",
-          "shadow-md": shadowSize === "md",
-          "shadow-lg": shadowSize === "lg",
-          "shadow-xl": shadowSize === "xl",
-          "shadow-2xl": shadowSize === "2xl",
+          "card-side": imagePositon === "left" || imagePositon === "right",
+          "image-full": imagePositon === "overlay",
+
+          "shadow-sm": shadow === "xs",
+          shadow: shadow === "sm",
+          "shadow-md": shadow === "md",
+          "shadow-lg": shadow === "lg",
+          "shadow-xl": shadow === "xl",
+          "shadow-2xl": shadow === "2xl",
           glass: glass === true,
         },
         className
       )}
+      {...others}
     >
-      {imageSrc && (
-        <figure>
-          <img src={imageSrc} alt="" />
-        </figure>
-      )}
-      <div className="card-body">
-        {title && <h2 className="card-title">{title}</h2>}
-        {content}
-        {action && <div className="card-actions justify-end">{action}</div>}
+      {imageSrc &&
+        (imagePositon === "top" ||
+          imagePositon === "left" ||
+          imagePositon === "overlay") &&
+        figure}
+      <div className={clsx("card-body", slots?.body)}>
+        {title && <h2 className={clsx("card-title", slots?.title)}>{title}</h2>}
+        <div className={clsx("coard-content", "flex-1", slots?.content)}>
+          {content}
+        </div>
+        {action && (
+          <div className={clsx("card-actions", "justify-end", slots?.actions)}>
+            {action}
+          </div>
+        )}
       </div>
+      {imageSrc &&
+        (imagePositon === "bottom" || imagePositon === "right") &&
+        figure}
     </div>
   );
 });

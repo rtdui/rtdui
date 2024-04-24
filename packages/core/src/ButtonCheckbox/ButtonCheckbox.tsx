@@ -15,8 +15,7 @@ export interface ButtonCheckboxProps
       | "ghost"
       | "link"
       | "glass"
-      | "block"
-      | "wide"
+      | "fullWidth"
       | "outline"
     > {
   label?: string;
@@ -34,8 +33,7 @@ export const ButtonCheckbox = forwardRef<HTMLInputElement, ButtonCheckboxProps>(
       ghost,
       link,
       glass,
-      block,
-      wide,
+      fullWidth,
       outline,
       className,
       children,
@@ -75,8 +73,7 @@ export const ButtonCheckbox = forwardRef<HTMLInputElement, ButtonCheckboxProps>(
             "btn-ghost": ghost === true,
             "btn-link normal-case": link === true,
             glass: glass === true,
-            "btn-block": block === true,
-            "btn-wide": wide === true,
+            "btn-block": fullWidth === true,
             "btn-outline": outline,
           },
           className

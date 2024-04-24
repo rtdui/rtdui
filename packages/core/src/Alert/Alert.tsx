@@ -8,9 +8,15 @@ export interface AlertProps {
   content?: React.ReactNode;
   actions?: React.ReactNode;
   className?: string;
+  slots?: {
+    actions?: string;
+    body?: string;
+    title?: string;
+    content?: string;
+  };
 }
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { color, icon, title, content, actions, className } = props;
+  const { color, icon, title, content, actions, className, slots } = props;
 
   return (
     <div
@@ -27,11 +33,11 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     >
       {/* alert最多只能有三个直接孩子 */}
       {icon}
-      <div>
-        <h3 className="font-bold">{title}</h3>
-        <div className="text-xs">{content}</div>
+      <div className={clsx("alert-body", slots?.body)}>
+        <h3 className={clsx("font-bold", slots?.title)}>{title}</h3>
+        <div className={clsx("text-xs", slots?.content)}>{content}</div>
       </div>
-      <div>
+      <div className={clsx("alert-actions", slots?.actions)}>
         {actions}
         {/* <button className="btn btn-sm">Deny</button>
         <button className="btn btn-sm btn-primary">Accept</button> */}

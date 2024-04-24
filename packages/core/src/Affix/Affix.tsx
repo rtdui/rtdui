@@ -19,17 +19,20 @@ export interface AffixProps {
     right?: string | number;
   };
   children?: React.ReactNode;
+  className?: string;
 }
 export const Affix = forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
   const {
     zIndex = 200,
     position = { bottom: 24, right: 16 },
+    className,
     children,
   } = props;
 
   return (
     <Portal type="affix">
       <div
+        className={clsx("affix", className)}
         style={
           {
             position: "fixed",

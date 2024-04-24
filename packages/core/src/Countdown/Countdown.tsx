@@ -56,6 +56,7 @@ export const Countdown = forwardRef<HTMLDivElement, CountdownProps>(
       <div
         ref={ref}
         className={clsx(
+          "countdown-root",
           "grid grid-flow-col auto-cols-max gap-5 text-center",
           className
         )}

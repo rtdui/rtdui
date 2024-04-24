@@ -48,6 +48,7 @@ export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
         size,
         radius = "circle",
         withShadow = true,
+        title,
         children,
         ...others
       } = props;
@@ -56,7 +57,7 @@ export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
       return (
         <Box
           ref={ref}
-          title={color}
+          title={title ?? color}
           className={clsx(
             "relative cursor-pointer",
             "w-[--cs-size] h-[--cs-size] rounded-[--cs-radius]",

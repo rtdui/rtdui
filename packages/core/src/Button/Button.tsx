@@ -23,9 +23,7 @@ export interface ButtonProps
   /** 毛玻璃效果,需要有背景才有效果 */
   glass?: boolean;
   /** full width */
-  block?: boolean;
-  /** 更多的水平padding */
-  wide?: boolean;
+  fullWidth?: boolean;
   /** 边框按钮 */
   outline?: boolean;
   /** 左侧图标元素 */
@@ -34,6 +32,10 @@ export interface ButtonProps
   endIcon?: React.ReactNode;
   /** 是否在左侧显示加载动画图标 */
   loading?: boolean;
+  /** 加载动画图标的显示位置
+   * @default "left"
+   */
+  loadingPosition?: "left" | "right";
   /** 无点击动画 */
   noAnimation?: boolean;
 }
@@ -43,18 +45,19 @@ export interface ButtonProps
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     const {
-      color,
+      color = "default",
       size,
       sharp,
       ghost,
       link,
       glass,
-      block,
-      wide,
+      fullWidth,
       noAnimation,
       outline,
       startIcon,
       endIcon,
+      loading,
+      loadingPosition = "left",
       className,
       children,
       ...other
@@ -81,21 +84,26 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             "btn-lg": size === "lg",
             "btn-square": sharp === "square",
             "btn-circle": sharp === "circle",
-            "btn-ghost": ghost === true,
+            "btn-ghost": ghost === true && !link,
             "btn-link normal-case": link === true,
             glass: glass === true,
-            "btn-block": block === true,
-            "btn-wide": wide === true,
-            "btn-outline": outline,
+            "btn-block": fullWidth === true,
+            "btn-outline": outline && !link,
             "no-animation": noAnimation,
           },
           className
         )}
         {...other}
       >
-        {startIcon}
+        {startIcon ??
+          (loading && loadingPosition === "left" && (
+            <span className="loading loading-spinner"></span>
+          ))}
         {children}
-        {endIcon}
+        {endIcon ??
+          (loading && loadingPosition === "right" && (
+            <span className="loading loading-spinner"></span>
+          ))}
       </button>
     );
   }

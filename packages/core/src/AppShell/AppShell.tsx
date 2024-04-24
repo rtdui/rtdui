@@ -12,11 +12,13 @@ export interface AppShellProps
    */
   responsive?: "md" | "lg" | "xl" | "2xl";
   slots?: {
-    contentWrapper?: string;
+    /** body是header,main,footer的容器 */
+    body?: string;
     header?: string;
-    footer?: string;
-    aside?: string;
     main?: string;
+    footer?: string;
+    /** side是drawer的容器 */
+    side?: string;
     drawer?: string;
   };
 }
@@ -65,7 +67,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className={clsx("drawer-content", slots?.contentWrapper)}>
+        <div className={clsx("drawer-content", slots?.body)}>
           {/* header */}
           <div className={clsx("appshell-header", slots?.header)}>{header}</div>
           {/* main */}
@@ -73,13 +75,13 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
           {/* footer */}
           <div className={clsx("appshell-footer", slots?.footer)}>{footer}</div>
         </div>
-        <div className={clsx("drawer-side", slots?.aside)}>
+        <div className={clsx("drawer-side", slots?.side)}>
           <label
             htmlFor={id}
             aria-label="close sidebar"
             className="drawer-overlay"
           />
-          <div className={clsx(slots?.drawer)}>{drawer}</div>
+          <div className={clsx("appshell-drawer", slots?.drawer)}>{drawer}</div>
         </div>
       </div>
     );

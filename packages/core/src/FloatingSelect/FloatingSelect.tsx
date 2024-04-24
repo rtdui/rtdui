@@ -73,6 +73,10 @@ export interface FloatingSelectProps
    * @default true
    */
   withItemsSeparator?: boolean;
+
+  slots?: {
+    indicator?: string;
+  };
 }
 
 export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
@@ -94,6 +98,7 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
       color,
       transitionDuration = 200,
       withItemsSeparator = true,
+      slots,
       ...others
     } = props;
 
@@ -242,7 +247,8 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
               "z-[1] bg-white dark:bg-gray-600 rounded-[--sc-radius] shadow",
               {
                 "[&]:bg-[--sc-color]": color,
-              }
+              },
+              slots?.indicator
             )}
           />
         )}

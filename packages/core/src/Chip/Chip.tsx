@@ -24,6 +24,10 @@ export interface ChipProps
   label?: React.ReactNode;
   onDelete?: (e?: any) => void;
   disabled?: boolean;
+  slots?: {
+    label?: string;
+    deleteBtn?: string;
+  };
 }
 
 /** ref属性会转发至内部的button元素 */
@@ -38,6 +42,7 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
     onDelete,
     deleteIcon,
     disabled,
+    slots,
     children,
     ...other
   } = props;
@@ -67,13 +72,17 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
       {...other}
     >
       {startIcon}
-      {label}
+      <span className={clsx("chip-label", slots?.label)}>{label}</span>
       {onDelete && (
         <Button
-          className={clsx("min-h-0 p-0 rounded-full", {
-            "w-5 h-5": size === "normal",
-            "w-4 h-4": size === "small",
-          })}
+          className={clsx(
+            "min-h-0 p-0 rounded-full",
+            {
+              "w-5 h-5": size === "normal",
+              "w-4 h-4": size === "small",
+            },
+            slots?.deleteBtn
+          )}
           color={color}
           disabled={disabled}
           onClick={

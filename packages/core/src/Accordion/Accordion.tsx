@@ -15,16 +15,21 @@ export interface AccordionProps {
   /** 初始展开的项索引 */
   initExpandIndex?: number;
   className?: string;
+  slots?: {
+    itemRoot?: string;
+    itemTitle?: string;
+    itemContent?: string;
+  };
 }
 export function Accordion(props: AccordionProps) {
-  const { items, expandIcon, initExpandIndex = 0, className } = props;
+  const { items, expandIcon, initExpandIndex = 0, className, slots } = props;
 
   const name = React.useId();
 
   const [expandIndex, setExpandIndex] = React.useState(initExpandIndex);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className={clsx("Accordion", "flex flex-col gap-2", className)}>
       {items.map((d, index) => (
         <div
           key={index}
@@ -35,7 +40,7 @@ export function Accordion(props: AccordionProps) {
               "collapse-arrow": expandIcon === "arrow",
               "collapse-plus": expandIcon === "plus",
             },
-            className
+            slots?.itemRoot
           )}
         >
           <input
@@ -44,8 +49,17 @@ export function Accordion(props: AccordionProps) {
             checked={expandIndex === index}
             onChange={(e) => setExpandIndex(index)}
           />
-          <div className="collapse-title text-xl font-medium">{d.title}</div>
-          <div className="collapse-content">{d.content}</div>
+          <div
+            className={clsx(
+              "collapse-title text-xl font-medium",
+              slots?.itemTitle
+            )}
+          >
+            {d.title}
+          </div>
+          <div className={clsx("collapse-content", slots?.itemContent)}>
+            {d.content}
+          </div>
         </div>
       ))}
     </div>

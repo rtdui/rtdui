@@ -12,7 +12,7 @@ export interface LoadingProps {
     | "error"
     | "neutral";
   size?: "xs" | "sm" | "md" | "lg";
-  /**
+  /** loading variant
    * @default spinner
    */
   variant?: "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity";

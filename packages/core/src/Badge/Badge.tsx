@@ -18,6 +18,10 @@ export type BadgeOwnProps = {
    *  @default "md"
    */
   size?: "xs" | "sm" | "md" | "lg";
+  /** style variant
+   * @default "default"
+   */
+  variant?: "default" | "outline" | "ghost";
   /** no background and no border */
   ghost?: boolean;
   /** border without background */
@@ -48,6 +52,7 @@ export const Badge: <E extends React.ElementType = typeof defaultElement>(
         color,
         size = "md",
         icon,
+        variant = "default",
         ghost,
         outline,
         className,
@@ -76,8 +81,9 @@ export const Badge: <E extends React.ElementType = typeof defaultElement>(
               "badge-sm": size === "sm",
               // "badge-md": size === "md", //默认
               "badge-lg": size === "lg",
-              "badge-ghost": ghost === true,
-              "badge-outline": outline === true,
+
+              "badge-ghost": variant === "ghost",
+              "badge-outline": variant === "outline",
             },
             className
           )}
