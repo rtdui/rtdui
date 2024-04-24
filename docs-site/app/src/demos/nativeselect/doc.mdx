@@ -15,20 +15,18 @@ import NativeSelectChildrenDemo from "./NativeSelectChildrenDemo";
 
 # 使用
 
-`NativeSelect`组件也是基于`InputBase`构建, 本文档没有包含所有的功能和用例, 详细请查看`Input`文档.
+在有些情况下, 尤其只针对移动端的应用(如小程序), 你可能倾向于使用原生的下拉选项. 这种场景下可以使用`NativeSelect`组件. 它使用原生的`option`元素作为下拉选项, 但提供了额外的功能.
 
-`Input`的功能全部支持.
-
-`NativeSelect`组件下拉使用原生`option`元素渲染, 但提供了额外的功能.
+`NativeSelect`组件也是基于`InputBase`构建, `Input`的功能全部支持, 本文档没有包含所有的功能和用例, 详细请查看`Input`文档.
 
 `NativeSelect`支持两种形式提供选项:
 
 - 通过`data`属性传递数组
-- 使用children原生option组件
+- 原生option作为children
 
 注意: 如果`children`被使用, 则`data`属性会被忽略
 
-## 通过`data`属性
+## 选项1: `data`属性设置选项
 
 `NativeSelect`的`data`属性和`Select`组件一样支持字符串数组和对象数组.
 
@@ -61,11 +59,11 @@ function Demo() {
 }
 ```
 
-### data属性支持选项分组
+data属性支持选项分组
 
 `NativeSelect`的`data`属性和`Select`组件一样支持选项分组.
 
-1. data属性为分组数据(字符串形式)
+1. 选项分组(字符串形式)
 
 ```tsx
 import { NativeSelect } from "@rtdui/core";
@@ -88,7 +86,7 @@ function Demo() {
 }
 ```
 
-2. data属性为分组数据(对象形式)
+2. 选项分组(对象形式)
 
 ```tsx
 import { NativeSelect } from "@rtdui/core";
@@ -121,7 +119,9 @@ function Demo() {
 
 <Demo data={{ Component: NativeSelectDataDemo }} />
 
-## 通过children
+## 选项2: 原生option作为children
+
+这种方式最接近原生`select`的使用方式:
 
 ```tsx
 import { NativeSelect } from "@rtdui/core";

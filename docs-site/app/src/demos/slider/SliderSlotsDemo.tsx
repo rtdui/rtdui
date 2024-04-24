@@ -1,5 +1,5 @@
 import React from "react";
-import { RangeSlider } from "@rtdui/core";
+import { Button, RangeSlider } from "@rtdui/core";
 
 const marks = [
   { value: 20, label: "20%" },
@@ -12,9 +12,9 @@ export default function Demo() {
   const [slots, setSlots] = React.useState({});
   return (
     <div className="flex flex-col gap-12 py-4">
-      <div className="flex flex-wrap gap-4 bg-base-200 rounded-box p-4">
-        <div
-          className="cursor-pointer"
+      <div className="flex flex-wrap gap-4 bg-base-100 rounded-box p-4">
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               root: outline,
@@ -22,9 +22,9 @@ export default function Demo() {
           }
         >
           root
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               trackContainer: outline,
@@ -32,9 +32,9 @@ export default function Demo() {
           }
         >
           trackContainer
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               track: outline,
@@ -42,9 +42,9 @@ export default function Demo() {
           }
         >
           track
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               bar: outline,
@@ -52,9 +52,9 @@ export default function Demo() {
           }
         >
           bar
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               mark: outline,
@@ -62,9 +62,9 @@ export default function Demo() {
           }
         >
           mark
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               markLabel: outline,
@@ -72,9 +72,9 @@ export default function Demo() {
           }
         >
           markLabel
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               thumb: outline,
@@ -82,9 +82,9 @@ export default function Demo() {
           }
         >
           thumb
-        </div>
-        <div
-          className="cursor-pointer"
+        </Button>
+        <Button
+          size="sm"
           onClick={() =>
             setSlots({
               label: outline,
@@ -92,7 +92,7 @@ export default function Demo() {
           }
         >
           label
-        </div>
+        </Button>
       </div>
       <RangeSlider
         id="tours"

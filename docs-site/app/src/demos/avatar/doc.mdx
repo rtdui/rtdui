@@ -10,36 +10,46 @@ handle:
 ---
 
 import Demo from "../../components/Demo";
-import AvatarVariantDemo from "./AvatarVariantDemo";
-import AvatarSizeDemo from "./AvatarSizeDemo";
-import AvatarIndicatorDemo from "./AvatarIndicatorDemo";
+import AvatarBasicDemo from "./AvatarBasicDemo";
 import AvatarPlaceholderDemo from "./AvatarPlaceholderDemo";
-import AvatarIndicatorAndPlaceholderDemo from "./AvatarIndicatorAndPlaceholderDemo";
 import AvatarGroupDemo from "./AvatarGroupDemo";
+import AvatarMaskDemo from "./AvatarMaskDemo";
 
 # 使用
 
 `Avatar`组件用于展示单个用户头像
 
+<Demo data={{ Component: AvatarBasicDemo }} />
+
 ## 变体
 
-<Demo data={{ Component: AvatarVariantDemo }} />
+`Avatar`的`variant`属性支持: "square" 和"circle" 两种变体
 
 ## 尺寸
 
-<Demo data={{ Component: AvatarSizeDemo }} />
+`Avatar`的`size`属性支持: "xs","sm","md","lg", 默认为"md"
 
 ## 是否在线指示器
 
-<Demo data={{ Component: AvatarIndicatorDemo }} />
+`Avatar`的`online`属性显示是否在线指示器, 默认为`undefined`, 即不显示指示器.
 
 ## 字符占位
 
+`Avatar`可以不显示头像, 只显示字符作为图像占位.
+
+使用`placeholder`属性替代`src`属性即可.
+
+> tips: 建议只使用单个字符作为占位.
+
 <Demo data={{ Component: AvatarPlaceholderDemo }} />
 
-## 字符占位和指示器
+## 遮罩
 
-<Demo data={{ Component: AvatarIndicatorAndPlaceholderDemo }} />
+`Avatar`预定义了9种遮罩效果: "squircle"(方圆形), "heart"(心形), "star"(星形), "triangle"(三角形), "diamond"(钻石四边形), "pentagon"(五边形), "hexagon"(六边形), "hexagon2"(六边形2), "decagon"(十边形)
+
+可以通过`mask`属性设置:
+
+<Demo data={{ Component: AvatarMaskDemo }} />
 
 ## 头像组
 

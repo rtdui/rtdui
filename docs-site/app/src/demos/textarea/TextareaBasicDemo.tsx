@@ -10,4 +10,4 @@ export default function Demo() {
     </div>
   );
 }
-Demo.displayName = "TextareaDemo";
+Demo.displayName = "TextareaBasicDemo";

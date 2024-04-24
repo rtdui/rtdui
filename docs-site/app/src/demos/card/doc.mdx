@@ -1,0 +1,36 @@
+---
+meta:
+  - title: Card Component
+  - description: Card document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Card.tsx"
+  componentName: "Card"
+---
+
+import Demo from "../../components/Demo";
+import CardBasicDemo from "./CardBasicDemo";
+import CardGlassDemo from "./CardGlassDemo";
+import CardSlotsDemo from "./CardSlotsDemo";
+import CardCustomStyleDemo from "./CardCustomStyleDemo";
+
+# 使用
+
+<Demo data={{ Component: CardBasicDemo }} />
+
+## Glass效果
+
+`Card`的`glass`属性会应用毛玻璃特效.
+
+> tips: 需要在有背景图像的情况下才能体验到效果
+
+<Demo data={{ Component: CardGlassDemo }} />
+
+## Slots样式槽
+
+<Demo data={{ Component: CardSlotsDemo }} />
+
+使用样式槽可以自定义内部元素的样式, 如下面的这些例子:
+
+<Demo data={{ Component: CardCustomStyleDemo }} />

@@ -10,45 +10,58 @@ handle:
 ---
 
 import Demo from "../../components/Demo";
-import ButtonSizeDemo from "./ButtonSizeDemo";
-import ButtonColorDemo from "./ButtonColorDemo";
-import ButtonGhostDemo from "./ButtonGhostDemo";
-import ButtonLinkDemo from "./ButtonLinkDemo";
+import ButtonBasicDemo from "./ButtonBasicDemo";
+import ButtonIconDemo from "./ButtonIconDemo";
 import ButtonGlassDemo from "./ButtonGlassDemo";
 import ButtonSharpDemo from "./ButtonSharpDemo";
+import ButtonNoAnimationDemo from "./ButtonNoAnimationDemo";
 
 # 使用
 
+<Demo data={{ Component: ButtonBasicDemo }} />
+
 ## 尺寸
 
-<Demo data={{ Component: ButtonSizeDemo }} />
+`Button`的`size`属性支持: "xs", "sm", "md", "lg"; 不支持自定义尺寸
 
 ## 颜色
 
-<Demo data={{ Component: ButtonColorDemo }} />
+`Button`的`color`属性支持: "primary", "secondary", "accent", "info", "success", "warning", "error","neutral"; 不支持自定义颜色
 
-## 特殊样式
+## fullWidth
 
-### ghost(透明)
+`Button`的`fullWidth`属性为true时, 会设置宽度为 100%
 
-<Demo data={{ Component: ButtonGhostDemo }} />
+## Link样式
 
-### Link 型
+`Button`的`link`属性为 true 时, 会渲染为link风格的样式. 此时`outline`和`ghost`属性将被忽略.
 
-链接的样式
+## 头部/尾部图标
 
-<Demo data={{ Component: ButtonLinkDemo }} />
+`Button`的`startIcon`/`endIcon`属性可以用来显示自定义的头部/尾部图标
+
+> tips: 一旦定义则相应位置的loading将被忽略.
+
+<Demo data={{ Component: ButtonIconDemo }} />
 
 ### glass 型
 
-毛玻璃效果, 需要在图像背景下才能体现效果
+`Button`的`glass`属性为 true 时, 会应用毛玻璃效果.
+
+> tips: 需要在图像背景下才能体现效果
 
 <Demo data={{ Component: ButtonGlassDemo }} />
 
 ## 宽高相等的形状
 
-`Button`支持方形和圆形两种宽高相等的形状变体, 对于显示单个字符或者显示图标的按钮非常有用.
+`Button`的`sharp`属性支持: "square"(正方形)和"circle"(圆形), 两者都是宽高相等的形状, 对于显示单个字符或者显示图标的按钮非常有用.
 
 `color`,`size`,`ghost`属性都可以运用到这两个形状上
 
 <Demo data={{ Component: ButtonSharpDemo }} />
+
+## 不应用点击动画特效
+
+`Button`的`noAnimation`属性可以设置点击时不应用动画特效.
+
+<Demo data={{ Component: ButtonNoAnimationDemo }} />

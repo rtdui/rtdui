@@ -10,7 +10,8 @@ handle:
 ---
 
 import Demo from "../../components/Demo";
-import TextareaDemo from "./TextareaDemo";
+import TextareaBasicDemo from "./TextareaBasicDemo";
+import TextareaResizeDemo from "./TextareaResizeDemo";
 
 # 使用
 
@@ -19,6 +20,12 @@ import TextareaDemo from "./TextareaDemo";
 - 当`autoSize`属性为`true`时, `minRows`和`maxRows`属性控制着自动增长高度的限制. `minRows`默认为2行, `maxRows`默认为无限.
 - 当`autoSize`属性未设置或为`false`时, `minRows`和`maxRows`属性会被忽略.
 
+<Demo data={{ Component: TextareaBasicDemo }} />
+
+## 允许用户调整尺寸
+
 `resize`属性控制着用户是否可以手动调整元素的高度. 取值与CSS的resize相同, 默认为"none"
 
-<Demo data={{ Component: TextareaDemo }} />
+下面的例子`resize`属性设置为了: "vertical", 这将调整尺寸约束到了垂直方向.
+
+<Demo data={{ Component: TextareaResizeDemo }} />

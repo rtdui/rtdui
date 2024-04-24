@@ -1698,6 +1698,15 @@
         "type": {
           "name": "{ [key: string]: any; title: ReactNode; content: ReactNode; }[]"
         }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ itemRoot?: string | undefined; itemTitle?: string | undefined; itemContent?: string | undefined; } | undefined"
+        }
       }
     }
   },
@@ -1784,6 +1793,15 @@
         "required": false,
         "type": {
           "name": "React.ReactNode"
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ actions?: string | undefined; body?: string | undefined; title?: string | undefined; content?: string | undefined; } | undefined"
         }
       },
       "title": {
@@ -1873,7 +1891,7 @@
         "name": "slots",
         "required": false,
         "type": {
-          "name": "{ contentWrapper?: string | undefined; header?: string | undefined; footer?: string | undefined; aside?: string | undefined; main?: string | undefined; drawer?: string | undefined; } | undefined"
+          "name": "{ body?: string | undefined; header?: string | undefined; main?: string | undefined; footer?: string | undefined; side?: string | undefined; drawer?: string | undefined; } | undefined"
         }
       }
     }
@@ -2472,6 +2490,48 @@
     "description": "",
     "displayName": "@rtdui/Avatar",
     "props": {
+      "mask": {
+        "defaultValue": null,
+        "description": "",
+        "name": "mask",
+        "required": false,
+        "type": {
+          "name": "\"squircle\" | \"heart\" | \"star\" | \"triangle\" | \"diamond\" | \"pentagon\" | \"hexagon\" | \"hexagon2\" | \"decagon\" | undefined",
+          "raw": "\"squircle\" | \"heart\" | \"star\" | \"triangle\" | \"diamond\" | \"pentagon\" | \"hexagon\" | \"hexagon2\" | \"decagon\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"squircle\""
+            },
+            {
+              "value": "\"heart\""
+            },
+            {
+              "value": "\"star\""
+            },
+            {
+              "value": "\"triangle\""
+            },
+            {
+              "value": "\"diamond\""
+            },
+            {
+              "value": "\"pentagon\""
+            },
+            {
+              "value": "\"hexagon\""
+            },
+            {
+              "value": "\"hexagon2\""
+            },
+            {
+              "value": "\"decagon\""
+            }
+          ]
+        }
+      },
       "online": {
         "defaultValue": null,
         "description": "",
@@ -2483,7 +2543,7 @@
       },
       "placeholder": {
         "defaultValue": null,
-        "description": "只显示一些字符\nsrc属性的优先级比placeholder属性高.\n不建议超过两个字符",
+        "description": "只显示一些字符, src属性的优先级比placeholder属性高. 不建议超过两个字符",
         "name": "placeholder",
         "required": false,
         "type": {
@@ -2515,6 +2575,15 @@
               "value": "\"lg\""
             }
           ]
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ wrapper?: string | undefined; } | undefined"
         }
       },
       "src": {
@@ -2711,6 +2780,32 @@
             }
           ]
         }
+      },
+      "variant": {
+        "defaultValue": {
+          "value": "\"default\""
+        },
+        "description": "style variant",
+        "name": "variant",
+        "required": false,
+        "type": {
+          "name": "\"outline\" | \"default\" | \"ghost\" | undefined",
+          "raw": "\"outline\" | \"default\" | \"ghost\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"outline\""
+            },
+            {
+              "value": "\"default\""
+            },
+            {
+              "value": "\"ghost\""
+            }
+          ]
+        }
       }
     }
   },
@@ -2719,15 +2814,6 @@
     "description": "ref属性会转发至button元素",
     "displayName": "@rtdui/Button",
     "props": {
-      "block": {
-        "defaultValue": null,
-        "description": "full width",
-        "name": "block",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "color": {
         "defaultValue": null,
         "description": "",
@@ -2776,6 +2862,15 @@
           "name": "React.ReactNode"
         }
       },
+      "fullWidth": {
+        "defaultValue": null,
+        "description": "full width",
+        "name": "fullWidth",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "ghost": {
         "defaultValue": null,
         "description": "无边框和背景",
@@ -2810,6 +2905,29 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      },
+      "loadingPosition": {
+        "defaultValue": {
+          "value": "\"left\""
+        },
+        "description": "加载动画图标的显示位置",
+        "name": "loadingPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            }
+          ]
         }
       },
       "noAnimation": {
@@ -2886,15 +3004,6 @@
         "type": {
           "name": "React.ReactNode"
         }
-      },
-      "wide": {
-        "defaultValue": null,
-        "description": "更多的水平padding",
-        "name": "wide",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
       }
     }
   },
@@ -2903,15 +3012,6 @@
     "description": "ref属性会转发至内部的input元素",
     "displayName": "@rtdui/ButtonCheckbox",
     "props": {
-      "block": {
-        "defaultValue": null,
-        "description": "full width",
-        "name": "block",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "color": {
         "defaultValue": null,
         "description": "",
@@ -2949,6 +3049,15 @@
               "value": "\"neutral\""
             }
           ]
+        }
+      },
+      "fullWidth": {
+        "defaultValue": null,
+        "description": "full width",
+        "name": "fullWidth",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
         }
       },
       "ghost": {
@@ -3052,15 +3161,6 @@
             }
           ]
         }
-      },
-      "wide": {
-        "defaultValue": null,
-        "description": "更多的水平padding",
-        "name": "wide",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
       }
     }
   },
@@ -3096,22 +3196,36 @@
           "name": "boolean | undefined"
         }
       },
-      "imageOverlay": {
-        "defaultValue": null,
-        "description": "",
-        "name": "imageOverlay",
+      "imagePositon": {
+        "defaultValue": {
+          "value": "\"top\""
+        },
+        "description": "image positon",
+        "name": "imagePositon",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "imageSide": {
-        "defaultValue": null,
-        "description": "",
-        "name": "imageSide",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+          "name": "\"left\" | \"right\" | \"top\" | \"bottom\" | \"overlay\" | undefined",
+          "raw": "\"left\" | \"right\" | \"top\" | \"bottom\" | \"overlay\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            },
+            {
+              "value": "\"top\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"overlay\""
+            }
+          ]
         }
       },
       "imageSrc": {
@@ -3123,10 +3237,10 @@
           "name": "string | undefined"
         }
       },
-      "shadowSize": {
+      "shadow": {
         "defaultValue": null,
         "description": "",
-        "name": "shadowSize",
+        "name": "shadow",
         "required": false,
         "type": {
           "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | undefined",
@@ -3154,6 +3268,15 @@
               "value": "\"2xl\""
             }
           ]
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ figure?: string | undefined; body?: string | undefined; title?: string | undefined; content?: string | undefined; actions?: string | undefined; } | undefined"
         }
       },
       "title": {
@@ -3413,6 +3536,15 @@
               "value": "\"normal\""
             }
           ]
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ label?: string | undefined; deleteBtn?: string | undefined; } | undefined"
         }
       },
       "startIcon": {
@@ -4304,7 +4436,7 @@
         "name": "slots",
         "required": false,
         "type": {
-          "name": "{ left?: string | undefined; input?: string | undefined; right?: string | undefined; } | undefined"
+          "name": "({ left?: string | undefined; input?: string | undefined; right?: string | undefined; } & { eyeDropper?: string | undefined; }) | undefined"
         }
       },
       "swatches": {
@@ -5014,22 +5146,22 @@
               "value": "undefined"
             },
             {
-              "value": "\"top\""
+              "value": "\"left\""
             },
             {
               "value": "\"right\""
             },
             {
+              "value": "\"top\""
+            },
+            {
               "value": "\"bottom\""
             },
             {
-              "value": "\"left\""
+              "value": "\"left-end\""
             },
             {
-              "value": "\"top-end\""
-            },
-            {
-              "value": "\"top-start\""
+              "value": "\"left-start\""
             },
             {
               "value": "\"right-end\""
@@ -5038,16 +5170,16 @@
               "value": "\"right-start\""
             },
             {
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
+            },
+            {
               "value": "\"bottom-end\""
             },
             {
               "value": "\"bottom-start\""
-            },
-            {
-              "value": "\"left-end\""
-            },
-            {
-              "value": "\"left-start\""
             }
           ]
         }
@@ -5824,9 +5956,50 @@
     "description": "ref属性会转发至内部的根div元素",
     "displayName": "@rtdui/Divider",
     "props": {
-      "direction": {
+      "color": {
         "defaultValue": null,
         "description": "",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            },
+            {
+              "value": "\"neutral\""
+            }
+          ]
+        }
+      },
+      "direction": {
+        "defaultValue": {
+          "value": "\"vertical\""
+        },
+        "description": "divider direction",
         "name": "direction",
         "required": false,
         "type": {
@@ -5844,6 +6017,41 @@
             }
           ]
         }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "labelPostion": {
+        "defaultValue": {
+          "value": "center"
+        },
+        "description": "label position",
+        "name": "labelPostion",
+        "required": false,
+        "type": {
+          "name": "\"center\" | \"end\" | \"start\" | undefined",
+          "raw": "\"center\" | \"end\" | \"start\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"center\""
+            },
+            {
+              "value": "\"end\""
+            },
+            {
+              "value": "\"start\""
+            }
+          ]
+        }
       }
     }
   },
@@ -5858,17 +6066,17 @@
         "name": "anchor",
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"right\""
+              "value": "\"left\""
             },
             {
-              "value": "\"left\""
+              "value": "\"right\""
             }
           ]
         }
@@ -5917,7 +6125,7 @@
         "name": "slots",
         "required": false,
         "type": {
-          "name": "{ side?: string | undefined; } | undefined"
+          "name": "{ side?: string | undefined; overlay?: string | undefined; } | undefined"
         }
       },
       "target": {
@@ -6147,6 +6355,15 @@
               "value": "\"xl\""
             }
           ]
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ indicator?: string | undefined; } | undefined"
         }
       },
       "transitionDuration": {
@@ -8240,7 +8457,7 @@
         "defaultValue": {
           "value": "spinner"
         },
-        "description": "",
+        "description": "loading variant",
         "name": "variant",
         "required": false,
         "type": {
@@ -8295,17 +8512,17 @@
         "name": "checkIconPosition",
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"right\""
+              "value": "\"left\""
             },
             {
-              "value": "\"left\""
+              "value": "\"right\""
             }
           ]
         }
@@ -10527,22 +10744,22 @@
               "value": "undefined"
             },
             {
-              "value": "\"top\""
+              "value": "\"left\""
             },
             {
               "value": "\"right\""
             },
             {
+              "value": "\"top\""
+            },
+            {
               "value": "\"bottom\""
             },
             {
-              "value": "\"left\""
+              "value": "\"left-end\""
             },
             {
-              "value": "\"top-end\""
-            },
-            {
-              "value": "\"top-start\""
+              "value": "\"left-start\""
             },
             {
               "value": "\"right-end\""
@@ -10551,16 +10768,16 @@
               "value": "\"right-start\""
             },
             {
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
+            },
+            {
               "value": "\"bottom-end\""
             },
             {
               "value": "\"bottom-start\""
-            },
-            {
-              "value": "\"left-end\""
-            },
-            {
-              "value": "\"left-start\""
             }
           ]
         }
@@ -11272,20 +11489,20 @@
         "name": "star",
         "required": false,
         "type": {
-          "name": "\"star\" | \"star2\" | \"heart\" | undefined",
-          "raw": "\"star\" | \"star2\" | \"heart\" | undefined",
+          "name": "\"heart\" | \"star\" | \"star2\" | undefined",
+          "raw": "\"heart\" | \"star\" | \"star2\" | undefined",
           "value": [
             {
               "value": "undefined"
+            },
+            {
+              "value": "\"heart\""
             },
             {
               "value": "\"star\""
             },
             {
               "value": "\"star2\""
-            },
-            {
-              "value": "\"heart\""
             }
           ]
         }
@@ -11327,17 +11544,17 @@
         "name": "checkIconPosition",
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"right\""
+              "value": "\"left\""
             },
             {
-              "value": "\"left\""
+              "value": "\"right\""
             }
           ]
         }
@@ -12308,17 +12525,17 @@
         "name": "labelPosition",
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"right\""
+              "value": "\"left\""
             },
             {
-              "value": "\"left\""
+              "value": "\"right\""
             }
           ]
         }
@@ -12675,17 +12892,17 @@
         "name": "placement",
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"right\""
+              "value": "\"left\""
             },
             {
-              "value": "\"left\""
+              "value": "\"right\""
             }
           ]
         }
@@ -14555,23 +14772,23 @@
         "name": "position",
         "required": false,
         "type": {
-          "name": "\"top\" | \"right\" | \"bottom\" | \"left\" | undefined",
-          "raw": "\"top\" | \"right\" | \"bottom\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | \"top\" | \"bottom\" | undefined",
+          "raw": "\"left\" | \"right\" | \"top\" | \"bottom\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"top\""
+              "value": "\"left\""
             },
             {
               "value": "\"right\""
             },
             {
-              "value": "\"bottom\""
+              "value": "\"top\""
             },
             {
-              "value": "\"left\""
+              "value": "\"bottom\""
             }
           ]
         }
@@ -17116,15 +17333,6 @@
     "description": "",
     "displayName": "@rtdui/core/ComboboxClearButton",
     "props": {
-      "block": {
-        "defaultValue": null,
-        "description": "full width",
-        "name": "block",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "color": {
         "defaultValue": null,
         "description": "",
@@ -17173,6 +17381,15 @@
           "name": "React.ReactNode"
         }
       },
+      "fullWidth": {
+        "defaultValue": null,
+        "description": "full width",
+        "name": "fullWidth",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "ghost": {
         "defaultValue": null,
         "description": "无边框和背景",
@@ -17207,6 +17424,29 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      },
+      "loadingPosition": {
+        "defaultValue": {
+          "value": "\"left\""
+        },
+        "description": "加载动画图标的显示位置",
+        "name": "loadingPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            }
+          ]
         }
       },
       "noAnimation": {
@@ -17273,15 +17513,6 @@
         "required": false,
         "type": {
           "name": "React.ReactNode"
-        }
-      },
-      "wide": {
-        "defaultValue": null,
-        "description": "更多的水平padding",
-        "name": "wide",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
         }
       }
     }
@@ -18065,17 +18296,17 @@
         "name": "checkIconPosition",
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined",
-          "raw": "\"right\" | \"left\" | undefined",
+          "name": "\"left\" | \"right\" | undefined",
+          "raw": "\"left\" | \"right\" | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"right\""
+              "value": "\"left\""
             },
             {
-              "value": "\"left\""
+              "value": "\"right\""
             }
           ]
         }
@@ -20740,22 +20971,22 @@
           "raw": "FloatingPosition",
           "value": [
             {
-              "value": "\"top\""
+              "value": "\"left\""
             },
             {
               "value": "\"right\""
             },
             {
+              "value": "\"top\""
+            },
+            {
               "value": "\"bottom\""
             },
             {
-              "value": "\"left\""
+              "value": "\"left-end\""
             },
             {
-              "value": "\"top-end\""
-            },
-            {
-              "value": "\"top-start\""
+              "value": "\"left-start\""
             },
             {
               "value": "\"right-end\""
@@ -20764,16 +20995,16 @@
               "value": "\"right-start\""
             },
             {
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
+            },
+            {
               "value": "\"bottom-end\""
             },
             {
               "value": "\"bottom-start\""
-            },
-            {
-              "value": "\"left-end\""
-            },
-            {
-              "value": "\"left-start\""
             }
           ]
         }

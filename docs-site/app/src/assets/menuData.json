@@ -17,7 +17,8 @@
       { "label": "grid", "url": "/components/grid" },
       { "label": "drawer", "url": "/components/drawer" },
       { "label": "indicator", "url": "/components/indicator" },
-      { "label": "joinGroup", "url": "/components/joingroup" }
+      { "label": "joinGroup", "url": "/components/joingroup" },
+      { "label": "divider", "url": "/components/divider" }
     ]
   },
   {
@@ -76,6 +77,11 @@
         "label": "colorInput",
         "url": "/components/colorinput",
         "flag": "v3 new"
+      },
+      {
+        "label": "nativeSelect",
+        "url": "/components/nativeselect",
+        "flag": "v4.2 new"
       }
     ]
   },
@@ -107,6 +113,7 @@
       { "label": "accordion", "url": "/components/accordion" },
       { "label": "avatar", "url": "/components/avatar" },
       { "label": "badge", "url": "/components/badge" },
+      { "label": "card", "url": "/components/card" },
       { "label": "carousel", "url": "/components/carousel" },
       { "label": "countdown", "url": "/components/countdown" },
       { "label": "chip", "url": "/components/chip" },

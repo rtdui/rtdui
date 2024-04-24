@@ -1,0 +1,31 @@
+---
+meta:
+  - title: Divider Component
+  - description: Divider document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/divider.tsx"
+  componentName: "Divider"
+---
+
+import Demo from "../../components/Demo";
+import DividerBasicDemo from "./DividerBasicDemo";
+
+# 使用
+
+<Demo data={{ Component: DividerBasicDemo }} />
+
+## 颜色
+
+`Divider`的`color`属性支持: "primary", "secondary", "accent", "info", "success", "warning", "error","neutral"; 不支持自定义颜色
+
+## 分割线标签
+
+`Divider`的`label`属性可以在分割线上放置标签.
+
+当设置了`label`属性值, `labelPostion`属性设置标签的放置位置, 支持的值: "start", "center", "end", 默认为"center"
+
+## 方向
+
+`Divider`的`direction`属性用于设置分隔的方向, 取值: "vertical"(垂直分隔), "horizontal"(水平分隔), 默认为"vertical"
