@@ -13,8 +13,8 @@ export function Paper(props: PaperProps) {
       className={clsx(
         "rounded-2xl bg-base-100 p-4",
         {
-          "shadow-xs": elevation === "xs",
-          "shadow-sm": elevation === "sm",
+          "shadow-sm": elevation === "xs",
+          shadow: elevation === "sm",
           "shadow-md": elevation === "md",
           "shadow-lg": elevation === "lg",
           "shadow-xl": elevation === "xl",

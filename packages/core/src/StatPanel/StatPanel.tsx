@@ -31,8 +31,8 @@ export const StatPanel = forwardRef<HTMLDivElement, StatPanelProps>(
           "stats",
           "stats-vertical lg:stats-horizontal", // 响应式的
           {
-            shadow: elevation === "xs",
-            "shadow-sm": elevation === "sm",
+            "shadow-sm": elevation === "xs",
+            shadow: elevation === "sm",
             "shadow-md": elevation === "md",
             "shadow-lg": elevation === "lg",
             "shadow-xl": elevation === "xl",
