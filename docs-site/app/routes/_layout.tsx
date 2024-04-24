@@ -82,7 +82,7 @@ export default function Layout() {
       slots={{
         header: "sticky top-0 z-20 w-full bg-base-200 px-4",
         main: "relative z-0 prose max-w-none p-8 pb-16",
-        aside: "z-30",
+        side: "z-30",
         drawer: "w-80 min-h-full bg-base-100",
       }}
       header={
@@ -201,7 +201,7 @@ export default function Layout() {
               RTD UI
             </a>
             <Link to="/changelog" className="link">
-              v4.1
+              v4.2
             </Link>
           </div>
           <NavMenu

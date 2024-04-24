@@ -24,7 +24,7 @@ export default function AppShellHeadroomDemo() {
     <AppShell
       ref={ref}
       slots={{
-        contentWrapper: "flex flex-col",
+        body: "flex flex-col",
         header: clsx("transition-transform duration-300 sticky top-0", {
           "-translate-y-full": !pinned,
         }),
@@ -166,7 +166,7 @@ export default function AppShellHeadroomDemo() {
     <AppShell
       ref={ref}
       slots={{
-        contentWrapper: "flex flex-col",
+        body: "flex flex-col",
         header: clsx("transition-transform duration-300 sticky top-0", {
           "-translate-y-full": !pinned,
         }),

@@ -28,7 +28,7 @@ export default function Index() {
       slots={{
         header: "sticky top-0 z-20 w-full bg-base-200 px-4",
         main: "relative z-0 pb-16",
-        aside: "z-40",
+        side: "z-40",
       }}
       header={
         <div className="navbar gap-2">

@@ -20,7 +20,7 @@ export default function AppShellDemo() {
     <AppShell
       ref={ref}
       slots={{
-        contentWrapper: "flex flex-col min-h-screen",
+        body: "flex flex-col min-h-screen",
         main: "flex-1 p-8",
         drawer: "bg-base-300 w-56 h-screen",
       }}
@@ -147,7 +147,7 @@ export default function AppShellDemo() {
     <AppShell
       ref={ref}
       slots={{
-        contentWrapper: "flex flex-col min-h-screen",
+        body: "flex flex-col min-h-screen",
         main: "flex-1 p-8",
         drawer: "bg-base-300 w-56 h-screen",
       }}
