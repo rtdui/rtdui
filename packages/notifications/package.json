@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/notifications",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "React notifications base on Rtdui components",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -48,8 +48,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@rtdui/hooks": "4.1.0",
-    "@rtdui/core": "4.1.0",
+    "@rtdui/hooks": "4.2.0",
+    "@rtdui/core": "4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
