@@ -22,7 +22,9 @@
   "keywords": [
     "react",
     "components",
-    "ui"
+    "library",
+    "ui",
+    "ui-kit"
   ],
   "author": "fu zhong wei <jackyleefzw@163.com>",
   "license": "MIT",
