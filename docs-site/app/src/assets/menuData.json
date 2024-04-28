@@ -156,6 +156,56 @@
     ]
   },
   {
+    "group": "dates",
+    "items": [
+      {
+        "label": "dates.introduce",
+        "url": "/components/dates_about",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.common",
+        "url": "/components/dates_common",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.locale",
+        "url": "/components/dates_locale",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.multiple",
+        "url": "/components/dates_multiple",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.range",
+        "url": "/components/dates_range",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.valueFormat",
+        "url": "/components/dates_valueformat",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.clearable",
+        "url": "/components/dates_clearable",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.timeWithSeconds",
+        "url": "/components/dates_withseconds",
+        "flag": "v4.3 new"
+      },
+      {
+        "label": "dates.inline",
+        "url": "/components/dates_inline",
+        "flag": "v4.3 new"
+      }
+    ]
+  },
+  {
     "group": "dataTables",
     "items": [
       { "label": "dataTable.introduce", "url": "/components/datatable_about" },

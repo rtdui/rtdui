@@ -1,0 +1,46 @@
+import Demo from "../../components/Demo";
+import PickersInlineDemo from "./PickersInlineDemo";
+import DatePickerBasicDemo from "./DatePickerBasicDemo";
+
+# 内联显示的组件
+
+`YearPicker`,`MonthPicker`,`DatePicker`组件可用于内联显示, 尤其`DatePicker`组件可作为日历使用.
+
+它们均支持受控和非受控模式使用, `value`为受控属性, `defaultValue`为非受控属性, `onChange`为回调属性.
+
+也支持不同类型的选择模式(type): defalut(单选), multiple(多选), range(范围选择).
+
+注意: 当`type`属性为"default"时, `value`和`defaultValue`的值类型均为 Date 类型, 当`type`属性为"multiple"或者"range"时, 值类型为Data数组
+
+`YearPickerInput`组件的下拉框中使用了`YearPicker`组件, `MonthPickerInput`组件的下拉框中使用了`MonthPicker`组件, `DatePickerInput`和`DateTimePickerInput`组件的下拉框中使用了`DatePicker`组件
+
+<Demo data={{ Component: PickersInlineDemo }} />
+
+## DatePicker 组件
+
+`DatePicker`组件功能最多, 属性也较多. 下面着重介绍
+
+概念: `DatePicker`有三个级别, 分别为:month, year, decade. 不同的级别显示不同的视图.
+
+支持的属性:
+
+- `locale` 组件级别的本地化
+- `level`,`defaultLevel`是受控和非受控属性. 用于设置当前的显示级别.
+- `maxLevel`属性用于控制最大能提升到的级别, 取值: "month"(月级别),"year"(年级别),"decade"(十年级别), 默认为"decade"
+- `numberOfColumns`属性用于设置多日历并列显示的数量.
+- 各个级别的自定义格式化支持, 完全支持`date-fns format`的格式化文本, 格式化依赖于`locale`属性
+
+  - `decadeLabelFormat`, `yearLabelFormat` 和 `monthLabelFormat`属性用于设置各级别日历头部中的日期格式化
+    `decadeLabelFormat`默认为:"yyyy", `yearLabelFormat`默认为:"yyyy", `monthLabelFormat`默认为:"MMMM yyyy"
+  - `yearsListFormat`和`monthsListFormat`属性用于设置年级别中月份的格式化和十年级别中年份的格式化
+    `yearsListFormat`默认为:"yyyy", `monthsListFormat`默认为:"MMM"
+
+  通常只需自定义`monthLabelFormat`和`monthsListFormat`
+
+- `minDate`和`maxDate`限制可选择的范围, 范围外部将被禁用.
+- `renderDay`月级别中自定义渲染日
+- `firstDayOfWeek` 定义星期的开始日, 默认使用上下文的设置, 如果不存在上下文则默认为1
+- `hideWeekdays` 是否隐藏日历的星期标签行, 默认为false
+- `weekendDays` 自定义周末, 默认使用上下文的设置
+
+<Demo data={{ Component: DatePickerBasicDemo }} />

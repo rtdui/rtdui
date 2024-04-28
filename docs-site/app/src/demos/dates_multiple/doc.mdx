@@ -1,0 +1,28 @@
+import Demo from "../../components/Demo";
+import DatesMultipleDemo from "./DatesMultipleDemo";
+
+# 使用
+
+`YearPickerInput`, `MonthPickerInput`, `DatePickerInput` 组件支持多选功能, 只要设置它们的`type`为`multiple`即可.
+
+注意: 当`type`为`multiple`时, value或defaultValue属性值的类型必须为Date数组类型, onChange回调函数属性的参数也为Date数组类型:
+
+```tsx
+import { useState } from "react";
+import { DatePickerInput } from "@rtdui/dates";
+
+function Demo() {
+  const [value, setValue] = useState<Date[]>([]);
+  return (
+    <DatePickerInput
+      type="range"
+      label="Pick dates range"
+      placeholder="Pick dates range"
+      value={value}
+      onChange={setValue}
+    />
+  );
+}
+```
+
+<Demo data={{ Component: DatesMultipleDemo }} />

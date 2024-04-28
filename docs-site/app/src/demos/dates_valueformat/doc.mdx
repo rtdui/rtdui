@@ -1,0 +1,19 @@
+import Demo from "../../components/Demo";
+import YearPickerInputValueFormatDemo from "./YearPickerInputValueFormatDemo";
+import MonthPickerInputValueFormatDemo from "./MonthPickerInputValueFormatDemo";
+import DatePickerInputValueFormatDemo from "./DatePickerInputValueFormatDemo";
+import DateTimePickerInputValueFormatDemo from "./DateTimePickerInputValueFormatDemo";
+
+# 使用
+
+`YearPickerInput`, `MonthPickerInput`, `DatePickerInput`, `DateTimePickerInput`, `DateInput` 组件支持自定义值的显示格式, 设置它们的`valueFormat`为任意`date-fns format`支持的格式字符串.
+
+> tips: 格式字符串会依赖于locale, 关于locale请查看公共部分
+
+<Demo data={{ Component: YearPickerInputValueFormatDemo }} />
+
+<Demo data={{ Component: MonthPickerInputValueFormatDemo }} />
+
+<Demo data={{ Component: DatePickerInputValueFormatDemo }} />
+
+<Demo data={{ Component: DateTimePickerInputValueFormatDemo }} />

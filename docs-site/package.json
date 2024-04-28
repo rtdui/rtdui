@@ -17,6 +17,7 @@
     "@rtdui/code-highlight": "4.2.0",
     "@rtdui/core": "4.2.0",
     "@rtdui/datatable": "4.2.0",
+    "@rtdui/dates": "4.2.0",
     "@rtdui/dialogs": "4.2.0",
     "@rtdui/editor": "4.2.0",
     "@rtdui/hooks": "4.2.0",

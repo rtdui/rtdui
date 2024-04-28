@@ -18,17 +18,28 @@ export default function NavMenu(props: NavMenuProps) {
     <ul className={clsx("menu", "pb-9", className)}>
       {data.map((d) => (
         <React.Fragment key={d.group}>
-          <li className="menu-title">{t(`navMenu.group.${d.group}`)}</li>
-          {d.items.map((dd) => (
-            <li key={`${d.group}-${dd.label}`}>
-              <NavLink to={dd.url} onClick={onClick}>
-                {t(`navMenu.${dd.label}`)}
-                {dd.flag && (
-                  <span className="text-secondary text-right">{dd.flag}</span>
-                )}
-              </NavLink>
-            </li>
-          ))}
+          <li>
+            <details open>
+              <summary className="opacity-50 font-bold">
+                {t(`navMenu.group.${d.group}`)}
+              </summary>
+              {/* <h2 className="menu-title">{t(`navMenu.group.${d.group}`)}</h2> */}
+              <ul>
+                {d.items.map((dd) => (
+                  <li key={`${d.group}-${dd.label}`}>
+                    <NavLink to={dd.url} onClick={onClick}>
+                      {t(`navMenu.${dd.label}`)}
+                      {dd.flag && (
+                        <span className="text-secondary text-right">
+                          {dd.flag}
+                        </span>
+                      )}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </li>
         </React.Fragment>
       ))}
     </ul>

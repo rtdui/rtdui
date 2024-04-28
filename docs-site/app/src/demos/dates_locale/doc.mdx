@@ -1,0 +1,40 @@
+# 本地化
+
+@rtdui/dates包中的组件使用 date-fns 库提供日期相关的处理以及本地化. 有两种方式设置本地化.
+
+1. 通过`DatesProvider`
+
+   可以在App顶层使用, 用于提供全局的设置.
+
+   在你的App根中添加`DatesProvider`
+
+   ```tsx
+   import { DatesProvider } from "@rtdui/dates";
+   import { zhCN } from "date-fns/locale";
+
+   <App>
+     <DatesProvider locale={zhCN}>{/* ...others */}</DatesProvider>
+   </App>;
+   ```
+
+   也可以在任意位置处使用, 用于提供局部的设置以覆盖全局设置.
+
+   ```tsx
+   import { DatesProvider } from "@rtdui/dates";
+   import { es } from "date-fns/locale";
+
+   <MyComponent>
+     <DatesProvider locale={es}>{/* ...others */}</DatesProvider>
+   </MyComponent>;
+   ```
+
+2. 组件中设置locale
+
+   组件级别也有`locale`属性, 可用于脱离`DatesProvider`使用时设置或者覆盖上下文的`locale`设置.
+
+   ```tsx
+   import { DatePickerInput } from "@rtdui/dates";
+   import { zhCN } from "date-fns/locale";
+
+   <DatePickerInput locale={zhCN} />;
+   ```

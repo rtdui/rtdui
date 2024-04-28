@@ -42,6 +42,7 @@
       "feedback": "反馈",
       "misc": "杂项",
       "otherPackages": "其它包",
+      "dates": "日期/时间组件",
       "dataTables": "数据表格"
     },
     "about": "$t(common.about)",
@@ -106,6 +107,17 @@
     "codeHighlight": "Code Highlight (代码高亮)",
     "editor": "Editor (富文本编辑器)",
     "qrCode": "QRCode (二维码生成)",
+    "dates": {
+      "introduce": "$t(common.introduce)",
+      "common": "公共基础",
+      "locale": "本地化",
+      "multiple": "多选",
+      "range": "选取范围",
+      "valueFormat": "自定义值的显示格式",
+      "clearable": "输入可清除",
+      "timeWithSeconds": "时间到秒",
+      "inline": "内联显示"
+    },
     "dataTable": {
       "introduce": "$t(common.introduce)",
       "api": "API文档",

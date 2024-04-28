@@ -19,7 +19,6 @@ export default function ColorControl(props: ColorControlProps) {
         "warning",
         "error",
         "success",
-        "neutral",
       ].map((d) => (
         <ColorSwatch
           size="28px"

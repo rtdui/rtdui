@@ -1,0 +1,23 @@
+import Demo from "../../components/Demo";
+import TimeWithSecondsDemo from "./TimeWithSecondsDemo";
+
+# 使用
+
+`DateTimePickerInput`和`TimeInput` 组件的时间默认只到分钟级,这和原生的`type="time"的input`保持一致, `withSeconds`属性设置为`true`可以到秒级.
+
+```tsx
+import { useState } from "react";
+import { DatePickerInput, TimeInput } from "@rtdui/dates";
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
+  return (
+    <>
+      <DateTimePickerInput withSeconds />
+      <TimeInput withSeconds />
+    </>
+  );
+}
+```
+
+<Demo data={{ Component: TimeWithSecondsDemo }} />

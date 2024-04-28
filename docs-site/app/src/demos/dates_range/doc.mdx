@@ -1,0 +1,32 @@
+import Demo from "../../components/Demo";
+import DatesRangeDemo from "./DatesRangeDemo";
+
+# 使用
+
+`YearPickerInput`, `MonthPickerInput`, `DatePickerInput` 组件支持多选功能, 只要设置它们的`type`为`range`即可.
+
+注意: 当`type`为`range`时, value或defaultValue属性值的类型必须为Date元组类型(有且仅有两个Date元素的数组), onChange回调函数属性的参数也为Date元组类型:
+
+```tsx
+import { useState } from "react";
+import { DatePickerInput } from "@rtdui/dates";
+
+function Demo() {
+  const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
+  return (
+    <DatePickerInput
+      type="range"
+      label="Pick dates range"
+      placeholder="Pick dates range"
+      value={value}
+      onChange={setValue}
+    />
+  );
+}
+```
+
+<Demo data={{ Component: DatesRangeDemo }} />
+
+## 自定义范围分隔符
+
+当`type`为`range`时, `labelSeparator`属性可以自定义范围分隔符,默认为: "-"

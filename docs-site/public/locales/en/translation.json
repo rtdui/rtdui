@@ -42,6 +42,7 @@
       "feedback": "Feedback",
       "misc": "Misc",
       "otherPackages": "Other packages",
+      "dates": "Dates",
       "dataTables": "DataTable"
     },
     "about": "$t(common.about)",
@@ -106,6 +107,17 @@
     "codeHighlight": "CodeHighlight",
     "editor": "Editor",
     "qrCode": "QRCode",
+    "dates": {
+      "introduce": "$t(common.introduce)",
+      "common": "Common",
+      "locale": "Locale",
+      "multiple": "Multiple",
+      "range": "Range picker",
+      "valueFormat": "Value Format",
+      "clearable": "Clearable",
+      "timeWithSeconds": "Time with seconds",
+      "inline": "Inline"
+    },
     "dataTable": {
       "introduce": "$t(common.introduce)",
       "api": "API",

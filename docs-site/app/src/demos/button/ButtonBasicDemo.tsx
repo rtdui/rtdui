@@ -39,7 +39,7 @@ export default function Demo() {
       <div className="flex flex-col gap-4 bg-base-100 w-56 p-4">
         Color:
         <ColorControl
-          extraColors={["default"]}
+          extraColors={["neutral", "default"]}
           withPicker={false}
           value={state.color}
           onChange={(val) => setState((prev) => ({ ...prev, color: val }))}
