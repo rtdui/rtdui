@@ -1,0 +1,61 @@
+{
+  "name": "@rtdui/dates",
+  "version": "4.2.0",
+  "description": "Calendars, date and time pickers based on Rtdui components",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "library",
+    "ui",
+    "ui-kit",
+    "calendar",
+    "date",
+    "date-picker",
+    "time",
+    "time-picker"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.com/",
+  "sideEffects": [
+    "*.css"
+  ],
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/dates"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "4.2.0",
+    "@rtdui/hooks": "4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^2.42.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^3.3.0",
+    "date-fns-tz": "^3.1.3"
+  }
+}
