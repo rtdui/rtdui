@@ -68,3 +68,5 @@ export * from "./Input";
 export * from "./InputBase";
 
 export * from "./TagsInput";
+
+export * from "./theme.types";

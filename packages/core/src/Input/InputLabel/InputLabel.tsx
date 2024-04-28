@@ -43,6 +43,7 @@ export const InputLabel = forwardRef<
       ref={ref}
       className={clsx(
         "input-label",
+        "font-bold",
         "text-[length:--input-font-size]",
         className
       )}
@@ -65,7 +66,7 @@ export const InputLabel = forwardRef<
       {children}
       {required && (
         <span
-          className={clsx("input-label-required", "text-red-500 align-middle")}
+          className={clsx("input-label-required", "text-red-500")}
           aria-hidden
         >
           {" *"}
