@@ -65,7 +65,7 @@ export default function Demo() {
         <br></br>
         monthsListFormat: MMMM
         <DatePicker
-          monthLabelFormat="MMMM yyyy"
+          monthLabelFormat="yyyy MMMM"
           monthsListFormat="MMMM"
           value={selectedDate}
           onChange={setSelectedDate}
