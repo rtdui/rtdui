@@ -104,5 +104,6 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     ssr: {
       noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
     },
+    server: { host: "0.0.0.0" },
   };
 });

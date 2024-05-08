@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Drawer } from "@rtdui/core";
-import { IconX } from "@tabler/icons-react";
+import { Button, CloseButton, Drawer } from "@rtdui/core";
 
 export default function Demo() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -16,14 +15,7 @@ export default function Demo() {
       >
         <div className="w-64 h-full flex flex-col gap-4 p-4 bg-base-200">
           <div className="flex justify-end">
-            <Button
-              size="xs"
-              sharp="circle"
-              color="neutral"
-              onClick={() => setDrawerOpen(false)}
-            >
-              <IconX size={18} />
-            </Button>
+            <CloseButton size="xs" onClick={() => setDrawerOpen(false)} />
           </div>
           <div className="flex-1">点击幕布不会关闭抽屉</div>
           <div className="flex justify-end">

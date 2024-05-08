@@ -1,10 +1,10 @@
-import { IconBell, IconCamera, IconX } from "@tabler/icons-react";
+import { IconBell, IconCamera, IconEye } from "@tabler/icons-react";
 import { Badge } from "@rtdui/core";
 
 export default function Demo() {
   return (
     <div className="flex gap-4 items-center lg:justify-center">
-      <Badge icon={<IconX />} color="info">
+      <Badge icon={<IconEye />} color="info">
         New
       </Badge>
       <Badge icon={<IconBell />} color="success">

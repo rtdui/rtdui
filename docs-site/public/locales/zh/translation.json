@@ -102,6 +102,7 @@
     "portal": "Portal (传送门)",
     "skeleton": "Skeleton (骨架)",
     "transition": "Transition (过渡特效)",
+    "modal": "Modal (模态框)",
     "dialogs": "Dialogs (系统对话框)",
     "notifications": "Notifications (系统通知框)",
     "codeHighlight": "Code Highlight (代码高亮)",

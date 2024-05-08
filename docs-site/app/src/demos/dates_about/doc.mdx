@@ -16,7 +16,7 @@ npm i @rtdui/dates
 - `timeZone` 用于日期/时间的时区设置, 取值为 IANA 的时区名, 如: "Asia/Shanghai", "America/New_York". 默认使用浏览器的时区
   当你传递给`*Input`组件一个UTC形式的日期字符串作为值, 显示时会按指定的时区显示日期文本.
 - `firstDayOfWeek` 用于指定星期的开始日, 取值为0 到 6之间的数字, 0 是指星期日, 6 是指星期六, 依次类推. 默认为: 1 (星期一)
-- `weekendDays` 用于指定哪几天为周末, 是一个元组(两个元素组成的数组), 每个元素取值为0 到 6之间的数字, 0 是指星期日, 6 是指星期六, 依次类推. 默认为: `[0,6]` (星期日和星期六)
+- `weekendDays` 用于指定哪几天为周末, 是一个数组, 每个元素取值为0 到 6之间的数字, 0 是指星期日, 6 是指星期六, 依次类推. 默认为: `[0,6]` (星期日和星期六)
 - `labelSeparator` 用于范围选择时的日期分隔符. 默认为: "-"
 - `consistentWeeks` 月份最大的时候会占据6周(6行),最小的时候会占据4周(4行), 该设置将所有月份都以6周显示, 防止高度突变. 默认为: false
 
@@ -26,6 +26,7 @@ npm i @rtdui/dates
 - `MonthPickerInput` 组件用于选取月份
 - `DatePickerInput` 组件用于选取日期
 - `DateTimePickerInput` 组件用于选取日期和时间
+- `TimePickerInput` 组件用于选取时间
 
 以下组件既支持选取也接受用户输入:
 

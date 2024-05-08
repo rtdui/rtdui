@@ -13,6 +13,8 @@ import {
   DateTimePickerInput,
   DateInput,
   TimeInput,
+  TimePicker,
+  TimePickerInput,
 } from "@rtdui/dates";
 import { zhCN } from "date-fns/locale";
 import { useState } from "react";
@@ -94,6 +96,20 @@ export default function Demo() {
             description={state.description}
             error={state.error}
             placeholder="Pick date and time"
+          />
+          <i>TimePickerInput:</i>
+          <TimePickerInput
+            variant={state.variant as any}
+            color={state.color}
+            size={state.size as any}
+            radius={state.radius as any}
+            disabled={state.disabled}
+            label={state.label}
+            withAsterisk={state.withAsterisk}
+            description={state.description}
+            error={state.error}
+            placeholder="pick time"
+            onChange={(val) => console.log(val)}
           />
           <Divider label="允许自由输入的组件" />
           <i>DateInput:</i>

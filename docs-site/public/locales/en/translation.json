@@ -102,6 +102,7 @@
     "portal": "Portal",
     "skeleton": "Skeleton",
     "transition": "Transition",
+    "modal": "Modal",
     "dialogs": "Dialogs",
     "notifications": "Notifications",
     "codeHighlight": "CodeHighlight",

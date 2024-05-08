@@ -1,13 +1,12 @@
 import type { ColumnDef, CellContext } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
-import { IconX } from "@tabler/icons-react";
 import {
   makePersonData as makePersonData,
   type Person,
   newPerson,
 } from "../../demoData/makeData";
-import { NumberInput, TextInput } from "@rtdui/core";
+import { CloseButton, NumberInput, TextInput } from "@rtdui/core";
 import clsx from "clsx";
 
 const getRowId = (row: Person) => row.id;
@@ -270,9 +269,7 @@ export default function Demo() {
         <div className="alert alert-error">
           <div className="flex items-center gap-4">
             <span>{error}</span>
-            <button className="btn btn-circle btn-xs">
-              <IconX size={16} onClick={() => setError("")} />
-            </button>
+            <CloseButton onClick={() => setError("")} />
           </div>
         </div>
       </div>

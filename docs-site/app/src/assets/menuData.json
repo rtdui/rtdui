@@ -142,7 +142,8 @@
       { "label": "popover", "url": "/components/popover" },
       { "label": "portal", "url": "/components/portal" },
       { "label": "skeleton", "url": "/components/skeleton" },
-      { "label": "transition", "url": "/components/transition" }
+      { "label": "transition", "url": "/components/transition" },
+      { "label": "modal", "url": "/components/modal" }
     ]
   },
   {
