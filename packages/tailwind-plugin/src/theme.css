@@ -14,12 +14,20 @@
   --theme-font-size-xl: 1.5rem;
   --theme-font-size: var(--theme-font-size-md);
 
-  --theme-space-size-xs: 0.625rem;
-  --theme-space-size-sm: 0.75rem;
-  --theme-space-size-md: 1rem;
-  --theme-space-size-lg: 1.25rem;
-  --theme-space-size-xl: 2rem;
-  --theme-space-size: var(--theme-space-size-sm);
+  --theme-spacing-size-xs: 0.625rem;
+  --theme-spacing-size-sm: 0.75rem;
+  --theme-spacing-size-md: 1rem;
+  --theme-spacing-size-lg: 1.25rem;
+  --theme-spacing-size-xl: 2rem;
+  --theme-spacing-size: var(--theme-spacing-size-sm);
+}
+
+html:has(body[data-scroll-locked]) {
+  scrollbar-gutter: auto !important;
+  overflow: hidden !important;
+}
+html body[data-scroll-locked] {
+  overflow: visible !important;
 }
 
 /*prettier-ignore */
