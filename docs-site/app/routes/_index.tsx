@@ -219,6 +219,11 @@ export default function Index() {
                 slots={{ value: "text-2xl" }}
                 items={[
                   {
+                    title: "dates package",
+                    value: "dates",
+                    desc: "date pickers(date,time,datetime,month,year)",
+                  },
+                  {
                     title: "dialogs package",
                     value: "dialogs",
                   },
