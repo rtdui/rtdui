@@ -6,7 +6,7 @@ import {
   Popover,
   PopoverProps,
   useInputProps,
-  getSize,
+  CloseButton,
 } from "@rtdui/core";
 import { useDidUpdate } from "@rtdui/hooks";
 import { useUncontrolledDates } from "../../hooks";
@@ -20,7 +20,6 @@ import { MonthLevelSettings } from "../MonthLevel";
 import { YearLevelSettings } from "../YearLevel";
 import { dateStringParser } from "./date-string-parser/date-string-parser";
 import { isDateValid } from "./is-date-valid/is-date-valid";
-import { IconX } from "@tabler/icons-react";
 
 export interface DateInputProps
   extends Omit<InputBaseOwnProps, "size">,
@@ -116,6 +115,8 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 
     const [dropdownOpened, setDropdownOpened] = useState(false);
     const { calendarProps, others } = pickCalendarProps(rest);
+    delete calendarProps.allowDeselect;
+    delete calendarProps.allowSingleDateInRange;
     const ctx = useDatesContext();
     const defaultDateParser = (val: string) => {
       const parsedDate = parseDate(val, valueFormat, {
@@ -213,12 +214,8 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
     const _rightSection =
       rightSection ||
       (clearable && _value && !readOnly ? (
-        <button
-          className={clsx("btn btn-circle btn-xs btn-ghost min-h-0")}
-          style={{
-            width: getSize(inputProps.size || "sm"),
-            height: getSize(inputProps.size || "sm"),
-          }}
+        <CloseButton
+          size="xs"
           onMouseDown={(event) => event.preventDefault()}
           tabIndex={-1}
           onClick={() => {
@@ -227,9 +224,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
             setDropdownOpened(false);
           }}
           {...clearButtonProps}
-        >
-          <IconX size={18} />
-        </button>
+        />
       ) : null);
 
     useDidUpdate(() => {

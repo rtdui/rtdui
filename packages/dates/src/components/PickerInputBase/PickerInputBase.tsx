@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { IconX } from "@tabler/icons-react";
 import {
   Input,
   Popover,
@@ -8,6 +7,8 @@ import {
   type PopoverProps,
   type ThemeSize,
   useInputProps,
+  Modal,
+  CloseButton,
 } from "@rtdui/core";
 import { useDisclosure } from "@rtdui/hooks";
 import { DatePickerType } from "../../types";
@@ -107,13 +108,7 @@ export const PickerInputBase = forwardRef<
   const _rightSection =
     rightSection ||
     (clearable && shouldClear && !readOnly && !disabled ? (
-      <button
-        className="btn btn-circle btn-xs btn-ghost"
-        onClick={onClear}
-        {...clearButtonProps}
-      >
-        <IconX size={18} />
-      </button>
+      <CloseButton size="xs" onClick={onClear} {...clearButtonProps} />
     ) : null);
 
   const handleClose = () => {
@@ -128,19 +123,18 @@ export const PickerInputBase = forwardRef<
 
   return (
     <>
-      {/* {dropdownType === "modal" && !readOnly && (
+      {dropdownType === "modal" && !readOnly && (
         <Modal
           opened={dropdownOpened}
           onClose={handleClose}
           withCloseButton={false}
           size="auto"
           data-dates-modal
-          unstyled={unstyled}
           {...modalProps}
         >
           {children}
         </Modal>
-      )} */}
+      )}
 
       <Input.Wrapper {...wrapperProps}>
         <Popover

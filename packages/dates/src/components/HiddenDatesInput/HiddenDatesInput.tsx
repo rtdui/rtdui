@@ -30,8 +30,11 @@ function formatValue(value: HiddenDatesInputValue, type: DatePickerType) {
       .join(", ");
   }
 
-  if (!Array.isArray(value) && value) {
+  if (!Array.isArray(value) && value instanceof Date) {
     return value.toISOString();
+  }
+  if (typeof value === "string") {
+    return value;
   }
 
   return "";
