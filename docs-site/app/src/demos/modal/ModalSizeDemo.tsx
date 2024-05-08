@@ -8,7 +8,7 @@ export default function Demo() {
   return (
     <>
       <Modal size={size} opened={opened} onClose={close} title="Title">
-        press escape or click on overlay or click close button to close
+        Modal, press escape or click on overlay or click close button to close
       </Modal>
 
       <div className="flex gap-4">

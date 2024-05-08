@@ -6,7 +6,7 @@ export default function Demo() {
   return (
     <>
       <Modal opened={opened} onClose={close} title="Title" centered>
-        Modal without header, press escape or click on overlay to close
+        Modal, press escape or click on overlay or click close button to close
       </Modal>
 
       <Button color="primary" onClick={open}>
