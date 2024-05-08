@@ -50,6 +50,9 @@ export * from "./TextInput";
 export * from "./Tooltip";
 export * from "./Transition";
 export * from "./Watermark";
+export * from "./Overlay";
+export * from "./Modal";
+export * from "./CloseButton";
 
 export * from "./utils";
 

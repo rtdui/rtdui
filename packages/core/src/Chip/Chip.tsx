@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
-import { IconX } from "@tabler/icons-react";
 import clsx from "clsx";
-import { Button } from "../Button";
 import { ChipGroup } from "./ChipGroup/ChipGroup";
+import { CloseButton } from "../CloseButton";
 
 export interface ChipProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "size"> {
@@ -53,7 +52,7 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
       className={clsx(
         "chip",
         "flex flex-nowrap items-center gap-1 px-2 rounded-box bg-base-200 leading-none w-fit whitespace-nowrap",
-        size === "small" ? "py-0 text-xs" : " py-0.5 text-sm",
+        size === "small" ? "py-px text-xs" : " py-0.5 text-sm",
         onDelete ? "[&]:pr-1" : "[&]:pr-3",
         {
           "bg-primary text-primary-content": color === "primary",
@@ -74,17 +73,7 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
       {startIcon}
       <span className={clsx("chip-label", slots?.label)}>{label}</span>
       {onDelete && (
-        <Button
-          className={clsx(
-            "min-h-0 p-0 rounded-full",
-            {
-              "w-5 h-5": size === "normal",
-              "w-4 h-4": size === "small",
-            },
-            slots?.deleteBtn
-          )}
-          color={color}
-          disabled={disabled}
+        <CloseButton
           onClick={
             !disabled
               ? (e) => {
@@ -93,14 +82,15 @@ export const Chip_ = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
                 }
               : undefined
           }
-        >
-          {deleteIcon || (
-            <IconX
-              size={size === "small" ? 12 : 14}
-              stroke={size === "small" ? 3 : 2.5}
-            />
-          )}
-        </Button>
+          iconProps={{
+            size: size === "normal" ? 16 : 12,
+            stroke: size === "normal" ? 2 : 2.5,
+          }}
+          className={clsx({
+            "w-[18px] h-[18px] min-h-[18px]": size === "normal",
+            "w-4 h-4 min-h-4": size === "small",
+          })}
+        />
       )}
     </div>
   );
