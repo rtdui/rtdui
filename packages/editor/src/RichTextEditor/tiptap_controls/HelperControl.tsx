@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
-import { IconHelp, IconX } from "@tabler/icons-react";
+import { IconHelp } from "@tabler/icons-react";
+import { CloseButton } from "@rtdui/core";
 import clsx from "clsx";
 import TiptapEditorHelpMDX from "./editorMan.mdx";
 
@@ -32,9 +33,7 @@ export const HelperControl = forwardRef<HTMLButtonElement, HelperControlProps>(
           >
             <form method="dialog">
               <div className="sticky top-0 flex justify-end mb-1">
-                <button type="submit" className="btn btn-sm btn-circle">
-                  <IconX />
-                </button>
+                <CloseButton type="submit" />
               </div>
             </form>
             <div className="flex-1 overflow-y-auto prose max-w-none" {...other}>

@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { Button } from "@rtdui/core";
-import { IconX } from "@tabler/icons-react";
+import { CloseButton } from "@rtdui/core";
 
 export interface NotificationProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "title" | "content"> {
@@ -111,12 +110,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
           <div className={clsx(slots?.content)}>{children}</div>
         </div>
         {withCloseButton && (
-          <Button
-            onClick={onClose}
-            className={clsx("btn btn-sm btn-circle btn-ghost", slots?.closeBtn)}
-          >
-            <IconX />
-          </Button>
+          <CloseButton onClick={onClose} className={clsx(slots?.closeBtn)} />
         )}
       </div>
     );

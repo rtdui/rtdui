@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { IconX } from "@tabler/icons-react";
 import type { Table, Column } from "@tanstack/react-table";
 import { useDrop } from "react-dnd";
+import { CloseButton } from "@rtdui/core";
 
 export interface GroupDropAreaProps {
   table: Table<any>;
@@ -30,26 +30,19 @@ export function GroupDropArea(props: GroupDropAreaProps) {
   return enableGrouping ? (
     <div
       ref={dropRef}
-      className={clsx("w-full h-full flex items-center", className)}
+      className={clsx("w-full h-full flex items-center gap-1", className)}
     >
       {grouping.map((columnId: any) => {
         return (
           <div
             key={columnId}
-            className="rounded-full bg-base-200 flex items-center px-3 mr-1"
+            className="rounded-full bg-base-200 flex items-center pl-3 pr-1 mr-1"
           >
-            {columnId}{" "}
-            <button
-              type="button"
-              className="btn btn-ghost btn-circle btn-xs"
-              onClick={() => handleCloseClick(columnId)}
-            >
-              <IconX size={16} />
-            </button>
+            {columnId}
+            <CloseButton size="xs" onClick={() => handleCloseClick(columnId)} />
           </div>
         );
       })}
-      {"\u00A0"}
       <div className="flex-1">拖拉列头到此进行分组</div>
     </div>
   ) : null;

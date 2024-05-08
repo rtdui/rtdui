@@ -1,7 +1,6 @@
 import { forwardRef, isValidElement, cloneElement } from "react";
 import clsx from "clsx";
-import { Button, TextInput } from "@rtdui/core";
-import { IconX } from "@tabler/icons-react";
+import { Button, CloseButton, TextInput } from "@rtdui/core";
 import { useInputState } from "@rtdui/hooks";
 
 export interface DialogProps
@@ -95,14 +94,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
           )}
         >
           <h3 className={clsx("font-bold", slots?.title)}>{title}</h3>
-          {withCloseButton && (
-            <Button
-              onClick={(e) => onClose?.()}
-              className={clsx("btn btn-sm btn-circle", slots?.closeBtn)}
-            >
-              <IconX />
-            </Button>
-          )}
+          {withCloseButton && <CloseButton onClick={(e) => onClose?.()} />}
         </div>
         <div
           className={clsx(

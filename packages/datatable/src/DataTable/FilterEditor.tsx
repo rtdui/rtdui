@@ -1,7 +1,6 @@
 import React from "react";
-import { DebouncedInput, getType } from "@rtdui/core";
+import { CloseButton, DebouncedInput, getType } from "@rtdui/core";
 import type { Table, Column } from "@tanstack/react-table";
-import { IconX } from "@tabler/icons-react";
 
 export interface FilterEditorProps {
   column: Column<any, unknown>;
@@ -83,15 +82,12 @@ export function FilterEditor(props: FilterEditorProps) {
         />
         {column.getIsFiltered() && (
           <div className="absolute inset-y-0 right-0.5 flex items-center">
-            <button
-              type="button"
-              className="btn btn-circle btn-ghost btn-xs"
+            <CloseButton
+              size="xs"
               onClick={() => {
                 column.setFilterValue(null);
               }}
-            >
-              <IconX size={16} />
-            </button>
+            />
           </div>
         )}
       </div>
