@@ -631,20 +631,9 @@
           "name": "string | undefined"
         }
       },
-      "clearOnResize": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "",
-        "name": "clearOnResize",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "confirmLabel": {
         "defaultValue": {
-          "value": "\"Submit\""
+          "value": "\"Confirm\""
         },
         "description": "confirm button text, can be localized",
         "name": "confirmLabel",
@@ -659,6 +648,17 @@
         },
         "description": "Radius of a single dot. Also the width of the start of a mark.",
         "name": "dotSize",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "height": {
+        "defaultValue": {
+          "value": "150"
+        },
+        "description": "canvas height",
+        "name": "height",
         "required": false,
         "type": {
           "name": "number | undefined"
@@ -743,6 +743,17 @@
         },
         "description": "Weight used to modify new velocity based on the previous velocity",
         "name": "velocityFilterWeight",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "width": {
+        "defaultValue": {
+          "value": "300"
+        },
+        "description": "canvas width",
+        "name": "width",
         "required": false,
         "type": {
           "name": "number | undefined"
