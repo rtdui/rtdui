@@ -666,7 +666,7 @@
       },
       "maxWidth": {
         "defaultValue": {
-          "value": "3"
+          "value": "2.5"
         },
         "description": "Maximum width of a line",
         "name": "maxWidth",
@@ -688,13 +688,22 @@
       },
       "minWidth": {
         "defaultValue": {
-          "value": "1"
+          "value": "0.5"
         },
         "description": "Minimum width of a line",
         "name": "minWidth",
         "required": false,
         "type": {
           "name": "number | undefined"
+        }
+      },
+      "onClear": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClear",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
         }
       },
       "onConfirm": {
