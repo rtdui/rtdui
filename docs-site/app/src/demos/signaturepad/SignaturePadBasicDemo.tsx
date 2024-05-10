@@ -5,6 +5,8 @@ import ColorControl from "~/src/components/ColorControl";
 
 export default function Demo() {
   const [state, setState] = useState({
+    width: 330,
+    height: 200,
     penColor: "black",
     minWidth: 0.5,
     maxWidth: 2.5,
@@ -25,8 +27,8 @@ export default function Demo() {
         <div className="flex-1 select-none">
           <SignaturePad
             ref={signPadRef}
-            width={330}
-            height={200}
+            width={state.width}
+            height={state.height}
             onConfirm={handleConfirm}
             clearLabel="清除"
             confirmLabel="确定"
@@ -68,8 +70,10 @@ export default function Demo() {
         </div>
       </div>
       <Divider>预览</Divider>
-      <div className="bg-base-100">
-        {dataUrl && <img src={dataUrl} alt="" />}
+      <div className="bg-base-100 w-fit">
+        {dataUrl && (
+          <img src={dataUrl} alt="" width={state.width} height={state.height} />
+        )}
       </div>
     </div>
   );
