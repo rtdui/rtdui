@@ -25,6 +25,7 @@ This monorepo with a collection of packages:
 - [`@rtdui/notifications`](https://rtdui.com/components/notification) – a fully featured notifications system
 - [`@rtdui/editor`](https://rtdui.com/components/editor) – a Tiptap based rich text editor
 - [`@rtdui/qr-code`](https://rtdui.com/components/qrcode) – qr code generator
+- [`@rtdui/signature-pad`](https://rtdui.com/components/signaturepad) – signature pad
 - [`@rtdui/tailwind-plugin`](https://rtdui.com/install) – tailwindCSS plugin
 
 ## Contributors
