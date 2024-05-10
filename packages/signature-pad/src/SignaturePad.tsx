@@ -43,18 +43,22 @@ export type SignaturePadHandle = {
 };
 
 export interface SignaturePadProps
-  extends React.ComponentPropsWithoutRef<"canvas"> {
-  /**
-   * @default true
+  extends Omit<React.ComponentPropsWithoutRef<"canvas">, "width" | "height"> {
+  /** canvas width
+   * @default 300
    */
-  clearOnResize?: boolean;
+  width?: number;
+  /** canvas height
+   * @default 150
+   */
+  height?: number;
   withClear?: boolean;
   /** clear button text, can be localized
    * @default "Clear"
    */
   clearLabel?: string;
   /** confirm button text, can be localized
-   * @default "Submit"
+   * @default "Confirm"
    */
   confirmLabel?: string;
   onClear?: () => void;
@@ -99,9 +103,10 @@ export interface SignaturePadProps
 }
 export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
   const {
-    clearOnResize = true,
-    clearLabel,
-    confirmLabel,
+    width = 300,
+    height = 150,
+    clearLabel = "Clear",
+    confirmLabel = "Confirm",
     onConfirm,
     onClear,
 
@@ -152,45 +157,30 @@ export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
     []
   );
 
-  const _resizeCanvas = () => {
-    const { width, height } = others ?? {};
-    // don't resize if the canvas has fixed width and height
-    if (typeof width !== "undefined" && typeof height !== "undefined") {
-      return;
-    }
-
+  const setupCanvas = () => {
     const canvas = canvasRef.current;
     /* When zoomed out to less than 100%, for some very strange reason,
         some browsers report devicePixelRatio as less than 1
         and only part of the canvas is cleared then. */
     const ratio = Math.max(window.devicePixelRatio ?? 1, 1);
+    canvas.width = width * ratio;
+    canvas.style.width = `${width}px`;
+    canvas.height = height * ratio;
+    canvas.style.height = `${height}px`;
 
-    if (typeof width === "undefined") {
-      canvas.width = canvas.offsetWidth * ratio;
-    }
-    if (typeof height === "undefined") {
-      canvas.height = canvas.offsetHeight * ratio;
-    }
+    // reset transform matrix
+    canvas.getContext("2d")!.resetTransform();
     canvas.getContext("2d")!.scale(ratio, ratio);
     clear();
   };
 
-  const _checkClearOnResize = () => {
-    if (!clearOnResize) {
-      return;
-    }
-    _resizeCanvas();
-  };
-
   // all wrapper functions below render
   const on = () => {
-    window.addEventListener("resize", _checkClearOnResize);
     signPadRef.current.addEventListener("endStroke", resetUndos);
     return signPadRef.current.on();
   };
 
   const off = () => {
-    window.removeEventListener("resize", _checkClearOnResize);
     signPadRef.current.removeEventListener("endStroke", resetUndos);
     return signPadRef.current.off();
   };
@@ -235,14 +225,13 @@ export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
       canvasContextOptions,
     });
     on();
-    _resizeCanvas();
+    setupCanvas();
 
     return () => off();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    console.log(penColor, signPadRef.current.penColor);
     Object.assign(signPadRef.current, {
       velocityFilterWeight,
       minWidth,
@@ -268,8 +257,8 @@ export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
 
   return (
     <div className="flex flex-col gap-2 w-fit select-none">
-      <div className="bg-base-300 select-none">
-        <canvas ref={canvasRef} {...others} />
+      <div className="bg-base-200 select-none">
+        <canvas ref={canvasRef} {...others} width={width} height={height} />
       </div>
       <div className="flex justify-between">
         <Button
