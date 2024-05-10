@@ -1,11 +1,8 @@
 import { useState, useEffect, useRef, forwardRef } from "react";
 import clsx from "clsx";
-import {
-  type KeenSliderOptions,
-  type TrackDetails,
-  useKeenSlider,
-} from "keen-slider/react";
 import { useMergedRef } from "@rtdui/hooks";
+import { type KeenSliderOptions, type TrackDetails } from "keen-slider";
+import { useKeenSlider } from "./useKeenSlider";
 
 export interface WheelProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "onChange"> {

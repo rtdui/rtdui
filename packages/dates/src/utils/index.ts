@@ -6,3 +6,5 @@ export { shiftTimezone } from "./shift-timezone";
 export * from "./dateFns";
 
 export type { DateFormatter } from "./get-formatted-date";
+
+export * from "./equal";
