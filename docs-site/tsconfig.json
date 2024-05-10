@@ -31,6 +31,7 @@
     { "path": "../packages/hooks" },
     { "path": "../packages/notifications" },
     { "path": "../packages/qr-code" },
+    { "path": "../packages/signature-pad" },
     { "path": "../packages/spotlight" },
     { "path": "../packages/dates" }
   ]

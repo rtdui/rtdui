@@ -153,7 +153,12 @@
       { "label": "notifications", "url": "/components/notification" },
       { "label": "codeHighlight", "url": "/components/codehighlight" },
       { "label": "editor", "url": "/components/editor" },
-      { "label": "qrCode", "url": "/components/qrcode" }
+      { "label": "qrCode", "url": "/components/qrcode" },
+      {
+        "label": "signaturePad",
+        "url": "/components/signaturepad",
+        "flag": "v4.5 new"
+      }
     ]
   },
   {

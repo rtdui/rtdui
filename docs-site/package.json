@@ -23,6 +23,7 @@
     "@rtdui/hooks": "4.4.0",
     "@rtdui/notifications": "4.4.0",
     "@rtdui/qr-code": "4.4.0",
+    "@rtdui/signature-pad": "4.4.0",
     "@rtdui/spotlight": "4.4.0",
     "@tabler/icons-react": "^2.42.0",
     "clsx": "^2.1.0",

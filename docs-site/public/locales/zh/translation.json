@@ -108,6 +108,7 @@
     "codeHighlight": "Code Highlight (代码高亮)",
     "editor": "Editor (富文本编辑器)",
     "qrCode": "QRCode (二维码生成)",
+    "signaturePad": "SignaturePad (手写签名)",
     "dates": {
       "introduce": "$t(common.introduce)",
       "common": "公共基础",

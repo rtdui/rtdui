@@ -1,0 +1,112 @@
+---
+meta:
+  - title: Select Component
+  - description: Select document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Select.tsx"
+  componentName: "Select"
+---
+
+import Demo from "../../components/Demo";
+import SignaturePadBasicDemo from "./SignaturePadBasicDemo";
+
+# 使用
+
+`SignaturePad`组件用于手写签名, 它基于canvas实现平滑流畅的书写.
+
+<Demo data={{ Component: SignaturePadBasicDemo }} />
+
+## 组件API
+
+传递你的`ref`给`SignaturePad`, 此后就可以通过你的`ref`调用`SignaturePad`的API:
+
+```tsx
+import { SignaturePad, SignaturePadHandle } from "@rtdui/signature-pad";
+
+export default function Demo() {
+  const signPadRef = useRef<SignaturePadHandle>(null!);
+  const handleBtnClick = () => {
+    signPadRef.current.toDataURL(); // 默认为image/png格式
+    // signPadRef.current.toDataURL("image/jpeg"); // image/jpeg格式
+    // signPadRef.current.toDataURL("image/jpeg", 0.5); // image/jpeg格式, 带输出图像质量
+    // signPadRef.current.toDataURL("image/svg+xml"); // image/svg+xml格式
+    // signPadRef.current.toDataURL("image/svg+xml", {includeBackgroundColor: true,}); // image/svg+xml格式, 带背景输出
+  };
+  return (
+    <>
+      <SignaturePad ref={signPadRef} />
+      <Button onClick={handleBtnClick}>输出</Button>
+    </>
+  );
+}
+```
+
+通过`ref`可调用的API:
+
+```tsx
+type SignaturePadHandle = {
+  /** Clears the canvas */
+  clear(): void;
+  /** Returns true if canvas is empty, otherwise returns false */
+  isEmpty(): boolean;
+
+  /** Draws signature image from data URL and alters it with the given options */
+  fromDataURL(
+    dataUrl: string,
+    options?: {
+      ratio?: number;
+      width?: number;
+      height?: number;
+      xOffset?: number;
+      yOffset?: number;
+    }
+  ): Promise<void>;
+  /** Returns signature image as SVG data URL with {includeBackgroundColor} option */
+  toDataURL(type: "image/svg+xml", encoderOptions?: ToSVGOptions): string;
+  /** Returns signature image as data URL */
+  toDataURL(type?: string, quality?: number): string;
+
+  /** Draws signature image from an array of point groups */
+  fromData(pointGroups: PointGroup[], option?: FromDataOptions): void;
+  /** Returns signature image as an array of point groups */
+  toData(): PointGroup[];
+
+  /** Return svg string without converting to base64 */
+  toSVG(option?: ToSVGOptions): string;
+
+  undo(): void;
+  redo(): void;
+};
+```
+
+### 输出格式
+
+`toDataURL`, `toData`, `toSVG` API方法用于输出图像.
+
+`SignaturePad`组件的签名输出支持:
+
+- DataUrl 这是最常用的输出形式, 它支持各种类型的图像格式, 如: png, jpeg, webp, svg等
+- SVG 输出是不经base64编码的svg字符串, 如`<svg...</svg>`
+- 点数组 由各个点组成的数组.
+
+## 背景色
+
+`backgroundColor`属性可以设置画布的背景色, 默认是透明的, 在透明背景无法输出JPEG格式的图像, 当你想要输出JPEG格式的图像时, 必须设置一个非透明的背景色.
+
+## 笔刷
+
+- `penColor`属性可以设置笔刷的颜色, 默认为: 黑色
+- `minWidth`属性可以设置笔刷的最小宽度, 默认为: 0.5
+- `maxWidth`属性可以设置笔刷的最大宽度, 默认为: 2.5
+
+## 回调属性
+
+- onClear 属性是点击clear按钮时的回调处理
+- onConfirm 属性是点击confirm按钮时的回调处理
+
+## 本地化
+
+- clearLabel 属性用于本地化clear按钮的文本
+- confirmLabel 属性用于本地化submit按钮的文本

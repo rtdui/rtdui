@@ -108,6 +108,7 @@
     "codeHighlight": "CodeHighlight",
     "editor": "Editor",
     "qrCode": "QRCode",
+    "signaturePad": "SignaturePad",
     "dates": {
       "introduce": "$t(common.introduce)",
       "common": "Common",

@@ -2,34 +2,42 @@ import { ColorPicker, ColorSwatch, Popover, TextInput } from "@rtdui/core";
 import { IconCheck, IconPalette } from "@tabler/icons-react";
 
 interface ColorControlProps {
+  withThemeColor?: boolean;
   withPicker?: boolean;
   extraColors?: string[];
   value: string;
   onChange: (val: string) => void;
 }
 export default function ColorControl(props: ColorControlProps) {
-  const { withPicker = true, extraColors, value, onChange } = props;
+  const {
+    withThemeColor = true,
+    withPicker = true,
+    extraColors,
+    value,
+    onChange,
+  } = props;
   return (
     <div className="colors flex flex-wrap gap-0.5">
-      {[
-        "primary",
-        "secondary",
-        "accent",
-        "info",
-        "warning",
-        "error",
-        "success",
-      ].map((d) => (
-        <ColorSwatch
-          size="28px"
-          radius="sm"
-          key={d}
-          color={d}
-          onClick={() => onChange?.(d)}
-        >
-          {d === value && <IconCheck size="20" color="white" />}
-        </ColorSwatch>
-      ))}
+      {withThemeColor &&
+        [
+          "primary",
+          "secondary",
+          "accent",
+          "info",
+          "warning",
+          "error",
+          "success",
+        ].map((d) => (
+          <ColorSwatch
+            size="28px"
+            radius="sm"
+            key={d}
+            color={d}
+            onClick={() => onChange?.(d)}
+          >
+            {d === value && <IconCheck size="20" color="white" />}
+          </ColorSwatch>
+        ))}
       {extraColors?.map((d) => (
         <ColorSwatch
           size="28px"

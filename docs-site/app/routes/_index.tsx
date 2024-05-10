@@ -213,6 +213,10 @@ export default function Index() {
                     title: "qr-code package",
                     value: "qr code",
                   },
+                  {
+                    title: "signature-pad package",
+                    value: "signature pad",
+                  },
                 ]}
               />
               <StatPanel

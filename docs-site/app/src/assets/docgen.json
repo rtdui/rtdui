@@ -595,6 +595,161 @@
       }
     }
   },
+  "SignaturePad": {
+    "filePath": "D:/sources/rtdui/packages/signature-pad/src/SignaturePad.tsx",
+    "description": "",
+    "displayName": "@rtdui/signature-pad/SignaturePad",
+    "props": {
+      "backgroundColor": {
+        "defaultValue": {
+          "value": "\"transparent\""
+        },
+        "description": "Color used to canvas the background. Can be any color format accepted by context.fillStyle.\nUse a non-transparent color e.g. \"rgb(255,255,255)\" if you'd like to save signatures as JPEG images.",
+        "name": "backgroundColor",
+        "required": false,
+        "type": {
+          "name": "Fill | undefined"
+        }
+      },
+      "canvasContextOptions": {
+        "defaultValue": null,
+        "description": "",
+        "name": "canvasContextOptions",
+        "required": false,
+        "type": {
+          "name": "CanvasRenderingContext2DSettings | undefined"
+        }
+      },
+      "clearLabel": {
+        "defaultValue": {
+          "value": "\"Clear\""
+        },
+        "description": "clear button text, can be localized",
+        "name": "clearLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "clearOnResize": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "",
+        "name": "clearOnResize",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "confirmLabel": {
+        "defaultValue": {
+          "value": "\"Submit\""
+        },
+        "description": "confirm button text, can be localized",
+        "name": "confirmLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "dotSize": {
+        "defaultValue": {
+          "value": "(minWidth + maxWidth) / 2"
+        },
+        "description": "Radius of a single dot. Also the width of the start of a mark.",
+        "name": "dotSize",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "maxWidth": {
+        "defaultValue": {
+          "value": "3"
+        },
+        "description": "Maximum width of a line",
+        "name": "maxWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "minDistance": {
+        "defaultValue": {
+          "value": "5"
+        },
+        "description": "Add the next point only if the previous one is farther than x pixels.",
+        "name": "minDistance",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "minWidth": {
+        "defaultValue": {
+          "value": "1"
+        },
+        "description": "Minimum width of a line",
+        "name": "minWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "onConfirm": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onConfirm",
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "penColor": {
+        "defaultValue": {
+          "value": "\"black\""
+        },
+        "description": "Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to \"black\"",
+        "name": "penColor",
+        "required": false,
+        "type": {
+          "name": "Fill | undefined"
+        }
+      },
+      "throttle": {
+        "defaultValue": {
+          "value": "16"
+        },
+        "description": "Draw the next point at most once in milliseconds. Set it to 0 to turn off throttling",
+        "name": "throttle",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "velocityFilterWeight": {
+        "defaultValue": {
+          "value": "0.7"
+        },
+        "description": "Weight used to modify new velocity based on the previous velocity",
+        "name": "velocityFilterWeight",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "withClear": {
+        "defaultValue": null,
+        "description": "",
+        "name": "withClear",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
   "@rtdui/Spotlight": {
     "filePath": "D:/sources/rtdui/packages/spotlight/src/Spotlight.tsx",
     "description": "",
@@ -1292,6 +1447,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -1308,9 +1466,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -1417,6 +1572,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -1433,9 +1591,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -2132,6 +2287,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -2148,9 +2306,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -2320,6 +2475,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -2336,9 +2494,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -3722,6 +3877,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -3738,9 +3896,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -3847,6 +4002,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -3863,9 +4021,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -4298,6 +4453,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -4314,9 +4472,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -4441,6 +4596,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -4457,9 +4615,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -5738,6 +5893,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -5754,9 +5912,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -5872,6 +6027,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -5888,9 +6046,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -6751,6 +6906,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -6767,9 +6925,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -6876,6 +7031,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -6892,9 +7050,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -7079,6 +7234,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -7095,9 +7253,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -7204,6 +7359,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -7220,9 +7378,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -7506,6 +7661,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -7522,9 +7680,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -7631,6 +7786,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -7647,9 +7805,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -7982,6 +8137,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -7998,9 +8156,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -8187,6 +8342,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -8203,9 +8361,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -9644,6 +9799,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -9660,9 +9818,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -9879,6 +10034,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -9895,9 +10053,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -10250,6 +10405,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -10266,9 +10424,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -10375,6 +10530,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -10391,9 +10549,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -10761,6 +10916,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -10777,9 +10935,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -10931,6 +11086,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -10947,9 +11105,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -12783,6 +12938,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -12799,9 +12957,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -12998,6 +13153,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -13014,9 +13172,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -14338,6 +14493,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -14354,9 +14512,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -14573,6 +14728,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -14589,9 +14747,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -14935,6 +15090,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -14951,9 +15109,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -15131,6 +15286,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -15147,9 +15305,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -15435,6 +15590,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -15451,9 +15609,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -15560,6 +15715,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -15576,9 +15734,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -17208,6 +17363,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -17224,9 +17382,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -17342,6 +17497,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -17358,9 +17516,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -18895,6 +19050,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -18911,9 +19069,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -19020,6 +19175,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -19036,9 +19194,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -21731,6 +21886,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -21747,9 +21905,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -22151,6 +22306,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -22167,9 +22325,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -23391,6 +23546,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -23407,9 +23565,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -23813,6 +23968,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -23829,9 +23987,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -24479,6 +24634,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -24495,9 +24653,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -24857,6 +25012,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -24873,9 +25031,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -27148,6 +27303,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -27164,9 +27322,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -27452,6 +27607,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -27468,9 +27626,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -28092,6 +28247,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -28108,9 +28266,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -28253,6 +28408,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -28269,9 +28427,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -28614,6 +28769,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -28630,9 +28788,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -28757,6 +28912,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -28773,9 +28931,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -29324,6 +29479,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -29340,9 +29498,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -29494,6 +29649,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -29510,9 +29668,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -30715,6 +30870,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -30731,9 +30889,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
@@ -30939,6 +31094,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"fill\""
+            },
+            {
               "value": "\"-moz-initial\""
             },
             {
@@ -30955,9 +31113,6 @@
             },
             {
               "value": "\"auto\""
-            },
-            {
-              "value": "\"fill\""
             },
             {
               "value": "\"painted\""
