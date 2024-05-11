@@ -72,7 +72,7 @@
     "@tiptap/pm": "^2.0.4",
     "@tiptap/react": "^2.0.4",
     "@tiptap/starter-kit": "^2.0.4",
-    "katex": "^0.16.8",
+    "katex": "^0.16.10",
     "markdown-it": "^13.0.2",
     "rc-upload": "^4.3.5",
     "re-resizable": "^6.9.11",
