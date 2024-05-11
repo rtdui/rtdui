@@ -726,6 +726,15 @@
           "name": "Fill | undefined"
         }
       },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ canvasWrapper?: string | undefined; actions?: string | undefined; clearBtn?: string | undefined; confirmBtn?: string | undefined; } | undefined"
+        }
+      },
       "throttle": {
         "defaultValue": {
           "value": "16"

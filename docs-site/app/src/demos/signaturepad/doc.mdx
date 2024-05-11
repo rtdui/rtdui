@@ -11,10 +11,17 @@ handle:
 
 import Demo from "../../components/Demo";
 import SignaturePadBasicDemo from "./SignaturePadBasicDemo";
+import SignaturePadCustomDemo from "./SignaturePadCustomDemo";
+
+# 安装
+
+```sh
+npm i @rtdui/signature-pad
+```
+
+`@rtdui/signature-pad`包提供了`SignaturePad`组件, 用于手写签名, 它基于canvas实现平滑流畅的书写.
 
 # 使用
-
-`SignaturePad`组件用于手写签名, 它基于canvas实现平滑流畅的书写.
 
 <Demo data={{ Component: SignaturePadBasicDemo }} />
 
@@ -110,3 +117,33 @@ type SignaturePadHandle = {
 
 - clearLabel 属性用于本地化clear按钮的文本
 - confirmLabel 属性用于本地化submit按钮的文本
+
+## 自定义样式
+
+通过`slots`样式槽属性可以为其内部的元素添加自定义样式, 例如为清除按钮和确认按钮添加自定义的CSS类名:
+
+```tsx
+<SignaturePad
+  ref={signPadRef}
+  slots={{
+    clearBtn: "myClearBtnClass",
+    confirmBtn: "myConfirmBtnClass",
+  }}
+/>
+```
+
+结合TailwindCss使用可以很方便的加入样式:
+
+```tsx
+<SignaturePad
+  ref={signPadRef}
+  slots={{
+    clearBtn:
+      "w-20 h-8 min-h-0 p-1 bg-red-500 text-white hover:bg-red-700 rounded-full",
+    confirmBtn:
+      "w-20 h-8 min-h-0 p-1 bg-blue-500 text-white hover:bg-blue-700 rounded-full",
+  }}
+/>
+```
+
+<Demo data={{ Component: SignaturePadCustomDemo }} />
