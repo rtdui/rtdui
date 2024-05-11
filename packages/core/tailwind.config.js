@@ -5,16 +5,7 @@ import rtdui from "@rtdui/tailwind-plugin";
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class", '[data-theme="dark"]'],
-  content: [
-    "./packages/core/**/*.{ts,tsx,jsx,js}",
-    "./packages/code-highlight/**/*.{ts,tsx,jsx,js}",
-    "./packages/datatable/**/*.{ts,tsx,jsx,js}",
-    "./packages/dialogs/**/*.{ts,tsx,jsx,js}",
-    "./packages/editor/**/*.{ts,tsx,jsx,js}",
-    "./packages/notifications/**/*.{ts,tsx,jsx,js}",
-    "./packages/qr-code/**/*.{ts,tsx,jsx,js}",
-    "./packages/spotlight/**/*.{ts,tsx,jsx,js}",
-  ],
+  content: ["./packages/**/*.{ts,tsx,jsx,js}"],
   theme: {
     extend: {},
   },
