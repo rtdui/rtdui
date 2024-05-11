@@ -1,5 +1,6 @@
-import { Button } from "@rtdui/core";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import clsx from "clsx";
+import { Button } from "@rtdui/core";
 import ReactSignaturePad, {
   type FromDataOptions,
   type PointGroup,
@@ -100,6 +101,13 @@ export interface SignaturePadProps
   backgroundColor?: React.CSSProperties["fill"];
 
   canvasContextOptions?: CanvasRenderingContext2DSettings;
+
+  slots?: {
+    canvasWrapper?: string;
+    actions?: string;
+    clearBtn?: string;
+    confirmBtn?: string;
+  };
 }
 export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
   const {
@@ -119,6 +127,8 @@ export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
     penColor = "black",
     backgroundColor = "transparent",
     canvasContextOptions,
+    className,
+    slots,
     ...others
   } = props;
 
@@ -256,17 +266,34 @@ export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
   ]);
 
   return (
-    <div className="flex flex-col gap-2 w-fit select-none">
-      <div className="bg-base-200 select-none">
+    <div
+      className={clsx(
+        "sign-pad flex flex-col gap-2 w-fit select-none",
+        className
+      )}
+    >
+      <div
+        className={clsx(
+          "sign-pad-canvas-wrapper bg-base-200 select-none",
+          slots?.canvasWrapper
+        )}
+      >
         <canvas ref={canvasRef} {...others} width={width} height={height} />
       </div>
-      <div className="flex justify-between">
+      <div
+        className={clsx(
+          "sign-pad-actions",
+          "flex justify-between",
+          slots?.actions
+        )}
+      >
         <Button
           size="sm"
           onClick={(e) => {
             clear();
             onClear?.();
           }}
+          className={clsx(slots?.clearBtn)}
         >
           {clearLabel}
         </Button>
@@ -275,7 +302,7 @@ export const SignaturePad = forwardRef<any, SignaturePadProps>((props, ref) => {
           onClick={(e) => {
             onConfirm?.();
           }}
-          color="primary"
+          className={clsx(slots?.confirmBtn)}
         >
           {confirmLabel}
         </Button>
