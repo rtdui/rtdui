@@ -17,8 +17,7 @@
       }
     },
     "./styles.css": "./styles.css",
-    "./styles.layer.css": "./styles.layer.css",
-    "./styles/*": "./styles/*"
+    "./styles.layer.css": "./styles.layer.css"
   },
   "keywords": [
     "react",
