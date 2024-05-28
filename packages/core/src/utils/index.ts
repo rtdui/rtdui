@@ -12,6 +12,6 @@ export * from "./getSize";
 export * from "./getColor";
 export * from "./getDataProps";
 export * from "./getSafeId";
-export * from "./isLightColor";
-export * from "./toRgba";
 export * from "./rem";
+export * from "./color";
+export * from "./round";

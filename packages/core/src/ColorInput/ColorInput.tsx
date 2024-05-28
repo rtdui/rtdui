@@ -2,13 +2,8 @@ import React, { forwardRef, useEffect, useState } from "react";
 import clsx from "clsx";
 import { useDidUpdate, useEyeDropper, useUncontrolled } from "@rtdui/hooks";
 import { IconColorPicker } from "@tabler/icons-react";
-import {
-  ColorPicker,
-  ColorPickerProps,
-  convertHsvaTo,
-  isColorFormatValid,
-  parseColor,
-} from "../ColorPicker";
+import { ColorPicker, ColorPickerProps } from "../ColorPicker";
+import { convertHsvaTo, isColorFormatValid, parseColorToHsva } from "../utils";
 import { ColorSwatch } from "../ColorSwatch";
 import { Popover } from "../Popover";
 import { TextInput, TextInputProps } from "../TextInput";
@@ -107,7 +102,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
               if (payload?.sRGBHex) {
                 const color = convertHsvaTo(
                   format!,
-                  parseColor(payload.sRGBHex)
+                  parseColorToHsva(payload.sRGBHex)
                 );
                 setValue(color);
                 onChangeEnd?.(color);
@@ -133,7 +128,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
 
     useDidUpdate(() => {
       if (isColorFormatValid(_value, format)) {
-        setValue(convertHsvaTo(format!, parseColor(_value)));
+        setValue(convertHsvaTo(format!, parseColorToHsva(_value)));
       }
     }, [format]);
 
@@ -165,7 +160,9 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
               const inputValue = event.currentTarget.value;
               setValue(inputValue);
               if (isColorFormatValid(inputValue, format)) {
-                onChangeEnd?.(convertHsvaTo(format!, parseColor(inputValue)));
+                onChangeEnd?.(
+                  convertHsvaTo(format!, parseColorToHsva(inputValue))
+                );
               }
             }}
             leftSection={
@@ -195,7 +192,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
           />
         </Popover.Target>
         <Popover.Dropdown>
-          <div className="bg-base-100 shadow">
+          <div className="bg-base-100 shadow p-2 rounded-md">
             <ColorPicker
               value={_value}
               onChange={setValue}

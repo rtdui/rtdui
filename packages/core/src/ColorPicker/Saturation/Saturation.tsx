@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { clampUseMovePosition, useMove, UseMovePosition } from "@rtdui/hooks";
 import { HsvaColor } from "../ColorPicker.types";
-import { convertHsvaTo } from "../converters";
+import { convertHsvaTo } from "../../utils";
 import { Thumb } from "../Thumb/Thumb";
 
 export interface SaturationProps
@@ -110,7 +110,7 @@ export function Saturation(props: SaturationProps) {
       role="slider"
       aria-label={saturationLabel}
       aria-valuenow={position.x}
-      aria-valuetext={convertHsvaTo("rgba", value)}
+      aria-valuetext={convertHsvaTo("rgb", value)}
       tabIndex={focusable ? 0 : -1}
       onKeyDown={handleKeyDown}
     >

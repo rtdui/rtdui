@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { ColorSlider, ColorSliderProps } from "../ColorSlider/ColorSlider";
-import { round } from "../converters/parsers";
+import { round } from "../../utils";
 
 export interface AlphaSliderProps
   extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {

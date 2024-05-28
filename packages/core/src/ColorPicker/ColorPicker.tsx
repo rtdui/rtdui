@@ -3,12 +3,17 @@ import clsx from "clsx";
 import { useDidUpdate, useUncontrolled } from "@rtdui/hooks";
 import { ColorSwatch } from "../ColorSwatch";
 import { AlphaSlider } from "./AlphaSlider/AlphaSlider";
-import { ColorFormat, HsvaColor } from "./ColorPicker.types";
-import { convertHsvaTo, isColorValid, parseColor } from "./converters";
 import { HueSlider } from "./HueSlider/HueSlider";
 import { Saturation } from "./Saturation/Saturation";
 import { Swatches } from "./Swatches/Swatches";
-import { getSize } from "../utils";
+import {
+  getSize,
+  convertHsvaTo,
+  isColorValid,
+  parseColorToHsva,
+  type ColorFormat,
+  type HsvaColor,
+} from "../utils";
 
 export type ColorPickerStylesNames =
   | "wrapper"
@@ -55,7 +60,7 @@ export interface ColorPickerProps
   /** Color format
    * @default hex
    */
-  format?: "rgb" | "rgba" | "hex" | "hexa" | "hsl" | "hsla";
+  format?: ColorFormat;
 
   /** Determines whether the color picker should be displayed
    * @default true
@@ -125,8 +130,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
     const valueRef = useRef<string>();
     const scrubTimeoutRef = useRef<number>(-1);
     const isScrubbingRef = useRef(false);
-    const withAlpha =
-      format === "hexa" || format === "rgba" || format === "hsla";
+    const withAlpha = true;
 
     const [_value, setValue, controlled] = useUncontrolled({
       value,
@@ -135,7 +139,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
       onChange,
     });
 
-    const [parsed, setParsed] = useState<HsvaColor>(parseColor(_value));
+    const [parsed, setParsed] = useState<HsvaColor>(parseColorToHsva(_value));
 
     const startScrubbing = () => {
       window.clearTimeout(scrubTimeoutRef.current);
@@ -161,7 +165,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
     useDidUpdate(() => {
       if (isColorValid(value!) && !isScrubbingRef.current) {
-        setParsed(parseColor(value!));
+        setParsed(parseColorToHsva(value!));
       }
     }, [value]);
 
@@ -295,11 +299,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
             focusable={focusable}
             setValue={setValue}
             onChangeEnd={(color) => {
-              const convertedColor = convertHsvaTo(format!, parseColor(color));
+              const convertedColor = convertHsvaTo(
+                format!,
+                parseColorToHsva(color)
+              );
               onColorSwatchClick?.(convertedColor);
               onChangeEnd?.(convertedColor);
               if (!controlled) {
-                setParsed(parseColor(color));
+                setParsed(parseColorToHsva(color));
               }
             }}
           />
