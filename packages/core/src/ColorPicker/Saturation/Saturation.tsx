@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { clampUseMovePosition, useMove, UseMovePosition } from "@rtdui/hooks";
-import { HsvaColor } from "../ColorPicker.types";
-import { convertHsvaTo } from "../../utils";
+import { convertHsvaTo, type HsvaColor } from "../../utils";
 import { Thumb } from "../Thumb/Thumb";
 
 export interface SaturationProps
