@@ -4350,29 +4350,38 @@
         "name": "format",
         "required": false,
         "type": {
-          "name": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
-          "raw": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
+          "name": "ColorFormat | undefined",
+          "raw": "ColorFormat | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"rgb\""
-            },
-            {
-              "value": "\"rgba\""
+              "value": "\"color\""
             },
             {
               "value": "\"hex\""
             },
             {
-              "value": "\"hexa\""
+              "value": "\"rgb\""
             },
             {
               "value": "\"hsl\""
             },
             {
-              "value": "\"hsla\""
+              "value": "\"hwb\""
+            },
+            {
+              "value": "\"lab\""
+            },
+            {
+              "value": "\"lch\""
+            },
+            {
+              "value": "\"oklab\""
+            },
+            {
+              "value": "\"oklch\""
             }
           ]
         }
@@ -4867,29 +4876,38 @@
         "name": "format",
         "required": false,
         "type": {
-          "name": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
-          "raw": "\"rgb\" | \"rgba\" | \"hex\" | \"hexa\" | \"hsl\" | \"hsla\" | undefined",
+          "name": "ColorFormat | undefined",
+          "raw": "ColorFormat | undefined",
           "value": [
             {
               "value": "undefined"
             },
             {
-              "value": "\"rgb\""
-            },
-            {
-              "value": "\"rgba\""
+              "value": "\"color\""
             },
             {
               "value": "\"hex\""
             },
             {
-              "value": "\"hexa\""
+              "value": "\"rgb\""
             },
             {
               "value": "\"hsl\""
             },
             {
-              "value": "\"hsla\""
+              "value": "\"hwb\""
+            },
+            {
+              "value": "\"lab\""
+            },
+            {
+              "value": "\"lch\""
+            },
+            {
+              "value": "\"oklab\""
+            },
+            {
+              "value": "\"oklch\""
             }
           ]
         }
@@ -18315,7 +18333,7 @@
         "name": "onChange",
         "required": true,
         "type": {
-          "name": "(color: Partial<HsvaColor>) => void"
+          "name": "(color: HsvaColor) => void"
         }
       },
       "onChangeEnd": {
@@ -18324,7 +18342,7 @@
         "name": "onChangeEnd",
         "required": true,
         "type": {
-          "name": "(color: Partial<HsvaColor>) => void"
+          "name": "(color: HsvaColor) => void"
         }
       },
       "onScrubEnd": {

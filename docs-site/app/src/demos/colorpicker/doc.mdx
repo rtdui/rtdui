@@ -18,9 +18,7 @@ import ColorPickerBasicDemo from "./ColorPickerBasicDemo";
 
 ## 颜色格式
 
-`ColorPicker` 支持 `hex`, `hexa`, `rgb`, `rgba`, `hsl` 和 `hsla` 颜色格式.
-
-透明度滑块和颜色预览只在 `hexa`, `rgba` 和 `hsla` 格式下才显示
+`ColorPicker` 支持所有 CSS Color Module Level 4 的颜色格式和表示法: `hex`, `rgb`, `hsl` ,`hwb`,`lab`,`lch`,`oklab`,`oklch`.
 
 ## 预定义色板
 
@@ -28,7 +26,7 @@ import ColorPickerBasicDemo from "./ColorPickerBasicDemo";
 
 `swatches`属性是一个颜色数组.
 
-注意: 色板颜色格式应该和`format`相匹配.
+> 注意: 色板颜色格式应该和`format`相匹配.
 
 `ColorPicker`预定义了8个主题色板: "primary", "secondary", "accent", "info", "warning", "error","success", "neutral", 如果是为@rtdui的组件提供颜色就非常有用. 可以和自定义颜色组合使用:
 
@@ -60,3 +58,5 @@ import ColorPickerBasicDemo from "./ColorPickerBasicDemo";
 ## 受控与非受控模式
 
 与原生input组件类似, `ColorPicker`的`value`为受控属性, `defaultValue`为非受控属性. `onChange`回调属性, 额外的`onChangeEnd`回调属性会在结束拖拉后触发.
+
+> 注意: `value`或`defaultValue`的初始值支持所有CSS支持的颜色格式. 但注意匹配正确的格式, 比如: 旧的rgba表示法: rgba(r,g,b,a) 必须要带有a值, 不可省略.

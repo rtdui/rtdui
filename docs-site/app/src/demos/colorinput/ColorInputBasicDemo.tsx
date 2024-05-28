@@ -21,7 +21,7 @@ const swatches = [
 ];
 export default function Demo() {
   const [state, setState] = React.useState({
-    value: "primary",
+    value: "#fff",
     size: "md",
     disallowInput: false,
     readOnly: false,
@@ -71,12 +71,14 @@ function Demo() {
               }))
             }
             data={[
-              { value: "hex", label: "HEX" },
-              { value: "hexa", label: "HEXA" },
-              { value: "rgb", label: "RGB" },
-              { value: "rgba", label: "RGBA" },
-              { value: "hsl", label: "HSL" },
-              { value: "hsla", label: "HSLA" },
+              { value: "hex", label: "hex" },
+              { value: "rgb", label: "rgb" },
+              { value: "hsl", label: "hsl" },
+              { value: "hwb", label: "hwb" },
+              { value: "lch", label: "lch" },
+              { value: "oklch", label: "oklch" },
+              { value: "lab", label: "lab" },
+              { value: "oklab", label: "oklab" },
             ]}
           />
           <Switch
