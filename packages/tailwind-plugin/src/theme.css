@@ -39,4 +39,12 @@ html body[data-scroll-locked] {
 *::before,
 *::after {
   scrollbar-width: thin;
+  scrollbar-color: theme(colors.neutral-content) transparent;
+}
+
+h5 {
+  @apply text-base font-bold my-2;
+}
+h6 {
+  @apply text-sm font-bold my-2;
 }
