@@ -23,7 +23,8 @@ This monorepo with a collection of packages:
 - [`@rtdui/datatable`](https://rtdui.com/components/datatable_about) – a fully featured data table
 - [`@rtdui/dialogs`](https://rtdui.com/components/dialog) – a fully featured dialogs system
 - [`@rtdui/notifications`](https://rtdui.com/components/notification) – a fully featured notifications system
-- [`@rtdui/editor`](https://rtdui.com/components/editor) – a Tiptap based rich text editor
+- [`@rtdui/editor`](https://rtdui.com/components/editor) – a rich text editor
+- [`@rtdui/md-editor`](https://rtdui.com/components/mdeditor) – a Markdown editor component like VSCode built-in markdown editor and a viewer component for rendering markdown
 - [`@rtdui/qr-code`](https://rtdui.com/components/qrcode) – qr code generator
 - [`@rtdui/signature-pad`](https://rtdui.com/components/signaturepad) – signature pad
 - [`@rtdui/tailwind-plugin`](https://rtdui.com/install) – tailwindCSS plugin
