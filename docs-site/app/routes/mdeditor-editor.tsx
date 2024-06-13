@@ -1,9 +1,16 @@
 import { MdEditor, Mode, UploadResult, zhLocale } from "@rtdui/md-editor";
 import { useState } from "react";
 import { Checkbox, Divider, Radio, RadioGroup } from "@rtdui/core";
-import "allotment/dist/style.css";
-import "highlight.js/styles/atom-one-dark.min.css";
-import "katex/dist/katex.min.css";
+import allotmentStyle from "allotment/dist/style.css?url";
+import highlightStyle from "highlight.js/styles/atom-one-dark.min.css?url";
+import katexStyle from "katex/dist/katex.min.css?url";
+
+// 不建议使用Vite的副作用导入:`import "./tailwind.css";` 这是因为在SSR模式下, 开发时Vite会往head中注入两次样式. 一次是在SSR时, 还有一次在客户端水合时.
+export const links = () => [
+  { rel: "stylesheet", href: allotmentStyle },
+  { rel: "stylesheet", href: highlightStyle },
+  { rel: "stylesheet", href: katexStyle },
+];
 
 const handleImageUpload = async (files: File[]) => {
   const formdata = new FormData();
