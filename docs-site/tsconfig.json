@@ -33,6 +33,7 @@
     { "path": "../packages/qr-code" },
     { "path": "../packages/signature-pad" },
     { "path": "../packages/spotlight" },
-    { "path": "../packages/dates" }
+    { "path": "../packages/dates" },
+    { "path": "../packages/md-editor" }
   ]
 }
