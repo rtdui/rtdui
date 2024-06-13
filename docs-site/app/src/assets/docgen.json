@@ -12669,7 +12669,7 @@
         "name": "slots",
         "required": false,
         "type": {
-          "name": "{ input?: string | undefined; label?: string | undefined; helperText?: string | undefined; } | undefined"
+          "name": "{ inputWrapper?: string | undefined; input?: string | undefined; label?: string | undefined; helperText?: string | undefined; } | undefined"
         }
       }
     }
