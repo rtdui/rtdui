@@ -301,6 +301,238 @@
       }
     }
   },
+  "Editor": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/Editor.tsx",
+    "description": "",
+    "displayName": "@rtdui/md-editor/Editor",
+    "props": {}
+  },
+  "MdEditor": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/MdEditor.tsx",
+    "description": "",
+    "displayName": "@rtdui/md-editor/MdEditor",
+    "props": {
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "handleImageUpload": {
+        "defaultValue": null,
+        "description": "",
+        "name": "handleImageUpload",
+        "required": false,
+        "type": {
+          "name": "((files: File[], ev: EditorView) => Promise<UploadResult[]>) | undefined"
+        }
+      },
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "required": false,
+        "type": {
+          "name": "Locale | undefined"
+        }
+      },
+      "mode": {
+        "defaultValue": {
+          "value": "\"auto\""
+        },
+        "description": "responsive width when auto mode\neditor layout mode",
+        "name": "mode",
+        "required": false,
+        "type": {
+          "name": "Mode | undefined",
+          "raw": "Mode | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"tab\""
+            },
+            {
+              "value": "\"auto\""
+            },
+            {
+              "value": "\"split\""
+            }
+          ]
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "((val: string) => void) | undefined"
+        }
+      },
+      "plugins": {
+        "defaultValue": null,
+        "description": "Plugin list",
+        "name": "plugins",
+        "required": false,
+        "type": {
+          "name": "Plugin[] | undefined"
+        }
+      },
+      "remarkRehypeOptions": {
+        "defaultValue": null,
+        "description": "custom remark-rehype options: Defaults value { allowDangerousHtml: true }\n\nhttps://github.com/remarkjs/remark-rehype",
+        "name": "remarkRehypeOptions",
+        "required": false,
+        "type": {
+          "name": "Options | undefined"
+        }
+      },
+      "responsiveWidth": {
+        "defaultValue": {
+          "value": "640"
+        },
+        "description": "responsive width when auto mode",
+        "name": "responsiveWidth",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "sanitize": {
+        "defaultValue": null,
+        "description": "Sanitize strategy: Defaults to GitHub style sanitation with class names allowed\n\nhttps://github.com/syntax-tree/hast-util-sanitize/blob/main/lib/github.json\n\nIf you want further customization, pass a function to mutate sanitize schema.",
+        "name": "sanitize",
+        "required": false,
+        "type": {
+          "name": "((schema: Schema) => Schema) | undefined"
+        }
+      },
+      "slots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slots",
+        "required": false,
+        "type": {
+          "name": "{ toolbar?: string | undefined; editorWrapper?: string | undefined; editor?: string | undefined; preview?: string | undefined; } | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  },
+  "MdViewer": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/MdViewer.tsx",
+    "description": "",
+    "displayName": "@rtdui/md-editor/MdViewer",
+    "props": {
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "required": false,
+        "type": {
+          "name": "Locale | undefined"
+        }
+      },
+      "plugins": {
+        "defaultValue": null,
+        "description": "Plugin list",
+        "name": "plugins",
+        "required": false,
+        "type": {
+          "name": "Plugin[] | undefined"
+        }
+      },
+      "remarkRehypeOptions": {
+        "defaultValue": null,
+        "description": "custom remark-rehype options: Defaults value { allowDangerousHtml: true }\n\nhttps://github.com/remarkjs/remark-rehype",
+        "name": "remarkRehypeOptions",
+        "required": false,
+        "type": {
+          "name": "Options | undefined"
+        }
+      },
+      "sanitize": {
+        "defaultValue": null,
+        "description": "Sanitize strategy: Defaults to GitHub style sanitation with class names allowed\n\nhttps://github.com/syntax-tree/hast-util-sanitize/blob/main/lib/github.json\n\nIf you want further customization, pass a function to mutate sanitize schema.",
+        "name": "sanitize",
+        "required": false,
+        "type": {
+          "name": "((schema: Schema) => Schema) | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  },
+  "Preview": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/Preview.tsx",
+    "description": "",
+    "displayName": "@rtdui/md-editor/Preview",
+    "props": {}
+  },
+  "Sidebar": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/Sidebar.tsx",
+    "description": "",
+    "displayName": "Sidebar",
+    "props": {
+      "activedSidebar": {
+        "defaultValue": null,
+        "description": "",
+        "name": "activedSidebar",
+        "required": false,
+        "type": {
+          "name": "ActivedSidebar | undefined",
+          "raw": "ActivedSidebar | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"toc\""
+            },
+            {
+              "value": "\"help\""
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Statusbar": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/Statusbar.tsx",
+    "description": "",
+    "displayName": "@rtdui/md-editor/Statusbar",
+    "props": {}
+  },
+  "Toolbar": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/Toolbar.tsx",
+    "description": "",
+    "displayName": "@rtdui/md-editor/Toolbar",
+    "props": {}
+  },
   "Notification": {
     "filePath": "D:/sources/rtdui/packages/notifications/src/Notification.tsx",
     "description": "",
@@ -1476,6 +1708,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -1492,9 +1727,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -1601,6 +1833,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -1617,9 +1852,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -2316,6 +2548,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -2332,9 +2567,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -2504,6 +2736,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -2520,9 +2755,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -3906,6 +4138,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -3922,9 +4157,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -4031,6 +4263,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -4047,9 +4282,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -4184,7 +4416,7 @@
         "name": "iconProps",
         "required": false,
         "type": {
-          "name": "TablerIconsProps | undefined"
+          "name": "IconProps | undefined"
         }
       },
       "sharp": {
@@ -4491,6 +4723,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -4507,9 +4742,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -4634,6 +4866,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -4650,9 +4885,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -5940,6 +6172,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -5956,9 +6191,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -6074,6 +6306,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -6090,9 +6325,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -6953,6 +7185,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -6969,9 +7204,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -7078,6 +7310,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -7094,9 +7329,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -7281,6 +7513,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -7297,9 +7532,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -7406,6 +7638,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -7422,9 +7657,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -7708,6 +7940,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -7724,9 +7959,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -7833,6 +8065,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -7849,9 +8084,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -8184,6 +8416,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -8200,9 +8435,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -8389,6 +8621,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -8405,9 +8640,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -9846,6 +10078,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -9862,9 +10097,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -10081,6 +10313,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -10097,9 +10332,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -10452,6 +10684,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -10468,9 +10703,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -10577,6 +10809,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -10593,9 +10828,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -10963,6 +11195,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -10979,9 +11214,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -11133,6 +11365,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -11149,9 +11384,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -12552,7 +12784,7 @@
         "name": "slots",
         "required": false,
         "type": {
-          "name": "{ label?: string | undefined; helperText?: string | undefined; } | undefined"
+          "name": "{ label?: string | undefined; helperText?: string | undefined; groups?: string | undefined; } | undefined"
         }
       },
       "value": {
@@ -12985,6 +13217,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -13001,9 +13236,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -13200,6 +13432,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -13216,9 +13451,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -14540,6 +14772,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -14556,9 +14791,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -14775,6 +15007,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -14791,9 +15026,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -15137,6 +15369,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -15153,9 +15388,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -15333,6 +15565,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -15349,9 +15584,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -15637,6 +15869,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -15653,9 +15888,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -15762,6 +15994,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -15778,9 +16013,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -17410,6 +17642,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -17426,9 +17661,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -17544,6 +17776,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -17560,9 +17795,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -18333,7 +18565,7 @@
         "name": "onChange",
         "required": true,
         "type": {
-          "name": "(color: HsvaColor) => void"
+          "name": "(color: Partial<HsvaColor>) => void"
         }
       },
       "onChangeEnd": {
@@ -18342,7 +18574,7 @@
         "name": "onChangeEnd",
         "required": true,
         "type": {
-          "name": "(color: HsvaColor) => void"
+          "name": "(color: Partial<HsvaColor>) => void"
         }
       },
       "onScrubEnd": {
@@ -19097,6 +19329,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -19113,9 +19348,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -19222,6 +19454,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -19238,9 +19473,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -21933,6 +22165,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -21949,9 +22184,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -22353,6 +22585,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -22369,9 +22604,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -23593,6 +23825,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -23609,9 +23844,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -24015,6 +24247,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -24031,9 +24266,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -24681,6 +24913,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -24697,9 +24932,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -25059,6 +25291,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -25075,9 +25310,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -27350,6 +27582,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -27366,9 +27601,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -27654,6 +27886,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -27670,9 +27905,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -28294,6 +28526,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -28310,9 +28545,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -28455,6 +28687,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -28471,9 +28706,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -28816,6 +29048,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -28832,9 +29067,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -28959,6 +29191,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -28975,9 +29210,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -29526,6 +29758,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -29542,9 +29777,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -29696,6 +29928,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -29712,9 +29947,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -30917,6 +31149,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -30933,9 +31168,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -31141,6 +31373,9 @@
               "value": "\"all\""
             },
             {
+              "value": "\"auto\""
+            },
+            {
               "value": "\"fill\""
             },
             {
@@ -31157,9 +31392,6 @@
             },
             {
               "value": "\"unset\""
-            },
-            {
-              "value": "\"auto\""
             },
             {
               "value": "\"painted\""
@@ -32669,6 +32901,88 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      }
+    }
+  },
+  "gfm": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/plugins/gfm/index.tsx",
+    "description": "",
+    "displayName": "gfm",
+    "props": {
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "required": false,
+        "type": {
+          "name": "Partial<Locale> | undefined"
+        }
+      }
+    }
+  },
+  "math": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/plugins/math/index.tsx",
+    "description": "",
+    "displayName": "math",
+    "props": {
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "required": false,
+        "type": {
+          "name": "Partial<Locale> | undefined"
+        }
+      }
+    }
+  },
+  "mermaid": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/plugins/mermaid/index.tsx",
+    "description": "",
+    "displayName": "mermaid",
+    "props": {
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "required": false,
+        "type": {
+          "name": "Partial<Locale> | undefined"
+        }
+      }
+    }
+  },
+  "toc": {
+    "filePath": "D:/sources/rtdui/packages/md-editor/src/plugins/toc/index.tsx",
+    "description": "",
+    "displayName": "toc",
+    "props": {
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "required": false,
+        "type": {
+          "name": "Partial<Locale> | undefined"
+        }
+      },
+      "slugOptions": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slugOptions",
+        "required": false,
+        "type": {
+          "name": "Options | undefined"
+        }
+      },
+      "tocOptions": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tocOptions",
+        "required": false,
+        "type": {
+          "name": "Options | undefined"
         }
       }
     }

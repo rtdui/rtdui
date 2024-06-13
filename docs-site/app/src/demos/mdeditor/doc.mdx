@@ -1,0 +1,134 @@
+---
+meta:
+  - title: MdEditor Component
+  - description: Markdown editor and viewer Components's demo and doc
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/md-editor/MdEditor.tsx"
+  componentName: "MdEditor"
+---
+
+import { IconExternalLink } from "@tabler/icons-react";
+
+# 介绍
+
+`@rtdui/md-editor` 包导出了两个组件: MdEditor 和 MdViewer.
+
+- MdEditor 组件用于书写markdown文本, 并带有实时预览功能.
+- MdViewer 组件用于渲染markdown, 例如渲染从后台加载的markdown文本供阅读.
+
+## MdEditor
+
+功能:
+
+- 响应式布局
+  小屏幕使用tab标签布局, 大屏幕使用分区布局
+- 在分区布局下, 用户可拖拉分隔线调整分区大小
+- 插件系统
+  除了Markdown标准语法, 其它功能可通过插件方式扩展.
+  已内置了常用的插件: 回车换行, GFM扩展语法, 围栏代码块语法高亮, Katex数学公式, Mermaid图表, 自动生成目录索引, Gemoji表情
+  也支持自定义插件, 兼容`unified`生态系统中的 `remark` 和 `rehype` 生态
+- 本地化支持
+  预置了英文(默认)和简体中文, 其它区域语言可通过`locale`属性设置.
+- 默认安全
+  默认会自动进行消毒处理防止跨站脚本攻击(XSS), 无需额外的清理步骤。
+- 明/暗主题适配
+- 自定义图片上传处理
+- 使用 Typescript 编写, 具有完备的类型系统
+
+## MdEditor的使用
+
+```tsx
+import { MdEditor, UploadResult } from "@rtdui/md-editor";
+import "katex/dist/katex.min.css";
+import "highlight.js/styles/atom-one-dark.min.css";
+
+const handleImageUpload = async (files: File[]) => {
+  const formdata = new FormData();
+  files.forEach((d) => formdata.append("upload", d));
+  const res = await fetch("<your_upload_server>", {
+    method: "POST",
+    body: formdata,
+  });
+  const result = await res.json();
+  return result as UploadResult[];
+};
+
+const md = `# 目录
+
+# 语法示例
+...
+`;
+
+export default function MdEditorDemo() {
+  const [value, setValue] = useState(md);
+  return (
+    <MdEditor
+      handleImageUpload={handleImageUpload}
+      value={value}
+      onChange={setValue}
+    />
+  );
+}
+```
+
+<a className="btn" href="/mdeditor-editor" target="_black">
+  <span>在新窗口打开</span>
+  <IconExternalLink size={20} stroke={1.5} />
+</a>
+
+## MdViewer
+
+> MdViewer应该和MdEditor使用一致的插件集, 这样才能保证编辑时的预览和阅读时保持一致.
+
+```tsx
+import { MdViewer } from "@rtdui/md-editor";
+import "katex/dist/katex.min.css";
+import "highlight.js/styles/atom-one-dark.min.css";
+
+const md = `# 目录
+
+# 语法示例
+...
+`;
+
+export default function MdEditorDemo() {
+  return <MdViewer value={md} />;
+}
+```
+
+<a className="btn" href="/mdeditor-viewer" target="_black">
+  <span>在新窗口打开</span>
+  <IconExternalLink size={20} stroke={1.5} />
+</a>
+
+## 本地化
+
+`@rtdui/md-editor` 包已附带了英文和简体中文
+
+默认使用英文, 使用英文无需额外的操作.
+
+**使用内置的简体中文:**
+
+```tsx
+import { MdEditor, MdViewer, zhLocale } from "@rtdui/md-editor";
+
+<MdEditor locale={zhLocale} />
+<MdViewer locale={zhLocale} />
+```
+
+**使用自定义的本地化:**
+
+```tsx
+import { MdEditor, MdViewer, type Locale } from "@rtdui/md-editor";
+
+const myLocale: Locale = {
+  // ...
+}
+
+<MdEditor locale={myLocale} />
+<MdViewer locale={myLocale} />
+```
+
+## 自定义插件

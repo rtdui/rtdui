@@ -153,6 +153,7 @@
       { "label": "notifications", "url": "/components/notification" },
       { "label": "codeHighlight", "url": "/components/codehighlight" },
       { "label": "editor", "url": "/components/editor" },
+      { "label": "mdeditor", "url": "/components/mdeditor" },
       { "label": "qrCode", "url": "/components/qrcode" },
       {
         "label": "signaturePad",

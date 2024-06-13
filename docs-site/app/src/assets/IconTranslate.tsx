@@ -2,6 +2,7 @@ import { createReactComponent } from "@tabler/icons-react";
 
 /** viewbox="0 0 512 512" */
 export const IconTranslate = createReactComponent(
+  "filled",
   "translate",
   "IconTranslate",
   [

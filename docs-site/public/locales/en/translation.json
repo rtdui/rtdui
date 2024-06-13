@@ -107,6 +107,7 @@
     "notifications": "Notifications",
     "codeHighlight": "CodeHighlight",
     "editor": "Editor",
+    "mdeditor": "Markdown Editor",
     "qrCode": "QRCode",
     "signaturePad": "SignaturePad",
     "dates": {
