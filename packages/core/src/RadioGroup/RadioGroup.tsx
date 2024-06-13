@@ -25,6 +25,7 @@ export interface RadioGroupProps
   slots?: {
     label?: string;
     helperText?: string;
+    groups?: string;
   };
 }
 
@@ -84,7 +85,12 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
               {label}
             </span>
           )}
-          <div className="flex flex-col gap-1 justify-items-center">
+          <div
+            className={clsx(
+              "flex flex-col gap-1 justify-items-center",
+              slots?.groups
+            )}
+          >
             {children}
           </div>
           {helperText && (

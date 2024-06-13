@@ -26,6 +26,7 @@ export interface RadioProps
   label?: string;
   helperText?: string;
   slots?: {
+    inputWrapper?: string;
     input?: string;
     label?: string;
     helperText?: string;
@@ -76,7 +77,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 
   return (
     <div className={clsx("form-control", className)}>
-      <div className="flex items-center gap-3">
+      <div className={clsx("flex items-center gap-3", slots?.inputWrapper)}>
         <input
           ref={ref}
           type="radio"
