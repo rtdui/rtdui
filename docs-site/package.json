@@ -20,6 +20,7 @@
     "@rtdui/dates": "4.7.0",
     "@rtdui/dialogs": "4.7.0",
     "@rtdui/editor": "4.7.0",
+    "@rtdui/md-editor": "4.7.0",
     "@rtdui/hooks": "4.7.0",
     "@rtdui/notifications": "4.7.0",
     "@rtdui/qr-code": "4.7.0",
