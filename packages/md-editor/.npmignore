@@ -1,0 +1,5 @@
+src/
+tsconfig.*
+!/cjs/
+!/esm/
+!/lib/

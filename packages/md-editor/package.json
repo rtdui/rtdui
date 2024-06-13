@@ -1,0 +1,75 @@
+{
+  "name": "@rtdui/md-editor",
+  "version": "4.6.1",
+  "description": "React Markdown editor and viewer",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "keywords": [
+    "react",
+    "components",
+    "library",
+    "ui",
+    "ui-kit",
+    "markdown",
+    "editor"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.com/",
+  "sideEffects": [
+    "*.css"
+  ],
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/md-editor"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "4.6.1",
+    "@rtdui/hooks": "4.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@codemirror/lang-markdown": "^6.2.5",
+    "@codemirror/language-data": "^6.5.1",
+    "@tabler/icons-react": "^3.5.0",
+    "allotment": "^1.20.2",
+    "clsx": "^2.1.1",
+    "codemirror": "^6.0.1",
+    "mermaid": "^10.9.1",
+    "rehype-highlight": "^7.0.0",
+    "rehype-katex": "^7.0.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-slug": "^6.0.0",
+    "rehype-stringify": "^10.0.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gemoji": "^8.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.0",
+    "remark-toc": "^9.0.0",
+    "select-files": "^1.0.1",
+    "unified": "^11.0.4",
+    "word-count": "^0.2.2"
+  }
+}
