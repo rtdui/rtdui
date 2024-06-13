@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { IconX, TablerIconsProps } from "@tabler/icons-react";
+import { IconX, IconProps } from "@tabler/icons-react";
 import { ThemeBaseSize } from "../theme.types";
 
 export interface CloseButtonProps
@@ -12,7 +12,7 @@ export interface CloseButtonProps
   /**
    * @default{size:"sm"}
    */
-  iconProps?: TablerIconsProps;
+  iconProps?: IconProps;
   /**
    * @default "circle"
    */

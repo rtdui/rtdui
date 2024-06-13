@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { IconSelector, type TablerIconsProps } from "@tabler/icons-react";
+import { IconSelector, type Icon, type IconProps } from "@tabler/icons-react";
 import { ThemeSize } from "../../theme.types";
 
 function getIconSize(size: ThemeSize) {
@@ -19,12 +19,12 @@ function getIconSize(size: ThemeSize) {
       return size;
   }
 }
-export interface ComboboxChevronProps extends TablerIconsProps {
+export interface ComboboxChevronProps extends IconProps {
   error?: React.ReactNode;
   size?: ThemeSize;
 }
 
-export const ComboboxChevron = forwardRef<SVGSVGElement, ComboboxChevronProps>(
+export const ComboboxChevron = forwardRef<Icon, ComboboxChevronProps>(
   (props, ref) => {
     const { error = null, size = "20", className, ...others } = props;
     const iconSize = getIconSize(size);
