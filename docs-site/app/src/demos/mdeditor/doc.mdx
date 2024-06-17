@@ -132,3 +132,130 @@ const myLocale: Locale = {
 ```
 
 ## 自定义插件
+
+Plugin接口类型:
+
+```ts
+interface Plugin {
+  /**
+   * 使用Remark生态系统中的扩展
+   *
+   * https://github.com/remarkjs/remark/blob/main/doc/plugins.md
+   */
+  remark?: (p: Processor) => Processor;
+  /**
+   * 使用Rehype生态系统中的扩展
+   *
+   * https://github.com/rehypejs/rehype/blob/main/doc/plugins.md
+   */
+  rehype?: (p: Processor) => Processor;
+  /**
+   * 用于工具栏中的图标及处理
+   */
+  toolbar?: ToolbarItem[];
+
+  /**
+   * 编辑器预览和查看器中的副作用函数. 当不能在rehype扩展中处理时的自定义渲染.
+   */
+  viewerEffect?(ctx: ViewerContext): void | (() => void);
+}
+```
+
+插件使用unified系统中的Remark生态和Rehype生态, 示意图如下:
+![](/plugin.svg)
+
+每个红框表示的就是插件钩子生效的位置.
+
+> tips: 应该优先使用rehype生态中的扩展插件, 因为使用rehype生态中的扩展插件可以支持SSR, 只有当rehype生态扩展无法满足时, 才使用viewerEffect作为最后的选择, 使用viewerEffect只支持CSR(客户端渲染).
+
+### 实现支持Katex数学公式支持的例子:
+
+> tip: 组件已集成了该功能, 此处仅作为例子
+
+#### 编写插件
+
+```tsx
+import { wrapText, appendBlock, type Plugin } from "@rtdui/md-editor";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { IconSum } from "@tabler/icons-react";
+
+export default function mathPlugin(): Plugin {
+  return {
+    remark: (processor) => processor.use(remarkMath),
+    rehype: (processor) => processor.use(rehypeKatex),
+    toolbar: [
+      {
+        type: "multiple",
+        icon: <IconSum size={iconSize} stroke={iconStroke} />,
+        title: locale.math,
+        actions: [
+          {
+            title: locale.inline,
+            icon: "$",
+            cheatsheet: `$${locale.inlineText}$`,
+            click: (e, { editor }) => {
+              wrapText(editor, "$");
+            },
+          },
+          {
+            title: locale.block,
+            icon: "$$",
+            cheatsheet: `$$↵${locale.blockText}↵$$`,
+            click: (e, { editor }) => {
+              appendBlock(editor, "\\TeX", {
+                prefix: "$$\n",
+                suffix: "\n$$",
+              });
+            },
+          },
+        ],
+      },
+    ],
+  };
+}
+```
+
+如果不使用rehype生态扩展, 则可以使用viewerEffect:
+
+```diff-tsx
+import type { Plugin } from "@rtdui/md-editor";
+import remarkMath from "remark-math";
+- import rehypeKatex from "rehype-katex";
+
+export default function mathPlugin(): Plugin {
+  return {
+    remark: (processor) => processor.use(remarkMath),
+-   rehype: (processor) => processor.use(rehypeKatex),
++   viewerEffect({ markdownBody }) {
++     const renderMath = async (selector: string, displayMode: boolean) => {
++       const katex = await import('katex').then((m) => m.default)
++
++       const els = markdownBody.querySelectorAll<HTMLElement>(selector)
++       els.forEach((el) => {
++         katex.render(el.innerText, el, { displayMode })
++       })
++     }
++
++     renderMath('.math.math-inline', false)
++     renderMath('.math.math-display', true)
++   },
+  };
+}
+```
+
+#### 使用插件
+
+```tsx
+import { MdEditor, MdViewer } from "@rtdui/md-editor";
+import mathPlugin from "./mathPlugin";
+
+export default function EditorDemo() {
+  return <MdEditor plugins={[mathPlugin()]} />;
+}
+
+// editor 和 viewer 应同时应用插件
+export default function ViewerDemo() {
+  return <MdViewer plugins={[mathPlugin()]} />;
+}
+```
