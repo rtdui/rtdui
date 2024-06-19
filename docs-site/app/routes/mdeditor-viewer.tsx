@@ -1,8 +1,8 @@
-import { useNavigate } from "@remix-run/react";
+import { useRef } from "react";
 import { MdViewer, zhLocale } from "@rtdui/md-editor";
 import "highlight.js/styles/atom-one-dark.min.css";
 import "katex/dist/katex.min.css";
-import { useRef } from "react";
+import { useDelegatedReactRouterLinks } from "~/src/hooks/useDelegatedReactRouterLinks";
 
 const md = `# 目录
 
@@ -151,31 +151,16 @@ gemoji: :cat: :thumbsup:
 `;
 
 export default function MdViewerDemo() {
-  const navigate = useNavigate();
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef(null);
+  // 修复Root路由模块中的Remix的<ScrollRestoration />组件导致锚点到页面元素id需要点击两下的问题
+  useDelegatedReactRouterLinks(ref);
+
   return (
     <MdViewer
       ref={ref}
       className="mx-auto py-8 max-w-screen-lg"
       locale={zhLocale}
       value={md}
-      // 修复Root路由模块中的Remix的 <ScrollRestoration /> 组件导致锚点到页面元素id需要点击两下的问题
-      onClick={(e) => {
-        const sourceTarget = e.target as HTMLElement;
-        if (sourceTarget.tagName !== "A") return;
-
-        const href = sourceTarget.getAttribute("href");
-        if (!href?.startsWith("#")) return;
-
-        navigate(
-          {
-            hash: href,
-          },
-          { replace: true, preventScrollReset: true }
-        );
-        ref.current?.querySelector(decodeURIComponent(href))?.scrollIntoView();
-        e.preventDefault();
-      }}
     />
   );
 }
