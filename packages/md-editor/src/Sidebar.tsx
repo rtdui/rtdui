@@ -33,14 +33,16 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
           return (
             <>
               <h2>{locale?.toc}</h2>
-              <ul>
-                {meta?.toc.map(({ level, text }, i) => (
+              <ul className="list-disc pl-4">
+                {meta?.toc.map(({ level, text, slug }, i) => (
                   <li
                     key={i}
-                    style={{ paddingLeft: `${(level - 1) * 16}px` }}
-                    className="list-none"
+                    style={{ marginLeft: `${(level - 1) * 16}px` }}
+                    className="text-sm leading-6"
                   >
-                    {text}
+                    <a href={`#${slug}`} className="underline">
+                      {text}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -59,12 +61,11 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
                         key={d.title}
                         className="list-none flex items-center mt-1"
                       >
-                        <div className="title flex items-center">
+                        <div className="title flex items-center flex-1">
                           {d.icon}
                           {"\u00a0"}
                           {d.title}
                         </div>
-                        <div className="flex-1"></div>
                         <div className="content flex items-center">
                           <code>{d.cheatsheet}</code>
                         </div>

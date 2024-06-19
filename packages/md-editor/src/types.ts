@@ -107,7 +107,7 @@ export interface EditorContext {
 export type SplitMode = "edit" | "preview" | "both";
 export type Mode = "auto" | "split" | "tab";
 export type ActivedSidebar = "toc" | "help" | "none";
-export type Toc = { level: number; text: string }[];
+export type Toc = { level: number; text: string; slug: string }[];
 
 export interface ViewerContext {
   /**

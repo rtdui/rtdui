@@ -51,6 +51,7 @@ export const Preview = forwardRef<HTMLDivElement, PreviewProps>(
                   toc.push({
                     level: i,
                     text: stringifyHeading(element),
+                    slug: element.properties.id as string,
                   });
                 }
               });
