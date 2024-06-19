@@ -520,7 +520,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
           {...other}
           className={clsx(
             "mdeditor-root",
-            "h-[calc(100dvh-100px)]",
+            "min-h-[calc(100dvh-100px)]",
             "grid grid-rows-[auto_minmax(0,1fr)_auto]",
             "mx-auto max-w-screen-lg ",
             {
