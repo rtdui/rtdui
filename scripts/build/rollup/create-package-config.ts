@@ -35,11 +35,21 @@ export async function createPackageConfig(
     // 因此如果没有在package.json中直接包含那些依赖并且也没有被rollup的external排除,则那些嵌套依赖在构建输出中创建node_modules目录并包含那些依赖.
     nodeExternals({
       devDeps: true,
+      include: [/^[^.]|[^~]/], // 所有裸模块名
       exclude: [/\.css$/], //允许从依赖包中加载.css文件
       packagePath: path.join(packagePath, "./package.json"), //使用子包中的package.json文件
     }),
     nodeResolve({
-      extensions: [".mjs", ".js", ".json", ".node", ".ts", ".tsx", ".jsx"],
+      extensions: [
+        ".mjs",
+        ".js",
+        ".json",
+        ".node",
+        "cjs",
+        ".ts",
+        ".tsx",
+        ".jsx",
+      ],
     }), //使用Nodejs的解析逻辑从`node_modules`定位模块
     commonjs(), //将导入的commonjs模块转化为ES模块
     esbuild({
@@ -80,7 +90,8 @@ export async function createPackageConfig(
 
   // https://cn.rollupjs.org/configuration-options/#external
   // 使用@rollup/plugin-node-resolve插件后可将所有依赖包排除捆绑
-  const external = [/node_modules/];
+  // const external = [/node_modules/];
+  const external: string[] = [];
 
   const baseOutput: OutputOptions = {
     externalLiveBindings: false, //不为外部依赖生成支持动态绑定的代码
