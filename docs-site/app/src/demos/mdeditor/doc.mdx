@@ -11,6 +11,14 @@ handle:
 
 import { IconExternalLink } from "@tabler/icons-react";
 
+# 安装
+
+```sh
+npm i @rtdui/md-editor
+```
+
+> tip: 记得安装`@rtdui/hooks`和`@rtdui/core`配对依赖, 如果还未安装的话.
+
 # 介绍
 
 `@rtdui/md-editor` 包导出了两个组件: MdEditor 和 MdViewer.
@@ -41,6 +49,8 @@ import { IconExternalLink } from "@tabler/icons-react";
 
 ```tsx
 import { MdEditor, UploadResult } from "@rtdui/md-editor";
+// 需要额外导入外部依赖包中的样式.
+import "allotment/dist/style.css";
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/atom-one-dark.min.css";
 
@@ -84,6 +94,7 @@ export default function MdEditorDemo() {
 
 ```tsx
 import { MdViewer } from "@rtdui/md-editor";
+// 需要额外导入外部依赖包中的样式.
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/atom-one-dark.min.css";
 
