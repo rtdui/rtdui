@@ -22,6 +22,11 @@ import { Tabs } from '@rtdui/core';
 function Demo() {
   return (
     <Tabs defaultValue="tab1"${state.variant !== "default" ? ' variant="' + state.variant + '"' : ""}${state.orientation !== "horizontal" ? ' orientation="' + state.orientation + '"' : ""}${state.placement !== "left" && state.orientation !== "horizontal" ? ' placement="' + state.placement + '"' : ""}${state.radius !== "md" ? ' radius="' + state.radius + '"' : ""}${state.color !== "primary" ? ' color="' + state.color + '"' : ""}>
+      <Tabs.List${state.grow ? " grow" : ""}${state.justify !== "start" && !state.grow ? ' justify="' + state.justify + '"' : ""}>
+        <Tabs.Tab value="tab1">tab1</Tabs.Tab>
+        <Tabs.Tab value="tab2"${state.tab2Disabled ? " disabled" : ""}>tab2</Tabs.Tab>
+        <Tabs.Tab value="tab3">tab3</Tabs.Tab>
+      </Tabs.List>
       <Tabs.Panel value="tab1">
         tab1 content
       </Tabs.Panel>
@@ -31,11 +36,6 @@ function Demo() {
       <Tabs.Panel value="tab3">
         tab3 content
       </Tabs.Panel>
-      <Tabs.List${state.grow ? " grow" : ""}${state.justify !== "start" && !state.grow ? ' justify="' + state.justify + '"' : ""}>
-        <Tabs.Tab value="tab1">tab1</Tabs.Tab>
-        <Tabs.Tab value="tab2"${state.tab2Disabled ? " disabled" : ""}>tab2</Tabs.Tab>
-        <Tabs.Tab value="tab3">tab3</Tabs.Tab>
-      </Tabs.List>
     </Tabs>
   );
 }
