@@ -2,7 +2,6 @@ import { MdEditor, Mode, UploadResult, zhLocale } from "@rtdui/md-editor";
 import { useState } from "react";
 import { Checkbox, Divider, Radio, RadioGroup } from "@rtdui/core";
 import "allotment/dist/style.css";
-import "highlight.js/styles/atom-one-dark.min.css";
 import "katex/dist/katex.min.css";
 
 const handleImageUpload = async (files: File[]) => {

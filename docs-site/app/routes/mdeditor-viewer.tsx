@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { MdViewer, zhLocale } from "@rtdui/md-editor";
-import "highlight.js/styles/atom-one-dark.min.css";
 import "katex/dist/katex.min.css";
 import { useDelegatedReactRouterLinks } from "~/src/hooks/useDelegatedReactRouterLinks";
 
