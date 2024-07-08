@@ -13,6 +13,7 @@ import rehypeKatex from "rehype-katex";
 import rehypePrismPlus from "rehype-prism-plus";
 import path from "node:path";
 import fs from "fs-extra";
+import { rehypeCodeBlockDataLanguage } from "./app/src/mdx-plugin/rehype-code-block-data-language";
 
 const demoRoutes = fs.readdirSync(path.resolve("app/src/demos")).map((d) => ({
   route: d,
@@ -32,6 +33,7 @@ export default defineConfig({
       ],
       rehypePlugins: [
         rehypeSlug, // 为Headings生成id特性
+        rehypeCodeBlockDataLanguage, // 为代码块的pre元素添加data-language特性, 便于CSS中获取语言值.
         [rehypePrismPlus, { ignoreMissing: true }], // 注意需要手动生成PrismPlus的css样式并导入
         [rehypeKatex, { output: "html" }], // 只输出html,默认为"htmlAndMathml", 注意需要导入katex的css样式
       ],
