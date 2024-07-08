@@ -146,16 +146,14 @@ title History of Social Media Platform
           }
         }
 
-        m.run({
-          nodes: markdownBody.querySelectorAll("pre>code.language-mermaid"),
-          postRenderCallback: (id) => {
-            const container = document.createElement("div");
-            const el = document.getElementById(id) as HTMLElement;
-            const parentEl = el?.parentElement;
-            parentEl?.replaceWith(container);
-            container.innerHTML = el.outerHTML;
-          },
+        const nodes = markdownBody.querySelectorAll<HTMLElement>(
+          'pre[class*="language-mermaid"]:not([data-processed="true"])'
+        );
+        nodes.forEach((d) => {
+          d.innerHTML = d.innerText;
         });
+
+        m.run({ nodes });
       }
       renderMermaid();
     },
