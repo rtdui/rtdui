@@ -112,6 +112,7 @@ export const CodeHighlight = forwardRef<HTMLDivElement, CodeHighlightProps>(
             "!bg-red-100": bad === true,
             "dark:!bg-red-950": bad === true,
           })}
+          data-no-lang-indicator={language}
         >
           <code
             className={clsx(`language-${language}`, "code-highlight", {

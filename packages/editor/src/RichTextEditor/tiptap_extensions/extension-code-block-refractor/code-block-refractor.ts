@@ -17,13 +17,13 @@ export const CodeBlockPrism = CodeBlock.extend<CodeBlockPrismOptions>({
     return {
       ...this.parent?.(),
       refractor: {},
-      defaultLanguage: null,
+      defaultLanguage: "txt",
     };
   },
   addAttributes() {
     return {
       language: {
-        default: null,
+        default: "txt",
         parseHTML: (element) => {
           const { languageClassPrefix } = this.options;
           const classNames = [
@@ -36,7 +36,7 @@ export const CodeBlockPrism = CodeBlock.extend<CodeBlockPrismOptions>({
           const language = languages[0];
 
           if (!language) {
-            return null;
+            return "txt";
           }
 
           return language;
@@ -44,6 +44,7 @@ export const CodeBlockPrism = CodeBlock.extend<CodeBlockPrismOptions>({
         renderHTML: (attributes) => {
           return {
             class: `language-${attributes.language}`,
+            "data-language": attributes.language,
           };
         },
       },
