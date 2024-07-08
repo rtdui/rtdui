@@ -9,10 +9,11 @@ import {
   IconChevronDown,
   IconAlertTriangle,
   IconBrandGithub,
+  IconDeviceDesktop,
 } from "@tabler/icons-react";
 import { usePrevious } from "@rtdui/hooks";
 import { notifications } from "@rtdui/notifications";
-import { AppShell, Button, Popover, Tabs, TextInput } from "@rtdui/core";
+import { AppShell, Button, Popover, Swap, Tabs, TextInput } from "@rtdui/core";
 import { useTranslation } from "react-i18next";
 import { spotlight } from "@rtdui/spotlight";
 import ApiDoc from "../src/components/Api";
@@ -27,12 +28,22 @@ import { Link } from "@remix-run/react";
 export default function Layout() {
   const toggleRef = React.useRef<any>(null!);
 
-  const handleThemeChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    if (ev.target.checked) {
-      document.documentElement.dataset.theme = "dark";
-    } else {
-      delete document.documentElement.dataset.theme;
+  const handleThemeChange = (theme: "system" | "light" | "dark") => {
+    switch (theme) {
+      case "light":
+        document.documentElement.dataset.theme = "light";
+        setTheme("light");
+        break;
+      case "dark":
+        document.documentElement.dataset.theme = "dark";
+        setTheme("dark");
+        break;
+      default:
+        delete document.documentElement.dataset.theme;
+        setTheme("system");
+        break;
     }
+    setThemeOpened(false);
   };
 
   const tabsRef = React.useRef<any>(null!);
@@ -55,9 +66,11 @@ export default function Layout() {
   }, [location, preLocation, isComponentPage]);
 
   const { t, i18n } = useTranslation();
-  const [langOpen, setLangOpen] = React.useState(false);
+  const [langOpened, setLangOpened] = React.useState(false);
+  const [themeOpened, setThemeOpened] = React.useState(false);
+  const [theme, setTheme] = React.useState("system");
   const handleLangChange = (lang: string) => {
-    setLangOpen(false);
+    setLangOpened(false);
     i18n.changeLanguage(lang);
   };
 
@@ -124,24 +137,58 @@ export default function Layout() {
               <IconBrandGithub />
             </a>
             {/* 主题切换 */}
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="swap swap-rotate btn btn-ghost btn-circle">
-              <input
-                type="checkbox"
-                onChange={handleThemeChange}
-                className="opacity-0"
-              />
-              <IconSun className="swap-on" />
-              <IconMoon className="swap-off" />
-            </label>
+            <Popover opened={themeOpened} onChange={setThemeOpened}>
+              <Popover.Target>
+                <Button
+                  sharp="square"
+                  ghost
+                  className="gap-px"
+                  onClick={() => setThemeOpened(true)}
+                >
+                  <IconSun />
+                  <IconChevronDown size={14} stroke={2.5} color="gray" />
+                </Button>
+              </Popover.Target>
+              <Popover.Dropdown>
+                <ul className="menu menu-sm gap-1">
+                  <li>
+                    <button
+                      className={clsx({ active: theme === "system" })}
+                      onClick={() => handleThemeChange("system")}
+                    >
+                      <IconDeviceDesktop size={20} />
+                      System
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className={clsx({ active: theme === "light" })}
+                      onClick={() => handleThemeChange("light")}
+                    >
+                      <IconSun size={20} />
+                      Light
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className={clsx({ active: theme === "dark" })}
+                      onClick={() => handleThemeChange("dark")}
+                    >
+                      <IconMoon size={20} />
+                      Dark
+                    </button>
+                  </li>
+                </ul>
+              </Popover.Dropdown>
+            </Popover>
             {/* 语言切换 */}
-            <Popover opened={langOpen} onChange={setLangOpen}>
+            <Popover opened={langOpened} onChange={setLangOpened}>
               <Popover.Target>
                 <Button
                   sharp="square"
                   ghost
                   className="gap-0.5"
-                  onClick={() => setLangOpen(true)}
+                  onClick={() => setLangOpened(true)}
                 >
                   <IconTranslate
                     viewBox="0 0 512 512"
