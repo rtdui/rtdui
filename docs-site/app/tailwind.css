@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .tail-arrow {
+    display: inline-grid;
+    grid-auto-flow: column;
+    align-items: center;
+    column-gap: 2px;
+  }
+  .tail-arrow:after {
+    content: "";
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: -0.5rem;
+    box-shadow: 0.1rem 0.1rem;
+    transform-origin: 75% 75%;
+    transform: rotate(45deg);
+    opacity: 0.5;
+    transition-property: transform, margin-top;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+  .tail-arrow:focus-within:after {
+    transform: rotate(225deg);
+    margin-top: 0;
+  }
+}
