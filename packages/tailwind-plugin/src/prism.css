@@ -45,6 +45,47 @@
   --prism-color-22: hsla(137, 100%, 55%, 0.15);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --prism-color-1: hsl(220, 14%, 71%);
+    --prism-color-2: hsl(220, 13%, 18%);
+    --prism-color-3: hsl(220, 13%, 28%);
+    --prism-color-4: hsl(220, 10%, 40%);
+    --prism-color-5: hsl(220, 14%, 71%);
+    --prism-color-6: hsl(286, 60%, 67%);
+    --prism-color-7: hsl(355, 65%, 65%);
+    --prism-color-8: hsl(187, 47%, 55%);
+    --prism-color-9: hsl(95, 38%, 62%);
+    --prism-color-11: hsl(29, 54%, 61%);
+    --prism-color-12: hsl(207, 82%, 66%);
+    --prism-color-13: hsl(5, 48%, 51%);
+    /* 插件 */
+    --prism-color-16: hsl(220, 9%, 55%);
+    --prism-color-17: hsla(220, 100%, 80%, 0.04);
+    --prism-color-20: hsla(353, 100%, 66%, 0.15);
+    --prism-color-22: hsla(137, 100%, 55%, 0.15);
+  }
+  [data-theme="light"] {
+    --prism-color-1: hsl(230, 8%, 24%); /* pre color */
+    --prism-color-2: hsl(230, 1%, 98%); /* pre bg */
+    --prism-color-3: hsl(230, 1%, 90%); /* selection bg */
+    --prism-color-4: hsl(230, 4%, 64%); /* comment color */
+    --prism-color-5: hsl(230, 8%, 24%); /* punctuation color */
+    --prism-color-6: hsl(301, 63%, 40%); /* keyword color */
+    --prism-color-7: hsl(5, 74%, 59%); /* symbol color */
+    --prism-color-8: hsl(198, 99%, 37%); /* url color */
+    --prism-color-9: hsl(119, 34%, 47%); /* attr-value color */
+    --prism-color-11: hsl(35, 99%, 36%); /* attr-name color */
+    --prism-color-12: hsl(221, 87%, 60%); /* variable name color */
+    --prism-color-13: hsl(344, 84%, 43%); /* template-string color */
+    /* 插件 */
+    --prism-color-16: hsl(230, 6%, 44%); /** line-number color */
+    --prism-color-17: hsla(230, 8%, 24%, 0.05); /** highlight-line bg */
+    --prism-color-20: hsla(353, 100%, 66%, 0.15); /** diff-deleted line bg */
+    --prism-color-22: hsla(137, 100%, 55%, 0.15); /** diff-inserted line bg */
+  }
+}
+
 pre[class*="language-"] {
   background: var(--prism-color-2);
   color: var(--prism-color-1);
@@ -56,12 +97,7 @@ pre[class*="language-"] {
   word-spacing: normal;
   word-break: normal;
   line-height: 1.5;
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
   tab-size: 2;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
 }
 
@@ -78,10 +114,21 @@ pre[class*="language-"] *::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1em;
+  padding: 1.5rem 1rem;
   margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.3em;
+  position: relative;
+}
+/* lang indicator */
+pre[data-language]:not([data-processed], [data-no-lang-indicator])::before {
+  content: attr(data-language);
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 0.25rem;
+  background-color: oklch(var(--b3));
+  color: theme(colors.gray.500);
 }
 
 /* Inline code */
