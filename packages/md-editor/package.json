@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/md-editor",
-  "version": "4.8.0",
+  "version": "4.8.1",
   "description": "React Markdown editor and viewer",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -42,8 +42,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@rtdui/core": "4.8.0",
-    "@rtdui/hooks": "4.8.0",
+    "@rtdui/core": "4.8.1",
+    "@rtdui/hooks": "4.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
