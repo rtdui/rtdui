@@ -1,4 +1,4 @@
-import { forwardRef, useState, useRef } from "react";
+import { forwardRef, useState, useRef, FocusEvent } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { Popover, TextInput, type TextInputProps } from "@rtdui/core";
 import clsx from "clsx";
@@ -54,6 +54,7 @@ export const DataTableSelect = forwardRef<
     enableFilters,
     enableGrouping,
     autoExpandAll = true,
+    onFocus,
     ...other
   } = props;
 
@@ -101,6 +102,11 @@ export const DataTableSelect = forwardRef<
     }
   };
 
+  const handleInputFocus = (e: FocusEvent<HTMLInputElement>) => {
+    onFocus?.(e);
+    setOpen(true);
+  };
+
   return (
     <Popover withArrow opened={open} onChange={setOpen} position="bottom-start">
       <input type="hidden" name={name} value={selectedIds} />
@@ -116,8 +122,8 @@ export const DataTableSelect = forwardRef<
           rightSection={right}
           value={displayValue}
           className={className}
-          onFocus={() => setOpen(true)}
           {...other}
+          onFocus={handleInputFocus}
         />
       </Popover.Target>
       <Popover.Dropdown
