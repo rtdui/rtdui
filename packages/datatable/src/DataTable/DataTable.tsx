@@ -112,6 +112,11 @@ export interface DataTableProps {
    */
   showBorder?: boolean;
   /**
+   * use CSS table-layout fixed
+   * @default true
+   */
+  fixedLayout?: boolean;
+  /**
    * 表格滚动时列头固定在视图顶部
    * @default true
    */
@@ -514,6 +519,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     showToolbar = true,
     showBorder = true,
     autoExpandAll = false,
+    fixedLayout = true,
   } = props;
 
   const enableTree = !!getSubRows;
@@ -1067,8 +1073,9 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
         >
           <table
             className={clsx(
-              "data-table table table-fixed",
+              "data-table table",
               {
+                "table-fixed": fixedLayout,
                 "table-pin-rows": enableStickyHeader,
                 "no-border": !showBorder,
                 "table-xs": size === "xs",
@@ -1079,7 +1086,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
               slots?.table
             )}
             style={{
-              width: table.getTotalSize(),
+              width: fixedLayout ? table.getTotalSize() : undefined,
             }}
           >
             {/* 用于table-layout:fixed时,多行列头宽度失效的问题 */}
