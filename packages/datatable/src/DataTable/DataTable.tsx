@@ -167,6 +167,21 @@ export interface DataTableProps {
    */
   enablePagination?: boolean;
 
+  /**
+   * 行点击事件处理, 只针对数据行触发, 不会对分组行等附加行触发
+   */
+  onRowClick?: (
+    e: React.MouseEvent<HTMLTableRowElement>,
+    row: Row<any>
+  ) => void;
+  /**
+   * 行双击事件处理,, 只针对数据行触发, 不会对分组行等附加行触发
+   */
+  onRowDoubleClick?: (
+    e: React.MouseEvent<HTMLTableRowElement>,
+    row: Row<any>
+  ) => void;
+
   //#region TableOptions的原生选项说明
 
   //#region 核心选项
@@ -520,6 +535,8 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     showBorder = true,
     autoExpandAll = false,
     fixedLayout = true,
+    onRowClick,
+    onRowDoubleClick,
   } = props;
 
   const enableTree = !!getSubRows;
@@ -1035,6 +1052,27 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     disabled: table.getState().columnPinning.left?.length === 0,
   });
 
+  const [activedRowId, setActivedRowId] = useState<string | number>(null!);
+
+  const handleRowClick = (
+    e: React.MouseEvent<HTMLTableRowElement>,
+    row: Row<any>
+  ) => {
+    onRowClick?.(e, row);
+    setActivedRowId(row.id);
+    if (enableRowSelection && enableClickRowSelection && !row.getIsGrouped()) {
+      row.getToggleSelectedHandler()(e);
+    }
+  };
+
+  const handleRowDoubleClick = (
+    e: React.MouseEvent<HTMLTableRowElement>,
+    row: Row<any>
+  ) => {
+    onRowDoubleClick?.(e, row);
+    setActivedRowId(row.id);
+  };
+
   return (
     <DndProvider
       backend={isMobileDevice ? TouchBackend : HTML5Backend}
@@ -1146,14 +1184,19 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                     return (
                       <tr
                         key={row.id}
-                        onClick={
-                          enableRowSelection &&
-                          enableClickRowSelection &&
-                          !row.getIsGrouped()
-                            ? row.getToggleSelectedHandler()
-                            : undefined
-                        }
-                        className={row.getIsSelected() ? "selected" : undefined}
+                        // onClick={
+                        //   enableRowSelection &&
+                        //   enableClickRowSelection &&
+                        //   !row.getIsGrouped()
+                        //     ? row.getToggleSelectedHandler()
+                        //     : undefined
+                        // }
+                        onClick={(e) => handleRowClick(e, row)}
+                        onDoubleClick={(e) => handleRowDoubleClick(e, row)}
+                        className={clsx({
+                          selected: row.getIsSelected(),
+                          actived: String(activedRowId) === String(row.id),
+                        })}
                       >
                         {row.getVisibleCells().map((cell) => (
                           <BodyCell
@@ -1177,14 +1220,19 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                 table.getRowModel().rows.map((row) => (
                   <tr
                     key={row.id}
-                    onClick={
-                      enableRowSelection &&
-                      enableClickRowSelection &&
-                      !row.getIsGrouped()
-                        ? row.getToggleSelectedHandler()
-                        : undefined
-                    }
-                    className={row.getIsSelected() ? "selected" : undefined}
+                    // onClick={
+                    //   enableRowSelection &&
+                    //   enableClickRowSelection &&
+                    //   !row.getIsGrouped()
+                    //     ? row.getToggleSelectedHandler()
+                    //     : undefined
+                    // }
+                    onClick={(e) => handleRowClick(e, row)}
+                    onDoubleClick={(e) => handleRowDoubleClick(e, row)}
+                    className={clsx({
+                      selected: row.getIsSelected(),
+                      actived: String(activedRowId) === String(row.id),
+                    })}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <BodyCell
