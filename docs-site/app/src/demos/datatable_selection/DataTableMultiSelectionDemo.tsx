@@ -1,5 +1,5 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import React from "react";
+import React, { useState } from "react";
 import { DataTable, DataTableProps } from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
@@ -61,6 +61,12 @@ export default function Demo() {
           onRowSelectionChange={setRowSelection}
           state={{
             rowSelection,
+          }}
+          onRowClick={(e, row) => {
+            console.log("单击", row.id);
+          }}
+          onRowDoubleClick={(e, row) => {
+            console.log("双击", row.id);
           }}
         />
       </div>

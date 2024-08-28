@@ -16868,6 +16868,17 @@
           "name": "boolean | undefined"
         }
       },
+      "fixedLayout": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "use CSS table-layout fixed",
+        "name": "fixedLayout",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "getRowId": {
         "defaultValue": {
           "value": "(row) => row.id"
@@ -17007,6 +17018,24 @@
         "required": false,
         "type": {
           "name": "OnChangeFn<PaginationState> | undefined"
+        }
+      },
+      "onRowClick": {
+        "defaultValue": null,
+        "description": "行点击事件处理, 只针对数据行触发, 不会对分组行等附加行触发",
+        "name": "onRowClick",
+        "required": false,
+        "type": {
+          "name": "((e: MouseEvent<HTMLTableRowElement, MouseEvent>, row: Row<any>) => void) | undefined"
+        }
+      },
+      "onRowDoubleClick": {
+        "defaultValue": null,
+        "description": "行双击事件处理,, 只针对数据行触发, 不会对分组行等附加行触发",
+        "name": "onRowDoubleClick",
+        "required": false,
+        "type": {
+          "name": "((e: MouseEvent<HTMLTableRowElement, MouseEvent>, row: Row<any>) => void) | undefined"
         }
       },
       "onRowPinningChange": {

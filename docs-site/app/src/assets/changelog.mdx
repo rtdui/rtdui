@@ -1,6 +1,14 @@
-# Version 4.8.2 (2024-08-27)
+# Version 4.8.3 (2024-08-28)
 
-- [@rtdui/datatable] DataTable add `fixedLayout` prop, default is true
+- [@rtdui/datatable] DataTable Component add onRowClick and onRowDoubleClick optional props
+  `onRowClick` prop type:
+  ```
+  onRowClick?: (
+    e: React.MouseEvent<HTMLTableRowElement>,
+    row: Row<any>
+  ) => void;
+  ```
+- [@rtdui/tailwind-plugin] fine-tuning the data-table style
 
 # Version 4.8.1 (2024-08-26)
 
