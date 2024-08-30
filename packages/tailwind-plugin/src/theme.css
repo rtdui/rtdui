@@ -48,3 +48,9 @@ h5 {
 h6 {
   @apply text-sm font-bold my-2;
 }
+
+.input[type="number"].input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"].input-md[type="number"]::-webkit-inner-spin-button {
+  margin-block: -2px;
+  margin-inline-end: calc(var(--input-padding-right, 8px) * -1);
+}
