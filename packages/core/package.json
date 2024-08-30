@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/core",
-  "version": "4.8.3",
+  "version": "4.8.4",
   "description": "React components library focused on usability, accessibility and developer experience",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -60,7 +60,7 @@
     "@types/react-transition-group": "^4.4.7"
   },
   "peerDependencies": {
-    "@rtdui/hooks": "4.8.3",
+    "@rtdui/hooks": "4.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
