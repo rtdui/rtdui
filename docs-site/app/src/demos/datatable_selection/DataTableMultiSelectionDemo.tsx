@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from "react";
 import type { ColumnDef } from "@tanstack/react-table";
-import React, { useState } from "react";
 import { DataTable, DataTableProps } from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
@@ -40,15 +40,16 @@ const tableProps: Partial<DataTableProps> = {
   enableExport: true,
 };
 export default function Demo() {
-  const [data, setData] = React.useState<Person[]>([]);
+  const [data, setData] = useState<Person[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setData(makePersonData(50));
   }, []);
 
-  const ref = React.useRef<any>();
+  const ref = useRef<any>();
 
-  const [rowSelection, setRowSelection] = React.useState({});
+  const [rowSelection, setRowSelection] = useState({});
+  const [activedRowId, setActivedRowId] = useState("");
 
   return (
     <div className="flex flex-col gap-4">
@@ -63,14 +64,16 @@ export default function Demo() {
             rowSelection,
           }}
           onRowClick={(e, row) => {
-            console.log("单击", row.id);
+            setActivedRowId(row.id);
           }}
           onRowDoubleClick={(e, row) => {
-            console.log("双击", row.id);
+            console.log("双击事件触发", row.id);
           }}
+          className="[&&_tr.actived_td]:bg-info [&&_tr.actived_td]:text-info-content"
         />
       </div>
       <output>当前选择: {JSON.stringify(rowSelection, undefined, 2)}</output>
+      <output>当前激活行: {activedRowId}</output>
     </div>
   );
 }
