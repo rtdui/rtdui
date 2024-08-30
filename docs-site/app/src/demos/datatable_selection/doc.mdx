@@ -23,19 +23,19 @@ DataTable 支持行选择功能. 给`DataTable`设置`enableRowSelection`属性�
 
 选择状态以行id作为对象的键名. 因此需要给`DataTable`的`getRowId`属性设置正确的数据源行id标识. 默认为: `(row)=>row.id`, 假如你的数据源中以uid字段是行的id:
 
+```jsx
+<DataTable getRowId={(row) => row.uid} />
+```
+
 `选中行`和`激活行`的概念:
 
 - `选中行`
   可通过复选框或行单击进行选择, 可以单选或多选, `DataTable`会为选中的行(tr元素)附加`selected`样式类, 并且重复选择相同行会进行切换(添加或移除`selected`类名)
 - `激活行`
-  只能通过行点击激活, 只能单选, `DataTable`会为当前激活的行(tr元素)附加`actived`样式类, 并且重复点击相同的行不会移除`actived`类.
+  只能通过行点击激活, 只能是单行, `DataTable`会为当前激活的行(tr元素)附加`actived`样式类, 并且重复点击相同的行不会移除`actived`类.
   `DataTable`没有`actived`类设置默认样式. 这是为了防止单选且启用`点击行选择`时视觉上和选择状态的不一致
 
 区分两者是为了当多选时选中的行和激活的行有各自独立的样式和行为, 比如: 多选用于批量处理, 激活行用于过滤1对多的关系数据的场景.
-
-```jsx
-<DataTable getRowId={(row) => row.uid} />
-```
 
 ## 单选
 
