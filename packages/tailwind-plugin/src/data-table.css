@@ -75,10 +75,20 @@
 .data-table.table tr.selected td {
   @apply bg-base-300;
 }
-/* 行激活时的单元格背景色,不能直接设置tr的背景色,因为td有背景色,它会覆盖在tr之上 */
-.data-table.table tr.actived td {
-  background-color: color-mix(in oklab, theme(colors.base-300), black 7%);
-}
+
+/* 行激活时的单元格背景色,不能直接设置tr的背景色,因为td有背景色,它会覆盖在tr之上
+ * 行激活只在多选时有用, 单选时直接使用行选择, 与行点击选择的区别是单选行可以反选, 而激活行不能反激活.
+ * 为防止与行点击单选的样式冲突, 没有为激活行设置默认样式, 开发者可以在多选时手动为激活的行设置样式. 如:
+ * 方式1: 通过CSS样式
+  .data-table.table tr.actived td {
+     @apply bg-info text-info-content;
+   }
+ * 方式2: 通过DataTable组件的className属性设置
+  <DataTable
+    className="[&&_tr.actived_td]:bg-info [&&_tr.actived_td]:text-info-content"
+  />
+ */
+/* 
 
 /* 列宽调整指示器 */
 .resizer {
