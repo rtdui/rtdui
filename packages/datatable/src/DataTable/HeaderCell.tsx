@@ -102,30 +102,28 @@ export function HeaderCell(props: HeaderCellProps) {
               onClick={column.getToggleSortingHandler()}
             >
               {flexRender(column.columnDef.header, header.getContext())}
-              {"\u00A0"}
               {{
                 asc: (
-                  <span className="text-primary align-text-bottom">
+                  <span className="text-info flex items-center ml-1">
                     <IconTriangleFilled
                       size={10}
-                      className="inline fill-primary"
+                      className="inline fill-info"
                     />
                     {table.getState().sorting.length > 1 &&
                       column.getSortIndex() >= 0 && (
-                        <span className="text-xs">
-                          {column.getSortIndex() + 1}
-                        </span>
+                        <sub>{column.getSortIndex() + 1}</sub>
                       )}
                   </span>
                 ),
                 desc: (
-                  <span className="text-primary align-text-bottom">
-                    <IconTriangleInvertedFilled size={10} className="inline" />
+                  <span className="text-info flex items-center ml-1">
+                    <IconTriangleInvertedFilled
+                      size={10}
+                      className="inline fill-info"
+                    />
                     {table.getState().sorting.length > 1 &&
                       column.getSortIndex() >= 0 && (
-                        <span className="text-xs">
-                          {column.getSortIndex() + 1}
-                        </span>
+                        <sub>{column.getSortIndex() + 1}</sub>
                       )}
                   </span>
                 ),
