@@ -36,9 +36,10 @@ export function FilterEditor(props: FilterEditorProps) {
   }, [column.getFacetedUniqueValues()]);
 
   return columnDataType === "Number" ? (
-    <div className="flex gap-1">
+    <div className="font-normal flex gap-1">
       <DebouncedInput
         className="flex-1"
+        size="xs"
         wait={debouncedWait}
         type="number"
         min={Number(column.getFacetedMinMaxValues()?.[0] ?? "")}
@@ -52,9 +53,13 @@ export function FilterEditor(props: FilterEditorProps) {
         onChange={(value) =>
           column.setFilterValue((old: [number, number]) => [value, old?.[1]])
         }
+        slots={{
+          input: "[--input-padding-left:8px] [--input-padding-right:8px]",
+        }}
       />
       <DebouncedInput
         className="flex-1"
+        size="xs"
         wait={debouncedWait}
         type="number"
         min={Number(column.getFacetedMinMaxValues()?.[0] ?? "")}
@@ -68,17 +73,24 @@ export function FilterEditor(props: FilterEditorProps) {
         onChange={(value) =>
           column.setFilterValue((old: [number, number]) => [old?.[0], value])
         }
+        slots={{
+          input: "[--input-padding-left:8px] [--input-padding-right:8px]",
+        }}
       />
     </div>
   ) : (
-    <div className="dropdown w-full">
+    <div className="font-normal dropdown w-full">
       <div className="relative rounded-md">
         <DebouncedInput
           tabIndex={0}
+          size="xs"
           wait={debouncedWait}
           placeholder={`过滤 (${column.getFacetedUniqueValues().size})`}
           value={(columnFilterValue ?? "") as string}
           onChange={(value) => column.setFilterValue(value)}
+          slots={{
+            input: "[--input-padding-left:8px] [--input-padding-right:8px]",
+          }}
         />
         {column.getIsFiltered() && (
           <div className="absolute inset-y-0 right-0.5 flex items-center">
