@@ -1022,6 +1022,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   }, [autoExpandAll, table]);
 
   const tableContainerRef = useRef<HTMLDivElement>(null);
+  const tableRef = useRef<HTMLTableElement>(null);
   //#region 行虚拟化
   const estimateRowHeight = useCallback(
     () => (size === "sm" ? 36 : 56),
@@ -1098,7 +1099,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                 className={clsx(slots?.groupDropArea)}
               />
             </div>
-            {enableExport && <ExportTable table={table} />}
+            {enableExport && <ExportTable table={table} tableRef={tableRef} />}
             {enableHiding && <ColumnsVisibility table={table} />}
           </div>
         )}
@@ -1110,6 +1111,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
           )}
         >
           <table
+            ref={tableRef}
             className={clsx(
               "data-table table",
               {

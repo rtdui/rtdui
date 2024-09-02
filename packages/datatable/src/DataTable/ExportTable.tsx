@@ -4,11 +4,14 @@ import { utils as xlsxUtils, writeFileXLSX } from "xlsx";
 import { IconDownload } from "@tabler/icons-react";
 import { Button, Popover } from "@rtdui/core";
 
-export function ExportTable(props: { table: Table<any> }) {
-  const { table } = props;
+export function ExportTable(props: {
+  table: Table<any>;
+  tableRef: React.RefObject<HTMLTableElement>;
+}) {
+  const { table, tableRef } = props;
   const exportXLSX = React.useCallback(async () => {
     /* Create worksheet from HTML DOM TABLE */
-    const tableEle = document.querySelector(".data-table")!;
+    const tableEle = tableRef.current!;
     const clonedTableEle = tableEle.cloneNode(true) as HTMLTableElement;
     const dropdownEles = clonedTableEle.querySelectorAll(".dropdown ");
     Array.prototype.forEach.call(dropdownEles, (el, i) => {
@@ -18,7 +21,7 @@ export function ExportTable(props: { table: Table<any> }) {
 
     /* Export to file (start a download) */
     writeFileXLSX(wb, "表格导出.xlsx");
-  }, []);
+  }, [tableRef]);
   return (
     <Popover position="bottom">
       <Popover.Target>
