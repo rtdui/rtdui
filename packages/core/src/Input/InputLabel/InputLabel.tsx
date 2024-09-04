@@ -55,6 +55,7 @@ export const InputLabel = forwardRef<
       }
       htmlFor={labelElement === "label" ? htmlFor : undefined}
       data-required={required}
+      // 阻止浏览器默认的双击选中文本行为
       onMouseDown={(event: any) => {
         onMouseDown?.(event);
         if (!event.defaultPrevented && event.detail > 1) {
