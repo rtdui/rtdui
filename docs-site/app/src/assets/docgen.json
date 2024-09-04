@@ -17195,6 +17195,15 @@
         "type": {
           "name": "Partial<VisibilityTableState & ColumnOrderTableState & ColumnPinningTableState & FiltersTableState & ... 5 more ... & RowSelectionTableState> | undefined"
         }
+      },
+      "validate": {
+        "defaultValue": null,
+        "description": "当前在编辑模式下, 字段的验证规则\n@param row\n@returns",
+        "name": "validate",
+        "required": false,
+        "type": {
+          "name": "Record<string, Rule> | undefined"
+        }
       }
     }
   },
@@ -17210,6 +17219,15 @@
         "required": true,
         "type": {
           "name": "Table<any>"
+        }
+      },
+      "tableRef": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tableRef",
+        "required": true,
+        "type": {
+          "name": "RefObject<HTMLTableElement>"
         }
       }
     }

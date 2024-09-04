@@ -26,10 +26,10 @@ export interface User {
 export interface Person {
   id?: string | number;
   fullName: string; // 中文姓名
-  gender: "male" | "female";
-  age: number;
-  birthdate: Date;
-  deposit: number;
+  gender: "male" | "female" | "";
+  age: number | "";
+  birthdate: Date | "";
+  deposit: number | "";
   subRows?: Person[];
 }
 
@@ -45,6 +45,17 @@ export const newPerson = (id?: number): Person => {
       fractionDigits: 2,
     }),
     birthdate: faker.date.birthdate(),
+  };
+};
+
+export const newEmptyPerson = (id: number): Person => {
+  return {
+    id,
+    fullName: "",
+    gender: "",
+    age: "",
+    deposit: "",
+    birthdate: "",
   };
 };
 

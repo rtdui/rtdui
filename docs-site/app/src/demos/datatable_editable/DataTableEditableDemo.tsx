@@ -1,13 +1,13 @@
 import type { ColumnDef, CellContext } from "@tanstack/react-table";
 import React from "react";
 import { DataTable } from "@rtdui/datatable";
-import {
-  makePersonData as makePersonData,
-  type Person,
-  newPerson,
-} from "../../demoData/makeData";
 import { CloseButton, NumberInput, TextInput } from "@rtdui/core";
 import clsx from "clsx";
+import {
+  makePersonData,
+  newEmptyPerson,
+  type Person,
+} from "../../demoData/makeData";
 
 const getRowId = (row: Person) => row.id;
 
@@ -16,16 +16,6 @@ function FullNameEditableInputCell(props: CellContext<any, any>) {
   const initialValue = getValue();
   // We need to keep and update the state of the cell normally
   const [value, setValue] = React.useState(initialValue);
-
-  const validate = (
-    params: CellContext<Person, string> & { value: string }
-  ) => {
-    // 验证
-    if (params.value.trim() === "") {
-      return "姓名不能为空";
-    }
-    return "";
-  };
 
   // If the initialValue is changed external, sync it up with our state
   React.useEffect(() => {
@@ -37,7 +27,6 @@ function FullNameEditableInputCell(props: CellContext<any, any>) {
     table.options.meta?.changeRow?.({
       ...props,
       value: newValue,
-      validate,
     });
   };
 
@@ -58,16 +47,6 @@ function AgeEditableInputWithValidateCell(props: CellContext<any, any>) {
   // We need to keep and update the state of the cell normally
   const [value, setValue] = React.useState(initialValue);
 
-  const validate = (
-    params: CellContext<Person, string> & { value: string }
-  ) => {
-    // 验证
-    if (Number(params.value) > 200) {
-      return "值不能大于200";
-    }
-    return "";
-  };
-
   // When the input is blurred, we'll call our table meta's updateData function
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     const newValue = ev.target.value;
@@ -75,7 +54,6 @@ function AgeEditableInputWithValidateCell(props: CellContext<any, any>) {
     table.options.meta?.changeRow?.({
       ...props,
       value: newValue,
-      validate,
     });
   };
 
@@ -167,7 +145,13 @@ const columns: ColumnDef<Person>[] = [
         header: "性别",
         size: 120,
         minSize: 120,
-        accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
+        accessorKey: "gender",
+        accessorFn: (row) =>
+          row.gender === "male"
+            ? "男"
+            : row.gender === "female"
+              ? "女"
+              : row.gender,
         meta: {
           showFilterList: true,
         },
@@ -214,7 +198,7 @@ export default function Demo() {
 
   const ref = React.useRef<any>(null!);
   const handleNewRowClick = () => {
-    ref.current.addRow(newPerson(--newId));
+    ref.current.addRow(newEmptyPerson(--newId));
   };
   const handleDeleteRowClick = () => {
     ref.current.deleteRow();
@@ -258,7 +242,28 @@ export default function Demo() {
         <li>性别列使用下拉选择作为编辑器。</li>
       </ul>
 
-      <DataTable ref={ref} data={data} columns={columns} {...defaultProps} />
+      <DataTable
+        ref={ref}
+        data={data}
+        columns={columns}
+        {...defaultProps}
+        validate={{
+          fullName: (val, row, data) => {
+            if (val === "") {
+              return "姓名必须";
+            }
+          },
+          age: (val, row, data) => {
+            // 验证
+            if (val === "") {
+              return "年龄必须";
+            }
+            if (Number(val) > 200) {
+              return "值不能大于200";
+            }
+          },
+        }}
+      />
 
       <output className="mt-4 flex flex-col gap-4">
         output:

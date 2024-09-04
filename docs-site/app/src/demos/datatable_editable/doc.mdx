@@ -14,6 +14,30 @@ import DataTableEditableDemo from "./DataTableEditableDemo";
 
 # 使用
 
+`DataTable`有一个`validate`属性, 用于可编辑时提供验证规则, 如:
+
+```tsx
+<DataTable
+  validate={{
+    fullName: (val, row, data) => {
+      if (val === "") {
+        return "姓名必须";
+      }
+    },
+    age: (val, row, data) => {
+      if (val === "") {
+        return "年龄必须";
+      }
+      if (Number(val) > 200) {
+        return "值不能大于200";
+      }
+    },
+  }}
+/>
+```
+
+每次调用`DataTable`的`addRow()`或`changeRow()` API时会自动执行验证.
+
 ## 可编辑表格
 
 在列定义为列定义编辑组件和显示组件即可实现可编辑表格的功能.
