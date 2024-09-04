@@ -12,7 +12,6 @@ declare module "@tanstack/table-core" {
     changeRow?: (
       params: CellContext<TData, any> & {
         value: any;
-        validate?: (cx: CellContext<TData, any> & { value: any }) => string;
       }
     ) => void;
     deleteRow?: () => void;

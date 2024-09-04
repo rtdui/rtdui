@@ -83,6 +83,21 @@ if (typeof document !== "undefined") {
   isMobileDevice = isMobile();
 }
 
+export interface Changes {
+  changes: {
+    added: any[];
+    changed: Record<string, Record<string, any>>;
+    deleted: any[];
+  };
+  errors: Record<string, Record<string, string>>;
+}
+
+export type Rule = (
+  value: any,
+  row: Row<any>,
+  data: any[]
+) => string | null | undefined;
+
 export interface DataTableProps {
   className?: string;
   /** 样式槽 */
@@ -181,6 +196,13 @@ export interface DataTableProps {
     e: React.MouseEvent<HTMLTableRowElement>,
     row: Row<any>
   ) => void;
+
+  /**
+   * 当前在编辑模式下, 字段的验证规则
+   * @param row
+   * @returns
+   */
+  validate?: Record<string, Rule>;
 
   //#region TableOptions的原生选项说明
 
@@ -537,6 +559,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     fixedLayout = true,
     onRowClick,
     onRowDoubleClick,
+    validate,
   } = props;
 
   const enableTree = !!getSubRows;
@@ -556,13 +579,9 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     throw new Error("行虚拟化和导出不能同时启用");
   }
 
-  const changesRef = useRef({
-    changes: { added: [], changed: {}, deleted: [] } as {
-      added: any[];
-      changed: Record<string, any>;
-      deleted: any[];
-    },
-    errors: {} as Record<string, any>,
+  const changesRef = useRef<Changes>({
+    changes: { added: [], changed: {}, deleted: [] },
+    errors: {},
   });
 
   const setErrorRow = (params: {
@@ -586,30 +605,40 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   };
 
   const addRow = (newRow: any) => {
+    Object.keys(newRow).forEach((d) => {
+      const validateRule = validate?.[d];
+      const validateError = validateRule?.(newRow[d], newRow, data);
+      if (validateError) {
+        setErrorRow({
+          rowId: getRowId(newRow),
+          field: d,
+          errorMsg: validateError,
+        });
+      }
+    });
     changesRef.current.changes.added.push(newRow);
     setData((prev) => [...prev, newRow]);
   };
   const changeRow = (
     params: CellContext<any, any> & {
       value: any;
-      validate?: (cx: CellContext<any, any> & { value: any }) => string;
     }
   ) => {
-    const { row, column, value, validate } = params;
-    const rowId = getRowId(row);
+    const { row, column, value } = params;
+    const rowId = getRowId(row) as string;
     const field = (column.columnDef as AccessorKeyColumnDef<any, any>)
-      .accessorKey;
+      .accessorKey as string;
     const fieldDataType = getType(row.original[field]);
     if (
       row.original[field] !==
       (fieldDataType === "Number" ? Number(value) : value)
     ) {
-      const validateResult = validate?.(params) ?? "";
-      if (validateResult === "") {
-        // 清除错误
+      const validateRule = validate?.[field];
+      const validateError = validateRule?.(value, row.original, data);
+      if (!validateError) {
         setErrorRow({
           rowId: row.id,
-          field: field as string,
+          field: field,
           errorMsg: "",
         });
         // 如果修改的值在新增集中则直接更新新增行的字段值
@@ -628,8 +657,8 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
       } else {
         setErrorRow({
           rowId: row.id,
-          field: field as string,
-          errorMsg: validateResult,
+          field: field,
+          errorMsg: validateError,
         });
       }
       setData((prev) =>
