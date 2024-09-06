@@ -158,6 +158,9 @@ export interface DataTableProps {
   enableVirtualized?: boolean;
   /**
    * 当table可展开时是否自动展开所有
+   *
+   * @deprecated 使用`{expanded:true}`状态替代,如initialState非受控属性:`initialState:{expanded:true}`, state受控属性同理
+   *
    * @default false
    */
   autoExpandAll?: boolean;
@@ -555,7 +558,6 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     showHeader = true,
     showToolbar = true,
     showBorder = true,
-    autoExpandAll = false,
     fixedLayout = true,
     onRowClick,
     onRowDoubleClick,
@@ -762,7 +764,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
           <>
             {enableRowSelection && !enableClickRowSelection && (
               <IndeterminateCheckbox
-                className="absolute left-0.5"
+                className="absolute left-0.5 checkbox-sm"
                 checked={
                   selectAllForAllPages
                     ? table.getIsAllRowsSelected()
@@ -811,7 +813,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
           >
             {enableRowSelection && !enableClickRowSelection && (
               <Checkbox
-                size="sm"
+                size="xs"
                 checked={row.getIsSelected()}
                 disabled={!row.getCanSelect()}
                 // indeterminate={row.getIsSomeSelected()}
@@ -1042,13 +1044,6 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     prevState.columnPinning!.left = getLeftPinning();
     return prev;
   });
-
-  useEffect(() => {
-    // 自动展开所有
-    if (autoExpandAll) {
-      table.toggleAllRowsExpanded(true);
-    }
-  }, [autoExpandAll, table]);
 
   const tableContainerRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
