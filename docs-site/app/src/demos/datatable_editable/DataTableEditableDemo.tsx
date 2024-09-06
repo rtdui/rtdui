@@ -1,6 +1,5 @@
-import type { ColumnDef, CellContext } from "@tanstack/react-table";
 import React from "react";
-import { DataTable } from "@rtdui/datatable";
+import { DataTable, type ColumnDef, type CellContext } from "@rtdui/datatable";
 import { CloseButton, NumberInput, TextInput } from "@rtdui/core";
 import clsx from "clsx";
 import {

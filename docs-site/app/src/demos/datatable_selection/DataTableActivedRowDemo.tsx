@@ -29,10 +29,10 @@ const tableProps: Partial<DataTableProps> = {
   enableFilters: true,
   filterFromLeafRows: false,
   enableHiding: true,
-  enableRowSelection: true,
+  enableRowSelection: false,
   enableMultiRowSelection: false,
   enableSubRowSelection: false,
-  enableClickRowSelection: true,
+  enableClickRowSelection: false,
   selectAllForAllPages: true,
   enableStickyHeader: true,
   enableAutoRowNumber: false,
@@ -41,7 +41,7 @@ const tableProps: Partial<DataTableProps> = {
 export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
-  const [rowSelection, setRowSelection] = React.useState({});
+  const [activedRowId, setActivedRowId] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     setData(makePersonData(50));
@@ -57,13 +57,11 @@ export default function Demo() {
           data={data}
           columns={columns}
           {...tableProps}
-          onRowSelectionChange={setRowSelection}
-          state={{
-            rowSelection,
-          }}
+          onRowClick={(e, row) => setActivedRowId(row.id)}
+          className="[&&_tr.actived_td]:bg-info [&&_tr.actived_td]:text-info-content"
         />
       </div>
-      <output>当前的选择: {JSON.stringify(rowSelection, undefined, 2)}</output>
+      <output>当前激活的行id: {activedRowId}</output>
     </div>
   );
 }

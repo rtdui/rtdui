@@ -1,10 +1,10 @@
-import type {
-  CellContext,
-  ColumnDef,
-  HeaderContext,
-} from "@tanstack/react-table";
 import React from "react";
-import { DataTable } from "@rtdui/datatable";
+import {
+  DataTable,
+  type CellContext,
+  type ColumnDef,
+  type HeaderContext,
+} from "@rtdui/datatable";
 import { makeDatumData, type Datum } from "../../demoData/makeData";
 
 const integerFormatter = new Intl.NumberFormat("zh-Hans-CN");

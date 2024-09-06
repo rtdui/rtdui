@@ -1,7 +1,6 @@
 import React from "react";
-import { DataTableSelect } from "@rtdui/datatable";
+import { DataTableSelect, type ColumnDef } from "@rtdui/datatable";
 import { IconAt } from "@tabler/icons-react";
-import type { ColumnDef } from "@tanstack/react-table";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
 const dataTableColumns: ColumnDef<Person>[] = [

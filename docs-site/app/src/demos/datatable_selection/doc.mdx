@@ -14,6 +14,7 @@ import DataTableSelectionDemo from "./DataTableSelectionDemo";
 import DataTableMultiSelectionDemo from "./DataTableMultiSelectionDemo";
 import DataTableClickRowSelectionDemo from "./DataTableClickRowSelectionDemo";
 import DataTableConditioinSelectionDemo from "./DataTableConditioinSelectionDemo";
+import DataTableActivedRowDemo from "./DataTableActivedRowDemo";
 
 # 使用
 
@@ -88,6 +89,8 @@ const [activedRowId, setActivedRowId] = React.useState("");
 
 `enableRowSelection`启用, 并且`enableClickRowSelection`启用时, 不会显示复选框列, 而是直接点击行即可选择行.
 
+> tip: 重复点击已选中的行会反选, 如果不想要反选行为, 请使用激活行替代.
+
 > tip: 为保持清晰易见, 建议单选时才启用.
 
 <Demo data={{ Component: DataTableClickRowSelectionDemo }} />
@@ -101,3 +104,17 @@ const [activedRowId, setActivedRowId] = React.useState("");
 下面的例子中, 只有行的id为偶数的行才允许被选择.
 
 <Demo data={{ Component: DataTableConditioinSelectionDemo }} />
+
+## 激活行
+
+`DataTable`内部会为点击的行附加`actived`CSS类名(但没有默认样式规则), 有`actived`类名的行称之为激活行.
+
+为防止与单选行在视觉上的不一致, 应禁用`enableClickRowSelection`选项:
+
+1. 首先为DataTable设置`enableClickRowSelection`为 `false` 以禁用点击行选择, 这样就只能使用复选框进行多选
+2. 然后通过onRowClick或者onRowDoubleClick事件属性对激活行进行自定义处理, 两者都会接收到一个event参数和row参数
+3. 手动为actived样式类的激活行设置单元格样式.
+
+> tip: 激活行只能是单个行, 重复点击已激活的行不会反激活, 如果不想要反选行为, 请使用选择行替代.
+
+<Demo data={{ Component: DataTableActivedRowDemo }} />

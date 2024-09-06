@@ -16569,7 +16569,7 @@
         "defaultValue": {
           "value": "false"
         },
-        "description": "当table可展开时是否自动展开所有",
+        "description": "当table可展开时是否自动展开所有\n@deprecated 使用<code>{expanded:true}</code>状态替代,如initialState非受控属性:<code>initialState:{expanded:true}</code>, state受控属性同理",
         "name": "autoExpandAll",
         "required": false,
         "type": {
@@ -17436,7 +17436,7 @@
         "defaultValue": {
           "value": "false"
         },
-        "description": "当table可展开时是否自动展开所有",
+        "description": "当table可展开时是否自动展开所有\n@deprecated 使用<code>{expanded:true}</code>状态替代,如initialState非受控属性:<code>initialState:{expanded:true}</code>, state受控属性同理",
         "name": "autoExpandAll",
         "required": false,
         "type": {

@@ -1,6 +1,5 @@
-import type { ColumnDef, CellContext } from "@tanstack/react-table";
 import React from "react";
-import { DataTable } from "@rtdui/datatable";
+import { DataTable, type ColumnDef, type CellContext } from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
 const DepositAggregatedCell = (props: CellContext<Person, any>) => (
@@ -44,7 +43,12 @@ export default function Demo() {
 
   return (
     <div className="h-96">
-      <DataTable data={data} columns={columns} enableGrouping autoExpandAll />
+      <DataTable
+        data={data}
+        columns={columns}
+        enableGrouping
+        initialState={{ expanded: true }}
+      />
     </div>
   );
 }
