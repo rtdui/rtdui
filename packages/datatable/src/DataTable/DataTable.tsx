@@ -98,7 +98,7 @@ export type Rule = (
   data: any[]
 ) => string | null | undefined;
 
-export interface DataTableProps {
+export interface DataTableProps extends React.ComponentPropsWithoutRef<"div"> {
   className?: string;
   /** 样式槽 */
   slots?: {
@@ -207,7 +207,7 @@ export interface DataTableProps {
    */
   validate?: Record<string, Rule>;
 
-  //#region TableOptions的原生选项说明
+  //#region TableOptions的原生选项
 
   //#region 核心选项
   /**
@@ -505,6 +505,8 @@ export interface DataTableProps {
   enableSubRowSelection?: boolean | ((row: Row<any>) => boolean);
 
   //#endregion 功能: Row Selection
+
+  //#endregion TableOptions的原生选项
 }
 
 export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
@@ -562,6 +564,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     onRowClick,
     onRowDoubleClick,
     validate,
+    ...other
   } = props;
 
   const enableTree = !!getSubRows;
@@ -819,6 +822,9 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                 // indeterminate={row.getIsSomeSelected()}
                 onChange={row.getToggleSelectedHandler()}
                 onClick={(ev) => ev.stopPropagation()}
+                slots={{
+                  input: "rounded",
+                }}
               />
             )}
             {cx.row.getCanExpand() ? (
@@ -1108,7 +1114,10 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
         ignoreContextMenu: true,
       }}
     >
-      <div className={clsx("data-table-root h-full flex flex-col", className)}>
+      <div
+        className={clsx("data-table-root h-full flex flex-col", className)}
+        {...other}
+      >
         {showToolbar && (
           <div
             className={clsx(
