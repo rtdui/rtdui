@@ -27,7 +27,11 @@ export function FilterEditor(props: FilterEditorProps) {
         case "Date":
           return a > b ? 1 : a < b ? -1 : 0; // Date对象不能使用等于比较
         case "String":
-          return a.toLowerCase() === b.toLowerCase() ? 0 : a > b ? 1 : -1;
+          return String(a).toLowerCase() === String(b).toLowerCase()
+            ? 0
+            : a > b
+              ? 1
+              : -1;
         default:
           return a === b ? 0 : a > b ? 1 : -1;
       }
