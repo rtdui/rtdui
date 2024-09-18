@@ -18,7 +18,6 @@ export interface DataTableSelectProps
       | "getSubRows"
       | "enableGrouping"
       | "enableFilters"
-      | "autoExpandAll"
     > {
   displayField?: string;
   value?: string;
@@ -53,7 +52,6 @@ export const DataTableSelect = forwardRef<
     displayField,
     enableFilters,
     enableGrouping,
-    autoExpandAll = true,
     onFocus,
     ...other
   } = props;
@@ -87,7 +85,6 @@ export const DataTableSelect = forwardRef<
       }
       return acc;
     }, {} as any),
-    ...initialState,
   };
 
   const handleRowSelectionChange = (updater: any) => {
@@ -159,7 +156,6 @@ export const DataTableSelect = forwardRef<
           enableAutoRowNumber={false}
           enableExport={false}
           debouncedWait={500}
-          autoExpandAll={autoExpandAll}
         />
       </Popover.Dropdown>
     </Popover>
