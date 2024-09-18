@@ -5,7 +5,7 @@
     "packages/*",
     "docs-site"
   ],
-  "version": "4.9.2",
+  "version": "4.9.3",
   "description": "rtdui Components Monorepo",
   "type": "module",
   "repository": "https://github.com/rtdui/rtdui.git",
