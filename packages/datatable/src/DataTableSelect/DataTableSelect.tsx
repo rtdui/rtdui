@@ -18,6 +18,7 @@ export interface DataTableSelectProps
       | "getSubRows"
       | "enableGrouping"
       | "enableFilters"
+      | "filterFromLeafRows"
     > {
   displayField?: string;
   value?: string;
@@ -51,6 +52,7 @@ export const DataTableSelect = forwardRef<
     multiple = false,
     displayField,
     enableFilters,
+    filterFromLeafRows,
     enableGrouping,
     onFocus,
     ...other
@@ -145,7 +147,7 @@ export const DataTableSelect = forwardRef<
           enableSorting
           enableGrouping={enableGrouping}
           enableFilters={enableFilters}
-          filterFromLeafRows={false}
+          filterFromLeafRows={filterFromLeafRows}
           enableHiding={false}
           enableRowSelection
           enableMultiRowSelection={multiple}
