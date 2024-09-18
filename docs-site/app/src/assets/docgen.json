@@ -17544,6 +17544,17 @@
           "name": "Record<string, any> | undefined"
         }
       },
+      "filterFromLeafRows": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行.\n注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.",
+        "name": "filterFromLeafRows",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "getRowId": {
         "defaultValue": {
           "value": "(row) => row.id"
