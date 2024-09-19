@@ -76,6 +76,7 @@ export function HeaderCell(props: HeaderCellProps) {
         "opacity-50": isDragging,
         sticky: column.getIsPinned() && !shouldIgnoreSticky(header),
         placeholder: header.isPlaceholder,
+        "py-px": !showHeader,
       })}
       colSpan={header.colSpan > 1 ? header.colSpan : undefined}
       style={{
