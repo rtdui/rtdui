@@ -158,6 +158,9 @@ export const DataTableSelect = forwardRef<
           enableAutoRowNumber={false}
           enableExport={false}
           debouncedWait={500}
+          slots={{
+            container: "overflow-visible",
+          }}
         />
       </Popover.Dropdown>
     </Popover>
