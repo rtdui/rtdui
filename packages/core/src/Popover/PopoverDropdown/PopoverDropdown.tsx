@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { cloneElement, CSSProperties, forwardRef, isValidElement } from "react";
 import clsx from "clsx";
 import { mergeRefs, useFocusReturn, useMergedRef } from "@rtdui/hooks";
 import { FloatingArrow } from "../Floating";
@@ -110,14 +110,25 @@ export const PopoverDropdown = forwardRef<HTMLDivElement, PopoverDropdownProps>(
                       width:
                         ctx.width === "target" ? undefined : rem(ctx.width),
                       "--popover-dropdown-radius": getRadius(ctx.radius),
-                      backgroundColor: ctx.dropdownColor
-                        ? getColor(ctx.dropdownColor)
-                        : undefined,
+                      // backgroundColor: ctx.dropdownColor
+                      //   ? getColor(ctx.dropdownColor)
+                      //   : undefined,
                       color: ctx.dropdownColor ? "white" : undefined,
                     } as any
                   }
                 >
-                  {children}
+                  {isValidElement(children)
+                    ? cloneElement<any>(children, {
+                        style: {
+                          ...children.props.style,
+                          backgroundColor: ctx.dropdownColor
+                            ? getColor(ctx.dropdownColor)
+                            : undefined,
+                          borderRadius: getRadius(ctx.radius),
+                          color: ctx.dropdownColor ? "white" : undefined,
+                        },
+                      })
+                    : children}
 
                   <FloatingArrow
                     ref={ctx.arrowRef}
@@ -129,11 +140,12 @@ export const PopoverDropdown = forwardRef<HTMLDivElement, PopoverDropdownProps>(
                     arrowRadius={ctx.arrowRadius}
                     arrowOffset={ctx.arrowOffset}
                     arrowPosition={ctx.arrowPosition}
-                    className={clsx("bg-base-100")}
+                    // className={clsx("bg-base-100")}
                     style={{
                       backgroundColor: ctx.dropdownColor
                         ? getColor(ctx.dropdownColor)
                         : undefined,
+                      zIndex: -1,
                     }}
                   />
                 </div>
