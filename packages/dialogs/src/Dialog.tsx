@@ -51,10 +51,12 @@ export interface DialogProps
     okBtn?: string;
     cancelBtn?: string;
   };
+  dialogId?: string;
 }
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const {
+    dialogId,
     className,
     color = "info",
     withCloseButton = true,
@@ -112,6 +114,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
           ) : isValidElement(children) ? (
             cloneElement(children as React.ReactElement<any>, {
               onClose,
+              dialogId,
             })
           ) : (
             children

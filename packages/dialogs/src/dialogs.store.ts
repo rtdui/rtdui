@@ -1,12 +1,10 @@
 import { randomId, createStore, useStore, type RtdStore } from "@rtdui/hooks";
-import { RefObject } from "react";
 import { type DialogProps } from "./Dialog";
 
-export interface DialogData extends Omit<DialogProps, "onClose"> {
-  id?: string;
+export interface DialogData extends Omit<DialogProps, "children"> {
   content: React.ReactNode;
-  onClose?: (result: any) => void;
-  onOpen?: (props: DialogData) => void;
+  onOpen?: () => void;
+  isDirty?: boolean;
 }
 
 export interface DialogsState {
@@ -41,26 +39,29 @@ export function showDialog(
   dialog: DialogData,
   store: DialogsStore = defaultDialogsStore
 ) {
-  const id = dialog.id || randomId();
+  const dialogId = dialog.dialogId || randomId();
 
   updateDialogsState(store, (dialogs) => {
-    if (dialog.id && dialogs.some((d) => d.id === dialog.id)) {
+    if (
+      dialog.dialogId &&
+      dialogs.some((d) => d.dialogId === dialog.dialogId)
+    ) {
       return dialogs;
     }
 
-    return [...dialogs, { ...dialog, id }];
+    return [...dialogs, { ...dialog, dialogId }];
   });
 
-  return id;
+  return dialogId;
 }
 
 export function hideDialog(
-  id: string,
+  dialogId: string,
   store: DialogsStore = defaultDialogsStore
 ) {
   updateDialogsState(store, (dialogs) =>
     dialogs.filter((d) => {
-      if (d.id === id) {
+      if (d.dialogId === dialogId) {
         return false;
       }
 
@@ -68,16 +69,16 @@ export function hideDialog(
     })
   );
 
-  return id;
+  return dialogId;
 }
 
 export function updateDialog(
-  dialog: DialogData,
+  dialog: Partial<DialogData>,
   store: DialogsStore = defaultDialogsStore
 ) {
   updateDialogsState(store, (dialogs) =>
     dialogs.map((d) => {
-      if (d.id === dialog.id) {
+      if (d.dialogId === dialog.dialogId) {
         return { ...d, ...dialog };
       }
 
@@ -85,7 +86,7 @@ export function updateDialog(
     })
   );
 
-  return dialog.id;
+  return dialog.dialogId;
 }
 
 export function cleanDialogs(store: DialogsStore = defaultDialogsStore) {
