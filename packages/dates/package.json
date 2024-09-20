@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/dates",
-  "version": "4.9.5",
+  "version": "4.9.6",
   "description": "Calendars, date and time pickers based on Rtdui components",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -45,8 +45,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@rtdui/core": "4.9.5",
-    "@rtdui/hooks": "4.9.5",
+    "@rtdui/core": "4.9.6",
+    "@rtdui/hooks": "4.9.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
