@@ -47,7 +47,7 @@ export default function App() {
   return (
     <>
       <NProgress />
-      <Dialogs />
+      <Dialogs dirtyWarningLabel="内容已修改，关闭会丢失未保存的数据，确定要关闭吗？" />
       <Notifications />
       <Spotlight
         nothingFound="未找到内容"

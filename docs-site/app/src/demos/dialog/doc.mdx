@@ -12,6 +12,7 @@ handle:
 import Demo from "../../components/Demo";
 import DialogBasicDemo from "./DialogBasicDemo";
 import DialogLocalizationDemo from "./DialogLocalizationDemo";
+import DialogDirtyCheckDemo from "./DialogDirtyCheckDemo";
 
 # 安装
 
@@ -83,3 +84,21 @@ import { dialogs } from "@rtdui/dialogs";
   alert对话框模式下的关闭按钮的显示文本
 
 <Demo data={{ Component: DialogLocalizationDemo }} />
+
+## 脏数据检查
+
+当对话框包含表单时, 可以按以下步骤进行脏数据检查. 以实现关闭前提醒用户:
+
+1. 顶层对话框应提供`dialogId`字段, 以便在脏数据检查代码中可以直接关闭它. `dialogId`值会自动赋值给对话框的content组件的`dialogId`属性
+2. 在对话框的content组件中实现自定义逻辑进行脏检查, 如果是脏的, 则调用`dialogs.update()`方法更新对话框为脏状态:
+
+   ```ts
+   dialogs.update({ dialogId, isDirty: true });
+   ```
+
+3. 脏数据提示文本本地化
+   ```ts
+   <Dialogs dirtyWarningLabel="内容已修改，关闭会丢失未保存的数据，确定要关闭吗？" />
+   ```
+
+<Demo data={{ Component: DialogDirtyCheckDemo }} />

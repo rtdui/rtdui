@@ -39,4 +39,4 @@ export default function Demo() {
     />
   );
 }
-Demo.displayName = "DatatableSelectBasicDemo";
+Demo.displayName = "DatatableSelectWithFilterDemo";
