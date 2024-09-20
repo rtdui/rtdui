@@ -55,6 +55,15 @@
           "name": "string | undefined"
         }
       },
+      "dialogId": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dialogId",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
       "fullScreen": {
         "defaultValue": null,
         "description": "full screen dialog",
@@ -158,15 +167,6 @@
           "name": "string | undefined"
         }
       },
-      "children": {
-        "defaultValue": null,
-        "description": "Dialog message, place main text here",
-        "name": "children",
-        "required": false,
-        "type": {
-          "name": "React.ReactNode"
-        }
-      },
       "closeLabel": {
         "defaultValue": {
           "value": "\"Close\""
@@ -189,19 +189,46 @@
           "name": "string | undefined"
         }
       },
-      "data": {
+      "content": {
         "defaultValue": null,
         "description": "",
-        "name": "data",
+        "name": "content",
         "required": true,
         "type": {
-          "name": "DialogData"
+          "name": "React.ReactNode"
+        }
+      },
+      "dialogId": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dialogId",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "dirtyWarningLabel": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dirtyWarningLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
         }
       },
       "fullScreen": {
         "defaultValue": null,
         "description": "full screen dialog",
         "name": "fullScreen",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "isDirty": {
+        "defaultValue": null,
+        "description": "",
+        "name": "isDirty",
         "required": false,
         "type": {
           "name": "boolean | undefined"
@@ -245,13 +272,13 @@
           "name": "((result?: any) => void) | undefined"
         }
       },
-      "onHide": {
+      "onOpen": {
         "defaultValue": null,
         "description": "",
-        "name": "onHide",
-        "required": true,
+        "name": "onOpen",
+        "required": false,
         "type": {
-          "name": "(id: string) => void"
+          "name": "(() => void) | undefined"
         }
       },
       "slots": {
@@ -290,6 +317,15 @@
     "description": "该组件只能使用一次. 通常作为React项目根组件的第一个孩子.",
     "displayName": "Dialogs",
     "props": {
+      "dirtyWarningLabel": {
+        "defaultValue": null,
+        "description": "Warning label when content is dirty",
+        "name": "dirtyWarningLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
       "target": {
         "defaultValue": null,
         "description": "Target element of Portal component",
