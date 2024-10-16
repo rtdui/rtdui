@@ -1091,7 +1091,13 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   ) => {
     onRowClick?.(e, row);
     setActivedRowId(row.id);
-    if (enableRowSelection && enableClickRowSelection && !row.getIsGrouped()) {
+    if (
+      (enableRowSelection === true ||
+        (typeof enableRowSelection === "function" &&
+          enableRowSelection(row))) &&
+      enableClickRowSelection &&
+      !row.getIsGrouped()
+    ) {
       row.getToggleSelectedHandler()(e);
     }
   };
