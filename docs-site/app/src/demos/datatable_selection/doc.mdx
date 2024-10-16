@@ -115,6 +115,6 @@ const [activedRowId, setActivedRowId] = React.useState("");
 2. 然后通过onRowClick或者onRowDoubleClick事件属性对激活行进行自定义处理, 两者都会接收到一个event参数和row参数
 3. 手动为actived样式类的激活行设置单元格样式.
 
-> tip: 激活行只能是单个行, 重复点击已激活的行不会反激活, 如果不想要反选行为, 请使用选择行替代.
+> tip: 激活行只能是单个行, 重复点击已激活的行不会反激活, 如果想要有反选行为, 请使用选择行替代.
 
 <Demo data={{ Component: DataTableActivedRowDemo }} />
