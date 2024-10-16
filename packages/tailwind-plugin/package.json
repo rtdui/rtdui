@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/tailwind-plugin",
-  "version": "4.9.6",
+  "version": "4.10.0",
   "description": "tailwind plugin for Rtdui components",
   "main": "./src/index.cjs",
   "keywords": [
