@@ -30,10 +30,12 @@ export default function Demo() {
       placeholder="--请选择--"
       displayField="fullName"
       leftSection={<IconAt strokeWidth={1} size="1.2rem" />}
-      columns={dataTableColumns}
-      data={data}
-      getRowId={getRowId}
-      getSubRows={(row: any) => row.subRows}
+      tableProps={{
+        columns: dataTableColumns,
+        data: data,
+        getRowId,
+        getSubRows: (row: any) => row.subRows,
+      }}
     />
   );
 }

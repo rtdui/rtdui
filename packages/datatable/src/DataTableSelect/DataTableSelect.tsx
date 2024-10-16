@@ -8,18 +8,10 @@ import { getSelectedRows } from "../utils/getSelectedRows";
 import type { DataTableProps } from "../DataTable/DataTable";
 
 export interface DataTableSelectProps
-  extends Omit<TextInputProps, "value" | "defaultValue" | "onChange" | "slots">,
-    Pick<
-      DataTableProps,
-      | "columns"
-      | "data"
-      | "initialState"
-      | "getRowId"
-      | "getSubRows"
-      | "enableGrouping"
-      | "enableFilters"
-      | "filterFromLeafRows"
-    > {
+  extends Omit<
+    TextInputProps,
+    "value" | "defaultValue" | "onChange" | "slots"
+  > {
   displayField?: string;
   value?: string;
   defaultValue?: string;
@@ -27,6 +19,7 @@ export interface DataTableSelectProps
   slots?: TextInputProps["slots"] & {
     dropdown?: string;
   };
+  tableProps: DataTableProps;
 }
 
 /** ref属性会转发至内部的input元素 */
@@ -40,21 +33,13 @@ export const DataTableSelect = forwardRef<
     defaultValue,
     value,
     onChange,
+    onFocus,
     className,
     slots,
     children,
     readOnly,
-    columns,
-    data,
-    getRowId = (row) => row.id,
-    initialState,
-    getSubRows,
-    multiple = false,
     displayField,
-    enableFilters,
-    filterFromLeafRows,
-    enableGrouping,
-    onFocus,
+    tableProps,
     ...other
   } = props;
 
@@ -77,7 +62,12 @@ export const DataTableSelect = forwardRef<
     .toString()
     .split(",")
     .map((d) => d.trim());
-  const displayValue = getSelectedRows(data, selectedIds, getRowId, getSubRows)
+  const displayValue = getSelectedRows(
+    tableProps.data,
+    selectedIds,
+    tableProps.getRowId,
+    tableProps.getSubRows
+  )
     .map((d) => d[displayField!])
     .join(", ");
   const tableState = {
@@ -96,7 +86,7 @@ export const DataTableSelect = forwardRef<
         : updater;
     const newSelectedIds = Object.keys(rowSelection);
     handleChange(newSelectedIds.join(","));
-    if (!multiple) {
+    if (!tableProps.enableMultiRowSelection) {
       setOpen(false);
     }
   };
@@ -133,34 +123,26 @@ export const DataTableSelect = forwardRef<
           showHeader={false}
           showToolbar={false}
           showBorder={false}
-          columns={columns}
-          data={data}
-          getRowId={getRowId}
-          getSubRows={getSubRows}
-          state={tableState}
-          initialState={initialState}
-          onRowSelectionChange={handleRowSelectionChange}
           enableVirtualized={false}
           enablePagination={false}
           enableColumnReorder
           enableColumnResizing
           enableSorting
-          enableGrouping={enableGrouping}
-          enableFilters={enableFilters}
-          filterFromLeafRows={filterFromLeafRows}
           enableHiding={false}
           enableRowSelection
-          enableMultiRowSelection={multiple}
           enableSubRowSelection={false}
-          enableClickRowSelection={!multiple}
+          enableClickRowSelection={!tableProps.enableMultiRowSelection}
           selectAllForAllPages
           enableStickyHeader
           enableAutoRowNumber={false}
           enableExport={false}
-          debouncedWait={500}
           slots={{
+            ...tableProps.slots,
             container: "overflow-visible",
           }}
+          {...tableProps}
+          state={tableState}
+          onRowSelectionChange={handleRowSelectionChange}
         />
       </Popover.Dropdown>
     </Popover>
