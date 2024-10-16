@@ -17477,24 +17477,6 @@
           "name": "string | undefined"
         }
       },
-      "columns": {
-        "defaultValue": null,
-        "description": "列定义对象数组\n\n自动生成列id规则: 最优先使用id键,如果没有指定则以accessorKey作为列id, 如果accessorKey没有指定并且header是字符串时, 则使用header的字符串值作为列id, 都不符合时报错\n\n列id在许多地方会用到, 包括作为组名, 显示/隐藏列的列名等. 因此对于中文列名, 必须手动设定列id, 并且用中文作为id值.",
-        "name": "columns",
-        "required": true,
-        "type": {
-          "name": "ColumnDef<any, any>[]"
-        }
-      },
-      "data": {
-        "defaultValue": null,
-        "description": "数据行对象数组\n\n注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.\n可以使用@rtdui/core包中的工具函数<code>flatToTree()</code>先将id-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性",
-        "name": "data",
-        "required": true,
-        "type": {
-          "name": "any[]"
-        }
-      },
       "defaultValue": {
         "defaultValue": null,
         "description": "",
@@ -17540,28 +17522,6 @@
           "name": "string | undefined"
         }
       },
-      "enableFilters": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "是否启用过滤功能",
-        "name": "enableFilters",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableGrouping": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用数据分组功能, 支持多列分组.\n注意: 不能和树型表格同时启用",
-        "name": "enableGrouping",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "error": {
         "defaultValue": null,
         "description": "Determines whether the input should have error styles and <code>aria-invalid</code> attribute",
@@ -17580,37 +17540,6 @@
           "name": "Record<string, any> | undefined"
         }
       },
-      "filterFromLeafRows": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行.\n注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.",
-        "name": "filterFromLeafRows",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "getRowId": {
-        "defaultValue": {
-          "value": "(row) => row.id"
-        },
-        "description": "定义如何获得行id",
-        "name": "getRowId",
-        "required": false,
-        "type": {
-          "name": "((row: any) => any) | undefined"
-        }
-      },
-      "getSubRows": {
-        "defaultValue": null,
-        "description": "获取每行孩子的方法,如果定义该函数则启用可展示/收缩的树形展示, 列定义中第一个定义了id属性的列为可展开列\n注意: 当启用数据分组时不能设置该属性, 否则会有冲突.",
-        "name": "getSubRows",
-        "required": false,
-        "type": {
-          "name": "((row: any) => any[]) | undefined"
-        }
-      },
       "id": {
         "defaultValue": null,
         "description": "Static id used as base to generate <code>aria-</code> attributes, by default generates random id",
@@ -17618,15 +17547,6 @@
         "required": false,
         "type": {
           "name": "string | undefined"
-        }
-      },
-      "initialState": {
-        "defaultValue": null,
-        "description": "数据表的初始状态, 这个属性是非受控的. 数据表组件挂载后更新该属性不会导致数据表状态改变.\n注意: 不要同时对某项状态同时在initialState和state指定. state会覆盖initialState中的相应的值",
-        "name": "initialState",
-        "required": false,
-        "type": {
-          "name": "Partial<VisibilityTableState & ColumnOrderTableState & ColumnPinningTableState & FiltersTableState & ... 5 more ... & RowSelectionTableState> | undefined"
         }
       },
       "inputContainer": {
@@ -17925,6 +17845,15 @@
         "required": false,
         "type": {
           "name": "({ left?: string | undefined; input?: string | undefined; right?: string | undefined; } & { dropdown?: string | undefined; }) | undefined"
+        }
+      },
+      "tableProps": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tableProps",
+        "required": true,
+        "type": {
+          "name": "DataTableProps"
         }
       },
       "value": {
