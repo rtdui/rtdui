@@ -13,11 +13,10 @@ export function flatToTree(
   // 辅助对象，以数据的id作为属性名。
   const output: Record<string, any> = {};
   data.forEach((d) => {
-    // eslint-disable-next-line no-param-reassign
     d.children = output[d[idField]] && output[d[idField]].children;
     output[d[idField]] = d;
-    output[d[parentIdField]] = output[d[parentIdField]] || {};
-    output[d[parentIdField]].children = output[d[parentIdField]].children || [];
+    output[d[parentIdField]] ??= {};
+    output[d[parentIdField]].children ??= [];
     output[d[parentIdField]].children.push(d);
   });
   return output[root]?.children ?? [];
