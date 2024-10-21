@@ -47,8 +47,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@tanstack/react-table": "^8.10.7",
-    "@tanstack/react-virtual": "^3.0.1",
+    "@tanstack/react-table": "^8.20.5",
+    "@tanstack/react-virtual": "^3.10.8",
     "klona": "^2.0.6",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",

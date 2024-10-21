@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import {
   forwardRef,
   useState,
@@ -7,38 +6,13 @@ import {
   useCallback,
   useMemo,
   useImperativeHandle,
+  CSSProperties,
 } from "react";
 import type {
   AccessorKeyColumnDef,
   CellContext,
-  ColumnDef,
-  ColumnFiltersState,
-  ColumnOrderState,
-  ColumnOrderTableState,
-  ColumnPinningState,
-  ColumnPinningTableState,
-  ColumnSizingInfoState,
-  ColumnSizingState,
-  ColumnSizingTableState,
-  ExpandedState,
-  ExpandedTableState,
-  FiltersTableState,
-  GroupingState,
-  GroupingTableState,
-  OnChangeFn,
-  PaginationState,
-  PaginationTableState,
   Row,
-  RowPinningState,
-  RowSelectionState,
-  RowSelectionTableState,
-  SortingState,
-  SortingTableState,
   TableOptions,
-  TableState,
-  Updater,
-  VisibilityState,
-  VisibilityTableState,
 } from "@tanstack/react-table";
 import {
   useReactTable,
@@ -77,6 +51,7 @@ import { ColumnsVisibility } from "./ColumnsVisibility";
 import { GroupDropArea } from "./GroupDropArea";
 import { ExportTable } from "./ExportTable";
 import { IndeterminateCheckbox } from "./IndeterminateCheckbox";
+import { RowActive } from "./features/RowActive";
 
 let isMobileDevice = false;
 if (typeof document !== "undefined") {
@@ -98,7 +73,12 @@ export type Rule = (
   data: any[]
 ) => string | null | undefined;
 
-export interface DataTableProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface DataTableProps
+  extends React.ComponentPropsWithoutRef<"div">,
+    Omit<
+      TableOptions<any>,
+      "getRowId" | "getSubRows" | "_features" | "getCoreRowModel"
+    > {
   className?: string;
   /** 样式槽 */
   slots?: {
@@ -126,6 +106,11 @@ export interface DataTableProps extends React.ComponentPropsWithoutRef<"div"> {
    * @default true
    */
   showBorder?: boolean;
+  /**
+   * 是否显示表格和单元格的边框大小
+   * @default 1
+   */
+  borderWidth?: number;
   /**
    * use CSS table-layout fixed
    * @default true
@@ -156,14 +141,6 @@ export interface DataTableProps extends React.ComponentPropsWithoutRef<"div"> {
    * @default false
    */
   enableVirtualized?: boolean;
-  /**
-   * 当table可展开时是否自动展开所有
-   *
-   * @deprecated 使用`{expanded:true}`状态替代,如initialState非受控属性:`initialState:{expanded:true}`, state受控属性同理
-   *
-   * @default false
-   */
-  autoExpandAll?: boolean;
   /**
    * 是否允许用户拖放调整列序
    * @default true
@@ -201,319 +178,30 @@ export interface DataTableProps extends React.ComponentPropsWithoutRef<"div"> {
   ) => void;
 
   /**
-   * 当前在编辑模式下, 字段的验证规则
+   * 在编辑模式下, 字段的验证规则
    * @param row
    * @returns
    */
   validate?: Record<string, Rule>;
 
-  //#region TableOptions的原生选项
-
-  //#region 核心选项
   /**
-   * 列定义对象数组
-   *
-   * 自动生成列id规则: 最优先使用id键,如果没有指定则以accessorKey作为列id, 如果accessorKey没有指定并且header是字符串时, 则使用header的字符串值作为列id, 都不符合时报错
-   *
-   * 列id在许多地方会用到, 包括作为组名, 显示/隐藏列的列名等. 因此对于中文列名, 必须手动设定列id, 并且用中文作为id值.
+   * 定义获取行id的函数
+   * @default (row)=>row.id
    */
-  columns: ColumnDef<any, any>[];
+  getRowId?: (originalRow: any) => any;
 
   /**
-   * 数据行对象数组
-   *
-   * 注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.
-   * 可以使用@rtdui/core包中的工具函数`flatToTree()`先将id-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性
+   * 定义获取子行的函数
    */
-  data: any[];
-
-  /**
-   * 定义如何获得行id
-   * @default (row) => row.id
-   */
-  getRowId?: (row: any) => any;
-
-  /**
-   * 获取每行孩子的方法,如果定义该函数则启用可展示/收缩的树形展示, 列定义中第一个定义了id属性的列为可展开列
-   * 注意: 当启用数据分组时不能设置该属性, 否则会有冲突.
-   */
-  getSubRows?: (row: any) => any[];
-
-  /**
-   * 数据表的初始状态, 这个属性是非受控的. 数据表组件挂载后更新该属性不会导致数据表状态改变.
-   * 注意: 不要同时对某项状态同时在initialState和state指定. state会覆盖initialState中的相应的值
-   */
-  initialState?: Partial<
-    VisibilityTableState &
-      ColumnOrderTableState &
-      ColumnPinningTableState &
-      FiltersTableState &
-      SortingTableState &
-      ExpandedTableState &
-      GroupingTableState &
-      ColumnSizingTableState &
-      PaginationTableState &
-      RowSelectionTableState
-  >;
-
-  /**
-   * 数据表的状态, 这个属性是受控属性. 必须通过onStateChange事件更新
-   * 注意: 不要对某项状态在initialState和state同时指定, state会覆盖initialState中的相应的值
-   *
-   */
-  state?: Partial<
-    VisibilityTableState &
-      ColumnOrderTableState &
-      ColumnPinningTableState &
-      FiltersTableState &
-      SortingTableState &
-      ExpandedTableState &
-      GroupingTableState &
-      ColumnSizingTableState &
-      PaginationTableState &
-      RowSelectionTableState
-  >;
-
-  /**
-   * 各类功能项的单独状态处理.
-   * 这是推荐方式, 这样只会控制单独功能项的状态. 并且只需在state中设置你想管理的那些状态即可.
-   * @example
-    const [sorting, setSorting] = React.useState([])
-    // 方式1, 直接赋值给React的setState
-    onSortingChange: setSorting;
-    // 方式2, 需要对状态做额外处理
-    onSortingChange: (updater) => {
-      // 必须这样得到表的新状态值
-      const newSortingValue = updater instanceof Function ? updater(sorting) : updater
-      //do something with the new sorting value
-      //...
-      setSorting(updater) //normal state update
-    }
-   */
-  onColumnFiltersChange?: OnChangeFn<ColumnFiltersState>;
-  onGlobalFilterChange?: OnChangeFn<any>;
-  onColumnOrderChange?: OnChangeFn<ColumnOrderState>;
-  onColumnSizingChange?: OnChangeFn<ColumnSizingState>;
-  onColumnSizingInfoChange?: OnChangeFn<ColumnSizingInfoState>;
-  onColumnVisibilityChange?: OnChangeFn<VisibilityState>;
-  onExpandedChange?: OnChangeFn<ExpandedState>;
-  onGroupingChange?: OnChangeFn<GroupingState>;
-  onPaginationChange?: OnChangeFn<PaginationState>;
-  onColumnPinningChange?: OnChangeFn<ColumnPinningState>;
-  onRowPinningChange?: OnChangeFn<RowPinningState>;
-  onSortingChange?: OnChangeFn<SortingState>;
-  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
-
-  /**
-   * 所有功能状态的完全控制处理.
-   * 注意: 这会完全接管表的所有功能状态, 这要求在state中设置所有功能项的状态值. 这样做既不方便也存在性能问题. 不推荐使用.
-   */
-  onStateChange?: (updater: Updater<TableState>) => void;
-  //#endregion 核心选项
-
-  //#region 功能: Column Ordering
-  /**
-   * 列序改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onColumnOrderChange?: OnChangeFn<ColumnOrderState>;
-  //#endregion 功能: Column Ordering
-
-  //#region 功能: Column Pinning
-  /**
-   * 是否启用冻结功能
-   * @default true
-   */
-  enablePinning?: boolean;
-  /**
-   * 列固定改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onColumnPinningChange?: OnChangeFn<ColumnPinningState>;
-  //#endregion 功能: Column Pinning
-
-  //#region 功能: Column Sizing
-  /**
-   * 是否启用调整列宽
-   * @default true
-   */
-  enableColumnResizing?: boolean;
-  /**
-   * 调整列宽时状态在何时生效, 'onEnd'表示在释放拖动时生效, 'onChange'表示在拖动过程中生效
-   * @default "onChange"
-   */
-  columnResizeMode?: "onChange" | "onEnd";
-  /**
-   * 列宽改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onColumnSizingChange?: OnChangeFn<ColumnSizingState>
-  //#endregion Column Sizing
-
-  //#region 功能: Column Visibility
-  /**
-   * 是否启用列隐藏
-   * @default true
-   */
-  enableHiding?: boolean;
-  // /**
-  //  * 列可见性改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-  //  */
-  // onColumnVisibilityChange?: OnChangeFn<VisibilityState>;
-  //#endregion 功能: Column Visibility
-
-  //#region 功能: Filters
-  /**
-   * 是否启用过滤功能
-   * @default false
-   */
-  enableFilters?: boolean;
-  /**
-   * 自定义过滤函数
-   */
-  // filterFns?: Record<string, FilterFn>;
-  /**
-   * 过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行.
-   * 注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.
-   * @default false
-   */
-  filterFromLeafRows?: boolean;
-  /**
-   * 是否启用列头过滤功能, 列的过滤函数由列定义中的filterFn字段指定
-   * @default true
-   */
-  enableColumnFilters?: boolean;
-  // /**
-  //  * 列过滤改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-  //  */
-  // onColumnFiltersChange?: OnChangeFn<ColumnFiltersState>;
-  /**
-   * 是否启用全局过滤功能,
-   * @default true
-   */
-  enableGlobalFilter?: boolean;
-  /**
-   * 全局过滤改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onGlobalFilterChange?: OnChangeFn<GlobalFilterState>;
-  // /**
-  //  * 全局过滤使用的过滤函数
-  //  */
-  // globalFilterFn?: FilterFn | keyof FilterFns | keyof BuiltInFilterFns;
-
-  //#endregion 功能: Filters
-
-  //#region 功能: Sorting
-  /**
-   * 是否启用列排序功能, 支持Shift键多列排序
-   * @default true
-   */
-  enableSorting?: boolean;
-  /**
-   * 排序改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onSortingChange?: OnChangeFn<SortingState>;
-  /**
-   * 排序是否可以清除.
-   * 当true时的排序循环: 'none' -> 'desc' -> 'asc' -> 'none' -> ..., 当false时的排序循环: 'none' -> 'desc' -> 'asc' -> 'desc' -> 'asc' -> ...
-   * @default true
-   */
-  enableSortingRemoval?: boolean;
-  /**
-   * 是否启用多列排序
-   * @default true
-   */
-  enableMultiSort?: boolean;
-  /**
-   * 首次排序是否降序, false 表示首次按升序排序. true表示首次按降序排序
-   * @default false
-   */
-  sortDescFirst?: boolean;
-  /**
-   * 自定义排序函数
-   */
-  // sortingFns?: Record<string, SortingFn>;
-  //#endregion 功能: Sorting
-
-  //#region 功能: Grouping
-  /**
-   * 是否启用数据分组功能, 支持多列分组.
-   * 注意: 不能和树型表格同时启用
-   * @default true
-   */
-  enableGrouping?: boolean;
-  /**
-   * 分组改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onGroupingChange?: OnChangeFn<GroupingState>;
-  /**
-   * 被分组的列的处理模式, 'reorder'表示放到首列并固定, false与'reorder'一致. 'remove'移除被分组的列
-   * @default "reorder"
-   */
-  groupedColumnMode?: false | "reorder" | "remove";
-  //#endregion 功能: Grouping
-
-  //#region 功能: Expanding
-  /**
-   * 是否启用展开功能, 树形和数据分组依赖该功能.
-   * 只要 enableTree或者enableGrouping启用时为true
-   */
-  enableExpanding?: boolean;
-  /**
-   * 展开改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onExpandedChange?: OnChangeFn<ExpandedState>;
-  /**
-   * 是否对展开的行进行分页
-   * @default false
-   */
-  paginateExpandedRows?: boolean;
-  //#endregion 功能: Expanding
-
-  //#region 功能: Pagination
-  /**
-   * 是否手动分页, false表示启用分页, 至于分页数据则由getPaginationRowModel提供, 也就是说不提供getPaginationRowModel属性也即不采取分页.
-   * @default false
-   */
-  manualPagination?: boolean;
-  /**
-   * 分页时每页数量
-   */
-  pageCount?: number;
-  /**
-   * 页改变时触发, 注意定义了该属性后列序的调整不会触发onStateChange事件
-   */
-  // onPaginationChange?: OnChangeFn<PaginationState>;
-  /**
-   * 得到分页的行模型方法, 可以从import {getPaginationRowModel} from "@tanstack/react-table";导入内置方法.
-   */
-  // getPaginationRowModel?: (table: Table<TData>) => () => RowModel<TData>;
-  //#endregion 功能: Pagination
-
-  //#region 功能: Row Selection
-  /**
-   * 是否允许用户选择行, 可以传入自定义函数决定哪些行可以被选择
-   * @default true
-   */
-  enableRowSelection?: boolean | ((row: Row<any>) => boolean);
-  /**
-   * 是否允许用户多选行, 可以传入函数自定义决定哪些行可以被多选
-   * @default false
-   */
-  enableMultiRowSelection?: boolean | ((row: Row<any>) => boolean);
-  /**
-   * 多行选择启用时, 在树型表或数据分组时, 当父行选中时, 是否自动选中所有子行. 可以传入函数自定义决定哪些子行被选中
-   * @default false
-   */
-  enableSubRowSelection?: boolean | ((row: Row<any>) => boolean);
-
-  //#endregion 功能: Row Selection
-
-  //#endregion TableOptions的原生选项
+  getSubRows?: (originalRow: any) => undefined | Record<string, any>[];
 }
 
+/** 属性扩展于TableOptions */
 export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   const {
     columns: columnsProp,
     data: dataProp,
-    getRowId = (row: any) => row.id,
+    getRowId = (row) => row.id,
     initialState,
     state,
     onColumnFiltersChange,
@@ -530,6 +218,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     onSortingChange,
     onRowSelectionChange,
     onStateChange,
+    onRowActiveChange, // 自定义功能
     enableColumnReorder = true,
     groupedColumnMode = "reorder",
     enableColumnResizing = true,
@@ -560,12 +249,15 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     showHeader = true,
     showToolbar = true,
     showBorder = true,
+    borderWidth: borderWidthProp = 1,
     fixedLayout = true,
     onRowClick,
     onRowDoubleClick,
     validate,
     ...other
   } = props;
+
+  const borderWidth = showBorder ? borderWidthProp : 0;
 
   const enableTree = !!getSubRows;
   const enableGrouping = enableTree ? false : enableGroupingProp;
@@ -921,6 +613,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   ]);
 
   const tableOptions: TableOptions<any> = {
+    _features: [RowActive], // 行激活的自定义功能
     columns,
     data,
     getRowId,
@@ -1006,6 +699,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     onRowPinningChange,
     onSortingChange,
     onRowSelectionChange,
+    onRowActiveChange, // 自定义功能
     // 用于列定义中访问表的自定义元数据
     meta: {
       addRow,
@@ -1083,14 +777,11 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     disabled: table.getState().columnPinning.left?.length === 0,
   });
 
-  const [activedRowId, setActivedRowId] = useState<string | number>(null!);
-
   const handleRowClick = (
     e: React.MouseEvent<HTMLTableRowElement>,
     row: Row<any>
   ) => {
     onRowClick?.(e, row);
-    setActivedRowId(row.id);
     if (
       (enableRowSelection === true ||
         (typeof enableRowSelection === "function" &&
@@ -1100,6 +791,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     ) {
       row.getToggleSelectedHandler()(e);
     }
+    row.getToggleActivedHandler()(e);
   };
 
   const handleRowDoubleClick = (
@@ -1107,7 +799,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     row: Row<any>
   ) => {
     onRowDoubleClick?.(e, row);
-    setActivedRowId(row.id);
+    row.getToggleActivedHandler()(e);
   };
 
   return (
@@ -1148,11 +840,16 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
             "data-table-container flex-1 overflow-auto relative z-0",
             slots?.container
           )}
+          style={
+            {
+              "--borderWidth": `${borderWidth}px`,
+            } as CSSProperties
+          }
         >
           <table
             ref={tableRef}
             className={clsx(
-              "data-table table",
+              "data-table table rounded-none", // 移除daisyUI中table的默认圆角
               {
                 "table-fixed": fixedLayout,
                 "table-pin-rows": enableStickyHeader,
@@ -1182,8 +879,8 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
               )}
             </colgroup>
             <thead
-              // className={enableStickyHeader ? "sticky top-0 z-20" : undefined}
-              className="relative z-20" // 使其创建一个层叠上下文
+              // 为了使thead中的固定表头行在滚动时不会被tbody中的行盖住
+              className={enableStickyHeader ? "relative z-10" : undefined}
             >
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
@@ -1202,7 +899,10 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                 </tr>
               ))}
             </thead>
-            <tbody className="relative z-0">
+            <tbody
+              // 创建一个新的层叠上下文
+              className="relative z-0"
+            >
               {table.getRowModel().rows.length === 0 && (
                 <tr>
                   <td
@@ -1225,18 +925,11 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                     return (
                       <tr
                         key={row.id}
-                        // onClick={
-                        //   enableRowSelection &&
-                        //   enableClickRowSelection &&
-                        //   !row.getIsGrouped()
-                        //     ? row.getToggleSelectedHandler()
-                        //     : undefined
-                        // }
                         onClick={(e) => handleRowClick(e, row)}
                         onDoubleClick={(e) => handleRowDoubleClick(e, row)}
                         className={clsx({
                           selected: row.getIsSelected(),
-                          actived: String(activedRowId) === String(row.id),
+                          actived: row.getIsActived(),
                         })}
                       >
                         {row.getVisibleCells().map((cell) => (
@@ -1261,18 +954,11 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
                 table.getRowModel().rows.map((row) => (
                   <tr
                     key={row.id}
-                    // onClick={
-                    //   enableRowSelection &&
-                    //   enableClickRowSelection &&
-                    //   !row.getIsGrouped()
-                    //     ? row.getToggleSelectedHandler()
-                    //     : undefined
-                    // }
                     onClick={(e) => handleRowClick(e, row)}
                     onDoubleClick={(e) => handleRowDoubleClick(e, row)}
                     className={clsx({
                       selected: row.getIsSelected(),
-                      actived: String(activedRowId) === String(row.id),
+                      actived: row.getIsActived(),
                     })}
                   >
                     {row.getVisibleCells().map((cell) => (
