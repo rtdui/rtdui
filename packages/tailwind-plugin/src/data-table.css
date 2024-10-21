@@ -1,61 +1,68 @@
 /** data-table 开始 **/
 
-/* 表格边框 */
-
-/* .data-table.table {
-  border-left: 1px solid theme(colors.base-200);
-  border-top: 1px solid theme(colors.base-200);
-} */
-
 /* 先清除表格及所有行和单元格的边框, daisyUI中tr有默认边框, 下面会用伪元素模拟单元格边框 */
-.data-table.table.no-border,
 .data-table.table :where(tr, th, td) {
   border: none;
 }
 
-/* 默认是非stick定位的单元格使用相对定位, 这是为了下面使用伪元素模拟边框 */
+/*#region 边框 */
+/* 最流行的表格和单元格边框绘制方法: 
+ * 1. 设置table的border-collapse: separate, border-spacing: 0;
+ * 2. 为table设置border-top和border-left为1px的边框
+ * 3. 为th,td设置border-right和border-bottom为1px的边框
+ * 这个方法当单元格为sticky时会存在问题: 
+ * 1. 当表头行中单元格为sticky时, 在开始垂直滚动时会因为table顶部有1px的边框而发生抖动问题
+ * 2. 当表列中单元格为sticky时, 在开始水平滚动时也会因为table左边有1px的边框而发生抖动问题
+ * 解决1,2的问题需要使用额外的方式去控制单元格的top的值加上table的border-top, left的值加上table的border-left, 但加上以后在水平滚动时又会出现漏空的问题.
+
+ * 因此, 最佳的解决方案是使用伪元素模拟单元格的边框
+ */
+
+/* 默认是非stick定位的单元格使用相对定位, 这是为了使用伪元素模拟边框 */
 .data-table.table :where(th, td):not(.sticky) {
   position: relative;
 }
-
-/* 伪元素模拟单元格的右边框 */
-.data-table.table:not(.no-border) :where(th, td)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background-color: theme(colors.base-200);
-}
-
-/* 水平滚动时为固定列的右边框加粗, 模拟提升效果 */
-.data-table.table:not(.no-border) :where(th, td).elevation::after {
-  width: 4px;
-}
-
-/* 模拟单元格的下边框 */
+/* 伪元素模拟单元格的右边框和底边框 */
 .data-table.table:not(.no-border) :where(th, td)::before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: theme(colors.base-200);
+  inset: 0;
+  border-right: var(--borderWidth) solid theme(colors.base-200);
+  border-bottom: var(--borderWidth) solid theme(colors.base-200);
+  pointer-events: none;
 }
-
-/* 为表头的最后一行添加阴影效果 */
-.data-table.table thead tr:last-child {
-  box-shadow: 0 1px 0 theme(colors.base-200);
+/* 伪元素模拟表格的左边框 */
+.data-table.table:not(.no-border)
+  :where(th:first-child, td:first-child)::before {
+  border-left: var(--borderWidth) solid theme(colors.base-200);
 }
+/* 伪元素模拟表格的顶边框 */
+.data-table.table thead > tr:first-child :where(th, td)::before {
+  border-top: var(--borderWidth) solid theme(colors.base-200);
+}
+/* 伪元素模拟表格的顶边框, 如果没有thead */
+.data-table.table:not(.no-border):not(:has(thead))
+  tbody
+  > tr:first-child
+  :where(th, td)::before {
+  border-top: var(--borderWidth) solid theme(colors.base-200);
+}
+/* 水平滚动时为最后的固定列的右边框添加提升特效 */
+.data-table.table:not(.no-border) :where(th, td).elevation::before {
+  border-right: calc(3 * var(--borderWidth)) solid theme(colors.base-200);
+}
+/* 为表头的最后一行添加分隔特效 */
+.data-table.table thead tr:last-child :where(th, td)::before {
+  border-bottom: calc(2 * var(--borderWidth)) solid theme(colors.base-200);
+}
+/*#endregion 边框 */
 
-/* 为所有单元格设置背景色 */
+/* 为所有单元格设置背景色, 如果不设置在滚动时非sticky的单元格会显示在sticky的下面, 副作用是无法再为tr设置背景色 */
 .data-table.table :where(th, td) {
   background-color: theme(colors.base-100);
 }
 
-/* 表尾中的单元格使用独立的背景色 */
+/* 表脚中的单元格使用另外的背景色 */
 .data-table.table tfoot :where(th, td) {
   background-color: theme(colors.base-200);
 }
