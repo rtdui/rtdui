@@ -2,7 +2,7 @@ export function getSelectedRows(
   data: Record<string, any>[],
   selectedIds: string[],
   getRowId: (row: any) => any = (row) => row.id,
-  getSubRows?: (row: any) => Record<string, any>[]
+  getSubRows?: (originalRow: any) => undefined | Record<string, any>[]
 ) {
   const selectedRows: Record<string, any>[] = [];
   // const selectedRowsById: Record<string, any> = {};
@@ -10,8 +10,8 @@ export function getSelectedRows(
   // Filters top level and nested rows
   const recurseRows = (rows: Record<string, any>[], depth = 0) =>
     rows.forEach((row, index) => {
-      const rowId = getRowId(row);
-      const isSelected = selectedIds.includes(rowId.toString());
+      const rowId = String(getRowId(row));
+      const isSelected = selectedIds.includes(rowId);
 
       if (isSelected) {
         selectedRows.push(row);

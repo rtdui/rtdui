@@ -21,6 +21,7 @@ export function BodyCell(props: BodyCellProps) {
     ];
 
   const cellDataType = getType(row.getValue(column.id));
+  const isSticky = column.getIsPinned();
 
   return (
     <td
@@ -29,16 +30,14 @@ export function BodyCell(props: BodyCellProps) {
         elevation: shouldElevation(table, column, scrollingTrigger),
         "outline outline-1 outline-error outline-offset-[-2px]": hasError,
         "text-right": cellDataType === "Number",
-        "sticky z-10": column.getIsPinned(),
         placeholder: cell.getIsPlaceholder(),
-        // "bg-base-100": cell.getIsGrouped(), // 分组行中的被分组列中的单元格
-        // "bg-base-100": cell.getIsAggregated(), // 分组行中的聚合的单元格
-        // "bg-base-100": cell.getIsPlaceholder(), // 非分组行的占位单元格
       })}
       title={hasError || undefined}
       style={{
         // width: column.getSize(),
+        position: isSticky ? "sticky" : "relative",
         left: column.getIsPinned() ? column.getStart("left") : undefined,
+        zIndex: isSticky ? 1 : undefined,
       }}
     >
       {cell.getIsGrouped() ? (

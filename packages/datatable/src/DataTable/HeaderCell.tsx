@@ -65,6 +65,8 @@ export function HeaderCell(props: HeaderCellProps) {
     }),
   });
 
+  const isSticky = column.getIsPinned() && !shouldIgnoreSticky(header);
+
   return (
     <th
       ref={dropRef}
@@ -74,19 +76,16 @@ export function HeaderCell(props: HeaderCellProps) {
           shouldElevation(table, column, scrollingTrigger) &&
           !shouldIgnoreSticky(header),
         "opacity-50": isDragging,
-        sticky: column.getIsPinned() && !shouldIgnoreSticky(header),
         placeholder: header.isPlaceholder,
         "py-px": !showHeader,
       })}
       colSpan={header.colSpan > 1 ? header.colSpan : undefined}
       style={{
-        width: header.getSize(),
         transform: isOver ? `translateX(${isRight ? -4 : 4}px)` : undefined,
-        left:
-          column.getIsPinned() && !shouldIgnoreSticky(header)
-            ? header.getStart("left")
-            : undefined,
-        zIndex: -header.index,
+        // width: header.getSize(),
+        position: isSticky ? "sticky" : "relative",
+        left: isSticky ? header.getStart("left") : undefined,
+        zIndex: isSticky ? 1 : undefined,
       }}
     >
       {header.isPlaceholder ? null : (
