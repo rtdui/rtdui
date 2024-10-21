@@ -16598,59 +16598,18 @@
   },
   "@rtdui/DataTable": {
     "filePath": "D:/sources/rtdui/packages/datatable/src/DataTable/DataTable.tsx",
-    "description": "",
+    "description": "属性扩展于TableOptions",
     "displayName": "@rtdui/DataTable",
     "props": {
-      "autoExpandAll": {
+      "borderWidth": {
         "defaultValue": {
-          "value": "false"
+          "value": "1"
         },
-        "description": "当table可展开时是否自动展开所有\n@deprecated 使用<code>{expanded:true}</code>状态替代,如initialState非受控属性:<code>initialState:{expanded:true}</code>, state受控属性同理",
-        "name": "autoExpandAll",
+        "description": "是否显示表格和单元格的边框大小",
+        "name": "borderWidth",
         "required": false,
         "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "columnResizeMode": {
-        "defaultValue": {
-          "value": "\"onChange\""
-        },
-        "description": "调整列宽时状态在何时生效, 'onEnd'表示在释放拖动时生效, 'onChange'表示在拖动过程中生效",
-        "name": "columnResizeMode",
-        "required": false,
-        "type": {
-          "name": "\"onChange\" | \"onEnd\" | undefined",
-          "raw": "\"onChange\" | \"onEnd\" | undefined",
-          "value": [
-            {
-              "value": "undefined"
-            },
-            {
-              "value": "\"onChange\""
-            },
-            {
-              "value": "\"onEnd\""
-            }
-          ]
-        }
-      },
-      "columns": {
-        "defaultValue": null,
-        "description": "列定义对象数组\n\n自动生成列id规则: 最优先使用id键,如果没有指定则以accessorKey作为列id, 如果accessorKey没有指定并且header是字符串时, 则使用header的字符串值作为列id, 都不符合时报错\n\n列id在许多地方会用到, 包括作为组名, 显示/隐藏列的列名等. 因此对于中文列名, 必须手动设定列id, 并且用中文作为id值.",
-        "name": "columns",
-        "required": true,
-        "type": {
-          "name": "ColumnDef<any, any>[]"
-        }
-      },
-      "data": {
-        "defaultValue": null,
-        "description": "数据行对象数组\n\n注意: 如果需要树形展示, data必须是层次结构的.不支持id-parentId形式的平面数据.\n可以使用@rtdui/core包中的工具函数<code>flatToTree()</code>先将id-parentId形式的平面数据转化为层次结构的数据. 然后再赋值给data属性",
-        "name": "data",
-        "required": true,
-        "type": {
-          "name": "any[]"
+          "name": "number | undefined"
         }
       },
       "debouncedWait": {
@@ -16686,43 +16645,12 @@
           "name": "boolean | undefined"
         }
       },
-      "enableColumnFilters": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用列头过滤功能, 列的过滤函数由列定义中的filterFn字段指定",
-        "name": "enableColumnFilters",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "enableColumnReorder": {
         "defaultValue": {
           "value": "true"
         },
         "description": "是否允许用户拖放调整列序",
         "name": "enableColumnReorder",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableColumnResizing": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用调整列宽",
-        "name": "enableColumnResizing",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableExpanding": {
-        "defaultValue": null,
-        "description": "是否启用展开功能, 树形和数据分组依赖该功能.\n只要 enableTree或者enableGrouping启用时为true",
-        "name": "enableExpanding",
         "required": false,
         "type": {
           "name": "boolean | undefined"
@@ -16739,122 +16667,12 @@
           "name": "boolean | undefined"
         }
       },
-      "enableFilters": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "是否启用过滤功能",
-        "name": "enableFilters",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableGlobalFilter": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用全局过滤功能,",
-        "name": "enableGlobalFilter",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableGrouping": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用数据分组功能, 支持多列分组.\n注意: 不能和树型表格同时启用",
-        "name": "enableGrouping",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableHiding": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用列隐藏",
-        "name": "enableHiding",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableMultiRowSelection": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "是否允许用户多选行, 可以传入函数自定义决定哪些行可以被多选",
-        "name": "enableMultiRowSelection",
-        "required": false,
-        "type": {
-          "name": "boolean | ((row: Row<any>) => boolean) | undefined"
-        }
-      },
-      "enableMultiSort": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用多列排序",
-        "name": "enableMultiSort",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
       "enablePagination": {
         "defaultValue": {
           "value": "false"
         },
         "description": "是否启用分页",
         "name": "enablePagination",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enablePinning": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用冻结功能",
-        "name": "enablePinning",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableRowSelection": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否允许用户选择行, 可以传入自定义函数决定哪些行可以被选择",
-        "name": "enableRowSelection",
-        "required": false,
-        "type": {
-          "name": "boolean | ((row: Row<any>) => boolean) | undefined"
-        }
-      },
-      "enableSorting": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "是否启用列排序功能, 支持Shift键多列排序",
-        "name": "enableSorting",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "enableSortingRemoval": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "排序是否可以清除.\n当true时的排序循环: 'none' -> 'desc' -> 'asc' -> 'none' -> ..., 当false时的排序循环: 'none' -> 'desc' -> 'asc' -> 'desc' -> 'asc' -> ...",
-        "name": "enableSortingRemoval",
         "required": false,
         "type": {
           "name": "boolean | undefined"
@@ -16871,34 +16689,12 @@
           "name": "boolean | undefined"
         }
       },
-      "enableSubRowSelection": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "多行选择启用时, 在树型表或数据分组时, 当父行选中时, 是否自动选中所有子行. 可以传入函数自定义决定哪些子行被选中",
-        "name": "enableSubRowSelection",
-        "required": false,
-        "type": {
-          "name": "boolean | ((row: Row<any>) => boolean) | undefined"
-        }
-      },
       "enableVirtualized": {
         "defaultValue": {
           "value": "false"
         },
         "description": "滚动虚拟化器",
         "name": "enableVirtualized",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "filterFromLeafRows": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "过滤启用时,并且启用了数据分组或树型表时, 决定过滤的顺序, false表示从父到子, 意味着父行不包括,所有子孙行必定也不包括. true表示从子到父, 意味着只要子孙行包括在内，必定会包括父行.\n注意: 如果该选项为true, 过滤后唯一值列表只会是空, 这导致了无法再进行选择列表进行过滤.",
-        "name": "filterFromLeafRows",
         "required": false,
         "type": {
           "name": "boolean | undefined"
@@ -16917,143 +16713,22 @@
       },
       "getRowId": {
         "defaultValue": {
-          "value": "(row) => row.id"
+          "value": "(row)=>row.id"
         },
-        "description": "定义如何获得行id",
+        "description": "定义获取行id的函数",
         "name": "getRowId",
         "required": false,
         "type": {
-          "name": "((row: any) => any) | undefined"
+          "name": "((originalRow: any) => any) | undefined"
         }
       },
       "getSubRows": {
         "defaultValue": null,
-        "description": "获取每行孩子的方法,如果定义该函数则启用可展示/收缩的树形展示, 列定义中第一个定义了id属性的列为可展开列\n注意: 当启用数据分组时不能设置该属性, 否则会有冲突.",
+        "description": "定义获取子行的函数",
         "name": "getSubRows",
         "required": false,
         "type": {
-          "name": "((row: any) => any[]) | undefined"
-        }
-      },
-      "groupedColumnMode": {
-        "defaultValue": {
-          "value": "\"reorder\""
-        },
-        "description": "被分组的列的处理模式, 'reorder'表示放到首列并固定, false与'reorder'一致. 'remove'移除被分组的列",
-        "name": "groupedColumnMode",
-        "required": false,
-        "type": {
-          "name": "false | \"reorder\" | \"remove\" | undefined"
-        }
-      },
-      "initialState": {
-        "defaultValue": null,
-        "description": "数据表的初始状态, 这个属性是非受控的. 数据表组件挂载后更新该属性不会导致数据表状态改变.\n注意: 不要同时对某项状态同时在initialState和state指定. state会覆盖initialState中的相应的值",
-        "name": "initialState",
-        "required": false,
-        "type": {
-          "name": "Partial<VisibilityTableState & ColumnOrderTableState & ColumnPinningTableState & FiltersTableState & ... 5 more ... & RowSelectionTableState> | undefined"
-        }
-      },
-      "manualPagination": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "是否手动分页, false表示启用分页, 至于分页数据则由getPaginationRowModel提供, 也就是说不提供getPaginationRowModel属性也即不采取分页.",
-        "name": "manualPagination",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "onColumnFiltersChange": {
-        "defaultValue": null,
-        "description": "各类功能项的单独状态处理.\n这是推荐方式, 这样只会控制单独功能项的状态. 并且只需在state中设置你想管理的那些状态即可.\n@example const [sorting, setSorting] = React.useState([])\n// 方式1, 直接赋值给React的setState\nonSortingChange: setSorting;\n// 方式2, 需要对状态做额外处理\nonSortingChange: (updater) => {\n // 必须这样得到表的新状态值\n const newSortingValue = updater instanceof Function ? updater(sorting) : updater\n //do something with the new sorting value\n //...\n setSorting(updater) //normal state update\n}",
-        "name": "onColumnFiltersChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<ColumnFiltersState> | undefined"
-        }
-      },
-      "onColumnOrderChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onColumnOrderChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<ColumnOrderState> | undefined"
-        }
-      },
-      "onColumnPinningChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onColumnPinningChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<ColumnPinningState> | undefined"
-        }
-      },
-      "onColumnSizingChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onColumnSizingChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<ColumnSizingState> | undefined"
-        }
-      },
-      "onColumnSizingInfoChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onColumnSizingInfoChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<ColumnSizingInfoState> | undefined"
-        }
-      },
-      "onColumnVisibilityChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onColumnVisibilityChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<VisibilityState> | undefined"
-        }
-      },
-      "onExpandedChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onExpandedChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<ExpandedState> | undefined"
-        }
-      },
-      "onGlobalFilterChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onGlobalFilterChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<any> | undefined"
-        }
-      },
-      "onGroupingChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onGroupingChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<GroupingState> | undefined"
-        }
-      },
-      "onPaginationChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onPaginationChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<PaginationState> | undefined"
+          "name": "((originalRow: any) => Record<string, any>[] | undefined) | undefined"
         }
       },
       "onRowClick": {
@@ -17072,62 +16747,6 @@
         "required": false,
         "type": {
           "name": "((e: MouseEvent<HTMLTableRowElement, MouseEvent>, row: Row<any>) => void) | undefined"
-        }
-      },
-      "onRowPinningChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onRowPinningChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<RowPinningState> | undefined"
-        }
-      },
-      "onRowSelectionChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onRowSelectionChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<RowSelectionState> | undefined"
-        }
-      },
-      "onSortingChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onSortingChange",
-        "required": false,
-        "type": {
-          "name": "OnChangeFn<SortingState> | undefined"
-        }
-      },
-      "onStateChange": {
-        "defaultValue": null,
-        "description": "所有功能状态的完全控制处理.\n注意: 这会完全接管表的所有功能状态, 这要求在state中设置所有功能项的状态值. 这样做既不方便也存在性能问题. 不推荐使用.",
-        "name": "onStateChange",
-        "required": false,
-        "type": {
-          "name": "((updater: Updater<TableState>) => void) | undefined"
-        }
-      },
-      "pageCount": {
-        "defaultValue": null,
-        "description": "分页时每页数量",
-        "name": "pageCount",
-        "required": false,
-        "type": {
-          "name": "number | undefined"
-        }
-      },
-      "paginateExpandedRows": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "是否对展开的行进行分页",
-        "name": "paginateExpandedRows",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
         }
       },
       "selectAllForAllPages": {
@@ -17212,29 +16831,9 @@
           "name": "{ container?: string | undefined; toolbar?: string | undefined; groupDropArea?: string | undefined; table?: string | undefined; } | undefined"
         }
       },
-      "sortDescFirst": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "首次排序是否降序, false 表示首次按升序排序. true表示首次按降序排序",
-        "name": "sortDescFirst",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "state": {
-        "defaultValue": null,
-        "description": "数据表的状态, 这个属性是受控属性. 必须通过onStateChange事件更新\n注意: 不要对某项状态在initialState和state同时指定, state会覆盖initialState中的相应的值",
-        "name": "state",
-        "required": false,
-        "type": {
-          "name": "Partial<VisibilityTableState & ColumnOrderTableState & ColumnPinningTableState & FiltersTableState & ... 5 more ... & RowSelectionTableState> | undefined"
-        }
-      },
       "validate": {
         "defaultValue": null,
-        "description": "当前在编辑模式下, 字段的验证规则\n@param row\n@returns",
+        "description": "在编辑模式下, 字段的验证规则\n@param row\n@returns",
         "name": "validate",
         "required": false,
         "type": {

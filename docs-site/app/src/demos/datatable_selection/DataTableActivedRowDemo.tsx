@@ -57,7 +57,10 @@ export default function Demo() {
           data={data}
           columns={columns}
           {...tableProps}
-          onRowClick={(e, row) => setActivedRowId(row.id)}
+          state={{
+            rowActive: activedRowId,
+          }}
+          onRowActiveChange={setActivedRowId}
           className="[&&_tr.actived_td]:bg-info [&&_tr.actived_td]:text-info-content"
         />
       </div>

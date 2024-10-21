@@ -1,3 +1,36 @@
+# Version 4.10.1 (2024-10-21)
+
+- [@rtdui/datatable] DataTable add `RowActive` feature which is implemented using standard custom feature
+  `RowActive` feature add enableRowActive prop for DataTable with a default value of true, you can set false to disable this feature
+  `RowActive` feature you can use the state or initialState props to set the state of RowActive:
+
+  Uncontrolled:
+
+  ```jsx
+  <DataTable
+    // ...
+    initialState={{
+      rowActive: "1",
+    }}
+  ></DataTable>
+  ```
+
+  Controlled:
+
+  ```tsx
+  const [activedRowId, setActivedRowId] = React.useState<string | null>(null);
+  <DataTable
+    // ...
+    state={{
+      rowActive: activedRowId,
+    }}
+    onRowActiveChange={setActivedRowId}
+  ></DataTable>;
+  ```
+
+- [@rtdui/datatable] DataTable add `borderWidth` prop which allow custom border size of cells in the table when `showBorder` prop is true
+- [@rtdui/tailwind-plugin] data-table.css using a single pseudo element to implement borders
+
 # Version 4.10.0 (2024-10-16)
 
 - [@rtdui/datatable] DataTable `enableClickRowSelection` behavior follows `enableRowSelection`

@@ -97,18 +97,18 @@ export const newDatum = (id?: number): Datum => {
     int: faker.number.int(),
     float: faker.number.float({
       max: 5000000,
-      precision: 0.01,
+      fractionDigits: 2,
     }),
     stringNumber: faker.number
       .float({
         max: 5000000,
-        precision: 0.01,
+        fractionDigits: 2,
       })
       .toString(),
     percent: faker.number.float({
       min: 0,
       max: 1,
-      precision: 0.0001,
+      fractionDigits: 4,
     }),
     enum: faker.helpers.arrayElement(["m", "f"]),
     boolean: faker.datatype.boolean(),
