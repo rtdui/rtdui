@@ -124,6 +124,7 @@ const calculateLinesToHighlight = (meta: string) => {
 };
 
 const calculateStartingLine = (meta: string) => {
+  //@ts-expect-error Named capturing groups
   const RE = /showLineNumbers=(?<lines>\d+)/i;
   // pick the line number after = using a named capturing group
   if (RE.test(meta)) {
