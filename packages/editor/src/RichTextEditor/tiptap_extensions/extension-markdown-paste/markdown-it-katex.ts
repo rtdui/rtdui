@@ -563,11 +563,14 @@ export default function markdownItKatex(md: MarkdownIt, options: any) {
   );
 
   // Regex to capture any html prior to math block, the math block (single or multi line), and any html after the math block
+
   const math_block_within_html_regex =
+    //@ts-expect-error Named capturing groups are only available when targeting 'ES2018' or later
     /(?<html_before_math>[\s\S]*?)\$\$(?<math>[\s\S]+?)\$\$(?<html_after_math>(?:(?!\$\$[\s\S]+?\$\$)[\s\S])*)/gm;
 
   // Regex to capture any html prior to math inline, the math inline (single line), and any html after the math inline
   const math_inline_within_html_regex =
+    //@ts-expect-error Named capturing groups are only available when targeting 'ES2018' or later
     /(?<html_before_math>[\s\S]*?)\$(?<math>.*?)\$(?<html_after_math>(?:(?!\$.*?\$)[\s\S])*)/gm;
 
   if (enableMathBlockInHtml) {
