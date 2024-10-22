@@ -124,15 +124,11 @@ const calculateLinesToHighlight = (meta: string) => {
 };
 
 const calculateStartingLine = (meta: string) => {
-  //@ts-expect-error Named capturing groups
   const RE = /showLineNumbers=(?<lines>\d+)/i;
   // pick the line number after = using a named capturing group
   if (RE.test(meta)) {
-    const {
-      //@ts-expect-error undefined
-      groups: { lines },
-    } = RE.exec(meta)!;
-    return Number(lines);
+    const { groups } = RE.exec(meta)!;
+    return Number(groups!.lines);
   }
   return 1;
 };
