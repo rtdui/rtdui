@@ -3,7 +3,6 @@ import type { ColorFormat, HsvaColor } from "./types";
 
 /** 给定的颜色是否是浅色 */
 export function isLightColor(colorLike: ColorTypes) {
-  //@ts-expect-error 参数个数问题
   const color = new Color(colorLike);
   const onWhite = Math.abs(color.contrast("white", "APCA"));
   const onBlack = Math.abs(color.contrast("black", "APCA"));
@@ -59,7 +58,6 @@ export function getSpaceFromFormat(colorFormat: ColorFormat) {
 export function convertTo(format: ColorFormat, colorLike: ColorTypes) {
   const space = getSpaceFromFormat(format);
   if (space) {
-    //@ts-expect-error 参数个数问题
     return new Color(colorLike).to(space).toString({ format });
   }
   throw new Error(`${format} is not a valid color format`);
@@ -67,7 +65,6 @@ export function convertTo(format: ColorFormat, colorLike: ColorTypes) {
 
 /** 解析任意颜色格式 */
 export function parseColor(colorLike: ColorTypes) {
-  //@ts-expect-error 参数个数问题
   return new Color(colorLike);
 }
 
@@ -75,16 +72,13 @@ export function convertHsvaTo(format: ColorFormat, color: HsvaColor) {
   if (!color) {
     return "#000000";
   }
-  //@ts-expect-error 参数个数问题
   const hsvColor = new Color("hsv", [color.h, color.s, color.v], color.a);
   const space = getSpaceFromFormat(format);
-  //@ts-expect-error 方法不存在问题
   return hsvColor.to(space!).toString({ format });
 }
 
 export function parseColorToHsva(colorLike: string): HsvaColor {
   try {
-    //@ts-expect-error 方法不存在问题
     const hsvColor = parseColor(colorLike).to("hsv");
     return {
       h: isNaN(hsvColor.h) ? 0 : hsvColor.h,
@@ -100,7 +94,6 @@ export function parseColorToHsva(colorLike: string): HsvaColor {
 /** 是否是合法的颜色 */
 export function isColorValid(colorLike: ColorTypes) {
   try {
-    //@ts-expect-error 参数个数问题
     new Color(colorLike);
     return true;
   } catch (error) {
