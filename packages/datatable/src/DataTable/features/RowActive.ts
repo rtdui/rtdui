@@ -11,7 +11,7 @@ import {
   memo,
 } from "@tanstack/react-table";
 
-export type RowActiveState = string | null;
+export type RowActiveState = string | number | null;
 
 export interface RowActiveTableState {
   rowActive: RowActiveState;
@@ -22,6 +22,7 @@ export interface RowActiveOptions<TData extends RowData> {
   /**
    * - Enables/disables row active for all rows in the table OR
    * - A function that given a row, returns whether to enable/disable row active for that row
+   * @default true
    */
   enableRowActive?: boolean | ((row: Row<TData>) => boolean);
   /**
@@ -164,7 +165,7 @@ export const RowActive: TableFeature = {
     );
 
     table.getIsSomeRowsActived = () => {
-      const totalActived = Object.keys(table.getState().rowActive ?? {}).length;
+      const totalActived = table.getState().rowActive !== null ? 1 : 0;
       return (
         totalActived > 0 &&
         totalActived < table.getFilteredRowModel().flatRows.length

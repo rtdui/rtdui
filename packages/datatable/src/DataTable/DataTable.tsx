@@ -75,10 +75,7 @@ export type Rule = (
 
 export interface DataTableProps
   extends React.ComponentPropsWithoutRef<"div">,
-    Omit<
-      TableOptions<any>,
-      "getRowId" | "getSubRows" | "_features" | "getCoreRowModel"
-    > {
+    Omit<TableOptions<any>, "_features" | "getCoreRowModel"> {
   className?: string;
   /** 样式槽 */
   slots?: {
@@ -183,17 +180,6 @@ export interface DataTableProps
    * @returns
    */
   validate?: Record<string, Rule>;
-
-  /**
-   * 定义获取行id的函数
-   * @default (row)=>row.id
-   */
-  getRowId?: (originalRow: any) => any;
-
-  /**
-   * 定义获取子行的函数
-   */
-  getSubRows?: (originalRow: any) => undefined | Record<string, any>[];
 }
 
 /** 属性扩展于TableOptions */
@@ -201,7 +187,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   const {
     columns: columnsProp,
     data: dataProp,
-    getRowId = (row) => row.id,
+    getRowId = (row) => row.id as string | number,
     initialState,
     state,
     onColumnFiltersChange,
@@ -282,7 +268,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
   });
 
   const setErrorRow = (params: {
-    rowId: string;
+    rowId: string | number;
     field: string;
     errorMsg: string;
   }) => {
@@ -322,7 +308,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     }
   ) => {
     const { row, column, value } = params;
-    const rowId = getRowId(row) as string;
+    const rowId = getRowId(row);
     const field = (column.columnDef as AccessorKeyColumnDef<any, any>)
       .accessorKey as string;
     const fieldDataType = getType(row.original[field]);
@@ -383,7 +369,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
     selectedRowId.forEach((d) => {
       // 如果删除的行在新增集中则直接删除新增集中的行
       const addedRowIndex = changesRef.current.changes.added.findIndex(
-        (d2) => getRowId(d2).toString() === d
+        (d2) => String(getRowId(d2)) === d
       );
       if (addedRowIndex >= 0) {
         changesRef.current.changes.added.splice(addedRowIndex, 1);
