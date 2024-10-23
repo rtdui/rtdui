@@ -1,5 +1,10 @@
 import React from "react";
-import { DataTable, DataTableProps, type ColumnDef } from "@rtdui/datatable";
+import {
+  DataTable,
+  type DataTableProps,
+  type RowActiveState,
+  type ColumnDef,
+} from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [
@@ -41,7 +46,7 @@ const tableProps: Partial<DataTableProps> = {
 export default function Demo() {
   const [data, setData] = React.useState<Person[]>([]);
 
-  const [activedRowId, setActivedRowId] = React.useState<string | null>(null);
+  const [activedRowId, setActivedRowId] = React.useState<RowActiveState>(null);
 
   React.useEffect(() => {
     setData(makePersonData(50));

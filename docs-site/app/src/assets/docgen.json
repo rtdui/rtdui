@@ -16711,26 +16711,6 @@
           "name": "boolean | undefined"
         }
       },
-      "getRowId": {
-        "defaultValue": {
-          "value": "(row)=>row.id"
-        },
-        "description": "定义获取行id的函数",
-        "name": "getRowId",
-        "required": false,
-        "type": {
-          "name": "((originalRow: any) => any) | undefined"
-        }
-      },
-      "getSubRows": {
-        "defaultValue": null,
-        "description": "定义获取子行的函数",
-        "name": "getSubRows",
-        "required": false,
-        "type": {
-          "name": "((originalRow: any) => Record<string, any>[] | undefined) | undefined"
-        }
-      },
       "onRowClick": {
         "defaultValue": null,
         "description": "行点击事件处理, 只针对数据行触发, 不会对分组行等附加行触发",

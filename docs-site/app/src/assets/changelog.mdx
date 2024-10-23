@@ -1,3 +1,11 @@
+# Version 4.10.2 (2024-10-23)
+
+- **chore:** all packages update target to ES2018 in tsconfig.json to pass TS syntax check for `named capturing group` of Regexp
+- [@rtdui/datatable] Improve some type definitions
+  **types:** Fixed missing type for `rowActive` in `initialState` of RowActive feature
+  **types:** getRowId return type type replace `string` with `string | number` to reduce confusion while keeping `row.id` value type and `rowActive` state type consistent with it
+  **types:** Export `RowActiveState` type
+
 # Version 4.10.1 (2024-10-21)
 
 - [@rtdui/datatable] DataTable add `RowActive` feature which is implemented using standard custom feature
