@@ -3,10 +3,9 @@ import clsx from "clsx";
 import { getColor, getRadius, getSize } from "../utils";
 import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
 
-export interface ColorSwatchOwnProps
-  extends React.ComponentPropsWithoutRef<"div"> {
+export interface ColorSwatchOwnProps {
   /** Color to display, Key of theme colors or any valid CSS color values */
-  color: string;
+  color?: string;
 
   /** Controls `width` and `height` of the swatch, any valid CSS value */
   size?: React.CSSProperties["width"];

@@ -6,10 +6,10 @@ import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
 
 export interface FloatingIndicatorOwnProps {
   /** Target element over which indicator should be displayed */
-  target: HTMLElement | null | undefined;
+  target?: HTMLElement | null;
 
   /** Parent element with relative position based on which indicator position should be calculated */
-  parent: HTMLElement | null | undefined;
+  parent?: HTMLElement | null;
 
   /** Transition duration in ms
    * @default 150

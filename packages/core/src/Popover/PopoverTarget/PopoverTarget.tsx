@@ -52,7 +52,7 @@ export const PopoverTarget = forwardRef<HTMLDivElement, PopoverTargetProps>(
       className: clsx(
         ctx.targetProps.className,
         forwardedProps.className,
-        children.props.className
+        (children as any).props.className
       ),
       [refProp!]: targetRef,
       ...(!ctx.controlled ? { onClick: ctx.toggle } : null),
