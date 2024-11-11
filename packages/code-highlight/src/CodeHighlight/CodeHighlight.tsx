@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-//@ts-expect-error no export member
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { refractor } from "refractor/lib/all.js";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
