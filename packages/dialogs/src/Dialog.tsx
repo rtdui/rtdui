@@ -29,18 +29,22 @@ export interface DialogProps
    */
   mode?: "alert" | "prompt" | "confirm" | "dialog";
 
-  /** confirm button text for mode confirm or prompt
+  /** confirm button text for confirm or prompt mode
    * @default "OK"
    */
   confirmLabel?: string;
-  /** cancel button text for mode confirm or prompt
+  /** cancel button text for confirm or prompt mode
    * @default "Cancel"
    */
   cancelLabel?: string;
-  /** close button text for mode alert
+  /** close button text for alert mode
    * @default "Close"
    */
   closeLabel?: string;
+  /** default prompt text for prompt mode
+   * @default "Close"
+   */
+  defaultPrompt?: string;
 
   slots?: {
     closeBtn?: string;
@@ -69,11 +73,12 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     confirmLabel = "OK",
     cancelLabel = "Cancel",
     closeLabel = "Close",
+    defaultPrompt = "",
     slots,
     ...others
   } = props;
 
-  const [promptValue, setPromptValue] = useInputState("");
+  const [promptValue, setPromptValue] = useInputState(defaultPrompt);
 
   return (
     <div className="modal modal-open">
