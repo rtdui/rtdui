@@ -69,7 +69,7 @@ import { dialogs } from "@rtdui/dialogs";
 
 ## 本地化
 
-对话框的内建按钮的显示文本可以本地化.
+可以对单个对话框的内建按钮的显示文本可以本地化.
 
 - confirmLabel
 
@@ -84,6 +84,21 @@ import { dialogs } from "@rtdui/dialogs";
   alert对话框模式下的关闭按钮的显示文本
 
 <Demo data={{ Component: DialogLocalizationDemo }} />
+
+也可以在`<Dialogs>`中全局的本地化:
+
+```tsx
+import { Dialogs } from "@rtdui/dialogs";
+
+<App>
+  <Dialogs
+    dirtyWarningLabel="内容已修改，关闭会丢失未保存的数据，确定要关闭吗？"
+    closeLabel="关闭"
+    confirmLabel="确定"
+    cancelLabel="取消"
+  />
+</App>;
+```
 
 ## 脏数据检查
 
