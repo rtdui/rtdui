@@ -56,6 +56,13 @@ export default defineConfig({
     noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
   },
   server: { host: "0.0.0.0" },
+  // 临时解决@tabler/icons-react v3.19 引入的dynamic import导致Vite创建大量chunk
+  resolve: {
+    alias: {
+      // /esm/icons/index.mjs only exports the icons statically, so no separate chunks are created
+      "@tabler/icons-react": "@tabler/icons-react/dist/esm/icons/index.mjs",
+    },
+  },
 });
 
 // export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
