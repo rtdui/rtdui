@@ -190,12 +190,7 @@ export default function Layout() {
                   className="gap-0.5"
                   onClick={() => setLangOpened(true)}
                 >
-                  <IconTranslate
-                    viewBox="0 0 512 512"
-                    fill="currentColor"
-                    stroke={1}
-                    size={20}
-                  />
+                  <IconTranslate width="20" height="20" />
                   <IconChevronDown size={14} stroke={2.5} color="gray" />
                 </Button>
               </Popover.Target>
@@ -248,7 +243,7 @@ export default function Layout() {
               RTD UI
             </a>
             <Link to="/changelog" className="link">
-              v4.10.3
+              v4.10.4
             </Link>
           </div>
           <NavMenu
