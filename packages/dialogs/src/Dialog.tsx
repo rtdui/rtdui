@@ -42,7 +42,7 @@ export interface DialogProps
    */
   closeLabel?: string;
   /** default prompt text for prompt mode
-   * @default "Close"
+   * @default ""
    */
   defaultPrompt?: string;
 

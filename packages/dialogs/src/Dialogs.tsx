@@ -14,6 +14,18 @@ export interface DialogsProps {
   target?: PortalProps["target"];
   /** Warning label when content is dirty */
   dirtyWarningLabel?: string;
+  /** global confirm button text for confirm or prompt mode
+   * @default "OK"
+   */
+  confirmLabel?: string;
+  /** global cancel button text for confirm or prompt mode
+   * @default "Cancel"
+   */
+  cancelLabel?: string;
+  /** global close button text for alert mode
+   * @default "Close"
+   */
+  closeLabel?: string;
   className?: string;
 }
 
@@ -31,6 +43,9 @@ export function Dialogs(props: DialogsProps) {
   const {
     target,
     dirtyWarningLabel = "The content has been modified, closing it will lose the unsaved data, are you sure to close it?",
+    confirmLabel,
+    cancelLabel,
+    closeLabel,
     className = "z-40",
   } = props;
 
@@ -50,6 +65,9 @@ export function Dialogs(props: DialogsProps) {
           ref={ref}
           style={styles}
           dirtyWarningLabel={dirtyWarningLabel}
+          confirmLabel={confirmLabel}
+          cancelLabel={cancelLabel}
+          closeLabel={closeLabel}
           {...d}
         />
       )}
