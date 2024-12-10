@@ -33,3 +33,33 @@ export function getColor(color: unknown): string | undefined {
       return color as string;
   }
 }
+
+export function getContrastColor(color: unknown): string | undefined {
+  if (color === undefined) {
+    return undefined;
+  }
+
+  switch (color as string) {
+    case "neutral":
+      return "oklch(var(--nc))";
+    case "primary":
+      return "oklch(var(--pc))";
+    case "secondary":
+      return "oklch(var(--sc))";
+    case "accent":
+      return "oklch(var(--ac))";
+    case "info":
+      return "oklch(var(--inc))";
+    case "success":
+      return "oklch(var(--suc))";
+    case "warning":
+      return "oklch(var(--wac))";
+    case "error":
+      return "oklch(var(--erc))";
+    case "base1":
+    case "base2":
+    case "base3":
+    default:
+      return "oklch(var(--bc))";
+  }
+}

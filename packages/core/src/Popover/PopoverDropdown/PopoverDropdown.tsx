@@ -6,7 +6,7 @@ import { FocusTrap } from "../../FocusTrap";
 import { OptionalPortal } from "../../Portal";
 import { Transition } from "../../Transition";
 import { usePopoverContext } from "../context";
-import { getColor, getRadius, rem } from "../../utils";
+import { getColor, getRadius, getContrastColor, rem } from "../../utils";
 
 const noop = () => {};
 interface CloseOnEscapeOptions {
@@ -110,10 +110,12 @@ export const PopoverDropdown = forwardRef<HTMLDivElement, PopoverDropdownProps>(
                       width:
                         ctx.width === "target" ? undefined : rem(ctx.width),
                       "--popover-dropdown-radius": getRadius(ctx.radius),
-                      // backgroundColor: ctx.dropdownColor
-                      //   ? getColor(ctx.dropdownColor)
-                      //   : undefined,
-                      color: ctx.dropdownColor ? "white" : undefined,
+                      backgroundColor: ctx.dropdownColor
+                        ? getColor(ctx.dropdownColor)
+                        : undefined,
+                      color: ctx.dropdownColor
+                        ? getContrastColor(ctx.dropdownColor)
+                        : undefined,
                     } as any
                   }
                 >
@@ -125,7 +127,9 @@ export const PopoverDropdown = forwardRef<HTMLDivElement, PopoverDropdownProps>(
                             ? getColor(ctx.dropdownColor)
                             : undefined,
                           borderRadius: getRadius(ctx.radius),
-                          color: ctx.dropdownColor ? "white" : undefined,
+                          color: ctx.dropdownColor
+                            ? getContrastColor(ctx.dropdownColor)
+                            : undefined,
                         },
                       })
                     : children}

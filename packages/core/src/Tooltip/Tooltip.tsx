@@ -10,6 +10,7 @@ import { useDisclosure } from "@rtdui/hooks";
 export interface TooltipProps {
   tip?: string;
   color?:
+    | "neutral"
     | "primary"
     | "secondary"
     | "accent"
