@@ -14,18 +14,18 @@
     "@faker-js/faker": "^8.3.1",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
-    "@rtdui/code-highlight": "4.10.4",
-    "@rtdui/core": "4.10.4",
-    "@rtdui/datatable": "4.10.4",
-    "@rtdui/dates": "4.10.4",
-    "@rtdui/dialogs": "4.10.4",
-    "@rtdui/editor": "4.10.4",
-    "@rtdui/md-editor": "4.10.4",
-    "@rtdui/hooks": "4.10.4",
-    "@rtdui/notifications": "4.10.4",
-    "@rtdui/qr-code": "4.10.4",
-    "@rtdui/signature-pad": "4.10.4",
-    "@rtdui/spotlight": "4.10.4",
+    "@rtdui/code-highlight": "4.10.5",
+    "@rtdui/core": "4.10.5",
+    "@rtdui/datatable": "4.10.5",
+    "@rtdui/dates": "4.10.5",
+    "@rtdui/dialogs": "4.10.5",
+    "@rtdui/editor": "4.10.5",
+    "@rtdui/md-editor": "4.10.5",
+    "@rtdui/hooks": "4.10.5",
+    "@rtdui/notifications": "4.10.5",
+    "@rtdui/qr-code": "4.10.5",
+    "@rtdui/signature-pad": "4.10.5",
+    "@rtdui/spotlight": "4.10.5",
     "@tabler/icons-react": "^3.5.0",
     "clsx": "^2.1.1",
     "i18next": "^23.10.1",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.0.0",
     "@remix-run/dev": "^2.8.1",
-    "@rtdui/tailwind-plugin": "4.10.4",
+    "@rtdui/tailwind-plugin": "4.10.5",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
@@ -70,5 +70,5 @@
   "engines": {
     "node": ">=20"
   },
-  "version": "4.10.4"
+  "version": "4.10.5"
 }
