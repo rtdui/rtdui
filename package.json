@@ -14,8 +14,9 @@
   "scripts": {
     "dev": "npm run docs:docgen && cd docs && npm run dev",
     "plop": "bun scripts/plop/index.ts",
-    "sync-branches": "sh scripts/sync-branches.sh",
-    "ncu": "npx npm-check-updates@latest --root -ws",
+    "sync-branches": "bun scripts/sync-branches.sh",
+    "outdated": "bun outdated --filter \"*\"",
+    "ncu": "npx npm-check-updates@latest --packageManager bun -ws",
     "changelog": "bun scripts/changelog.ts",
     "check": "npx biome check && npm run check:syncpack && npm run lint",
     "check:syncpack": "syncpack list-mismatches",
