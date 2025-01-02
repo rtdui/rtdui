@@ -11,6 +11,13 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
       if (packageName.includes("@rtdui/")) {
         current.peerDependencies[packageName] = version;
       }
+      // peerDependencies中的react和react-dom支持v19
+      if(packageName === "react" && current.peerDependencies.react !=="^18.x || ^19.x"){
+        current.peerDependencies.react = "^18.x || ^19.x"
+      }
+      if(packageName === "react-dom" && current.peerDependencies.react !=="^18.x || ^19.x"){
+        current.peerDependencies["react-dom"] = "^18.x || ^19.x"
+      }
     });
   }
 

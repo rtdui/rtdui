@@ -5,6 +5,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import { nodeExternals } from "rollup-plugin-node-externals";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import json from "@rollup/plugin-json";
+import banner from 'rollup-plugin-banner2';
 // import alias, { Alias } from "@rollup/plugin-alias";
 import replace from "@rollup/plugin-replace";
 import postcss from "rollup-plugin-postcss";
@@ -18,6 +19,7 @@ import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import rehypePrism from "rehype-prism-plus";
+import { ROLLUP_EXCLUDE_USE_CLIENT } from "./rollup-exclude-use-client";
 // import { getPackagesList } from "../../packages/get-packages-list";
 
 export async function createPackageConfig(
@@ -86,6 +88,14 @@ export async function createPackageConfig(
       ],
       rehypePlugins: [rehypeSlug as any, rehypePrism, rehypeKatex],
     }), // 支持导入mdx
+    // 支持React v19
+    banner((chunk) => {
+      if (!ROLLUP_EXCLUDE_USE_CLIENT.includes(chunk.fileName)) {
+        return "'use client';\n";
+      }
+
+      return undefined;
+    }),
   ];
 
   // https://cn.rollupjs.org/configuration-options/#external
@@ -97,12 +107,6 @@ export async function createPackageConfig(
     externalLiveBindings: false, //不为外部依赖生成支持动态绑定的代码
     sourcemap: true,
     preserveModules: true, //保留模块作为独立输出文件, 不进行捆绑, 编译过程中产生的虚拟文件也会被保留到输出目录的_virtual目录中
-    // banner: (chunk) => {
-    //   if (chunk.fileName !== "index.js" && chunk.fileName !== "index.mjs") {
-    //     return "'use client';\n";
-    //   }
-    //   return "";
-    // }, //为每个块顶部添加文本.
   };
 
   const input = path.resolve(packagePath, "src/index.ts");
