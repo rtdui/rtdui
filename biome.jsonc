@@ -7,10 +7,14 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"ignore": [".react-router/**/*.ts","./**/{lib,esm,cjs}/**/*"]
+		"ignore": [
+			".react-router/**/*.ts",
+			"./**/{lib,esm,cjs}/**/*",
+			"./packages/tailwind-plugin/**/*"
+		]
 	},
 	"formatter": {
-		"enabled": false, //暂时禁用格式化
+		"enabled": true,
 		"indentStyle": "tab"
 	},
 	"organizeImports": {
@@ -29,17 +33,25 @@
 				"noNonNullAssertion": "off",
 				"noParameterAssign": "off"
 			},
+			"correctness": {
+				"useExhaustiveDependencies": "off" // 暂时关闭
+			},
 			"suspicious": {
 				"noExplicitAny": "off",
-				"noArrayIndexKey": "off"
+				"noArrayIndexKey": "off",
+				"noAssignInExpressions": "off"
 			},
 			"complexity": {
 				"noForEach": "off",
 				"noUselessCatch": "off",
-				"noUselessSwitchCase": "off"
+				"noUselessSwitchCase": "off",
+				"noBannedTypes": "off"
 			},
 			"performance": {
 				"noDelete": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
 			}
 		}
 	},
