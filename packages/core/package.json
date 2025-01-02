@@ -1,67 +1,67 @@
 {
-  "name": "@rtdui/core",
-  "version": "4.10.5",
-  "description": "React components library focused on usability, accessibility and developer experience",
-  "types": "./lib/index.d.ts",
-  "main": "./cjs/index.cjs",
-  "module": "./esm/index.mjs",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/index.d.ts",
-        "default": "./esm/index.mjs"
-      },
-      "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./cjs/index.cjs"
-      }
-    },
-    "./styles.css": "./styles.css",
-    "./styles.layer.css": "./styles.layer.css"
-  },
-  "keywords": [
-    "react",
-    "remix",
-    "remixjs",
-    "next",
-    "nextjs",
-    "ui",
-    "ui-kit",
-    "components",
-    "library",
-    "frontend",
-    "design"
-  ],
-  "author": "fu zhong wei <jackyleefzw@163.com>",
-  "license": "MIT",
-  "homepage": "https://rtdui.com/",
-  "repository": {
-    "url": "https://github.com/rtdui/rtdui.git",
-    "type": "git",
-    "directory": "packages/core"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "dependencies": {
-    "@floating-ui/react": "^0.26.1",
-    "@tabler/icons-react": "^3.5.0",
-    "clsx": "^2.1.1",
-    "colorjs.io": "^0.5.2",
-    "date-fns": "^3.3.0",
-    "ms": "^2.0.0",
-    "react-number-format": "^5.3.1",
-    "react-remove-scroll": "^2.5.9",
-    "react-textarea-autosize": "^8.5.3",
-    "react-transition-group": "^4.4.5"
-  },
-  "devDependencies": {
-    "@types/react-transition-group": "^4.4.7"
-  },
-  "peerDependencies": {
-    "@rtdui/hooks": "4.10.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+	"name": "@rtdui/core",
+	"version": "4.10.5",
+	"description": "React components library focused on usability, accessibility and developer experience",
+	"types": "./lib/index.d.ts",
+	"main": "./cjs/index.cjs",
+	"module": "./esm/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./lib/index.d.ts",
+				"default": "./esm/index.mjs"
+			},
+			"require": {
+				"types": "./lib/index.d.ts",
+				"default": "./cjs/index.cjs"
+			}
+		},
+		"./styles.css": "./styles.css",
+		"./styles.layer.css": "./styles.layer.css"
+	},
+	"keywords": [
+		"react",
+		"remix",
+		"remixjs",
+		"next",
+		"nextjs",
+		"ui",
+		"ui-kit",
+		"components",
+		"library",
+		"frontend",
+		"design"
+	],
+	"author": "fu zhong wei <jackyleefzw@163.com>",
+	"license": "MIT",
+	"homepage": "https://rtdui.com/",
+	"repository": {
+		"url": "https://github.com/rtdui/rtdui.git",
+		"type": "git",
+		"directory": "packages/core"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
+	},
+	"dependencies": {
+		"@floating-ui/react": "^0.26.1",
+		"@tabler/icons-react": "^3.5.0",
+		"clsx": "^2.1.1",
+		"colorjs.io": "^0.5.2",
+		"date-fns": "^3.3.0",
+		"ms": "^2.0.0",
+		"react-number-format": "^5.3.1",
+		"react-remove-scroll": "^2.5.9",
+		"react-textarea-autosize": "^8.5.3",
+		"react-transition-group": "^4.4.5"
+	},
+	"devDependencies": {
+		"@types/react-transition-group": "^4.4.7"
+	},
+	"peerDependencies": {
+		"@rtdui/hooks": "4.10.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
 }

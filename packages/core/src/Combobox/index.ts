@@ -1,7 +1,7 @@
 export {
-  getParsedComboboxData,
-  getOptionsLockup,
-  getLabelsLockup,
+	getParsedComboboxData,
+	getOptionsLockup,
+	getLabelsLockup,
 } from "./utils";
 
 export { ComboboxChevron } from "./ComboboxChevron/ComboboxChevron";
@@ -26,20 +26,20 @@ export { isOptionsGroup } from "./OptionsDropdown/is-options-group";
 export { defaultOptionsFilter } from "./OptionsDropdown/default-options-filter";
 
 export type {
-  ComboboxStore,
-  ComboboxDropdownEventSource,
-  UseComboboxOptions,
+	ComboboxStore,
+	ComboboxDropdownEventSource,
+	UseComboboxOptions,
 } from "./use-combobox/use-combobox";
 export type {
-  ComboboxItem,
-  ComboboxData,
-  ComboboxParsedItem,
-  ComboboxItemGroup,
-  ComboboxParsedItemGroup,
-  ComboboxLikeProps,
-  ComboboxStringData,
-  ComboboxLikeRenderOptionInput,
-  ComboboxStringItem,
+	ComboboxItem,
+	ComboboxData,
+	ComboboxParsedItem,
+	ComboboxItemGroup,
+	ComboboxParsedItemGroup,
+	ComboboxLikeProps,
+	ComboboxStringData,
+	ComboboxLikeRenderOptionInput,
+	ComboboxStringItem,
 } from "./Combobox.types";
 export type { ComboboxProps } from "./Combobox";
 export type { ComboboxDropdownProps } from "./ComboboxDropdown/ComboboxDropdown";
@@ -57,7 +57,7 @@ export type { ComboboxGroupProps } from "./ComboboxGroup/ComboboxGroup";
 export type { ComboboxClearButtonProps } from "./ComboboxClearButton/ComboboxClearButton";
 export type { ComboboxHiddenInputProps } from "./ComboboxHiddenInput/ComboboxHiddenInput";
 export type {
-  OptionsDropdownProps,
-  OptionsData,
-  OptionsFilter,
+	OptionsDropdownProps,
+	OptionsData,
+	OptionsFilter,
 } from "./OptionsDropdown/OptionsDropdown";

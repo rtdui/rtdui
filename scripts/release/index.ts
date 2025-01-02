@@ -17,68 +17,68 @@ const logger = createLogger("release");
 const git = simpleGit();
 
 const { argv }: { argv: any } = yargs(hideBin(process.argv))
-  .option("stage", {
-    type: "string",
-    choices: ["alpha", "beta"],
-    description: "Prerelease stage: 'alpha', 'beta'",
-  })
-  .option("tag", {
-    type: "string",
-    default: "latest",
-    description: "Tag",
-  });
+	.option("stage", {
+		type: "string",
+		choices: ["alpha", "beta"],
+		description: "Prerelease stage: 'alpha', 'beta'",
+	})
+	.option("tag", {
+		type: "string",
+		default: "latest",
+		description: "Tag",
+	});
 
 async function release() {
-  const status = await git.status();
+	const status = await git.status();
 
-  if (status.files.length !== 0) {
-    logger.error("Working tree is not clean");
-    process.exit(1);
-  }
+	if (status.files.length !== 0) {
+		logger.error("Working tree is not clean");
+		process.exit(1);
+	}
 
-  logger.log("Releasing all packages");
+	logger.log("Releasing all packages");
 
-  const incrementedVersion = getNextVersion(packageJson.version, {
-    type: argv._[0],
-    stage: argv.stage,
-  });
+	const incrementedVersion = getNextVersion(packageJson.version, {
+		type: argv._[0],
+		stage: argv.stage,
+	});
 
-  logger.log(`New version: ${chalk.cyan(incrementedVersion)}`);
-  await setPackagesVersion(incrementedVersion);
+	logger.log(`New version: ${chalk.cyan(incrementedVersion)}`);
+	await setPackagesVersion(incrementedVersion);
 
-  await buildAllPackages();
-  logger.success("All packages have been built successfully");
+	await buildAllPackages();
+	logger.success("All packages have been built successfully");
 
-  logger.log("Publishing packages to npm");
+	logger.log("Publishing packages to npm");
 
-  if (argv.stage && argv.tag === "latest") {
-    argv.tag = "next";
-  }
+	if (argv.stage && argv.tag === "latest") {
+		argv.tag = "next";
+	}
 
-  const packages = getPackagesList();
+	const packages = getPackagesList();
 
-  await Promise.all(
-    packages.map((p) =>
-      publishPackage({
-        packagePath: p!.path,
-        name: p!.packageJson.name!,
-        tag: argv.tag,
-      })
-    )
-  );
+	await Promise.all(
+		packages.map((p) =>
+			publishPackage({
+				packagePath: p!.path,
+				name: p!.packageJson.name!,
+				tag: argv.tag,
+			}),
+		),
+	);
 
-  logger.success("All packages have been published successfully");
+	logger.success("All packages have been published successfully");
 
-  await execa("npm", ["i"]);
-  await git.add([
-    getPath("packages"),
-    getPath("package.json"),
-    getPath("docs-site/package.json"),
-  ]);
-  await git.commit(`[release] Version: ${incrementedVersion}`);
-  await git.push();
+	await execa("npm", ["i"]);
+	await git.add([
+		getPath("packages"),
+		getPath("package.json"),
+		getPath("docs-site/package.json"),
+	]);
+	await git.commit(`[release] Version: ${incrementedVersion}`);
+	await git.push();
 
-  // openGithubRelease(incrementedVersion);
+	// openGithubRelease(incrementedVersion);
 }
 
 release();

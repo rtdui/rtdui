@@ -1,52 +1,44 @@
 {
-  "name": "@rtdui/signature-pad",
-  "version": "4.10.5",
-  "description": "React signature pad base on canvas",
-  "types": "./lib/index.d.ts",
-  "main": "./cjs/index.cjs",
-  "module": "./esm/index.mjs",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/index.d.ts",
-        "default": "./esm/index.mjs"
-      },
-      "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./cjs/index.cjs"
-      }
-    }
-  },
-  "keywords": [
-    "react",
-    "components",
-    "library",
-    "ui",
-    "ui-kit"
-  ],
-  "author": "fu zhong wei <jackyleefzw@163.com>",
-  "license": "MIT",
-  "homepage": "https://rtdui.com/",
-  "sideEffects": [
-    "*.css"
-  ],
-  "repository": {
-    "url": "https://github.com/rtdui/rtdui.git",
-    "type": "git",
-    "directory": "packages/signature-pad"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "peerDependencies": {
-    "@rtdui/core": "4.10.5",
-    "@rtdui/hooks": "4.10.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "signature_pad": "^5.0.0"
-  }
+	"name": "@rtdui/signature-pad",
+	"version": "4.10.5",
+	"description": "React signature pad base on canvas",
+	"types": "./lib/index.d.ts",
+	"main": "./cjs/index.cjs",
+	"module": "./esm/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./lib/index.d.ts",
+				"default": "./esm/index.mjs"
+			},
+			"require": {
+				"types": "./lib/index.d.ts",
+				"default": "./cjs/index.cjs"
+			}
+		}
+	},
+	"keywords": ["react", "components", "library", "ui", "ui-kit"],
+	"author": "fu zhong wei <jackyleefzw@163.com>",
+	"license": "MIT",
+	"homepage": "https://rtdui.com/",
+	"sideEffects": ["*.css"],
+	"repository": {
+		"url": "https://github.com/rtdui/rtdui.git",
+		"type": "git",
+		"directory": "packages/signature-pad"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
+	},
+	"peerDependencies": {
+		"@rtdui/core": "4.10.5",
+		"@rtdui/hooks": "4.10.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"signature_pad": "^5.0.0"
+	}
 }

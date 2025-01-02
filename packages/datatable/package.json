@@ -1,64 +1,64 @@
 {
-  "name": "@rtdui/datatable",
-  "version": "4.10.5",
-  "description": "React DataTable component based on Rtdui components",
-  "types": "./lib/index.d.ts",
-  "main": "./cjs/index.cjs",
-  "module": "./esm/index.mjs",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/index.d.ts",
-        "default": "./esm/index.mjs"
-      },
-      "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./cjs/index.cjs"
-      }
-    }
-  },
-  "keywords": [
-    "grid",
-    "datagrid",
-    "table",
-    "datatable",
-    "react",
-    "remix",
-    "remixjs",
-    "next",
-    "nextjs",
-    "ui",
-    "ui-kit",
-    "components",
-    "library",
-    "frontend",
-    "design"
-  ],
-  "author": "fu zhong wei <jackyleefzw@163.com>",
-  "license": "MIT",
-  "homepage": "https://rtdui.com/",
-  "repository": {
-    "url": "https://github.com/rtdui/rtdui.git",
-    "type": "git",
-    "directory": "packages/datatable"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "dependencies": {
-    "@tanstack/react-table": "^8.20.5",
-    "@tanstack/react-virtual": "^3.10.8",
-    "klona": "^2.0.6",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
-    "react-dnd-touch-backend": "^16.0.1",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
-  },
-  "peerDependencies": {
-    "@rtdui/core": "4.10.5",
-    "@rtdui/hooks": "4.10.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+	"name": "@rtdui/datatable",
+	"version": "4.10.5",
+	"description": "React DataTable component based on Rtdui components",
+	"types": "./lib/index.d.ts",
+	"main": "./cjs/index.cjs",
+	"module": "./esm/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./lib/index.d.ts",
+				"default": "./esm/index.mjs"
+			},
+			"require": {
+				"types": "./lib/index.d.ts",
+				"default": "./cjs/index.cjs"
+			}
+		}
+	},
+	"keywords": [
+		"grid",
+		"datagrid",
+		"table",
+		"datatable",
+		"react",
+		"remix",
+		"remixjs",
+		"next",
+		"nextjs",
+		"ui",
+		"ui-kit",
+		"components",
+		"library",
+		"frontend",
+		"design"
+	],
+	"author": "fu zhong wei <jackyleefzw@163.com>",
+	"license": "MIT",
+	"homepage": "https://rtdui.com/",
+	"repository": {
+		"url": "https://github.com/rtdui/rtdui.git",
+		"type": "git",
+		"directory": "packages/datatable"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
+	},
+	"dependencies": {
+		"@tanstack/react-table": "^8.20.5",
+		"@tanstack/react-virtual": "^3.10.8",
+		"klona": "^2.0.6",
+		"react-dnd": "^16.0.1",
+		"react-dnd-html5-backend": "^16.0.1",
+		"react-dnd-touch-backend": "^16.0.1",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
+	},
+	"peerDependencies": {
+		"@rtdui/core": "4.10.5",
+		"@rtdui/hooks": "4.10.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
 }

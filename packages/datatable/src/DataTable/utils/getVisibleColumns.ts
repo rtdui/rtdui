@@ -10,15 +10,15 @@ import type { Table } from "@tanstack/react-table";
  * @returns
  */
 export function getVisibleColumns(table: Table<any>) {
-  // const allVisibleColumns =
-  //   table
-  //     .getRowModel()
-  //     .rows[0]?.getVisibleCells()
-  //     ?.map((d) => d.column) ?? [];
-  // return allVisibleColumns;
-  return [
-    ...table.getLeftVisibleLeafColumns(),
-    ...table.getCenterVisibleLeafColumns(),
-    ...table.getRightVisibleLeafColumns(),
-  ];
+	// const allVisibleColumns =
+	//   table
+	//     .getRowModel()
+	//     .rows[0]?.getVisibleCells()
+	//     ?.map((d) => d.column) ?? [];
+	// return allVisibleColumns;
+	return [
+		...table.getLeftVisibleLeafColumns(),
+		...table.getCenterVisibleLeafColumns(),
+		...table.getRightVisibleLeafColumns(),
+	];
 }

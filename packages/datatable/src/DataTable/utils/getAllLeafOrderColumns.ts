@@ -10,9 +10,9 @@ import type { Table } from "@tanstack/react-table";
  * @returns
  */
 export function getAllLeafOrderColumns(table: Table<any>) {
-  return [
-    ...table.getLeftLeafColumns(),
-    ...table.getCenterLeafColumns(),
-    ...table.getRightLeafColumns(),
-  ];
+	return [
+		...table.getLeftLeafColumns(),
+		...table.getCenterLeafColumns(),
+		...table.getRightLeafColumns(),
+	];
 }

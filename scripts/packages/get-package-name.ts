@@ -1,7 +1,7 @@
 export function getPackageName(input: string) {
-  if (input.startsWith("@")) {
-    return input;
-  }
+	if (input.startsWith("@")) {
+		return input;
+	}
 
-  return `@rtdui/${input}`;
+	return `@rtdui/${input}`;
 }

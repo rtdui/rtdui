@@ -15,79 +15,79 @@ const packageName = argv._[0];
 const description = argv._[1];
 
 if (!packageName) {
-  logger.error("Package name is missing");
-  process.exit(1);
+	logger.error("Package name is missing");
+	process.exit(1);
 }
 
 if (!description) {
-  logger.error("Package description is missing");
-  process.exit(1);
+	logger.error("Package description is missing");
+	process.exit(1);
 }
 
 const packagePath = path.join(getPath("packages"), packageName);
 
 if (fs.existsSync(packagePath)) {
-  logger.error(`Package ${chalk.cyan(packageName)} already exists`);
-  process.exit(1);
+	logger.error(`Package ${chalk.cyan(packageName)} already exists`);
+	process.exit(1);
 }
 
 const index = fs.readFileSync(
-  getPath("scripts/plop/templates/src/index.ts"),
-  "utf-8"
+	getPath("scripts/plop/templates/src/index.ts"),
+	"utf-8",
 );
 const npmignore = fs.readFileSync(
-  getPath("scripts/plop/templates/.npmignore"),
-  "utf-8"
+	getPath("scripts/plop/templates/.npmignore"),
+	"utf-8",
 );
 const packageJson = fs.readFileSync(
-  getPath("scripts/plop/templates/package.json"),
-  "utf-8"
+	getPath("scripts/plop/templates/package.json"),
+	"utf-8",
 );
 const readme = fs.readFileSync(
-  getPath("scripts/plop/templates/README.md"),
-  "utf-8"
+	getPath("scripts/plop/templates/README.md"),
+	"utf-8",
 );
 const tsconfig = fs.readFileSync(
-  getPath("scripts/plop/templates/tsconfig.json"),
-  "utf-8"
+	getPath("scripts/plop/templates/tsconfig.json"),
+	"utf-8",
 );
 const tsconfigBuild = fs.readFileSync(
-  getPath("scripts/plop/templates/tsconfig.build.json"),
-  "utf-8"
+	getPath("scripts/plop/templates/tsconfig.build.json"),
+	"utf-8",
 );
 
 function replacePlaceholders(content: string) {
-  return content
-    .replaceAll("{{package}}", packageName)
-    .replaceAll("{{description}}", description)
-    .replaceAll("{{version}}", rootPackageJson.version);
+	return content
+		.replaceAll("{{package}}", packageName)
+		.replaceAll("{{description}}", description)
+		.replaceAll("{{version}}", rootPackageJson.version);
 }
 
 fs.ensureDirSync(packagePath);
 fs.mkdirSync(path.join(packagePath, "src"));
 fs.writeFileSync(
-  path.join(packagePath, "src/index.ts"),
-  replacePlaceholders(index)
+	path.join(packagePath, "src/index.ts"),
+	replacePlaceholders(index),
 );
 fs.writeFileSync(
-  path.join(packagePath, ".npmignore"),
-  replacePlaceholders(npmignore)
+	path.join(packagePath, ".npmignore"),
+	replacePlaceholders(npmignore),
 );
 fs.writeFileSync(
-  path.join(packagePath, "package.json"),
-  replacePlaceholders(packageJson)
+	path.join(packagePath, "package.json"),
+	replacePlaceholders(packageJson),
 );
 fs.writeFileSync(
-  path.join(packagePath, "README.md"),
-  replacePlaceholders(readme)
+	path.join(packagePath, "README.md"),
+	replacePlaceholders(readme),
 );
 fs.writeFileSync(
-  path.join(packagePath, "tsconfig.json"),
-  replacePlaceholders(tsconfig)
+	path.join(packagePath, "tsconfig.json"),
+	replacePlaceholders(tsconfig),
 );
 fs.writeFileSync(
-  path.join(packagePath, "tsconfig.build.json"),
-  replacePlaceholders(tsconfigBuild)
+	path.join(packagePath, "tsconfig.build.json"),
+	replacePlaceholders(tsconfigBuild),
 );
 
 logger.success(`Package ${chalk.cyan(packageName)} has been created`);

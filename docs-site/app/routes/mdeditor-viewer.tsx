@@ -150,16 +150,16 @@ gemoji: :cat: :thumbsup:
 `;
 
 export default function MdViewerDemo() {
-  const ref = useRef(null);
-  // 修复Root路由模块中的Remix的<ScrollRestoration />组件导致锚点到页面元素id需要点击两下的问题
-  useDelegatedReactRouterLinks(ref);
+	const ref = useRef(null);
+	// 修复Root路由模块中的Remix的<ScrollRestoration />组件导致锚点到页面元素id需要点击两下的问题
+	useDelegatedReactRouterLinks(ref);
 
-  return (
-    <MdViewer
-      ref={ref}
-      className="mx-auto py-8 max-w-screen-lg"
-      locale={zhLocale}
-      value={md}
-    />
-  );
+	return (
+		<MdViewer
+			ref={ref}
+			className="mx-auto py-8 max-w-screen-lg"
+			locale={zhLocale}
+			value={md}
+		/>
+	);
 }

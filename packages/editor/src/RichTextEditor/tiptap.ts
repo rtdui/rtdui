@@ -23,8 +23,8 @@ import { refractor } from "refractor/lib/all.js";
 import { UploadImageWithResizable } from "./tiptap_extensions/extension-image-upload";
 import { MarkdownPaste } from "./tiptap_extensions/extension-markdown-paste";
 import {
-  MathKatexInline,
-  MathKatexBlock,
+	MathKatexInline,
+	MathKatexBlock,
 } from "./tiptap_extensions/extension-math";
 import { CodeBlockPrism } from "./tiptap_extensions/extension-code-block-refractor";
 import { CustomTable as Table } from "./tiptap_extensions/extension-table";
@@ -55,34 +55,34 @@ import { CustomTable as Table } from "./tiptap_extensions/extension-table";
 // });
 
 const CodeBlockPrismjs = CodeBlockPrism.configure({
-  refractor,
-  defaultLanguage: "tsx",
+	refractor,
+	defaultLanguage: "tsx",
 });
 
 export {
-  StarterKit,
-  // Collaboration,
-  // CollaborationCursor,
-  // HocuspocusProvider,
-  // IndexeddbPersistence,
-  UploadImageWithResizable,
-  // getProvider,
-  // Y,
-  MarkdownPaste as markdownPasteExtension,
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  Link,
-  TaskList,
-  TaskItem,
-  SuperScript,
-  SubScript,
-  Highlight,
-  TextAlign,
-  Placeholder,
-  // FloatingMenu,
-  CodeBlockPrismjs,
-  MathKatexInline,
-  MathKatexBlock,
+	StarterKit,
+	// Collaboration,
+	// CollaborationCursor,
+	// HocuspocusProvider,
+	// IndexeddbPersistence,
+	UploadImageWithResizable,
+	// getProvider,
+	// Y,
+	MarkdownPaste as markdownPasteExtension,
+	Table,
+	TableHeader,
+	TableRow,
+	TableCell,
+	Link,
+	TaskList,
+	TaskItem,
+	SuperScript,
+	SubScript,
+	Highlight,
+	TextAlign,
+	Placeholder,
+	// FloatingMenu,
+	CodeBlockPrismjs,
+	MathKatexInline,
+	MathKatexBlock,
 };

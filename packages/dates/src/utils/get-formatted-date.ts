@@ -2,54 +2,54 @@ import { format as formatFn } from "date-fns";
 import { DatePickerType, DatePickerValue, Locale } from "../types";
 
 interface DateFormatterInput {
-  type: DatePickerType;
-  date: DatePickerValue<DatePickerType>;
-  locale?: Locale;
-  format: string;
-  labelSeparator: string;
+	type: DatePickerType;
+	date: DatePickerValue<DatePickerType>;
+	locale?: Locale;
+	format: string;
+	labelSeparator: string;
 }
 
 export type DateFormatter = (input: DateFormatterInput) => string;
 
 export function defaultDateFormatter({
-  type,
-  date,
-  locale,
-  format,
-  labelSeparator,
+	type,
+	date,
+	locale,
+	format,
+	labelSeparator,
 }: DateFormatterInput) {
-  const formatDate = (value: Date) => formatFn(value, format, { locale });
+	const formatDate = (value: Date) => formatFn(value, format, { locale });
 
-  if (type === "default") {
-    return date === null ? "" : formatDate(date as Date);
-  }
+	if (type === "default") {
+		return date === null ? "" : formatDate(date as Date);
+	}
 
-  if (type === "multiple") {
-    return (date as Date[]).map(formatDate).join(", ");
-  }
+	if (type === "multiple") {
+		return (date as Date[]).map(formatDate).join(", ");
+	}
 
-  if (type === "range" && Array.isArray(date)) {
-    if (date[0] && date[1]) {
-      return `${formatDate(date[0])} ${labelSeparator} ${formatDate(date[1])}`;
-    }
+	if (type === "range" && Array.isArray(date)) {
+		if (date[0] && date[1]) {
+			return `${formatDate(date[0])} ${labelSeparator} ${formatDate(date[1])}`;
+		}
 
-    if (date[0]) {
-      return `${formatDate(date[0])} ${labelSeparator} `;
-    }
+		if (date[0]) {
+			return `${formatDate(date[0])} ${labelSeparator} `;
+		}
 
-    return "";
-  }
+		return "";
+	}
 
-  return "";
+	return "";
 }
 
 interface GetFormattedDateInput extends DateFormatterInput {
-  formatter?: DateFormatter;
+	formatter?: DateFormatter;
 }
 
 export function getFormattedDate({
-  formatter,
-  ...others
+	formatter,
+	...others
 }: GetFormattedDateInput) {
-  return (formatter || defaultDateFormatter)(others);
+	return (formatter || defaultDateFormatter)(others);
 }

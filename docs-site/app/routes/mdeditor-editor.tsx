@@ -5,20 +5,20 @@ import "allotment/dist/style.css";
 import "katex/dist/katex.min.css";
 
 const handleImageUpload = async (files: File[]) => {
-  const formdata = new FormData();
-  files.forEach((d) => formdata.append("upload", d));
-  // const res = await fetch("", {
-  //   method: "POST",
-  //   body: formdata,
-  // });
-  // const result = await res.json();
-  // return result as UploadResult[];
+	const formdata = new FormData();
+	files.forEach((d) => formdata.append("upload", d));
+	// const res = await fetch("", {
+	//   method: "POST",
+	//   body: formdata,
+	// });
+	// const result = await res.json();
+	// return result as UploadResult[];
 
-  return files.map((d) => ({
-    fileName: d.name,
-    fileUrl:
-      "https://img.touxiangkong.com/upload/2022/12/202212111670725005843539.jpg",
-  })) as UploadResult[];
+	return files.map((d) => ({
+		fileName: d.name,
+		fileUrl:
+			"https://img.touxiangkong.com/upload/2022/12/202212111670725005843539.jpg",
+	})) as UploadResult[];
 };
 
 const md = `# 目录
@@ -168,51 +168,51 @@ gemoji: :cat: :thumbsup:
 `;
 
 export default function MdEditorDemo() {
-  const [value, setValue] = useState(md);
+	const [value, setValue] = useState(md);
 
-  const [mode, setMode] = useState("auto");
+	const [mode, setMode] = useState("auto");
 
-  return (
-    <div>
-      <div className="flex justify-center gap-4 px-6 py-1 bg-base-200">
-        <Checkbox
-          size="sm"
-          label="dark theme"
-          onChange={(checked) => {
-            if (checked) {
-              document.documentElement.dataset.theme = "dark";
-            } else {
-              delete document.documentElement.dataset.theme;
-            }
-          }}
-        />
-        <Divider direction="horizontal" />
-        <RadioGroup
-          label="Mode:"
-          className="[&]:flex-row"
-          value={mode}
-          //@ts-expect-error types
-          onChange={setMode}
-          slots={{
-            groups: "[&]:flex-row [&]:gap-4",
-          }}
-        >
-          <Radio
-            value="auto"
-            label="auto"
-            slots={{ inputWrapper: "[&]:gap-1" }}
-          />
-          <Radio value="split" label="split" />
-          <Radio value="tab" label="tab" />
-        </RadioGroup>
-      </div>
-      <MdEditor
-        locale={zhLocale}
-        mode={mode as Mode}
-        handleImageUpload={handleImageUpload}
-        value={value}
-        onChange={setValue}
-      />
-    </div>
-  );
+	return (
+		<div>
+			<div className="flex justify-center gap-4 px-6 py-1 bg-base-200">
+				<Checkbox
+					size="sm"
+					label="dark theme"
+					onChange={(checked) => {
+						if (checked) {
+							document.documentElement.dataset.theme = "dark";
+						} else {
+							delete document.documentElement.dataset.theme;
+						}
+					}}
+				/>
+				<Divider direction="horizontal" />
+				<RadioGroup
+					label="Mode:"
+					className="[&]:flex-row"
+					value={mode}
+					//@ts-expect-error types
+					onChange={setMode}
+					slots={{
+						groups: "[&]:flex-row [&]:gap-4",
+					}}
+				>
+					<Radio
+						value="auto"
+						label="auto"
+						slots={{ inputWrapper: "[&]:gap-1" }}
+					/>
+					<Radio value="split" label="split" />
+					<Radio value="tab" label="tab" />
+				</RadioGroup>
+			</div>
+			<MdEditor
+				locale={zhLocale}
+				mode={mode as Mode}
+				handleImageUpload={handleImageUpload}
+				value={value}
+				onChange={setValue}
+			/>
+		</div>
+	);
 }

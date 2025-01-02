@@ -4,21 +4,21 @@
  * @returns 可能的值: 'String' | 'Boolean' | 'Number' | 'BigInt' | 'Symbol' | 'Undefined' | 'Null' | 'Array' |  'Object'(纯对象) | 'Function' | 'Date' 以及所有的类名
  */
 export function getType(input: unknown) {
-  return Object.prototype.toString.call(input).slice(8, -1);
+	return Object.prototype.toString.call(input).slice(8, -1);
 }
 
 export function isPrimitiveType(input: unknown) {
-  const type = getType(input);
-  switch (type) {
-    case "String":
-    case "Number":
-    case "BigInt":
-    case "Boolean":
-    case "Null":
-    case "Undefined":
-    case "symbol":
-      return true;
-    default:
-      return false;
-  }
+	const type = getType(input);
+	switch (type) {
+		case "String":
+		case "Number":
+		case "BigInt":
+		case "Boolean":
+		case "Null":
+		case "Undefined":
+		case "symbol":
+			return true;
+		default:
+			return false;
+	}
 }

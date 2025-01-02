@@ -26,41 +26,41 @@ import type { ProcessorOptions } from "../types";
  *  .processSync("markdown text");
  */
 export function getProcessor(options: ProcessorOptions) {
-  const { sanitize, plugins = [], remarkRehypeOptions = {} } = options;
-  // remark处理器链
-  let processor = unified().use(remarkParse) as unknown as Processor;
+	const { sanitize, plugins = [], remarkRehypeOptions = {} } = options;
+	// remark处理器链
+	let processor = unified().use(remarkParse) as unknown as Processor;
 
-  // 通过插件为解析处理器附件额外的remark处理器
-  plugins.forEach(({ remark }) => {
-    if (remark) {
-      processor = remark(processor);
-    }
-  });
+	// 通过插件为解析处理器附件额外的remark处理器
+	plugins.forEach(({ remark }) => {
+		if (remark) {
+			processor = remark(processor);
+		}
+	});
 
-  // rehype处理器链
-  processor = processor
-    .use(remarkRehype, { allowDangerousHtml: true, ...remarkRehypeOptions })
-    .use(rehypeRaw) as unknown as Processor;
+	// rehype处理器链
+	processor = processor
+		.use(remarkRehype, { allowDangerousHtml: true, ...remarkRehypeOptions })
+		.use(rehypeRaw) as unknown as Processor;
 
-  // 得到默认的消毒架构副本, 默认架构跟随GitHub风格
-  let schema = { ...defaultSchema };
-  // 额外的允许所有元素的class特性
-  schema.attributes!["*"].push("className");
+	// 得到默认的消毒架构副本, 默认架构跟随GitHub风格
+	let schema = { ...defaultSchema };
+	// 额外的允许所有元素的class特性
+	schema.attributes!["*"].push("className");
 
-  // 如果有自定义消毒函数则调用
-  if (typeof sanitize === "function") {
-    schema = sanitize(schema);
-  }
-  // 使用特定的架构的消毒处理器
-  processor = processor.use(rehypeSanitize, schema) as unknown as Processor;
+	// 如果有自定义消毒函数则调用
+	if (typeof sanitize === "function") {
+		schema = sanitize(schema);
+	}
+	// 使用特定的架构的消毒处理器
+	processor = processor.use(rehypeSanitize, schema) as unknown as Processor;
 
-  // 通过插件的方式附件其它rehype处理器
-  plugins.forEach(({ rehype }) => {
-    if (rehype) {
-      processor = rehype(processor);
-    }
-  });
+	// 通过插件的方式附件其它rehype处理器
+	plugins.forEach(({ rehype }) => {
+		if (rehype) {
+			processor = rehype(processor);
+		}
+	});
 
-  // 最后rehypeStringify处理器用于将hast序列化为字符串
-  return processor.use(rehypeStringify);
+	// 最后rehypeStringify处理器用于将hast序列化为字符串
+	return processor.use(rehypeStringify);
 }

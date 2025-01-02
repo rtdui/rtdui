@@ -1,5 +1,5 @@
 {
-  "version": 1,
-  "include": ["/kv/*"],
-  "exclude": []
+	"version": 1,
+	"include": ["/kv/*"],
+	"exclude": []
 }

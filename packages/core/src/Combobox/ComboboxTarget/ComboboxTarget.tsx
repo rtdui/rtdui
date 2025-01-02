@@ -5,72 +5,72 @@ import { useComboboxContext } from "../context";
 import { useComboboxTargetProps } from "./use-combobox-target-props";
 
 export interface ComboboxTargetProps {
-  /** Target element */
-  children: React.ReactNode;
+	/** Target element */
+	children: React.ReactNode;
 
-  /** Key of the prop that should be used to access element ref */
-  refProp?: string;
+	/** Key of the prop that should be used to access element ref */
+	refProp?: string;
 
-  /** Determines whether component should respond to keyboard events, `true` by default */
-  withKeyboardNavigation?: boolean;
+	/** Determines whether component should respond to keyboard events, `true` by default */
+	withKeyboardNavigation?: boolean;
 
-  /** Determines whether the target should have `aria-` attributes, `true` by default */
-  withAriaAttributes?: boolean;
+	/** Determines whether the target should have `aria-` attributes, `true` by default */
+	withAriaAttributes?: boolean;
 
-  /** Determines whether the target should have `aria-expanded` attribute, `false` by default */
-  withExpandedAttribute?: boolean;
+	/** Determines whether the target should have `aria-expanded` attribute, `false` by default */
+	withExpandedAttribute?: boolean;
 
-  /** Determines which events should be handled by the target element.
-   * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
-   * `input` by default.
-   * */
-  targetType?: "button" | "input";
+	/** Determines which events should be handled by the target element.
+	 * `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
+	 * `input` by default.
+	 * */
+	targetType?: "button" | "input";
 
-  /** Input autocomplete attribute */
-  autoComplete?: string;
+	/** Input autocomplete attribute */
+	autoComplete?: string;
 }
 
 export const ComboboxTarget = forwardRef<HTMLElement, ComboboxTargetProps>(
-  (props, ref) => {
-    const {
-      children,
-      refProp = "ref",
-      withKeyboardNavigation = true,
-      withAriaAttributes = true,
-      withExpandedAttribute = false,
-      targetType = "input",
-      autoComplete = "off",
-      ...others
-    } = props;
+	(props, ref) => {
+		const {
+			children,
+			refProp = "ref",
+			withKeyboardNavigation = true,
+			withAriaAttributes = true,
+			withExpandedAttribute = false,
+			targetType = "input",
+			autoComplete = "off",
+			...others
+		} = props;
 
-    if (!isValidElement(children)) {
-      throw new Error(
-        "Combobox.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported"
-      );
-    }
+		if (!isValidElement(children)) {
+			throw new Error(
+				"Combobox.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported",
+			);
+		}
 
-    const ctx = useComboboxContext();
+		const ctx = useComboboxContext();
 
-    const targetProps = useComboboxTargetProps({
-      targetType,
-      withAriaAttributes,
-      withKeyboardNavigation,
-      withExpandedAttribute,
-      onKeyDown: children.props.onKeyDown,
-      autoComplete,
-    });
+		const targetProps = useComboboxTargetProps({
+			targetType,
+			withAriaAttributes,
+			withKeyboardNavigation,
+			withExpandedAttribute,
+			onKeyDown: children.props.onKeyDown,
+			autoComplete,
+		});
 
-    const clonedElement = cloneElement(children, {
-      ...targetProps,
-      ...others,
-    });
+		const clonedElement = cloneElement(children, {
+			...targetProps,
+			...others,
+		});
 
-    return (
-      <Popover.Target ref={useMergedRef(ref, ctx.store.targetRef)}>
-        {clonedElement}
-      </Popover.Target>
-    );
-  }
+		return (
+			<Popover.Target ref={useMergedRef(ref, ctx.store.targetRef)}>
+				{clonedElement}
+			</Popover.Target>
+		);
+	},
 );
 
 ComboboxTarget.displayName = "@rtdui/core/ComboboxTarget";

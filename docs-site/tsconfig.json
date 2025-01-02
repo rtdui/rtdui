@@ -1,39 +1,39 @@
 {
-  "include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
-  "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "target": "ES2022",
-    "strict": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./app/*"],
-      "@rtdui/*": ["../packages/*/src"]
-    },
+	"include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
+	"compilerOptions": {
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"resolveJsonModule": true,
+		"target": "ES2022",
+		"strict": true,
+		"allowJs": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./app/*"],
+			"@rtdui/*": ["../packages/*/src"]
+		},
 
-    // Remix takes care of building everything in `remix build`.
-    "noEmit": true
-  },
-  "references": [
-    { "path": "../packages/code-highlight" },
-    { "path": "../packages/core" },
-    { "path": "../packages/datatable" },
-    { "path": "../packages/dialogs" },
-    { "path": "../packages/editor" },
-    { "path": "../packages/hooks" },
-    { "path": "../packages/notifications" },
-    { "path": "../packages/qr-code" },
-    { "path": "../packages/signature-pad" },
-    { "path": "../packages/spotlight" },
-    { "path": "../packages/dates" },
-    { "path": "../packages/md-editor" }
-  ]
+		// Remix takes care of building everything in `remix build`.
+		"noEmit": true
+	},
+	"references": [
+		{ "path": "../packages/code-highlight" },
+		{ "path": "../packages/core" },
+		{ "path": "../packages/datatable" },
+		{ "path": "../packages/dialogs" },
+		{ "path": "../packages/editor" },
+		{ "path": "../packages/hooks" },
+		{ "path": "../packages/notifications" },
+		{ "path": "../packages/qr-code" },
+		{ "path": "../packages/signature-pad" },
+		{ "path": "../packages/spotlight" },
+		{ "path": "../packages/dates" },
+		{ "path": "../packages/md-editor" }
+	]
 }

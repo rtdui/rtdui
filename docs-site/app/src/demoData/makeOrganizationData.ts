@@ -1,9 +1,9 @@
 import { fakerZH_CN as faker } from "@faker-js/faker";
 
 export interface Organization {
-  id: number;
-  parentId: number;
-  name: string;
+	id: number;
+	parentId: number;
+	name: string;
 }
 /**
  * 创建组织结构, 邻接表结构: id-parentId
@@ -11,12 +11,12 @@ export interface Organization {
  * @returns
  */
 export const newOrganization = (id: number): Organization => {
-  const pid = faker.number.int({ min: 1, max: id });
-  return {
-    id,
-    parentId: pid === id ? 0 : pid,
-    name: faker.person.fullName(),
-  };
+	const pid = faker.number.int({ min: 1, max: id });
+	return {
+		id,
+		parentId: pid === id ? 0 : pid,
+		name: faker.person.fullName(),
+	};
 };
 
 /**
@@ -25,7 +25,7 @@ export const newOrganization = (id: number): Organization => {
  * @returns
  */
 export function makeOrganizationData(len: number) {
-  return Array.from({ length: len }).map((d, index) => ({
-    ...newOrganization(index + 1),
-  }));
+	return Array.from({ length: len }).map((d, index) => ({
+		...newOrganization(index + 1),
+	}));
 }

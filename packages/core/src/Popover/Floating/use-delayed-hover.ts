@@ -1,47 +1,47 @@
 import { useEffect, useRef } from "react";
 
 interface UseDelayedHoverInput {
-  open: () => void;
-  close: () => void;
-  openDelay: number | undefined;
-  closeDelay: number | undefined;
+	open: () => void;
+	close: () => void;
+	openDelay: number | undefined;
+	closeDelay: number | undefined;
 }
 
 export function useDelayedHover({
-  open,
-  close,
-  openDelay,
-  closeDelay,
+	open,
+	close,
+	openDelay,
+	closeDelay,
 }: UseDelayedHoverInput) {
-  const openTimeout = useRef(-1);
-  const closeTimeout = useRef(-1);
+	const openTimeout = useRef(-1);
+	const closeTimeout = useRef(-1);
 
-  const clearTimeouts = () => {
-    window.clearTimeout(openTimeout.current);
-    window.clearTimeout(closeTimeout.current);
-  };
+	const clearTimeouts = () => {
+		window.clearTimeout(openTimeout.current);
+		window.clearTimeout(closeTimeout.current);
+	};
 
-  const openDropdown = () => {
-    clearTimeouts();
+	const openDropdown = () => {
+		clearTimeouts();
 
-    if (openDelay === 0 || openDelay === undefined) {
-      open();
-    } else {
-      openTimeout.current = window.setTimeout(open, openDelay);
-    }
-  };
+		if (openDelay === 0 || openDelay === undefined) {
+			open();
+		} else {
+			openTimeout.current = window.setTimeout(open, openDelay);
+		}
+	};
 
-  const closeDropdown = () => {
-    clearTimeouts();
+	const closeDropdown = () => {
+		clearTimeouts();
 
-    if (closeDelay === 0 || closeDelay === undefined) {
-      close();
-    } else {
-      closeTimeout.current = window.setTimeout(close, closeDelay);
-    }
-  };
+		if (closeDelay === 0 || closeDelay === undefined) {
+			close();
+		} else {
+			closeTimeout.current = window.setTimeout(close, closeDelay);
+		}
+	};
 
-  useEffect(() => clearTimeouts, []);
+	useEffect(() => clearTimeouts, []);
 
-  return { openDropdown, closeDropdown };
+	return { openDropdown, closeDropdown };
 }

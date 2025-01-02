@@ -4,158 +4,157 @@ import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { Decoration, DecorationSet } from "@tiptap/pm/view";
 
 function parseNodes(
-  nodes: any[],
-  className: string[] = []
+	nodes: any[],
+	className: string[] = [],
 ): { text: string; classes: string[] }[] {
-  return nodes
-    .flatMap((node) => {
-      const classes = [
-        ...className,
-        ...(node.properties ? node.properties.className : []),
-      ];
+	return nodes.flatMap((node) => {
+		const classes = [
+			...className,
+			...(node.properties ? node.properties.className : []),
+		];
 
-      if (node.children) {
-        return parseNodes(node.children, classes);
-      }
+		if (node.children) {
+			return parseNodes(node.children, classes);
+		}
 
-      return {
-        text: node.value,
-        classes,
-      };
-    });
+		return {
+			text: node.value,
+			classes,
+		};
+	});
 }
 
 function getDecorations({
-  doc,
-  name,
-  refractor,
-  defaultLanguage,
+	doc,
+	name,
+	refractor,
+	defaultLanguage,
 }: {
-  doc: ProsemirrorNode;
-  name: string;
-  refractor: any;
-  defaultLanguage: string | null | undefined;
+	doc: ProsemirrorNode;
+	name: string;
+	refractor: any;
+	defaultLanguage: string | null | undefined;
 }) {
-  const decorations: Decoration[] = [];
+	const decorations: Decoration[] = [];
 
-  findChildren(doc, (node) => node.type.name === name).forEach((block) => {
-    let from = block.pos + 1;
-    const language: string = block.node.attrs.language || defaultLanguage;
-    let rootLang = language;
-    if (language.includes("diff-")) {
-      rootLang = language.split("-")[1];
-    }
+	findChildren(doc, (node) => node.type.name === name).forEach((block) => {
+		let from = block.pos + 1;
+		const language: string = block.node.attrs.language || defaultLanguage;
+		let rootLang = language;
+		if (language.includes("diff-")) {
+			rootLang = language.split("-")[1];
+		}
 
-    const ast = refractor.registered(rootLang)
-      ? refractor.highlight(block.node.textContent, rootLang)
-      : refractor.highlight(block.node.textContent, "tsx");
+		const ast = refractor.registered(rootLang)
+			? refractor.highlight(block.node.textContent, rootLang)
+			: refractor.highlight(block.node.textContent, "tsx");
 
-    const nodes = ast.children || [];
-    parseNodes(nodes).forEach((node) => {
-      const to = from + node.text.length;
+		const nodes = ast.children || [];
+		parseNodes(nodes).forEach((node) => {
+			const to = from + node.text.length;
 
-      if (node.classes.length) {
-        const decoration = Decoration.inline(from, to, {
-          class: node.classes.join(" "),
-        });
+			if (node.classes.length) {
+				const decoration = Decoration.inline(from, to, {
+					class: node.classes.join(" "),
+				});
 
-        decorations.push(decoration);
-      }
+				decorations.push(decoration);
+			}
 
-      from = to;
-    });
-  });
+			from = to;
+		});
+	});
 
-  return DecorationSet.create(doc, decorations);
+	return DecorationSet.create(doc, decorations);
 }
 
 function isFunction(param: any) {
-  return typeof param === "function";
+	return typeof param === "function";
 }
 
 export function RefractorPlugin({
-  name,
-  refractor,
-  defaultLanguage,
+	name,
+	refractor,
+	defaultLanguage,
 }: {
-  name: string;
-  refractor: any;
-  defaultLanguage: string | null | undefined;
+	name: string;
+	refractor: any;
+	defaultLanguage: string | null | undefined;
 }) {
-  if (
-    !["highlight", "register", "alias", "registered", "listLanguages"].every(
-      (api) => isFunction(refractor[api])
-    )
-  ) {
-    throw Error(
-      "You should provide an instance of refractor to use the extension-code-block-refractor"
-    );
-  }
+	if (
+		!["highlight", "register", "alias", "registered", "listLanguages"].every(
+			(api) => isFunction(refractor[api]),
+		)
+	) {
+		throw Error(
+			"You should provide an instance of refractor to use the extension-code-block-refractor",
+		);
+	}
 
-  const refractorPlugin: Plugin<any> = new Plugin({
-    key: new PluginKey("refractor"),
+	const refractorPlugin: Plugin<any> = new Plugin({
+		key: new PluginKey("refractor"),
 
-    state: {
-      init: (_, { doc }) =>
-        getDecorations({
-          doc,
-          name,
-          refractor,
-          defaultLanguage,
-        }),
-      apply: (transaction, decorationSet, oldState, newState) => {
-        const oldNodeName = oldState.selection.$head.parent.type.name;
-        const newNodeName = newState.selection.$head.parent.type.name;
-        const oldNodes = findChildren(
-          oldState.doc,
-          (node) => node.type.name === name
-        );
-        const newNodes = findChildren(
-          newState.doc,
-          (node) => node.type.name === name
-        );
+		state: {
+			init: (_, { doc }) =>
+				getDecorations({
+					doc,
+					name,
+					refractor,
+					defaultLanguage,
+				}),
+			apply: (transaction, decorationSet, oldState, newState) => {
+				const oldNodeName = oldState.selection.$head.parent.type.name;
+				const newNodeName = newState.selection.$head.parent.type.name;
+				const oldNodes = findChildren(
+					oldState.doc,
+					(node) => node.type.name === name,
+				);
+				const newNodes = findChildren(
+					newState.doc,
+					(node) => node.type.name === name,
+				);
 
-        if (
-          transaction.docChanged &&
-          // Apply decorations if:
-          // selection includes named node,
-          ([oldNodeName, newNodeName].includes(name) ||
-            // OR transaction adds/removes named node,
-            newNodes.length !== oldNodes.length ||
-            // OR transaction has changes that completely encapsulte a node
-            // (for example, a transaction that affects the entire document).
-            // Such transactions can happen during collab syncing via y-prosemirror, for example.
-            transaction.steps.some((step: any) => {
-              return (
-                step.from !== undefined &&
-                step.to !== undefined &&
-                oldNodes.some((node) => {
-                  return (
-                    node.pos >= step.from &&
-                    node.pos + node.node.nodeSize <= step.to
-                  );
-                })
-              );
-            }))
-        ) {
-          return getDecorations({
-            doc: transaction.doc,
-            name,
-            refractor,
-            defaultLanguage,
-          });
-        }
+				if (
+					transaction.docChanged &&
+					// Apply decorations if:
+					// selection includes named node,
+					([oldNodeName, newNodeName].includes(name) ||
+						// OR transaction adds/removes named node,
+						newNodes.length !== oldNodes.length ||
+						// OR transaction has changes that completely encapsulte a node
+						// (for example, a transaction that affects the entire document).
+						// Such transactions can happen during collab syncing via y-prosemirror, for example.
+						transaction.steps.some((step: any) => {
+							return (
+								step.from !== undefined &&
+								step.to !== undefined &&
+								oldNodes.some((node) => {
+									return (
+										node.pos >= step.from &&
+										node.pos + node.node.nodeSize <= step.to
+									);
+								})
+							);
+						}))
+				) {
+					return getDecorations({
+						doc: transaction.doc,
+						name,
+						refractor,
+						defaultLanguage,
+					});
+				}
 
-        return decorationSet.map(transaction.mapping, transaction.doc);
-      },
-    },
+				return decorationSet.map(transaction.mapping, transaction.doc);
+			},
+		},
 
-    props: {
-      decorations(state) {
-        return refractorPlugin.getState(state);
-      },
-    },
-  });
+		props: {
+			decorations(state) {
+				return refractorPlugin.getState(state);
+			},
+		},
+	});
 
-  return refractorPlugin;
+	return refractorPlugin;
 }

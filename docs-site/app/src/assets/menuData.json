@@ -1,260 +1,260 @@
 [
-  {
-    "group": "doc",
-    "items": [
-      { "label": "about", "url": "/getting-started" },
-      { "label": "install", "url": "/install" },
-      { "label": "custom", "url": "/custom" },
-      { "label": "polymorphic", "url": "/polymorphic" },
-      { "label": "changelog", "url": "/changelog" }
-    ]
-  },
-  {
-    "group": "layout",
-    "items": [
-      { "label": "appShell", "url": "/components/appshell" },
-      { "label": "aspectRatio", "url": "/components/aspectratio" },
-      { "label": "grid", "url": "/components/grid" },
-      { "label": "drawer", "url": "/components/drawer" },
-      { "label": "indicator", "url": "/components/indicator" },
-      { "label": "joinGroup", "url": "/components/joingroup" },
-      { "label": "divider", "url": "/components/divider" }
-    ]
-  },
-  {
-    "group": "buttons",
-    "items": [
-      { "label": "button", "url": "/components/button" },
-      { "label": "link", "url": "/components/link" }
-    ]
-  },
-  {
-    "group": "inputBase",
-    "items": [
-      { "label": "input", "url": "/components/input", "flag": "v4 new" }
-    ]
-  },
-  {
-    "group": "inputs",
-    "items": [
-      { "label": "checkbox", "url": "/components/checkbox" },
-      {
-        "label": "textInput",
-        "url": "/components/textinput",
-        "flag": "v4 update"
-      },
-      {
-        "label": "textArea",
-        "url": "/components/textarea",
-        "flag": "v4 update"
-      },
-      {
-        "label": "jsonInput",
-        "url": "/components/jsoninput",
-        "flag": "v4 update"
-      },
-      {
-        "label": "numberInput",
-        "url": "/components/numberinput",
-        "flag": "v4 update"
-      },
-      { "label": "slider", "url": "/components/slider" },
-      { "label": "swap", "url": "/components/swap" },
-      { "label": "switch", "url": "/components/switch" },
-      { "label": "radio", "url": "/components/radio" },
-      {
-        "label": "floatingSelect",
-        "url": "/components/floatingselect",
-        "flag": "v3 new"
-      },
-      { "label": "rating", "url": "/components/rating" },
-      {
-        "label": "colorPicker",
-        "url": "/components/colorpicker",
-        "flag": "v3 new"
-      },
-      {
-        "label": "colorInput",
-        "url": "/components/colorinput",
-        "flag": "v3 new"
-      },
-      {
-        "label": "nativeSelect",
-        "url": "/components/nativeselect",
-        "flag": "v4.2 new"
-      }
-    ]
-  },
-  {
-    "group": "comboBox",
-    "items": [
-      { "label": "combobox", "url": "/components/combobox", "flag": "v4 new" },
-      {
-        "label": "autoComplete",
-        "url": "/components/autocomplete",
-        "flag": "v4 rewrite"
-      },
-      { "label": "select", "url": "/components/select", "flag": "v4 rewrite" },
-      {
-        "label": "multiSelect",
-        "url": "/components/multiselect",
-        "flag": "v4 new"
-      },
-      {
-        "label": "tagsInput",
-        "url": "/components/tagsinput",
-        "flag": "v4 new"
-      }
-    ]
-  },
-  {
-    "group": "dataDisplay",
-    "items": [
-      { "label": "accordion", "url": "/components/accordion" },
-      { "label": "avatar", "url": "/components/avatar" },
-      { "label": "badge", "url": "/components/badge" },
-      { "label": "card", "url": "/components/card" },
-      { "label": "carousel", "url": "/components/carousel" },
-      { "label": "countdown", "url": "/components/countdown" },
-      { "label": "chip", "url": "/components/chip" },
-      { "label": "kbd", "url": "/components/kbd" },
-      { "label": "loading", "url": "/components/loading" },
-      { "label": "progress", "url": "/components/progress" },
-      { "label": "radialProgress", "url": "/components/radialprogress" },
-      { "label": "statPanel", "url": "/components/statpanel" },
-      { "label": "tooltip", "url": "/components/tooltip" },
-      { "label": "watermark", "url": "/components/watermark" }
-    ]
-  },
-  {
-    "group": "navigation",
-    "items": [
-      { "label": "tree", "url": "/components/tree" },
-      { "label": "pagination", "url": "/components/pagination" },
-      { "label": "steps", "url": "/components/steps" },
-      { "label": "tabs", "url": "/components/tabs", "flag": "v3 rewrite" }
-    ]
-  },
-  {
-    "group": "misc",
-    "items": [
-      { "label": "affix", "url": "/components/affix" },
-      { "label": "popover", "url": "/components/popover" },
-      { "label": "portal", "url": "/components/portal" },
-      { "label": "skeleton", "url": "/components/skeleton" },
-      { "label": "transition", "url": "/components/transition" },
-      { "label": "modal", "url": "/components/modal" }
-    ]
-  },
-  {
-    "group": "otherPackages",
-    "items": [
-      { "label": "dialogs", "url": "/components/dialog" },
-      { "label": "notifications", "url": "/components/notification" },
-      { "label": "codeHighlight", "url": "/components/codehighlight" },
-      { "label": "editor", "url": "/components/editor" },
-      { "label": "mdeditor", "url": "/components/mdeditor" },
-      { "label": "qrCode", "url": "/components/qrcode" },
-      {
-        "label": "signaturePad",
-        "url": "/components/signaturepad",
-        "flag": "v4.5 new"
-      }
-    ]
-  },
-  {
-    "group": "dates",
-    "items": [
-      {
-        "label": "dates.introduce",
-        "url": "/components/dates_about",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.common",
-        "url": "/components/dates_common",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.locale",
-        "url": "/components/dates_locale",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.multiple",
-        "url": "/components/dates_multiple",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.range",
-        "url": "/components/dates_range",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.valueFormat",
-        "url": "/components/dates_valueformat",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.clearable",
-        "url": "/components/dates_clearable",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.timeWithSeconds",
-        "url": "/components/dates_withseconds",
-        "flag": "v4.3 new"
-      },
-      {
-        "label": "dates.inline",
-        "url": "/components/dates_inline",
-        "flag": "v4.3 new"
-      }
-    ]
-  },
-  {
-    "group": "dataTables",
-    "items": [
-      { "label": "dataTable.introduce", "url": "/components/datatable_about" },
-      { "label": "dataTable.api", "url": "/components/datatable" },
-      { "label": "dataTable.basic", "url": "/components/datatable_basic" },
-      {
-        "label": "dataTable.columnDef",
-        "url": "/components/datatable_columndef"
-      },
-      {
-        "label": "dataTable.format",
-        "url": "/components/datatable_format"
-      },
-      {
-        "label": "dataTable.virtualized",
-        "url": "/components/datatable_virtualized"
-      },
-      {
-        "label": "dataTable.grouping",
-        "url": "/components/datatable_grouping"
-      },
-      {
-        "label": "dataTable.filterList",
-        "url": "/components/datatable_filterList"
-      },
-      {
-        "label": "dataTable.pagination",
-        "url": "/components/datatable_pagination"
-      },
-      {
-        "label": "dataTable.selection",
-        "url": "/components/datatable_selection"
-      },
-      {
-        "label": "dataTable.tree",
-        "url": "/components/datatable_tree"
-      },
-      {
-        "label": "dataTable.editable",
-        "url": "/components/datatable_editable"
-      },
-      { "label": "dataTableSelect", "url": "/components/datatableselect" }
-    ]
-  }
+	{
+		"group": "doc",
+		"items": [
+			{ "label": "about", "url": "/getting-started" },
+			{ "label": "install", "url": "/install" },
+			{ "label": "custom", "url": "/custom" },
+			{ "label": "polymorphic", "url": "/polymorphic" },
+			{ "label": "changelog", "url": "/changelog" }
+		]
+	},
+	{
+		"group": "layout",
+		"items": [
+			{ "label": "appShell", "url": "/components/appshell" },
+			{ "label": "aspectRatio", "url": "/components/aspectratio" },
+			{ "label": "grid", "url": "/components/grid" },
+			{ "label": "drawer", "url": "/components/drawer" },
+			{ "label": "indicator", "url": "/components/indicator" },
+			{ "label": "joinGroup", "url": "/components/joingroup" },
+			{ "label": "divider", "url": "/components/divider" }
+		]
+	},
+	{
+		"group": "buttons",
+		"items": [
+			{ "label": "button", "url": "/components/button" },
+			{ "label": "link", "url": "/components/link" }
+		]
+	},
+	{
+		"group": "inputBase",
+		"items": [
+			{ "label": "input", "url": "/components/input", "flag": "v4 new" }
+		]
+	},
+	{
+		"group": "inputs",
+		"items": [
+			{ "label": "checkbox", "url": "/components/checkbox" },
+			{
+				"label": "textInput",
+				"url": "/components/textinput",
+				"flag": "v4 update"
+			},
+			{
+				"label": "textArea",
+				"url": "/components/textarea",
+				"flag": "v4 update"
+			},
+			{
+				"label": "jsonInput",
+				"url": "/components/jsoninput",
+				"flag": "v4 update"
+			},
+			{
+				"label": "numberInput",
+				"url": "/components/numberinput",
+				"flag": "v4 update"
+			},
+			{ "label": "slider", "url": "/components/slider" },
+			{ "label": "swap", "url": "/components/swap" },
+			{ "label": "switch", "url": "/components/switch" },
+			{ "label": "radio", "url": "/components/radio" },
+			{
+				"label": "floatingSelect",
+				"url": "/components/floatingselect",
+				"flag": "v3 new"
+			},
+			{ "label": "rating", "url": "/components/rating" },
+			{
+				"label": "colorPicker",
+				"url": "/components/colorpicker",
+				"flag": "v3 new"
+			},
+			{
+				"label": "colorInput",
+				"url": "/components/colorinput",
+				"flag": "v3 new"
+			},
+			{
+				"label": "nativeSelect",
+				"url": "/components/nativeselect",
+				"flag": "v4.2 new"
+			}
+		]
+	},
+	{
+		"group": "comboBox",
+		"items": [
+			{ "label": "combobox", "url": "/components/combobox", "flag": "v4 new" },
+			{
+				"label": "autoComplete",
+				"url": "/components/autocomplete",
+				"flag": "v4 rewrite"
+			},
+			{ "label": "select", "url": "/components/select", "flag": "v4 rewrite" },
+			{
+				"label": "multiSelect",
+				"url": "/components/multiselect",
+				"flag": "v4 new"
+			},
+			{
+				"label": "tagsInput",
+				"url": "/components/tagsinput",
+				"flag": "v4 new"
+			}
+		]
+	},
+	{
+		"group": "dataDisplay",
+		"items": [
+			{ "label": "accordion", "url": "/components/accordion" },
+			{ "label": "avatar", "url": "/components/avatar" },
+			{ "label": "badge", "url": "/components/badge" },
+			{ "label": "card", "url": "/components/card" },
+			{ "label": "carousel", "url": "/components/carousel" },
+			{ "label": "countdown", "url": "/components/countdown" },
+			{ "label": "chip", "url": "/components/chip" },
+			{ "label": "kbd", "url": "/components/kbd" },
+			{ "label": "loading", "url": "/components/loading" },
+			{ "label": "progress", "url": "/components/progress" },
+			{ "label": "radialProgress", "url": "/components/radialprogress" },
+			{ "label": "statPanel", "url": "/components/statpanel" },
+			{ "label": "tooltip", "url": "/components/tooltip" },
+			{ "label": "watermark", "url": "/components/watermark" }
+		]
+	},
+	{
+		"group": "navigation",
+		"items": [
+			{ "label": "tree", "url": "/components/tree" },
+			{ "label": "pagination", "url": "/components/pagination" },
+			{ "label": "steps", "url": "/components/steps" },
+			{ "label": "tabs", "url": "/components/tabs", "flag": "v3 rewrite" }
+		]
+	},
+	{
+		"group": "misc",
+		"items": [
+			{ "label": "affix", "url": "/components/affix" },
+			{ "label": "popover", "url": "/components/popover" },
+			{ "label": "portal", "url": "/components/portal" },
+			{ "label": "skeleton", "url": "/components/skeleton" },
+			{ "label": "transition", "url": "/components/transition" },
+			{ "label": "modal", "url": "/components/modal" }
+		]
+	},
+	{
+		"group": "otherPackages",
+		"items": [
+			{ "label": "dialogs", "url": "/components/dialog" },
+			{ "label": "notifications", "url": "/components/notification" },
+			{ "label": "codeHighlight", "url": "/components/codehighlight" },
+			{ "label": "editor", "url": "/components/editor" },
+			{ "label": "mdeditor", "url": "/components/mdeditor" },
+			{ "label": "qrCode", "url": "/components/qrcode" },
+			{
+				"label": "signaturePad",
+				"url": "/components/signaturepad",
+				"flag": "v4.5 new"
+			}
+		]
+	},
+	{
+		"group": "dates",
+		"items": [
+			{
+				"label": "dates.introduce",
+				"url": "/components/dates_about",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.common",
+				"url": "/components/dates_common",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.locale",
+				"url": "/components/dates_locale",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.multiple",
+				"url": "/components/dates_multiple",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.range",
+				"url": "/components/dates_range",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.valueFormat",
+				"url": "/components/dates_valueformat",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.clearable",
+				"url": "/components/dates_clearable",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.timeWithSeconds",
+				"url": "/components/dates_withseconds",
+				"flag": "v4.3 new"
+			},
+			{
+				"label": "dates.inline",
+				"url": "/components/dates_inline",
+				"flag": "v4.3 new"
+			}
+		]
+	},
+	{
+		"group": "dataTables",
+		"items": [
+			{ "label": "dataTable.introduce", "url": "/components/datatable_about" },
+			{ "label": "dataTable.api", "url": "/components/datatable" },
+			{ "label": "dataTable.basic", "url": "/components/datatable_basic" },
+			{
+				"label": "dataTable.columnDef",
+				"url": "/components/datatable_columndef"
+			},
+			{
+				"label": "dataTable.format",
+				"url": "/components/datatable_format"
+			},
+			{
+				"label": "dataTable.virtualized",
+				"url": "/components/datatable_virtualized"
+			},
+			{
+				"label": "dataTable.grouping",
+				"url": "/components/datatable_grouping"
+			},
+			{
+				"label": "dataTable.filterList",
+				"url": "/components/datatable_filterList"
+			},
+			{
+				"label": "dataTable.pagination",
+				"url": "/components/datatable_pagination"
+			},
+			{
+				"label": "dataTable.selection",
+				"url": "/components/datatable_selection"
+			},
+			{
+				"label": "dataTable.tree",
+				"url": "/components/datatable_tree"
+			},
+			{
+				"label": "dataTable.editable",
+				"url": "/components/datatable_editable"
+			},
+			{ "label": "dataTableSelect", "url": "/components/datatableselect" }
+		]
+	}
 ]

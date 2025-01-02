@@ -1,6 +1,6 @@
 export { DecadeLevel } from "./DecadeLevel";
 export type {
-  DecadeLevelBaseSettings,
-  DecadeLevelProps,
-  DecadeLevelSettings,
+	DecadeLevelBaseSettings,
+	DecadeLevelProps,
+	DecadeLevelSettings,
 } from "./DecadeLevel";

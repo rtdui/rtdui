@@ -16,9 +16,9 @@
 // );
 
 export const ROLLUP_EXCLUDE_USE_CLIENT = ["index"].reduce<string[]>(
-  (acc, name) => {
-    acc.push(`${name}.js`, `${name}.mjs`, `${name}.cjs`);
-    return acc;
-  },
-  []
+	(acc, name) => {
+		acc.push(`${name}.js`, `${name}.mjs`, `${name}.cjs`);
+		return acc;
+	},
+	[],
 );

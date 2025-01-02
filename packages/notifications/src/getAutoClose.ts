@@ -1,14 +1,14 @@
 export function getAutoClose(
-  autoClose: boolean | number,
-  notificationAutoClose: boolean | number
+	autoClose: boolean | number,
+	notificationAutoClose: boolean | number,
 ) {
-  if (typeof notificationAutoClose === "number") {
-    return notificationAutoClose;
-  }
+	if (typeof notificationAutoClose === "number") {
+		return notificationAutoClose;
+	}
 
-  if (notificationAutoClose === false || autoClose === false) {
-    return false;
-  }
+	if (notificationAutoClose === false || autoClose === false) {
+		return false;
+	}
 
-  return autoClose;
+	return autoClose;
 }

@@ -3,12 +3,12 @@ import type { ColorFormat, HsvaColor } from "./types";
 
 /** 给定的颜色是否是浅色 */
 export function isLightColor(colorLike: ColorTypes) {
-  const color = new Color(colorLike);
-  const onWhite = Math.abs(color.contrast("white", "APCA"));
-  const onBlack = Math.abs(color.contrast("black", "APCA"));
+	const color = new Color(colorLike);
+	const onWhite = Math.abs(color.contrast("white", "APCA"));
+	const onBlack = Math.abs(color.contrast("black", "APCA"));
 
-  // onBlack > onWhite 说明背景为浅色, 反之背景为深色
-  return onBlack > onWhite;
+	// onBlack > onWhite 说明背景为浅色, 反之背景为深色
+	return onBlack > onWhite;
 }
 
 /**
@@ -21,107 +21,107 @@ export function isLightColor(colorLike: ColorTypes) {
  * @returns
  */
 export function getTextColor(
-  colorLike: ColorTypes,
-  lightColor = "white",
-  darkColor = "black"
+	colorLike: ColorTypes,
+	lightColor = "white",
+	darkColor = "black",
 ) {
-  return isLightColor(colorLike) ? darkColor : lightColor;
+	return isLightColor(colorLike) ? darkColor : lightColor;
 }
 
 /** 色彩空间与格式之间的映射 */
 const formatMapping = {
-  srgb: ["rgb", "hex"],
-  hwb: ["hwb"],
-  hsl: ["hsl"],
-  lab: ["lab"],
-  lch: ["lch"],
-  oklch: ["oklch"],
-  oklab: ["oklab"],
+	srgb: ["rgb", "hex"],
+	hwb: ["hwb"],
+	hsl: ["hsl"],
+	lab: ["lab"],
+	lch: ["lch"],
+	oklch: ["oklch"],
+	oklab: ["oklab"],
 };
 
 /** 从格式中获取色彩空间 */
 export function getSpaceFromFormat(colorFormat: ColorFormat) {
-  if (colorFormat === "color") {
-    return;
-  }
-  const item = Object.entries(formatMapping).find(([, f]) =>
-    f.includes(colorFormat)
-  );
+	if (colorFormat === "color") {
+		return;
+	}
+	const item = Object.entries(formatMapping).find(([, f]) =>
+		f.includes(colorFormat),
+	);
 
-  if (item) {
-    return item[0];
-  } else {
-    throw new Error(`${colorFormat} is not a valid color format`);
-  }
+	if (item) {
+		return item[0];
+	} else {
+		throw new Error(`${colorFormat} is not a valid color format`);
+	}
 }
 /** 转换颜色到任意格式 */
 export function convertTo(format: ColorFormat, colorLike: ColorTypes) {
-  const space = getSpaceFromFormat(format);
-  if (space) {
-    return new Color(colorLike).to(space).toString({ format });
-  }
-  throw new Error(`${format} is not a valid color format`);
+	const space = getSpaceFromFormat(format);
+	if (space) {
+		return new Color(colorLike).to(space).toString({ format });
+	}
+	throw new Error(`${format} is not a valid color format`);
 }
 
 /** 解析任意颜色格式 */
 export function parseColor(colorLike: ColorTypes) {
-  return new Color(colorLike);
+	return new Color(colorLike);
 }
 
 export function convertHsvaTo(format: ColorFormat, color: HsvaColor) {
-  if (!color) {
-    return "#000000";
-  }
-  const hsvColor = new Color("hsv", [color.h, color.s, color.v], color.a);
-  const space = getSpaceFromFormat(format);
-  return hsvColor.to(space!).toString({ format });
+	if (!color) {
+		return "#000000";
+	}
+	const hsvColor = new Color("hsv", [color.h, color.s, color.v], color.a);
+	const space = getSpaceFromFormat(format);
+	return hsvColor.to(space!).toString({ format });
 }
 
 export function parseColorToHsva(colorLike: string): HsvaColor {
-  try {
-    const hsvColor = parseColor(colorLike).to("hsv");
-    return {
-      h: Number.isNaN(hsvColor.h) ? 0 : hsvColor.h,
-      s: hsvColor.s,
-      v: hsvColor.v,
-      a: hsvColor.alpha,
-    };
-  } catch (error) {
-    return { h: 0, s: 0, v: 0, a: 1 };
-  }
+	try {
+		const hsvColor = parseColor(colorLike).to("hsv");
+		return {
+			h: Number.isNaN(hsvColor.h) ? 0 : hsvColor.h,
+			s: hsvColor.s,
+			v: hsvColor.v,
+			a: hsvColor.alpha,
+		};
+	} catch (error) {
+		return { h: 0, s: 0, v: 0, a: 1 };
+	}
 }
 
 /** 是否是合法的颜色 */
 export function isColorValid(colorLike: ColorTypes) {
-  try {
-    new Color(colorLike);
-    return true;
-  } catch (error) {
-    return false;
-  }
+	try {
+		new Color(colorLike);
+		return true;
+	} catch (error) {
+		return false;
+	}
 }
 
 /** 是否是合法颜色和格式 */
 export function isColorFormatValid(colorLike: ColorTypes, format: ColorFormat) {
-  return isColorValid(colorLike) && isFormatValid(format);
+	return isColorValid(colorLike) && isFormatValid(format);
 }
 
 const allColorFormat: ColorFormat[] = [
-  "hex",
-  "rgb",
-  "hsl",
-  "hwb",
-  "lab",
-  "oklab",
-  "lch",
-  "oklch",
-  "color",
+	"hex",
+	"rgb",
+	"hsl",
+	"hwb",
+	"lab",
+	"oklab",
+	"lch",
+	"oklch",
+	"color",
 ];
 
 export function getAllColorFormat() {
-  return allColorFormat;
+	return allColorFormat;
 }
 
 export function isFormatValid(format: ColorFormat) {
-  return allColorFormat.includes(format);
+	return allColorFormat.includes(format);
 }

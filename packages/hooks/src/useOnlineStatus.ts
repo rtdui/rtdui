@@ -1,20 +1,20 @@
 import React from "react";
 
 function getSnapshot() {
-  return navigator.onLine;
+	return navigator.onLine;
 }
 
 function getServerSnapshot() {
-  return true; // Always show "Online" for SSR
+	return true; // Always show "Online" for SSR
 }
 
 function subscribe(callback: () => void) {
-  window.addEventListener("online", callback);
-  window.addEventListener("offline", callback);
-  return () => {
-    window.removeEventListener("online", callback);
-    window.removeEventListener("offline", callback);
-  };
+	window.addEventListener("online", callback);
+	window.addEventListener("offline", callback);
+	return () => {
+		window.removeEventListener("online", callback);
+		window.removeEventListener("offline", callback);
+	};
 }
 
 /**
@@ -23,10 +23,10 @@ function subscribe(callback: () => void) {
  * @returns
  */
 export function useOnlineStatus() {
-  const isOnline = React.useSyncExternalStore(
-    subscribe,
-    getSnapshot,
-    getServerSnapshot
-  );
-  return isOnline;
+	const isOnline = React.useSyncExternalStore(
+		subscribe,
+		getSnapshot,
+		getServerSnapshot,
+	);
+	return isOnline;
 }

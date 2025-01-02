@@ -1,31 +1,31 @@
 {
-  "exclude": [
-    "node_modules",
-    "./packages/*/esm/**/*",
-    "./packages/*/lib/**/*",
-    "./packages/*/cjs/**/*",
-    "./docs-site/build/**/*",
-    "./docs-site/functions/**/*",
-    "./docs-site/public/**/*"
-  ],
-  "compilerOptions": {
-    "types": ["node"],
-    "target": "ES2018",
-    "lib": ["DOM", "ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noEmitOnError": true,
-    "allowJs": true,
-    "outDir": "dist",
-    "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./docs-site/app/*"],
-      "@rtdui/*": ["./packages/*/src"]
-    }
-  }
+	"exclude": [
+		"node_modules",
+		"./packages/*/esm/**/*",
+		"./packages/*/lib/**/*",
+		"./packages/*/cjs/**/*",
+		"./docs-site/build/**/*",
+		"./docs-site/functions/**/*",
+		"./docs-site/public/**/*"
+	],
+	"compilerOptions": {
+		"types": ["node"],
+		"target": "ES2018",
+		"lib": ["DOM", "ESNext"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"noEmitOnError": true,
+		"allowJs": true,
+		"outDir": "dist",
+		"strict": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./docs-site/app/*"],
+			"@rtdui/*": ["./packages/*/src"]
+		}
+	}
 }
