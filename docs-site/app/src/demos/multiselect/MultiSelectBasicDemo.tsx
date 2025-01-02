@@ -28,14 +28,14 @@ const fruits = [
   "Zucchini Squash",
 ];
 
-const maxSelectdValues = [1, 2, 3, Infinity];
+const maxSelectdValues = [1, 2, 3, Number.POSITIVE_INFINITY];
 export default function Demo() {
   const [state, setState] = useState({
     clearable: false,
     searchable: false,
     withCheckIcon: true,
     checkIconPosition: "left",
-    maxValues: Infinity,
+    maxValues: Number.POSITIVE_INFINITY,
     hidePickedOptions: false,
   });
   return (

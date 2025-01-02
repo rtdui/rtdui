@@ -102,7 +102,7 @@ export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>(
       defaultValue,
       onChange,
       onKeyDown,
-      maxTags = Infinity,
+      maxTags = Number.POSITIVE_INFINITY,
       allowDuplicates = false,
       onDuplicate,
       variant,

@@ -27,17 +27,17 @@ function hexToRgba(color: string): RGBA {
   }
 
   if (hexString.length === 8) {
-    const alpha = parseInt(hexString.slice(6, 8), 16) / 255;
+    const alpha = Number.parseInt(hexString.slice(6, 8), 16) / 255;
 
     return {
-      r: parseInt(hexString.slice(0, 2), 16),
-      g: parseInt(hexString.slice(2, 4), 16),
-      b: parseInt(hexString.slice(4, 6), 16),
+      r: Number.parseInt(hexString.slice(0, 2), 16),
+      g: Number.parseInt(hexString.slice(2, 4), 16),
+      b: Number.parseInt(hexString.slice(4, 6), 16),
       a: alpha,
     };
   }
 
-  const parsed = parseInt(hexString, 16);
+  const parsed = Number.parseInt(hexString, 16);
   const r = (parsed >> 16) & 255;
   const g = (parsed >> 8) & 255;
   const b = parsed & 255;
@@ -73,10 +73,10 @@ function hslStringToRgba(hslaString: string): RGBA {
     };
   }
 
-  const h = parseInt(matches[1], 10);
-  const s = parseInt(matches[2], 10) / 100;
-  const l = parseInt(matches[3], 10) / 100;
-  const a = matches[5] ? parseFloat(matches[5]) : undefined;
+  const h = Number.parseInt(matches[1], 10);
+  const s = Number.parseInt(matches[2], 10) / 100;
+  const l = Number.parseInt(matches[3], 10) / 100;
+  const a = matches[5] ? Number.parseFloat(matches[5]) : undefined;
 
   const chroma = (1 - Math.abs(2 * l - 1)) * s;
   const huePrime = h / 60;

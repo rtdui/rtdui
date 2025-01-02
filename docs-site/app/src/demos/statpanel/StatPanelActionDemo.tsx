@@ -51,7 +51,7 @@ export default function Demo() {
     <>
       <StatPanel items={items} />
       <div>
-        console: <span ref={ref}></span>
+        console: <span ref={ref} />
       </div>
     </>
   );

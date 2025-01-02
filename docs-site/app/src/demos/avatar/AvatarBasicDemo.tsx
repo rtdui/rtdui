@@ -12,7 +12,7 @@ export default function Demo() {
   });
 
   const code = `
-  <Avatar${state.size && state.size !== "md" ? ' size="' + state.size + '"' : ""}${state.variant && state.variant !== "circle" ? ' variant="' + state.variant + '"' : ""}${state.showOnlineIndicator ? (state.online ? " online" : " online={false}") : ""} src="/photo-1534528741775-53994a69daeb.jpg" />
+  <Avatar${state.size && state.size !== "md" ? ` size="${state.size}"` : ""}${state.variant && state.variant !== "circle" ? ` variant="${state.variant}"` : ""}${state.showOnlineIndicator ? (state.online ? " online" : " online={false}") : ""} src="/photo-1534528741775-53994a69daeb.jpg" />
 `;
   return (
     <div className="flex flex-col gap-2">
@@ -59,7 +59,7 @@ export default function Demo() {
             onChange={(val) =>
               setState((prev) => ({
                 ...prev,
-                online: val === "true" ? true : false,
+                online: val  === "true",
               }))
             }
           />

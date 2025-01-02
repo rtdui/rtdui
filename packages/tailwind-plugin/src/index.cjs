@@ -5,7 +5,6 @@ const path = require("node:path");
 const plugin = require("tailwindcss/plugin");
 
 module.exports = plugin((args) => {
-  // eslint-disable-next-line no-unused-vars
   const { addBase, addComponents, config } = args;
 
   const themeCSS = fs.readFileSync(

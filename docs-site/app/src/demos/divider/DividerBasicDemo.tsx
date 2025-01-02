@@ -14,7 +14,7 @@ export default function Demo() {
   });
 
   const code = `
-  <Divider${state.direction && state.direction !== "vertical" ? ' direction="' + state.direction + '"' : ""}${state.color !== "default" ? ' color="' + state.color + '"' : ""}${state.showLabel ? ' label="Label"' : ""}${state.showLabel && state.labelPostion !== "center" ? ' labelPostion="' + state.labelPostion + '"' : ""} />
+  <Divider${state.direction && state.direction !== "vertical" ? ` direction="${state.direction}"` : ""}${state.color !== "default" ? ` color="${state.color}"` : ""}${state.showLabel ? ' label="Label"' : ""}${state.showLabel && state.labelPostion !== "center" ? ` labelPostion="${state.labelPostion}"` : ""} />
 `;
   return (
     <div className="flex flex-col gap-2">
@@ -25,14 +25,14 @@ export default function Demo() {
             "flex flex-col": state.direction === "vertical",
           })}
         >
-          <div className="flex-1 bg-base-200"></div>
+          <div className="flex-1 bg-base-200" />
           <Divider
             direction={state.direction as any}
             label={state.showLabel ? "Label" : undefined}
             labelPostion={state.labelPostion as any}
             color={(state.color !== "default" ? state.color : undefined) as any}
           />
-          <div className="flex-1 bg-base-200"></div>
+          <div className="flex-1 bg-base-200" />
         </div>
         <Divider direction="horizontal" />
         <div className="flex flex-col gap-4 bg-base-100 w-56 p-4">

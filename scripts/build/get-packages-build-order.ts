@@ -1,61 +1,60 @@
 import { getPackagesList, type Package } from "../packages/get-packages-list";
 
 export async function getPackageBuildOrder(
-  packages: Package[],
-  pkg: Package,
-  order: Record<string, number> = {}
+	packages: Package[],
+	pkg: Package,
+	order: Record<string, number> = {},
 ) {
-  const name = pkg.packageJson.name!;
+	const name = pkg.packageJson.name!;
 
-  if (name in order) return;
-  if (pkg.packageJson.private) {
-    order[name] = -1;
-    return;
-  }
+	if (name in order) return;
+	if (pkg.packageJson.private) {
+		order[name] = -1;
+		return;
+	}
 
-  packages = packages || [];
+	packages = packages || [];
 
-  const dependencies = Object.keys({
-    ...pkg.packageJson.peerDependencies,
-    ...pkg.packageJson.dependencies,
-    ...pkg.packageJson.devDependencies,
-  })
-    .filter((dependency) => dependency.includes("@rtdui/"))
-    .map((dependency) =>
-      packages.find((pkgItem) => pkgItem.packageJson.name === dependency)
-    );
+	const dependencies = Object.keys({
+		...pkg.packageJson.peerDependencies,
+		...pkg.packageJson.dependencies,
+		...pkg.packageJson.devDependencies,
+	})
+		.filter((dependency) => dependency.includes("@rtdui/"))
+		.map((dependency) =>
+			packages.find((pkgItem) => pkgItem.packageJson.name === dependency),
+		);
 
-  if (dependencies.length === 0) {
-    order[name] = 0;
-    return;
-  }
+	if (dependencies.length === 0) {
+		order[name] = 0;
+		return;
+	}
 
-  await Promise.all(
-    dependencies.map((dependency) =>
-      getPackageBuildOrder(packages, dependency!, order)
-    )
-  );
+	await Promise.all(
+		dependencies.map((dependency) =>
+			getPackageBuildOrder(packages, dependency!, order),
+		),
+	);
 
-  order[name] =
-    1 +
-    Math.max(
-      ...dependencies.map((dependency) => order[dependency!.packageJson.name!])
-    );
+	order[name] =
+		1 +
+		Math.max(
+			...dependencies.map((dependency) => order[dependency!.packageJson.name!]),
+		);
 }
 
 export async function getPackagesBuildOrder(
-  packages?: Package[],
-  order: Record<string, number> = {}
+	packages?: Package[],
+	order: Record<string, number> = {},
 ): Promise<Package[]> {
-  const _packages = packages || getPackagesList();
+	const _packages = packages || getPackagesList();
 
-  for (const pkg of _packages) {
-    // eslint-disable-next-line no-await-in-loop
-    await getPackageBuildOrder(_packages, pkg, order);
-  }
+	for (const pkg of _packages) {
+		await getPackageBuildOrder(_packages, pkg, order);
+	}
 
-  return Object.keys(order)
-    .filter((p) => order[p] !== -1)
-    .sort((a, b) => order[a] - order[b])
-    .map((p) => _packages.find((d) => d.packageJson.name === p)!);
+	return Object.keys(order)
+		.filter((p) => order[p] !== -1)
+		.sort((a, b) => order[a] - order[b])
+		.map((p) => _packages.find((d) => d.packageJson.name === p)!);
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Divider, Slider, Switch, TagsInput } from "@rtdui/core";
 
-const maxTagsValues = [1, 2, 3, Infinity];
+const maxTagsValues = [1, 2, 3, Number.POSITIVE_INFINITY];
 
 export default function Demo() {
   const [state, setState] = useState({
@@ -9,7 +9,7 @@ export default function Demo() {
     disabled: false,
     clearable: false,
     allowDuplicates: false,
-    maxTags: Infinity,
+    maxTags: Number.POSITIVE_INFINITY,
   });
   return (
     <div className="flex">

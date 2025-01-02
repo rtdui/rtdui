@@ -26,7 +26,7 @@ export function TablePagination(props: { table: Table<any> }) {
           {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </strong>
       </span> */}
-      <div className="divider divider-horizontal mx-0"></div>
+      <div className="divider divider-horizontal mx-0" />
       <span className="flex items-center gap-1">
         Go to page:
         <TextInput
@@ -41,7 +41,7 @@ export function TablePagination(props: { table: Table<any> }) {
           }}
         />
       </span>
-      <div className="divider divider-horizontal mx-0"></div>
+      <div className="divider divider-horizontal mx-0" />
       <Select
         value={table.getState().pagination.pageSize.toString()}
         onChange={(val) => {

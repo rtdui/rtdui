@@ -277,8 +277,8 @@ export function appendBlock(
   content: string,
   { prefix = "", suffix = "" }: { prefix?: string; suffix?: string } = {}
 ) {
-  prefix = "\n\n" + prefix;
-  suffix = suffix + "\n";
+  prefix = `\n\n${prefix}`;
+  suffix = `${suffix}\n`;
 
   const end = editor.state.doc.lineAt(editor.state.selection.main.head).to;
   editor.dispatch({

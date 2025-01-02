@@ -1,4 +1,4 @@
-/* eslint-disable no-unexpected-multiline */
+
 import { forwardRef } from "react";
 import type { ControlBaseProps } from "./ControlBase";
 import { ControlBase } from "./ControlBase";

@@ -4,11 +4,11 @@ import type { Image } from "mdast";
 import type { Options } from "remark-rehype";
 import type { Processor } from "unified";
 import type { Root, Element } from "hast";
-export { EditorView };
+export type { EditorView };
 
 export type VFile = ReturnType<Processor["processSync"]>;
 
-export { Root, Element };
+export type { Root, Element };
 export interface Meta {
   hast: Root;
   file: VFile;
@@ -225,7 +225,7 @@ export interface Plugin {
   /**
    * Side effect for the viewer, triggers when viewer props changes
    */
-  viewerEffect?(ctx: ViewerContext): void | (() => void);
+  viewerEffect?(ctx: ViewerContext): undefined | (() => void);
 }
 
 export interface ProcessorOptions {

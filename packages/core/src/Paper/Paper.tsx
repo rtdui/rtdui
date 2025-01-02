@@ -28,7 +28,6 @@ const defaultElement = "div";
 export const Paper: <E extends React.ElementType = typeof defaultElement>(
   props: PaperProps<E>
 ) => React.ReactNode =
-  // eslint-disable-next-line react/display-name
   forwardRef(
     <E extends React.ElementType = typeof defaultElement>(
       props: PaperProps<E>,

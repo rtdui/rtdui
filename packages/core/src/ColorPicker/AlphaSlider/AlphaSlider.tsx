@@ -25,14 +25,14 @@ export const AlphaSlider = forwardRef<HTMLDivElement, AlphaSliderProps>(
           {
             backgroundImage:
               "linear-gradient(45deg, var(--slider-checkers) 25%, transparent 25%), linear-gradient(-45deg, var(--slider-checkers) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--slider-checkers) 75%), linear-gradient(-45deg, white 75%, var(--slider-checkers) 75%)",
-            backgroundSize: `8px 8px`,
-            backgroundPosition: `0 0, 0 4px, 4px -4px, -4px 0`,
+            backgroundSize: "8px 8px",
+            backgroundPosition: "0 0, 0 4px, 4px -4px, -4px 0",
           },
           {
             backgroundImage: `linear-gradient(90deg, transparent, ${color})`,
           },
           {
-            boxShadow: `rgba(0, 0, 0, .1) 0 0 0 1px inset, rgb(0, 0, 0, .15) 0 0 4px inset`,
+            boxShadow: "rgba(0, 0, 0, .1) 0 0 0 1px inset, rgb(0, 0, 0, .15) 0 0 4px inset",
           },
         ]}
       />

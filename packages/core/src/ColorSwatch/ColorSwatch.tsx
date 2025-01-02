@@ -34,7 +34,6 @@ const defaultElement = "div";
 export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
   props: ColorSwatchProps<E>
 ) => React.ReactNode =
-  // eslint-disable-next-line react/display-name
   forwardRef(
     <E extends React.ElementType = typeof defaultElement>(
       props: ColorSwatchProps<E>,
@@ -83,8 +82,8 @@ export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
                 "--alpha-overlay-bg": "white",
                 backgroundImage:
                   "linear-gradient(45deg, var(--alpha-overlay-color) 25%, transparent 25%), linear-gradient(-45deg, var(--alpha-overlay-color) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--alpha-overlay-color) 75%), linear-gradient(-45deg, var(--alpha-overlay-bg) 75%, var(--alpha-overlay-color) 75%)",
-                backgroundSize: `8px 8px`,
-                backgroundPosition: `0 0, 0 4px, 4px -4px, -4px 0`,
+                backgroundSize: "8px 8px",
+                backgroundPosition: "0 0, 0 4px, 4px -4px, -4px 0",
               } as any
             }
           />

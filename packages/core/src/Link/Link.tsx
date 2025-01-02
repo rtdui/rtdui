@@ -30,7 +30,6 @@ const defaultElement = "a";
 export const Link: <E extends React.ElementType = typeof defaultElement>(
   props: LinkProps<E>
 ) => React.ReactNode =
-  // eslint-disable-next-line react/display-name
   forwardRef(
     <E extends React.ElementType = typeof defaultElement>(
       props: LinkProps<E>,

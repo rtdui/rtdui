@@ -56,23 +56,20 @@ export function useUncontrolledDates<Type extends DatePickerType = "default">({
       switch (type) {
         case "default":
           if (value !== null && typeof value !== "string") {
-            // eslint-disable-next-line no-console
             console.error(
               "[@rtdui/dates/use-uncontrolled-dates] Value must be type of `null` or `string`"
             );
           }
           break;
         case "multiple":
-          if (!(value instanceof Array)) {
-            // eslint-disable-next-line no-console
+          if (!(Array.isArray(value))) {
             console.error(
               "[@rtdui/dates/use-uncontrolled-dates] Value must be type of `string[]`"
             );
           }
           break;
         case "range":
-          if (!(value instanceof Array) || value.length !== 2) {
-            // eslint-disable-next-line no-console
+          if (!(Array.isArray(value)) || value.length !== 2) {
             console.error(
               "[@rtdui/dates/use-uncontrolled-dates] Value must be type of `[string, string]`"
             );

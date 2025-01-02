@@ -20,7 +20,6 @@ const defaultElement = "input";
 /** 多态组件 */
 export const InputBase: <E extends React.ElementType = typeof defaultElement>(
   props: InputBaseProps<E>
-  // eslint-disable-next-line react/display-name
 ) => React.ReactNode = forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     props: InputBaseProps<E>,

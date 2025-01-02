@@ -7,7 +7,7 @@ import cssnano from "cssnano";
 /** 独立编译各个子包的tailwind, 当前项目并未使用 */
 export async function buildPackageTailwind(
   packagePath: string,
-  minify: boolean = true,
+  minify = true,
   ctx: Record<string, any> = {}
 ) {
   if (!packagePath) return;

@@ -12,7 +12,7 @@ const defaultElement = "div";
 export const Box: <E extends React.ElementType = typeof defaultElement>(
   props: BoxProps<E>
 ) => React.ReactNode =
-  // eslint-disable-next-line react/display-name
+  // -disable-next-line react/display-name
   forwardRef((props: BoxOwnProps, ref: React.Ref<Element>) => {
     const Component = props.as || defaultElement;
     return <Component ref={ref} {...props} as={undefined} />;

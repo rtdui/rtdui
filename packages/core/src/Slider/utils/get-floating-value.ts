@@ -1,3 +1,3 @@
 export function getFloatingValue(value: number, precision: number) {
-  return parseFloat(value.toFixed(precision));
+  return Number.parseFloat(value.toFixed(precision));
 }

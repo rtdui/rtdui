@@ -4,39 +4,38 @@ import { useSpotlightContext } from "./Spotlight.context";
 import { spotlightActions } from "./spotlight.store";
 
 export type SpotlightActionsListStylesNames =
-  | "actionsList"
-  | "actionsListInner";
+	| "actionsList"
+	| "actionsListInner";
 
 export interface SpotlightActionsListProps
-  extends React.ComponentPropsWithoutRef<"div"> {}
+	extends React.ComponentPropsWithoutRef<"div"> {}
 
 const defaultProps: Partial<SpotlightActionsListProps> = {};
 
 export const SpotlightActionsList = forwardRef<
-  HTMLDivElement,
-  SpotlightActionsListProps
+	HTMLDivElement,
+	SpotlightActionsListProps
 >((props, ref) => {
-  const { className, style, id, children, ...others } = props;
-  const ctx = useSpotlightContext();
-  const generatedId = `rtdui-${useId().replace(/:/g, "")}`;
-  const listId = id || generatedId;
+	const { className, style, id, children, ...others } = props;
+	const ctx = useSpotlightContext();
+	const generatedId = `rtdui-${useId().replace(/:/g, "")}`;
+	const listId = id || generatedId;
 
-  useEffect(() => {
-    spotlightActions.setListId(listId, ctx.store);
-    return () => spotlightActions.setListId("", ctx.store);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listId]);
+	useEffect(() => {
+		spotlightActions.setListId(listId, ctx.store);
+		return () => spotlightActions.setListId("", ctx.store);
+	}, [listId]);
 
-  return (
-    <div
-      ref={ref}
-      id={listId}
-      {...others}
-      className={clsx("max-h-96 overflow-y-auto", className)}
-    >
-      {children}
-    </div>
-  );
+	return (
+		<div
+			ref={ref}
+			id={listId}
+			{...others}
+			className={clsx("max-h-96 overflow-y-auto", className)}
+		>
+			{children}
+		</div>
+	);
 });
 
 SpotlightActionsList.displayName = "@rtdui/SpotlightActionsList";

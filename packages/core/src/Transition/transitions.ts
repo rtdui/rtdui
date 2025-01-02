@@ -73,7 +73,7 @@ export const transitions: Record<TransitionName, TransitionStyles> = {
     in: { opacity: 1, transform: "translateY(0) skew(0deg, 0deg)" },
     out: {
       opacity: 0,
-      transform: `translateY(-20px) skew(-10deg, -5deg)`,
+      transform: "translateY(-20px) skew(-10deg, -5deg)",
     },
     common: { transformOrigin: "top" },
     transitionProperty: "transform, opacity",
@@ -83,7 +83,7 @@ export const transitions: Record<TransitionName, TransitionStyles> = {
     in: { opacity: 1, transform: "translateY(0) skew(0deg, 0deg)" },
     out: {
       opacity: 0,
-      transform: `translateY(20px) skew(-10deg, -5deg)`,
+      transform: "translateY(20px) skew(-10deg, -5deg)",
     },
     common: { transformOrigin: "bottom" },
     transitionProperty: "transform, opacity",
@@ -91,14 +91,14 @@ export const transitions: Record<TransitionName, TransitionStyles> = {
 
   "rotate-left": {
     in: { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-    out: { opacity: 0, transform: `translateY(20px) rotate(-5deg)` },
+    out: { opacity: 0, transform: "translateY(20px) rotate(-5deg)" },
     common: { transformOrigin: "bottom" },
     transitionProperty: "transform, opacity",
   },
 
   "rotate-right": {
     in: { opacity: 1, transform: "translateY(0) rotate(0deg)" },
-    out: { opacity: 0, transform: `translateY(20px) rotate(5deg)` },
+    out: { opacity: 0, transform: "translateY(20px) rotate(5deg)" },
     common: { transformOrigin: "top" },
     transitionProperty: "transform, opacity",
   },

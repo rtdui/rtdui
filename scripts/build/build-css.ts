@@ -9,10 +9,10 @@ const logger = createLogger("build-css");
 
 /** 编译core包中的tailwind, core包含所有包的css */
 export async function buildCSS(
-  minify: boolean = true,
+  minify = true,
   ctx: Record<string, any> = {}
 ) {
-  logger.log(`Building tailwind css style`);
+  logger.log("Building tailwind css style");
 
   const packagePath = path.resolve("./packages/core");
   const config = await postcssrc(
@@ -41,6 +41,6 @@ export async function buildCSS(
   );
 
   logger.success(
-    `tailwind css style has been built into packages/core/styles.css`
+    "tailwind css style has been built into packages/core/styles.css"
   );
 }

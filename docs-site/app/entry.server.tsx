@@ -38,7 +38,7 @@ export default async function handleRequest(
       <RemixServer context={remixContext} url={request.url} />
     </I18nextProvider>
   );
-  html = "<!DOCTYPE html>\n" + html;
+  html = `<!DOCTYPE html>\n${html}`;
   return new Response(html, {
     headers: { "Content-Type": "text/html" },
     status: responseStatusCode,

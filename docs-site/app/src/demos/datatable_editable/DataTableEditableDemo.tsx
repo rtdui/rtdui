@@ -8,7 +8,7 @@ import {
   type Person,
 } from "../../demoData/makeData";
 
-const getRowId = (row: Person) => row.id;
+const getRowId = (row: Person) => row.id!;
 
 function FullNameEditableInputCell(props: CellContext<any, any>) {
   const { table, getValue } = props;
@@ -264,7 +264,7 @@ export default function Demo() {
 
       <output className="mt-4 flex flex-col gap-4">
         output:
-        <pre ref={outputRef} className="bg-base-100"></pre>
+        <pre ref={outputRef} className="bg-base-100" />
       </output>
 
       <div className={clsx("toast z-10", { hidden: !error })}>

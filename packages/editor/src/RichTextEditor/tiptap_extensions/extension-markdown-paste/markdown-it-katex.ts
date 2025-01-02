@@ -107,8 +107,7 @@ function inlineMath(state: StateInline, silent: boolean): boolean {
   // we have found an opening delimieter already.
   const start = state.pos + 1;
   let match = start;
-  let pos;
-  // eslint-disable-next-line no-cond-assign
+  let pos:number;
   while ((match = state.src.indexOf("$", match)) !== -1) {
     // Found potential $, look for escapes, pos will point to
     // first non escape when complete
@@ -168,9 +167,9 @@ function blockMath(
   end: number,
   silent: boolean
 ): boolean {
-  let lastLine;
-  let next;
-  let lastPos;
+  let lastLine:any;
+  let next:any;
+  let lastPos:any;
   let found = false;
   let pos = state.bMarks[start] + state.tShift[start];
   let max = state.eMarks[start];
@@ -225,9 +224,9 @@ function blockMath(
   const token = state.push("math_block", "math", 0);
   token.block = true;
   token.content =
-    (firstLine && firstLine.trim() ? `${firstLine}\n` : "") +
+    (firstLine?.trim() ? `${firstLine}\n` : "") +
     state.getLines(start + 1, next, state.tShift[start], true) +
-    (lastLine && lastLine.trim() ? lastLine : "");
+    (lastLine?.trim() ? lastLine : "");
   token.map = [start, state.line];
   token.markup = "$$";
 
@@ -240,7 +239,7 @@ function blockBareMath(
   end: number,
   silent: boolean
 ): boolean {
-  let lastLine;
+  let lastLine:any;
   let found = false;
   let pos = state.bMarks[start] + state.tShift[start];
   let max = state.eMarks[start];
@@ -269,7 +268,7 @@ function blockBareMath(
   let next = start;
   if (!/\\end[{}\w]*\s*$/.test(firstLine)) {
     let nestingCount = 0;
-    for (; !found; ) {
+    while (!found) {
       next += 1;
       if (next >= end) {
         break;
@@ -301,9 +300,9 @@ function blockBareMath(
   const token = state.push("math_block", "math", 0);
   token.block = true;
   token.content =
-    (firstLine && firstLine.trim() ? `${firstLine}\n` : "") +
+    (firstLine?.trim() ? `${firstLine}\n` : "") +
     state.getLines(start + 1, next, state.tShift[start], true) +
-    (lastLine && lastLine.trim() ? lastLine : "");
+    (lastLine?.trim() ? lastLine : "");
   token.map = [start, state.line];
   token.markup = "$$";
   return true;
@@ -316,10 +315,10 @@ function blockBareMath(
  * @returns
  */
 function inlineMathBlock(state: StateInline, silent: boolean): boolean {
-  let match;
-  let token;
-  let res;
-  let pos;
+  let match:any;
+  let token:any;
+  let res:any;
+  let pos:any;
 
   if (state.src.slice(state.pos, state.pos + 2) !== "$$") {
     return false;
@@ -340,7 +339,6 @@ function inlineMathBlock(state: StateInline, silent: boolean): boolean {
   // we have found an opening delimieter already.
   const start = state.pos + 2;
   match = start;
-  // eslint-disable-next-line no-cond-assign
   while ((match = state.src.indexOf("$$", match)) !== -1) {
     // Found potential $$, look for escapes, pos will point to
     // first non escape when complete

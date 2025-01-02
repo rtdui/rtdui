@@ -62,7 +62,7 @@ export default function Demo() {
           onChange={setSelectedDate}
         />
         monthLabelFormat: yyyy MMMM
-        <br></br>
+        <br />
         monthsListFormat: MMMM
         <DatePicker
           monthLabelFormat="yyyy MMMM"

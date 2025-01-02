@@ -248,9 +248,7 @@ export default function AppShellDemo() {
           </footer>
         </>
       }
-      drawer={
-        <>
-          <ul className="menu">
+      drawer=<ul className="menu">
             <li>
               <a>Item 1</a>
             </li>
@@ -261,8 +259,6 @@ export default function AppShellDemo() {
               <a>Item 3</a>
             </li>
           </ul>
-        </>
-      }
     />
   );
 }

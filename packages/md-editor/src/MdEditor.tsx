@@ -182,7 +182,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
             click(e, { editor }) {
               replaceLines(editor, (line) => {
                 line = line.trim().replace(/^#*/, "").trim();
-                line = "#".repeat(level) + " " + line;
+                line = `${"#".repeat(level)} ${line}`;
                 return line;
               });
             },
@@ -226,7 +226,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
           icon: <IconBlockquote size={iconSize} stroke={iconStroke} />,
           cheatsheet: `> ${locale.quotedText}`,
           click(e, { editor }) {
-            replaceLines(editor, (line) => "> " + line);
+            replaceLines(editor, (line) => `> ${line}`);
           },
         },
         {
@@ -264,7 +264,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
           type: "single",
           title: locale.code,
           icon: <IconCode size={iconSize} stroke={iconStroke} />,
-          cheatsheet: "`" + locale.codeText + "`",
+          cheatsheet: `\`${locale.codeText}\``,
           shortcut: getShortcutWithPrefix("c", true),
           click(e, { editor }) {
             wrapText(editor, "`");
@@ -274,7 +274,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
           type: "single",
           title: locale.codeBlock,
           icon: <IconBraces size={iconSize} stroke={iconStroke} />,
-          cheatsheet: "```" + locale.codeLang + "↵",
+          cheatsheet: `\`\`\`${locale.codeLang}↵`,
           shortcut: getShortcutWithPrefix("p", true),
           click(e, { editor }) {
             appendBlock(editor, "txt", { prefix: "```", suffix: "\n```\n" });
@@ -287,7 +287,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
           cheatsheet: `- ${locale.ulItem}`,
           shortcut: getShortcutWithPrefix("u", true),
           click(e, { editor }) {
-            replaceLines(editor, (line) => "- " + line);
+            replaceLines(editor, (line) => `- ${line}`);
           },
         },
         {
@@ -404,7 +404,6 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
           },
         ];
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [split, locale, fullscreen, splitMode, activedSidebar]);
 
     const toolbarItems = [

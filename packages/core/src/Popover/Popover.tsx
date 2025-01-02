@@ -243,7 +243,6 @@ export function Popover(props: PopoverProps) {
       setTargetNode(node);
       popover.floating.refs.setReference(node);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [popover.floating.refs.setReference]
   );
 
@@ -252,7 +251,6 @@ export function Popover(props: PopoverProps) {
       setDropdownNode(node);
       popover.floating.refs.setFloating(node);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [popover.floating.refs.setFloating]
   );
 

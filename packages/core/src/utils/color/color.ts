@@ -81,7 +81,7 @@ export function parseColorToHsva(colorLike: string): HsvaColor {
   try {
     const hsvColor = parseColor(colorLike).to("hsv");
     return {
-      h: isNaN(hsvColor.h) ? 0 : hsvColor.h,
+      h: Number.isNaN(hsvColor.h) ? 0 : hsvColor.h,
       s: hsvColor.s,
       v: hsvColor.v,
       a: hsvColor.alpha,

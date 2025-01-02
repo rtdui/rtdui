@@ -42,7 +42,6 @@ const defaultElement = "span";
 export const Badge: <E extends React.ElementType = typeof defaultElement>(
   props: BadgeProps<E>
 ) => React.ReactNode =
-  // eslint-disable-next-line react/display-name
   forwardRef(
     <E extends React.ElementType = typeof defaultElement>(
       props: BadgeProps<E>,

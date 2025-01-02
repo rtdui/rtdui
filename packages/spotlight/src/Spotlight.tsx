@@ -54,7 +54,7 @@ export interface SpotlightProps extends SpotlightRootProps {
 }
 
 const defaultProps: Partial<SpotlightProps> = {
-  limit: Infinity,
+  limit: Number.POSITIVE_INFINITY,
   store: spotlightStore,
   filter: defaultSpotlightFilter,
   clearQueryOnClose: true,

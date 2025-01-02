@@ -60,7 +60,7 @@ export const Portal = forwardRef<HTMLDivElement, PortalProps>((props, ref) => {
     return null;
   }
 
-  return createPortal(<>{children}</>, nodeRef.current);
+  return createPortal(children, nodeRef.current);
 });
 
 Portal.displayName = "@rtdui/Portal";

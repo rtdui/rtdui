@@ -33,7 +33,6 @@ export const FloatingIndicator: <
 >(
   props: FloatingIndicatorProps<E>
 ) => React.ReactNode =
-  // eslint-disable-next-line react/display-name
   forwardRef(
     <E extends React.ElementType = typeof defaultElement>(
       props: FloatingIndicatorProps<E>,

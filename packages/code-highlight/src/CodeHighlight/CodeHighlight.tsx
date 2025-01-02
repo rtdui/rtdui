@@ -82,7 +82,7 @@ export const CodeHighlight = forwardRef<HTMLDivElement, CodeHighlightProps>(
           <small className="bg-base-300 uppercase font-bold text-xs rounded-br-md px-2 py-1">
             {language}
           </small>
-          <span className="flex-1"></span>
+          <span className="flex-1" />
           {withCopyButton && bad === false && (
             <CopyButton value={code.trim()}>
               {({ copied, copy }) => (

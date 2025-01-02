@@ -76,10 +76,10 @@ export default function App() {
 export function HydrateFallback() {
   return (
     <div className="flex flex-col gap-4 p-8">
-      <div className="skeleton h-32"></div>
-      <div className="skeleton h-4 "></div>
-      <div className="skeleton h-4"></div>
-      <div className="skeleton h-4"></div>
+      <div className="skeleton h-32" />
+      <div className="skeleton h-4 " />
+      <div className="skeleton h-4" />
+      <div className="skeleton h-4" />
     </div>
   );
 }

@@ -120,7 +120,7 @@ export const Wheel = forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
     <div
       ref={_ref}
       className={clsx(
-        "wheel keen-slider wheel--perspective-" + perspective,
+        `wheel keen-slider wheel--perspective-${perspective}`,
         "w-full h-full",
         "bg-base-100 text-base-content overflow-hidden",
         {
@@ -157,7 +157,7 @@ export const Wheel = forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
       >
         <div
           className={clsx("wheel__slides", "relative w-full h-full")}
-          style={{ width: width + "px" }}
+          style={{ width: `${width}px` }}
         >
           {slideValues().map(({ style, value }, idx) => (
             <div

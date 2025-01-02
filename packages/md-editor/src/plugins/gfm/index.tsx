@@ -36,7 +36,7 @@ export default function gfm(options: GfmPluginOptions = {}): Plugin {
         icon: <IconListCheck size={iconSize} stroke={iconStroke} />,
         cheatsheet: `- [ ] ${locale.taskText}`,
         click(e, { editor }) {
-          replaceLines(editor, (line) => "- [ ] " + line);
+          replaceLines(editor, (line) => `- [ ] ${line}`);
         },
       },
       {

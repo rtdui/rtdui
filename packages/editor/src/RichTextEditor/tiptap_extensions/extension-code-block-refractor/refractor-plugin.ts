@@ -8,7 +8,7 @@ function parseNodes(
   className: string[] = []
 ): { text: string; classes: string[] }[] {
   return nodes
-    .map((node) => {
+    .flatMap((node) => {
       const classes = [
         ...className,
         ...(node.properties ? node.properties.className : []),
@@ -22,8 +22,7 @@ function parseNodes(
         text: node.value,
         classes,
       };
-    })
-    .flat();
+    });
 }
 
 function getDecorations({
@@ -44,7 +43,6 @@ function getDecorations({
     const language: string = block.node.attrs.language || defaultLanguage;
     let rootLang = language;
     if (language.includes("diff-")) {
-      // eslint-disable-next-line prefer-destructuring
       rootLang = language.split("-")[1];
     }
 
@@ -71,7 +69,6 @@ function getDecorations({
   return DecorationSet.create(doc, decorations);
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction(param: any) {
   return typeof param === "function";
 }

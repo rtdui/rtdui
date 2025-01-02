@@ -38,7 +38,6 @@ export function HeaderCell(props: HeaderCellProps) {
     !column.getIsPinned() &&
     column.columns.length === 0;
 
-  // eslint-disable-next-line
   const [{ isDragging }, dragRef, previewRef] = useDrag({
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),

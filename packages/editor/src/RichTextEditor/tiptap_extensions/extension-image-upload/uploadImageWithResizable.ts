@@ -92,7 +92,6 @@ function processImage(
   img.src = fileObjectURL;
   img.onerror = () => {
     URL.revokeObjectURL(fileObjectURL); //释放掉ObjectURL
-    // eslint-disable-next-line no-console
     console.log("无法加载图像");
   };
   img.onload = () => {

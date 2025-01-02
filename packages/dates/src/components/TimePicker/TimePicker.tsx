@@ -52,7 +52,7 @@ export const TimePicker = (props: TimerPickerProps) => {
           onChangeEnd={(rel) => {
             hour.current = rel.toString().padStart(2, "0");
             setValue(
-              `${hour.current}:${minute.current}${withSeconds ? ":" + second.current : ""}`
+              `${hour.current}:${minute.current}${withSeconds ? `:${second.current}` : ""}`
             );
           }}
         />
@@ -68,7 +68,7 @@ export const TimePicker = (props: TimerPickerProps) => {
           onChangeEnd={(rel) => {
             minute.current = rel.toString().padStart(2, "0");
             setValue(
-              `${hour.current}:${minute.current}${withSeconds ? ":" + second.current : ""}`
+              `${hour.current}:${minute.current}${withSeconds ? `:${second.current}` : ""}`
             );
           }}
         />

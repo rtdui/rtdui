@@ -165,7 +165,7 @@ title History of Social Media Platform
         actions: actionItems.map(({ title, code }) => ({
           title,
           click(e, { editor }) {
-            appendBlock(editor, "```mermaid\n" + code + "\n```");
+            appendBlock(editor, `\`\`\`mermaid\n${code}\n\`\`\``);
           },
         })),
       },

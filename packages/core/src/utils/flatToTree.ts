@@ -7,8 +7,8 @@
 export function flatToTree(
   data: Record<string, any>[],
   root: string,
-  idField: string = "id",
-  parentIdField: string = "parentId"
+  idField = "id",
+  parentIdField = "parentId"
 ): Record<string, any>[] {
   // 辅助对象，以数据的id作为属性名。
   const output: Record<string, any> = {};

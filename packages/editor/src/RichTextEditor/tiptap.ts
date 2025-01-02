@@ -40,7 +40,6 @@ import { CustomTable as Table } from "./tiptap_extensions/extension-table";
 //       onAwarenessUpdate: ({ states }) => {
 //         const customData = states.find((d) => d.data);
 //         if (customData) {
-//           // eslint-disable-next-line no-console
 //           console.log(customData.data);
 //         }
 //       },

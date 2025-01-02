@@ -97,12 +97,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {startIcon ??
           (loading && loadingPosition === "left" && (
-            <span className="loading loading-spinner"></span>
+            <span className="loading loading-spinner" />
           ))}
         {children}
         {endIcon ??
           (loading && loadingPosition === "right" && (
-            <span className="loading loading-spinner"></span>
+            <span className="loading loading-spinner" />
           ))}
       </button>
     );

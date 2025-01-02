@@ -37,7 +37,7 @@ import { ColorInput } from '@rtdui/core';
 
 function Demo() {
   return (
-    <ColorInput${state.format !== "hex" ? ' format="' + state.format + '"' : ""}${state.withSwatches ? " swatches={" + JSON.stringify(swatches) + "}" : ""}${state.size !== "md" ? ' size="' + state.size + '"' : ""}${state.disallowInput ? " disallowInput" : ""}${state.readOnly ? " readOnly" : ""}${state.readOnly ? " disabled" : ""}${state.withPicker === false ? " withPicker={false}" : ""} />
+    <ColorInput${state.format !== "hex" ? ` format="${state.format}"` : ""}${state.withSwatches ? ` swatches={${JSON.stringify(swatches)}}` : ""}${state.size !== "md" ? ` size="${state.size}"` : ""}${state.disallowInput ? " disallowInput" : ""}${state.readOnly ? " readOnly" : ""}${state.readOnly ? " disabled" : ""}${state.withPicker === false ? " withPicker={false}" : ""} />
   );
 }
 `;

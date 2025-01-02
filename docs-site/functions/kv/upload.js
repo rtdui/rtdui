@@ -4,7 +4,7 @@ function createCloudflareKvUploadHandler(options) {
   const { kv, expirationTtl } = options ?? {};
   return async ({ filename, contentType, name, data }) => {
     // 将类型为AsyncIterable<Uint8Array>的data对象转换为Blob对象
-    let chunks = [];
+    const chunks = [];
     for await (const chunk of data) {
       chunks.push(chunk);
     }

@@ -41,7 +41,7 @@ import { ColorPicker } from '@rtdui/core';
 
 function Demo() {
   return (
-    <ColorPicker${state.format !== "hex" ? ' format="' + state.format + '"' : ""}${state.withSwatches ? " swatches={" + JSON.stringify(swatches) + "}" : ""}${state.size !== "md" && !state.fullWidth ? ' size="' + state.size + '"' : ""} ${state.fullWidth ? "fullWidth" : ""}/>
+    <ColorPicker${state.format !== "hex" ? ` format="${state.format}"` : ""}${state.withSwatches ? ` swatches={${JSON.stringify(swatches)}}` : ""}${state.size !== "md" && !state.fullWidth ? ` size="${state.size}"` : ""} ${state.fullWidth ? "fullWidth" : ""}/>
   );
 }
 `;

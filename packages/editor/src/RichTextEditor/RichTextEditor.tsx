@@ -157,7 +157,7 @@ export const RichTextEditor = forwardRef<any, RichTextEditorProps>(
             <EditorControl editor={editor}>
               <EditorControl.Toolbar sticky className={clsx(slots?.toolbar)}>
                 <EditorControl.ControlsGroup>
-                  <EditorControl.Bold></EditorControl.Bold>
+                  <EditorControl.Bold />
                   <EditorControl.Italic />
                   {/* <RichTextEditor.Underline /> */}
                   <EditorControl.Strikethrough />

@@ -42,7 +42,7 @@ export default defineConfig({
       ssr: false,
       routes(defineRoutes) {
         return defineRoutes((route) => {
-          route(undefined, "routes/_layout.tsx", { id: `demos` }, () => {
+          route(undefined, "routes/_layout.tsx", { id: "demos" }, () => {
             demoRoutes.forEach((d) => {
               route(`components/${d.route}`, d.file);
             });

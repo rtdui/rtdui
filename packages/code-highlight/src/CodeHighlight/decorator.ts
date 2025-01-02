@@ -6,13 +6,11 @@ function getNodeText(node: any) {
     if (node.type === "text") {
       return node.value;
     }
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     return "children" in node ? all(node) : "";
   }
   function all(node: any) {
     let index = -1;
     const result: string[] = [];
-    // eslint-disable-next-line no-plusplus
     while (++index < node.children.length) {
       result[index] = one(node.children[index]);
     }
@@ -44,7 +42,6 @@ function filterTree(
 
     if ("children" in node && node.children !== undefined) {
       let childIndex = -1;
-      // eslint-disable-next-line no-plusplus
       while (++childIndex < node.children.length) {
         const result = preorder(node.children[childIndex], childIndex, node);
 
@@ -79,22 +76,21 @@ function filterTree(
  */
 function rangeParser(strRange: string) {
   const res = [];
-  let m;
+  let m:RegExpMatchArray|null;
 
   for (const str of strRange.split(",").map((str) => str.trim())) {
     // just a number
     if (/^-?\d+$/.test(str)) {
-      res.push(parseInt(str, 10));
+      res.push(Number.parseInt(str, 10));
     } else if (
-      // eslint-disable-next-line no-cond-assign
       (m = str.match(/^(-?\d+)(-|\.\.\.?|\u2025|\u2026|\u22EF)(-?\d+)$/))
     ) {
       // 1-5 or 1..5 (equivalent) or 1...5 (doesn't include 5)
       const [_, lhs, sep, rhs] = m;
 
       if (lhs && rhs) {
-        const n_lhs = parseInt(lhs, 10);
-        let n_rhs = parseInt(rhs, 10);
+        const n_lhs = Number.parseInt(lhs, 10);
+        let n_rhs = Number.parseInt(rhs, 10);
         const incr = n_lhs < n_rhs ? 1 : -1;
 
         // Make it inclusive by moving the right 'stop-point' away by one.

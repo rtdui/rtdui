@@ -135,7 +135,7 @@ export function OptionsDropdown({
     ? (filter || defaultOptionsFilter)({
         options: data,
         search: filterOptions ? search : "",
-        limit: limit ?? Infinity,
+        limit: limit ?? Number.POSITIVE_INFINITY,
       })
     : data;
   const isEmpty = isEmptyComboboxData(filteredData);
