@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"ignore": [".react-router/**/*.ts"]
+		"ignore": [".react-router/**/*.ts","./**/{lib,esm,cjs}/**/*"]
 	},
 	"formatter": {
 		"enabled": false, //暂时禁用格式化
