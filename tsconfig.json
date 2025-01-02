@@ -9,7 +9,7 @@
     "./docs-site/public/**/*"
   ],
   "compilerOptions": {
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "types": ["node"],
     "target": "ES2018",
     "lib": ["DOM", "ESNext"],
     "module": "ESNext",
