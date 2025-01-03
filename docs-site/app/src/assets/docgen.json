@@ -57,7 +57,7 @@
 			},
 			"defaultPrompt": {
 				"defaultValue": {
-					"value": "\"Close\""
+					"value": "\"\""
 				},
 				"description": "default prompt text for prompt mode",
 				"name": "defaultPrompt",
@@ -211,7 +211,7 @@
 			},
 			"defaultPrompt": {
 				"defaultValue": {
-					"value": "\"Close\""
+					"value": "\"\""
 				},
 				"description": "default prompt text for prompt mode",
 				"name": "defaultPrompt",
@@ -339,6 +339,39 @@
 		"description": "该组件只能使用一次. 通常作为React项目根组件的第一个孩子.",
 		"displayName": "Dialogs",
 		"props": {
+			"cancelLabel": {
+				"defaultValue": {
+					"value": "\"Cancel\""
+				},
+				"description": "global cancel button text for confirm or prompt mode",
+				"name": "cancelLabel",
+				"required": false,
+				"type": {
+					"name": "string | undefined"
+				}
+			},
+			"closeLabel": {
+				"defaultValue": {
+					"value": "\"Close\""
+				},
+				"description": "global close button text for alert mode",
+				"name": "closeLabel",
+				"required": false,
+				"type": {
+					"name": "string | undefined"
+				}
+			},
+			"confirmLabel": {
+				"defaultValue": {
+					"value": "\"OK\""
+				},
+				"description": "global confirm button text for confirm or prompt mode",
+				"name": "confirmLabel",
+				"required": false,
+				"type": {
+					"name": "string | undefined"
+				}
+			},
 			"dirtyWarningLabel": {
 				"defaultValue": null,
 				"description": "Warning label when content is dirty",
@@ -5338,9 +5371,9 @@
 				"defaultValue": null,
 				"description": "Color to display, Key of theme colors or any valid CSS color values",
 				"name": "color",
-				"required": true,
+				"required": false,
 				"type": {
-					"name": "string"
+					"name": "string | undefined"
 				}
 			},
 			"radius": {
@@ -6728,7 +6761,7 @@
 				"defaultValue": null,
 				"description": "Parent element with relative position based on which indicator position should be calculated",
 				"name": "parent",
-				"required": true,
+				"required": false,
 				"type": {
 					"name": "HTMLElement | null | undefined"
 				}
@@ -6737,7 +6770,7 @@
 				"defaultValue": null,
 				"description": "Target element over which indicator should be displayed",
 				"name": "target",
-				"required": true,
+				"required": false,
 				"type": {
 					"name": "HTMLElement | null | undefined"
 				}
@@ -16201,8 +16234,8 @@
 				"name": "color",
 				"required": false,
 				"type": {
-					"name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | undefined",
-					"raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | undefined",
+					"name": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
+					"raw": "\"primary\" | \"secondary\" | \"accent\" | \"info\" | \"success\" | \"warning\" | \"error\" | \"neutral\" | undefined",
 					"value": [
 						{
 							"value": "undefined"
@@ -16227,6 +16260,9 @@
 						},
 						{
 							"value": "\"error\""
+						},
+						{
+							"value": "\"neutral\""
 						}
 					]
 				}
