@@ -20,7 +20,7 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
 			}
 			if (
 				packageName === "react-dom" &&
-				current.peerDependencies.react !== "^18.x || ^19.x"
+				current.peerDependencies["react-dom"] !== "^18.x || ^19.x"
 			) {
 				current.peerDependencies["react-dom"] = "^18.x || ^19.x";
 			}
