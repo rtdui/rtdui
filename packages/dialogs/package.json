@@ -1,53 +1,53 @@
 {
-	"name": "@rtdui/dialogs",
-	"version": "4.10.5",
-	"description": "React dialogs base on Rtdui components",
-	"types": "./lib/index.d.ts",
-	"main": "./cjs/index.cjs",
-	"module": "./esm/index.mjs",
-	"exports": {
-		".": {
-			"import": {
-				"types": "./lib/index.d.ts",
-				"default": "./esm/index.mjs"
-			},
-			"require": {
-				"types": "./lib/index.d.ts",
-				"default": "./cjs/index.cjs"
-			}
-		}
-	},
-	"keywords": [
-		"dialog",
-		"dialogs",
-		"react",
-		"remix",
-		"remixjs",
-		"next",
-		"nextjs",
-		"ui",
-		"ui-kit",
-		"components",
-		"library",
-		"frontend",
-		"design"
-	],
-	"author": "fu zhong wei <jackyleefzw@163.com>",
-	"license": "MIT",
-	"homepage": "https://rtdui.com/",
-	"repository": {
-		"url": "https://github.com/rtdui/rtdui.git",
-		"type": "git",
-		"directory": "packages/dialogs"
-	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org/",
-		"access": "public"
-	},
-	"peerDependencies": {
-		"@rtdui/hooks": "4.10.5",
-		"@rtdui/core": "4.10.5",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
-	}
+  "name": "@rtdui/dialogs",
+  "version": "4.10.6",
+  "description": "React dialogs base on Rtdui components",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "keywords": [
+    "dialog",
+    "dialogs",
+    "react",
+    "remix",
+    "remixjs",
+    "next",
+    "nextjs",
+    "ui",
+    "ui-kit",
+    "components",
+    "library",
+    "frontend",
+    "design"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.com/",
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/dialogs"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@rtdui/hooks": "4.10.6",
+    "@rtdui/core": "4.10.6",
+    "react": "^18.x || ^19.x",
+    "react-dom": "^18.2.0"
+  }
 }

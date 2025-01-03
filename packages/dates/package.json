@@ -1,58 +1,60 @@
 {
-	"name": "@rtdui/dates",
-	"version": "4.10.5",
-	"description": "Calendars, date and time pickers based on Rtdui components",
-	"types": "./lib/index.d.ts",
-	"main": "./cjs/index.cjs",
-	"module": "./esm/index.mjs",
-	"exports": {
-		".": {
-			"import": {
-				"types": "./lib/index.d.ts",
-				"default": "./esm/index.mjs"
-			},
-			"require": {
-				"types": "./lib/index.d.ts",
-				"default": "./cjs/index.cjs"
-			}
-		}
-	},
-	"keywords": [
-		"react",
-		"components",
-		"library",
-		"ui",
-		"ui-kit",
-		"calendar",
-		"date",
-		"date-picker",
-		"time",
-		"time-picker"
-	],
-	"author": "fu zhong wei <jackyleefzw@163.com>",
-	"license": "MIT",
-	"homepage": "https://rtdui.com/",
-	"sideEffects": ["*.css"],
-	"repository": {
-		"url": "https://github.com/rtdui/rtdui.git",
-		"type": "git",
-		"directory": "packages/dates"
-	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org/",
-		"access": "public"
-	},
-	"peerDependencies": {
-		"@rtdui/core": "4.10.5",
-		"@rtdui/hooks": "4.10.5",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
-	},
-	"dependencies": {
-		"@tabler/icons-react": "^3.5.0",
-		"clsx": "^2.1.1",
-		"date-fns": "^3.3.0",
-		"date-fns-tz": "^3.1.3",
-		"keen-slider": "^6.8.6"
-	}
+  "name": "@rtdui/dates",
+  "version": "4.10.6",
+  "description": "Calendars, date and time pickers based on Rtdui components",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
+  "keywords": [
+    "react",
+    "components",
+    "library",
+    "ui",
+    "ui-kit",
+    "calendar",
+    "date",
+    "date-picker",
+    "time",
+    "time-picker"
+  ],
+  "author": "fu zhong wei <jackyleefzw@163.com>",
+  "license": "MIT",
+  "homepage": "https://rtdui.com/",
+  "sideEffects": [
+    "*.css"
+  ],
+  "repository": {
+    "url": "https://github.com/rtdui/rtdui.git",
+    "type": "git",
+    "directory": "packages/dates"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "4.10.6",
+    "@rtdui/hooks": "4.10.6",
+    "react": "^18.x || ^19.x",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^3.5.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.3.0",
+    "date-fns-tz": "^3.1.3",
+    "keen-slider": "^6.8.6"
+  }
 }
