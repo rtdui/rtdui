@@ -156,6 +156,7 @@ title History of Social Media Platform
 				m.run({ nodes });
 			}
 			renderMermaid();
+			return undefined;
 		},
 		toolbar: [
 			{
