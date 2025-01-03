@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { DataTable, DataTableProps, type ColumnDef } from "@rtdui/datatable";
+import {
+	DataTable,
+	type DataTableProps,
+	type ColumnDef,
+} from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
 const columns: ColumnDef<Person>[] = [

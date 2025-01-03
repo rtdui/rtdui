@@ -1,4 +1,4 @@
-import { SignaturePad, SignaturePadHandle } from "@rtdui/signature-pad";
+import { SignaturePad, type SignaturePadHandle } from "@rtdui/signature-pad";
 import { useRef } from "react";
 
 export default function Demo() {

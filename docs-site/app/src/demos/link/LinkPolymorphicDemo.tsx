@@ -1,5 +1,4 @@
-import React from "react";
-import { Link as RouterLink, NavLink } from "react-router-dom";
+import { Link as RouterLink, NavLink } from "react-router";
 import { Link } from "@rtdui/core";
 
 export default function Demo() {

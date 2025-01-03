@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router";
 import { IconCode } from "@tabler/icons-react";
 import { CodeHighlight } from "@rtdui/code-highlight";
 import clsx from "clsx";

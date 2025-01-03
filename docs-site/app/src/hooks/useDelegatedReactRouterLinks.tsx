@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "@remix-run/react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 function isLinkEvent(event: MouseEvent) {
 	if (!(event.target instanceof HTMLElement)) return;
@@ -18,7 +18,7 @@ export function useDelegatedReactRouterLinks(
 ) {
 	const navigate = useNavigate();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const node = nodeRef.current;
 		function handleClick(event: MouseEvent) {
 			if (!node) return;

@@ -1,5 +1,5 @@
 // import { createReactComponent } from "@tabler/icons-react";
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 
 /** viewbox="0 0 512 512" */
 export function IconTranslate(props: SVGProps<SVGSVGElement>) {

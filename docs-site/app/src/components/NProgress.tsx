@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigation } from "@remix-run/react";
+import { useNavigation } from "react-router";
 import clsx from "clsx";
 
 export function NProgress() {

@@ -5,7 +5,7 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useNavigate,
-} from "@remix-run/react";
+} from "react-router";
 import tailwindHref from "./tailwind.css?url";
 import { Notifications } from "@rtdui/notifications";
 import { Dialogs } from "@rtdui/dialogs";

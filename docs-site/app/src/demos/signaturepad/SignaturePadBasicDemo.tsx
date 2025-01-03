@@ -1,5 +1,5 @@
 import { Button, Divider, Slider } from "@rtdui/core";
-import { SignaturePad, SignaturePadHandle } from "@rtdui/signature-pad";
+import { SignaturePad, type SignaturePadHandle } from "@rtdui/signature-pad";
 import { useRef, useState } from "react";
 import ColorControl from "~/src/components/ColorControl";
 

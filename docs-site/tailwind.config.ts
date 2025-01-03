@@ -1,8 +1,8 @@
+import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
 import rtdui from "@rtdui/tailwind-plugin";
 
-/** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: [
 		"variant", // 使用多方案策略
@@ -22,4 +22,4 @@ export default {
 		// darkMode: "dark", // "prefers-color-scheme: dark" 媒介匹配且没有指定data-theme时使用的主题键名, 默认为 "dark"
 		logs: false, //禁用日志
 	},
-};
+} satisfies Config;

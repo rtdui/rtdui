@@ -1,6 +1,9 @@
-import { vitePlugin as remix } from "@remix-run/dev";
+import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import autoprefixer from "autoprefixer";
+import tailwindcss from "tailwindcss";
+import nesting from "tailwindcss/nesting";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -11,16 +14,14 @@ import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import rehypePrismPlus from "rehype-prism-plus";
-import path from "node:path";
-import fs from "fs-extra";
 import { rehypeCodeBlockDataLanguage } from "./app/src/mdx-plugin/rehype-code-block-data-language";
 
-const demoRoutes = fs.readdirSync(path.resolve("app/src/demos")).map((d) => ({
-	route: d,
-	file: `src/demos/${d}/doc.mdx`,
-}));
-
 export default defineConfig({
+	css: {
+		postcss: {
+			plugins: [nesting, tailwindcss, autoprefixer],
+		},
+	},
 	plugins: [
 		mdx({
 			remarkPlugins: [
@@ -38,18 +39,7 @@ export default defineConfig({
 				[rehypeKatex, { output: "html" }], // 只输出html,默认为"htmlAndMathml", 注意需要导入katex的css样式
 			],
 		}),
-		remix({
-			ssr: false,
-			routes(defineRoutes) {
-				return defineRoutes((route) => {
-					route(undefined, "routes/_layout.tsx", { id: "demos" }, () => {
-						demoRoutes.forEach((d) => {
-							route(`components/${d.route}`, d.file);
-						});
-					});
-				});
-			},
-		}),
+		reactRouter(),
 		tsconfigPaths({ projects: ["./tsconfig.json"] }),
 	],
 	ssr: {

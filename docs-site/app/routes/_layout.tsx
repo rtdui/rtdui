@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link } from "react-router";
 import {
 	IconMenu2,
 	IconSun,
@@ -23,7 +23,6 @@ import democodes from "../src/assets/codegen.json";
 import menuData from "../src/assets/menuData.json";
 import { IconTranslate } from "../src/assets/IconTranslate";
 import "katex/dist/katex.css";
-import { Link } from "@remix-run/react";
 
 export default function Layout() {
 	const toggleRef = React.useRef<any>(null!);

@@ -1,18 +1,29 @@
 {
-	"include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		"**/*",
+		"**/.server/**/*",
+		"**/.client/**/*",
+		".react-router/types/**/*"
+	],
 	"compilerOptions": {
-		"lib": ["DOM", "DOM.Iterable", "ES2022"],
-		"isolatedModules": true,
-		"esModuleInterop": true,
-		"jsx": "react-jsx",
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"types": ["vite/client"],
+		"target": "ES2022",
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
+		"jsx": "react-jsx",
+
+		"esModuleInterop": true,
+		"verbatimModuleSyntax": true, // 要求导入类型必须有type关键字
 		"resolveJsonModule": true,
-		"target": "ES2022",
-		"strict": true,
-		"allowJs": true,
 		"skipLibCheck": true,
+		"strict": true,
+
+		"isolatedModules": true,
+		"allowJs": true,
 		"forceConsistentCasingInFileNames": true,
+
+		"rootDirs": [".", "./.react-router/types"], // 一组源目录创建了一个"virtual"目录
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["./app/*"],

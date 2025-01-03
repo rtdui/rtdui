@@ -1,4 +1,9 @@
-import { MdEditor, Mode, UploadResult, zhLocale } from "@rtdui/md-editor";
+import {
+	MdEditor,
+	type Mode,
+	type UploadResult,
+	zhLocale,
+} from "@rtdui/md-editor";
 import { useState } from "react";
 import { Checkbox, Divider, Radio, RadioGroup } from "@rtdui/core";
 import "allotment/dist/style.css";

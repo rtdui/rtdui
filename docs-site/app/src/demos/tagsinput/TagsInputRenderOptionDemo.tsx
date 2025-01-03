@@ -1,4 +1,4 @@
-import { TagsInput, TagsInputProps } from "@rtdui/core";
+import { TagsInput, type TagsInputProps } from "@rtdui/core";
 import { IconCat, IconDog } from "@tabler/icons-react";
 
 const data = [
