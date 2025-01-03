@@ -1,5 +1,5 @@
 import { useMergedRef } from "@rtdui/hooks";
-import { EditorView } from "codemirror";
+import type { EditorView } from "codemirror";
 import { forwardRef, useEffect, useRef } from "react";
 import { createEditorView, injectKeyMap } from "./utils/codemirror";
 import { useMdEditorContext } from "./context";

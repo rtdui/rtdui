@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
-import { ControlsGroupSettings } from "../../types";
+import type { ControlsGroupSettings } from "../../types";
 import { useDatesContext } from "../DatesProvider";
-import { PickerControl, PickerControlProps } from "../PickerControl";
+import { PickerControl, type PickerControlProps } from "../PickerControl";
 import { getMonthInTabOrder } from "./get-month-in-tab-order/get-month-in-tab-order";
 import { getMonthsData } from "./get-months-data/get-months-data";
 import { isMonthDisabled } from "./is-month-disabled/is-month-disabled";
-import { ThemeSize, getSize } from "@rtdui/core";
+import { type ThemeSize, getSize } from "@rtdui/core";
 import clsx from "clsx";
 import { format, isSame } from "../../utils";
 

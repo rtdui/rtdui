@@ -1,4 +1,7 @@
-import { ComboboxParsedItem, ComboboxParsedItemGroup } from "../Combobox.types";
+import type {
+	ComboboxParsedItem,
+	ComboboxParsedItemGroup,
+} from "../Combobox.types";
 
 export function isEmptyComboboxData(data: ComboboxParsedItem[]) {
 	if (data.length === 0) {

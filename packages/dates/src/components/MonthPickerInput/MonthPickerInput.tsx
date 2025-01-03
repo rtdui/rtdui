@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
 import { useDatesInput } from "../../hooks";
-import { DatePickerType } from "../../types";
+import type { DatePickerType } from "../../types";
 import { getDefaultClampedDate, shiftTimezone } from "../../utils";
 import { pickCalendarProps } from "../Calendar";
 import { useDatesContext } from "../DatesProvider";
-import { MonthPicker, MonthPickerBaseProps } from "../MonthPicker";
-import { DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
+import { MonthPicker, type MonthPickerBaseProps } from "../MonthPicker";
+import { type DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 
 export interface MonthPickerInputProps<Type extends DatePickerType = "default">
 	extends DateInputSharedProps,

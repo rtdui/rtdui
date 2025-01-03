@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
 import { useDatesInput } from "../../hooks";
-import { DatePickerType } from "../../types";
+import type { DatePickerType } from "../../types";
 import { getDefaultClampedDate, shiftTimezone } from "../../utils";
 import { pickCalendarProps } from "../Calendar";
-import { DatePicker, DatePickerBaseProps } from "../DatePicker";
+import { DatePicker, type DatePickerBaseProps } from "../DatePicker";
 import { useDatesContext } from "../DatesProvider";
-import { DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
+import { type DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 
 export interface DatePickerInputProps<T extends DatePickerType = "default">
 	extends DateInputSharedProps,

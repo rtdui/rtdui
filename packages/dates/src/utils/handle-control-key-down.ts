@@ -1,4 +1,4 @@
-import { RefObject } from "react";
+import type { RefObject } from "react";
 
 type ControlsRef = RefObject<HTMLButtonElement[][][]>;
 type Direction = "up" | "down" | "left" | "right";

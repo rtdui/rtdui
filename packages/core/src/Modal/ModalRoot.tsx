@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { RemoveScroll } from "react-remove-scroll";
-import { OptionalPortal, PortalProps } from "../Portal";
-import { type TransitionProps } from "../Transition";
+import { OptionalPortal, type PortalProps } from "../Portal";
+import type { TransitionProps } from "../Transition";
 import { ModalProvider } from "./context";
 import { useModal } from "./use-modal";
-import { ThemeRadius, ThemeShadow, ThemeSize } from "../theme.types";
+import type { ThemeRadius, ThemeShadow, ThemeSize } from "../theme.types";
 import { getRadius, getShadow, getSize, getSpacing } from "../utils";
 
 type RemoveScrollProps = Omit<

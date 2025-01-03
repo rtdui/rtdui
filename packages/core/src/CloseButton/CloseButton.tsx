@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { IconX, IconProps } from "@tabler/icons-react";
-import { ThemeBaseSize } from "../theme.types";
+import { IconX, type IconProps } from "@tabler/icons-react";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface CloseButtonProps
 	extends React.ComponentPropsWithoutRef<"button"> {

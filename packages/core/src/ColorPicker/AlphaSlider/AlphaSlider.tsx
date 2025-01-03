@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { ColorSlider, ColorSliderProps } from "../ColorSlider/ColorSlider";
+import { ColorSlider, type ColorSliderProps } from "../ColorSlider/ColorSlider";
 import { round } from "../../utils";
 
 export interface AlphaSliderProps

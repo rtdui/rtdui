@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { IconSelector, type Icon, type IconProps } from "@tabler/icons-react";
-import { ThemeSize } from "../../theme.types";
+import type { ThemeSize } from "../../theme.types";
 
 function getIconSize(size: ThemeSize) {
 	switch (size) {

@@ -1,11 +1,15 @@
 import { forwardRef } from "react";
 import { useDatesState } from "../../hooks";
-import { CalendarLevel, DatePickerType, PickerBaseProps } from "../../types";
+import type {
+	CalendarLevel,
+	DatePickerType,
+	PickerBaseProps,
+} from "../../types";
 import { shiftTimezone } from "../../utils";
-import { Calendar, CalendarBaseProps } from "../Calendar";
+import { Calendar, type CalendarBaseProps } from "../Calendar";
 import { useDatesContext } from "../DatesProvider";
-import { DecadeLevelBaseSettings } from "../DecadeLevel";
-import { YearLevelBaseSettings } from "../YearLevel";
+import type { DecadeLevelBaseSettings } from "../DecadeLevel";
+import type { YearLevelBaseSettings } from "../YearLevel";
 
 type MonthPickerLevel = Exclude<CalendarLevel, "month">;
 

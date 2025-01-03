@@ -1,4 +1,5 @@
-import React, { createContext, useContext } from "react";
+import type React from "react";
+import { createContext, useContext } from "react";
 
 export function createOptionalContext<ContextValue>(
 	initialValue: ContextValue | null = null,

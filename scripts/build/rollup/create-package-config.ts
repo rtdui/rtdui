@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "fs-extra";
-import { RollupOptions, OutputOptions } from "rollup";
+import type { RollupOptions, OutputOptions } from "rollup";
 import commonjs from "@rollup/plugin-commonjs";
 import { nodeExternals } from "rollup-plugin-node-externals";
 import { nodeResolve } from "@rollup/plugin-node-resolve";

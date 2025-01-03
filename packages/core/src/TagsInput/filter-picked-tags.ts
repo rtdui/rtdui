@@ -1,4 +1,4 @@
-import { ComboboxParsedItem, isOptionsGroup } from "../Combobox";
+import { type ComboboxParsedItem, isOptionsGroup } from "../Combobox";
 
 interface FilterPickedTagsInput {
 	data: ComboboxParsedItem[];

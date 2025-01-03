@@ -29,11 +29,11 @@ import {
 	lineNumbers,
 	highlightActiveLineGutter,
 	highlightActiveLine,
-	KeyBinding,
+	type KeyBinding,
 } from "@codemirror/view";
 import { tags } from "@lezer/highlight";
 
-import { EditorContext, EditorProps, ToolbarItem } from "../types";
+import type { EditorContext, EditorProps, ToolbarItem } from "../types";
 
 export const historyExtraKeymap: readonly KeyBinding[] = [
 	{ key: "Ctrl-Shift-z", run: redo, preventDefault: true },

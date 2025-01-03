@@ -4,7 +4,7 @@ import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import simpleGit from "simple-git";
 import chalk from "chalk";
-import { PackageJson } from "type-fest";
+import type { PackageJson } from "type-fest";
 import { getNextVersion } from "version-next";
 import { buildPackage } from "../build/build-package";
 import { createLogger } from "../utils/signale";

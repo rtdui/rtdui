@@ -10,10 +10,13 @@ import {
 	Modal,
 	CloseButton,
 } from "@rtdui/core";
-import { useDisclosure } from "@rtdui/hooks";
-import { DatePickerType } from "../../types";
-import { DateFormatter } from "../../utils";
-import { HiddenDatesInput, HiddenDatesInputValue } from "../HiddenDatesInput";
+import type { useDisclosure } from "@rtdui/hooks";
+import type { DatePickerType } from "../../types";
+import type { DateFormatter } from "../../utils";
+import {
+	HiddenDatesInput,
+	type HiddenDatesInputValue,
+} from "../HiddenDatesInput";
 
 export interface DateInputSharedProps
 	extends Omit<InputBaseOwnProps, "size">,

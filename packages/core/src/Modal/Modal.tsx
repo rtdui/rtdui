@@ -7,7 +7,7 @@ import {
 import { ModalContent } from "./ModalContent";
 import { ModalHeader } from "./ModalHeader";
 import { ModalOverlay, type ModalOverlayProps } from "./ModalOverlay";
-import { ModalRoot, ModalRootProps } from "./ModalRoot";
+import { ModalRoot, type ModalRootProps } from "./ModalRoot";
 import { ModalTitle } from "./ModalTitle";
 
 export interface ModalProps extends ModalRootProps {

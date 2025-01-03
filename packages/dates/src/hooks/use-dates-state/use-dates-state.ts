@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DatePickerType, PickerBaseProps } from "../../types";
+import type { DatePickerType, PickerBaseProps } from "../../types";
 import { useUncontrolledDates } from "../use-uncontrolled-dates/use-uncontrolled-dates";
 import { isSame, isBefore, isInRange } from "../../utils";
 

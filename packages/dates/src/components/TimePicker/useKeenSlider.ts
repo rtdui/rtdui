@@ -1,9 +1,9 @@
-import { MutableRefObject, useCallback, useEffect, useRef } from "react";
+import { type MutableRefObject, useCallback, useEffect, useRef } from "react";
 import KeenSlider, {
-	KeenSliderHooks,
-	KeenSliderInstance,
-	KeenSliderOptions,
-	KeenSliderPlugin,
+	type KeenSliderHooks,
+	type KeenSliderInstance,
+	type KeenSliderOptions,
+	type KeenSliderPlugin,
 } from "keen-slider";
 import { equal } from "../../utils";
 

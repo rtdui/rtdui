@@ -1,5 +1,5 @@
-import { CSSProperties } from "react";
-import { Column } from "@tanstack/react-table";
+import type { CSSProperties } from "react";
+import type { Column } from "@tanstack/react-table";
 
 /**
  * 该方法源自于官方的sticky pinned column的例子

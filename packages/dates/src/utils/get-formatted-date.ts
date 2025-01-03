@@ -1,5 +1,5 @@
 import { format as formatFn } from "date-fns";
-import { DatePickerType, DatePickerValue, Locale } from "../types";
+import type { DatePickerType, DatePickerValue, Locale } from "../types";
 
 interface DateFormatterInput {
 	type: DatePickerType;

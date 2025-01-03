@@ -5,7 +5,7 @@ import {
 	type NumberFormatValues,
 	type OnValueChange,
 } from "react-number-format";
-import { TextInput, TextInputProps } from "../TextInput";
+import { TextInput, type TextInputProps } from "../TextInput";
 
 function isValidNumber(value: number | string | undefined): value is number {
 	return (

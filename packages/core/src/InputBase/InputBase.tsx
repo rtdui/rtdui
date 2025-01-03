@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
 import {
 	Input,
-	InputOwnProps,
-	InputWrapperOwnProps,
+	type InputOwnProps,
+	type InputWrapperOwnProps,
 	useInputProps,
 } from "../Input";
-import { PolymorphicComponentProps } from "../Polymorphic";
+import type { PolymorphicComponentProps } from "../Polymorphic";
 
 export interface InputBaseOwnProps
 	extends InputOwnProps,

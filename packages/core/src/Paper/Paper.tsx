@@ -6,7 +6,7 @@ import {
 	type PolymorphicComponentProps,
 } from "../Polymorphic";
 import { getRadius, getSpacing } from "../utils";
-import { ThemeSize, ThemeRadius } from "../theme.types";
+import type { ThemeSize, ThemeRadius } from "../theme.types";
 
 // Component-specific props should be specified separately
 export type PaperOwnProps = {

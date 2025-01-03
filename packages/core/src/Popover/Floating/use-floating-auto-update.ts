@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { autoUpdate } from "@floating-ui/react";
 import { useDidUpdate } from "@rtdui/hooks";
-import { FloatingPosition } from "../Popover.types";
+import type { FloatingPosition } from "../Popover.types";
 
 interface Payload {
 	opened: boolean | undefined;

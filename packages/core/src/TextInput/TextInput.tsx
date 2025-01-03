@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { InputBase, InputBaseOwnProps } from "../InputBase";
-import { ThemeSize } from "../theme.types";
+import { InputBase, type InputBaseOwnProps } from "../InputBase";
+import type { ThemeSize } from "../theme.types";
 
 export interface TextInputProps
 	extends InputBaseOwnProps,

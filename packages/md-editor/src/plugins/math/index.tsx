@@ -1,4 +1,4 @@
-import rehypeKatex, { Options } from "rehype-katex";
+import rehypeKatex, { type Options } from "rehype-katex";
 import remarkMath from "remark-math";
 import type { Plugin, Locale } from "../../types";
 import { appendBlock, wrapText } from "../../utils/codemirror";

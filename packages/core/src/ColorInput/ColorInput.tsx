@@ -1,12 +1,13 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import type React from "react";
+import { forwardRef, useEffect, useState } from "react";
 import clsx from "clsx";
 import { useDidUpdate, useEyeDropper, useUncontrolled } from "@rtdui/hooks";
 import { IconColorPicker } from "@tabler/icons-react";
-import { ColorPicker, ColorPickerProps } from "../ColorPicker";
+import { ColorPicker, type ColorPickerProps } from "../ColorPicker";
 import { convertHsvaTo, isColorFormatValid, parseColorToHsva } from "../utils";
 import { ColorSwatch } from "../ColorSwatch";
 import { Popover } from "../Popover";
-import { TextInput, TextInputProps } from "../TextInput";
+import { TextInput, type TextInputProps } from "../TextInput";
 import { Button } from "../Button";
 
 export interface ColorInputProps

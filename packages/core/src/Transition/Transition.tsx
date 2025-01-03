@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import type React from "react";
+import { useRef } from "react";
 import { Transition as ReactTransition } from "react-transition-group";
 import { getTransitionStyles } from "./get-transition-styles";
-import { type TransitionType } from "./transitions";
+import type { TransitionType } from "./transitions";
 
 export type TransitionDuration =
 	| number

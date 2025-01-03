@@ -3,16 +3,16 @@ import {
 	flip,
 	inline,
 	limitShift,
-	Middleware,
+	type Middleware,
 	offset,
 	shift,
 	size,
 	useFloating,
-	UseFloatingReturn,
+	type UseFloatingReturn,
 } from "@floating-ui/react";
 import { useDidUpdate, useUncontrolled } from "@rtdui/hooks";
 import { useFloatingAutoUpdate } from "./Floating";
-import {
+import type {
 	PopoverMiddlewares,
 	PopoverWidth,
 	FloatingAxesOffsets,

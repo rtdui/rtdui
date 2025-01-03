@@ -1,5 +1,5 @@
 import { useCallback, useContext } from "react";
-import { DayOfWeek, Locale } from "../../types";
+import type { DayOfWeek, Locale } from "../../types";
 import { DatesProviderContext } from "./DatesProvider";
 
 export function useDatesContext() {

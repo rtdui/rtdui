@@ -1,4 +1,4 @@
-import { forwardRef, useState, useRef, FocusEvent } from "react";
+import { forwardRef, useState, useRef, type FocusEvent } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { Popover, TextInput, type TextInputProps } from "@rtdui/core";
 import clsx from "clsx";

@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import { useDisclosure, useUncontrolled } from "@rtdui/hooks";
-import { DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
+import { type DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 import { TimePicker, type TimerPickerBaseProps } from "../TimePicker";
-import { ThemeSize } from "@rtdui/core";
+import type { ThemeSize } from "@rtdui/core";
 
 export interface TimePickerInputProps
 	extends DateInputSharedProps,

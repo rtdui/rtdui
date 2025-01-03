@@ -1,4 +1,4 @@
-import { ComboboxItem, ComboboxParsedItem } from "../Combobox.types";
+import type { ComboboxItem, ComboboxParsedItem } from "../Combobox.types";
 
 export function getOptionsLockup(
 	options: ComboboxParsedItem[],

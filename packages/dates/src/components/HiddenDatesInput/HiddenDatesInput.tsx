@@ -1,4 +1,4 @@
-import { DatePickerType, DatesRangeValue, DateValue } from "../../types";
+import type { DatePickerType, DatesRangeValue, DateValue } from "../../types";
 
 export type HiddenDatesInputValue = DatesRangeValue | DateValue | DateValue[];
 

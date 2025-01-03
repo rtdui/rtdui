@@ -2,16 +2,16 @@ import { forwardRef, useEffect, useMemo } from "react";
 import { useId, useUncontrolled } from "@rtdui/hooks";
 import {
 	Combobox,
-	ComboboxClearButtonProps,
-	ComboboxItem,
-	ComboboxLikeProps,
-	ComboboxLikeRenderOptionInput,
+	type ComboboxClearButtonProps,
+	type ComboboxItem,
+	type ComboboxLikeProps,
+	type ComboboxLikeRenderOptionInput,
 	getOptionsLockup,
 	getParsedComboboxData,
 	OptionsDropdown,
 	useCombobox,
 } from "../Combobox";
-import { InputBase, InputBaseOwnProps } from "../InputBase";
+import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface SelectProps
 	extends ComboboxLikeProps,

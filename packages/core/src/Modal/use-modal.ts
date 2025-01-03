@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFocusReturn, useId, useWindowEvent } from "@rtdui/hooks";
-import { type TransitionProps } from "../Transition";
+import type { TransitionProps } from "../Transition";
 import { useLockScroll } from "./use-lock-scroll";
 
 interface UseModalInput {

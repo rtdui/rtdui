@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import React from "react";
+import type React from "react";
 import { Popover } from "../Popover/Popover";
-import {
-	type TransitionDuration,
-	type TransitionType,
+import type {
+	TransitionDuration,
+	TransitionType,
 } from "../Transition/transitions";
 import { useDisclosure } from "@rtdui/hooks";
 

@@ -1,4 +1,4 @@
-import { ComponentDoc } from "react-docgen-typescript";
+import type { ComponentDoc } from "react-docgen-typescript";
 
 function replaceBackticks(str: string): string {
 	return str.replace(/`([^`]+)`/g, "<code>$1</code>");

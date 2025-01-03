@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { ThemeSize, getSize } from "@rtdui/core";
+import { type ThemeSize, getSize } from "@rtdui/core";
 import clsx from "clsx";
 
 export interface PickerControlProps

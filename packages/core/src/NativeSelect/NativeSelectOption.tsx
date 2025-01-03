@@ -1,4 +1,4 @@
-import { ComboboxParsedItem, ComboboxParsedItemGroup } from "../Combobox";
+import type { ComboboxParsedItem, ComboboxParsedItemGroup } from "../Combobox";
 
 export interface NativeSelectOptionProps {
 	data: ComboboxParsedItem;

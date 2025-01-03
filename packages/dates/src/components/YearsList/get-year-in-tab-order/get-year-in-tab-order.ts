@@ -1,4 +1,4 @@
-import { PickerControlProps } from "../../PickerControl";
+import type { PickerControlProps } from "../../PickerControl";
 import { isYearDisabled } from "../is-year-disabled/is-year-disabled";
 import { isSame } from "../../../utils";
 

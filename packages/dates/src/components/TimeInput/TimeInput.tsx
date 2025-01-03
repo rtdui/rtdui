@@ -1,6 +1,7 @@
-import React, { forwardRef } from "react";
+import type React from "react";
+import { forwardRef } from "react";
 import clsx from "clsx";
-import { InputBase, InputBaseOwnProps } from "@rtdui/core";
+import { InputBase, type InputBaseOwnProps } from "@rtdui/core";
 
 export interface TimeInputProps
 	extends InputBaseOwnProps,

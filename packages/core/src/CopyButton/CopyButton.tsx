@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { useClipboard } from "@rtdui/hooks";
 
 export interface CopyButtonProps {

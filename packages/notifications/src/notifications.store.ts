@@ -1,5 +1,5 @@
 import { randomId, createStore, useStore, type RtdStore } from "@rtdui/hooks";
-import { type NotificationProps } from "./Notification";
+import type { NotificationProps } from "./Notification";
 
 export interface NotificationData extends Omit<NotificationProps, "onClose"> {
 	/** Notification id, can be used to close or update notification */

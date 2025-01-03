@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { useMergedRef } from "@rtdui/hooks";
-import { TextInput, TextInputProps } from "../../TextInput";
+import { TextInput, type TextInputProps } from "../../TextInput";
 import { useComboboxContext } from "../context";
 import { useComboboxTargetProps } from "../ComboboxTarget/use-combobox-target-props";
 

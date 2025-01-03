@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { ThemeRadius } from "../theme.types";
+import type { ThemeRadius } from "../theme.types";
 import clsx from "clsx";
 import { getRadius, rem } from "../utils";
 

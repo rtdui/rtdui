@@ -1,5 +1,5 @@
 import { randomId, createStore, useStore, type RtdStore } from "@rtdui/hooks";
-import { type DialogProps } from "./Dialog";
+import type { DialogProps } from "./Dialog";
 
 export interface DialogData extends Omit<DialogProps, "children"> {
 	content: React.ReactNode;

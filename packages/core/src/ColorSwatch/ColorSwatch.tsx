@@ -1,7 +1,11 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { getColor, getRadius, getSize } from "../utils";
-import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
+import {
+	Box,
+	type BoxProps,
+	type PolymorphicComponentProps,
+} from "../Polymorphic";
 
 export interface ColorSwatchOwnProps {
 	/** Color to display, Key of theme colors or any valid CSS color values */

@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import { useDatesState } from "../../hooks";
-import { DatePickerType, PickerBaseProps } from "../../types";
+import type { DatePickerType, PickerBaseProps } from "../../types";
 import { shiftTimezone } from "../../utils";
-import { Calendar, CalendarBaseProps } from "../Calendar";
+import { Calendar, type CalendarBaseProps } from "../Calendar";
 import { useDatesContext } from "../DatesProvider";
-import { DecadeLevelBaseSettings } from "../DecadeLevel";
+import type { DecadeLevelBaseSettings } from "../DecadeLevel";
 
 export interface YearPickerBaseProps<Type extends DatePickerType = "default">
 	extends PickerBaseProps<Type>,

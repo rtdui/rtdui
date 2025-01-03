@@ -4,13 +4,13 @@ import { defaultSpotlightFilter } from "./default-spotlight-filter";
 import { isActionsGroup } from "./is-actions-group";
 import { limitActions } from "./limit-actions";
 import { spotlightStore } from "./spotlight.store";
-import { SpotlightAction, SpotlightActionProps } from "./SpotlightAction";
+import { SpotlightAction, type SpotlightActionProps } from "./SpotlightAction";
 import { SpotlightActionsGroup } from "./SpotlightActionsGroup";
 import { SpotlightActionsList } from "./SpotlightActionsList";
 import { SpotlightEmpty } from "./SpotlightEmpty";
 import { SpotlightFooter } from "./SpotlightFooter";
-import { SpotlightRoot, SpotlightRootProps } from "./SpotlightRoot";
-import { SpotlightSearch, SpotlightSearchProps } from "./SpotlightSearch";
+import { SpotlightRoot, type SpotlightRootProps } from "./SpotlightRoot";
+import { SpotlightSearch, type SpotlightSearchProps } from "./SpotlightSearch";
 
 export type SpotlightFilterFunction = (
 	query: string,

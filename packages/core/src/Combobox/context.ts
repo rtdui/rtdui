@@ -1,5 +1,5 @@
-import { CSSProperties } from "react";
-import { ThemeBaseSize, ThemeSize } from "../theme.types";
+import type { CSSProperties } from "react";
+import type { ThemeBaseSize, ThemeSize } from "../theme.types";
 import { createSafeContext } from "../utils";
 import type { ComboboxOptionProps } from "./ComboboxOption/ComboboxOption";
 import type { ComboboxStore } from "./use-combobox/use-combobox";

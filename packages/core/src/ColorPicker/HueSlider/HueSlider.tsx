@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { ColorSlider, ColorSliderProps } from "../ColorSlider/ColorSlider";
+import { ColorSlider, type ColorSliderProps } from "../ColorSlider/ColorSlider";
 
 export interface HueSliderProps
 	extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {}

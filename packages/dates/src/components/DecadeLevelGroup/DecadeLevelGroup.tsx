@@ -1,6 +1,6 @@
 import { forwardRef, useRef } from "react";
 import { add, handleControlKeyDown } from "../../utils";
-import { DecadeLevel, DecadeLevelSettings } from "../DecadeLevel";
+import { DecadeLevel, type DecadeLevelSettings } from "../DecadeLevel";
 import { LevelsGroup } from "../LevelsGroup";
 
 export interface DecadeLevelGroupProps

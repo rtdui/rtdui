@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { ThemeSize } from "@rtdui/core";
-import { ControlsGroupSettings } from "../../types";
+import type { ThemeSize } from "@rtdui/core";
+import type { ControlsGroupSettings } from "../../types";
 import { useDatesContext } from "../DatesProvider";
-import { PickerControl, PickerControlProps } from "../PickerControl";
+import { PickerControl, type PickerControlProps } from "../PickerControl";
 import { getYearInTabOrder } from "./get-year-in-tab-order/get-year-in-tab-order";
 import { getYearsData } from "./get-years-data/get-years-data";
 import { isYearDisabled } from "./is-year-disabled/is-year-disabled";

@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { Box, Button, ThemeSize, getSize } from "@rtdui/core";
+import { Box, Button, type ThemeSize, getSize } from "@rtdui/core";
 import { isSame, shiftTimezone } from "../../utils";
 import { useDatesContext } from "../DatesProvider";
 

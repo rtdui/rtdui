@@ -1,7 +1,7 @@
 import { forwardRef, useRef } from "react";
 import { add, handleControlKeyDown } from "../../utils";
 import { LevelsGroup } from "../LevelsGroup";
-import { YearLevel, YearLevelSettings } from "../YearLevel";
+import { YearLevel, type YearLevelSettings } from "../YearLevel";
 
 export interface YearLevelGroupProps
 	extends Omit<

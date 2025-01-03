@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
-import { CalendarHeader, CalendarHeaderSettings } from "../CalendarHeader";
+import { CalendarHeader, type CalendarHeaderSettings } from "../CalendarHeader";
 import { useDatesContext } from "../DatesProvider";
-import { YearsList, YearsListSettings } from "../YearsList";
+import { YearsList, type YearsListSettings } from "../YearsList";
 import { getDecadeRange } from "./get-decade-range/get-decade-range";
 import { endOf, format, isAfter, isBefore, startOf } from "../../utils";
 

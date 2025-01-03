@@ -2,17 +2,17 @@ import { forwardRef } from "react";
 import { useId, useUncontrolled } from "@rtdui/hooks";
 import {
 	Combobox,
-	ComboboxClearButtonProps,
-	ComboboxLikeProps,
-	ComboboxLikeRenderOptionInput,
-	ComboboxStringData,
-	ComboboxStringItem,
+	type ComboboxClearButtonProps,
+	type ComboboxLikeProps,
+	type ComboboxLikeRenderOptionInput,
+	type ComboboxStringData,
+	type ComboboxStringItem,
 	getOptionsLockup,
 	getParsedComboboxData,
 	OptionsDropdown,
 	useCombobox,
 } from "../Combobox";
-import { InputBaseOwnProps } from "../InputBase";
+import type { InputBaseOwnProps } from "../InputBase";
 import { Chip } from "../Chip";
 import { ChipsInput } from "../ChipsInput";
 import { filterPickedTags } from "./filter-picked-tags";

@@ -1,6 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import { clampUseMovePosition, useMove, UseMovePosition } from "@rtdui/hooks";
+import {
+	clampUseMovePosition,
+	useMove,
+	type UseMovePosition,
+} from "@rtdui/hooks";
 import { convertHsvaTo, type HsvaColor } from "../../utils";
 import { Thumb } from "../Thumb/Thumb";
 

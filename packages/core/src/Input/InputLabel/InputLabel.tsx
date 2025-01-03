@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { useInputWrapperContext } from "../context";
-import { ThemeSize } from "../../theme.types";
+import type { ThemeSize } from "../../theme.types";
 import { getSize } from "../../utils";
 
 export interface InputLabelProps

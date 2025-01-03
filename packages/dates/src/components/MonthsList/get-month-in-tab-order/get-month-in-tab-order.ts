@@ -1,4 +1,4 @@
-import { PickerControlProps } from "../../PickerControl";
+import type { PickerControlProps } from "../../PickerControl";
 import { isMonthDisabled } from "../is-month-disabled/is-month-disabled";
 import { isSame } from "../../../utils";
 

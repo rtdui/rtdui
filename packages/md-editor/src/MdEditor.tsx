@@ -25,7 +25,7 @@ import {
 } from "@tabler/icons-react";
 import { Allotment, type AllotmentHandle } from "allotment";
 import clsx from "clsx";
-import { EditorView } from "codemirror";
+import type { EditorView } from "codemirror";
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import selectFiles from "select-files";
 import { Editor } from "./Editor";
@@ -42,15 +42,15 @@ import highlight from "./plugins/highlight-prism";
 import math from "./plugins/math";
 import mermaid from "./plugins/mermaid";
 import toc from "./plugins/toc";
-import {
+import type {
 	Meta,
 	Mode,
 	UploadResult,
-	type ActivedSidebar,
-	type Locale,
-	type ProcessorOptions,
-	type ToolbarItem,
-	type SplitMode,
+	ActivedSidebar,
+	Locale,
+	ProcessorOptions,
+	ToolbarItem,
+	SplitMode,
 } from "./types";
 import {
 	appendBlock,

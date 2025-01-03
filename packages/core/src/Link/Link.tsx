@@ -1,6 +1,10 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
+import {
+	Box,
+	type BoxProps,
+	type PolymorphicComponentProps,
+} from "../Polymorphic";
 
 // Component-specific props should be specified separately
 export type LinkOwnProps = {

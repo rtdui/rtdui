@@ -1,4 +1,4 @@
-import { OutputOptions, rollup, RollupOptions } from "rollup";
+import { type OutputOptions, rollup, type RollupOptions } from "rollup";
 
 export async function compile(config: RollupOptions) {
 	const build = await rollup(config);

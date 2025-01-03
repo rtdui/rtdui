@@ -1,15 +1,15 @@
-import React from "react";
+import type React from "react";
 import clsx from "clsx";
 import { IconCheck } from "@tabler/icons-react";
 import { Combobox } from "../Combobox";
-import {
+import type {
 	ComboboxItem,
 	ComboboxLikeRenderOptionInput,
 	ComboboxParsedItem,
 } from "../Combobox.types";
 import {
 	defaultOptionsFilter,
-	FilterOptionsInput,
+	type FilterOptionsInput,
 } from "./default-options-filter";
 import { isEmptyComboboxData } from "./is-empty-combobox-data";
 import { isOptionsGroup } from "./is-options-group";

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { ButtonProps } from "../../Button";
-import { ThemeSize } from "../../theme.types";
+import type { ButtonProps } from "../../Button";
+import type { ThemeSize } from "../../theme.types";
 import { CloseButton } from "../../CloseButton";
 
 export interface ComboboxClearButtonProps extends Omit<ButtonProps, "size"> {

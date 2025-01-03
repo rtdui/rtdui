@@ -1,14 +1,14 @@
 import { forwardRef } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { useUncontrolledDates } from "../../hooks";
-import { CalendarLevel } from "../../types";
+import type { CalendarLevel } from "../../types";
 import { add, shiftTimezone, sub } from "../../utils";
 import { useDatesContext } from "../DatesProvider";
-import { DecadeLevelSettings } from "../DecadeLevel";
+import type { DecadeLevelSettings } from "../DecadeLevel";
 import { DecadeLevelGroup } from "../DecadeLevelGroup";
-import { MonthLevelSettings } from "../MonthLevel";
+import type { MonthLevelSettings } from "../MonthLevel";
 import { MonthLevelGroup } from "../MonthLevelGroup";
-import { YearLevelSettings } from "../YearLevel";
+import type { YearLevelSettings } from "../YearLevel";
 import { YearLevelGroup } from "../YearLevelGroup";
 import { clampLevel } from "./clamp-level/clamp-level";
 

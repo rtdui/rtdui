@@ -1,7 +1,7 @@
 import { forwardRef, useRef } from "react";
 import { add, handleControlKeyDown } from "../../utils";
 import { LevelsGroup } from "../LevelsGroup";
-import { MonthLevel, MonthLevelSettings } from "../MonthLevel";
+import { MonthLevel, type MonthLevelSettings } from "../MonthLevel";
 
 export interface MonthLevelGroupProps
 	extends Omit<

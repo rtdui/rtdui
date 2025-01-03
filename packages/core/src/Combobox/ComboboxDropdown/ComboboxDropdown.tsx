@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { Popover, PopoverDropdownProps } from "../../Popover";
+import { Popover, type PopoverDropdownProps } from "../../Popover";
 import { useComboboxContext } from "../context";
 import { getSize } from "../../utils";
 

@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from "react";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import { useMutationObserver, useTimeout } from "@rtdui/hooks";
 
 function isParent(

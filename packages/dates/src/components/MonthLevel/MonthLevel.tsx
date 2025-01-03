@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
-import { CalendarHeader, CalendarHeaderSettings } from "../CalendarHeader";
+import { CalendarHeader, type CalendarHeaderSettings } from "../CalendarHeader";
 import { useDatesContext } from "../DatesProvider";
-import { Month, MonthSettings } from "../Month";
+import { Month, type MonthSettings } from "../Month";
 import { endOf, format, isAfter, isBefore, startOf } from "../../utils";
 
 export interface MonthLevelBaseSettings extends MonthSettings {

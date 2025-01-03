@@ -1,4 +1,4 @@
-import { ThemeSize } from "../theme.types";
+import type { ThemeSize } from "../theme.types";
 import { createOptionalContext } from "../utils";
 
 export interface ChipGroupContextValue {

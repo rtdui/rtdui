@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
-import { TextArea, TextAreaProps } from "../TextArea";
+import { TextArea, type TextAreaProps } from "../TextArea";
 import { validateJson } from "./validate-json";
 
 export interface JsonInputProps extends Omit<TextAreaProps, "onChange"> {

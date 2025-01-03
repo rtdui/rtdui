@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import clsx from "clsx";
 import { useChipsInputContext } from "../../ChipsInput/context";
 import { ChipGroupProvider } from "../context";
-import { ThemeSize } from "../../theme.types";
+import type { ThemeSize } from "../../theme.types";
 
 export interface ChipGroupProps extends React.ComponentPropsWithoutRef<"div"> {
 	/** Controls spacing between pills, by default controlled by `size` */

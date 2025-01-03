@@ -1,7 +1,7 @@
 import { useDisclosure } from "@rtdui/hooks";
 import { useDatesContext } from "../../components/DatesProvider";
-import { DatePickerType, DatePickerValue, Locale } from "../../types";
-import { DateFormatter, getFormattedDate } from "../../utils";
+import type { DatePickerType, DatePickerValue, Locale } from "../../types";
+import { type DateFormatter, getFormattedDate } from "../../utils";
 import { useUncontrolledDates } from "../use-uncontrolled-dates/use-uncontrolled-dates";
 
 interface UseDatesInput<Type extends DatePickerType = "default"> {

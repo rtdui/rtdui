@@ -9,7 +9,7 @@ import { getChangeValue } from "../utils/get-change-value";
 import { getPrecision } from "../utils/get-precision";
 import { getFloatingValue } from "../utils/get-floating-value";
 import { getClientPosition } from "../utils/get-client-position";
-import { type TransitionProps } from "../../Transition";
+import type { TransitionProps } from "../../Transition";
 
 export type RangeSliderValue = [number, number];
 

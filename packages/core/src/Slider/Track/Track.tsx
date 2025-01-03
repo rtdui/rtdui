@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import clsx from "clsx";
 import { Marks } from "../Marks/Marks";
 import { getDataProps } from "../../utils";

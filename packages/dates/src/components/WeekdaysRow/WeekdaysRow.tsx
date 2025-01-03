@@ -3,7 +3,7 @@ import clsx from "clsx";
 import type { DayOfWeek, Locale } from "../../types";
 import { useDatesContext } from "../DatesProvider";
 import { getWeekdayNames } from "./get-weekdays-names/get-weekdays-names";
-import { ThemeSize } from "@rtdui/core";
+import type { ThemeSize } from "@rtdui/core";
 
 export interface WeekdaysRowProps extends React.ComponentPropsWithoutRef<"tr"> {
 	/** Controls size */

@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { ThemeSize } from "@rtdui/core";
-import { ControlKeydownPayload, DayOfWeek, Locale } from "../../types";
+import type { ThemeSize } from "@rtdui/core";
+import type { ControlKeydownPayload, DayOfWeek, Locale } from "../../types";
 import { useDatesContext } from "../DatesProvider";
-import { Day, DayProps } from "../Day";
+import { Day, type DayProps } from "../Day";
 import { WeekdaysRow } from "../WeekdaysRow";
 import { getDateInTabOrder } from "./get-date-in-tab-order/get-date-in-tab-order";
 import { format, getMonthDays, isSame, isAfter, isBefore } from "../../utils";

@@ -1,4 +1,4 @@
-import { DayProps } from "../../Day/Day";
+import type { DayProps } from "../../Day/Day";
 import { isAfter, isBefore, isSame } from "../../../utils";
 
 export function getDateInTabOrder(

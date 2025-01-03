@@ -1,6 +1,6 @@
 import { addMilliseconds } from "date-fns";
 import { getTimezoneOffset } from "date-fns-tz";
-import { DatesRangeValue, DateValue } from "../types";
+import type { DatesRangeValue, DateValue } from "../types";
 
 type TimeShiftDirection = "add" | "remove";
 

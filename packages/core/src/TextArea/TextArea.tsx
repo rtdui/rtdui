@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import TextareaAutosize from "react-textarea-autosize";
-import { InputBase, InputBaseOwnProps } from "../InputBase";
+import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface TextAreaProps
 	extends InputBaseOwnProps,

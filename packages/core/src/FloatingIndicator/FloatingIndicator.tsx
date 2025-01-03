@@ -2,7 +2,11 @@ import { forwardRef, useRef } from "react";
 import { useMergedRef } from "@rtdui/hooks";
 import clsx from "clsx";
 import { useFloatingIndicator } from "./use-floating-indicator";
-import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
+import {
+	Box,
+	type BoxProps,
+	type PolymorphicComponentProps,
+} from "../Polymorphic";
 
 export interface FloatingIndicatorOwnProps {
 	/** Target element over which indicator should be displayed */

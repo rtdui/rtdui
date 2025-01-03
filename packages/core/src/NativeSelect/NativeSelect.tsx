@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { InputBase, InputBaseOwnProps } from "../InputBase";
+import { InputBase, type InputBaseOwnProps } from "../InputBase";
 import {
 	ComboboxChevron,
-	ComboboxData,
+	type ComboboxData,
 	getParsedComboboxData,
 } from "../Combobox";
 import { NativeSelectOption } from "./NativeSelectOption";

@@ -1,8 +1,9 @@
-import React, { forwardRef, useRef } from "react";
+import type React from "react";
+import { forwardRef, useRef } from "react";
 import clsx from "clsx";
 import { ChipsInputProvider } from "./context";
 import { ChipsInputField } from "./ChipsInputField/ChipsInputField";
-import { InputBase, InputBaseOwnProps } from "../InputBase";
+import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface ChipsInputProps
 	extends InputBaseOwnProps,

@@ -1,4 +1,4 @@
-import { PortalProps } from "../Portal";
+import type { PortalProps } from "../Portal";
 import type { TransitionProps } from "../Transition";
 import type { ThemeColor, ThemeRadius, ThemeShadow } from "../theme.types";
 import { createSafeContext } from "../utils";

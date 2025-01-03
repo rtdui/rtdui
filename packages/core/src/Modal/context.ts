@@ -1,5 +1,5 @@
 import { createSafeContext } from "../utils";
-import { type TransitionProps } from "../Transition";
+import type { TransitionProps } from "../Transition";
 
 interface ModalContextValue {
 	titleMounted: boolean;

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import { useDatesContext } from "../../components/DatesProvider";
-import { DatePickerType, DatePickerValue } from "../../types";
+import type { DatePickerType, DatePickerValue } from "../../types";
 import { shiftTimezone } from "../../utils";
 
 interface UseUncontrolledDates<Type extends DatePickerType = "default"> {

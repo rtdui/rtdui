@@ -6,7 +6,7 @@ import { InputError } from "../InputError/InputError";
 import { InputLabel } from "../InputLabel/InputLabel";
 import { InputWrapperProvider } from "../context";
 import { getInputOffsets } from "./get-input-offsets";
-import { ThemeSize } from "../../theme.types";
+import type { ThemeSize } from "../../theme.types";
 import { getSize } from "../../utils";
 
 export interface InputWrapperOwnProps {

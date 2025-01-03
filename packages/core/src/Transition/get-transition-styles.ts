@@ -1,7 +1,7 @@
 import {
 	type TransitionType,
 	transitions,
-	TransitionDuration,
+	type TransitionDuration,
 } from "./transitions";
 
 export const transitionStatuses = {

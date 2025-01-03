@@ -2,10 +2,10 @@ import { forwardRef, useEffect } from "react";
 import { useId, useUncontrolled } from "@rtdui/hooks";
 import {
 	Combobox,
-	ComboboxClearButtonProps,
-	ComboboxItem,
-	ComboboxLikeProps,
-	ComboboxLikeRenderOptionInput,
+	type ComboboxClearButtonProps,
+	type ComboboxItem,
+	type ComboboxLikeProps,
+	type ComboboxLikeRenderOptionInput,
 	getOptionsLockup,
 	getParsedComboboxData,
 	OptionsDropdown,
@@ -14,7 +14,7 @@ import {
 import { Chip } from "../Chip";
 import { ChipsInput } from "../ChipsInput";
 import { filterPickedValues } from "./filter-picked-values";
-import { InputBaseOwnProps } from "../InputBase";
+import type { InputBaseOwnProps } from "../InputBase";
 
 export interface MultiSelectProps
 	extends ComboboxLikeProps,

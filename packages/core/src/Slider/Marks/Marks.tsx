@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import clsx from "clsx";
 import { getPosition } from "../utils/get-position";
 import { isMarkFilled } from "./is-mark-filled";

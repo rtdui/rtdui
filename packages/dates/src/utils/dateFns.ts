@@ -24,10 +24,10 @@ import {
 	isSameWeek,
 	endOfWeek,
 	startOfWeek,
-	DateValues,
+	type DateValues,
 	set as setFn,
 } from "date-fns";
-import { DayOfWeek } from "../types";
+import type { DayOfWeek } from "../types";
 
 export function format(
 	date: Date,

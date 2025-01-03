@@ -2,16 +2,16 @@ import { forwardRef, useEffect } from "react";
 import { useId, useUncontrolled } from "@rtdui/hooks";
 import {
 	Combobox,
-	ComboboxLikeProps,
-	ComboboxLikeRenderOptionInput,
-	ComboboxStringData,
-	ComboboxStringItem,
+	type ComboboxLikeProps,
+	type ComboboxLikeRenderOptionInput,
+	type ComboboxStringData,
+	type ComboboxStringItem,
 	getOptionsLockup,
 	getParsedComboboxData,
 	OptionsDropdown,
 	useCombobox,
 } from "../Combobox";
-import { TextInput, TextInputProps } from "../TextInput";
+import { TextInput, type TextInputProps } from "../TextInput";
 
 export interface AutoCompleteProps
 	extends Omit<ComboboxLikeProps, "data">,

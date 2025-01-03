@@ -1,5 +1,5 @@
 import path from "node:path";
-import { withCustomConfig, PropItem } from "react-docgen-typescript";
+import { withCustomConfig, type PropItem } from "react-docgen-typescript";
 
 const EXCLUDE_PROPS = ["key", "ref", "style", "className"];
 

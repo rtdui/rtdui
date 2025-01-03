@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Box, ThemeSize, getSize } from "@rtdui/core";
+import { Box, type ThemeSize, getSize } from "@rtdui/core";
 import clsx from "clsx";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 

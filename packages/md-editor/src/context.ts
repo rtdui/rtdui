@@ -1,11 +1,11 @@
 import { createSafeContext } from "@rtdui/core";
 import {
-	EditorView,
-	Locale,
-	Meta,
+	type EditorView,
+	type Locale,
+	type Meta,
 	Mode,
-	ProcessorOptions,
-	ToolbarItem,
+	type ProcessorOptions,
+	type ToolbarItem,
 } from "./types";
 
 interface MdEditorContextValue extends ProcessorOptions {

@@ -1,4 +1,5 @@
-import React, { CSSProperties, forwardRef } from "react";
+import type React from "react";
+import { type CSSProperties, forwardRef } from "react";
 import clsx from "clsx";
 import { useInputWrapperContext } from "./context";
 import { InputDescription } from "./InputDescription/InputDescription";
@@ -6,8 +7,12 @@ import { InputError } from "./InputError/InputError";
 import { InputLabel } from "./InputLabel/InputLabel";
 import { InputPlaceholder } from "./InputPlaceholder/InputPlaceholder";
 import { InputWrapper } from "./InputWrapper/InputWrapper";
-import { Box, BoxProps, PolymorphicComponentProps } from "../Polymorphic";
-import { ThemeColor, ThemeRadius, ThemeSize } from "../theme.types";
+import {
+	Box,
+	type BoxProps,
+	type PolymorphicComponentProps,
+} from "../Polymorphic";
+import type { ThemeColor, ThemeRadius, ThemeSize } from "../theme.types";
 import { getRadius, getSize } from "../utils";
 
 export interface InputOwnProps {

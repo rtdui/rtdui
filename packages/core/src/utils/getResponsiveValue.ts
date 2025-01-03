@@ -1,4 +1,4 @@
-import { ThemeBreakpoint } from "../theme.types";
+import type { ThemeBreakpoint } from "../theme.types";
 
 /**
  * 默认的Tailwindcss的断点

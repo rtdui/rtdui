@@ -1,4 +1,4 @@
-import { ComboboxItem, ComboboxParsedItem } from "../Combobox.types";
+import type { ComboboxItem, ComboboxParsedItem } from "../Combobox.types";
 import { isOptionsGroup } from "./is-options-group";
 
 export interface FilterOptionsInput {

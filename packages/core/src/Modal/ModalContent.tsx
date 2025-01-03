@@ -4,7 +4,7 @@ import { FocusTrap } from "../FocusTrap";
 import { Paper } from "../Paper";
 import { Transition, type TransitionProps } from "../Transition";
 import { useModalContext } from "./context";
-import { ThemeRadius, ThemeShadow } from "../theme.types";
+import type { ThemeRadius, ThemeShadow } from "../theme.types";
 
 export interface ModalContentProps
 	extends React.ComponentPropsWithoutRef<"div"> {

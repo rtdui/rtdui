@@ -1,16 +1,16 @@
 import { useCallback, useRef, useState } from "react";
 import { useClickOutside, useDirection, useId } from "@rtdui/hooks";
-import {
-	type ArrowPosition,
-	type FloatingAxesOffsets,
-	type FloatingPosition,
-	type FloatingStrategy,
+import type {
+	ArrowPosition,
+	FloatingAxesOffsets,
+	FloatingPosition,
+	FloatingStrategy,
 } from "./Popover.types";
 import { getFloatingPosition } from "./Floating/get-floating-position/get-floating-position";
-import { PortalProps } from "../Portal";
-import { type TransitionProps } from "../Transition";
+import type { PortalProps } from "../Portal";
+import type { TransitionProps } from "../Transition";
 import { PopoverContextProvider } from "./context";
-import { PopoverMiddlewares, PopoverWidth } from "./Popover.types";
+import type { PopoverMiddlewares, PopoverWidth } from "./Popover.types";
 import { PopoverDropdown } from "./PopoverDropdown/PopoverDropdown";
 import { PopoverTarget } from "./PopoverTarget/PopoverTarget";
 import { usePopover } from "./use-popover";

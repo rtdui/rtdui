@@ -1,5 +1,5 @@
-import React from "react";
-import { Popover, PopoverProps } from "../Popover";
+import type React from "react";
+import { Popover, type PopoverProps } from "../Popover";
 import { ComboboxProvider } from "./context";
 import { ComboboxChevron } from "./ComboboxChevron/ComboboxChevron";
 import { ComboboxClearButton } from "./ComboboxClearButton/ComboboxClearButton";
@@ -13,13 +13,13 @@ import { ComboboxHeader } from "./ComboboxHeader/ComboboxHeader";
 import { ComboboxHiddenInput } from "./ComboboxHiddenInput/ComboboxHiddenInput";
 import {
 	ComboboxOption,
-	ComboboxOptionProps,
+	type ComboboxOptionProps,
 } from "./ComboboxOption/ComboboxOption";
 import { ComboboxOptions } from "./ComboboxOptions/ComboboxOptions";
 import { ComboboxSearch } from "./ComboboxSearch/ComboboxSearch";
 import { ComboboxTarget } from "./ComboboxTarget/ComboboxTarget";
-import { ComboboxStore, useCombobox } from "./use-combobox/use-combobox";
-import { ThemeBaseSize, ThemeSize } from "../theme.types";
+import { type ComboboxStore, useCombobox } from "./use-combobox/use-combobox";
+import type { ThemeBaseSize, ThemeSize } from "../theme.types";
 
 export type ComboboxStylesNames =
 	| "options"

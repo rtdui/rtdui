@@ -1,5 +1,5 @@
-import { HotkeyItem } from "@rtdui/hooks";
-import { spotlightActions, SpotlightStore } from "./spotlight.store";
+import type { HotkeyItem } from "@rtdui/hooks";
+import { spotlightActions, type SpotlightStore } from "./spotlight.store";
 
 export function getHotkeys(
 	hotkeys: string | string[] | null | undefined,

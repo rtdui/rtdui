@@ -1,4 +1,4 @@
-import { type TransitionProps } from "../Transition";
+import type { TransitionProps } from "../Transition";
 import { useModalContext } from "./context";
 
 const DEFAULT_TRANSITION: Partial<TransitionProps> = {

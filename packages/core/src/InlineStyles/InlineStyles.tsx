@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import type { InlineStylesInput } from "./styles-to-string";
 import { stylesToString } from "./styles-to-string";
 

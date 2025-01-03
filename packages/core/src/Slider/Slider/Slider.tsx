@@ -8,7 +8,7 @@ import { getChangeValue } from "../utils/get-change-value";
 import { getFloatingValue } from "../utils/get-floating-value";
 import { getPrecision } from "../utils/get-precision";
 import { getColor, getRadius, getSize } from "../../utils";
-import { type TransitionProps } from "../../Transition";
+import type { TransitionProps } from "../../Transition";
 
 export interface SliderProps
 	extends Omit<

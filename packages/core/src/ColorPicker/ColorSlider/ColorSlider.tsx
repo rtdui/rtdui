@@ -1,11 +1,12 @@
-import React, { forwardRef, useRef, useState } from "react";
+import type React from "react";
+import { forwardRef, useRef, useState } from "react";
 import clsx from "clsx";
 import {
 	clampUseMovePosition,
 	useDidUpdate,
 	useMergedRef,
 	useMove,
-	UseMovePosition,
+	type UseMovePosition,
 } from "@rtdui/hooks";
 import { Thumb } from "../Thumb/Thumb";
 

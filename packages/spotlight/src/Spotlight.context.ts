@@ -1,5 +1,5 @@
 import { createSafeContext } from "@rtdui/core";
-import { SpotlightStore } from "./spotlight.store";
+import type { SpotlightStore } from "./spotlight.store";
 
 interface SpotlightContextValue {
 	query: string;

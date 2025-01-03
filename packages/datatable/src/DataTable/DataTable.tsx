@@ -6,7 +6,7 @@ import {
 	useCallback,
 	useMemo,
 	useImperativeHandle,
-	CSSProperties,
+	type CSSProperties,
 } from "react";
 import type {
 	AccessorKeyColumnDef,

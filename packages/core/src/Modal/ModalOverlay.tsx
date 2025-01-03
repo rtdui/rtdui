@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Overlay, OverlayProps } from "../Overlay";
+import { Overlay, type OverlayProps } from "../Overlay";
 import { Transition, type TransitionProps } from "../Transition";
 import { useModalContext } from "./context";
 import { useModalTransition } from "./use-modal-transition";

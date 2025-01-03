@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import clsx from "clsx";
 import {

@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import { ThemeSize } from "@rtdui/core";
+import type { ThemeSize } from "@rtdui/core";
 
 export interface LevelsGroupProps
 	extends React.ComponentPropsWithoutRef<"div"> {

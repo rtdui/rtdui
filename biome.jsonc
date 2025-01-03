@@ -29,7 +29,6 @@
 				"recommended": false
 			},
 			"style": {
-				"useImportType": "off",
 				"noUselessElse": "off",
 				"noNonNullAssertion": "off",
 				"noParameterAssign": "off"
