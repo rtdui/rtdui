@@ -6,41 +6,41 @@ import { ServerRouter } from "react-router";
 import { isbot } from "isbot";
 import type { RenderToPipeableStreamOptions } from "react-dom/server";
 import { renderToPipeableStream } from "react-dom/server";
-import { type i18n, createInstance } from "i18next";
+import { createInstance } from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import i18nConfig from "./src/i18n/config";
 import translation_zh from "../public/locales/zh/translation.json";
 import translation_en from "../public/locales/en/translation.json";
 
-const instance = createInstance() as i18n;
-const lng = "zh";
-
-await instance
-	.use(initReactI18next) // Tell our instance to use react-i18next
-	.init({
-		...i18nConfig, // spread the configuration
-		lng, // The locale we detected above
-		ns: ["translation"], // The namespaces the routes about to render wants to use
-		// 这里没有使用fs后端, 因为cloudflare不支持fs模块, 使用内嵌资源替代.
-		resources: {
-			zh: {
-				translation: translation_zh,
-			},
-			en: {
-				translation: translation_en,
-			},
-		},
-	});
-
 export const streamTimeout = 5_000;
 
-export default function handleRequest(
+export default async function handleRequest(
 	request: Request,
 	responseStatusCode: number,
 	responseHeaders: Headers,
 	routerContext: EntryContext,
 	loadContext: AppLoadContext,
 ) {
+	const instance = createInstance();
+	const lng = "zh";
+
+	await instance
+		.use(initReactI18next) // Tell our instance to use react-i18next
+		.init({
+			...i18nConfig, // spread the configuration
+			lng, // The locale we detected above
+			ns: ["translation"], // The namespaces the routes about to render wants to use
+			// 这里没有使用fs后端, 因为cloudflare不支持fs模块, 使用内嵌资源替代.
+			resources: {
+				zh: {
+					translation: translation_zh,
+				},
+				en: {
+					translation: translation_en,
+				},
+			},
+		});
+
 	return new Promise((resolve, reject) => {
 		let shellRendered = false;
 		const userAgent = request.headers.get("user-agent");
