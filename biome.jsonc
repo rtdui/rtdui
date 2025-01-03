@@ -8,6 +8,7 @@
 	"files": {
 		"ignoreUnknown": true,
 		"ignore": [
+			"**/node_modules/**/*",
 			".react-router/**/*.ts",
 			"./**/{lib,esm,cjs}/**/*",
 			"./packages/tailwind-plugin/**/*"
