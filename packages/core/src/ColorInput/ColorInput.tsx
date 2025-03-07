@@ -95,7 +95,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
 			<Button
 				size="xs"
 				ghost
-				sharp="square"
+				shape="square"
 				className={clsx("colorinput-eyedropper", slots?.eyeDropper)}
 				onClick={() =>
 					openEyeDropper()
@@ -192,7 +192,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(
 					/>
 				</Popover.Target>
 				<Popover.Dropdown>
-					<div className="bg-base-100 shadow p-2 rounded-md">
+					<div className="bg-base-100 shadow-sm p-2 rounded-md">
 						<ColorPicker
 							value={_value}
 							onChange={setValue}

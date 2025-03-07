@@ -16,7 +16,7 @@ export interface CloseButtonProps
 	/**
 	 * @default "circle"
 	 */
-	sharp?: "square" | "circle";
+	shape?: "square" | "circle";
 }
 
 export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
@@ -24,7 +24,7 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
 		const {
 			size = "sm",
 			iconProps = { size: props.size },
-			sharp = "circle",
+			shape = "circle",
 			className,
 			style,
 			...others
@@ -56,8 +56,8 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
 						"btn-sm": size === "sm",
 						"btn-md": size === "md",
 						"btn-lg": size === "lg",
-						"btn-square": sharp === "square",
-						"btn-circle": sharp === "circle",
+						"btn-square": shape === "square",
+						"btn-circle": shape === "circle",
 					},
 					className,
 				)}

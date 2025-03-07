@@ -61,7 +61,6 @@ export default function Demo() {
 					<div key={name}>
 						<Button
 							type="button"
-							noAnimation
 							// onClick={() =>
 							//   dispatch({ [name]: !state[name as keyof typeof initial] })
 							// }

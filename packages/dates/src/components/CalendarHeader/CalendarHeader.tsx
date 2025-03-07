@@ -130,7 +130,7 @@ export const CalendarHeader = forwardRef<HTMLDivElement, CalendarHeaderProps>(
 						className={clsx(
 							"calendarHeaderControl",
 							"btn btn-ghost btn-square min-h-0 disabled:bg-base-100",
-							"w-[--dch-control-size] h-[--dch-control-size]",
+							"w-(--dch-control-size) h-(--dch-control-size)",
 							slots?.previous,
 						)}
 						data-direction="previous"
@@ -156,7 +156,7 @@ export const CalendarHeader = forwardRef<HTMLDivElement, CalendarHeaderProps>(
 					className={clsx(
 						"calendarHeaderLevel",
 						"btn btn-ghost min-h-0",
-						"h-[--dch-control-size]",
+						"h-(--dch-control-size)",
 						"flex-1 flex justify-center items-center",
 						{ "[&&&]:bg-base-100": !hasNextLevel },
 					)}
@@ -176,7 +176,7 @@ export const CalendarHeader = forwardRef<HTMLDivElement, CalendarHeaderProps>(
 						className={clsx(
 							"calendarHeaderControl",
 							"btn btn-ghost btn-square min-h-0 disabled:bg-base-100",
-							"min-h-0 w-[--dch-control-size] h-[--dch-control-size]",
+							"min-h-0 w-(--dch-control-size) h-(--dch-control-size)",
 							slots?.next,
 						)}
 						data-direction="next"

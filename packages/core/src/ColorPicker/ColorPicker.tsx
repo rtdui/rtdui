@@ -180,9 +180,9 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				data-full-width={fullWidth}
 				className={clsx(
 					"color-picker",
-					"flex flex-col gap-2 w-[--cp-width]",
+					"flex flex-col gap-2 w-(--cp-width)",
 					{
-						"!w-full": fullWidth,
+						"w-full!": fullWidth,
 					},
 					className,
 				)}
@@ -284,7 +284,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 									size="var(--cp-preview-size)"
 									className={clsx(
 										"preview",
-										"w-[--cp-preview-size] h-[--cp-preview-size",
+										"w-(--cp-preview-size) h-[--cp-preview-size",
 									)}
 								/>
 							)}

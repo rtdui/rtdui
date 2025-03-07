@@ -1,3 +1,42 @@
+# Version 5.0.0 (2025-3-3)
+
+- The main changes of Rtdui v5 are adapted to TailwindCSS v4 and daisyUI v5
+
+  Rtdui v5 works with Tailwind CSS 4 and daisyUI v5 takes advantage of all the new features.
+
+  If your project requires TailwindCSS v3 and daisyUI v4, please use Rtdui v4 version
+
+## Improved theme color variables
+
+Tailwind CSS 4 uses CSS color-mix() to control the opacity, so daisyUI v5 now put the whole color inside CSS variables and also updated the variable names to be more readable.
+
+daisyUI v5 now supports all color formats, but recommend using OKLCH
+
+Rtdui follow and adapt to this change
+
+## New "Effect" theme CSS variables
+
+Currently, daisyUI v5 the following effects are available:
+
+--depth: adds a clean, subtle depth effect to the components, making them look more visually appealing
+--noise: adds a slight noise effect to the components, giving them a more textured look
+
+Rtdui follow this feature
+
+## New component styles: soft, dash
+
+Components like Button, Badge, Alert now have `soft` and `dash` style variants.
+
+## New themes
+
+daisyUI v5 includes 3 new themes:
+
+- caramellatte - Warm, cozy, light theme featuring brown and beige
+- abyss - Deep dark green, teal and phosphorus color palette
+- silk - Bright, clean and bold theme with fluorescent text colors
+
+Rtdui follow this feature
+
 # Version 4.10.7 (2025-1-3)
 
 - [scripts] Fix incorrect name for react-dom in script

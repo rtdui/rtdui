@@ -1,7 +1,8 @@
 import { createOptionalContext } from "../utils";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface AvatarGroupContextValue {
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 }
 
 export const [AvatarGroupProvider, useAvatarGroupContext] =

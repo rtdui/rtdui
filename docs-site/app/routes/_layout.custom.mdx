@@ -12,73 +12,83 @@ Rtdui的组件使用了[daisyUI的主题样式](https://daisyui.com/docs/themes/
 
 所有的主题样式均以CSS变量实现的, 如果预置主题不符合你的要求, 你也可以修改主题的CSS变量的方式直接修改主题:
 
+由于TailwindCSS v4 使用 CSS 的`color-mix()`控制透明度, 不需要像v3那样必须提取颜色值交给TailwindCSS来生成透明度变量.
+因此现在的主题颜色变量使用完整的颜色表示, 同时修改了变量名使其更易读.
+
 注意: 颜色需要使用`OKLCH`格式的值. [为什么使用OKLCH?](https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl)
 
 ```css
-:root {
+:where(:root),
+[data-theme="light"] {
   color-scheme: light;
-  --p: 0.4912 0.3096 275.75;
-  --pc: 0.89824 0.06192 275.75;
-  --s: 0.6971 0.329 342.55;
-  --sc: 0.9871 0.0106 342.55;
-  --a: 0.7676 0.184 183.61;
-  --ac: 0.15352 0.0368 183.61;
-  --n: 0.321785 0.02476 255.701624;
-  --nc: 0.894994 0.011585 252.096176;
-  --b1: 1 0 0;
-  --b2: 0.961151 0 0;
-  --b3: 0.924169 0.00108 197.137559;
-  --bc: 0.278078 0.029596 256.847952;
-  --in: 0.7206 0.191 231.6;
-  --inc: 0 0 0;
-  --su: 64.8% 0.15 160;
-  --suc: 0 0 0;
-  --wa: 0.8471 0.199 83.87;
-  --wac: 0 0 0;
-  --er: 0.7176 0.221 22.18;
-  --erc: 0 0 0;
-  --rounded-box: 1rem;
-  --rounded-btn: 0.5rem;
-  --rounded-badge: 1.9rem;
-  --animation-btn: 0.25s;
-  --animation-input: 0.2s;
-  --btn-focus-scale: 0.95;
-  --border-btn: 1px;
-  --tab-border: 1px;
-  --tab-radius: 0.5rem;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(98% 0 0);
+  --color-base-300: oklch(95% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-primary: oklch(45% 0.24 277.023);
+  --color-primary-content: oklch(93% 0.034 272.788);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  /* 应用到`rounded-selector`工具类 */
+  --radius-selector: 0.5rem;
+  /* 应用到`rounded-field`工具类 */
+  --radius-field: 0.25rem;
+  /* 应用到`rounded-box`工具类 */
+  --radius-box: 0.5rem;
+  /* 像checkbox, radio, toggle, badge等元素的基础尺寸, xs,sm,md,lg,xl都是此基础值乘以一个缩放因子 */
+  --size-selector: 0.25rem;
+  /* 像input, button, tab 等元素的基础尺寸, xs,sm,md,lg,xl都是此基础值乘以一个缩放因子 */
+  --size-field: 0.25rem;
+  /* 全局的边框尺寸 */
+  --border: 1px;
+  /* 全局的轻微深度特效, 这是一个开关值, 0关1开 */
+  --depth: 1;
+  /* 全局的噪声纹理特效, 这是一个开关值, 0关1开 */
+  --noise: 0;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --p: 0.6569 0.196 275.75;
-  --pc: 0.13138 0.0392 275.75;
-  --s: 0.748 0.26 342.55;
-  --sc: 0.1496 0.052 342.55;
-  --a: 0.7451 0.167 183.61;
-  --ac: 0.14902 0.0334 183.61;
-  --n: 0.313815 0.021108 254.139175;
-  --nc: 0.746477 0.0216 264.435964;
-  --b1: 0.253267 0.015896 252.417568;
-  --b2: 0.232607 0.013807 253.100675;
-  --b3: 0.211484 0.01165 254.087939;
-  --bc: 0.746477 0.0216 264.435964;
-  --in: 0.7206 0.191 231.6;
-  --inc: 0 0 0;
-  --su: 64.8% 0.15 160;
-  --suc: 0 0 0;
-  --wa: 0.8471 0.199 83.87;
-  --wac: 0 0 0;
-  --er: 0.7176 0.221 22.18;
-  --erc: 0 0 0;
-  --rounded-box: 1rem;
-  --rounded-btn: 0.5rem;
-  --rounded-badge: 1.9rem;
-  --animation-btn: 0.25s;
-  --animation-input: 0.2s;
-  --btn-focus-scale: 0.95;
-  --border-btn: 1px;
-  --tab-border: 1px;
-  --tab-radius: 0.5rem;
+  --color-base-100: oklch(25.33% 0.016 252.42);
+  --color-base-200: oklch(23.26% 0.014 253.1);
+  --color-base-300: oklch(21.15% 0.012 254.09);
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-primary: oklch(58% 0.233 277.117);
+  --color-primary-content: oklch(96% 0.018 272.314);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
 ```
 

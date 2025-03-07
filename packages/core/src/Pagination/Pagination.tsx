@@ -8,6 +8,7 @@ import {
 	IconChevronRight,
 } from "@tabler/icons-react";
 import { Button } from "../Button/Button";
+import type { ThemeBaseSize } from "../theme.types";
 
 interface PageItemProps {
 	type: string;
@@ -33,7 +34,7 @@ function PageItem(props: PageItemProps) {
 }
 
 export interface PaginationProps {
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	/**
 	 * 总页数
 	 */
@@ -49,7 +50,7 @@ export interface PaginationProps {
 	 */
 	siblingCount?: number;
 	/** 矩形或圆形, 用于单字符或图标 */
-	sharp?: "square" | "circle";
+	shape?: "square" | "circle";
 	/**
 	 * @default true
 	 */
@@ -73,7 +74,7 @@ export interface PaginationProps {
 export function Pagination(props: PaginationProps) {
 	const {
 		size,
-		sharp,
+		shape,
 		count,
 		boundaryCount = 1,
 		siblingCount = 1,
@@ -207,10 +208,10 @@ export function Pagination(props: PaginationProps) {
 				<Button
 					key={index}
 					size={size}
-					sharp={sharp}
-					className={clsx("join-item", {
+					shape={shape}
+					className={clsx("join-item border-y-0", {
 						"btn-active": d.selected,
-						"btn-disabled !bg-base-200": d.disabled,
+						"btn-disabled bg-base-200! border-base-300!": d.disabled,
 						"px-1": d.type !== "page",
 					})}
 					onClick={d.onClick}

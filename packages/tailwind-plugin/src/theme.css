@@ -22,24 +22,42 @@
   --theme-spacing-size: var(--theme-spacing-size-sm);
 }
 
+:root,
+[data-theme] {
+  background-color: var(--root-bg, var(--color-base-100));
+  color: var(--color-base-content);
+}
+
+:where(
+  :root:has(
+      .modal-open,
+      .modal[open],
+      .modal:target,
+      .modal-toggle:checked,
+      .drawer:not(.drawer-open) > .drawer-toggle:checked
+    )
+) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+  background-image: linear-gradient(
+    var(--color-base-100),
+    var(--color-base-100)
+  );
+  --root-bg: color-mix(in srgb, var(--color-base-100), oklch(0% 0 0) 40%);
+}
+
 html:has(body[data-scroll-locked]) {
-  scrollbar-gutter: auto !important;
   overflow: hidden !important;
 }
 html body[data-scroll-locked] {
   overflow: visible !important;
 }
 
-/*prettier-ignore */
-:root:has(:is(.modal-open,.modal:target,.modal-toggle:checked + .modal,.modal[open])) {
-  scrollbar-gutter: auto !important;
-}
-
+:root,
 *,
 *::before,
 *::after {
   scrollbar-width: thin;
-  scrollbar-color: theme(colors.neutral-content) transparent;
 }
 
 h5 {
@@ -53,4 +71,13 @@ h6 {
 .input[type="number"].input-md[type="number"]::-webkit-inner-spin-button {
   margin-block: -2px;
   margin-inline-end: calc(var(--input-padding-right, 8px) * -1);
+}
+
+.join {
+  .btn.join-item:is(input[type="checkbox"], input[type="radio"]) {
+    &:checked {
+      outline-width: 1px !important;
+      outline-offset: 0 !important;
+    }
+  }
 }

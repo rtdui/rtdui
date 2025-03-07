@@ -226,7 +226,7 @@ export const DateTimePickerInput = forwardRef<
 					/>
 
 					<Button
-						sharp="square"
+						shape="square"
 						size="sm"
 						className={clsx("submitButton")}
 						data-rtdui-stop-propagation={__stopPropagation || undefined}

@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { useAvatarGroupContext } from "../AvatarGroup/AvatarGroup.context";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface AvatarProps {
 	/** 头像的url */
 	src?: string;
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	/**
 	 * 方形或圆形变体
 	 * @default circle
@@ -59,9 +60,9 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 			className={clsx(
 				"avatar",
 				{
-					online: online === true,
-					offline: online === false,
-					placeholder: isPlaceholder,
+					"avatar-online": online === true,
+					"avatar-offline": online === false,
+					"avatar-placeholder": isPlaceholder,
 				},
 				className,
 			)}
@@ -74,7 +75,8 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 						"w-8": size === "xs",
 						"w-12": size === "sm",
 						"w-16": size === "md",
-						"w-24": size === "lg",
+						"w-20": size === "lg",
+						"w-24": size === "xl",
 						"rounded-xl": mask === undefined && variant === "square",
 						"rounded-full": mask === undefined && variant === "circle",
 						"bg-neutral text-neutral-content": isPlaceholder,
@@ -96,10 +98,11 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 				) : (
 					<span
 						className={clsx({
-							"text-base": size === "xs",
-							"text-xl": size === "sm",
-							"text-2xl": size === "md",
-							"text-3xl": size === "lg",
+							"text-xs": size === "xs",
+							"text-sm": size === "sm",
+							"text-base": size === "md",
+							"text-xl": size === "lg",
+							"text-2xl": size === "xl",
 						})}
 					>
 						{placeholder}

@@ -71,7 +71,7 @@ export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
 					"absolute inset-0 bg-[var(--overlay-bg,rgba(0,0,0,0.6))]",
 					"[backdrop-filter:var(--overlay-filter)]",
 					"rounded-[var(--overlay-radius,0)]",
-					"z-[--overlay-z-index]",
+					"z-(--overlay-z-index)",
 					{
 						"[&&]:fixed": fixed === true,
 						"[&&]:flex [&&]:items-center [&&]:justify-center": center === true,
@@ -86,7 +86,7 @@ export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
 							((color !== undefined || backgroundOpacity !== undefined) &&
 								`rgba(${color ?? "#000"}, ${backgroundOpacity ?? 0.6}))`) ||
 							undefined,
-						"--overlay-filter": blur ? `blur(${rem(blur)})` : undefined,
+						"--overlay-filter": blur ? `blur(${rem(blur-sm)})` : undefined,
 						"--overlay-radius":
 							radius === undefined ? undefined : getRadius(radius),
 						"--overlay-z-index": zIndex?.toString(),

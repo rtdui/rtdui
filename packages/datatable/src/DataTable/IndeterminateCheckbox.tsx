@@ -20,7 +20,7 @@ export function IndeterminateCheckbox(props: IndeterminateCheckboxProps) {
 		<input
 			type="checkbox"
 			ref={ref}
-			className={clsx("checkbox checkbox-xs rounded", className)}
+			className={clsx("checkbox checkbox-xs rounded-sm", className)}
 			onClick={(ev: React.MouseEvent) => ev.stopPropagation()}
 			{...other}
 		/>

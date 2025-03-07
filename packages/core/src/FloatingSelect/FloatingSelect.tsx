@@ -134,15 +134,15 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
 					key={item.value}
 					className={clsx(
 						"control",
-						"relative flex-1 z-[2]",
-						"[--separator-color:oklch(var(--b3))] first-of-type:[--separator-color:transparent]",
+						"relative flex-1 z-2",
+						"[--separator-color:var(--color-base-300)] first-of-type:[--separator-color:transparent]",
 						{
 							"cursor-default": readOnly,
 							"cursor-not-allowed text-gray-400 dark:text-gray-600": disabled,
 							"text-gray-500 dark:text-gray-500": !disabled && !actived,
 							"text-gray-700 dark:text-gray-300": !disabled && actived,
-							"text-gray-700 [&&]:dark:text-gray-400": disabled && actived,
-							"before:absolute before:bg-[--separator-color] before:transition-[background-color] before:duration-[--sc-transition-duration]":
+							"text-gray-700 dark:[&&]:text-gray-400": disabled && actived,
+							"before:absolute before:bg-(--separator-color) before:transition-[background-color] before:duration-(--sc-transition-duration)":
 								withItemsSeparator,
 							"[--separator-color:transparent] [&+.control]:[--separator-color:transparent]":
 								withItemsSeparator && actived,
@@ -166,11 +166,11 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
 
 					<label
 						className={clsx(
-							"block text-center text-nowrap overflow-hidden text-ellipsis select-none rounded-[--sc-radius] p-[--sc-padding] font-bold transition-all duration-[--sc-transition-duration]",
+							"block text-center text-nowrap overflow-hidden text-ellipsis select-none rounded-(--sc-radius) p-(--sc-padding) font-bold transition-all duration-(--sc-transition-duration)",
 							{
-								"text-[--sc-label-color]": actived && color !== undefined,
-								"[&]:text-gray-400 [&]:dark:text-gray-400": actived && disabled,
-								"[&&]:text-gray-300 [&&]:dark:text-gray-300":
+								"text-(--sc-label-color)": actived && color !== undefined,
+								"[&]:text-gray-400 dark:[&]:text-gray-400": actived && disabled,
+								"[&&]:text-gray-300 dark:[&&]:text-gray-300":
 									actived && disabled && color !== undefined,
 								"cursor-default": readOnly,
 								"cursor-not-allowed": disabled,
@@ -185,7 +185,7 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
 						htmlFor={`${uuid}-${item.value}`}
 						ref={(node) => setElementRef(node, item.value)}
 					>
-						<span className="relative z-[2]">{item.label}</span>
+						<span className="relative z-2">{item.label}</span>
 					</label>
 				</div>
 			);
@@ -203,7 +203,7 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
 				{...others}
 				className={clsx(
 					"floating-select",
-					"relative bg-base-200 overflow-hidden p-1 rounded-[--sc-radius] text-[length:--sc-font-size]",
+					"relative bg-base-200 overflow-hidden p-1 rounded-(--sc-radius) text-(length:--sc-font-size)",
 					{
 						"inline-flex w-auto": !fullWidth,
 						flex: fullWidth,
@@ -244,9 +244,9 @@ export const FloatingSelect = forwardRef<HTMLDivElement, FloatingSelectProps>(
 						parent={parent}
 						transitionDuration="var(--sc-transition-duration)"
 						className={clsx(
-							"z-[1] bg-white dark:bg-gray-600 rounded-[--sc-radius] shadow",
+							"z-1 bg-white dark:bg-gray-600 rounded-(--sc-radius) shadow-sm",
 							{
-								"[&]:bg-[--sc-color]": color,
+								"[&]:bg-(--sc-color)": color,
 							},
 							slots?.indicator,
 						)}

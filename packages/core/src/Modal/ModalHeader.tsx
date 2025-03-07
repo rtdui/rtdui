@@ -14,7 +14,7 @@ export const ModalHeader = forwardRef<HTMLElement, ModalHeaderProps>(
 				className={clsx(
 					"modal-header",
 					"flex justify-between items-center min-h-14 p-[var(--modal-padding,theme-spacing-md)]",
-					"sticky top-0 z-[1000]",
+					"sticky top-0 z-1000",
 					"bg-base-100",
 					className,
 				)}

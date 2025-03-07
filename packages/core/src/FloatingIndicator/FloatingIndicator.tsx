@@ -74,7 +74,7 @@ export const FloatingIndicator: <
 					"absolute left-0 top-0",
 					"transition-[transform,width,height] duration-0",
 					{
-						"duration-[--transition-duration]": initialized,
+						"duration-(--transition-duration)": initialized,
 						hidden,
 					},
 					className,

@@ -7,7 +7,6 @@ export default function Demo() {
 		<div className="flex flex-col items-center">
 			<Button
 				type="button"
-				noAnimation
 				// onClick={() => setState((prev) => !prev)}
 				onMouseEnter={() => setState(true)}
 				onMouseLeave={() => setState(false)}

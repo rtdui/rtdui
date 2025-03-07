@@ -13,7 +13,6 @@ import Demo from "../../components/Demo";
 import SwapFlipDemo from "./SwapFlipDemo";
 import SwapIconRotateDemo from "./SwapIconRotateDemo";
 import SwapIconDemo from "./SwapIconDemo";
-import SwapIndeterminateDemo from "./SwapIndeterminateDemo";
 import SwapInFormDemo from "./SwapInFormDemo";
 import SwapTextDemo from "./SwapTextDemo";
 
@@ -38,14 +37,6 @@ import SwapTextDemo from "./SwapTextDemo";
 Swap 的孩子可以是任意元素, 本例中使用了 div 元素作为孩子. 并给它设置了翻转特效
 
 <Demo data={{ Component: SwapFlipDemo }} />
-
-## 初始时可以设置中间态
-
-要启用中间状态, `indeterminate`属性设置为`true`, 并且必须提供三个孩子元素, 第三个元素将作为初始时的中间态
-
-> Tip: 一旦进行了点击则再也不会回到中间态.
-
-<Demo data={{ Component: SwapIndeterminateDemo }} />
 
 ## Swap 可以作为 form 的控件使用
 

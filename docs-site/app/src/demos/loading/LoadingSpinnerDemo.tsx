@@ -5,6 +5,7 @@ export default function Demo() {
 	return (
 		<>
 			<div className="flex gap-4">
+				<Loading size="xl" />
 				<Loading size="lg" />
 				<Loading size="md" />
 				<Loading size="sm" />

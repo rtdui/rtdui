@@ -16,7 +16,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(
 				className={clsx(
 					"combobox-option-empty",
 					"flex justify-center items-center text-gray-500",
-					"p-[--combobox-option-padding]",
+					"p-(--combobox-option-padding)",
 					className,
 				)}
 				{...others}

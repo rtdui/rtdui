@@ -23,7 +23,7 @@ export const InputDescription = forwardRef<
 			ref={ref}
 			className={clsx(
 				"input-description",
-				"text-[length:--input-font-size]",
+				"text-(length:--input-font-size)",
 				className,
 			)}
 			style={

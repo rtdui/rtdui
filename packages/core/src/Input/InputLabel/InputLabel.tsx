@@ -44,7 +44,7 @@ export const InputLabel = forwardRef<
 			className={clsx(
 				"input-label",
 				"font-bold",
-				"text-[length:--input-font-size]",
+				"text-(length:--input-font-size)",
 				className,
 			)}
 			style={

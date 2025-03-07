@@ -163,9 +163,9 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
 					...style,
 					"--input-height-xs": "24px",
 					"--input-height-sm": "32px",
-					"--input-height-md": "48px",
-					"--input-height-lg": "64px",
-					"--input-height-xl": "80px",
+					"--input-height-md": "40px",
+					"--input-height-lg": "48px",
+					"--input-height-xl": "56px",
 					"--input-height": getSize(size, "input-height"),
 					"--input-size": multiline ? "auto" : getSize(size, "input-height"),
 					"--input-padding-left": leftSectionWidth
@@ -188,7 +188,7 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
 							"input-sctioin-left",
 							"absolute top-0 bottom-0 left-0",
 							"flex justify-center items-center",
-							"w-[--input-left-section-width]",
+							"w-(--input-left-section-width)",
 							"pointer-events-none",
 							{
 								"[&]:pointer-events-auto":
@@ -220,12 +220,12 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
 					className={clsx(
 						"input-input",
 						"input w-full [line-height:normal] focus:outline-offset-0 focus:outline-1 focus-within:outline-offset-0 focus-within:outline-1",
-						"text-[length:--input-font]",
-						"w-full h-[--input-size] py-1.5",
-						"[&]:pl-[--input-padding-left]",
-						"[&]:pr-[--input-padding-right]",
-						"[&]:rounded-[--input-radius]",
-						"min-h-[--input-height]",
+						"text-(length:--input-font)",
+						"w-full h-(--input-size) py-1.5",
+						"[&]:pl-(--input-padding-left)",
+						"[&]:pr-(--input-padding-right)",
+						"[&]:rounded-(--input-radius)",
+						"min-h-(--input-height)",
 						{
 							"input-primary": color === "primary",
 							"input-secondary": color === "secondary",
@@ -234,7 +234,6 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
 							"input-success": color === "success",
 							"input-warning": color === "warning",
 							"input-error": color === "error" || !!error,
-							"input-bordered": variant === "outline",
 							"input-ghost": variant === "ghost",
 							"cursor-pointer": pointer,
 							"text-error": !!error,
@@ -256,7 +255,7 @@ export const Input_: <E extends React.ElementType = typeof defaultElement>(
 							"input-section-right",
 							"absolute top-0 bottom-0 right-0",
 							"flex justify-center items-center",
-							"w-[--input-right-section-width]",
+							"w-(--input-right-section-width)",
 							"pointer-events-none",
 							{
 								"[&]:pointer-events-auto":

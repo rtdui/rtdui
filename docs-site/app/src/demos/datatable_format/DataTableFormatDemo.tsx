@@ -115,7 +115,7 @@ const columns: ColumnDef<Person>[] = [
 				size: 200,
 				accessorKey: "deposit",
 				cell: (cx) => (
-					<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+					<span className="bg-clip-text text-transparent bg-linear-to-r from-pink-500 to-violet-500">
 						{formatNumber(cx.getValue(), "decimal")}
 					</span>
 				),

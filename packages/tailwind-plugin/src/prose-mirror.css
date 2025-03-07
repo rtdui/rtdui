@@ -1,5 +1,5 @@
 .ProseMirror {
-  background-color: theme(colors.base-100);
+  background-color: var(--color-base-100);
   padding: 32px;
 }
 

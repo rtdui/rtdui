@@ -12,6 +12,7 @@ handle:
 import Demo from "../../components/Demo";
 import SwitchSizeDemo from "./SwitchSizeDemo";
 import SwitchColorDemo from "./SwitchColorDemo";
+import SwitchCustomColorDemo from "./SwitchCustomColorDemo";
 import SwitchLabelDemo from "./SwitchLabelDemo";
 import SwitchLabelPostionDemo from "./SwitchLabelPostionDemo";
 
@@ -24,6 +25,13 @@ import SwitchLabelPostionDemo from "./SwitchLabelPostionDemo";
 ## 颜色
 
 <Demo data={{ Component: SwitchColorDemo }} />
+
+## 自定义颜色
+
+CSS的`border-color`(作用于Switch的边框)、`background-color`(作用于Switch的背景)、`color`(作用于Switch指示器)
+TailwindCSS状态变体`checked:`作用于选中时的颜色.
+
+<Demo data={{ Component: SwitchCustomColorDemo }} />
 
 ## 标签和帮助文本
 

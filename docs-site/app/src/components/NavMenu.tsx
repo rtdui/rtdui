@@ -15,7 +15,7 @@ export default function NavMenu(props: NavMenuProps) {
 	const { data = [], onClick, className } = props;
 	const { t } = useTranslation();
 	return (
-		<ul className={clsx("menu", "pb-9", className)}>
+		<ul className={clsx("menu w-full", "pb-9", className)}>
 			{data.map((d) => (
 				<React.Fragment key={d.group}>
 					<li>
@@ -27,7 +27,17 @@ export default function NavMenu(props: NavMenuProps) {
 							<ul>
 								{d.items.map((dd) => (
 									<li key={`${d.group}-${dd.label}`}>
-										<NavLink to={dd.url} onClick={onClick}>
+										<NavLink
+											to={dd.url}
+											onClick={onClick}
+											className={({ isActive, isPending }) =>
+												isPending
+													? "pending"
+													: isActive
+														? "menu-active"
+														: undefined
+											}
+										>
 											{t(`navMenu.${dd.label}`)}
 											{dd.flag && (
 												<span className="text-secondary text-right">

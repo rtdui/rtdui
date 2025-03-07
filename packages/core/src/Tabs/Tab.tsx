@@ -69,48 +69,48 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
 			aria-controls={ctx.getPanelId(value)}
 			onClick={activateTab}
 			className={clsx(
-				"h-9 px-3 rounded-[--tabs-radius] bg-clip-padding",
+				"h-9 px-3 rounded-(--tabs-radius) bg-clip-padding",
 				"relative",
-				"group-[[data-grow=true]]:flex-1",
+				"group-data-[grow=true]:flex-1",
 				{
 					"hover:bg-base-200": !active,
-					"text-gray-400 hover:!bg-base-100": !active && disabled,
+					"text-gray-400 hover:bg-base-100!": !active && disabled,
 
-					"rounded-b-none border-b-2 hover:border-b-300":
+					"rounded-b-none border-b-2":
 						ctx.variant === "default" &&
 						ctx.orientation === "horizontal" &&
 						!ctx.inverted,
-					"rounded-t-none border-t-2 hover:border-t-300":
+					"rounded-t-none border-t-2":
 						ctx.variant === "default" &&
 						ctx.orientation === "horizontal" &&
 						ctx.inverted,
 
-					"before:absolute before:inset-x-0 before:-bottom-0.5 before:border-b-2 before:border-[--tabs-color]":
+					"before:absolute before:inset-x-0 before:-bottom-0.5 before:border-b-2 before:border-(--tabs-color)":
 						active &&
 						ctx.variant === "default" &&
 						ctx.orientation === "horizontal" &&
 						!ctx.inverted,
-					"before:absolute before:inset-x-0 before:-top-0.5 before:border-t-2 before:border-[--tabs-color]":
+					"before:absolute before:inset-x-0 before:-top-0.5 before:border-t-2 before:border-(--tabs-color)":
 						active &&
 						ctx.variant === "default" &&
 						ctx.orientation === "horizontal" &&
 						ctx.inverted,
 
-					"rounded-r-none border-r-2 hover:border-r-300":
+					"rounded-r-none border-r-2":
 						ctx.variant === "default" &&
 						ctx.orientation === "vertical" &&
 						ctx.placement === "left",
-					"rounded-l-none border-l-2 hover:border-l-300":
+					"rounded-l-none border-l-2":
 						ctx.variant === "default" &&
 						ctx.orientation === "vertical" &&
 						ctx.placement === "right",
 
-					"before:absolute before:inset-y-0 before:-right-0.5 before:border-r-2 before:border-[--tabs-color]":
+					"before:absolute before:inset-y-0 before:-right-0.5 before:border-r-2 before:border-(--tabs-color)":
 						active &&
 						ctx.variant === "default" &&
 						ctx.orientation === "vertical" &&
 						ctx.placement === "left",
-					"before:absolute before:inset-y-0 before:-left-0.5 before:border-l-2 before:border-[--tabs-color]":
+					"before:absolute before:inset-y-0 before:-left-0.5 before:border-l-2 before:border-(--tabs-color)":
 						active &&
 						ctx.variant === "default" &&
 						ctx.orientation === "vertical" &&
@@ -125,13 +125,13 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
 						ctx.orientation === "horizontal" &&
 						ctx.inverted,
 
-					"!border-base-300 !border-b-base-100":
+					"border-base-300! border-b-base-100!":
 						active &&
 						ctx.variant === "outline" &&
 						ctx.orientation === "horizontal" &&
 						!ctx.inverted,
 
-					"!border-base-300 !border-t-base-100":
+					"border-base-300! border-t-base-100!":
 						active &&
 						ctx.variant === "outline" &&
 						ctx.orientation === "horizontal" &&
@@ -142,7 +142,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
 						ctx.orientation === "vertical" &&
 						ctx.placement === "left",
 
-					"!border-base-300 !border-r-base-100":
+					"border-base-300! border-r-base-100!":
 						active &&
 						ctx.variant === "outline" &&
 						ctx.orientation === "vertical" &&
@@ -153,13 +153,13 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
 						ctx.orientation === "vertical" &&
 						ctx.placement === "right",
 
-					"!border-base-300 !border-l-base-100":
+					"border-base-300! border-l-base-100!":
 						active &&
 						ctx.variant === "outline" &&
 						ctx.orientation === "vertical" &&
 						ctx.placement === "right",
 
-					"bg-[--tabs-color] text-white hover:bg-[--tabs-color]":
+					"bg-(--tabs-color) text-white hover:bg-(--tabs-color)":
 						active && ctx.variant === "pills",
 				},
 				className,

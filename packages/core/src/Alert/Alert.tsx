@@ -7,6 +7,7 @@ export interface AlertProps {
 	title?: React.ReactNode;
 	content?: React.ReactNode;
 	actions?: React.ReactNode;
+	variant?: "outline" | "dash" | "soft";
 	className?: string;
 	slots?: {
 		actions?: string;
@@ -16,27 +17,32 @@ export interface AlertProps {
 	};
 }
 export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-	const { color, icon, title, content, actions, className, slots } = props;
+	const { color, icon, title, content, actions, variant, className, slots } =
+		props;
 
 	return (
 		<div
 			className={clsx(
-				"alert",
+				"alert alert-vertical sm:alert-horizontal",
 				{
 					"alert-info": color === "info",
 					"alert-success": color === "success",
 					"alert-warning": color === "warning",
 					"alert-error": color === "error",
+					"alert-outline": variant === "outline",
+					"alert-dash": variant === "dash",
+					"alert-soft": variant === "soft",
 				},
 				className,
 			)}
 		>
-			{/* alert最多只能有三个直接孩子 */}
 			{icon}
+			{/* alert 使用grid布局, 第二个孩子是自适应的 */}
 			<div className={clsx("alert-body", slots?.body)}>
 				<h3 className={clsx("font-bold", slots?.title)}>{title}</h3>
 				<div className={clsx("text-xs", slots?.content)}>{content}</div>
 			</div>
+			{/* 第三个孩子之后是自动列 */}
 			<div className={clsx("alert-actions", slots?.actions)}>
 				{actions}
 				{/* <button className="btn btn-sm">Deny</button>

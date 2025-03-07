@@ -5,7 +5,7 @@ import { useMergedRef } from "@rtdui/hooks";
 export interface SwapProps extends React.ComponentPropsWithoutRef<"input"> {
 	/**
 	 * 是否启用中间态
-	 * @default false
+	 * @deprecated v5不再有效果
 	 */
 	indeterminate?: boolean;
 	/**
@@ -28,21 +28,11 @@ export interface SwapProps extends React.ComponentPropsWithoutRef<"input"> {
 
 export const Swap = forwardRef<HTMLInputElement, SwapProps>(
 	(props, forwardRef) => {
-		const {
-			indeterminate = false,
-			transitionEffect = "fade",
-			className,
-			children,
-			...other
-		} = props;
+		const { transitionEffect = "fade", className, children, ...other } = props;
 
 		const inputRef = useRef<HTMLInputElement>(null!);
 		const mergedRef = useMergedRef<HTMLInputElement>(inputRef, forwardRef);
 
-		useEffect(() => {
-			// 初始时设置中间态
-			inputRef.current.indeterminate = indeterminate;
-		}, [indeterminate]);
 		return (
 			<label
 				className={clsx(
@@ -56,14 +46,13 @@ export const Swap = forwardRef<HTMLInputElement, SwapProps>(
 			>
 				<input {...other} ref={mergedRef} type="checkbox" className="hidden" />
 				{Children.toArray(children)
-					.slice(0, indeterminate ? 3 : 2)
+					.slice(0, 2) // 只取前两个孩子
 					.map((d, index) => (
 						<div
 							key={index}
 							className={clsx({
 								"swap-on": index === 0,
 								"swap-off": index === 1,
-								"swap-indeterminate": index === 2,
 							})}
 						>
 							{d}

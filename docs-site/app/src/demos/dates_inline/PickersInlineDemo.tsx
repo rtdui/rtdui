@@ -5,7 +5,6 @@ import {
 	MonthPicker,
 	DatePicker,
 	format,
-	DatePickerType,
 } from "@rtdui/dates";
 import { zhCN } from "date-fns/locale";
 import { useState } from "react";

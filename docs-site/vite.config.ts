@@ -1,9 +1,7 @@
-import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+import { reactRouter } from "@react-router/dev/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import autoprefixer from "autoprefixer";
-import tailwindcss from "tailwindcss";
-import nesting from "tailwindcss/nesting";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -17,11 +15,6 @@ import rehypePrismPlus from "rehype-prism-plus";
 import { rehypeCodeBlockDataLanguage } from "./app/src/mdx-plugin/rehype-code-block-data-language";
 
 export default defineConfig({
-	css: {
-		postcss: {
-			plugins: [nesting, tailwindcss, autoprefixer],
-		},
-	},
 	plugins: [
 		mdx({
 			remarkPlugins: [
@@ -39,6 +32,7 @@ export default defineConfig({
 				[rehypeKatex, { output: "html" }], // 只输出html,默认为"htmlAndMathml", 注意需要导入katex的css样式
 			],
 		}),
+		tailwindcss(),
 		reactRouter(),
 		tsconfigPaths({ projects: ["./tsconfig.json"] }),
 	],

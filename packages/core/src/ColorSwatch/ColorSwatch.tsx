@@ -61,7 +61,7 @@ export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
 				title={title ?? color}
 				className={clsx(
 					"relative cursor-pointer",
-					"w-[--cs-size] h-[--cs-size] rounded-[--cs-radius]",
+					"w-(--cs-size) h-(--cs-size) rounded-(--cs-radius)",
 					className,
 				)}
 				style={
@@ -76,7 +76,7 @@ export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
 				<span
 					className={clsx(
 						"alphaOverlay",
-						"absolute inset-0 rounded-[--cs-radius]",
+						"absolute inset-0 rounded-(--cs-radius)",
 					)}
 					style={
 						{
@@ -93,21 +93,21 @@ export const ColorSwatch: <E extends React.ElementType = typeof defaultElement>(
 					<span
 						className={clsx(
 							"shadowOverlay",
-							"absolute z-10 inset-0 border border-gray-400 rounded-[--cs-radius]",
+							"absolute z-10 inset-0 border border-gray-400 rounded-(--cs-radius)",
 						)}
 					/>
 				)}
 				<span
 					className={clsx(
 						"colorOverlay",
-						"absolute inset-0 bg-[--bg-color] rounded-[--cs-radius]",
+						"absolute inset-0 bg-(--bg-color) rounded-(--cs-radius)",
 					)}
 					style={{ "--bg-color": getColor(color) } as any}
 				/>
 				<span
 					className={clsx(
 						"childrenOverlay",
-						"absolute inset-0 bg-[--bg-color] rounded-[--cs-radius] flex justify-center items-center",
+						"absolute inset-0 bg-(--bg-color) rounded-(--cs-radius) flex justify-center items-center",
 					)}
 				>
 					{children}

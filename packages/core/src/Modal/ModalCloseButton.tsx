@@ -14,7 +14,7 @@ export const ModalCloseButton = forwardRef<
 	return (
 		<CloseButton
 			ref={ref}
-			sharp="square"
+			shape="square"
 			{...others}
 			onClick={(event) => {
 				ctx.onClose();

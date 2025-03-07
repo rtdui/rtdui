@@ -100,10 +100,10 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 				)}
 				{!loading && !icon && (
 					<span
-						className={clsx("w-1.5 h-11 rounded", colorClass, slots?.icon)}
+						className={clsx("w-1.5 h-11 rounded-sm", colorClass, slots?.icon)}
 					/>
 				)}
-				<div className="flex-grow">
+				<div className="grow">
 					{title && (
 						<h3 className={clsx("font-bold", slots?.title)}>{title}</h3>
 					)}

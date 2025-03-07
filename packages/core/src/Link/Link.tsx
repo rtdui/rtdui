@@ -5,6 +5,7 @@ import {
 	type BoxProps,
 	type PolymorphicComponentProps,
 } from "../Polymorphic";
+import type { ThemeBaseSize } from "../theme.types";
 
 // Component-specific props should be specified separately
 export type LinkOwnProps = {
@@ -18,7 +19,7 @@ export type LinkOwnProps = {
 		| "error"
 		| "neutral";
 	/** 尺寸大小 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 };
 
 // Merge own props with others inherited from the underlying element type
@@ -59,6 +60,7 @@ export const Link: <E extends React.ElementType = typeof defaultElement>(
 						"btn-sm": size === "sm",
 						"btn-md": size === "md",
 						"btn-lg": size === "lg",
+						"btn-xl": size === "xl",
 					},
 					className,
 				)}

@@ -157,7 +157,7 @@ export default function MdViewerDemo() {
 	return (
 		<MdViewer
 			ref={ref}
-			className="mx-auto py-8 max-w-screen-lg"
+			className="mx-auto py-8 max-w-(--breakpoint-lg)"
 			locale={zhLocale}
 			value={md}
 		/>

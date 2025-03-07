@@ -2,6 +2,7 @@ import { forwardRef, useMemo } from "react";
 import clsx from "clsx";
 import { useUncontrolled } from "@rtdui/hooks";
 import { RadioGroupProvider } from "./RadioGroup.context";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface RadioGroupProps
 	extends Omit<
@@ -16,7 +17,7 @@ export interface RadioGroupProps
 		| "success"
 		| "warning"
 		| "error";
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	label?: string;
 	helperText?: string;
 	value?: string | number;

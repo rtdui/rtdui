@@ -68,7 +68,7 @@ export default function Index() {
 							<Popover.Target>
 								<Button
 									ghost
-									sharp="square"
+									shape="square"
 									className="gap-0.5"
 									onClick={() => setLangOpen(true)}
 								>
@@ -86,7 +86,9 @@ export default function Index() {
 								<ul className="menu menu-sm gap-1">
 									<li>
 										<button
-											className={clsx({ active: i18n.language === "en" })}
+											className={clsx({
+												"menu-active": i18n.language === "en",
+											})}
 											onClick={() => handleLangChange("en")}
 										>
 											(en) English
@@ -94,7 +96,9 @@ export default function Index() {
 									</li>
 									<li>
 										<button
-											className={clsx({ active: i18n.language === "zh" })}
+											className={clsx({
+												"menu-active": i18n.language === "zh",
+											})}
 											onClick={() => handleLangChange("zh")}
 										>
 											(zh) 简体中文
@@ -112,10 +116,10 @@ export default function Index() {
 						<div className="hero-content text-center">
 							<div>
 								<div className="grid">
-									<h1 className="row-start-1 col-start-1 p-8 text-8xl font-bold leading-tight bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_20%,theme(colors.secondary)_40%,theme(colors.primary)_60%,theme(colors.accent)_80%)] [-webkit-text-fill-color:transparent] bg-clip-text blur-xl pointer-events-none">
+									<h1 className="row-start-1 col-start-1 p-8 text-8xl font-bold leading-tight bg-[linear-gradient(90deg,var(--color-error)_0%,var(--color-secondary)_20%,var(--color-secondary)_40%,var(--color-primary)_60%,var(--color-accent)_80%)] [-webkit-text-fill-color:transparent] bg-clip-text blur-xl pointer-events-none">
 										RTDUI
 									</h1>
-									<h1 className="row-start-1 col-start-1 p-8 text-8xl font-bold leading-tight bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_20%,theme(colors.secondary)_40%,theme(colors.primary)_60%,theme(colors.accent)_80%)] [-webkit-text-fill-color:transparent] bg-clip-text">
+									<h1 className="row-start-1 col-start-1 p-8 text-8xl font-bold leading-tight bg-[linear-gradient(90deg,var(--color-error)_0%,var(--color-secondary)_20%,var(--color-secondary)_40%,var(--color-primary)_60%,var(--color-accent)_80%)] [-webkit-text-fill-color:transparent] bg-clip-text">
 										RTDUI
 									</h1>
 								</div>
@@ -243,7 +247,7 @@ export default function Index() {
 						</div>
 						<span className="text-xl">{t("rtdui.framework-support-desc")}</span>
 						<div className="mt-4 flex flex-wrap justify-center items-center gap-8">
-							<a className="flex flex-col justify-between min-w-[12rem] items-center border rounded p-4 h-32">
+							<a className="flex flex-col justify-between min-w-[12rem] items-center border rounded-sm p-4 h-32">
 								<div className="">
 									<svg
 										className="w-24"
@@ -260,7 +264,7 @@ export default function Index() {
 								</div>
 								<div className="">Next.js</div>
 							</a>
-							<a className="flex flex-col justify-between min-w-[12rem] items-center border rounded p-4 h-32">
+							<a className="flex flex-col justify-between min-w-[12rem] items-center border rounded-sm p-4 h-32">
 								<div className="">
 									<svg
 										className="w-14"
@@ -303,8 +307,8 @@ export default function Index() {
 								</div>
 								<div className="">Vite</div>
 							</a>
-							<a className="flex flex-col justify-between min-w-[12rem] items-center border rounded p-4 h-32">
-								<div className="flex-grow flex items-center">
+							<a className="flex flex-col justify-between min-w-[12rem] items-center border rounded-sm p-4 h-32">
+								<div className="grow flex items-center">
 									<svg
 										className="w-24"
 										xmlns="http://www.w3.org/2000/svg"
@@ -325,7 +329,7 @@ export default function Index() {
 				</div>
 			}
 			footer={
-				<footer className="footer p-10 bg-base-200 text-base-content">
+				<footer className="footer sm:footer-horizontal p-10 bg-base-200 text-base-content">
 					<aside>
 						<IconHash size={40} />
 						<p>RTDUI</p>

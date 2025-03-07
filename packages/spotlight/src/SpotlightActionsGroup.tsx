@@ -26,7 +26,7 @@ export const SpotlightActionsGroup = forwardRef<
 		<div
 			ref={ref}
 			className={clsx(
-				"before:content-[--spotlight-group-label] before:text-gray-400 before:text-sm",
+				"before:content-(--spotlight-group-label) before:text-gray-400 before:text-sm",
 				className,
 			)}
 			{...others}

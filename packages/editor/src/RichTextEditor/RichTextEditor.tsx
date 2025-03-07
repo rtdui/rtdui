@@ -381,7 +381,7 @@ export const RichTextEditor = forwardRef<any, RichTextEditorProps>(
 				)}
 				<EditorContent
 					editor={editor}
-					className={clsx("editor-content prose !max-w-none", slots?.content)}
+					className={clsx("editor-content prose max-w-none!", slots?.content)}
 				/>
 			</div>
 		);

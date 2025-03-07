@@ -521,7 +521,7 @@ export const MdEditor = forwardRef<HTMLDivElement, MdEditorProps>(
 						"mdeditor-root",
 						"h-[calc(100dvh-100px)]",
 						"grid grid-rows-[auto_minmax(0,1fr)_auto]",
-						"mx-auto max-w-screen-lg ",
+						"mx-auto max-w-(--breakpoint-lg) ",
 						{
 							"[&&]:fixed inset-0 [&&]:max-w-none [&&]:mx-0 [&&]:h-auto":
 								fullscreen,

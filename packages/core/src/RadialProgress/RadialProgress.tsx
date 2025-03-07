@@ -53,7 +53,7 @@ export const RadialProgress = forwardRef<HTMLDivElement, RadialProgressProps>(
 						"--value": value,
 						"--size": size,
 						"--thickness": thickness,
-					} as any
+					} as React.CSSProperties
 				}
 			>
 				{children || `${value}%`}

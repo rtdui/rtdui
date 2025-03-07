@@ -7,7 +7,7 @@ const marks = [
 	{ value: 80, label: "80%" },
 ];
 
-const outline = "!outline !outline-2 !outline-offset-1 !outline-red-500";
+const outline = "outline! outline-2! outline-offset-1! outline-red-500!";
 export default function Demo() {
 	const [slots, setSlots] = React.useState({});
 	return (

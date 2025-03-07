@@ -44,6 +44,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
 			() =>
 				({
 					toggle: () => toggleRef.current.click(),
+					close: () => (toggleRef.current.checked = false),
 				}) as any,
 		);
 

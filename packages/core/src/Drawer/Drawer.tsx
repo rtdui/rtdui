@@ -75,7 +75,7 @@ export function Drawer(props: DrawerProps) {
 						className={clsx(
 							"drawer-overlay",
 							{
-								"!cursor-default": clickOutsideClose === false,
+								"cursor-default!": clickOutsideClose === false,
 							},
 							slots?.overlay,
 						)}

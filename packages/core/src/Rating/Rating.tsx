@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import { useUncontrolled } from "@rtdui/hooks";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface RatingProps {
 	name?: string;
@@ -32,7 +33,7 @@ export interface RatingProps {
 	 * 显示尺寸
 	 * @link SizeMode
 	 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	className?: string;
 	slots?: {
 		star?: string;
@@ -73,6 +74,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>((props, ref) => {
 					"rating-sm": size === "sm",
 					"rating-md": size === "md",
 					"rating-lg": size === "lg",
+					"rating-xl": size === "xl",
 					"rating-half": half,
 				},
 				className,

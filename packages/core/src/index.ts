@@ -52,7 +52,10 @@ export * from "./Transition";
 export * from "./Watermark";
 export * from "./Overlay";
 export * from "./Modal";
+export * from "./ModalLight";
 export * from "./CloseButton";
+
+export * from "./Timeline";
 
 export * from "./utils";
 

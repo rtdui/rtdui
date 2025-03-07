@@ -19,7 +19,7 @@ export const InputError = forwardRef<HTMLParagraphElement, InputErrorProps>(
 				ref={ref}
 				className={clsx(
 					"input-error",
-					"text-[length:--input-font-size]",
+					"text-(length:--input-font-size)",
 					"text-error",
 					className,
 				)}

@@ -2,22 +2,10 @@ import { forwardRef, useCallback } from "react";
 import clsx from "clsx";
 import type { ButtonProps } from "../Button/Button";
 
+// biome-ignore format: 不换行更可读
 export interface ButtonCheckboxProps
-	extends Omit<
-			React.ComponentPropsWithoutRef<"input">,
-			"color" | "onChange" | "size"
-		>,
-		Pick<
-			ButtonProps,
-			| "color"
-			| "size"
-			| "sharp"
-			| "ghost"
-			| "link"
-			| "glass"
-			| "fullWidth"
-			| "outline"
-		> {
+	extends Omit<React.ComponentPropsWithoutRef<"input">,"color" | "onChange" | "size">,
+		Pick<ButtonProps, "color"| "size"| "shape"| "ghost"| "link"| "glass"| "fullWidth"| "outline"> {
 	label?: string;
 	onChange?: (checked: boolean) => void;
 }
@@ -29,7 +17,7 @@ export const ButtonCheckbox = forwardRef<HTMLInputElement, ButtonCheckboxProps>(
 			label,
 			color,
 			size,
-			sharp,
+			shape,
 			ghost,
 			link,
 			glass,
@@ -68,8 +56,8 @@ export const ButtonCheckbox = forwardRef<HTMLInputElement, ButtonCheckboxProps>(
 						"btn-sm": size === "sm",
 						"btn-md": size === "md",
 						"btn-lg": size === "lg",
-						"btn-square": sharp === "square",
-						"btn-circle": sharp === "circle",
+						"btn-square": shape === "square",
+						"btn-circle": shape === "circle",
 						"btn-ghost": ghost === true,
 						"btn-link normal-case": link === true,
 						glass: glass === true,

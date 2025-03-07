@@ -37,7 +37,7 @@ export default function AppShellHeadroomDemo() {
             className="cursor-pointer lg:hidden"
             onClick={() => ref.current.toggle()}
           />
-          <div className="flex-grow">
+          <div className="grow">
             <TextInput
               variant="ghost"
               leftSection={<IconSearch />}
@@ -51,10 +51,10 @@ export default function AppShellHeadroomDemo() {
             />
           </div>
           <div className="flex items-center gap-2">
-            <Button sharp="circle">
+            <Button shape="circle">
               <IconBell />
             </Button>
-            <Button sharp="circle">
+            <Button shape="circle">
               <IconHeart />
             </Button>
           </div>
@@ -73,7 +73,7 @@ export default function AppShellHeadroomDemo() {
           </p>
           <Affix position={{ bottom: 100, right: 100 }}>
             <Button
-              sharp="circle"
+              shape="circle"
               color="primary"
               onClick={() =>
                 dialogs.show({
@@ -89,7 +89,7 @@ export default function AppShellHeadroomDemo() {
       }
       footer={
         <>
-          <footer className="footer p-10 bg-base-200 text-base-content">
+          <footer className="footer sm:footer-horizontal p-10 bg-base-200 text-base-content">
             <nav>
               <header className="footer-title">Services</header>
               <a className="link link-hover">Branding</a>
@@ -111,7 +111,7 @@ export default function AppShellHeadroomDemo() {
               <a className="link link-hover">Cookie policy</a>
             </nav>
           </footer>
-          <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+          <footer className="footer sm:footer-horizontal px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
             <aside className="items-center grid-flow-col">
               <IconHash size={32} />
               <p>
@@ -179,7 +179,7 @@ export default function AppShellHeadroomDemo() {
 						className="cursor-pointer lg:hidden"
 						onClick={() => ref.current.toggle()}
 					/>
-					<div className="flex-grow">
+					<div className="grow">
 						<TextInput
 							variant="ghost"
 							leftSection={<IconSearch />}
@@ -193,10 +193,10 @@ export default function AppShellHeadroomDemo() {
 						/>
 					</div>
 					<div className="flex items-center gap-2">
-						<Button sharp="circle">
+						<Button shape="circle">
 							<IconBell />
 						</Button>
-						<Button sharp="circle">
+						<Button shape="circle">
 							<IconHeart />
 						</Button>
 					</div>
@@ -215,7 +215,7 @@ export default function AppShellHeadroomDemo() {
 					</p>
 					<Affix position={{ bottom: 100, right: 100 }}>
 						<Button
-							sharp="circle"
+							shape="circle"
 							color="primary"
 							onClick={() =>
 								dialogs.show({
@@ -231,7 +231,7 @@ export default function AppShellHeadroomDemo() {
 			}
 			footer={
 				<>
-					<footer className="footer p-10 bg-base-200 text-base-content">
+					<footer className="footer sm:footer-horizontal p-10 bg-base-200 text-base-content">
 						<nav>
 							<header className="footer-title">Services</header>
 							<a className="link link-hover">Branding</a>
@@ -253,7 +253,7 @@ export default function AppShellHeadroomDemo() {
 							<a className="link link-hover">Cookie policy</a>
 						</nav>
 					</footer>
-					<footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+					<footer className="footer sm:footer-horizontal px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
 						<aside className="items-center grid-flow-col">
 							<IconHash size={32} />
 							<p>

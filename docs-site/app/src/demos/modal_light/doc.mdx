@@ -1,0 +1,79 @@
+---
+meta:
+  - title: lightweight Modal Component
+  - description: lightweight Modal document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/ModalLight.tsx"
+  componentName: "ModalLight"
+---
+
+import Demo from "../../components/Demo";
+import ModalBasicDemo from "./ModalBasicDemo";
+import ModalNoHeaderDemo from "./ModalNoHeaderDemo";
+import ModalPositionDemo from "./ModalPositionDemo";
+import ModalFullScreenDemo from "./ModalFullScreenDemo";
+import ModalContentScrollDemo from "./ModalContentScrollDemo";
+import ModalFormDemo from "./ModalFormDemo";
+
+# 使用
+
+`Modal`组件呈现模态框, 模态框打开时会阻止与外部元素的交互, 直到关闭模态框.
+
+<Demo data={{ Component: ModalBasicDemo }} />
+
+## 移除头部
+
+未指定`title`属性,并且`withCloseButton`为false, 则会移除头部
+
+<Demo data={{ Component: ModalNoHeaderDemo }} />
+
+## 位置
+
+`position`属性设置模态框的位置.
+
+顶部(top):
+
+<Demo
+  data={{ Component: ModalPositionDemo, componentProps: { position: "top" } }}
+/>
+
+底部(bottom):
+
+<Demo
+  data={{
+    Component: ModalPositionDemo,
+    componentProps: { position: "bottom" },
+  }}
+/>
+
+左侧(start):
+
+<Demo
+  data={{ Component: ModalPositionDemo, componentProps: { position: "start" } }}
+/>
+
+右侧(end):
+
+<Demo
+  data={{ Component: ModalPositionDemo, componentProps: { position: "end" } }}
+/>
+
+## 长内容滚动
+
+当内容超过屏幕高度时, 会自动显示滚动条
+
+<Demo data={{ Component: ModalContentScrollDemo }} />
+
+## 全屏
+
+`fullScreen`属性可以全屏模式显示模态框
+
+<Demo data={{ Component: ModalFullScreenDemo }} />
+
+## 模态框中的表单
+
+模态框中可以放置任何内容, 下面的例子演示了在模态框中使用表单控件.
+
+<Demo data={{ Component: ModalFormDemo }} />

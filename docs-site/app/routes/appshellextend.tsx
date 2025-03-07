@@ -30,7 +30,7 @@ export default function AppShellExtendDemo() {
             className="cursor-pointer lg:hidden"
             onClick={() => ref.current.toggle()}
           />
-          <div className="flex-grow">
+          <div className="grow">
             <TextInput
               variant="ghost"
               leftSection={<IconSearch />}
@@ -44,10 +44,10 @@ export default function AppShellExtendDemo() {
             />
           </div>
           <div className="flex items-center gap-2">
-            <Button sharp="circle">
+            <Button shape="circle">
               <IconBell />
             </Button>
-            <Button sharp="circle">
+            <Button shape="circle">
               <IconHeart />
             </Button>
           </div>
@@ -59,7 +59,7 @@ export default function AppShellExtendDemo() {
           <p>(可以改变窗口大小或在开发人员工具中的设备仿真中查看响应式变化)</p>
           <Affix position={{ bottom: 100, right: 100 }}>
             <Button
-              sharp="circle"
+              shape="circle"
               color="primary"
               onClick={() =>
                 dialogs.show({
@@ -75,7 +75,7 @@ export default function AppShellExtendDemo() {
       }
       footer={
         <>
-          <footer className="footer p-10 bg-base-200 text-base-content">
+          <footer className="footer sm:footer-horizontal p-10 bg-base-200 text-base-content">
             <nav>
               <header className="footer-title">Services</header>
               <a className="link link-hover">Branding</a>
@@ -97,7 +97,7 @@ export default function AppShellExtendDemo() {
               <a className="link link-hover">Cookie policy</a>
             </nav>
           </footer>
-          <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+          <footer className="footer sm:footer-horizontal px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
             <aside className="items-center grid-flow-col">
               <IconHash size={32} />
               <p>
@@ -159,7 +159,7 @@ export default function AppShellExtendDemo() {
 						className="cursor-pointer lg:hidden"
 						onClick={() => ref.current.toggle()}
 					/>
-					<div className="flex-grow">
+					<div className="grow">
 						<TextInput
 							variant="ghost"
 							leftSection={<IconSearch />}
@@ -173,10 +173,10 @@ export default function AppShellExtendDemo() {
 						/>
 					</div>
 					<div className="flex items-center gap-2">
-						<Button sharp="circle">
+						<Button shape="circle">
 							<IconBell />
 						</Button>
-						<Button sharp="circle">
+						<Button shape="circle">
 							<IconHeart />
 						</Button>
 					</div>
@@ -188,7 +188,7 @@ export default function AppShellExtendDemo() {
 					<p>(可以改变窗口大小或在开发人员工具中的设备仿真中查看响应式变化)</p>
 					<Affix position={{ bottom: 100, right: 100 }}>
 						<Button
-							sharp="circle"
+							shape="circle"
 							color="primary"
 							onClick={() =>
 								dialogs.show({
@@ -204,7 +204,7 @@ export default function AppShellExtendDemo() {
 			}
 			footer={
 				<>
-					<footer className="footer p-10 bg-base-200 text-base-content">
+					<footer className="footer sm:footer-horizontal p-10 bg-base-200 text-base-content">
 						<nav>
 							<header className="footer-title">Services</header>
 							<a className="link link-hover">Branding</a>
@@ -226,7 +226,7 @@ export default function AppShellExtendDemo() {
 							<a className="link link-hover">Cookie policy</a>
 						</nav>
 					</footer>
-					<footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+					<footer className="footer sm:footer-horizontal px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
 						<aside className="items-center grid-flow-col">
 							<IconHash size={32} />
 							<p>

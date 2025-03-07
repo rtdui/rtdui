@@ -7,17 +7,19 @@ import {
 } from "react";
 import clsx from "clsx";
 import { TabsSimplePanel, type TabsSimplePanelProps } from "./TabsSimplePanel";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface TabsSimpleProps {
 	/**
 	 * 变体
 	 * @default lifted
 	 */
-	variant?: "bordered" | "lifted" | "boxed";
+	variant?: "border" | "box" | "lift";
+	position?: "top" | "bottom";
 	/** 尺寸
 	 * @default "md"
 	 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	children: React.ReactElement<TabsSimplePanelProps, typeof TabsSimplePanel>[];
 	className?: string;
 	initIndex?: number;
@@ -26,7 +28,8 @@ export interface TabsSimpleProps {
 const Tabs_ = forwardRef<HTMLDivElement, TabsSimpleProps>((props, ref) => {
 	const {
 		initIndex = 0,
-		variant = "lifted",
+		variant = "lift",
+		position,
 		size = "md",
 		children,
 		className,
@@ -48,14 +51,15 @@ const Tabs_ = forwardRef<HTMLDivElement, TabsSimpleProps>((props, ref) => {
 					"tabs",
 					"justify-self-start",
 					{
-						"tabs-bordered": variant === "bordered",
-						"tabs-lifted": variant === "lifted",
-						"tabs-boxed": variant === "boxed",
 						"tabs-xs": size === "xs",
 						"tabs-sm": size === "sm",
 						"tabs-md": size === "md",
 						"tabs-lg": size === "lg",
-						"-mb-[var(--tab-border)]": variant === "lifted",
+						"tabs-top": position === "top",
+						"tabs-bottom": position === "bottom",
+						"tabs-border": variant === "border",
+						"tabs-box": variant === "box",
+						"tabs-lift": variant === "lift",
 					},
 					className,
 				)}
@@ -75,10 +79,6 @@ const Tabs_ = forwardRef<HTMLDivElement, TabsSimpleProps>((props, ref) => {
 						{child.props.label}
 					</button>
 				))}
-				{/* 占位tab */}
-				{/* {variant === "lifted" && (
-          <div className="tab mr-6 flex-1 cursor-default [--tab-border-color:transparent]" />
-        )} */}
 			</div>
 
 			{Children.map(children, (child, index) =>

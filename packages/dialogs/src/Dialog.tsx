@@ -112,7 +112,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 					{mode === "prompt" ? (
 						<TextInput
 							label={children as string}
-							slots={{ input: "input-bordered" }}
 							value={promptValue}
 							onChange={setPromptValue}
 						/>

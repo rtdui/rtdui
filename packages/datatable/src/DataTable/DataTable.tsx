@@ -39,6 +39,7 @@ import {
 import { klona } from "klona/full";
 import { useScrollTrigger } from "@rtdui/hooks";
 import { Checkbox, isMobile, getType, filterProps } from "@rtdui/core";
+import type { ThemeBaseSize } from "@rtdui/core";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
 import { getLeafColumns, getColumnDefId } from "../utils";
@@ -87,7 +88,7 @@ export interface DataTableProps
 	/** 表行的高度
 	 * @default "sm"
 	 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	/**
 	 * 是否显示表头行
 	 * @default true
@@ -500,7 +501,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
 								onChange={row.getToggleSelectedHandler()}
 								onClick={(ev) => ev.stopPropagation()}
 								slots={{
-									input: "rounded",
+									input: "rounded-sm",
 								}}
 							/>
 						)}
@@ -560,7 +561,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
 				cell: ({ row }) => (
 					<div className="flex justify-center">
 						<IndeterminateCheckbox
-							className="rounded"
+							className="rounded-sm"
 							checked={row.getIsSelected()}
 							disabled={!row.getCanSelect()}
 							indeterminate={row.getIsSomeSelected()}
@@ -843,6 +844,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
 								"table-sm": size === "sm",
 								"table-md": size === "md",
 								"table-lg": size === "lg",
+								"table-xl": size === "xl",
 							},
 							slots?.table,
 						)}

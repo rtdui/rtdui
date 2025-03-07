@@ -1,5 +1,6 @@
 import { forwardRef, useCallback } from "react";
 import clsx from "clsx";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface CheckboxProps
 	extends Omit<React.ComponentPropsWithoutRef<"input">, "onChange" | "size"> {
@@ -11,7 +12,7 @@ export interface CheckboxProps
 		| "success"
 		| "warning"
 		| "error";
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	label?: string;
 	helperText?: string;
 	onChange?: (checked: boolean) => void;

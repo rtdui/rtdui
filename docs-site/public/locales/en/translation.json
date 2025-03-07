@@ -23,7 +23,8 @@
 		"saveAs": "Save As",
 		"export": "Expand",
 		"show": "Show",
-		"hide": "Hide"
+		"hide": "Hide",
+		"search": "Search..."
 	},
 	"lang": {
 		"en": "(en) English",

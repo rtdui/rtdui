@@ -12,6 +12,7 @@ handle:
 import Demo from "../../components/Demo";
 import StepsBasicDemo from "./StepsBasicDemo";
 import StepsSequentialDemo from "./StepsSequentialDemo";
+import StepsIconDemo from "./StepsIconDemo";
 
 # 使用
 
@@ -26,3 +27,7 @@ import StepsSequentialDemo from "./StepsSequentialDemo";
 顺序性的, 也就是说用户必须一步一步的执行, 用户不能自己跳转, 开发者必须为`Steps`组件设置`ref`引用, 然后调用引用的`next()`跳转到下一步.
 
 <Demo data={{ Component: StepsSequentialDemo }} />
+
+## 自定义图标
+
+<Demo data={{ Component: StepsIconDemo }} />

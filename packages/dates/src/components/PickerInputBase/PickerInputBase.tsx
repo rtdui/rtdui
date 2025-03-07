@@ -7,7 +7,6 @@ import {
 	type PopoverProps,
 	type ThemeSize,
 	useInputProps,
-	Modal,
 	CloseButton,
 } from "@rtdui/core";
 import type { useDisclosure } from "@rtdui/hooks";
@@ -31,6 +30,7 @@ export interface DateInputSharedProps
 
 	/** Type of dropdown, defaults to popover
 	 * @default "popover"
+	 * @todo modal
 	 */
 	dropdownType?: "popover" | "modal";
 
@@ -87,7 +87,7 @@ export const PickerInputBase = forwardRef<
 		wrapperProps,
 		placeholder,
 		popoverProps,
-		modalProps,
+		// modalProps,
 		dropdownType = "popover",
 		children,
 		formattedValue,
@@ -126,19 +126,6 @@ export const PickerInputBase = forwardRef<
 
 	return (
 		<>
-			{dropdownType === "modal" && !readOnly && (
-				<Modal
-					opened={dropdownOpened}
-					onClose={handleClose}
-					withCloseButton={false}
-					size="auto"
-					data-dates-modal
-					{...modalProps}
-				>
-					{children}
-				</Modal>
-			)}
-
 			<Input.Wrapper {...wrapperProps}>
 				<Popover
 					position="bottom-start"

@@ -1,7 +1,7 @@
 import { Button, Card } from "@rtdui/core";
 import { useState } from "react";
 
-const outline = "!outline !outline-2 !outline-offset-1 !outline-red-500";
+const outline = "outline! outline-2! outline-offset-1! outline-red-500!";
 
 export default function Demo() {
 	const [slots, setSlots] = useState({});

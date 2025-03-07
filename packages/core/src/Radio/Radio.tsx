@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import clsx from "clsx";
 import { useRadioGroupContext } from "../RadioGroup/RadioGroup.context";
 import { createChainedFunction } from "../utils";
+import type { ThemeBaseSize } from "../theme.types";
 
 function areEqualValues(a: any, b: any) {
 	if (typeof b === "object" && b !== null) {
@@ -22,7 +23,7 @@ export interface RadioProps
 		| "success"
 		| "warning"
 		| "error";
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	label?: string;
 	helperText?: string;
 	slots?: {
@@ -95,6 +96,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 							"radio-sm": size === "sm",
 							"radio-md": size === "md",
 							"radio-lg": size === "lg",
+							"radio-xl": size === "xl",
 						},
 						slots?.input,
 					)}

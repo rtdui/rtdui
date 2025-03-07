@@ -28,6 +28,7 @@ export interface MonthLevelProps
 	static?: boolean;
 }
 
+/** 月级别视图, 某月选择一个日 */
 export const MonthLevel = forwardRef<HTMLDivElement, MonthLevelProps>(
 	(props, ref) => {
 		const {

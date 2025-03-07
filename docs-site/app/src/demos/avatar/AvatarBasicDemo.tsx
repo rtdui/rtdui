@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Avatar, Divider, FloatingSelect, Slider, Switch } from "@rtdui/core";
 import { CodeHighlight } from "@rtdui/code-highlight";
 
-const sizes = ["xs", "sm", "md", "lg"];
+const sizes = ["xs", "sm", "md", "lg", "xl"];
 export default function Demo() {
 	const [state, setState] = useState({
 		size: "md",
@@ -36,7 +36,7 @@ export default function Demo() {
 					Size:
 					<Slider
 						min={0}
-						max={3}
+						max={4}
 						labelAlwaysOn
 						label={(v) => sizes[v]}
 						value={sizes.indexOf(state.size)}

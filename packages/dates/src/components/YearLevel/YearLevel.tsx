@@ -25,6 +25,7 @@ export interface YearLevelProps
 	levelControlAriaLabel?: string;
 }
 
+/** 年级别的视图, 某年中选择月份 */
 export const YearLevel = forwardRef<HTMLDivElement, YearLevelProps>(
 	(props, ref) => {
 		const {

@@ -13,12 +13,12 @@ export default function Demo() {
 				labelAlwaysOn
 				marks={marks}
 				slots={{
-					track: "before:!bg-teal-200",
-					bar: "!bg-purple-500",
-					mark: "!bg-purple-500",
-					markLabel: "!text-yellow-500",
-					thumb: "!border-red-500",
-					label: "!bg-green-500",
+					track: "before:bg-teal-200!",
+					bar: "bg-purple-500!",
+					mark: "bg-purple-500!",
+					markLabel: "text-yellow-500!",
+					thumb: "border-red-500!",
+					label: "bg-green-500!",
 				}}
 			/>
 			<RangeSlider
@@ -26,12 +26,12 @@ export default function Demo() {
 				labelAlwaysOn
 				marks={marks}
 				slots={{
-					track: "before:!bg-teal-200",
-					bar: "!bg-purple-500",
-					mark: "!bg-purple-500",
-					markLabel: "!text-yellow-500",
-					thumb: "!border-red-500",
-					label: "!bg-green-500",
+					track: "before:bg-teal-200!",
+					bar: "bg-purple-500!",
+					mark: "bg-purple-500!",
+					markLabel: "text-yellow-500!",
+					thumb: "border-red-500!",
+					label: "bg-green-500!",
 				}}
 			/>
 		</div>

@@ -59,7 +59,7 @@ export function Tooltip(props: TooltipProps) {
 				{children}
 			</Popover.Target>
 			<Popover.Dropdown
-				className={clsx("px-2 py-1", "rounded", "text-sm", className)}
+				className={clsx("px-2 py-1", "rounded-sm", "text-sm", className)}
 			>
 				{tip}
 			</Popover.Dropdown>

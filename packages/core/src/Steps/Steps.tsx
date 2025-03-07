@@ -2,6 +2,11 @@ import { forwardRef, useImperativeHandle } from "react";
 import { useUncontrolled } from "@rtdui/hooks";
 import clsx from "clsx";
 
+export interface Step {
+	icon?: React.ReactNode;
+	description: React.ReactNode;
+}
+
 export interface StepsProps {
 	color?:
 		| "primary"
@@ -12,7 +17,7 @@ export interface StepsProps {
 		| "warning"
 		| "error";
 	/** 步骤列表 */
-	steps: string[];
+	steps: Step[];
 	/**
 	 * 是否按顺序跳转, true时只能通过受控属性或api跳转, false时用户可以点击任意步骤跳转
 	 * @default false
@@ -25,6 +30,7 @@ export interface StepsProps {
 	/** 步骤改变时 */
 	onChange?: (step: number) => void;
 }
+
 export const Steps = forwardRef<HTMLUListElement, StepsProps>((props, ref) => {
 	const {
 		steps,
@@ -63,11 +69,12 @@ export const Steps = forwardRef<HTMLUListElement, StepsProps>((props, ref) => {
 							"step-success": color === "success" && index < step,
 							"step-warning": color === "warning" && index < step,
 							"step-error": color === "error" && index < step,
-							"after:!bg-info": index + 1 === step,
+							"after:bg-info!": index + 1 === step,
 						})}
 						onClick={(e) => (sequential ? undefined : setStep(index + 1))}
 					>
-						{d}
+						{d.icon && <span className="step-icon">{d.icon}</span>}
+						{d.description}
 					</li>
 				))}
 			</ul>

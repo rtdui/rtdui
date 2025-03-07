@@ -56,9 +56,9 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
 						{...innerProps}
 						className={clsx(
 							"modal-content-wrapper",
-							"fixed inset-0 z-[--modal-z-index] pointer-events-none",
+							"fixed inset-0 z-(--modal-z-index) pointer-events-none",
 							"flex justify-center",
-							"py-[--modal-y-offset] px-[--modal-x-offset]",
+							"py-(--modal-y-offset) px-(--modal-x-offset)",
 							{
 								"[&]:p-0": fullScreen,
 							},

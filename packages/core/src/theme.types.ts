@@ -1,7 +1,7 @@
-export type ThemeBaseSize = "xs" | "sm" | "md" | "lg";
-export type ThemeSize = ThemeBaseSize | "xl" | string;
-export type ThemeRadius = ThemeBaseSize | "xl" | "circle" | string;
-export type ThemeShadow = ThemeBaseSize | "xl" | "2xl";
+export type ThemeBaseSize = "xs" | "sm" | "md" | "lg" | "xl"; // button, badge, kbd, table, dock, menu, tabs, loading, radio, checkbox, toggle, input, textarea, select, fileinput, range, rating
+export type ThemeSize = ThemeBaseSize | string;
+export type ThemeRadius = ThemeBaseSize | "circle" | string;
+export type ThemeShadow = ThemeBaseSize | "2xl";
 export type ThemeColor =
 	| "primary"
 	| "secondary"
@@ -16,7 +16,7 @@ export type ThemeColor =
 	| "base3"
 	| string;
 
-export type ThemeBreakpoint = ThemeBaseSize | "base" | "xl" | "2xl" | string;
+export type ThemeBreakpoint = ThemeBaseSize | "base" | "2xl" | string;
 
 export type ThemeMask =
 	| "squircle"
@@ -28,15 +28,9 @@ export type ThemeMask =
 	| "diamond"
 	| "square"
 	| "circle"
-	| "parallelogram"
-	| "parallelogram-2"
-	| "parallelogram-3"
-	| "parallelogram-4"
 	| "star"
 	| "star-2"
 	| "triangle"
 	| "triangle-2"
 	| "triangle-3"
-	| "triangle-4"
-	| "half-1"
-	| "half-2";
+	| "triangle-4";

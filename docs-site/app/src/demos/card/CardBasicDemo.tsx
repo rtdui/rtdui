@@ -29,7 +29,7 @@ export default function Demo() {
 							figure:
 								state.imagePositon !== "left" && state.imagePositon !== "right"
 									? "w-full h-48"
-									: "flex-shrink-0 w-2/5",
+									: "shrink-0 w-2/5",
 						}}
 					/>
 				</div>

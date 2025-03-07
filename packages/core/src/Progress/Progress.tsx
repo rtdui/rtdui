@@ -1,12 +1,13 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface ProgressProps
 	extends React.ComponentPropsWithoutRef<"progress"> {
 	/**
 	 * @default xs
 	 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	color?:
 		| "primary"
 		| "secondary"
@@ -42,6 +43,7 @@ export const Progress = forwardRef<HTMLProgressElement, ProgressProps>(
 						"h-3": size === "sm",
 						"h-4": size === "md",
 						"h-5": size === "lg",
+						"h-6": size === "xl",
 						"progress-primary": color === "primary",
 						"progress-secondary": color === "secondary",
 						"progress-accent": color === "accent",

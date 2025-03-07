@@ -27,44 +27,44 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-right: var(--borderWidth) solid theme(colors.base-200);
-  border-bottom: var(--borderWidth) solid theme(colors.base-200);
+  border-right: var(--borderWidth) solid var(--color-base-200);
+  border-bottom: var(--borderWidth) solid var(--color-base-200);
   pointer-events: none;
 }
 /* 伪元素模拟表格的左边框 */
 .data-table.table:not(.no-border)
   :where(th:first-child, td:first-child)::before {
-  border-left: var(--borderWidth) solid theme(colors.base-200);
+  border-left: var(--borderWidth) solid var(--color-base-200);
 }
 /* 伪元素模拟表格的顶边框 */
 .data-table.table thead > tr:first-child :where(th, td)::before {
-  border-top: var(--borderWidth) solid theme(colors.base-200);
+  border-top: var(--borderWidth) solid var(--color-base-200);
 }
 /* 伪元素模拟表格的顶边框, 如果没有thead */
 .data-table.table:not(.no-border):not(:has(thead))
   tbody
   > tr:first-child
   :where(th, td)::before {
-  border-top: var(--borderWidth) solid theme(colors.base-200);
+  border-top: var(--borderWidth) solid var(--color-base-200);
 }
 /* 水平滚动时为最后的固定列的右边框添加提升特效 */
 .data-table.table:not(.no-border) :where(th, td).elevation::before {
-  border-right: calc(3 * var(--borderWidth)) solid theme(colors.base-200);
+  border-right: calc(3 * var(--borderWidth)) solid var(--color-base-200);
 }
 /* 为表头的最后一行添加分隔特效 */
 .data-table.table thead tr:last-child :where(th, td)::before {
-  border-bottom: calc(2 * var(--borderWidth)) solid theme(colors.base-200);
+  border-bottom: calc(2 * var(--borderWidth)) solid var(--color-base-200);
 }
 /*#endregion 边框 */
 
 /* 为所有单元格设置背景色, 如果不设置在滚动时非sticky的单元格会显示在sticky的下面, 副作用是无法再为tr设置背景色 */
 .data-table.table :where(th, td) {
-  background-color: theme(colors.base-100);
+  background-color: var(--color-base-100);
 }
 
 /* 表脚中的单元格使用另外的背景色 */
 .data-table.table tfoot :where(th, td) {
-  background-color: theme(colors.base-200);
+  background-color: var(--color-base-200);
 }
 
 /* 拖拉列头调整列序时的过渡效果 */
@@ -105,7 +105,7 @@
   top: 0;
   height: 100%;
   width: 6px;
-  background: theme(colors.base-300);
+  background: var(--color-base-300);
   cursor: col-resize;
   user-select: none;
   touch-action: none;
@@ -113,7 +113,7 @@
 }
 
 .resizer.resizing {
-  background: theme(colors.info);
+  background: var(--color-info);
   opacity: 1;
 }
 

@@ -78,7 +78,7 @@ export const CodeHighlight = forwardRef<HTMLDivElement, CodeHighlightProps>(
 
 		return (
 			<div ref={ref}>
-				<div className="flex items-start w-full bg-[--prism-color-2]">
+				<div className="flex items-start w-full bg-(--prism-color-2)">
 					<small className="bg-base-300 uppercase font-bold text-xs rounded-br-md px-2 py-1">
 						{language}
 					</small>
@@ -91,7 +91,7 @@ export const CodeHighlight = forwardRef<HTMLDivElement, CodeHighlightProps>(
 									position="left"
 									color={copied ? "success" : "info"}
 								>
-									<Button size="xs" ghost sharp="square" onClick={copy}>
+									<Button size="xs" ghost shape="square" onClick={copy}>
 										{copied ? (
 											<IconClipboardCheck
 												size={20}
@@ -107,16 +107,16 @@ export const CodeHighlight = forwardRef<HTMLDivElement, CodeHighlightProps>(
 					)}
 				</div>
 				<pre
-					className={clsx(`language-${language}`, "!mt-0", {
-						"!bg-red-100": bad === true,
-						"dark:!bg-red-950": bad === true,
+					className={clsx(`language-${language}`, "mt-0!", {
+						"bg-red-100!": bad === true,
+						"dark:bg-red-950!": bad === true,
 					})}
 					data-no-lang-indicator={language}
 				>
 					<code
 						className={clsx(`language-${language}`, "code-highlight", {
-							"!bg-red-100": bad === true,
-							"dark:!bg-red-950": bad === true,
+							"bg-red-100!": bad === true,
+							"dark:bg-red-950!": bad === true,
 						})}
 					>
 						{elements}

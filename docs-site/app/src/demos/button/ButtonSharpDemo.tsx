@@ -5,84 +5,84 @@ export default function Demo() {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-wrap items-center gap-4">
-				<Button color="primary" sharp="square">
+				<Button color="primary" shape="square">
 					X
 				</Button>
-				<Button color="secondary" outline sharp="square">
+				<Button color="secondary" outline shape="square">
 					X
 				</Button>
-				<Button color="secondary" sharp="circle">
+				<Button color="secondary" shape="circle">
 					X
 				</Button>
-				<Button color="secondary" outline sharp="circle">
+				<Button color="secondary" outline shape="circle">
 					X
 				</Button>
-				<Button color="accent" sharp="square">
+				<Button color="accent" shape="square">
 					<IconBell />
 				</Button>
-				<Button color="accent" outline sharp="square">
+				<Button color="accent" outline shape="square">
 					<IconBell />
 				</Button>
-				<Button color="info" sharp="circle">
+				<Button color="info" shape="circle">
 					<IconBell />
 				</Button>
-				<Button color="info" outline sharp="circle">
+				<Button color="info" outline shape="circle">
 					<IconBell />
 				</Button>
 			</div>
 			<div className="flex items-center gap-4">
-				<Button color="secondary" sharp="square" size="lg">
+				<Button color="secondary" shape="square" size="lg">
 					<IconBell size={32} />
 				</Button>
-				<Button color="secondary" sharp="square" size="md">
+				<Button color="secondary" shape="square" size="md">
 					<IconBell size={24} />
 				</Button>
-				<Button color="secondary" sharp="square" size="sm">
+				<Button color="secondary" shape="square" size="sm">
 					<IconBell size={20} />
 				</Button>
-				<Button color="secondary" sharp="square" size="xs">
+				<Button color="secondary" shape="square" size="xs">
 					<IconBell size={16} />
 				</Button>
 			</div>
 			<div className="flex items-center gap-4">
-				<Button color="accent" sharp="circle" size="lg">
+				<Button color="accent" shape="circle" size="lg">
 					<IconBell size={32} />
 				</Button>
-				<Button color="accent" sharp="circle" size="md">
+				<Button color="accent" shape="circle" size="md">
 					<IconBell size={24} />
 				</Button>
-				<Button color="accent" sharp="circle" size="sm">
+				<Button color="accent" shape="circle" size="sm">
 					<IconBell size={20} />
 				</Button>
-				<Button color="accent" sharp="circle" size="xs">
+				<Button color="accent" shape="circle" size="xs">
 					<IconBell size={16} />
 				</Button>
 			</div>
 			<div className="flex items-center gap-4">
-				<Button sharp="square" ghost size="lg">
+				<Button shape="square" ghost size="lg">
 					<IconBell size={32} />
 				</Button>
-				<Button sharp="square" ghost size="md">
+				<Button shape="square" ghost size="md">
 					<IconBell size={24} />
 				</Button>
-				<Button sharp="square" ghost size="sm">
+				<Button shape="square" ghost size="sm">
 					<IconBell size={20} />
 				</Button>
-				<Button sharp="square" ghost size="xs">
+				<Button shape="square" ghost size="xs">
 					<IconBell size={16} />
 				</Button>
 			</div>
 			<div className="flex items-center gap-4">
-				<Button sharp="circle" ghost size="lg">
+				<Button shape="circle" ghost size="lg">
 					<IconBell size={32} />
 				</Button>
-				<Button sharp="circle" ghost size="md">
+				<Button shape="circle" ghost size="md">
 					<IconBell size={24} />
 				</Button>
-				<Button sharp="circle" ghost size="sm">
+				<Button shape="circle" ghost size="sm">
 					<IconBell size={20} />
 				</Button>
-				<Button sharp="circle" ghost size="xs">
+				<Button shape="circle" ghost size="xs">
 					<IconBell size={16} />
 				</Button>
 			</div>

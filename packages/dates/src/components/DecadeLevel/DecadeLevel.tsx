@@ -28,6 +28,7 @@ export interface DecadeLevelProps
 	levelControlAriaLabel?: string;
 }
 
+/** 十年级别的视图, 某十年中选择年份 */
 export const DecadeLevel = forwardRef<HTMLDivElement, DecadeLevelProps>(
 	(props, ref) => {
 		const {

@@ -49,9 +49,9 @@ export const Paper: <E extends React.ElementType = typeof defaultElement>(
 				as={defaultElement}
 				ref={ref}
 				className={clsx(
-					"bg-base-100 rounded-[--paper-rounded] p-[--paper-spacing]",
+					"bg-base-100 rounded-(--paper-rounded) p-(--paper-spacing)",
 					{
-						"shadow-sm": elevation === "xs",
+						"shadow-xs": elevation === "xs",
 						shadow: elevation === "sm",
 						"shadow-md": elevation === "md",
 						"shadow-lg": elevation === "lg",

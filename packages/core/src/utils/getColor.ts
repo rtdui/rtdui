@@ -5,30 +5,30 @@ export function getColor(color: unknown): string | undefined {
 
 	switch (color as string) {
 		case "neutral":
-			return "oklch(var(--n))";
+			return "var(--color-neutral)";
 		case "primary":
-			return "oklch(var(--p))";
+			return "var(--color-primary)";
 		case "secondary":
-			return "oklch(var(--s))";
+			return "var(--color-secondary)";
 		case "accent":
-			return "oklch(var(--a))";
+			return "var(--color-accent)";
 		case "info":
-			return "oklch(var(--in))";
+			return "var(--color-info)";
 		case "success":
-			return "oklch(var(--su))";
+			return "var(--color-success)";
 		case "warning":
-			return "oklch(var(--wa))";
+			return "var(--color-warning)";
 		case "error":
-			return "oklch(var(--er))";
+			return "var(--color-error)";
 		case "base1":
-			return "oklch(var(--b1))";
+			return "var(--color-base-100)";
 		case "base2":
 		case "default":
-			return "oklch(var(--b2))";
+			return "var(--color-base-200)";
 		case "base3":
-			return "oklch(var(--b3))";
+			return "var(--color-base-300)";
 		case "bc":
-			return "oklch(var(--bc))";
+			return "var(--color-base-content)";
 		default:
 			return color as string;
 	}
@@ -41,25 +41,25 @@ export function getContrastColor(color: unknown): string | undefined {
 
 	switch (color as string) {
 		case "neutral":
-			return "oklch(var(--nc))";
+			return "var(--color-neutral-content)";
 		case "primary":
-			return "oklch(var(--pc))";
+			return "var(--color-primary-content)";
 		case "secondary":
-			return "oklch(var(--sc))";
+			return "var(--color-secondary-content)";
 		case "accent":
-			return "oklch(var(--ac))";
+			return "var(--color-accent-content)";
 		case "info":
-			return "oklch(var(--inc))";
+			return "var(--color-info-content)";
 		case "success":
-			return "oklch(var(--suc))";
+			return "var(--color-success-content)";
 		case "warning":
-			return "oklch(var(--wac))";
+			return "var(--color-warning-content)";
 		case "error":
-			return "oklch(var(--erc))";
+			return "var(--color-error-content)";
 		case "base1":
 		case "base2":
 		case "base3":
 		default:
-			return "oklch(var(--bc))";
+			return "var(--color-base-content)";
 	}
 }

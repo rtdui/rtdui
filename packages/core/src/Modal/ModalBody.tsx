@@ -18,7 +18,7 @@ export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
 				className={clsx(
 					"modal-body",
 					"[padding:var(--modal-padding,var(--mantine-spacing-md))]",
-					"[&:not(:only-child)]:pt-0",
+					"not-only:pt-0",
 					className,
 				)}
 			/>

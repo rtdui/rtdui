@@ -19,7 +19,7 @@ const MenuItemActions = (props: any) => {
 				<Button
 					ghost
 					size="sm"
-					sharp="circle"
+					shape="circle"
 					onClick={(e) => {
 						e.stopPropagation();
 						alert(JSON.stringify(item));
@@ -130,7 +130,7 @@ const handleMenuItemClick = (item: any) => {
 export default function Demo() {
 	return (
 		<Tree
-			className="bg-base-100"
+			className="bg-base-100 w-full"
 			data={menuData}
 			displayField="label"
 			expandAll

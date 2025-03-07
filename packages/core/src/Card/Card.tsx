@@ -53,7 +53,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 					"card-side": imagePositon === "left" || imagePositon === "right",
 					"image-full": imagePositon === "overlay",
 
-					"shadow-sm": shadow === "xs",
+					"shadow-xs": shadow === "xs",
 					shadow: shadow === "sm",
 					"shadow-md": shadow === "md",
 					"shadow-lg": shadow === "lg",

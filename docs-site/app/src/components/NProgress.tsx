@@ -34,7 +34,7 @@ export function NProgress() {
 			<div
 				ref={ref}
 				className={clsx(
-					"h-full bg-gradient-to-r from-blue-500 to-green-500 transition-all duration-500 ease-in-out",
+					"h-full bg-linear-to-r from-blue-500 to-green-500 transition-all duration-500 ease-in-out",
 					transition.state === "idle" &&
 						(animating ? "w-full" : "w-0 opacity-0 transition-none"),
 					transition.state === "submitting" && "w-4/12",

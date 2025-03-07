@@ -14,7 +14,7 @@ export const Thumb = forwardRef<HTMLDivElement, ThumbProps>((props, ref) => {
 			className={clsx(
 				"thumb",
 				"absolute left-[calc(var(--thumb-x-offset)-var(--cp-thumb-size)/2)] top-[calc(var(--thumb-y-offset)-var(--cp-thumb-size)/2)]",
-				"overflow-hidden w-[--cp-thumb-size] h-[--cp-thumb-size] border-2 border-white rounded-full shadow-[0_0_1px_rgba(0, 0, 0, 0.6)]",
+				"overflow-hidden w-(--cp-thumb-size) h-(--cp-thumb-size) border-2 border-white rounded-full shadow-[0_0_1px_rgba(0, 0, 0, 0.6)]",
 			)}
 			style={
 				{

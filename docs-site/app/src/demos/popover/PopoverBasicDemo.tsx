@@ -16,7 +16,7 @@ export default function Demo() {
 
 			<Popover>
 				<Popover.Target>
-					<Button ghost sharp="circle">
+					<Button ghost shape="circle">
 						<IconBell />
 					</Button>
 				</Popover.Target>

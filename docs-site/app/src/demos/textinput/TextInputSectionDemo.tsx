@@ -12,7 +12,7 @@ export default function Demo() {
 			description="(这是帮助文本)"
 			leftSection={<IconAt strokeWidth={1} size="1.2rem" />}
 			rightSection={
-				<Button color="primary" size="xs" sharp="square">
+				<Button color="primary" size="xs" shape="square">
 					<IconSend size="16" />
 				</Button>
 			}

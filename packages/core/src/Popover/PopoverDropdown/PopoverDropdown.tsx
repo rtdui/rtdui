@@ -89,9 +89,9 @@ export const PopoverDropdown = forwardRef<HTMLDivElement, PopoverDropdownProps>(
 									className={clsx(
 										"popover-dropdown",
 										"absolute bg-base-100",
-										"rounded-[--popover-dropdown-radius]",
+										"rounded-(--popover-dropdown-radius)",
 										{
-											"shadow-sm": ctx.shadow === "xs",
+											"shadow-xs": ctx.shadow === "xs",
 											shadow: ctx.shadow === "sm",
 											"shadow-md": ctx.shadow === "md",
 											"shadow-lg": ctx.shadow === "lg",

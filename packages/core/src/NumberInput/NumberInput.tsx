@@ -84,11 +84,11 @@ export interface NumberInputProps
 
 	/** Controls how value is clamped
 	 * `strict` – user is not allowed to enter values that are not in `[min, max]` range,
-	 * `blur` – user is allowed to enter any values, but the value is clamped when the input loses focus (default behavior),
+	 * `blur-sm` – user is allowed to enter any values, but the value is clamped when the input loses focus (default behavior),
 	 * `none` – lifts all restrictions, `[min, max]` range is applied only for controls and up/down keys
-	 * @default "blur"
+	 * @default "blur-sm"
 	 */
-	clampBehavior?: "strict" | "blur" | "none";
+	clampBehavior?: "strict" | "blur-sm" | "none";
 
 	/** Prefix added before the input value */
 	prefix?: string;
@@ -126,7 +126,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 			min,
 			max,
 			step = 1,
-			clampBehavior = "blur",
+			clampBehavior = "blur-sm",
 			allowNegative = true,
 			allowDecimal = true,
 			decimalScale,
@@ -182,7 +182,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
 		const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
 			onBlur?.(event);
-			if (clampBehavior === "blur" && typeof _value === "number") {
+			if (clampBehavior === "blur-sm" && typeof _value === "number") {
 				const clampedValue = clamp(_value, min, max);
 				if (clampedValue !== _value) {
 					setValue(clamp(_value, min, max));

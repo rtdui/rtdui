@@ -26,6 +26,9 @@ export interface PickerControlProps
 	size?: ThemeSize;
 }
 
+/**
+ * 选择年视图或选择月视图中的每个年份或月份的组件
+ */
 export const PickerControl = forwardRef<HTMLButtonElement, PickerControlProps>(
 	(props, ref) => {
 		const {
@@ -44,7 +47,7 @@ export const PickerControl = forwardRef<HTMLButtonElement, PickerControlProps>(
 			<button
 				className={clsx(
 					"pickerControl",
-					"btn no-animation font-normal min-h-0 h-[--dpc-size]",
+					"btn no-animation font-normal min-h-0 h-(--dpc-size)",
 					"[--dpc-size-xs:1.875rem]",
 					"[--dpc-size-sm:2.25rem]",
 					"[--dpc-size-md:2.625rem]",

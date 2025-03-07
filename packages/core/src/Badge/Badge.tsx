@@ -5,6 +5,7 @@ import {
 	type BoxProps,
 	type PolymorphicComponentProps,
 } from "../Polymorphic";
+import type { ThemeBaseSize } from "../theme.types";
 
 // Component-specific props should be specified separately
 export type BadgeOwnProps = {
@@ -21,15 +22,11 @@ export type BadgeOwnProps = {
 	/** 尺寸大小
 	 *  @default "md"
 	 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	/** style variant
 	 * @default "default"
 	 */
-	variant?: "default" | "outline" | "ghost";
-	/** no background and no border */
-	ghost?: boolean;
-	/** border without background */
-	outline?: boolean;
+	variant?: "default" | "ghost" | "outline" | "dash" | "soft";
 	icon?: React.ReactNode;
 };
 
@@ -55,8 +52,6 @@ export const Badge: <E extends React.ElementType = typeof defaultElement>(
 			size = "md",
 			icon,
 			variant = "default",
-			ghost,
-			outline,
 			className,
 			children,
 			...other
@@ -83,9 +78,11 @@ export const Badge: <E extends React.ElementType = typeof defaultElement>(
 						"badge-sm": size === "sm",
 						// "badge-md": size === "md", //默认
 						"badge-lg": size === "lg",
-
+						"badge-xl": size === "xl",
 						"badge-ghost": variant === "ghost",
 						"badge-outline": variant === "outline",
+						"badge-dash": variant === "dash",
+						"badge-soft": variant === "soft",
 					},
 					className,
 				)}

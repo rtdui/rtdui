@@ -106,7 +106,7 @@ export function Saturation(props: SaturationProps) {
 		<div
 			className={clsx(
 				"saturation",
-				"relative h-[--cp-saturation-height] m-[calc(var(--cp-thumb-size)/2)]",
+				"relative h-(--cp-saturation-height) m-[calc(var(--cp-thumb-size)/2)]",
 				className,
 			)}
 			ref={ref as any}

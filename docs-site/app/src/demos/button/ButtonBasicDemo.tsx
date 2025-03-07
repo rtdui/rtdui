@@ -2,20 +2,22 @@ import { useState } from "react";
 import { Button, Divider, FloatingSelect, Slider, Switch } from "@rtdui/core";
 import ColorControl from "~/src/components/ColorControl";
 
-const sizes = ["xs", "sm", "md", "lg"];
+const sizes = ["xs", "sm", "md", "lg", "xl"];
 export default function Demo() {
 	const [state, setState] = useState({
-		color: "default",
+		color: "primary",
 		size: "md",
 		ghost: false,
 		outline: false,
-		sharp: "",
+		shape: "",
 		link: false,
+		wide: false,
 		fullWidth: false,
-		noAnimation: false,
 		loading: false,
 		loadingPositon: "left",
 		disabled: false,
+		soft: false, // v5 new
+		dash: false, // v5 new
 	});
 	return (
 		<div className="flex">
@@ -23,14 +25,16 @@ export default function Demo() {
 				<Button
 					color={state.color as any}
 					size={state.size as any}
+					wide={state.wide}
 					fullWidth={state.fullWidth}
-					ghost={state.ghost}
-					outline={state.outline}
-					link={state.link}
-					noAnimation={state.noAnimation}
 					loading={state.loading}
 					loadingPosition={state.loadingPositon as any}
 					disabled={state.disabled}
+					link={state.link}
+					ghost={state.ghost}
+					outline={state.outline}
+					soft={state.soft}
+					dash={state.dash}
 				>
 					Button
 				</Button>
@@ -47,7 +51,7 @@ export default function Demo() {
 				Size:
 				<Slider
 					min={0}
-					max={3}
+					max={4}
 					labelAlwaysOn
 					label={(v) => sizes[v]}
 					value={sizes.indexOf(state.size)}
@@ -60,6 +64,12 @@ export default function Demo() {
 					label="Disabled"
 					checked={state.disabled}
 					onChange={(val) => setState((prev) => ({ ...prev, disabled: val }))}
+				/>
+				<Switch
+					color="secondary"
+					label="wide"
+					checked={state.wide}
+					onChange={(val) => setState((prev) => ({ ...prev, wide: val }))}
 				/>
 				<Switch
 					color="secondary"
@@ -84,6 +94,18 @@ export default function Demo() {
 					label="Link style"
 					checked={state.link}
 					onChange={(val) => setState((prev) => ({ ...prev, link: val }))}
+				/>
+				<Switch
+					color="secondary"
+					label="Soft style"
+					checked={state.soft}
+					onChange={(val) => setState((prev) => ({ ...prev, soft: val }))}
+				/>
+				<Switch
+					color="secondary"
+					label="Dash style"
+					checked={state.dash}
+					onChange={(val) => setState((prev) => ({ ...prev, dash: val }))}
 				/>
 				<Switch
 					color="secondary"

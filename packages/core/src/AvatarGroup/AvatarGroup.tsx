@@ -1,10 +1,11 @@
 import { forwardRef, Children, cloneElement, useMemo } from "react";
 import clsx from "clsx";
 import { AvatarGroupProvider } from "./AvatarGroup.context";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface AvatarGroupProps {
 	max?: number;
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	className?: string;
 	/** avatars */
 	children?: React.ReactNode;
@@ -29,7 +30,8 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
 						"-space-x-4": size === "xs",
 						"-space-x-6": size === "sm",
 						"-space-x-7": size === "md",
-						"-space-x-11": size === "lg",
+						"-space-x-9": size === "lg",
+						"-space-x-11": size === "xl",
 					},
 					className,
 				)}

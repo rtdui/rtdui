@@ -87,8 +87,8 @@
 }
 
 pre[class*="language-"] {
-  background: var(--prism-color-2);
-  color: var(--prism-color-1);
+  background-color: var(--prism-color-2) !important;
+  color: var(--prism-color-1) !important;
   font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono",
     monospace;
   direction: ltr;
@@ -127,8 +127,8 @@ pre[data-language]:not([data-processed], [data-no-lang-indicator])::before {
   right: 0;
   top: 0;
   padding: 0 0.25rem;
-  background-color: oklch(var(--b3));
-  color: theme(colors.gray.500);
+  background-color: var(--color-base-300);
+  color: var(--color-gray-500);
 }
 
 /* Inline code */

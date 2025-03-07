@@ -76,7 +76,7 @@ export default function Layout() {
 	React.useEffect(() => {
 		if (i18n.language === "en") {
 			notifications.show({
-				icon: <IconAlertTriangle color="oklch(var(--wa))" />,
+				icon: <IconAlertTriangle color="var(--color-warning)" />,
 				content:
 					"The current translation of the English document is incomplete",
 				autoClose: false,
@@ -111,6 +111,7 @@ export default function Layout() {
 						<TextInput
 							slots={{ input: "w-40" }}
 							variant="ghost"
+							placeholder={t("common.search")}
 							leftSection={<IconSearch />}
 							rightSection={
 								<>
@@ -139,7 +140,7 @@ export default function Layout() {
 						<Popover opened={themeOpened} onChange={setThemeOpened}>
 							<Popover.Target>
 								<Button
-									sharp="square"
+									shape="square"
 									ghost
 									className="gap-px"
 									onClick={() => setThemeOpened(true)}
@@ -152,7 +153,7 @@ export default function Layout() {
 								<ul className="menu menu-sm gap-1">
 									<li>
 										<button
-											className={clsx({ active: theme === "system" })}
+											className={clsx({ "menu-active": theme === "system" })}
 											onClick={() => handleThemeChange("system")}
 										>
 											<IconDeviceDesktop size={20} />
@@ -161,7 +162,7 @@ export default function Layout() {
 									</li>
 									<li>
 										<button
-											className={clsx({ active: theme === "light" })}
+											className={clsx({ "menu-active": theme === "light" })}
 											onClick={() => handleThemeChange("light")}
 										>
 											<IconSun size={20} />
@@ -170,7 +171,7 @@ export default function Layout() {
 									</li>
 									<li>
 										<button
-											className={clsx({ active: theme === "dark" })}
+											className={clsx({ "menu-active": theme === "dark" })}
 											onClick={() => handleThemeChange("dark")}
 										>
 											<IconMoon size={20} />
@@ -184,7 +185,7 @@ export default function Layout() {
 						<Popover opened={langOpened} onChange={setLangOpened}>
 							<Popover.Target>
 								<Button
-									sharp="square"
+									shape="square"
 									ghost
 									className="gap-0.5"
 									onClick={() => setLangOpened(true)}
@@ -242,12 +243,12 @@ export default function Layout() {
 							RTD UI
 						</a>
 						<Link to="/changelog" className="link">
-							v4.10.7
+							v5.0.0
 						</Link>
 					</div>
 					<NavMenu
 						data={menuData as any}
-						onClick={() => toggleRef.current.toggle()}
+						onClick={() => toggleRef.current.close()}
 					/>
 				</>
 			}

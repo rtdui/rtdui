@@ -119,7 +119,7 @@ export const SpotlightRoot = forwardRef<HTMLDivElement, SpotlightRootProps>(
 					closeOnActionTrigger,
 				}}
 			>
-				<Portal type="spotlight" className="relative z-[999]">
+				<Portal type="spotlight" className="relative z-999">
 					<div
 						ref={ref}
 						className={clsx("modal", { "modal-open": opened || !!forceOpened })}
@@ -128,7 +128,7 @@ export const SpotlightRoot = forwardRef<HTMLDivElement, SpotlightRootProps>(
 					>
 						<div className="modal-box">{children}</div>
 						<label
-							className="modal-backdrop backdrop-blur"
+							className="modal-backdrop backdrop-blur-sm"
 							onClick={() => spotlightActions.close(store!)}
 						/>
 					</div>

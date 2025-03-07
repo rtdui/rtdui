@@ -5,6 +5,7 @@ import clsx from "clsx";
 
 interface DemoData {
 	Component?: React.ElementType<any>;
+	componentProps?: any;
 }
 interface DemoProps {
 	data?: DemoData;
@@ -12,7 +13,7 @@ interface DemoProps {
 }
 export default function Demo(props: DemoProps) {
 	const { data = {}, notProse = true } = props;
-	const { Component } = data;
+	const { Component, componentProps } = data;
 	const componentName =
 		(Component as any).displayName ?? (Component as any).name;
 
@@ -25,20 +26,20 @@ export default function Demo(props: DemoProps) {
 		>
 			<div
 				className={clsx(
-					"demo-preview p-4 max-w-full overflow-auto bg-[radial-gradient(theme(colors.base-300)_1px,transparent_0)] bg-[length:6px_6px]",
+					"demo-preview p-4 max-w-full overflow-auto bg-[radial-gradient(var(--color-base-300)_1px,transparent_0)] bg-[length:6px_6px]",
 					{
 						"not-prose": notProse,
 					},
 				)}
 			>
-				{Component && <Component />}
+				{Component && <Component {...componentProps} />}
 			</div>
 			<div className="demo-toolbar not-prose collapse rounded-none">
 				<input type="checkbox" className="min-h-0 w-5 mr-2 justify-self-end" />
-				<div className="collapse-title flex justify-end items-center p-2 min-h-0 bg-base-200 text-base-content !cursor-auto">
+				<div className="collapse-title flex justify-end items-center p-2 min-h-0 bg-base-200 text-base-content cursor-auto!">
 					<IconCode size={20} />
 				</div>
-				<div className="collapse-content !p-0 max-w-full overflow-auto relative">
+				<div className="collapse-content p-0! max-w-full overflow-auto relative">
 					<CodeHighlight
 						code={codes.find((d) => d.name === componentName)?.code ?? ""}
 					/>

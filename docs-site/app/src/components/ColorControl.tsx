@@ -63,7 +63,7 @@ export default function ColorControl(props: ColorControlProps) {
 						</ColorSwatch>
 					</Popover.Target>
 					<Popover.Dropdown>
-						<div className="flex flex-col gap-2 bg-base-100 p-4 border border-base-300 rounded shadow">
+						<div className="flex flex-col gap-2 bg-base-100 p-4 border border-base-300 rounded-sm shadow-sm">
 							<ColorPicker
 								format="hex"
 								value={value}

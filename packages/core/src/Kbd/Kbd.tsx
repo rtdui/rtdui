@@ -1,8 +1,9 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface KbdProps {
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	className?: string;
 	children: React.ReactNode;
 }
@@ -19,6 +20,7 @@ export const Kbd = forwardRef<HTMLElement, KbdProps>((props, ref) => {
 					"kbd-sm": size === "sm",
 					"kbd-md": size === "md",
 					"kbd-lg": size === "lg",
+					"kbd-xl": size === "xl",
 				},
 				className,
 			)}

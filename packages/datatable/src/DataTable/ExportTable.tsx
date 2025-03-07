@@ -25,7 +25,7 @@ export function ExportTable(props: {
 	return (
 		<Popover position="bottom">
 			<Popover.Target>
-				<Button size="sm" ghost sharp="circle">
+				<Button size="sm" ghost shape="circle">
 					<IconDownload />
 				</Button>
 			</Popover.Target>

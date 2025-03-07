@@ -16,6 +16,7 @@ import LoadingDotsDemo from "./LoadingDotsDemo";
 import LoadingInfinityDemo from "./LoadingInfinityDemo";
 import LoadingRingDemo from "./LoadingRingDemo";
 import LoadingSpinnerDemo from "./LoadingSpinnerDemo";
+import LoadingCustomSizeDemo from "./LoadingCustomSizeDemo";
 
 # 使用
 
@@ -44,3 +45,9 @@ import LoadingSpinnerDemo from "./LoadingSpinnerDemo";
 ### ring
 
 <Demo data={{ Component: LoadingRingDemo }} />
+
+## 自定义尺寸
+
+Loading的基尺寸由主题变量`--size-selector`决定, 因此你可以覆盖该CSS变量以实现自定义尺寸.
+
+<Demo data={{ Component: LoadingCustomSizeDemo }} />

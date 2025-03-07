@@ -73,7 +73,7 @@ Rtdui的组件的样式虽然是基于`TailwindCSS`的, 但`@rtdui/core`包中�
 
 你可以使用Rtdui提供的`@rtdui/tailwind-plugin`插件, 直接将rtdui的样式集成进你的项目中, 无需加载rtdui的css文件:
 
-最低支持的 Tailwind CSS 版本是`v3.4.1`, 因为 Rtdui 组件中使用了很多只在 v3.4.1 版本中存在的功能.
+Rtdui v5 最低支持的 TailwindCSS 版本是`v4.0.0`, 因为 Rtdui 组件中使用了很多只在 v4.0.0 版本中存在的功能.
 
 > Tip: 如果你使用`VSCode`, 推荐安装 [TailwindCSS IntelliSense 扩展](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) 以获得最佳的开发体验.
 
@@ -87,34 +87,60 @@ Rtdui的组件的样式虽然是基于`TailwindCSS`的, 但`@rtdui/core`包中�
 
 2. 配置TailwindCSS
 
-   `tailwind.config.mjs`:
+   TailwindCSS v4 版本使用css作为配置文件, 不再使用`tailwind.config.{ts,js}`配置文件:
+
+   tailwind.css:
+
+   ```css
+   @import "tailwindcss";
+   {/* 添加rtdui包路径作为额外的源 */}
+   @source "./node_modules/@rtdui/";
+   @plugin "@tailwindcss/typography";
+   @plugin "daisyui" {
+     {/* themes: all; */}
+     logs: false;
+   }
+   @plugin "@rtdui/tailwind-plugin";
+   @custom-variant dark {
+     @media (prefers-color-scheme: dark) {
+       & {
+         @slot;
+       }
+     }
+     &:where([data-theme="dark"], [data-theme="dark"] *) {
+       @slot;
+     }
+   }
+   ```
+
+   ~~tailwind.config.mjs~~
 
    ```diff-js
-   + import typography from "@tailwindcss/typography";
-   + import daisyui from "daisyui";
-   + import rtdui from "@rtdui/tailwind-plugin";
-
-   /** @type {import('tailwindcss').Config} */
-   export default {
-    // 使dark主题与TailwindCSS的dark变体保持一致
-   + darkMode: [
-   +  "variant",
-   +   [
-   +     "@media (prefers-color-scheme: dark) { & }",
-   +     '&:where([data-theme="dark"], [data-theme="dark"] *)',
-   +   ],
-   + ],
-     content: [
-       "./src/**/*.{ts,tsx,jsx,js}", // 这是你的项目源码目录
-   +   "./node_modules/@rtdui/**/*.mjs", // rtdui的所有包
-     ],
-     theme: {
-       extend: {},
-     },
-   + plugins: [typography, daisyui, rtdui], // 顺序很重要
-   + // daisyUI config (optional)
-   + daisyui: {
-   +  logs: false, //禁用日志
-   + },
-   };
+   - import typography from "@tailwindcss/typography";
+   - import daisyui from "daisyui";
+   - import rtdui from "@rtdui/tailwind-plugin";
+   -
+   - /** @type {import('tailwindcss').Config} */
+   - export default {
+   -   // 使dark主题与TailwindCSS的dark变体保持一致
+   -   darkMode: [
+   -     "variant",
+   -     [
+   -       "@media (prefers-color-scheme: dark) { & }",
+   -       '&:where([data-theme="dark"], [data-theme="dark"] *)',
+   -     ],
+   -   ],
+   -   content: [
+   -     "./src/**/*.{ts,tsx,jsx,js}", // 这是你的项目源码目录
+   -     "./node_modules/@rtdui/**/*.mjs", // rtdui的所有包
+   -   ],
+   -   theme: {
+   -     extend: {},
+   -   },
+   -   plugins: [typography, daisyui, rtdui], // 顺序很重要
+   -   // daisyUI config (optional)
+   -   daisyui: {
+   -     logs: false, //禁用日志
+   -   },
+   - };
    ```

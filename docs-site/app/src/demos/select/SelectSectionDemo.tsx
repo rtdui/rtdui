@@ -149,7 +149,7 @@ export default function Demo() {
 			data={fruits}
 			leftSection={<IconAt strokeWidth={1} size="1.2rem" />}
 			rightSection={
-				<Button color="primary" size="sm" sharp="square">
+				<Button color="primary" size="sm" shape="square">
 					<IconSend size="1rem" />
 				</Button>
 			}

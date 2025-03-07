@@ -43,7 +43,7 @@ export const SpotlightSearch = forwardRef<
 	return (
 		<TextInput
 			ref={ref}
-			slots={{ input: "focus-within:outline-none" }}
+			slots={{ input: "focus-within:outline-hidden" }}
 			{...others}
 			size="md"
 			variant="ghost"

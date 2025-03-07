@@ -1,4 +1,5 @@
 import { createOptionalContext } from "../utils";
+import type { ThemeBaseSize } from "../theme.types";
 
 export interface RadioGroupContextValue {
 	name: string | undefined;
@@ -8,7 +9,7 @@ export interface RadioGroupContextValue {
 	 *
 	 * @default sm
 	 */
-	size?: "xs" | "sm" | "md" | "lg";
+	size?: ThemeBaseSize;
 	color?:
 		| "primary"
 		| "secondary"

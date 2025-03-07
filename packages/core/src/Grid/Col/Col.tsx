@@ -154,7 +154,7 @@ export const Col = forwardRef<HTMLDivElement, GridColProps>((props, ref) => {
 				className={clsx(
 					responsiveClassName,
 					"gridx-col",
-					"flex-shrink-0 [flex-grow:var(--col-flex-grow,0)]",
+					"shrink-0 [flex-grow:var(--col-flex-grow,0)]",
 					"[order:var(--col-order)]",
 					"[flex-basis:var(--col-flex-basis)]",
 					"[width:var(--col-width)]",

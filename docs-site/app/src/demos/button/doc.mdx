@@ -14,7 +14,6 @@ import ButtonBasicDemo from "./ButtonBasicDemo";
 import ButtonIconDemo from "./ButtonIconDemo";
 import ButtonGlassDemo from "./ButtonGlassDemo";
 import ButtonSharpDemo from "./ButtonSharpDemo";
-import ButtonNoAnimationDemo from "./ButtonNoAnimationDemo";
 
 # 使用
 
@@ -54,14 +53,8 @@ import ButtonNoAnimationDemo from "./ButtonNoAnimationDemo";
 
 ## 宽高相等的形状
 
-`Button`的`sharp`属性支持: "square"(正方形)和"circle"(圆形), 两者都是宽高相等的形状, 对于显示单个字符或者显示图标的按钮非常有用.
+`Button`的`shape`属性支持: "square"(正方形)和"circle"(圆形), 两者都是宽高相等的形状, 对于显示单个字符或者显示图标的按钮非常有用.
 
 `color`,`size`,`ghost`属性都可以运用到这两个形状上
 
 <Demo data={{ Component: ButtonSharpDemo }} />
-
-## 不应用点击动画特效
-
-`Button`的`noAnimation`属性可以设置点击时不应用动画特效.
-
-<Demo data={{ Component: ButtonNoAnimationDemo }} />

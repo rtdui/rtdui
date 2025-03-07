@@ -23,7 +23,8 @@
 		"saveAs": "另存为",
 		"export": "导出",
 		"show": "显示",
-		"hide": "隐藏"
+		"hide": "隐藏",
+		"search": "搜索..."
 	},
 	"lang": {
 		"en": "(en) English",

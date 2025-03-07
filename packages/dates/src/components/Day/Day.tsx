@@ -37,6 +37,9 @@ export interface DayProps extends React.ComponentPropsWithoutRef<"button"> {
 	size?: ThemeSize;
 }
 
+/**
+ * 选择日视图中每个日期的组件
+ */
 export const Day = forwardRef<HTMLButtonElement, DayProps>((props, ref) => {
 	const {
 		className,
@@ -63,7 +66,7 @@ export const Day = forwardRef<HTMLButtonElement, DayProps>((props, ref) => {
 			as={isStatic ? "div" : "button"}
 			className={clsx(
 				"day",
-				"btn btn-square no-animation min-h-0 w-[--dpc-size] h-[--dpc-size] font-normal",
+				"btn btn-square no-animation min-h-0 w-(--dpc-size) h-(--dpc-size) font-normal",
 				"[--dpc-size-xs:1.875rem]",
 				"[--dpc-size-sm:2.25rem]",
 				"[--dpc-size-md:2.625rem]",

@@ -6,7 +6,7 @@ export default function Demo() {
 		<div className="flex flex-col gap-4 bg-base-100 p-4">
 			<div className="flex gap-4">
 				<Skeleton circle className="w-10 h-10" />
-				<div className="flex-grow flex flex-col gap-4">
+				<div className="grow flex flex-col gap-4">
 					<Skeleton paragraph className="h-2" />
 					<Skeleton paragraph className="h-2" />
 					<Skeleton paragraph className="w-9/12 h-2" />

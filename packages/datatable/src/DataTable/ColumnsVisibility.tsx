@@ -10,7 +10,7 @@ export function ColumnsVisibility(props: { table: Table<any> }) {
 	return (
 		<Popover position="bottom">
 			<Popover.Target>
-				<Button size="sm" ghost sharp="circle">
+				<Button size="sm" ghost shape="circle">
 					<IconEyeCheck />
 				</Button>
 			</Popover.Target>
@@ -19,7 +19,7 @@ export function ColumnsVisibility(props: { table: Table<any> }) {
 					{columns.map((column) => (
 						<li
 							key={column.id}
-							className={!column.getCanHide() ? "disabled" : undefined}
+							className={!column.getCanHide() ? "menu-disabled" : undefined}
 						>
 							<label>
 								<input

@@ -40,7 +40,7 @@ export const ComboboxOption = forwardRef<HTMLDivElement, ComboboxOptionProps>(
 			<div
 				className={clsx(
 					"combobox-option",
-					"p-[--combobox-option-padding] rounded hover:bg-base-200 [&[data-combobox-selected=true]]:bg-base-200",
+					"p-(--combobox-option-padding) rounded-sm hover:bg-base-200 data-[combobox-selected=true]:bg-base-200",
 					"cursor-pointer",
 					{
 						"[&]:bg-base-300": active,

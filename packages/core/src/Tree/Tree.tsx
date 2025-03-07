@@ -82,7 +82,7 @@ export function Tree(props: TreeProp) {
 					>
 						<div className="flex gap-1 items-center">
 							{ItemIconComponent && <ItemIconComponent item={item} />}
-							<a className="flex-grow text-base" href={item.url}>
+							<a className="grow text-base" href={item.url}>
 								{item[displayField]}
 							</a>
 							{ItemActionsComponent && (

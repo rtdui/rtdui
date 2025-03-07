@@ -47,14 +47,14 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 								<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
 									<Button
 										disabled={index === 0}
-										sharp="circle"
+										shape="circle"
 										onClick={(e) => prev(index)}
 									>
 										❮
 									</Button>
 									<Button
 										disabled={index === items.length - 1}
-										sharp="circle"
+										shape="circle"
 										onClick={(e) => next(index)}
 									>
 										❯

@@ -1,8 +1,16 @@
 import { Steps } from "@rtdui/core";
 
-const items = ["步骤1", "步骤2", "步骤3", "步骤4", "步骤5", "步骤6", "步骤7"];
+const steps = [
+	{ description: "步骤1" },
+	{ description: "步骤2" },
+	{ description: "步骤3" },
+	{ description: "步骤4" },
+	{ description: "步骤5" },
+	{ description: "步骤6" },
+	{ description: "步骤7" },
+];
 
 export default function Demo() {
-	return <Steps steps={items} />;
+	return <Steps steps={steps} />;
 }
 Demo.displayName = "StepsBasicDemo";
