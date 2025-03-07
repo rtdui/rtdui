@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/spotlight",
-  "version": "4.10.7",
+  "version": "5.0.0",
   "description": "A search center of your application",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
@@ -38,8 +38,8 @@
     "*.css"
   ],
   "peerDependencies": {
-    "@rtdui/core": "4.10.7",
-    "@rtdui/hooks": "4.10.7",
+    "@rtdui/core": "5.0.0",
+    "@rtdui/hooks": "5.0.0",
     "react": "^18.x || ^19.x",
     "react-dom": "^18.x || ^19.x"
   }
