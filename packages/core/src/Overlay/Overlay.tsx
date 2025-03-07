@@ -86,7 +86,7 @@ export const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
 							((color !== undefined || backgroundOpacity !== undefined) &&
 								`rgba(${color ?? "#000"}, ${backgroundOpacity ?? 0.6}))`) ||
 							undefined,
-						"--overlay-filter": blur ? `blur(${rem(blur-sm)})` : undefined,
+						"--overlay-filter": blur ? `blur(${rem(blur)})` : undefined,
 						"--overlay-radius":
 							radius === undefined ? undefined : getRadius(radius),
 						"--overlay-z-index": zIndex?.toString(),
