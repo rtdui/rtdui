@@ -18,9 +18,38 @@ import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
-import rehypePrism from "rehype-prism-plus";
+import rehypeShiki from "@shikijs/rehype";
+import {
+	transformerNotationDiff,
+	transformerNotationErrorLevel,
+	transformerNotationFocus,
+	transformerNotationHighlight,
+	transformerNotationWordHighlight,
+	transformerRemoveLineBreak,
+	transformerRemoveNotationEscape,
+	transformerMetaHighlight,
+	transformerMetaWordHighlight,
+	transformerCompactLineOptions,
+} from "@shikijs/transformers";
+import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
+import { transformerAddLangDataAttr } from "@rtdui/shiki-highlight";
 import { ROLLUP_EXCLUDE_USE_CLIENT } from "./rollup-exclude-use-client";
 // import { getPackagesList } from "../../packages/get-packages-list";
+
+const basicShikiTransformers = [
+	transformerNotationDiff(),
+	transformerNotationErrorLevel(),
+	transformerNotationFocus(),
+	transformerNotationHighlight(),
+	transformerNotationWordHighlight(),
+	transformerRemoveLineBreak(),
+	transformerRemoveNotationEscape(),
+	transformerMetaHighlight(),
+	transformerMetaWordHighlight(),
+	transformerCompactLineOptions(),
+	transformerColorizedBrackets(),
+	transformerAddLangDataAttr(),
+];
 
 export async function createPackageConfig(
 	packagePath: string,
@@ -86,7 +115,20 @@ export async function createPackageConfig(
 				remarkBreaks,
 				remarkMath as any,
 			],
-			rehypePlugins: [rehypeSlug as any, rehypePrism, rehypeKatex],
+			rehypePlugins: [
+				[
+					rehypeShiki,
+					{
+						themes: {
+							light: "one-light",
+							dark: "one-dark-pro",
+						},
+						transformers: basicShikiTransformers,
+					},
+				],
+				rehypeSlug as any,
+				rehypeKatex,
+			],
 		}), // 支持导入mdx
 		// 支持React v19
 		banner((chunk) => {
