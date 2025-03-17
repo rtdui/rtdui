@@ -1,0 +1,12 @@
+/* 此文件的存在是为了使项目能被Tailwindcss vscode扩展识别 */
+@import "tailwindcss";
+
+@source "./packages";
+
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: all;
+  logs: false;
+  exclude: rootscrollgutter diff;
+}
+@plugin "@rtdui/tailwind-plugin";
