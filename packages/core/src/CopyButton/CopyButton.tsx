@@ -15,11 +15,11 @@ export interface CopyButtonProps {
 	children: (payload: { copied: boolean; copy: () => void }) => React.ReactNode;
 }
 
-export const CopyButton = function CopyButton(props: CopyButtonProps) {
+export function CopyButton(props: CopyButtonProps) {
 	const { children, timeout = 1000, value, ...others } = props;
 
 	const clipboard = useClipboard({ timeout });
 	const copy = () => clipboard.copy(value);
 
 	return <>{children({ copy, copied: clipboard.copied, ...others })}</>;
-};
+}

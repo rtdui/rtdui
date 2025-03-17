@@ -51,6 +51,7 @@
     "@hocuspocus/extension-redis": "^2.3.1",
     "@hocuspocus/provider": "^2.3.1",
     "@hocuspocus/server": "^2.3.1",
+    "@shikijs/transformers": "^3.2.1",
     "@tiptap/extension-collaboration": "^2.0.4",
     "@tiptap/extension-collaboration-cursor": "^2.0.4",
     "@tiptap/extension-floating-menu": "^2.0.4",
@@ -74,6 +75,7 @@
     "rc-upload": "^4.3.5",
     "re-resizable": "^6.9.11",
     "refractor": "^4.8.1",
+    "shiki": "^3.2.1",
     "y-indexeddb": "^9.0.11",
     "yjs": "^13.6.7"
   },

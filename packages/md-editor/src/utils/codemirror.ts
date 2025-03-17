@@ -65,7 +65,7 @@ export const createEditorView = (
 			// padding: "16px",
 		},
 		"& .cm-gutters": {
-			backgroundColor: "oklch(var(--b3))",
+			backgroundColor: "var(--color-base-300)",
 		},
 	});
 

@@ -37,7 +37,7 @@ import {
 	Highlight,
 	TextAlign,
 	Placeholder,
-	CodeBlockPrismjs,
+	CodeBlockShiki,
 	// Collaboration,
 	// CollaborationCursor,
 	UploadImageWithResizable,
@@ -105,7 +105,7 @@ export const RichTextEditor = forwardRef<any, RichTextEditorProps>(
 				TextAlign.configure({
 					types: ["heading", "paragraph", "tableHeader", "tableCell"],
 				}),
-				CodeBlockPrismjs,
+				CodeBlockShiki,
 				// Register the document with Tiptap
 				// Collaboration.configure({
 				//   document: ydoc,

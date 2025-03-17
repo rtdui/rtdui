@@ -1,13 +1,13 @@
 import { useMergedRef } from "@rtdui/hooks";
 import clsx from "clsx";
-import { forwardRef, useEffect, useMemo, useRef } from "react";
-import type { Locale, ProcessorOptions } from "./types";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
+import type { Locale, ProcessorOptions, VFile } from "./types";
 import { getProcessor } from "./utils/get-processor";
 import enLocale from "./locales/en.json";
 import breaks from "./plugins/breaks";
 import gfm from "./plugins/gfm";
 import math from "./plugins/math";
-import highlight from "./plugins/highlight-prism";
+import highlight from "./plugins/highlight";
 import mermaid from "./plugins/mermaid";
 import toc from "./plugins/toc";
 import gemoji from "./plugins/gemoji";
@@ -57,28 +57,38 @@ export const MdViewer = forwardRef<HTMLDivElement, MdViewerProps>(
 		const rootRef = useRef<HTMLDivElement>();
 		const mergedRef = useMergedRef(ref, rootRef);
 
-		const vFile = useMemo(
+		const processor = useMemo(
 			() =>
 				getProcessor({
 					plugins,
 					sanitize,
 					remarkRehypeOptions,
-				}).processSync(value),
-			[value, plugins, sanitize, remarkRehypeOptions],
+				}),
+			[plugins, sanitize, remarkRehypeOptions],
 		);
 
+		const [file, setFile] = useState<VFile>(null!);
+
 		useEffect(() => {
-			if (!vFile) return;
+			processor.process(value).then((vfile) => {
+				setFile(vfile);
+			});
+			// setFile(processor.processSync(value));
+		}, [value]);
+
+		useEffect(() => {
+			if (!file) return;
 			const cbs = plugins?.map(({ viewerEffect }) =>
 				viewerEffect?.({
 					markdownBody: rootRef.current!,
-					file: vFile,
+					file,
 				}),
 			);
+
 			return () => {
 				cbs?.forEach((cb) => cb?.());
 			};
-		}, [vFile]);
+		}, [file]);
 
 		return (
 			<div
@@ -99,7 +109,7 @@ export const MdViewer = forwardRef<HTMLDivElement, MdViewerProps>(
 			>
 				<div
 					dangerouslySetInnerHTML={{
-						__html: vFile?.toString() ?? "",
+						__html: file?.toString() ?? "",
 					}}
 				/>
 			</div>

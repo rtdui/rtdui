@@ -147,7 +147,7 @@ title History of Social Media Platform
 				}
 
 				const nodes = markdownBody.querySelectorAll<HTMLElement>(
-					'pre[class*="language-mermaid"]:not([data-processed="true"])',
+					'pre[data-language="mermaid"]:not([data-processed="true"])',
 				);
 				nodes.forEach((d) => {
 					d.innerHTML = d.innerText;

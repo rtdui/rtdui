@@ -226,16 +226,17 @@ Sample text here...
 
 \u0060\u0060\u0060tsx
 function Foo(bar) {
+\ \ // comment
 \ \ return bar++;
-};
+}
 
 console.log(foo(5));
 \u0060\u0060\u0060
 
-\u0060\u0060\u0060diff
+\u0060\u0060\u0060tsx
 const foo = function (bar) {
-\- return bar++;
-\+ return bar++;
+\ \ return bar++; // [!code --]
+\ \ return bar++; // [!code ++]
 };
 
 console.log(foo(5));

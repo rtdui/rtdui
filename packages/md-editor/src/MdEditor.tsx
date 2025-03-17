@@ -38,7 +38,7 @@ import enLocale from "./locales/en.json";
 import breaks from "./plugins/breaks";
 import gemoji from "./plugins/gemoji";
 import gfm from "./plugins/gfm";
-import highlight from "./plugins/highlight-prism";
+import highlight from "./plugins/highlight";
 import math from "./plugins/math";
 import mermaid from "./plugins/mermaid";
 import toc from "./plugins/toc";

@@ -119,10 +119,11 @@ export async function createPackageConfig(
 				[
 					rehypeShiki,
 					{
-						themes: {
-							light: "one-light",
-							dark: "one-dark-pro",
-						},
+						// themes: {
+						// 	light: "one-light",
+						// 	dark: "one-dark-pro",
+						// },
+						theme: "one-dark-pro",
 						transformers: basicShikiTransformers,
 					},
 				],

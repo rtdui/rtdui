@@ -73,10 +73,14 @@ export const Preview = forwardRef<HTMLDivElement, PreviewProps>(
 		const [file, setFile] = useState<VFile>(null!);
 
 		useEffect(() => {
-			setFile(processor.processSync(value));
+			processor.process(value).then((vfile) => {
+				setFile(vfile);
+			});
+			// setFile(processor.processSync(value));
 		}, [value]);
 
 		useEffect(() => {
+			if (!file) return;
 			const cbs = plugins?.map(({ viewerEffect }) =>
 				viewerEffect?.({
 					markdownBody: rootRef.current!,
@@ -87,7 +91,7 @@ export const Preview = forwardRef<HTMLDivElement, PreviewProps>(
 			return () => {
 				cbs?.forEach((cb) => cb?.());
 			};
-		}, [value]);
+		}, [file]);
 
 		// 滚动元素和生成html元素不可为同一元素, 否则会出现滚动问题. 因此每次生成html时会导致滚动事件触发.
 		return (
@@ -99,6 +103,7 @@ export const Preview = forwardRef<HTMLDivElement, PreviewProps>(
 					"[&_.hljs]:p-0 [&_.hljs]:bg-transparent",
 					"[&_pre:not(:has(code))]:bg-transparent",
 					"prose max-w-none",
+					"prose-pre:leading-5",
 					"prose-h1:my-4 prose-h2:my-4 prose-h3:my-4 prose-h4:my-4",
 					"prose-p:my-2",
 					"prose-blockquote:bg-base-200",

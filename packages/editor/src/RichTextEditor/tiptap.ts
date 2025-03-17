@@ -17,7 +17,6 @@ import { TaskItem } from "@tiptap/extension-task-item";
 // import { HocuspocusProvider } from "@hocuspocus/provider";
 // import * as Y from "yjs";
 // import type { Doc } from "yjs";
-import { refractor } from "refractor/lib/all.js";
 // import { IndexeddbPersistence } from "y-indexeddb";
 // 自定义扩展
 import { UploadImageWithResizable } from "./tiptap_extensions/extension-image-upload";
@@ -26,8 +25,8 @@ import {
 	MathKatexInline,
 	MathKatexBlock,
 } from "./tiptap_extensions/extension-math";
-import { CodeBlockPrism } from "./tiptap_extensions/extension-code-block-refractor";
 import { CustomTable as Table } from "./tiptap_extensions/extension-table";
+import { CodeBlockShiki } from "./tiptap_extensions/extension-code-block-shiki";
 
 // const instants = new Map<string, HocuspocusProvider>();
 // function getProvider(docName: string, ydoc: Doc) {
@@ -48,16 +47,6 @@ import { CustomTable as Table } from "./tiptap_extensions/extension-table";
 //   }
 //   return provider;
 // }
-
-// const CodeBlockHighlight = CodeBlockLowlight.configure({
-//   lowlight,
-//   defaultLanguage: "plaintext",
-// });
-
-const CodeBlockPrismjs = CodeBlockPrism.configure({
-	refractor,
-	defaultLanguage: "tsx",
-});
 
 export {
 	StarterKit,
@@ -82,7 +71,8 @@ export {
 	TextAlign,
 	Placeholder,
 	// FloatingMenu,
-	CodeBlockPrismjs,
+	// CodeBlockPrismjs,
+	CodeBlockShiki,
 	MathKatexInline,
 	MathKatexBlock,
 };
