@@ -1,7 +1,0 @@
-src/
-tsconfig.*
-postcss.*
-tailwind.*
-!/cjs/
-!/esm/
-!/lib/
