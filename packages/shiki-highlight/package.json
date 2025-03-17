@@ -1,0 +1,45 @@
+{
+	"name": "@rtdui/shiki-highlight",
+	"version": "5.0.0",
+	"description": "React code highlight component based on shiki",
+	"types": "./lib/index.d.ts",
+	"main": "./cjs/index.cjs",
+	"module": "./esm/index.mjs",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./lib/index.d.ts",
+				"default": "./esm/index.mjs"
+			},
+			"require": {
+				"types": "./lib/index.d.ts",
+				"default": "./cjs/index.cjs"
+			}
+		}
+	},
+	"keywords": ["react", "components", "library", "ui", "ui-kit", "highlight"],
+	"author": "fu zhong wei <jackyleefzw@163.com>",
+	"license": "MIT",
+	"homepage": "https://rtdui.com/",
+	"sideEffects": ["*.css"],
+	"repository": {
+		"url": "https://github.com/rtdui/rtdui.git",
+		"type": "git",
+		"directory": "packages/shiki-highlight"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
+	},
+	"peerDependencies": {
+		"@rtdui/core": "5.0.0",
+		"@rtdui/hooks": "5.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"dependencies": {
+		"@shikijs/colorized-brackets": "^3.1.0",
+		"@shikijs/transformers": "^3.1.0",
+		"shiki": "^3.1.0"
+	}
+}
