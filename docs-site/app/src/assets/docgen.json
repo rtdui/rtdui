@@ -918,6 +918,66 @@
       }
     }
   },
+  "@rtdui/ShikiHighlight": {
+    "filePath": "D:/sources/github/rtdui/packages/shiki-highlight/src/ShikiHighlight.tsx",
+    "description": "",
+    "displayName": "@rtdui/ShikiHighlight",
+    "props": {
+      "code": {
+        "defaultValue": null,
+        "description": "Code to highlight",
+        "name": "code",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "copyLabel": {
+        "defaultValue": {
+          "value": "'Copy code'"
+        },
+        "description": "Copy tooltip label",
+        "name": "copyLabel",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "language": {
+        "defaultValue": {
+          "value": "tsx"
+        },
+        "description": "Code language",
+        "name": "language",
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "showLineNumbers": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "是否显示行号",
+        "name": "showLineNumbers",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "withCopyButton": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "Determines whether copy button should be displayed",
+        "name": "withCopyButton",
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  },
   "SignaturePad": {
     "filePath": "D:/sources/github/rtdui/packages/signature-pad/src/SignaturePad.tsx",
     "description": "",
@@ -2058,106 +2118,6 @@
         "required": false,
         "type": {
           "name": "Record<string, any> | undefined"
-        }
-      }
-    }
-  },
-  "@rtdui/CodeHighlight": {
-    "filePath": "D:/sources/github/rtdui/packages/code-highlight/src/CodeHighlight/CodeHighlight.tsx",
-    "description": "",
-    "displayName": "@rtdui/CodeHighlight",
-    "props": {
-      "bad": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "坏的范例",
-        "name": "bad",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "code": {
-        "defaultValue": null,
-        "description": "Code to highlight",
-        "name": "code",
-        "required": true,
-        "type": {
-          "name": "string"
-        }
-      },
-      "copiedLabel": {
-        "defaultValue": {
-          "value": "'Copied'"
-        },
-        "description": "Copied tooltip label",
-        "name": "copiedLabel",
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
-      "copyLabel": {
-        "defaultValue": {
-          "value": "'Copy code'"
-        },
-        "description": "Copy tooltip label",
-        "name": "copyLabel",
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
-      "diff": {
-        "defaultValue": null,
-        "description": "是否启用diff形式",
-        "name": "diff",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "highlingtLines": {
-        "defaultValue": null,
-        "description": "字符串范围表示的需要突出显示的行\n如: {1,3-4}",
-        "name": "highlingtLines",
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
-      "language": {
-        "defaultValue": {
-          "value": "tsx"
-        },
-        "description": "Code language",
-        "name": "language",
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
-      "showLineNumbers": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "是否显示行号",
-        "name": "showLineNumbers",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "withCopyButton": {
-        "defaultValue": {
-          "value": "true"
-        },
-        "description": "Determines whether copy button should be displayed",
-        "name": "withCopyButton",
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
         }
       }
     }

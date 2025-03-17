@@ -6,6 +6,7 @@
 @plugin "daisyui" {
   themes: all;
   logs: false;
+  exclude: rootscrollgutter diff;
 }
 @plugin "@rtdui/tailwind-plugin";
 
@@ -60,5 +61,132 @@
   &:focus-within:after {
     transform: rotate(225deg);
     margin-top: 0;
+  }
+}
+
+/****** shiki语法高亮, dark单主题模式 ******/
+pre.shiki {
+  padding: 24px 0;
+  margin-bottom: 8px;
+  position: relative;
+  border-radius: 0.5rem;
+  &::before {
+    content: attr(data-language);
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 0.5rem;
+    background-color: var(--color-gray-900);
+    color: var(--color-gray-400);
+    border-start-start-radius: 0.5rem;
+  }
+  code {
+    display: block;
+    padding: 0 24px;
+    &:has(.line) {
+      font-size: 0;
+    }
+    .line {
+      display: inline-block;
+      min-height: 20px;
+      font-size: 1rem;
+      &::before {
+        position: absolute;
+        left: 8px;
+      }
+    }
+  }
+  /* 高亮行 */
+  &.has-highlighted {
+    .line.highlighted {
+      transition: background-color 0.5s;
+      margin: 0 -24px;
+      padding: 0 24px;
+      width: calc(100% + 48px);
+      background-color: var(--color-gray-900);
+      /* 错误级别 */
+      &.warning {
+        background-color: var(--color-yellow-900);
+      }
+      &.error {
+        background-color: var(--color-red-900);
+      }
+    }
+  }
+  /* 焦点行 */
+  &.has-focused {
+    .line:not(.focused) {
+      filter: blur(0.095rem);
+    }
+    &:hover {
+      .line:not(.focused) {
+        filter: blur(0);
+      }
+    }
+  }
+  /* 差异行 */
+  &.has-diff {
+    .line.diff {
+      transition: background-color 0.5s;
+      margin: 0 -24px;
+      padding: 0 24px;
+      width: calc(100% + 48px);
+      &.remove {
+        background-color: var(--color-red-800);
+        user-select: none;
+        &::before {
+          content: "-";
+          color: var(--color-red-500);
+        }
+      }
+      &.add {
+        background-color: var(--color-green-900);
+        &::before {
+          content: "+";
+          color: var(--color-green-500);
+        }
+      }
+    }
+  }
+  /* 行号 */
+  &.has-line-number {
+    code {
+      counter-reset: row_number;
+      .line {
+        margin: 0 -24px;
+        padding: 0 24px 0 56px;
+        width: calc(100% + 48px);
+        &::before {
+          content: counter(row_number);
+          counter-increment: row_number;
+          /* width: 1rem;
+        text-align: right; */
+          color: var(--color-gray-500);
+          margin-right: 1em;
+        }
+        &.highlighted,
+        &.diff {
+          padding-left: 56px;
+        }
+        &.diff.remove {
+          &::before {
+            content: counter(row_number) " -";
+          }
+        }
+        &.diff.add {
+          &::before {
+            content: counter(row_number) " +";
+          }
+        }
+      }
+    }
+  }
+  /* 词高亮 */
+  .highlighted-word {
+    background-color: var(--color-gray-900);
+    /* border: 1px solid var(--color-gray-700); */
+    padding: 1px 3px;
+    margin: -1px -2px;
+    border-radius: 4px;
   }
 }

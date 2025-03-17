@@ -1,0 +1,194 @@
+---
+meta:
+  - title: Shiki Highlight Component
+  - description: Shiki Highlight document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "packages/shiki-highlight/src/ShikiHighlight.tsx"
+  componentName: "ShikiHighlight"
+---
+
+import Demo from "../../components/Demo";
+import ShikiHighlightBasicDemo from "./ShikiHighlightBasicDemo";
+import ShikiHighlightCopyBtnLabelDemo from "./ShikiHighlightCopyBtnLabelDemo";
+import ShikiHighlightHiddenCopyBtnDemo from "./ShikiHighlightHiddenCopyBtnDemo";
+import ShikiHighlightErrorLevelDemo from "./ShikiHighlightErrorLevelDemo";
+import ShikiHighlightShowLineNumbersDemo from "./ShikiHighlightShowLineNumbersDemo";
+import ShikiHighlightLinesHighlightDemo from "./ShikiHighlightLinesHighlightDemo";
+import ShikiHighlightWordsHighlightDemo from "./ShikiHighlightWordsHighlightDemo";
+import ShikiHighlightDiffDemo from "./ShikiHighlightDiffDemo";
+import ShikiHighlightFocusDemo from "./ShikiHighlightFocusDemo";
+import ShikiHighlightAllDemo from "./ShikiHighlightAllDemo";
+
+# 安装
+
+```sh
+npm i @rtdui/shiki-highlight
+```
+
+> tip: 记得安装`@rtdui/hooks`和`@rtdui/core`配对依赖, 如果还未安装的话.
+
+---
+
+# 使用
+
+ShikiHighlight 组件基于`shiki`及其样式展示语法高亮. 功能:
+
+1. 自带拷贝按钮, 可以快速将代码复制到剪贴板. 可以选择隐藏它
+2. 显示代码行号, 默认不显示. 通过属性开启.
+3. 源码中的特殊注释表示法
+   - 行高亮, `[!code highlight]`
+   - 词高亮, `[!code word:<word>]`
+   - 差异行, `[!code --]`, `[!code ++]`
+   - 聚焦行, `[!code focus]`
+   - 错误级别, `[!code error]`, `[!code warning]`
+
+## 基本
+
+指定`code`属性和`language`属性即可, 默认带拷贝按钮
+
+<Demo data={{ Component: ShikiHighlightBasicDemo }} />
+
+## 自定义拷贝按钮的提示文本
+
+可以通过`copyLabel`属性自定义拷贝按钮的提示文本.
+
+<Demo data={{ Component: ShikiHighlightCopyBtnLabelDemo }} />
+
+## 隐藏拷贝按钮
+
+拷贝按钮默认是显示的, 要想隐藏设置`withCopyButton`属性为`false`
+
+<Demo data={{ Component: ShikiHighlightHiddenCopyBtnDemo }} />
+
+## 显示行号
+
+`showLineNumbers`属性为`true`时会显示行号, 默认开启复制功能.
+
+<Demo data={{ Component: ShikiHighlightShowLineNumbersDemo }} />
+
+## 源码中的特殊注释表示法
+
+源码中的特殊注释表示法用于标记特殊样式
+
+### 行高亮
+
+`[!code highlight]` 注释表示法, 用于标记行高亮. 可用于单行或多行.
+
+标记单行, 在代码行末尾添加`[!code highlight]`注释, 如:
+
+```
+const str = "abc";  // [!code highlight] 当前行高亮
+```
+
+标记多行, 在新行添加`// [!code highlight:N]`, 其中N表示其下多少行高亮, 如:
+
+```
+// [!code highlight:3] 下面连续3行高亮
+const a = "abc";
+const b = 123;
+const c = true;
+```
+
+<Demo data={{ Component: ShikiHighlightLinesHighlightDemo }} />
+
+### 词高亮
+
+`[!code word:<word>]` 注释表示法, 用于标记词高亮. 可用于所有行或指定行.
+
+注意: `<word>`是大小写敏感的.
+
+在新行添加`[!code word:<word>]`, 表示下面所有行中的`<word>`高亮, 如:
+
+```
+// [!code word:Hello] 下面所有行中Hello单词高亮
+const str = "Hello";
+console.log(message) // prints Hello World
+```
+
+标记指定行, 在新行添加`[!code word:<word>:N]`, 其中N表示其下多少行中的`<word>`单词高亮, 如:
+
+```
+// [!code word:Hello:1] 仅下面1行中的Hello单词高亮
+const str = "Hello";
+console.log(message) // prints Hello World
+```
+
+<Demo data={{ Component: ShikiHighlightWordsHighlightDemo }} />
+
+### 差异行
+
+`[!code --]` 和 `[!code ++]`表示法, 用于标记差异行. 可用于单行或多行.
+
+标记单行, 在代码行末尾添加`[!code --]`或`[!code ++]`, 如:
+
+```
+const a = "abc"; // [!code --] 表示移除行,
+const a = 123; // [!code ++] 表示添加行,
+```
+
+标记多行, 在新行添加 `[!code --:N]` 或 `[!code ++:N]`, 其中N表示其下多少行高亮, 如:
+
+```
+// [!code --:3] 下面移除连续3行
+const a = "abc";
+const b = 123;
+const c = true;
+// [!code ++:2] 下面添加连续2行
+const a = "abcefg";
+const b = 123456;
+```
+
+<Demo data={{ Component: ShikiHighlightDiffDemo }} />
+
+### 错误级别
+
+`[!code error]` 和 `[!code warning]`表示法, 用于标记错误行或警告行. 可用于单行或多行.
+
+标记单行, 在代码行末尾添加`[!code error]` 和 `[!code warning]`, 如:
+
+```
+const a = "abc"; // [!code error] 表示移除行,
+const a = 123; // [!code warning] 表示添加行,
+```
+
+标记多行, 在新行添加 `[!code --:N]` 或 `[!code ++:N]`, 其中N表示其下多少行高亮, 如:
+
+```
+// [!code error:3] 下面移除连续3行
+const a = "abc";
+const b = 123;
+const c = true;
+// [!code warning:2] 下面添加连续2行
+const a = "abcefg";
+const b = 123456;
+```
+
+<Demo data={{ Component: ShikiHighlightErrorLevelDemo }} />
+
+### 聚焦行
+
+`[!code focus]`表示法, 用于标记聚焦行. 可用于单行或多行.
+
+标记单行, 在代码行末尾添加`[!code focus]`, 如:
+
+```
+const a = "abc"; // [!code focus] 聚焦当前行
+const a = 123;
+```
+
+标记多行, 在新行添加 `[!code focus:N]`, 其中N表示其下多少行高亮, 如:
+
+```
+// [!code focus:2] 下面连续2行聚焦
+const a = "abc";
+const b = 123;
+const c = true;
+```
+
+<Demo data={{ Component: ShikiHighlightFocusDemo }} />
+
+### 行号, 以及行高亮、词高亮、行差异、错误级别表示法可以同时启用
+
+<Demo data={{ Component: ShikiHighlightAllDemo }} />

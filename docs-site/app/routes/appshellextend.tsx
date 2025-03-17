@@ -10,7 +10,7 @@ import {
 	IconMenu2,
 	IconSearch,
 } from "@tabler/icons-react";
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 import { dialogs } from "@rtdui/dialogs";
 
 const sourceCode = `
@@ -63,7 +63,7 @@ export default function AppShellExtendDemo() {
               color="primary"
               onClick={() =>
                 dialogs.show({
-                  content: <CodeHighlight code={sourceCode} />,
+                  content: <ShikiHighlight code={sourceCode} />,
                   fullScreen: true,
                 })
               }
@@ -192,7 +192,7 @@ export default function AppShellExtendDemo() {
 							color="primary"
 							onClick={() =>
 								dialogs.show({
-									content: <CodeHighlight code={sourceCode} />,
+									content: <ShikiHighlight code={sourceCode} />,
 									fullScreen: true,
 								})
 							}

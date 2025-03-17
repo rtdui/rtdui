@@ -151,7 +151,7 @@
 		"items": [
 			{ "label": "dialogs", "url": "/components/dialog" },
 			{ "label": "notifications", "url": "/components/notification" },
-			{ "label": "codeHighlight", "url": "/components/codehighlight" },
+			{ "label": "codeHighlight", "url": "/components/shikihighlight" },
 			{ "label": "editor", "url": "/components/editor" },
 			{ "label": "mdeditor", "url": "/components/mdeditor" },
 			{ "label": "qrCode", "url": "/components/qrcode" },

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Avatar, Divider, FloatingSelect, Slider, Switch } from "@rtdui/core";
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 
 const sizes = ["xs", "sm", "md", "lg", "xl"];
 export default function Demo() {
@@ -65,7 +65,7 @@ export default function Demo() {
 					/>
 				</div>
 			</div>
-			<CodeHighlight language="tsx" code={code} />
+			<ShikiHighlight language="tsx" code={code} />
 		</div>
 	);
 }

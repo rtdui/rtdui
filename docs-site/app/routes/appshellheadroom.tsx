@@ -13,7 +13,7 @@ import {
 import { useHeadroom2 } from "@rtdui/hooks";
 import clsx from "clsx";
 import { dialogs } from "@rtdui/dialogs";
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 
 const sourceCode = `
 export default function AppShellHeadroomDemo() {
@@ -77,7 +77,7 @@ export default function AppShellHeadroomDemo() {
               color="primary"
               onClick={() =>
                 dialogs.show({
-                  content: <CodeHighlight code={sourceCode} />,
+                  content: <ShikiHighlight code={sourceCode} />,
                   fullScreen: true,
                 })
               }
@@ -219,7 +219,7 @@ export default function AppShellHeadroomDemo() {
 							color="primary"
 							onClick={() =>
 								dialogs.show({
-									content: <CodeHighlight code={sourceCode} />,
+									content: <ShikiHighlight code={sourceCode} />,
 									fullScreen: true,
 								})
 							}

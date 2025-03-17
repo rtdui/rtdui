@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router";
 import { IconCode } from "@tabler/icons-react";
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 import clsx from "clsx";
 
 interface DemoData {
@@ -40,7 +40,7 @@ export default function Demo(props: DemoProps) {
 					<IconCode size={20} />
 				</div>
 				<div className="collapse-content p-0! max-w-full overflow-auto relative">
-					<CodeHighlight
+					<ShikiHighlight
 						code={codes.find((d) => d.name === componentName)?.code ?? ""}
 					/>
 				</div>

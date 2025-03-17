@@ -1,6 +1,6 @@
 import React from "react";
 import { ColorInput, Divider, Select, Slider, Switch } from "@rtdui/core";
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 
 const size = ["xs", "sm", "md", "lg", "xl"];
 const swatches = [
@@ -145,7 +145,7 @@ function Demo() {
 					/>
 				</div>
 			</div>
-			<CodeHighlight code={code} language="jsx" />
+			<ShikiHighlight code={code} language="jsx" />
 		</div>
 	);
 }

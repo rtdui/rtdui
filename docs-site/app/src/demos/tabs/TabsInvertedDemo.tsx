@@ -1,4 +1,4 @@
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 import { Divider, FloatingSelect, Slider, Switch, Tabs } from "@rtdui/core";
 import { useState } from "react";
 
@@ -120,7 +120,7 @@ function Demo() {
 					</div>
 				</div>
 			</div>
-			<CodeHighlight code={code} language="jsx" />
+			<ShikiHighlight code={code} language="jsx" />
 		</div>
 	);
 }

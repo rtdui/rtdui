@@ -1,7 +1,7 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { Divider, FloatingSelect, Switch } from "@rtdui/core";
-import { CodeHighlight } from "@rtdui/code-highlight";
+import { ShikiHighlight } from "@rtdui/shiki-highlight";
 import ColorControl from "~/src/components/ColorControl";
 
 const sizes = ["xs", "sm", "md", "lg"];
@@ -73,7 +73,7 @@ export default function Demo() {
 					/>
 				</div>
 			</div>
-			<CodeHighlight language="tsx" code={code} />
+			<ShikiHighlight language="tsx" code={code} />
 		</div>
 	);
 }
