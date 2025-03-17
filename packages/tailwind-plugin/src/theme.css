@@ -22,30 +22,7 @@
   --theme-spacing-size: var(--theme-spacing-size-sm);
 }
 
-:root,
-[data-theme] {
-  background-color: var(--root-bg, var(--color-base-100));
-  color: var(--color-base-content);
-}
-
-:where(
-  :root:has(
-      .modal-open,
-      .modal[open],
-      .modal:target,
-      .modal-toggle:checked,
-      .drawer:not(.drawer-open) > .drawer-toggle:checked
-    )
-) {
-  overflow: hidden;
-  scrollbar-gutter: stable;
-  background-image: linear-gradient(
-    var(--color-base-100),
-    var(--color-base-100)
-  );
-  --root-bg: color-mix(in srgb, var(--color-base-100), oklch(0% 0 0) 40%);
-}
-
+/* 将react-remove-scroll默认将样式应用于body元素, 改为应用于html元素 */
 html:has(body[data-scroll-locked]) {
   overflow: hidden !important;
 }

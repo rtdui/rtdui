@@ -12,12 +12,12 @@ module.exports = plugin((args) => {
     "utf-8"
   );
   addBase(postcssJs.objectify(postcss.parse(themeCSS)));
-
-  const prismCSS = fs.readFileSync(
-    path.resolve(__dirname, "./prism.css"),
-    "utf-8"
-  );
-  addBase(postcssJs.objectify(postcss.parse(prismCSS)));
+  
+  // const shikiCSS = fs.readFileSync(
+  //   path.resolve(__dirname, "./shiki.css"),
+  //   "utf-8"
+  // );
+  // addBase(postcssJs.objectify(postcss.parse(shikiCSS)));
 
   const proseMirrorCSS = fs.readFileSync(
     path.resolve(__dirname, "./prose-mirror.css"),
