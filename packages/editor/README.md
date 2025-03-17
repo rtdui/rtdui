@@ -18,7 +18,7 @@ This monorepo with a collection of packages:
 
 - `@rtdui/hooks` – collection of 50+ hooks for state and UI management
 - [`@rtdui/core`](https://rtdui.com/) – core components library – 100+ components, exports everything from `@rtdui/core`
-- [`@rtdui/code-highlight`](https://rtdui.com/components/codehighlight) – code highlight built with `prism.js`
+- [`@rtdui/shiki-highlight`](https://rtdui.com/components/shikihighlight) – code highlight built with `shiki`
 - [`@rtdui/dates`](https://rtdui.com/components/dates_about) – date,time,datetime,month,year pickers
 - [`@rtdui/datatable`](https://rtdui.com/components/datatable_about) – a fully featured data table
 - [`@rtdui/dialogs`](https://rtdui.com/components/dialog) – a fully featured dialogs system

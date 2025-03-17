@@ -207,7 +207,7 @@ export default function Index() {
 								items={[
 									{ title: "editor package", value: "editor" },
 									{
-										title: "code-highlight package",
+										title: "shiki-highlight package",
 										value: "highlight",
 									},
 									{

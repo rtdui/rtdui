@@ -74,7 +74,6 @@
     "markdown-it": "^13.0.2",
     "rc-upload": "^4.3.5",
     "re-resizable": "^6.9.11",
-    "refractor": "^4.8.1",
     "shiki": "^3.2.1",
     "y-indexeddb": "^9.0.11",
     "yjs": "^13.6.7"
