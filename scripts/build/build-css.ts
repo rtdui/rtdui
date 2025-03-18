@@ -31,11 +31,6 @@ export async function buildCSS(minify = true, ctx: Record<string, any> = {}) {
 
 	// fs.ensureDirSync(path.join(packagePath, "styles"));
 	await fs.writeFile(path.join(packagePath, "styles.css"), result.css);
-	// 创建layer版本
-	await fs.writeFile(
-		path.join(packagePath, "styles.layer.css"),
-		`@layer rtdui {${result.css}}`,
-	);
 
 	logger.success(
 		"tailwind css style has been built into packages/core/styles.css",
