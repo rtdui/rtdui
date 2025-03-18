@@ -13,11 +13,11 @@ module.exports = plugin((args) => {
   );
   addBase(postcssJs.objectify(postcss.parse(themeCSS)));
   
-  // const shikiCSS = fs.readFileSync(
-  //   path.resolve(__dirname, "./shiki.css"),
-  //   "utf-8"
-  // );
-  // addBase(postcssJs.objectify(postcss.parse(shikiCSS)));
+  const shikiCSS = fs.readFileSync(
+    path.resolve(__dirname, "./shiki.css"),
+    "utf-8"
+  );
+  addBase(postcssJs.objectify(postcss.parse(shikiCSS)));
 
   const proseMirrorCSS = fs.readFileSync(
     path.resolve(__dirname, "./prose-mirror.css"),

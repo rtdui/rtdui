@@ -17,7 +17,15 @@
 			}
 		}
 	},
-	"keywords": ["react", "components", "library", "ui", "ui-kit", "highlight"],
+	"keywords": [
+		"react",
+		"components",
+		"library",
+		"ui",
+		"ui-kit",
+		"highlight",
+		"shiki"
+	],
 	"author": "fu zhong wei <jackyleefzw@163.com>",
 	"license": "MIT",
 	"homepage": "https://rtdui.com/",
@@ -38,8 +46,8 @@
 		"react-dom": "^18.2.0"
 	},
 	"dependencies": {
-		"@shikijs/colorized-brackets": "^3.1.0",
-		"@shikijs/transformers": "^3.1.0",
-		"shiki": "^3.1.0"
+		"@shikijs/colorized-brackets": "^3.2.1",
+		"@shikijs/transformers": "^3.2.1",
+		"shiki": "^3.2.1"
 	}
 }
