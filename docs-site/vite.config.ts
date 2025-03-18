@@ -27,6 +27,7 @@ import {
 import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
 import type { ShikiTransformer } from "@shikijs/types";
 
+// 不要在vite.config.ts文件中引用项目中的包, 否则在cloudflare中构建会报错
 function transformerAddLangDataAttr(): ShikiTransformer {
 	return {
 		name: "@rtdui/shiki/transformers:add-lang-class",
