@@ -243,7 +243,7 @@ export default function Layout() {
 							RTD UI
 						</a>
 						<Link to="/changelog" className="link">
-							v5.0.0
+							v5.1.0
 						</Link>
 					</div>
 					<NavMenu
