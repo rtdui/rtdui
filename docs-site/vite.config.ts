@@ -25,7 +25,16 @@ import {
 	transformerCompactLineOptions,
 } from "@shikijs/transformers";
 import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
-import { transformerAddLangDataAttr } from "@rtdui/shiki-highlight";
+import type { ShikiTransformer } from "@shikijs/types";
+
+function transformerAddLangDataAttr(): ShikiTransformer {
+	return {
+		name: "@rtdui/shiki/transformers:add-lang-class",
+		pre(hast) {
+			hast.properties["data-language"] = this.options.lang;
+		},
+	};
+}
 
 const basicShikiTransformers = [
 	transformerNotationDiff(),
