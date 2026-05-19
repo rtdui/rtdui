@@ -716,6 +716,7 @@ export const DataTable = forwardRef<any, DataTableProps>((props, ref) => {
 		}
 		// 分组列必须在其它固定列之后. 因为在有列头组的情况下数据分组的列头的列头组的getPinnedIndex()为-1, 从而导致getPinnedSize()方法计算时无法得知其位置.
 		// result.push(...table.getState().grouping);
+    result.push(...table.getState().columnPinning.left??[]);
 		return result;
 	};
 
