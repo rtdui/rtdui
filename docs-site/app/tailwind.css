@@ -64,6 +64,10 @@
   }
 }
 
+@utility checkbox {
+  @apply shadow-none rounded-sm;
+}
+
 /****** shiki语法高亮, dark单主题模式 ******/
 pre.shiki {
   padding: 24px 0;
