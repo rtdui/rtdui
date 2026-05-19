@@ -24,7 +24,6 @@
     "forceConsistentCasingInFileNames": true,
 
     "rootDirs": [".", "./.react-router/types"], // 一组源目录创建了一个"virtual"目录
-    "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
       "@rtdui/*": ["../packages/*/src"]
