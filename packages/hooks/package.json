@@ -44,9 +44,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@mantine/hooks": "^7.10.1"
+    "@mantine/hooks": "^9.2.1"
   },
   "peerDependencies": {
-    "react": "^18.x || ^19.x"
+    "react": ">=19.0.0"
   }
 }

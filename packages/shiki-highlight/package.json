@@ -41,15 +41,15 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "peerDependencies": {
-    "@rtdui/core": "5.1.0",
-    "@rtdui/hooks": "5.1.0",
-    "react": "^18.x || ^19.x",
-    "react-dom": "^18.x || ^19.x"
-  },
   "dependencies": {
     "@shikijs/colorized-brackets": "^3.2.1",
     "@shikijs/transformers": "^3.2.1",
     "shiki": "^3.2.1"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "5.1.0",
+    "@rtdui/hooks": "5.1.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
   }
 }

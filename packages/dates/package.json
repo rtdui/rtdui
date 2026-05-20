@@ -44,17 +44,17 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "peerDependencies": {
-    "@rtdui/core": "5.1.0",
-    "@rtdui/hooks": "5.1.0",
-    "react": "^18.x || ^19.x",
-    "react-dom": "^18.x || ^19.x"
-  },
   "dependencies": {
     "@tabler/icons-react": "^3.5.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.3.0",
     "date-fns-tz": "^3.1.3",
     "keen-slider": "^6.8.6"
+  },
+  "peerDependencies": {
+    "@rtdui/core": "5.1.0",
+    "@rtdui/hooks": "5.1.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
   }
 }
