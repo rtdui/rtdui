@@ -9,31 +9,31 @@ module.exports = plugin((args) => {
 
   const themeCSS = fs.readFileSync(
     path.resolve(__dirname, "./theme.css"),
-    "utf-8"
+    "utf-8",
   );
   addBase(postcssJs.objectify(postcss.parse(themeCSS)));
-  
+
   const shikiCSS = fs.readFileSync(
     path.resolve(__dirname, "./shiki.css"),
-    "utf-8"
+    "utf-8",
   );
   addBase(postcssJs.objectify(postcss.parse(shikiCSS)));
 
   const proseMirrorCSS = fs.readFileSync(
     path.resolve(__dirname, "./prose-mirror.css"),
-    "utf-8"
+    "utf-8",
   );
   addBase(postcssJs.objectify(postcss.parse(proseMirrorCSS)));
 
-  const dataTableCSS = fs.readFileSync(
-    path.resolve(__dirname, "./data-table.css"),
-    "utf-8"
-  );
-  addComponents(postcssJs.objectify(postcss.parse(dataTableCSS)));
+  // const dataTableCSS = fs.readFileSync(
+  //   path.resolve(__dirname, "./data-table.css"),
+  //   "utf-8"
+  // );
+  // addComponents(postcssJs.objectify(postcss.parse(dataTableCSS)));
 
   const sliderCSS = fs.readFileSync(
     path.resolve(__dirname, "./slider.css"),
-    "utf-8"
+    "utf-8",
   );
   addComponents(postcssJs.objectify(postcss.parse(sliderCSS)));
 });

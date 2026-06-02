@@ -5,7 +5,6 @@ export * from "./AppShell";
 export * from "./AspectRatio";
 export * from "./AutoComplete";
 export * from "./Avatar";
-export * from "./AvatarGroup";
 export * from "./Badge";
 export * from "./Button";
 export * from "./ButtonCheckbox";

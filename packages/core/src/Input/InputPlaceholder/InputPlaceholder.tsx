@@ -1,12 +1,10 @@
-import { forwardRef } from "react";
 import clsx from "clsx";
 
-export interface InputPlaceholderProps
-	extends React.ComponentPropsWithoutRef<"span"> {
-	/** If set, the placeholder will have error styles
-	 * @default false
-	 */
-	error?: React.ReactNode;
+export interface InputPlaceholderProps extends React.ComponentProps<"span"> {
+  /** If set, the placeholder will have error styles
+   * @default false
+   */
+  error?: React.ReactNode;
 }
 
 /** 
@@ -16,20 +14,15 @@ export interface InputPlaceholderProps
      <Input.Placeholder>Placeholder content</Input.Placeholder>
    </Input>
  */
-export const InputPlaceholder = forwardRef<
-	HTMLSpanElement,
-	InputPlaceholderProps
->((props, ref) => {
-	const { className, style, error, ...others } = props;
+export function InputPlaceholder(props: InputPlaceholderProps) {
+  const { ref, className, style, error, ...others } = props;
 
-	return (
-		<span
-			className={clsx("input-placeholder", "opacity-50", className)}
-			data-error={error}
-			ref={ref}
-			{...others}
-		/>
-	);
-});
-
-InputPlaceholder.displayName = "@rtdui/core/InputPlaceholder";
+  return (
+    <span
+      className={clsx("input-placeholder", "opacity-50", className)}
+      data-error={error}
+      ref={ref}
+      {...others}
+    />
+  );
+}

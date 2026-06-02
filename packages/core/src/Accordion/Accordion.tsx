@@ -1,4 +1,4 @@
-import { ReactNode, useId, useState } from "react";
+import { useId, useState } from "react";
 import clsx from "clsx";
 
 export interface AccordionProps {
@@ -6,8 +6,8 @@ export interface AccordionProps {
    * 项数组
    */
   items: {
-    title: ReactNode;
-    content: ReactNode;
+    title: React.ReactNode;
+    content: React.ReactNode;
     [key: string]: any;
   }[];
   /** 展开的图标 */

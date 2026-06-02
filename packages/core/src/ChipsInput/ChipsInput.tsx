@@ -1,64 +1,58 @@
-import type React from "react";
-import { forwardRef, useRef } from "react";
+import { useRef } from "react";
 import clsx from "clsx";
-import { ChipsInputProvider } from "./context";
-import { ChipsInputField } from "./ChipsInputField/ChipsInputField";
+import { ChipsInputContext } from "./context";
+import { ChipsInputField } from "./ChipsInputField";
 import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface ChipsInputProps
-	extends InputBaseOwnProps,
-		React.ComponentPropsWithoutRef<"div"> {}
+  extends InputBaseOwnProps,
+    React.ComponentProps<"div"> {}
 
-export const ChipsInput_ = forwardRef<HTMLDivElement, ChipsInputProps>(
-	(props, ref) => {
-		const {
-			children,
-			onMouseDown,
-			onClick,
-			size,
-			disabled,
-			error,
-			variant,
-			...others
-		} = props;
+export function ChipsInput(props: ChipsInputProps) {
+  const {
+    ref,
+    children,
+    onMouseDown,
+    onClick,
+    size,
+    disabled,
+    error,
+    variant,
+    ...others
+  } = props;
 
-		const fieldRef = useRef<HTMLInputElement>();
+  const fieldRef = useRef<HTMLInputElement>(null);
 
-		return (
-			<ChipsInputProvider
-				value={{ fieldRef, size: size!, disabled, hasError: !!error }}
-			>
-				<InputBase
-					ref={ref}
-					as="div"
-					size={size}
-					error={error}
-					variant={variant}
-					className={clsx("chips-input")}
-					onMouseDown={(e: any) => {
-						e.preventDefault();
-						onMouseDown?.(e);
-						fieldRef.current?.focus();
-					}}
-					onClick={(e: any) => {
-						e.preventDefault();
-						onClick?.(e);
-						fieldRef.current?.focus();
-					}}
-					multiline
-					disabled={disabled}
-					withAria={false}
-					{...others}
-				>
-					{children}
-				</InputBase>
-			</ChipsInputProvider>
-		);
-	},
-);
+  return (
+    <ChipsInputContext
+      value={{ fieldRef, size: size!, disabled, hasError: !!error }}
+    >
+      <InputBase
+        ref={ref}
+        as="div"
+        size={size}
+        error={error}
+        variant={variant}
+        className={clsx("chips-input")}
+        onMouseDown={(e: any) => {
+          e.preventDefault();
+          onMouseDown?.(e);
+          fieldRef.current?.focus();
+        }}
+        onClick={(e: any) => {
+          e.preventDefault();
+          onClick?.(e);
+          fieldRef.current?.focus();
+        }}
+        multiline
+        disabled={disabled}
+        withAria={false}
+        {...others}
+      >
+        {children}
+      </InputBase>
+    </ChipsInputContext>
+  );
+}
 
-ChipsInput_.displayName = "@rtdui/core/ChipsInput";
-
-export const ChipsInput = Object.assign(ChipsInput_, {
-	Field: ChipsInputField,
-});
+ChipsInput.Field = ChipsInputField;

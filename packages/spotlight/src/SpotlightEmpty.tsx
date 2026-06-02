@@ -1,19 +1,11 @@
-import { forwardRef } from "react";
 import { useSpotlightContext } from "./Spotlight.context";
 
-export interface SpotlightEmptyProps
-	extends React.ComponentPropsWithoutRef<"div"> {}
+export interface SpotlightEmptyProps extends React.ComponentProps<"div"> {}
 
-const defaultProps: Partial<SpotlightEmptyProps> = {};
+export function SpotlightEmpty(props: SpotlightEmptyProps) {
+  const { ref, className, style, ...others } = props;
 
-export const SpotlightEmpty = forwardRef<HTMLDivElement, SpotlightEmptyProps>(
-	(props, ref) => {
-		const { className, style, ...others } = props;
+  const ctx = useSpotlightContext();
 
-		const ctx = useSpotlightContext();
-
-		return <div ref={ref} {...others} />;
-	},
-);
-
-SpotlightEmpty.displayName = "@rtdui/SpotlightEmpty";
+  return <div ref={ref} {...others} />;
+}

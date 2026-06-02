@@ -2,9 +2,9 @@ import type { ThemeSize } from "../theme.types";
 import { createOptionalContext } from "../utils";
 
 export interface ChipGroupContextValue {
-	size?: ThemeSize;
-	disabled: boolean | undefined;
+  size?: ThemeSize;
+  disabled: boolean | undefined;
 }
 
-export const [ChipGroupProvider, useChipGroupContext] =
-	createOptionalContext<ChipGroupContextValue>();
+export const [ChipGroupContext, useChipGroupContext] =
+  createOptionalContext<ChipGroupContextValue>();

@@ -1,75 +1,67 @@
-import { forwardRef } from "react";
 import clsx from "clsx";
 import {
-	Box,
-	type BoxProps,
-	type PolymorphicComponentProps,
+  Box,
+  type BoxProps,
+  type PolymorphicComponentProps,
 } from "../Polymorphic";
 import type { ThemeBaseSize } from "../theme.types";
 
 // Component-specific props should be specified separately
 export type LinkOwnProps = {
-	color?:
-		| "primary"
-		| "secondary"
-		| "accent"
-		| "info"
-		| "success"
-		| "warning"
-		| "error"
-		| "neutral";
-	/** 尺寸大小 */
-	size?: ThemeBaseSize;
+  color?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "info"
+    | "success"
+    | "warning"
+    | "error"
+    | "neutral";
+  /** 尺寸大小 */
+  size?: ThemeBaseSize;
 };
 
 // Merge own props with others inherited from the underlying element type
 export type LinkProps<E extends React.ElementType> = PolymorphicComponentProps<
-	E,
-	LinkOwnProps
+  E,
+  LinkOwnProps
 >;
 
 // An HTML tag or a different React component can be rendered by default
 const defaultElement = "a";
 
 /** 多态组件, ref会转发给实际的组件 */
-export const Link: <E extends React.ElementType = typeof defaultElement>(
-	props: LinkProps<E>,
-) => React.ReactNode = forwardRef(
-	<E extends React.ElementType = typeof defaultElement>(
-		props: LinkProps<E>,
-		ref: typeof props.ref,
-	) => {
-		const { color, size, className, children, ...other } = props;
-		const boxProps = other as BoxProps<E>;
-		return (
-			<Box
-				as={defaultElement}
-				ref={ref}
-				className={clsx(
-					"btn btn-link normal-case",
-					{
-						"btn-primary": color === "primary",
-						"btn-secondary": color === "secondary",
-						"btn-accent": color === "accent",
-						"btn-info": color === "info",
-						"btn-success": color === "success",
-						"btn-warning": color === "warning",
-						"btn-error": color === "error",
-						"btn-neutral": color === "neutral",
-						"btn-xs": size === "xs",
-						"btn-sm": size === "sm",
-						"btn-md": size === "md",
-						"btn-lg": size === "lg",
-						"btn-xl": size === "xl",
-					},
-					className,
-				)}
-				{...boxProps}
-			>
-				{children}
-			</Box>
-		);
-	},
-);
-
-(Link as React.FC).displayName = "@rtdui/Link";
+export function Link<E extends React.ElementType = typeof defaultElement>(
+  props: LinkProps<E>,
+) {
+  const { ref, color, size, className, children, ...other } = props;
+  const boxProps = other as BoxProps<E>;
+  return (
+    <Box
+      as={defaultElement}
+      ref={ref}
+      className={clsx(
+        "btn btn-link normal-case",
+        {
+          "btn-primary": color === "primary",
+          "btn-secondary": color === "secondary",
+          "btn-accent": color === "accent",
+          "btn-info": color === "info",
+          "btn-success": color === "success",
+          "btn-warning": color === "warning",
+          "btn-error": color === "error",
+          "btn-neutral": color === "neutral",
+          "btn-xs": size === "xs",
+          "btn-sm": size === "sm",
+          "btn-md": size === "md",
+          "btn-lg": size === "lg",
+          "btn-xl": size === "xl",
+        },
+        className,
+      )}
+      {...boxProps}
+    >
+      {children}
+    </Box>
+  );
+}

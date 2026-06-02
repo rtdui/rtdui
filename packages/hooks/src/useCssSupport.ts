@@ -1,13 +1,13 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 export function useCssSupport(conditionText: string, initialValue = false) {
-	const [supported, setSupported] = React.useState(initialValue);
+  const [supported, setSupported] = useState(initialValue);
 
-	React.useEffect(() => {
-		if ("CSS" in window) {
-			setSupported(CSS.supports(conditionText));
-		}
-	}, [conditionText]);
+  useEffect(() => {
+    if ("CSS" in window) {
+      setSupported(CSS.supports(conditionText));
+    }
+  }, [conditionText]);
 
-	return supported;
+  return supported;
 }

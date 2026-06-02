@@ -2,19 +2,19 @@ import { createOptionalContext } from "../utils";
 import type { ThemeSize } from "../theme.types";
 
 export interface ChipGroupContextValue {
-	size: ThemeSize;
-	disabled: boolean | undefined;
+  size: ThemeSize;
+  disabled?: boolean;
 }
 
 export const [ChipGroupProvider, useChipGroupContext] =
-	createOptionalContext<ChipGroupContextValue>();
+  createOptionalContext<ChipGroupContextValue>();
 
 export interface ChipsInputContextValue {
-	fieldRef: React.MutableRefObject<HTMLInputElement | undefined>;
-	size: ThemeSize;
-	disabled: boolean | undefined;
-	hasError: boolean | undefined;
+  fieldRef: React.RefObject<HTMLInputElement | null>;
+  size: ThemeSize;
+  disabled?: boolean;
+  hasError?: boolean;
 }
 
-export const [ChipsInputProvider, useChipsInputContext] =
-	createOptionalContext<ChipsInputContextValue>();
+export const [ChipsInputContext, useChipsInputContext] =
+  createOptionalContext<ChipsInputContextValue>();

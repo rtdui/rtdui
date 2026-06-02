@@ -5,10 +5,10 @@ import type { ShikiTransformer } from "@shikijs/types";
  * 这个转换器用于给生成的pre附加language-xxx类
  */
 export function transformerAddLangDataAttr(): ShikiTransformer {
-	return {
-		name: "@rtdui/shiki/transformers:add-lang-class",
-		pre(hast) {
-			hast.properties["data-language"] = this.options.lang;
-		},
-	};
+  return {
+    name: "@rtdui/shiki/transformers:add-lang-class",
+    pre(hast) {
+      hast.properties["data-language"] = this.options.lang;
+    },
+  };
 }

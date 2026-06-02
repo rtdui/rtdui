@@ -1,20 +1,12 @@
-import type React from "react";
-import { forwardRef } from "react";
-
 export interface RichTextEditorControlsGroupProps
-	extends React.ComponentPropsWithoutRef<"div"> {}
+  extends React.ComponentProps<"div"> {}
 
-export const ControlsGroup = forwardRef<
-	HTMLDivElement,
-	RichTextEditorControlsGroupProps
->((props, ref) => {
-	const { className, children, ...others } = props;
+export function ControlsGroup(props: RichTextEditorControlsGroupProps) {
+  const { ref, className, children, ...others } = props;
 
-	return (
-		<div className="join" ref={ref} {...others}>
-			{children}
-		</div>
-	);
-});
-
-ControlsGroup.displayName = "TiptapControlsGroup";
+  return (
+    <div className="join" ref={ref} {...others}>
+      {children}
+    </div>
+  );
+}

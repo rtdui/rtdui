@@ -1,15 +1,9 @@
-import { forwardRef } from "react";
 import clsx from "clsx";
 
-export interface ComboboxHeaderProps
-	extends React.ComponentPropsWithoutRef<"div"> {}
+export interface ComboboxHeaderProps extends React.ComponentProps<"div"> {}
 
-export const ComboboxHeader = forwardRef<HTMLDivElement, ComboboxHeaderProps>(
-	(props, ref) => {
-		const { className, ...others } = props;
+export function ComboboxHeader(props: ComboboxHeaderProps) {
+  const { ref, className, ...others } = props;
 
-		return <div ref={ref} className={clsx("header", className)} {...others} />;
-	},
-);
-
-ComboboxHeader.displayName = "@rtdui/core/ComboboxHeader";
+  return <div ref={ref} className={clsx("header", className)} {...others} />;
+}

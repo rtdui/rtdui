@@ -1,64 +1,54 @@
-import { forwardRef, useState } from "react";
+import { useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
 import { TextInput } from "@rtdui/core";
 import { useSpotlightContext } from "./Spotlight.context";
 import { spotlightActions } from "./spotlight.store";
 
 export interface SpotlightSearchProps
-	extends React.ComponentPropsWithoutRef<typeof TextInput> {}
+  extends React.ComponentProps<typeof TextInput> {}
 
-const defaultProps: Partial<SpotlightSearchProps> = {
-	size: "lg",
-};
+export function SpotlightSearch(props: SpotlightSearchProps) {
+  const { ref, onKeyDown, onChange, value, size = "lg", ...others } = props;
+  const ctx = useSpotlightContext();
+  const [isComposing, setIsComposing] = useState(false); // IME
 
-export const SpotlightSearch = forwardRef<
-	HTMLInputElement,
-	SpotlightSearchProps
->((props, ref) => {
-	props = { ...defaultProps, ...props };
-	const { onKeyDown, onChange, value, ...others } = props;
-	const ctx = useSpotlightContext();
-	const [isComposing, setIsComposing] = useState(false); // IME
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    onKeyDown?.(event);
+    if (isComposing) return;
 
-	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		onKeyDown?.(event);
-		if (isComposing) return;
+    if (event.nativeEvent.code === "ArrowDown") {
+      event.preventDefault();
+      spotlightActions.selectNextAction(ctx.store);
+    }
 
-		if (event.nativeEvent.code === "ArrowDown") {
-			event.preventDefault();
-			spotlightActions.selectNextAction(ctx.store);
-		}
+    if (event.nativeEvent.code === "ArrowUp") {
+      event.preventDefault();
+      spotlightActions.selectPreviousAction(ctx.store);
+    }
 
-		if (event.nativeEvent.code === "ArrowUp") {
-			event.preventDefault();
-			spotlightActions.selectPreviousAction(ctx.store);
-		}
+    if (event.nativeEvent.code === "Enter") {
+      event.preventDefault();
+      spotlightActions.triggerSelectedAction(ctx.store);
+    }
+  };
 
-		if (event.nativeEvent.code === "Enter") {
-			event.preventDefault();
-			spotlightActions.triggerSelectedAction(ctx.store);
-		}
-	};
-
-	return (
-		<TextInput
-			ref={ref}
-			slots={{ input: "focus-within:outline-hidden" }}
-			{...others}
-			size="md"
-			variant="ghost"
-			leftSection={<IconSearch />}
-			placeholder="Search..."
-			value={value ?? ctx.query}
-			onChange={(event) => {
-				ctx.setQuery(event.currentTarget.value);
-				onChange?.(event);
-			}}
-			onKeyDown={handleKeyDown}
-			onCompositionStart={() => setIsComposing(true)}
-			onCompositionEnd={() => setIsComposing(false)}
-		/>
-	);
-});
-
-SpotlightSearch.displayName = "@rtdui/SpotlightSearch";
+  return (
+    <TextInput
+      ref={ref}
+      slots={{ input: "focus-within:outline-hidden" }}
+      {...others}
+      size="md"
+      variant="ghost"
+      leftSection={<IconSearch />}
+      placeholder="Search..."
+      value={value ?? ctx.query}
+      onChange={(event) => {
+        ctx.setQuery(event.currentTarget.value);
+        onChange?.(event);
+      }}
+      onKeyDown={handleKeyDown}
+      onCompositionStart={() => setIsComposing(true)}
+      onCompositionEnd={() => setIsComposing(false)}
+    />
+  );
+}
