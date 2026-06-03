@@ -44,7 +44,7 @@
   "dependencies": {
     "@shikijs/colorized-brackets": "^3.2.1",
     "@shikijs/transformers": "^3.2.1",
-    "shiki": "^3.2.1"
+    "shiki": "catalog:"
   },
   "peerDependencies": {
     "@rtdui/core": "5.1.0",
