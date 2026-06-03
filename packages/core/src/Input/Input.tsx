@@ -182,7 +182,7 @@ export function Input<E extends React.ElementType = typeof defaultElement>(
           data-position="left"
           className={clsx(
             "input-sctioin-left",
-            "absolute top-0 bottom-0 left-0",
+            "absolute top-0 bottom-0 left-0 z-1",
             "flex justify-center items-center",
             "w-(--input-left-section-width)",
             "pointer-events-none",
@@ -249,7 +249,7 @@ export function Input<E extends React.ElementType = typeof defaultElement>(
           data-position="right"
           className={clsx(
             "input-section-right",
-            "absolute top-0 bottom-0 right-0",
+            "absolute top-0 bottom-0 right-0 z-1",
             "flex justify-center items-center",
             "w-(--input-right-section-width)",
             "pointer-events-none",
