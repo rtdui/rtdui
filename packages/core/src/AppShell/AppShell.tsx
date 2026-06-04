@@ -1,8 +1,10 @@
 import { useId, useRef, useImperativeHandle } from "react";
 import clsx from "clsx";
 
-export interface AppShellProps
-  extends Omit<React.ComponentProps<"div">, "onChange"> {
+export interface AppShellProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange"
+> {
   header?: React.ReactElement;
   footer?: React.ReactElement;
   main?: React.ReactElement;

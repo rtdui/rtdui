@@ -60,8 +60,7 @@ export interface InputWrapperOwnProps {
   labelElement?: "label" | "div";
 }
 export interface InputWrapperProps
-  extends InputWrapperOwnProps,
-    React.ComponentProps<"div"> {}
+  extends InputWrapperOwnProps, React.ComponentProps<"div"> {}
 
 export function InputWrapper(props: InputWrapperProps) {
   const {

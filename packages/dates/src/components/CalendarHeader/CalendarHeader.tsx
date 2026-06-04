@@ -49,8 +49,7 @@ export interface CalendarHeaderSettings {
 }
 
 export interface CalendarHeaderProps
-  extends CalendarHeaderSettings,
-    React.ComponentProps<"div"> {
+  extends CalendarHeaderSettings, React.ComponentProps<"div"> {
   /** Label displayed between next and previous buttons */
   label: React.ReactNode;
 

@@ -7,8 +7,7 @@ import { MonthPicker, type MonthPickerBaseProps } from "../MonthPicker";
 import { type DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 
 export interface MonthPickerInputProps<Type extends DatePickerType = "default">
-  extends DateInputSharedProps,
-    MonthPickerBaseProps<Type> {
+  extends DateInputSharedProps, MonthPickerBaseProps<Type> {
   /** date-fns format to display input value
    * @default "MMM yyyy"
    */

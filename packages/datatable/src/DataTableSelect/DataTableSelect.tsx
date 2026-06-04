@@ -7,11 +7,10 @@ import { DataTable } from "../DataTable/DataTable";
 import { getSelectedRows } from "../utils/getSelectedRows";
 import type { DataTableProps } from "../DataTable/DataTable";
 
-export interface DataTableSelectProps
-  extends Omit<
-    TextInputProps,
-    "value" | "defaultValue" | "onChange" | "slots"
-  > {
+export interface DataTableSelectProps extends Omit<
+  TextInputProps,
+  "value" | "defaultValue" | "onChange" | "slots"
+> {
   displayField?: string;
   value?: string;
   defaultValue?: string;

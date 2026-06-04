@@ -1,22 +1,22 @@
 import type {
-	ComboboxParsedItem,
-	ComboboxParsedItemGroup,
+  ComboboxParsedItem,
+  ComboboxParsedItemGroup,
 } from "../Combobox.types";
 
 export function isEmptyComboboxData(data: ComboboxParsedItem[]) {
-	if (data.length === 0) {
-		return true;
-	}
+  if (data.length === 0) {
+    return true;
+  }
 
-	for (const item of data) {
-		if (!("group" in item)) {
-			return false;
-		}
+  for (const item of data) {
+    if (!("group" in item)) {
+      return false;
+    }
 
-		if ((item as ComboboxParsedItemGroup).items.length > 0) {
-			return false;
-		}
-	}
+    if ((item as ComboboxParsedItemGroup).items.length > 0) {
+      return false;
+    }
+  }
 
-	return true;
+  return true;
 }

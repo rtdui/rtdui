@@ -14,7 +14,8 @@ import {
 import { TextInput, type TextInputProps } from "../TextInput";
 
 export interface AutoCompleteProps
-  extends Omit<ComboboxLikeProps, "data">,
+  extends
+    Omit<ComboboxLikeProps, "data">,
     Omit<TextInputProps, "defaultValue" | "value" | "onChange"> {
   /** Data displayed in the dropdown */
   data?: ComboboxStringData;

@@ -26,7 +26,8 @@ import { dateStringParser } from "./date-string-parser/date-string-parser";
 import { isDateValid } from "./is-date-valid/is-date-valid";
 
 export interface DateInputProps
-  extends Omit<InputBaseOwnProps, "size">,
+  extends
+    Omit<InputBaseOwnProps, "size">,
     CalendarBaseProps,
     DecadeLevelSettings,
     YearLevelSettings,

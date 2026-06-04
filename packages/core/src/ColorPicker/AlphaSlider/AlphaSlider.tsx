@@ -1,8 +1,10 @@
 import { ColorSlider, type ColorSliderProps } from "../ColorSlider/ColorSlider";
 import { round } from "../../utils";
 
-export interface AlphaSliderProps
-  extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {
+export interface AlphaSliderProps extends Omit<
+  ColorSliderProps,
+  "maxValue" | "overlays" | "round"
+> {
   color: string;
 }
 

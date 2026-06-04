@@ -10,11 +10,10 @@ import { getPrecision } from "../utils/get-precision";
 import { getColor, getRadius, getSize } from "../../utils";
 import type { TransitionProps } from "../../Transition";
 
-export interface SliderProps
-  extends Omit<
-    React.ComponentProps<"div">,
-    "onChange" | "value" | "defaultValue"
-  > {
+export interface SliderProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange" | "value" | "defaultValue"
+> {
   /** Key of Preset or any valid CSS color, controls color of track and thumb
    * @default 'primary'
    */

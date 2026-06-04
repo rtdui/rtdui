@@ -1,8 +1,10 @@
 import clsx from "clsx";
 import type { ThemeBaseSize } from "../theme.types";
 
-export interface ButtonProps
-  extends Omit<React.ComponentProps<"button">, "size"> {
+export interface ButtonProps extends Omit<
+  React.ComponentProps<"button">,
+  "size"
+> {
   color?:
     | "primary"
     | "secondary"

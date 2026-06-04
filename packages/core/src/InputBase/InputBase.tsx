@@ -7,8 +7,7 @@ import {
 import type { PolymorphicComponentProps } from "../Polymorphic";
 
 export interface InputBaseOwnProps
-  extends InputOwnProps,
-    InputWrapperOwnProps {}
+  extends InputOwnProps, InputWrapperOwnProps {}
 
 // Merge own props with others inherited from the underlying element type
 export type InputBaseProps<E extends React.ElementType> =

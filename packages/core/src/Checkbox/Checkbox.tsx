@@ -1,8 +1,10 @@
 import clsx from "clsx";
 import type { ThemeBaseSize } from "../theme.types";
 
-export interface CheckboxProps
-  extends Omit<React.ComponentProps<"input">, "onChange" | "size"> {
+export interface CheckboxProps extends Omit<
+  React.ComponentProps<"input">,
+  "onChange" | "size"
+> {
   color?:
     | "primary"
     | "secondary"

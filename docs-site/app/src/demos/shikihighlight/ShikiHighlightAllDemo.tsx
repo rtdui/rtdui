@@ -1,7 +1,7 @@
 import { ShikiHighlight } from "@rtdui/shiki-highlight";
 
 export default function Demo() {
-	const code = `
+  const code = `
 // [!code word:react:1]
 import React from "react";
 
@@ -20,6 +20,6 @@ function Demo(props) {
   return <div className={className}>hello world!</div>
 }
 `;
-	return <ShikiHighlight code={code} language="jsx" showLineNumbers />;
+  return <ShikiHighlight code={code} language="jsx" showLineNumbers />;
 }
 Demo.displayName = "ShikiHighlightAllDemo";

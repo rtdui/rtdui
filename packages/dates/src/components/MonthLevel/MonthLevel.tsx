@@ -11,12 +11,10 @@ export interface MonthLevelBaseSettings extends MonthSettings {
 }
 
 export interface MonthLevelSettings
-  extends MonthLevelBaseSettings,
-    CalendarHeaderSettings {}
+  extends MonthLevelBaseSettings, CalendarHeaderSettings {}
 
 export interface MonthLevelProps
-  extends MonthLevelSettings,
-    React.ComponentProps<"div"> {
+  extends MonthLevelSettings, React.ComponentProps<"div"> {
   /** Month that is currently displayed */
   month: Date;
 

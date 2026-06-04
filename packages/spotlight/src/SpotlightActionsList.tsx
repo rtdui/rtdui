@@ -7,8 +7,7 @@ export type SpotlightActionsListStylesNames =
   | "actionsList"
   | "actionsListInner";
 
-export interface SpotlightActionsListProps
-  extends React.ComponentProps<"div"> {}
+export interface SpotlightActionsListProps extends React.ComponentProps<"div"> {}
 
 export function SpotlightActionsList(props: SpotlightActionsListProps) {
   const { ref, className, style, id, children, ...others } = props;

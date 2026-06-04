@@ -1,7 +1,9 @@
 import { ColorSlider, type ColorSliderProps } from "../ColorSlider/ColorSlider";
 
-export interface HueSliderProps
-  extends Omit<ColorSliderProps, "maxValue" | "overlays" | "round"> {}
+export interface HueSliderProps extends Omit<
+  ColorSliderProps,
+  "maxValue" | "overlays" | "round"
+> {}
 
 export function HueSlider(props: HueSliderProps) {
   const { ref, value, onChange, onChangeEnd, color, ...others } = props;

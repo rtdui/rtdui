@@ -5,8 +5,7 @@ import { ChipsInputField } from "./ChipsInputField";
 import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface ChipsInputProps
-  extends InputBaseOwnProps,
-    React.ComponentProps<"div"> {}
+  extends InputBaseOwnProps, React.ComponentProps<"div"> {}
 
 export function ChipsInput(props: ChipsInputProps) {
   const {

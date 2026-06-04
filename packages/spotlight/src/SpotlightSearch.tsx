@@ -4,8 +4,9 @@ import { TextInput } from "@rtdui/core";
 import { useSpotlightContext } from "./Spotlight.context";
 import { spotlightActions } from "./spotlight.store";
 
-export interface SpotlightSearchProps
-  extends React.ComponentProps<typeof TextInput> {}
+export interface SpotlightSearchProps extends React.ComponentProps<
+  typeof TextInput
+> {}
 
 export function SpotlightSearch(props: SpotlightSearchProps) {
   const { ref, onKeyDown, onChange, value, size = "lg", ...others } = props;

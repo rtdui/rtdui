@@ -1,5 +1,7 @@
-export interface ComboboxHiddenInputProps
-  extends Omit<React.ComponentProps<"input">, "value"> {
+export interface ComboboxHiddenInputProps extends Omit<
+  React.ComponentProps<"input">,
+  "value"
+> {
   /** Input value */
   value: string | string[] | null;
 

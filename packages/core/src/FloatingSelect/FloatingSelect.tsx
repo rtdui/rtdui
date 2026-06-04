@@ -11,8 +11,10 @@ export interface FloatingSelectItem {
   disabled?: boolean;
 }
 
-export interface FloatingSelectProps
-  extends Omit<React.ComponentProps<"div">, "onChange"> {
+export interface FloatingSelectProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange"
+> {
   /** Data based on which controls are rendered */
   data: (string | FloatingSelectItem)[];
 

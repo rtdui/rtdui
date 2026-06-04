@@ -70,7 +70,7 @@ type SignaturePadHandle = {
       height?: number;
       xOffset?: number;
       yOffset?: number;
-    }
+    },
   ): Promise<void>;
   /** Returns signature image as SVG data URL with {includeBackgroundColor} option */
   toDataURL(type: "image/svg+xml", encoderOptions?: ToSVGOptions): string;

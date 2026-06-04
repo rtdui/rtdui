@@ -10,7 +10,8 @@ import { TextInput, type TextInputProps } from "../TextInput";
 import { Button } from "../Button";
 
 export interface ColorInputProps
-  extends Omit<TextInputProps, "value" | "defaultValue" | "onChange">,
+  extends
+    Omit<TextInputProps, "value" | "defaultValue" | "onChange">,
     Pick<
       ColorPickerProps,
       | "format"

@@ -3,8 +3,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface TextAreaProps
-  extends InputBaseOwnProps,
-    React.ComponentProps<"textarea"> {
+  extends InputBaseOwnProps, React.ComponentProps<"textarea"> {
   /** Determines whether the textarea height should grow with its content
    * @default faslse
    */

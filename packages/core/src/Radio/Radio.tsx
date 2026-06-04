@@ -12,8 +12,10 @@ function areEqualValues(a: any, b: any) {
   return String(a) === String(b);
 }
 
-export interface RadioProps
-  extends Omit<React.ComponentProps<"input">, "size"> {
+export interface RadioProps extends Omit<
+  React.ComponentProps<"input">,
+  "size"
+> {
   color?:
     | "primary"
     | "secondary"

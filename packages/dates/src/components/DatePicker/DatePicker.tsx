@@ -16,7 +16,8 @@ import type { MonthLevelBaseSettings } from "../MonthLevel";
 import type { YearLevelBaseSettings } from "../YearLevel";
 
 export interface DatePickerBaseProps<Type extends DatePickerType = "default">
-  extends PickerBaseProps<Type>,
+  extends
+    PickerBaseProps<Type>,
     DecadeLevelBaseSettings,
     YearLevelBaseSettings,
     MonthLevelBaseSettings,
@@ -38,7 +39,8 @@ export interface DatePickerBaseProps<Type extends DatePickerType = "default">
 }
 
 export interface DatePickerProps<Type extends DatePickerType = "default">
-  extends DatePickerBaseProps<Type>,
+  extends
+    DatePickerBaseProps<Type>,
     Omit<React.ComponentProps<"div">, "onChange" | "value" | "defaultValue"> {}
 
 export function DatePicker(props: DatePickerProps) {

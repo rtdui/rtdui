@@ -33,8 +33,7 @@ export interface YearsListSettings extends ControlsGroupSettings {
 }
 
 export interface YearsListProps
-  extends YearsListSettings,
-    React.ComponentProps<"table"> {
+  extends YearsListSettings, React.ComponentProps<"table"> {
   /** Decade for which years list should be displayed */
   decade: Date;
 }

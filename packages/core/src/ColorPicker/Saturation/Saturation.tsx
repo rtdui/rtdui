@@ -9,8 +9,10 @@ import {
 import { convertHsvaTo, type HsvaColor } from "../../utils";
 import { Thumb } from "../Thumb/Thumb";
 
-export interface SaturationProps
-  extends Omit<React.ComponentProps<"div">, "onChange"> {
+export interface SaturationProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange"
+> {
   value: HsvaColor;
   onChange: (color: Partial<HsvaColor>) => void;
   onChangeEnd: (color: Partial<HsvaColor>) => void;

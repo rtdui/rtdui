@@ -5,7 +5,8 @@ import { useModalTransition } from "./use-modal-transition";
 import { mergeRefs } from "@rtdui/hooks";
 
 export interface ModalOverlayProps
-  extends Omit<OverlayProps, "styles" | "classNames" | "variant" | "vars">,
+  extends
+    Omit<OverlayProps, "styles" | "classNames" | "variant" | "vars">,
     Omit<React.ComponentProps<"div">, "color"> {
   /** Props passed down to the `Transition` component */
   transitionProps?: TransitionProps;

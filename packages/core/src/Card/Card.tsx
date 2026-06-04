@@ -1,7 +1,9 @@
 import clsx from "clsx";
 
-export interface CardProps
-  extends Omit<React.ComponentProps<"div">, "title" | "content"> {
+export interface CardProps extends Omit<
+  React.ComponentProps<"div">,
+  "title" | "content"
+> {
   glass?: boolean; // 毛玻璃效果, 需要有背景才有效果
   imageSrc?: string;
   /** image positon

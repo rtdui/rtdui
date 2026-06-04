@@ -89,8 +89,8 @@
 pre[class*="language-"] {
   background-color: var(--prism-color-2) !important;
   color: var(--prism-color-1) !important;
-  font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono",
-    monospace;
+  font-family:
+    "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;

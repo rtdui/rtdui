@@ -14,12 +14,12 @@ export interface DecadeLevelBaseSettings extends YearsListSettings {
 }
 
 export interface DecadeLevelSettings
-  extends DecadeLevelBaseSettings,
+  extends
+    DecadeLevelBaseSettings,
     Omit<CalendarHeaderSettings, "onLevelClick" | "hasNextLevel"> {}
 
 export interface DecadeLevelProps
-  extends DecadeLevelSettings,
-    React.ComponentProps<"div"> {
+  extends DecadeLevelSettings, React.ComponentProps<"div"> {
   /** Decade that is currently displayed */
   decade: Date;
 

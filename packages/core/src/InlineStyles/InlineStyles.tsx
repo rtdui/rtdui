@@ -2,7 +2,8 @@ import type { InlineStylesInput } from "./styles-to-string";
 import { stylesToString } from "./styles-to-string";
 
 export interface InlineStylesProps
-  extends InlineStylesInput,
+  extends
+    InlineStylesInput,
     Omit<React.ComponentProps<"style">, keyof InlineStylesInput> {}
 
 export function InlineStyles(props: InlineStylesProps) {

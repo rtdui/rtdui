@@ -12,8 +12,10 @@ type RemoveScrollProps = Omit<
   "children"
 >;
 
-export interface ModalRootProps
-  extends Omit<React.ComponentProps<"div">, "title"> {
+export interface ModalRootProps extends Omit<
+  React.ComponentProps<"div">,
+  "title"
+> {
   /** If set modal/drawer will not be unmounted from the DOM when it is hidden, `display: none` styles will be added instead
    * @default false
    */

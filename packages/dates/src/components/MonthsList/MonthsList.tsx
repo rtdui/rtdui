@@ -25,8 +25,7 @@ export interface MonthsListSettings extends ControlsGroupSettings {
 }
 
 export interface MonthsListProps
-  extends MonthsListSettings,
-    React.ComponentProps<"table"> {
+  extends MonthsListSettings, React.ComponentProps<"table"> {
   /** Prevents focus shift when buttons are clicked */
   __preventFocus?: boolean;
 

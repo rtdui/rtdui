@@ -35,7 +35,8 @@ type OmittedSettings =
   | "previousDisabled";
 
 export interface CalendarSettings
-  extends Omit<DecadeLevelSettings, OmittedSettings>,
+  extends
+    Omit<DecadeLevelSettings, OmittedSettings>,
     Omit<YearLevelSettings, OmittedSettings>,
     Omit<MonthLevelSettings, OmittedSettings> {
   /** Initial level displayed to the user (decade, year, month), used for uncontrolled component */
@@ -117,9 +118,7 @@ export interface CalendarBaseProps {
 }
 
 export interface CalendarProps
-  extends CalendarSettings,
-    CalendarBaseProps,
-    React.ComponentProps<"div"> {
+  extends CalendarSettings, CalendarBaseProps, React.ComponentProps<"div"> {
   /** Max level that user can go up to (decade, year, month), defaults to decade */
   maxLevel?: CalendarLevel;
 

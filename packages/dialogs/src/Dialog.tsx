@@ -3,8 +3,10 @@ import clsx from "clsx";
 import { Button, CloseButton, TextInput } from "@rtdui/core";
 import { useInputState } from "@rtdui/hooks";
 
-export interface DialogProps
-  extends Omit<React.ComponentProps<"div">, "title" | "content"> {
+export interface DialogProps extends Omit<
+  React.ComponentProps<"div">,
+  "title" | "content"
+> {
   /** Called when close button is clicked */
   onClose?: (result?: any) => void;
 

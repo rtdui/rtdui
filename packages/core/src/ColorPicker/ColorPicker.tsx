@@ -40,11 +40,10 @@ export type ColorPickerCssVariables = {
     | "--cp-saturation-height";
 };
 
-export interface ColorPickerProps
-  extends Omit<
-    React.ComponentProps<"div">,
-    "onChange" | "value" | "defaultValue"
-  > {
+export interface ColorPickerProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange" | "value" | "defaultValue"
+> {
   /** Controlled component value */
   value?: string;
 

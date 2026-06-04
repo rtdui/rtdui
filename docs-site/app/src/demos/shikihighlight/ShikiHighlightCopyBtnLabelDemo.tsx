@@ -1,7 +1,7 @@
 import { ShikiHighlight } from "@rtdui/shiki-highlight";
 
 export default function Demo() {
-	const code = `
+  const code = `
 import React from "react";
 
 function Demo(props) {
@@ -15,6 +15,6 @@ function Demo(props) {
   return <div className={className}>hello world!</div>
 }
 `;
-	return <ShikiHighlight code={code} language="jsx" copyLabel="拷贝代码" />;
+  return <ShikiHighlight code={code} language="jsx" copyLabel="拷贝代码" />;
 }
 Demo.displayName = "ShikiHighlightCopyBtnLabelDemo";

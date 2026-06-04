@@ -17,7 +17,8 @@ import { filterPickedValues } from "./filter-picked-values";
 import type { InputBaseOwnProps } from "../InputBase";
 
 export interface MultiSelectProps
-  extends ComboboxLikeProps,
+  extends
+    ComboboxLikeProps,
     Omit<InputBaseOwnProps, "value" | "defaultValue" | "onChange">,
     Omit<
       React.ComponentProps<"input">,

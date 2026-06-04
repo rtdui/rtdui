@@ -9,8 +9,10 @@ import {
 } from "@rtdui/hooks";
 import { Thumb } from "../Thumb/Thumb";
 
-export interface ColorSliderProps
-  extends Omit<React.ComponentProps<"div">, "onChange"> {
+export interface ColorSliderProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange"
+> {
   value: number;
   onChange?: (value: number) => void;
   onChangeEnd?: (value: number) => void;

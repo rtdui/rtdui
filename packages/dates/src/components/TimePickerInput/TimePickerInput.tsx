@@ -4,8 +4,7 @@ import { TimePicker, type TimerPickerBaseProps } from "../TimePicker";
 import type { ThemeSize } from "@rtdui/core";
 
 export interface TimePickerInputProps
-  extends DateInputSharedProps,
-    TimerPickerBaseProps {
+  extends DateInputSharedProps, TimerPickerBaseProps {
   size?: ThemeSize;
 }
 

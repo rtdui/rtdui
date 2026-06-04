@@ -4,7 +4,8 @@ import { LevelsGroup } from "../LevelsGroup";
 import { MonthLevel, type MonthLevelSettings } from "../MonthLevel";
 
 export interface MonthLevelGroupProps
-  extends Omit<
+  extends
+    Omit<
       MonthLevelSettings,
       "withPrevious" | "withNext" | "__onDayKeyDown" | "__getDayRef"
     >,

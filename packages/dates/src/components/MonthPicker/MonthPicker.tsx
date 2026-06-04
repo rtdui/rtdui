@@ -13,7 +13,8 @@ import type { YearLevelBaseSettings } from "../YearLevel";
 type MonthPickerLevel = Exclude<CalendarLevel, "month">;
 
 export interface MonthPickerBaseProps<Type extends DatePickerType = "default">
-  extends PickerBaseProps<Type>,
+  extends
+    PickerBaseProps<Type>,
     DecadeLevelBaseSettings,
     YearLevelBaseSettings,
     Omit<CalendarBaseProps, "onNextMonth" | "onPreviousMonth"> {
@@ -31,7 +32,8 @@ export interface MonthPickerBaseProps<Type extends DatePickerType = "default">
 }
 
 export interface MonthPickerProps<Type extends DatePickerType = "default">
-  extends MonthPickerBaseProps<Type>,
+  extends
+    MonthPickerBaseProps<Type>,
     Omit<React.ComponentProps<"div">, "onChange" | "value" | "defaultValue"> {
   /** Called when month is selected */
   onMonthSelect?: (date: Date) => void;

@@ -1,7 +1,9 @@
 import { highlighter } from "./highlighter";
 
-export interface HighlightProps
-  extends Omit<React.ComponentProps<"span">, "color"> {
+export interface HighlightProps extends Omit<
+  React.ComponentProps<"span">,
+  "color"
+> {
   /** Substring or an array of substrings to highlight in `children` */
   highlight: string | string[];
 

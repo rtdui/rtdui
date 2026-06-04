@@ -3,11 +3,10 @@ import { useUncontrolled } from "@rtdui/hooks";
 import { RadioGroupContext } from "./context";
 import type { ThemeBaseSize } from "../theme.types";
 
-export interface RadioGroupProps
-  extends Omit<
-    React.ComponentProps<"input">,
-    "value" | "defaultValue" | "onChange" | "size"
-  > {
+export interface RadioGroupProps extends Omit<
+  React.ComponentProps<"input">,
+  "value" | "defaultValue" | "onChange" | "size"
+> {
   color?:
     | "primary"
     | "secondary"

@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
 
-export interface IndeterminateCheckboxProps
-  extends React.HTMLProps<HTMLInputElement> {
+export interface IndeterminateCheckboxProps extends React.HTMLProps<HTMLInputElement> {
   indeterminate?: boolean;
 }
 export function IndeterminateCheckbox(props: IndeterminateCheckboxProps) {

@@ -87,8 +87,7 @@ export interface MonthSettings {
 }
 
 export interface MonthProps
-  extends MonthSettings,
-    React.ComponentProps<"table"> {
+  extends MonthSettings, React.ComponentProps<"table"> {
   /** Month to display */
   month: Date;
 

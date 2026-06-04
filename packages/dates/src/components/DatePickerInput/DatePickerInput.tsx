@@ -7,8 +7,7 @@ import { useDatesContext } from "../DatesProvider";
 import { type DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 
 export interface DatePickerInputProps<T extends DatePickerType = "default">
-  extends DateInputSharedProps,
-    DatePickerBaseProps<T> {
+  extends DateInputSharedProps, DatePickerBaseProps<T> {
   /** date-fns format to display input value
    * @default "yyyy-MM-dd"
    */

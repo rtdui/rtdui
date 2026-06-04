@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useModalContext } from "./context";
 
 export function useModalTitle() {
-	const ctx = useModalContext();
+  const ctx = useModalContext();
 
-	useEffect(() => {
-		ctx.setTitleMounted(true);
-		return () => ctx.setTitleMounted(false);
-	}, []);
+  useEffect(() => {
+    ctx.setTitleMounted(true);
+    return () => ctx.setTitleMounted(false);
+  }, []);
 
-	return ctx.getTitleId();
+  return ctx.getTitleId();
 }

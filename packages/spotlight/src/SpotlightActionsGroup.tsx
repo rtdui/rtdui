@@ -3,8 +3,7 @@ import { useSpotlightContext } from "./Spotlight.context";
 
 export type SpotlightActionsGroupStylesNames = "actionsGroup";
 
-export interface SpotlightActionsGroupProps
-  extends React.ComponentProps<"div"> {
+export interface SpotlightActionsGroupProps extends React.ComponentProps<"div"> {
   /** `Spotlight.Action` components */
   children?: React.ReactNode;
 

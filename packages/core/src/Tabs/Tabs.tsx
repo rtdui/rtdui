@@ -7,11 +7,10 @@ import { TabList } from "./TabList";
 import { TabPanel } from "./TabPanel";
 import { Tab } from "./Tab";
 
-export interface TabsProps
-  extends Omit<
-    React.ComponentProps<"div">,
-    "defaultValue" | "value" | "onChange"
-  > {
+export interface TabsProps extends Omit<
+  React.ComponentProps<"div">,
+  "defaultValue" | "value" | "onChange"
+> {
   /** Default value for uncontrolled component */
   defaultValue?: string | null;
 

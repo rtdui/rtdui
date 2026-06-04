@@ -4,7 +4,8 @@ import { LevelsGroup } from "../LevelsGroup";
 import { YearLevel, type YearLevelSettings } from "../YearLevel";
 
 export interface YearLevelGroupProps
-  extends Omit<
+  extends
+    Omit<
       YearLevelSettings,
       "withPrevious" | "withNext" | "__onControlKeyDown" | "__getControlRef"
     >,

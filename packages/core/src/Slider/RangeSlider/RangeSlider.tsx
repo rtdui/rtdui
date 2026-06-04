@@ -13,11 +13,10 @@ import type { TransitionProps } from "../../Transition";
 
 export type RangeSliderValue = [number, number];
 
-export interface RangeSliderProps
-  extends Omit<
-    React.ComponentProps<"div">,
-    "onChange" | "value" | "defaultValue"
-  > {
+export interface RangeSliderProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange" | "value" | "defaultValue"
+> {
   /** Key of Preset or any valid CSS color, controls color of track and thumb
    * @default 'primary'
    */

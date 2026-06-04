@@ -18,7 +18,8 @@ import { filterPickedTags } from "./filter-picked-tags";
 import { getSplittedTags } from "./get-splitted-tags";
 
 export interface TagsInputProps
-  extends InputBaseOwnProps,
+  extends
+    InputBaseOwnProps,
     Omit<ComboboxLikeProps, "data">,
     Omit<
       React.ComponentProps<"input">,

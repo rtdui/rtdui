@@ -7,8 +7,7 @@ import { type DateInputSharedProps, PickerInputBase } from "../PickerInputBase";
 import { YearPicker, type YearPickerBaseProps } from "../YearPicker";
 
 export interface YearPickerInputProps<Type extends DatePickerType = "default">
-  extends DateInputSharedProps,
-    YearPickerBaseProps<Type> {
+  extends DateInputSharedProps, YearPickerBaseProps<Type> {
   /** date-fns format to display input value
    * @default "yyyy"
    */

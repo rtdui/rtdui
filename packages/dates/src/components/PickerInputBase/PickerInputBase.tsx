@@ -17,7 +17,8 @@ import {
 } from "../HiddenDatesInput";
 
 export interface DateInputSharedProps
-  extends Omit<InputBaseOwnProps, "size">,
+  extends
+    Omit<InputBaseOwnProps, "size">,
     Omit<
       React.ComponentProps<"button">,
       "defaultValue" | "value" | "onChange" | "type"

@@ -1,8 +1,10 @@
 import clsx from "clsx";
 import { useId } from "react";
 
-export interface ModalLightProps
-  extends Omit<React.ComponentProps<"dialog">, "title"> {
+export interface ModalLightProps extends Omit<
+  React.ComponentProps<"dialog">,
+  "title"
+> {
   /** Modal title */
   title?: React.ReactNode;
   /** Determines whether the close button should be rendered

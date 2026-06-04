@@ -17,7 +17,8 @@ import clsx from "clsx";
 import { IconCheck } from "@tabler/icons-react";
 
 export interface DateTimePickerProps
-  extends Omit<
+  extends
+    Omit<
       DateInputSharedProps,
       "classNames" | "styles" | "closeOnChange" | "size"
     >,

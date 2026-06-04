@@ -2,8 +2,10 @@ import clsx from "clsx";
 import { useUncontrolled } from "@rtdui/hooks";
 import type { ThemeBaseSize } from "../theme.types";
 
-export interface RatingProps
-  extends Omit<React.ComponentProps<"div">, "onChange"> {
+export interface RatingProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange"
+> {
   name?: string;
   defaultValue?: number;
   /**

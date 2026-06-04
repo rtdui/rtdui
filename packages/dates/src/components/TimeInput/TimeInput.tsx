@@ -2,8 +2,7 @@ import clsx from "clsx";
 import { InputBase, type InputBaseOwnProps } from "@rtdui/core";
 
 export interface TimeInputProps
-  extends InputBaseOwnProps,
-    Omit<React.ComponentProps<"input">, "size"> {
+  extends InputBaseOwnProps, Omit<React.ComponentProps<"input">, "size"> {
   /** Determines whether seconds input should be rendered */
   withSeconds?: boolean;
 

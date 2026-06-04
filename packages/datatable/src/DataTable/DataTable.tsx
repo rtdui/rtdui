@@ -76,7 +76,8 @@ export type Rule = (
 ) => string | null | undefined;
 
 export interface DataTableProps
-  extends React.ComponentProps<"div">,
+  extends
+    React.ComponentProps<"div">,
     Omit<
       TableOptions<any>,
       "_features" | "getCoreRowModel" | "sortingFns" | "filterFns"

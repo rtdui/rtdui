@@ -14,7 +14,8 @@ import {
 import { InputBase, type InputBaseOwnProps } from "../InputBase";
 
 export interface SelectProps
-  extends ComboboxLikeProps,
+  extends
+    ComboboxLikeProps,
     Omit<InputBaseOwnProps, "value" | "defaultValue" | "onChange">,
     Omit<
       React.ComponentProps<"input">,

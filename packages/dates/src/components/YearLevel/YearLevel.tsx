@@ -11,12 +11,10 @@ export interface YearLevelBaseSettings extends MonthsListSettings {
 }
 
 export interface YearLevelSettings
-  extends YearLevelBaseSettings,
-    CalendarHeaderSettings {}
+  extends YearLevelBaseSettings, CalendarHeaderSettings {}
 
 export interface YearLevelProps
-  extends YearLevelSettings,
-    React.ComponentProps<"div"> {
+  extends YearLevelSettings, React.ComponentProps<"div"> {
   /** Year that is currently displayed */
   year: Date;
 

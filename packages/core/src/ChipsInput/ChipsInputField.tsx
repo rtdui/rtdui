@@ -2,8 +2,10 @@ import clsx from "clsx";
 import { useMergedRef } from "@rtdui/hooks";
 import { useChipsInputContext } from "./context";
 
-export interface ChipsInputFieldProps
-  extends Omit<React.ComponentProps<"input">, "type"> {
+export interface ChipsInputFieldProps extends Omit<
+  React.ComponentProps<"input">,
+  "type"
+> {
   /** Controls input styles when focused. If `auto` the input is hidden when not focused. If `visible` the input will always remain visible
    * @default "visible"
    */

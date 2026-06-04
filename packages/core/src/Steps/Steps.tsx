@@ -7,8 +7,10 @@ export interface Step {
   description: React.ReactNode;
 }
 
-export interface StepsProps
-  extends Omit<React.ComponentProps<"ul">, "onChange"> {
+export interface StepsProps extends Omit<
+  React.ComponentProps<"ul">,
+  "onChange"
+> {
   color?:
     | "primary"
     | "secondary"

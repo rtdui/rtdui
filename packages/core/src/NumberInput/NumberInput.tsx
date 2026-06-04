@@ -58,8 +58,10 @@ function getDecrementedValue({
   return nextValue;
 }
 
-export interface NumberInputProps
-  extends Omit<TextInputProps, "size" | "type" | "color" | "onChange"> {
+export interface NumberInputProps extends Omit<
+  TextInputProps,
+  "size" | "type" | "color" | "onChange"
+> {
   /** Controlled component value */
   value?: number | string;
 

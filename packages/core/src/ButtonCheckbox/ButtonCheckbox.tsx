@@ -3,7 +3,8 @@ import type { ButtonProps } from "../Button/Button";
 
 // biome-ignore format: 不换行更可读
 export interface ButtonCheckboxProps
-  extends Omit<React.ComponentProps<"input">, "color" | "onChange" | "size">,
+  extends
+    Omit<React.ComponentProps<"input">, "color" | "onChange" | "size">,
     Pick<
       ButtonProps,
       | "color"

@@ -8,8 +8,7 @@ import {
 import { NativeSelectOption } from "./NativeSelectOption";
 
 export interface SelectNativeProps
-  extends InputBaseOwnProps,
-    Omit<React.ComponentProps<"select">, "size"> {
+  extends InputBaseOwnProps, Omit<React.ComponentProps<"select">, "size"> {
   data?: ComboboxData;
 }
 

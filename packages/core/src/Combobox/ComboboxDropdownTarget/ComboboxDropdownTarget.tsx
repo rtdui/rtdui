@@ -2,8 +2,7 @@ import { isValidElement } from "react";
 import { Popover } from "../../Popover";
 import { useComboboxContext } from "../context";
 
-export interface ComboboxDropdownTargetProps
-  extends React.ComponentProps<"div"> {
+export interface ComboboxDropdownTargetProps extends React.ComponentProps<"div"> {
   /** Target element */
   children: React.ReactNode;
 

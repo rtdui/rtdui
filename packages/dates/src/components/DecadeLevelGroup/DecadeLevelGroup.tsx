@@ -4,7 +4,8 @@ import { DecadeLevel, type DecadeLevelSettings } from "../DecadeLevel";
 import { LevelsGroup } from "../LevelsGroup";
 
 export interface DecadeLevelGroupProps
-  extends Omit<
+  extends
+    Omit<
       DecadeLevelSettings,
       "withPrevious" | "withNext" | "__onControlKeyDown" | "__getControlRef"
     >,
