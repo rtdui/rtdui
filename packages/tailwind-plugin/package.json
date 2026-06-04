@@ -2,7 +2,21 @@
   "name": "@rtdui/tailwind-plugin",
   "version": "5.1.0",
   "description": "tailwind plugin for Rtdui components",
-  "main": "./src/index.cjs",
+  "types": "./lib/index.d.ts",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./cjs/index.cjs"
+      }
+    }
+  },
   "keywords": [
     "tailwind",
     "plugin",
