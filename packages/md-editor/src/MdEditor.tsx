@@ -110,7 +110,7 @@ export interface MdEditorOwnProps extends ProcessorOptions {
 type MdEditorProps = MdEditorOwnProps &
   Omit<React.ComponentProps<"div">, keyof MdEditorOwnProps>;
 
-export function MarkdownEditor(props: MdEditorProps) {
+export function MdEditor(props: MdEditorProps) {
   const {
     ref,
     handleImageUpload,
@@ -207,7 +207,7 @@ export function MarkdownEditor(props: MdEditorProps) {
     {
       type: "single",
       title: locale.boldAnditalic,
-      icon: <IconBold size={iconSize} stroke={2} className="-skew-x-[15deg]" />,
+      icon: <IconBold size={iconSize} stroke={2} className="skew-x-[-15deg]" />,
       cheatsheet: `*${locale.boldAnditalicText}*`,
       shortcut: getShortcutWithPrefix("d", true),
       click(ev, { editor }) {
