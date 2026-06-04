@@ -153,13 +153,13 @@ export function Col(props: GridColProps) {
         className={clsx(
           responsiveClassName,
           "gridx-col",
-          "shrink-0 [flex-grow:var(--col-flex-grow,0)]",
-          "[order:var(--col-order)]",
-          "[flex-basis:var(--col-flex-basis)]",
-          "[width:var(--col-width)]",
-          "[max-width:var(--col-max-width)]",
-          String.raw`[margin-left:var(--\_col-ml,var(--col-offset,0))] [margin-right:var(--\_col-mr,0)]`,
-          "[padding:calc(var(--grid-gutter)/2)]",
+          "shrink-0 grow-(--col-flex-grow,0)",
+          "order-(--col-order)",
+          "basis-(--col-flex-basis)",
+          "w-(--col-width)",
+          "max-w-(--col-max-width)",
+          String.raw`ml-(--_col-ml,var(--col-offset,0)) mr-(--_col-mr,0)`,
+          "p-[calc(var(--grid-gutter)/2)]",
         )}
       >
         {children}

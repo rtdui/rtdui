@@ -86,7 +86,7 @@ export function Chip(props: ChipProps) {
             stroke: size === "normal" ? 2 : 2.5,
           }}
           className={clsx({
-            "w-[18px] h-[18px] min-h-[18px]": size === "normal",
+            "w-4.5 h-4.5 min-h-4.5": size === "normal",
             "w-4 h-4 min-h-4": size === "small",
           })}
         />

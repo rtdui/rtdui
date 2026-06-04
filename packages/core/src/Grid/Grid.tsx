@@ -110,7 +110,7 @@ export function Grid(props: GridProps) {
           className={clsx(
             "grid-inner",
             "flex flex-wrap [justify-content:var(--grid-justify)] [align-items:var(--grid-align)]",
-            "[width:calc(100%+var(--grid-gutter))]",
+            "w-[calc(100%+var(--grid-gutter))]",
             "margin:calc(var(--grid-gutter)/-2);",
           )}
         >

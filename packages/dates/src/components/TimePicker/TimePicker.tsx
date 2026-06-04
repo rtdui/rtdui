@@ -12,7 +12,8 @@ export interface TimerPickerBaseProps {
   disabled?: boolean;
 }
 export interface TimerPickerProps
-  extends TimerPickerBaseProps,
+  extends
+    TimerPickerBaseProps,
     Omit<React.ComponentProps<"div">, "defaultValue" | "value" | "onChange"> {}
 
 export const TimePicker = (props: TimerPickerProps) => {
@@ -38,7 +39,7 @@ export const TimePicker = (props: TimerPickerProps) => {
 
   return (
     <div className={clsx("flex justify-center items-center h-60 select-none")}>
-      <div className={clsx("wheel-hour", "w-[70px] h-[180px]")}>
+      <div className={clsx("wheel-hour", "w-17.5 h-45")}>
         <Wheel
           initIdx={0}
           length={24}
@@ -54,7 +55,7 @@ export const TimePicker = (props: TimerPickerProps) => {
           }}
         />
       </div>
-      <div className={clsx("wheel-minute", "w-[70px] h-[180px]")}>
+      <div className={clsx("wheel-minute", "w-17.5 h-45")}>
         <Wheel
           initIdx={0}
           length={60}
@@ -71,7 +72,7 @@ export const TimePicker = (props: TimerPickerProps) => {
         />
       </div>
       {withSeconds && (
-        <div className={clsx("wheel-minute", "w-[70px] h-[180px]")}>
+        <div className={clsx("wheel-minute", "w-17.5 h-45")}>
           <Wheel
             initIdx={0}
             length={60}

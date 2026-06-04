@@ -215,7 +215,7 @@ export function Input<E extends React.ElementType = typeof defaultElement>(
         data-error={!!error && withErrorStyles}
         className={clsx(
           "input-input",
-          "input w-full [line-height:normal] focus:outline-offset-0 focus:outline-1 focus-within:outline-offset-0 focus-within:outline-1",
+          "input w-full leading-[normal] focus:outline-offset-0 focus:outline-1 focus-within:outline-offset-0 focus-within:outline-1",
           "text-(length:--input-font)",
           "w-full h-(--input-size) py-1.5",
           "[&]:pl-(--input-padding-left)",

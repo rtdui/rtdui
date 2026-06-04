@@ -1,8 +1,10 @@
 import clsx from "clsx";
 import { CloseButton } from "@rtdui/core";
 
-export interface NotificationProps
-  extends Omit<React.ComponentProps<"div">, "title" | "content"> {
+export interface NotificationProps extends Omit<
+  React.ComponentProps<"div">,
+  "title" | "content"
+> {
   /** Called when close button is clicked */
   onClose?: () => void;
 
@@ -68,7 +70,7 @@ export function Notification(props: NotificationProps) {
   return (
     <div
       className={clsx(
-        "flex gap-4 items-center rounded-box shadow-md p-3 max-h-52 min-w-[300px] bg-base-200",
+        "flex gap-4 items-center rounded-box shadow-md p-3 max-h-52 min-w-75 bg-base-200",
         className,
       )}
       data-with-icon={!!icon || loading || undefined}
@@ -91,7 +93,7 @@ export function Notification(props: NotificationProps) {
       {loading && (
         <span
           className={clsx(
-            "loading loading-spinner h-[1.5rem]",
+            "loading loading-spinner h-6",
             colorClass,
             slots?.icon,
           )}

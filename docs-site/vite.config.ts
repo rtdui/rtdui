@@ -83,8 +83,8 @@ export default defineConfig({
     reactRouter(),
     tsconfigPaths({ projects: ["./tsconfig.json"] }),
   ],
-  ssr: {
-    noExternal: [/^qrcode.react/, /^@rtdui\/qr-code/],
+  resolve: {
+    // tsconfigPaths: true, // vite v8引入的功能, 用于解析tsconfig.json中paths配置. 目前在Monorepo还不能替代vite-tsconfig-paths插件.
   },
   server: { host: "0.0.0.0" },
 });

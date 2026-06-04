@@ -15,7 +15,7 @@ export function ModalBody(props: ModalBodyProps) {
       id={bodyId}
       className={clsx(
         "modal-body",
-        "[padding:var(--modal-padding,var(--mantine-spacing-md))]",
+        "p-(--modal-padding,var(--mantine-spacing-md))",
         "not-only:pt-0",
         className,
       )}

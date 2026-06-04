@@ -67,9 +67,9 @@ export function Overlay(props: OverlayProps) {
       ref={ref}
       className={clsx(
         "overlay",
-        "absolute inset-0 bg-[var(--overlay-bg,rgba(0,0,0,0.6))]",
+        "absolute inset-0 bg-(--overlay-bg,rgba(0,0,0,0.6))",
         "[backdrop-filter:var(--overlay-filter)]",
-        "rounded-[var(--overlay-radius,0)]",
+        "rounded-(--overlay-radius,0)",
         "z-(--overlay-z-index)",
         {
           "[&&]:fixed": fixed === true,

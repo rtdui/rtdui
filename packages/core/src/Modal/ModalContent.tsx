@@ -80,9 +80,9 @@ export function ModalContent(props: ModalContentProps) {
               style={{ ...style, ..._styles }}
               className={clsx(
                 "modal-content",
-                "pointer-events-auto shadow-[var(--modal-shadow,var(--theme-shadow-xl))]",
-                "max-w-full max-h-[var(--modal-content-max-height,calc(100dvh-var(--modal-y-offset)*2))] overflow-y-auto",
-                "h-[var(--modal-content-height,auto)]",
+                "pointer-events-auto shadow-(--modal-shadow,var(--theme-shadow-xl))",
+                "max-w-full max-h-(--modal-content-max-height,calc(100dvh-var(--modal-y-offset)*2)) overflow-y-auto",
+                "h-(--modal-content-height,auto)",
                 {
                   "flex-[0_0_var(--modal-size)]": !fullScreen,
                   "flex-[0_0_100%]": fullScreen,

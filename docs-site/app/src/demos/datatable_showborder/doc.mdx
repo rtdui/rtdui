@@ -1,0 +1,62 @@
+---
+meta:
+  - title: DataTable Component
+  - description: DataTable document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/dataTable/DataTable.tsx"
+  componentName: "DataTable"
+---
+
+import Demo from "../../components/Demo";
+import DataTableShowBorderDemo from "./DataTableShowBorderDemo";
+
+# 表格和单元格边框
+
+默认的, 表格不显示完整边框, 只有单元格的下边框, 这在视觉上表现为每行有一个下边框.
+想要实现单元格的完整边框, 可以设置`showBorder`属性为true, 这将为每个单元格显示完整边框
+
+<Demo data={{ Component: DataTableShowBorderDemo }} />
+
+## 绘制表格边框的注意事项
+
+表格和单元格边框绘制相同粗细边框的主流方式:
+
+方式一:
+
+1. 设置table的border-collapse: separate, border-spacing: 0;
+2. 为table的border-left和border-top设置边框
+3. 为th,td的border-bottom和border-right设置边框
+
+该方式存在的问题:
+
+1. 由于table有边框, 滚动时table的边框会被滚走, 因此会发生布局抖动问题.
+   即便在left和top中加上了table边框的宽度, 还是无法解决table的边框会被滚走的问题
+2. 反方向设置时, sticky的单元格由于没有右边框, 因此水平滚动时sticky的单元格的右边框会消失.
+
+方式二:
+
+1. 设置table的border-collapse: collapse, border-spacing: 0;
+2. 为table的border设置为无
+3. 为th,td的border设置边框
+
+该方式存在的问题:
+
+1. sticky的单元格的边框会被滚走, 因此sticky的单元格的边框会消失且原边框处有漏空问题.
+
+方式三:
+
+1. 设置table的border-collapse: collapse, border-spacing: 0;
+2. 为table的border设置为无
+3. 为th,td的border设置轮廓框(outline)
+
+该方式存在的问题:
+
+1. 无法独立设置上下左右轮廓的样式
+2. 外框粗细不一
+3. 但当有其它情况需要用outline时就没有办法了(比如,当单元格有错误时显示额外错误框)
+
+最佳方式:
+
+在单元格的上层用一个铺满的伪元素或独立元素来模拟边框.

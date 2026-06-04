@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { DataTable, type ColumnDef } from "@rtdui/datatable";
 import { makePersonData, type Person } from "../../demoData/makeData";
 
@@ -7,47 +7,43 @@ const columns: ColumnDef<Person>[] = [
     id: "id",
     header: "ID",
     accessorKey: "id",
-    enableColumnFilter: false,
   },
   {
     id: "fullName",
     header: "姓名",
     accessorKey: "fullName",
     sortingFn: "pinyin",
-    filterFn: "arrNot",
-    meta: {
-      showFilterList: true,
-    },
   },
   {
-    id: "maleFn",
+    id: "gender",
     header: "性别",
     accessorFn: (row) => (row.gender === "male" ? "男" : "女"),
-    filterFn: "arrNot",
     meta: {
       align: "center",
-      showFilterList: true,
     },
+    size: 80,
+    minSize: 80,
   },
   {
     id: "age",
     header: "年龄",
     accessorKey: "age",
-    enableColumnFilter: false,
+    size: 80,
+    minSize: 80,
   },
 ];
 
 export default function Demo() {
-  const [data, setData] = useState<Person[]>([]);
+  const [data, setData] = React.useState<Person[]>([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setData(makePersonData(50));
   }, []);
 
   return (
     <div className="h-96">
-      <DataTable data={data} columns={columns} enableFilters />
+      <DataTable data={data} columns={columns} showBorder />
     </div>
   );
 }
-Demo.displayName = "DataTableFilterListDemo";
+Demo.displayName = "DataTableBasicDemo";

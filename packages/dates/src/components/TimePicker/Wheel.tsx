@@ -4,8 +4,10 @@ import { useMergedRef } from "@rtdui/hooks";
 import type { KeenSliderOptions, TrackDetails } from "keen-slider";
 import { useKeenSlider } from "./useKeenSlider";
 
-export interface WheelProps
-  extends Omit<React.ComponentProps<"div">, "onChange"> {
+export interface WheelProps extends Omit<
+  React.ComponentProps<"div">,
+  "onChange"
+> {
   initIdx?: number;
   label?: string;
   /** wheels number */
@@ -147,11 +149,11 @@ export function Wheel(props: WheelProps) {
       <div
         className={clsx(
           "wheel__inner",
-          "flex items-center justify-center [perspective:1000px] [transform-style:preserve-3d] w-full h-[16%]",
+          "flex items-center justify-center perspective-[1000px] transform-3d w-full h-[16%]",
           "bg-base-300",
           {
-            "[perspective-origin:calc(50%+100px)_50%]": perspective === "right",
-            "[perspective-origin:calc(50%-100px)_50%]": perspective === "left",
+            "perspective-origin-[calc(50%+100px)_50%]": perspective === "right",
+            "perspective-origin-[calc(50%-100px)_50%]": perspective === "left",
           },
           slots?.inner,
         )}
@@ -164,7 +166,7 @@ export function Wheel(props: WheelProps) {
             <div
               className={clsx(
                 "wheel__slide",
-                "absolute w-full h-full flex items-center justify-end [backface-visibility:hidden] text-xl",
+                "absolute w-full h-full flex items-center justify-end backface-hidden text-xl",
               )}
               style={style}
               key={idx}
@@ -177,7 +179,7 @@ export function Wheel(props: WheelProps) {
           <div
             className={clsx(
               "wheel__label",
-              "font-medium text-[15px] leading-none mt-px ml-[5px]",
+              "font-medium text-[15px] leading-none mt-px ml-1.25",
             )}
             style={{
               transform: `translateZ(${radius}px)`,
