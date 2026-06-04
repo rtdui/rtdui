@@ -147,7 +147,7 @@ export function HeaderCell(props: HeaderCellProps) {
                 >
                   <div
                     className={clsx(
-                      "sortings relative w-[14px] opacity-0 group-hover:opacity-100",
+                      "sortings relative w-3.5 opacity-0 group-hover:opacity-100",
                       {
                         "opacity-100": column.getIsSorted(),
                       },
@@ -163,12 +163,12 @@ export function HeaderCell(props: HeaderCellProps) {
                     />
                     <IconCaretDownFilled
                       size={14}
-                      className={clsx("absolute -top-[3px]", {
+                      className={clsx("absolute -top-0.75", {
                         "fill-info": column.getIsSorted() === "desc",
                       })}
                     />
                     {column.getSortIndex() > 0 && (
-                      <sub className="absolute left-[12px] top-1">
+                      <sub className="absolute left-3 top-1">
                         {column.getSortIndex() + 1}
                       </sub>
                     )}
@@ -196,12 +196,12 @@ export function HeaderCell(props: HeaderCellProps) {
                             <IconFilterFilled
                               size={14}
                               color="var(--color-info)"
-                              className="translate-y-[3px]"
+                              className="translate-y-0.75"
                             />
                           ) : (
                             <IconFilter
                               size={14}
-                              className="translate-y-[3px]"
+                              className="translate-y-0.75"
                             />
                           )}
                         </button>
@@ -236,10 +236,10 @@ export function HeaderCell(props: HeaderCellProps) {
                       <IconPinnedFilled
                         size={14}
                         color="var(--color-info)"
-                        className="translate-y-[2px]"
+                        className="translate-y-0.5"
                       />
                     ) : (
-                      <IconPin size={14} className="translate-y-[2px]" />
+                      <IconPin size={14} className="translate-y-0.5" />
                     )}
                   </div>
                 </div>
@@ -252,7 +252,7 @@ export function HeaderCell(props: HeaderCellProps) {
           onTouchStart={header.getResizeHandler()}
           className={clsx(
             "resizer",
-            "absolute z-1 top-0 bottom-0 -right-px w-[3px] bg-info/20 opacity-0 cursor-col-resize select-none touch-none",
+            "absolute z-1 top-0 bottom-0 -right-px w-0.75 bg-info/20 opacity-0 cursor-col-resize select-none touch-none",
             "hover:opacity-100",
             {
               "resizing opacity-100 cursor-col-resize": column.getIsResizing(),

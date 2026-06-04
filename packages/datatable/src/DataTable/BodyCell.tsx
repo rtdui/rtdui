@@ -50,7 +50,7 @@ export function BodyCell(props: BodyCellProps) {
             shouldElevationRight(table, column),
           "elevation-right-scrollOffset [&&&]:before:shadow-[-2px_0_2px_0]":
             shouldElevationRight(table, column) && scrollingTrigger,
-          "outline outline-error outline-offset-[-2px]": hasError,
+          "outline outline-error -outline-offset-2": hasError,
           "text-right": cellDataType === "Number",
           placeholder: cell.getIsPlaceholder(),
         },

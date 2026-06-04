@@ -111,7 +111,7 @@ export function UniqueValueFilterPopover(props: UniqueValueFilterPopoverProps) {
             <div className="text-xs">{value}</div>
           </li>
         ))}
-      <li className="list-row [&&&]:py-1 [&&&]:rounded-none sticky bottom-0 bg-base-100 border-t-1 border-base-300">
+      <li className="list-row [&&&]:py-1 [&&&]:rounded-none sticky bottom-0 bg-base-100 border-t border-base-300">
         <div>
           <input
             type="checkbox"
