@@ -44,7 +44,7 @@
     "access": "public"
   },
   "dependencies": {
-    "qrcode.react": "^3.1.0"
+    "qrcode.react": "^4.2.0"
   },
   "peerDependencies": {
     "@rtdui/core": "5.1.0",
