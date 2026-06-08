@@ -21,6 +21,7 @@ function getIconSize(size: ThemeSize | number) {
 export interface ComboboxChevronProps extends IconProps {
   error?: React.ReactNode;
   size?: ThemeSize | number;
+  ref?: React.Ref<SVGSVGElement>;
 }
 
 export function ComboboxChevron(props: ComboboxChevronProps) {
