@@ -33,8 +33,8 @@
   "author": "fuzhongwei <jackyleefzw@163.com>",
   "license": "MIT",
   "scripts": {
-    "docs-site:dev": "bun run docs:docgen && cd docs-site && npm run dev",
-    "docs-site:build": "bun install && bun run build && bun run docs:docgen && cd docs-site && npm run build",
+    "docs-site:dev": "bun run docs:docgen && cd docs-site && bun run dev",
+    "docs-site:build": "bun install && bun run build && bun run docs:docgen && cd docs-site && bun run build",
     "plop": "bun scripts/plop/index.ts",
     "sync-branches": "bun scripts/sync-branches.sh",
     "outdated": "bun outdated -r",
