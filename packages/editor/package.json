@@ -70,7 +70,7 @@
     "@tiptap/react": "^2.0.4",
     "@tiptap/starter-kit": "^2.0.4",
     "katex": "^0.16.10",
-    "markdown-it": "^13.0.2",
+    "markdown-it": "^14.2.0",
     "rc-upload": "^4.3.5",
     "re-resizable": "^6.9.11",
     "shiki": "catalog:",
@@ -79,7 +79,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "catalog:",
-    "@types/markdown-it": "^12.2.3"
+    "@types/markdown-it": "^14.1.2"
   },
   "peerDependencies": {
     "@rtdui/core": "5.1.0",

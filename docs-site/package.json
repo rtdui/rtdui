@@ -10,11 +10,11 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.3.1",
+    "@faker-js/faker": "^10.4.0",
     "@mjackson/form-data-parser": "^0.5.1",
-    "@react-router/fs-routes": "^7.0.0",
-    "@react-router/node": "^7.0.0",
-    "@react-router/remix-routes-option-adapter": "^7.1.1",
+    "@react-router/fs-routes": "^7.17.0",
+    "@react-router/node": "^7.17.0",
+    "@react-router/remix-routes-option-adapter": "^7.17.0",
     "@rtdui/core": "5.1.0",
     "@rtdui/datatable": "5.1.0",
     "@rtdui/dates": "5.1.0",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@mdx-js/rollup": "catalog:",
-    "@react-router/dev": "^7.0.0",
+    "@react-router/dev": "^7.17.0",
     "@rtdui/tailwind-plugin": "5.1.0",
     "@shikijs/rehype": "^3.2.1",
     "@tailwindcss/typography": "catalog:",

@@ -7687,7 +7687,7 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "string | undefined"
+          "name": "string | number | undefined"
         }
       }
     }
@@ -21456,7 +21456,7 @@
         "name": "size",
         "required": false,
         "type": {
-          "name": "string | undefined"
+          "name": "string | number | undefined"
         }
       }
     }
