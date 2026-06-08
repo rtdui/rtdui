@@ -34,7 +34,9 @@
     "isbot": "^5.1.19",
     "lucide-react": "catalog:",
     "react-i18next": "^14.1.0",
-    "react-router": "^7.17.0"
+    "react-router": "^7.17.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
     "@mdx-js/rollup": "catalog:",
