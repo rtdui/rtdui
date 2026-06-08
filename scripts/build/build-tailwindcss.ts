@@ -14,7 +14,7 @@ export async function buildTailwindCSS() {
   const outPath = path.join(packagePath, "styles.css");
 
   const proc = Bun.spawn([
-    "bunx",
+    "npx",
     "@tailwindcss/cli",
     "-i",
     inputPath,
