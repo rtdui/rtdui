@@ -1,8 +1,4 @@
 import type MarkdownIt from "markdown-it";
-import type * as StateBlock from "markdown-it/lib/rules_block/state_block";
-import type StateCore from "markdown-it/lib/rules_core/state_core";
-import type * as StateInline from "markdown-it/lib/rules_inline/state_inline";
-import type * as Token from "markdown-it/lib/token";
 
 function isWhitespace(char: string): boolean {
   return /^\s$/u.test(char);
@@ -16,7 +12,7 @@ function isWordCharacterOrNumber(char: string): boolean {
  * Test if potential opening or closing delimiter
  */
 function isValidInlineDelim(
-  state: StateInline,
+  state: any,
   pos: number,
 ): { can_open: boolean; can_close: boolean } {
   const prevChar = state.src[pos - 1];
@@ -52,7 +48,7 @@ function isValidInlineDelim(
 }
 
 function isValidBlockDelim(
-  state: StateInline,
+  state: any,
   pos: number,
 ): { readonly can_open: boolean; readonly can_close: boolean } {
   const prevChar = state.src[pos - 1];
@@ -79,7 +75,7 @@ function isValidBlockDelim(
  * @param silent
  * @returns
  */
-function inlineMath(state: StateInline, silent: boolean): boolean {
+function inlineMath(state: any, silent: boolean): boolean {
   if (state.src[state.pos] !== "$") {
     return false;
   }
@@ -162,7 +158,7 @@ function inlineMath(state: StateInline, silent: boolean): boolean {
 }
 
 function blockMath(
-  state: StateBlock,
+  state: any,
   start: number,
   end: number,
   silent: boolean,
@@ -234,7 +230,7 @@ function blockMath(
 }
 
 function blockBareMath(
-  state: StateBlock,
+  state: any,
   start: number,
   end: number,
   silent: boolean,
@@ -314,7 +310,7 @@ function blockBareMath(
  * @param silent
  * @returns
  */
-function inlineMathBlock(state: StateInline, silent: boolean): boolean {
+function inlineMathBlock(state: any, silent: boolean): boolean {
   let match: any;
   let token: any;
   let res: any;
@@ -399,7 +395,7 @@ function inlineMathBlock(state: StateInline, silent: boolean): boolean {
  * @param silent
  * @returns
  */
-function inlineBareBlock(state: StateInline, silent: boolean): boolean {
+function inlineBareBlock(state: any, silent: boolean): boolean {
   const text = state.src.slice(state.pos);
   if (!/^\n\\begin/.test(text)) {
     return false;
@@ -434,7 +430,7 @@ function inlineBareBlock(state: StateInline, silent: boolean): boolean {
   }
 
   const endIndex =
-    lines.slice(0, foundLine + 1).reduce((p, c) => p + c.length, 0) +
+    lines.slice(0, foundLine + 1).reduce((p: any, c: any) => p + c.length, 0) +
     foundLine +
     1;
 
@@ -452,7 +448,7 @@ function inlineBareBlock(state: StateInline, silent: boolean): boolean {
 // For any html block that contains math, replace the html block token with new tokens that separate out
 // the html blocks from the math
 function handleMathInHtml(
-  state: StateCore,
+  state: any,
   mathType: string,
   mathMarkup: string,
   mathRegex: RegExp,
@@ -461,7 +457,7 @@ function handleMathInHtml(
 
   for (let index = tokens.length - 1; index >= 0; index--) {
     const currentToken = tokens[index];
-    const newTokens: Token[] = [];
+    const newTokens: any[] = [];
 
     if (currentToken.type !== "html_block") {
       continue;
@@ -483,7 +479,7 @@ function handleMathInHtml(
           type: "html_block",
           map: null,
           content: html_before_math,
-        } as Token);
+        } as any);
       }
 
       if (math) {
@@ -495,7 +491,7 @@ function handleMathInHtml(
           markup: mathMarkup,
           block: true,
           tag: "math",
-        } as Token);
+        } as any);
       }
 
       if (html_after_math) {
@@ -504,7 +500,7 @@ function handleMathInHtml(
           type: "html_block",
           map: null,
           content: html_after_math,
-        } as Token);
+        } as any);
       }
     }
 
@@ -528,7 +524,7 @@ export default function markdownItKatex(md: MarkdownIt, options: any) {
     return String.raw`${markup}${latex}${markup}`;
   };
 
-  const inlineRenderer = (tokens: readonly Token[], idx: number) => {
+  const inlineRenderer = (tokens: readonly any[], idx: number) => {
     return katexInline(tokens[idx].markup, tokens[idx].content);
   };
 
@@ -536,7 +532,7 @@ export default function markdownItKatex(md: MarkdownIt, options: any) {
     return String.raw`<div data-type="mathKatexBlock">${latex}</div>`;
   };
 
-  const blockRenderer = (tokens: readonly Token[], idx: number) => {
+  const blockRenderer = (tokens: readonly any[], idx: number) => {
     return `${katexBlockRenderer(tokens[idx].markup, tokens[idx].content)}\n`;
   };
 
