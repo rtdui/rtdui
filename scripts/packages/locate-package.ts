@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import { getPackageDir } from "./get-package-dir";
 import { getPath } from "../utils/get-path";
 
+/** 通过包名定位其路径 */
 export async function locatePackage(packageName: string) {
   const packagePath = path.join(
     getPath("packages"),

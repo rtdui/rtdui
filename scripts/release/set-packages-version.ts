@@ -11,18 +11,18 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
       if (packageName.includes("@rtdui/")) {
         current.peerDependencies[packageName] = version;
       }
-      // peerDependencies中的react和react-dom支持v19
+      // peerDependencies中的react和react-dom最低支持v19
       if (
         packageName === "react" &&
-        current.peerDependencies.react !== "^18.x || ^19.x"
+        current.peerDependencies.react !== ">=19.0.0"
       ) {
-        current.peerDependencies.react = "^18.x || ^19.x";
+        current.peerDependencies.react = ">=19.0.0";
       }
       if (
         packageName === "react-dom" &&
-        current.peerDependencies["react-dom"] !== "^18.x || ^19.x"
+        current.peerDependencies["react-dom"] !== ">=19.0.0"
       ) {
-        current.peerDependencies["react-dom"] = "^18.x || ^19.x";
+        current.peerDependencies["react-dom"] = ">=19.0.0";
       }
     });
   }
@@ -47,16 +47,16 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
 }
 
 export async function setPackagesVersion(version: string) {
-  const src = getPath("packages");
+  const packagesPath = getPath("packages");
 
-  const folders = (await fs.readdir(src)).filter((folder) =>
-    fs.pathExistsSync(path.join(src, folder, "package.json")),
+  const folders = (await fs.readdir(packagesPath)).filter((folder) =>
+    fs.pathExistsSync(path.join(packagesPath, folder, "package.json")),
   );
 
   await Promise.all(
     folders.map((folder) =>
       writeVersionToPackageJson(
-        path.join(src, folder, "package.json"),
+        path.join(packagesPath, folder, "package.json"),
         version,
       ),
     ),

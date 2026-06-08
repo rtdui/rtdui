@@ -8,6 +8,7 @@ export interface Package {
   packageJson: PackageJson;
 }
 
+/** 得到 ./packages 目录下的所有包 */
 export function getPackagesList() {
   const basePath = path.resolve("./packages");
   const srcPaths = fs.readdirSync(basePath);

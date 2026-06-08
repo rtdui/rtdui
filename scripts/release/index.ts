@@ -28,6 +28,14 @@ const { argv }: { argv: any } = yargs(hideBin(process.argv))
     description: "Tag",
   });
 
+/**
+ * 步骤：
+ *  1. 执行 `npm i` 安装依赖
+ *  2. build all packages
+ *  3. 更新版本号
+ *  4. 每个包独立发布到NPM
+ *  5. Git提交并推送到远程
+ */
 async function release() {
   const status = await git.status();
 
@@ -38,25 +46,24 @@ async function release() {
 
   logger.log("Releasing all packages");
 
+  // 1.
+  await execa("npm", ["i"]);
+  // 2.
+  await buildAllPackages();
+  logger.success("All packages have been built successfully");
+  // 3.
   const incrementedVersion = getNextVersion(packageJson.version, {
     type: argv._[0],
     stage: argv.stage,
   });
-
   logger.log(`New version: ${chalk.cyan(incrementedVersion)}`);
   await setPackagesVersion(incrementedVersion);
-
-  await buildAllPackages();
-  logger.success("All packages have been built successfully");
-
+  // 4.
   logger.log("Publishing packages to npm");
-
   if (argv.stage && argv.tag === "latest") {
     argv.tag = "next";
   }
-
   const packages = getPackagesList();
-
   await Promise.all(
     packages.map((p) =>
       publishPackage({
@@ -66,10 +73,8 @@ async function release() {
       }),
     ),
   );
-
   logger.success("All packages have been published successfully");
-
-  await execa("npm", ["i"]);
+  // 5.
   await git.add([
     getPath("packages"),
     getPath("package.json"),

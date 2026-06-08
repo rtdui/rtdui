@@ -50,10 +50,10 @@ export default function Demo() {
     setData(makePersonData(50));
   }, []);
 
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
 
   const [rowSelection, setRowSelection] = useState({});
-  const [activedRowId, setActivedRowId] = useState("");
+  const [activedRowId, setActivedRowId] = useState<string | number>("");
 
   return (
     <div className="flex flex-col gap-4">

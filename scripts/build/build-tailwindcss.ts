@@ -1,7 +1,7 @@
 import path from "node:path";
 import { createLogger } from "../utils/signale";
 
-const logger = createLogger("build-css");
+const logger = createLogger("build-tailwindcss");
 
 /** 编译core包中的tailwind, core包含所有包的css */
 export async function buildTailwindCSS() {

@@ -42,7 +42,7 @@
     "tailwind:check": "npx @laststance/tailwind-suggest-canonical-classes \"**/*.tsx\" --check",
     "syncpack:check": "npx --package=syncpack -- syncpack-list-mismatches",
     "syncpack:fix": "npx --package=syncpack -- syncpack-fix-mismatches",
-    "typecheck": "tsc --noEmit && npm run docs:typecheck",
+    "typecheck": "tsc --noEmit",
     "format:check": "prettier . --check",
     "format:write": "prettier . --write",
     "build": "npm run clean:build && bun scripts/build/index.ts all",

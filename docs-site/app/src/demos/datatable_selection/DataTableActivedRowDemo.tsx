@@ -53,7 +53,7 @@ export default function Demo() {
     setData(makePersonData(50));
   }, []);
 
-  const ref = React.useRef<any>();
+  const ref = React.useRef<any>(null);
 
   return (
     <div className="flex flex-col gap-4">

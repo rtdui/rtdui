@@ -50,7 +50,7 @@ export default function Demo() {
     setData(makePersonData(50));
   }, []);
 
-  const ref = React.useRef<any>();
+  const ref = React.useRef<any>(null);
 
   const [rowSelection, setRowSelection] = React.useState({});
 

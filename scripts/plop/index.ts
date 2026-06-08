@@ -1,3 +1,7 @@
+/**
+ * 新建工作区包目录模板的脚本
+ */
+
 import fs from "fs-extra";
 import path from "node:path";
 import yargs from "yargs/yargs";
@@ -7,10 +11,12 @@ import { execa } from "execa";
 import { createLogger } from "../utils/signale";
 import { getPath } from "../utils/get-path";
 import rootPackageJson from "../../package.json";
+import { getPackageDir } from "../packages/get-package-dir";
 
 const logger = createLogger("plop");
 
 const { argv } = yargs(hideBin(process.argv)) as any;
+// 命令行参数中包名可以带`@rdtui/`前置也可以不带.
 const packageName = argv._[0];
 const description = argv._[1];
 
@@ -18,16 +24,17 @@ if (!packageName) {
   logger.error("Package name is missing");
   process.exit(1);
 }
+const packageDir = getPackageDir(packageName);
 
 if (!description) {
   logger.error("Package description is missing");
   process.exit(1);
 }
 
-const packagePath = path.join(getPath("packages"), packageName);
+const packagePath = path.join(getPath("packages"), packageDir);
 
 if (fs.existsSync(packagePath)) {
-  logger.error(`Package ${chalk.cyan(packageName)} already exists`);
+  logger.error(`Package dir ${chalk.cyan(packageDir)} already exists`);
   process.exit(1);
 }
 
@@ -57,10 +64,13 @@ const tsconfigBuild = fs.readFileSync(
 );
 
 function replacePlaceholders(content: string) {
-  return content
-    .replaceAll("{{package}}", packageName)
-    .replaceAll("{{description}}", description)
-    .replaceAll("{{version}}", rootPackageJson.version);
+  return (
+    content
+      .replaceAll("{{package}}", packageDir)
+      .replaceAll("{{description}}", description)
+      // 使用根目录下package.json中版本号作为模板中的版本好
+      .replaceAll("{{version}}", rootPackageJson.version)
+  );
 }
 
 fs.ensureDirSync(packagePath);
@@ -90,6 +100,6 @@ fs.writeFileSync(
   replacePlaceholders(tsconfigBuild),
 );
 
-logger.success(`Package ${chalk.cyan(packageName)} has been created`);
+logger.success(`Package dir ${chalk.cyan(packageDir)} has been created`);
 
 execa("npm", ["i"]);

@@ -1,3 +1,6 @@
+/**
+ * 某个包独立发布到NPM, 会造成工作区中包的版本不一致, 因此项目中未使用
+ */
 import fs from "fs-extra";
 import path from "node:path";
 import yargs from "yargs/yargs";

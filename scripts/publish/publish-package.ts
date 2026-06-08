@@ -10,6 +10,9 @@ interface PublishPackage {
   tag: string;
 }
 
+/**
+ * 发布包到NPM, 会使用~/.npmrc中的authToken
+ */
 export async function publishPackage({
   packagePath,
   name,

@@ -1,5 +1,11 @@
 import { getPackagesList, type Package } from "../packages/get-packages-list";
 
+/**
+ * 根据依赖关系获取工作区中包的构建顺序
+ * @param packages 工作区中的包列表
+ * @param pkg 需要设置的包
+ * @param order 记录各包的顺序的对象, -1 最优先(私有包), 0 不依赖工作区中其它的包, 每依赖工作区中其它包加1
+ */
 export async function getPackageBuildOrder(
   packages: Package[],
   pkg: Package,
@@ -43,6 +49,11 @@ export async function getPackageBuildOrder(
     );
 }
 
+/**
+ * 根据依赖关系获取工作区中所有包的构建顺序
+ * @param packages 工作区中的包列表
+ * @param order 记录各包的顺序的对象, 可以传参手动设置某些包的顺序. -1 最优先(私有包), 0 不依赖工作区中的包, 每依赖工作区中其它包加1
+ */
 export async function getPackagesBuildOrder(
   packages?: Package[],
   order: Record<string, number> = {},
