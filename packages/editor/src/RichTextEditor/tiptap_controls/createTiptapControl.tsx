@@ -1,6 +1,6 @@
 import type { ControlBaseProps } from "./ControlBase";
 import { ControlBase } from "./ControlBase";
-import { useEditorContext } from "./controlContext";
+import { useEditorContext } from "./context";
 import type { ControlLabels } from "./constrolLabels";
 
 interface CreateControlOptions {

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { IconSelector, type IconProps } from "@tabler/icons-react";
 import type { ThemeSize } from "../../theme.types";
 
-function getIconSize(size: ThemeSize) {
+function getIconSize(size: ThemeSize | number) {
   switch (size) {
     case "xs":
       return 14;
@@ -20,7 +20,7 @@ function getIconSize(size: ThemeSize) {
 }
 export interface ComboboxChevronProps extends IconProps {
   error?: React.ReactNode;
-  size?: ThemeSize;
+  size?: ThemeSize | number;
 }
 
 export function ComboboxChevron(props: ComboboxChevronProps) {

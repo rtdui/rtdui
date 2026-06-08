@@ -44,9 +44,10 @@ export type SignaturePadHandle = {
 };
 
 export interface SignaturePadProps extends Omit<
-  React.ComponentProps<"canvas">,
+  React.ComponentPropsWithoutRef<"canvas">,
   "width" | "height"
 > {
+  ref?: React.Ref<SignaturePadHandle>;
   /** canvas width
    * @default 300
    */

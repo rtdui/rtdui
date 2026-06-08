@@ -1,5 +1,5 @@
 import type { Editor as EditorType } from "@tiptap/react";
-import { EditorContext } from "./controlContext";
+import { EditorContext } from "./context";
 import * as controls from "./tiptapControls";
 import { ControlsGroup } from "./ControlsGroup";
 import { ToolbarControl } from "./ToolbarControl";
