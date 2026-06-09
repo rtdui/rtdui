@@ -45,8 +45,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@rtdui/hooks": "5.1.0",
-    "@rtdui/core": "5.1.0",
+    "@rtdui/hooks": "workspace:*",
+    "@rtdui/core": "workspace:*",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   }

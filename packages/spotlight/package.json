@@ -38,8 +38,8 @@
     "*.css"
   ],
   "peerDependencies": {
-    "@rtdui/core": "5.1.0",
-    "@rtdui/hooks": "5.1.0",
+    "@rtdui/core": "workspace:*",
+    "@rtdui/hooks": "workspace:*",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   }
