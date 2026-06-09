@@ -9,5 +9,11 @@ declare module "*.gif";
 declare module "*.woff";
 declare module "*.woff2";
 declare module "*.md";
-declare module "*.mdx";
 declare module "*.css";
+
+// 支持在tsx中导入.mdx
+declare module "*.mdx" {
+  let MDXComponent: (props: any) => JSX.Element;
+  export const frontmatter: any;
+  export default MDXComponent;
+}

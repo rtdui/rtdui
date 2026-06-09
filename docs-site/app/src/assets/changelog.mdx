@@ -1,3 +1,23 @@
+# Version 6.0.0 (2026-6-09)
+
+## **Breaking change**
+
+Rtdui v6 requires React v19. All components have been rewritten using the new standard of React v19:
+
+- All components no longer use `forwardRef`, and are replaced with the new `ref` property
+- All context render `<Context>` as a provider instead of `<Context.Provider>`
+- Instead of using useMemo/useCallback/React.Memo, rely on the React Compiler for memoization.
+
+## Chore
+
+- Using Bun package management, it implements the `workspace` and `catalog` protocols, simplifying the version management of dependent packages.
+  Now, to install dependencies for project must use `bun i`
+- Updated some dependent packages
+
+## Components changed
+
+- [@rtdui/datatable] Optimized the cell borders, and improved user experience in sorting, filtering, and pin column usage
+
 # Version 5.1.0 (2025-3-18)
 
 - [@rtdui/shiki-highlight] new package for code highlight by shiki
