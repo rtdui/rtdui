@@ -7,6 +7,7 @@ export default function Demo() {
       <Rating size="sm" defaultValue={2} />
       <Rating size="md" defaultValue={2} />
       <Rating size="lg" defaultValue={2} />
+      <Rating size="xl" defaultValue={2} />
     </div>
   );
 }

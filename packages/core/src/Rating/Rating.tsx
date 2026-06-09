@@ -22,7 +22,7 @@ export interface RatingProps extends Omit<
   count?: number;
   /**
    * 是否可评半级
-   * @default 5
+   * @default false
    */
   half?: boolean;
 
@@ -48,8 +48,8 @@ export function Rating(props: RatingProps) {
   const {
     ref,
     name,
-    half,
-    size,
+    half = false,
+    size = "md",
     star = "star2",
     value: valueProp,
     defaultValue,
@@ -68,50 +68,52 @@ export function Rating(props: RatingProps) {
   const arr = Array.from({ length: half ? 10 : 5 });
 
   return (
-    <div
-      ref={ref}
-      className={clsx(
-        "rating",
-        {
-          "rating-xs": size === "xs",
-          "rating-sm": size === "sm",
-          "rating-md": size === "md",
-          "rating-lg": size === "lg",
-          "rating-xl": size === "xl",
-          "rating-half": half,
-        },
-        className,
-      )}
-    >
+    <>
       {/* 该hidden用于当组件作为form的控件时自动上传星级的值 */}
       <input type="hidden" name={name} value={value} />
-      {/* 星级 */}
-      {/* 该radio用于清空星级 */}
-      <input
-        type="radio"
-        className="rating-hidden"
-        checked={value === 0}
-        onChange={(e) => setValue(0)}
-      />
-      {arr.map((_, index) => (
+      <div
+        ref={ref}
+        className={clsx(
+          "rating",
+          {
+            "rating-xs": size === "xs",
+            "rating-sm": size === "sm",
+            "rating-md": size === "md",
+            "rating-lg": size === "lg",
+            "rating-xl": size === "xl",
+            "rating-half": half,
+          },
+          className,
+        )}
+      >
+        {/* 该radio用于清空星级 */}
         <input
-          key={index}
           type="radio"
-          className={clsx(
-            "mask",
-            {
-              "mask-star": star === "star",
-              "mask-star-2": star === "star2",
-              "mask-heart": star === "heart",
-              "mask-half-1": half && index % 2 === 0,
-              "mask-half-2": half && index % 2 === 1,
-            },
-            slots?.star,
-          )}
-          checked={value === index + 1}
-          onChange={(e) => setValue(index + 1)}
+          className="rating-hidden"
+          checked={value === 0}
+          onChange={(e) => setValue(0)}
         />
-      ))}
-    </div>
+        {/* 星级 */}
+        {arr.map((_, index) => (
+          <input
+            key={index}
+            type="radio"
+            className={clsx(
+              "mask",
+              {
+                "mask-star": star === "star",
+                "mask-star-2": star === "star2",
+                "mask-heart": star === "heart",
+                "mask-half-1": half && index % 2 === 0,
+                "mask-half-2": half && index % 2 === 1,
+              },
+              slots?.star,
+            )}
+            checked={value === index + 1}
+            onChange={(e) => setValue(index + 1)}
+          />
+        ))}
+      </div>
+    </>
   );
 }
