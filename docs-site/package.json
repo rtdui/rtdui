@@ -15,18 +15,18 @@
     "@react-router/fs-routes": "^7.17.0",
     "@react-router/node": "^7.17.0",
     "@react-router/remix-routes-option-adapter": "^7.17.0",
-    "@rtdui/core": "5.1.0",
-    "@rtdui/datatable": "5.1.0",
-    "@rtdui/dates": "5.1.0",
-    "@rtdui/dialogs": "5.1.0",
-    "@rtdui/editor": "5.1.0",
-    "@rtdui/hooks": "5.1.0",
-    "@rtdui/md-editor": "5.1.0",
-    "@rtdui/notifications": "5.1.0",
-    "@rtdui/qr-code": "5.1.0",
-    "@rtdui/shiki-highlight": "5.1.0",
-    "@rtdui/signature-pad": "5.1.0",
-    "@rtdui/spotlight": "5.1.0",
+    "@rtdui/core": "workspace:*",
+    "@rtdui/datatable": "workspace:*",
+    "@rtdui/dates": "workspace:*",
+    "@rtdui/dialogs": "workspace:*",
+    "@rtdui/editor": "workspace:*",
+    "@rtdui/hooks": "workspace:*",
+    "@rtdui/md-editor": "workspace:*",
+    "@rtdui/notifications": "workspace:*",
+    "@rtdui/qr-code": "workspace:*",
+    "@rtdui/shiki-highlight": "workspace:*",
+    "@rtdui/signature-pad": "workspace:*",
+    "@rtdui/spotlight": "workspace:*",
     "@tabler/icons-react": "catalog:",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",
@@ -35,8 +35,8 @@
     "lucide-react": "catalog:",
     "react-i18next": "^14.1.0",
     "react-router": "^7.17.0",
-    "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@mdx-js/rollup": "catalog:",
@@ -59,8 +59,7 @@
     "remark-toc": "^9.0.0",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "vite": "^8.0.13",
-    "vite-tsconfig-paths": "^6.1.1"
+    "vite": "^8.0.13"
   },
   "engines": {
     "node": ">=20"

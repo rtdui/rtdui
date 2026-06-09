@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { reactRouter } from "@react-router/dev/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -81,10 +80,9 @@ export default defineConfig({
     }),
     tailwindcss(),
     reactRouter(),
-    tsconfigPaths({ projects: ["./tsconfig.json"] }),
   ],
   resolve: {
-    // tsconfigPaths: true, // vite v8引入的功能, 用于解析tsconfig.json中paths配置. 目前在Monorepo还不能替代vite-tsconfig-paths插件.
+    tsconfigPaths: true, // vite v8引入的功能, 用于解析tsconfig.json中paths配置.
   },
   server: { host: "0.0.0.0" },
 });
