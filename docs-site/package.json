@@ -41,7 +41,7 @@
   "devDependencies": {
     "@mdx-js/rollup": "catalog:",
     "@react-router/dev": "^7.17.0",
-    "@rtdui/tailwind-plugin": "5.1.0",
+    "@rtdui/tailwind-plugin": "workspace:*",
     "@shikijs/rehype": "^3.2.1",
     "@tailwindcss/typography": "catalog:",
     "@tailwindcss/vite": "catalog:",

@@ -102,4 +102,4 @@ fs.writeFileSync(
 
 logger.success(`Package dir ${chalk.cyan(packageDir)} has been created`);
 
-execa("npm", ["i"]);
+execa("bun", ["i"]);

@@ -8,9 +8,11 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
 
   if (current.peerDependencies) {
     Object.keys(current.peerDependencies).forEach((packageName) => {
-      if (packageName.includes("@rtdui/")) {
-        current.peerDependencies[packageName] = version;
-      }
+      // 使用bun的`workspace:*`协议无需手动修改工作区中包的版本号, 以下注释的代码不再需要
+      // if (packageName.includes("@rtdui/")) {
+      //   current.peerDependencies[packageName] = version;
+      // }
+
       // peerDependencies中的react和react-dom最低支持v19
       if (
         packageName === "react" &&
@@ -27,21 +29,23 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
     });
   }
 
-  if (current.dependencies) {
-    Object.keys(current.dependencies).forEach((packageName) => {
-      if (packageName.includes("@rtdui/")) {
-        current.dependencies[packageName] = version;
-      }
-    });
-  }
+  // 使用bun的`workspace:*`协议无需手动修改工作区中包的版本号, 以下注释的代码不再需要
 
-  if (current.devDependencies) {
-    Object.keys(current.devDependencies).forEach((packageName) => {
-      if (packageName.includes("@rtdui/")) {
-        current.devDependencies[packageName] = version;
-      }
-    });
-  }
+  // if (current.dependencies) {
+  //   Object.keys(current.dependencies).forEach((packageName) => {
+  //     if (packageName.includes("@rtdui/")) {
+  //       current.dependencies[packageName] = version;
+  //     }
+  //   });
+  // }
+
+  // if (current.devDependencies) {
+  //   Object.keys(current.devDependencies).forEach((packageName) => {
+  //     if (packageName.includes("@rtdui/")) {
+  //       current.devDependencies[packageName] = version;
+  //     }
+  //   });
+  // }
 
   await fs.writeJSON(filePath, current, { spaces: 2 });
 }

@@ -30,7 +30,7 @@ const { argv }: { argv: any } = yargs(hideBin(process.argv))
 
 /**
  * 步骤：
- *  1. 执行 `npm i` 安装依赖
+ *  1. 执行 `bun i` 安装依赖
  *  2. build all packages
  *  3. 更新版本号
  *  4. 每个包独立发布到NPM
@@ -47,7 +47,7 @@ async function release() {
   logger.log("Releasing all packages");
 
   // 1.
-  await execa("npm", ["i"]);
+  await execa("bun", ["i"]);
   // 2.
   await buildAllPackages();
   logger.success("All packages have been built successfully");
