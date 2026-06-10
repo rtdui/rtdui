@@ -47,6 +47,6 @@
     "@mantine/hooks": "^9.2.1"
   },
   "peerDependencies": {
-    "react": ">=19.0.0"
+    "react": "catalog:"
   }
 }

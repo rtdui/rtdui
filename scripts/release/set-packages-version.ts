@@ -2,34 +2,34 @@ import path from "node:path";
 import fs from "fs-extra";
 import { getPath } from "../utils/get-path";
 
-async function writeVersionToPackageJson(filePath: string, version: string) {
-  const current = await fs.readJSON(filePath);
-  current.version = version;
+async function writeVersionToPackageJson(
+  packageJsonPath: string,
+  version: string,
+) {
+  const packageJson = await fs.readJSON(packageJsonPath);
+  packageJson.version = version;
 
-  if (current.peerDependencies) {
-    Object.keys(current.peerDependencies).forEach((packageName) => {
-      // 使用bun的`workspace:*`协议无需手动修改工作区中包的版本号, 以下注释的代码不再需要
-      // if (packageName.includes("@rtdui/")) {
-      //   current.peerDependencies[packageName] = version;
-      // }
-
-      // peerDependencies中的react和react-dom最低支持v19
-      if (
-        packageName === "react" &&
-        current.peerDependencies.react !== ">=19.0.0"
-      ) {
-        current.peerDependencies.react = ">=19.0.0";
-      }
-      if (
-        packageName === "react-dom" &&
-        current.peerDependencies["react-dom"] !== ">=19.0.0"
-      ) {
-        current.peerDependencies["react-dom"] = ">=19.0.0";
-      }
-    });
-  }
-
-  // 使用bun的`workspace:*`协议无需手动修改工作区中包的版本号, 以下注释的代码不再需要
+  //#region 使用bun的`workspace:*`和`catalog:`协议无需手动设置版本号, 此区域的代码不再需要
+  // if (current.peerDependencies) {
+  //   Object.keys(current.peerDependencies).forEach((packageName) => {
+  //     if (packageName.includes("@rtdui/")) {
+  //       current.peerDependencies[packageName] = version;
+  //     }
+  //     // peerDependencies中的react和react-dom最低支持v19.2
+  //     if (
+  //       packageName === "react" &&
+  //       current.peerDependencies.react !== "^19.2.0"
+  //     ) {
+  //       current.peerDependencies.react = "^19.2.0";
+  //     }
+  //     if (
+  //       packageName === "react-dom" &&
+  //       current.peerDependencies["react-dom"] !== "^19.2.0"
+  //     ) {
+  //       current.peerDependencies["react-dom"] = "^19.2.0";
+  //     }
+  //   });
+  // }
 
   // if (current.dependencies) {
   //   Object.keys(current.dependencies).forEach((packageName) => {
@@ -46,8 +46,9 @@ async function writeVersionToPackageJson(filePath: string, version: string) {
   //     }
   //   });
   // }
+  //#endregion
 
-  await fs.writeJSON(filePath, current, { spaces: 2 });
+  await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 }
 
 export async function setPackagesVersion(version: string) {
