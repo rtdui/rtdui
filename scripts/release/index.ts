@@ -52,12 +52,12 @@ async function release() {
   await buildAllPackages();
   logger.success("All packages have been built successfully");
   // 3.
-  const incrementedVersion = getNextVersion(packageJson.version, {
+  const newVersion = getNextVersion(packageJson.version, {
     type: argv._[0],
     stage: argv.stage,
   });
-  logger.log(`New version: ${chalk.cyan(incrementedVersion)}`);
-  await setPackagesVersion(incrementedVersion);
+  logger.log(`New version: ${chalk.cyan(newVersion)}`);
+  await setPackagesVersion(newVersion);
   // 4.
   logger.log("Publishing packages to npm");
   if (argv.stage && argv.tag === "latest") {
@@ -67,8 +67,8 @@ async function release() {
   await Promise.all(
     packages.map((p) =>
       publishPackage({
-        packagePath: p!.path,
-        name: p!.packageJson.name!,
+        packagePath: p.path,
+        name: p.packageJson.name!,
         tag: argv.tag,
       }),
     ),
@@ -80,7 +80,7 @@ async function release() {
     getPath("package.json"),
     getPath("docs-site/package.json"),
   ]);
-  await git.commit(`[release] Version: ${incrementedVersion}`);
+  await git.commit(`[release] Version: ${newVersion}`);
   await git.push();
 
   // openGithubRelease(incrementedVersion);
