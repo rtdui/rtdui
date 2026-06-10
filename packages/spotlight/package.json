@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/spotlight",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "description": "A search center of your application",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
