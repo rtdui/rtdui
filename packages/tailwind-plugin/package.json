@@ -27,6 +27,9 @@
     "type": "git",
     "directory": "packages/tailwind-plugin"
   },
+  "bugs": {
+    "url": "https://github.com/rtdui/rtdui/issues"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
