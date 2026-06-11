@@ -54,7 +54,6 @@
     "build": "bun scripts/build/index.ts all",
     "clean": "npm run clean:build && npm run clean:docs",
     "clean:build": "npx rimraf --glob ./packages/*/{esm,cjs,lib,node_modules} ./packages/*/styles.css ./packages/*/styles.layer.css ./packages/**/*.tsbuildinfo",
-    "clean:root": "npx rimraf node_modules",
     "clean:docs": "npx rimraf --glob ./docs/app/.docgen/*",
     "clean:tsbuildinfo": "npx rimraf --glob ./packages/**/*.tsbuildinfo",
     "clean:node_modules": "npx rimraf --glob ./**/node_modules",
