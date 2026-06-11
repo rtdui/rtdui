@@ -42,9 +42,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@shikijs/colorized-brackets": "^3.2.1",
-    "@shikijs/transformers": "^3.2.1",
-    "shiki": "catalog:"
+    "@shikijs/colorized-brackets": "catalog:",
+    "@shikijs/transformers": "catalog:",
+    "@shikijs/types": "catalog:",
+    "shiki": "catalog:",
+    "@tabler/icons-react": "catalog:"
   },
   "peerDependencies": {
     "@rtdui/core": "workspace:*",

@@ -238,7 +238,7 @@ export function getStorage(key: string) {
  * @see https://github.com/vercel/ms/blob/master/src/index.ts
  */
 export function setStorage(key: string, value: string, expiresIn = "1 days") {
-  const expiresAt = Date.now() + ms(expiresIn); // 过期时间点
+  const expiresAt = Date.now() + ms(expiresIn as ms.StringValue); // 过期时间点
   localStorage.setItem(key, value);
   localStorage.setItem(`${key}_expiresAt`, expiresAt.toString());
 }
