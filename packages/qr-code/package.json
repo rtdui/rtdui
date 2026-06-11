@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/qr-code",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "React QR Code component",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
