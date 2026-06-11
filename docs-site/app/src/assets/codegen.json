@@ -781,7 +781,7 @@
   },
   {
     "name": "RatingSizeDemo",
-    "code": "import { Rating } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4 items-start\">\n      <Rating size=\"xs\" defaultValue={2} />\n      <Rating size=\"sm\" defaultValue={2} />\n      <Rating size=\"md\" defaultValue={2} />\n      <Rating size=\"lg\" defaultValue={2} />\n    </div>\n  );\n}\nDemo.displayName = \"RatingSizeDemo\";\n"
+    "code": "import { Rating } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4 items-start\">\n      <Rating size=\"xs\" defaultValue={2} />\n      <Rating size=\"sm\" defaultValue={2} />\n      <Rating size=\"md\" defaultValue={2} />\n      <Rating size=\"lg\" defaultValue={2} />\n      <Rating size=\"xl\" defaultValue={2} />\n    </div>\n  );\n}\nDemo.displayName = \"RatingSizeDemo\";\n"
   },
   {
     "name": "RatingStarDemo",

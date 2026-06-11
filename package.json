@@ -39,7 +39,7 @@
   "license": "MIT",
   "scripts": {
     "docs-site:dev": "npm run docs:docgen && cd docs-site && npm run dev",
-    "docs-site:build": "npm run clean:build && bun install && npm run build && npm run docs:docgen && cd docs-site && npm run build",
+    "docs-site:build": "npm run clean:build && bun install --linker hoisted && npm run build && npm run docs:docgen && cd docs-site && npm run build",
     "plop": "bun scripts/plop/index.ts",
     "sync-branches": "bun scripts/sync-branches.sh",
     "outdated": "bun outdated -r",
