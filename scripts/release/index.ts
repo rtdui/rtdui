@@ -58,8 +58,6 @@ async function release() {
   });
   logger.log(`New version: ${chalk.cyan(newVersion)}`);
   await setPackagesVersion(newVersion);
-  // 1-2. 重写安装以更新 `workspace:*` 协议
-  await execa("bun", ["i"]);
   // 4.
   logger.log("Publishing packages to npm");
   if (argv.stage && argv.tag === "latest") {

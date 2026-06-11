@@ -44,7 +44,7 @@
   "dependencies": {
     "@codemirror/lang-markdown": "^6.2.5",
     "@codemirror/language-data": "^6.5.1",
-    "@rtdui/shiki-highlight": "5.1.0",
+    "@rtdui/shiki-highlight": "workspace:*",
     "@shikijs/rehype": "^3.2.1",
     "allotment": "^1.20.2",
     "codemirror": "^6.0.1",
