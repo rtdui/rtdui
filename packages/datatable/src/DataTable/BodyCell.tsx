@@ -9,7 +9,7 @@ export interface BodyCellProps {
   enableGrouping: boolean;
   cell: Cell<any, any>;
   scrollingTrigger: boolean;
-  changesRef: React.MutableRefObject<any>;
+  changesRef: React.RefObject<any>;
   showBorder?: boolean;
 }
 export function BodyCell(props: BodyCellProps) {

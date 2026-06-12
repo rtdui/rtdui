@@ -1,11 +1,11 @@
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
-export function createOptionalContext<ContextValue>(
-  initialValue: ContextValue | null = null,
+export function createOptionalContext<TValue>(
+  initialValue: TValue | null = null,
 ) {
-  const Context = createContext<ContextValue | null>(initialValue);
+  const Context = createContext<TValue | null>(initialValue);
 
-  const useOptionalContext = () => useContext(Context);
+  const useOptionalContext = () => use(Context);
 
   return [Context, useOptionalContext] as const;
 }
