@@ -1,7 +1,7 @@
-import { createContext } from "react";
 import type { DayOfWeek, Locale } from "../../types";
+import { createOptionalContext } from "@rtdui/core";
 
-export interface DatesProviderValue {
+export interface DatesContextValue {
   locale?: Locale;
   timezone: string | null;
   firstDayOfWeek: DayOfWeek;
@@ -10,9 +10,7 @@ export interface DatesProviderValue {
   consistentWeeks: boolean;
 }
 
-export type DatesProviderSettings = Partial<DatesProviderValue>;
-
-export const DATES_PROVIDER_DEFAULT_SETTINGS: DatesProviderValue = {
+export const DATES_CONTEXT_DEFAULT_VALUE: DatesContextValue = {
   locale: undefined,
   timezone: null,
   firstDayOfWeek: 1,
@@ -21,21 +19,20 @@ export const DATES_PROVIDER_DEFAULT_SETTINGS: DatesProviderValue = {
   consistentWeeks: false,
 };
 
-export const DatesProviderContext = createContext(
-  DATES_PROVIDER_DEFAULT_SETTINGS,
+export const [DatesContext, useDateContext] = createOptionalContext(
+  DATES_CONTEXT_DEFAULT_VALUE,
 );
 
+export type DatesContextSetting = Partial<DatesContextValue>;
 export interface DatesProviderProps {
-  settings: DatesProviderSettings;
+  settings: DatesContextSetting;
   children?: React.ReactNode;
 }
 
 export function DatesProvider({ settings, children }: DatesProviderProps) {
   return (
-    <DatesProviderContext
-      value={{ ...DATES_PROVIDER_DEFAULT_SETTINGS, ...settings }}
-    >
+    <DatesContext value={{ ...DATES_CONTEXT_DEFAULT_VALUE, ...settings }}>
       {children}
-    </DatesProviderContext>
+    </DatesContext>
   );
 }

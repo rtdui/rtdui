@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import type { DayOfWeek, Locale } from "../../types";
-import { DatesProviderContext } from "./DatesProvider";
+import { useDateContext } from "./DatesProvider";
 
 export function useDatesContext() {
-  const ctx = useContext(DatesProviderContext);
+  const ctx = useDateContext()!;
   const getLocale = (input?: Locale) => input || ctx.locale;
 
   const getTimezone = (input?: string) => input || ctx.timezone || undefined;
