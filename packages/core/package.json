@@ -1,6 +1,6 @@
 {
   "name": "@rtdui/core",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "React components library focused on usability, accessibility and developer experience",
   "types": "./lib/index.d.ts",
   "main": "./cjs/index.cjs",
