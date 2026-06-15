@@ -19571,7 +19571,7 @@
         "name": "changesRef",
         "required": true,
         "type": {
-          "name": "MutableRefObject<any>"
+          "name": "RefObject<any>"
         }
       },
       "enableGrouping": {
@@ -20005,6 +20005,15 @@
         "required": true,
         "type": {
           "name": "Header<any, any>"
+        }
+      },
+      "initPinToLeft": {
+        "defaultValue": null,
+        "description": "",
+        "name": "initPinToLeft",
+        "required": false,
+        "type": {
+          "name": "string[] | undefined"
         }
       },
       "scrollingTrigger": {
@@ -27121,15 +27130,15 @@
         "name": "settings",
         "required": true,
         "type": {
-          "name": "Partial<DatesProviderValue>"
+          "name": "Partial<DatesContextValue>"
         }
       }
     }
   },
-  "DatesProviderContext": {
+  "DatesContext": {
     "filePath": "D:/sources/github/rtdui/packages/dates/src/components/DatesProvider/DatesProvider.tsx",
     "description": "",
-    "displayName": "DatesProviderContext",
+    "displayName": "DatesContext",
     "props": {}
   },
   "DateTimePickerInput": {

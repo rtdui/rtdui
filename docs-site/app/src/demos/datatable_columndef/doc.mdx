@@ -72,7 +72,13 @@ interface ColumnDef {
   }) => unknown; // 单元格的显示或编辑组件
 
   /** 列的额外元数据 */
-  meta?: { align?: "right" | "center"; showFilterList?: boolean };
+  meta?: {
+    align?: "left" | "center" | "right";
+    showFilterList?: boolean;
+    expandable?: boolean; // 树形表格时, 该列作为展开列
+    pinToLeft?: boolean; // 该列初始固定到左侧
+    pinToRight?: boolean; // 该列初始固定到右侧
+  };
 
   /** Pinning功能: */
   enablePinning?: boolean; // 列是否可以置顶并冻结, 默认true
@@ -121,7 +127,7 @@ interface ColumnDef {
   // - "text"(速度快,但包含数字会不精确)
   // - "datetime"(专用于Date类型)
   // - "basic" js默认排序
-  sortingFn?: "auto" | SortingFn | BuiltInSortingFns;
+  sortingFn?: "auto" | SortingFn | BuiltInSortingFns; // 支持"pinyin"
 
   /** Grouping功能: */
   enableGrouping?: boolean; // 列是否可以分组, 默认为true
