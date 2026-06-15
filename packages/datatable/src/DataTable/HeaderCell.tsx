@@ -28,6 +28,11 @@ export interface HeaderCellProps {
   header: Header<any, any>;
   table: Table<any>;
   scrollingTrigger: boolean;
+  /**
+   * 初始的pin列的二元元组
+   * 格式: [lefts,rights]
+   */
+  initPins?: [string[], string[]];
 }
 export function HeaderCell(props: HeaderCellProps) {
   const {
@@ -38,6 +43,7 @@ export function HeaderCell(props: HeaderCellProps) {
     showHeader,
     debouncedWait,
     scrollingTrigger,
+    initPins,
   } = props;
   const { getState, setColumnOrder } = table;
   const { columnOrder } = getState();
@@ -83,6 +89,8 @@ export function HeaderCell(props: HeaderCellProps) {
 
   const uniqueValueFilterPopoverId = useId();
   const uniqueValueFilterPopoverAnchor = `--${useId()}`;
+
+  console.log(initPins?.flat());
 
   return (
     <th
@@ -134,115 +142,123 @@ export function HeaderCell(props: HeaderCellProps) {
                 )}
               >
                 {flexRender(column.columnDef.header, header.getContext())}
-                <div
-                  className={clsx(
-                    "columnhead-toolbar flex items-center justify-center gap-0.5 opacity-0 group-hover:opacity-100",
-                    {
-                      "opacity-100":
-                        column.getIsSorted() ||
-                        column.getFilterValue() ||
-                        column.getIsPinned() === "left",
-                    },
-                  )}
-                >
+
+                {/* 排除组列 */}
+                {column.columns.length === 0 && (
                   <div
                     className={clsx(
-                      "sortings relative w-3.5 opacity-0 group-hover:opacity-100",
+                      "columnhead-toolbar flex items-center justify-center gap-0.5 opacity-0 group-hover:opacity-100",
                       {
-                        "opacity-100": column.getIsSorted(),
+                        "opacity-100":
+                          column.getIsSorted() ||
+                          column.getFilterValue() ||
+                          column.getIsPinned() === "left",
                       },
                     )}
-                    title="排序"
-                    onClick={column.getToggleSortingHandler()}
                   >
-                    <IconCaretUpFilled
-                      size={14}
-                      className={clsx("absolute -top-2", {
-                        "fill-info": column.getIsSorted() === "asc",
-                      })}
-                    />
-                    <IconCaretDownFilled
-                      size={14}
-                      className={clsx("absolute -top-0.75", {
-                        "fill-info": column.getIsSorted() === "desc",
-                      })}
-                    />
-                    {column.getSortIndex() > 0 && (
-                      <sub className="absolute left-3 top-1">
-                        {column.getSortIndex() + 1}
-                      </sub>
-                    )}
-                  </div>
-                  <div
-                    className={clsx(
-                      "filter-list relative opacity-0 group-hover:opacity-100",
-                      {
-                        "opacity-100": column.getFilterValue(),
-                      },
-                    )}
-                    title="筛选"
-                  >
-                    {column.getCanFilter() && (
-                      <>
-                        <button
-                          popoverTarget={uniqueValueFilterPopoverId}
-                          style={
-                            {
-                              anchorName: uniqueValueFilterPopoverAnchor,
-                            } as React.CSSProperties
-                          }
-                        >
-                          {column.getFilterValue() ? (
-                            <IconFilterFilled
-                              size={14}
-                              color="var(--color-info)"
-                              className="translate-y-0.75"
-                            />
-                          ) : (
-                            <IconFilter
-                              size={14}
-                              className="translate-y-0.75"
-                            />
-                          )}
-                        </button>
-                        <UniqueValueFilterPopover
-                          id={uniqueValueFilterPopoverId}
-                          anchor={uniqueValueFilterPopoverAnchor}
-                          column={column}
-                          table={table}
-                          debouncedWait={debouncedWait!}
-                        />
-                      </>
-                    )}
-                  </div>
-                  <div
-                    className={clsx(
-                      "pin-left relative opacity-0 group-hover:opacity-100",
-                      {
-                        "opacity-100": !!column.getIsPinned(),
-                      },
-                    )}
-                    title="固定"
-                    onClick={() => {
-                      if (column.getIsPinned()) {
-                        // 复原
-                        column.pin(false);
-                      } else {
-                        column.pin("left");
-                      }
-                    }}
-                  >
-                    {column.getIsPinned() ? (
-                      <IconPinnedFilled
+                    <div
+                      className={clsx(
+                        "sortings relative w-3.5 opacity-0 group-hover:opacity-100",
+                        {
+                          "opacity-100": column.getIsSorted(),
+                        },
+                      )}
+                      title="排序"
+                      onClick={column.getToggleSortingHandler()}
+                    >
+                      <IconCaretUpFilled
                         size={14}
-                        color="var(--color-info)"
-                        className="translate-y-0.5"
+                        className={clsx("absolute -top-2", {
+                          "fill-info": column.getIsSorted() === "asc",
+                        })}
                       />
-                    ) : (
-                      <IconPin size={14} className="translate-y-0.5" />
-                    )}
+                      <IconCaretDownFilled
+                        size={14}
+                        className={clsx("absolute -top-0.75", {
+                          "fill-info": column.getIsSorted() === "desc",
+                        })}
+                      />
+                      {column.getSortIndex() > 0 && (
+                        <sub className="absolute left-3 top-1">
+                          {column.getSortIndex() + 1}
+                        </sub>
+                      )}
+                    </div>
+                    <div
+                      className={clsx(
+                        "filter-list relative opacity-0 group-hover:opacity-100",
+                        {
+                          "opacity-100": column.getFilterValue(),
+                        },
+                      )}
+                      title="筛选"
+                    >
+                      {column.getCanFilter() && (
+                        <>
+                          <button
+                            popoverTarget={uniqueValueFilterPopoverId}
+                            style={
+                              {
+                                anchorName: uniqueValueFilterPopoverAnchor,
+                              } as React.CSSProperties
+                            }
+                          >
+                            {column.getFilterValue() ? (
+                              <IconFilterFilled
+                                size={14}
+                                color="var(--color-info)"
+                                className="translate-y-0.75"
+                              />
+                            ) : (
+                              <IconFilter
+                                size={14}
+                                className="translate-y-0.75"
+                              />
+                            )}
+                          </button>
+                          <UniqueValueFilterPopover
+                            id={uniqueValueFilterPopoverId}
+                            anchor={uniqueValueFilterPopoverAnchor}
+                            column={column}
+                            table={table}
+                            debouncedWait={debouncedWait!}
+                          />
+                        </>
+                      )}
+                    </div>
+                    <div
+                      className={clsx(
+                        "pin-left relative opacity-0 group-hover:opacity-100",
+                        {
+                          "opacity-100": column.getIsPinned(),
+                          "pointer-events-none": initPins
+                            ?.flat()
+                            .includes(column.id),
+                        },
+                      )}
+                      title="固定"
+                      onClick={() => {
+                        if (column.getIsPinned()) {
+                          // 复原
+                          column.pin(false);
+                        } else {
+                          column.pin("left");
+                        }
+                      }}
+                    >
+                      {!initPins?.flat().includes(column.id) &&
+                        (column.getIsPinned() ? (
+                          <IconPinnedFilled
+                            size={14}
+                            color="var(--color-info)"
+                            className="translate-y-0.5"
+                          />
+                        ) : (
+                          <IconPin size={14} className="translate-y-0.5" />
+                        ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           )}
