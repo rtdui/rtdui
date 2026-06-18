@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import path from "node:path";
 import createPlugin, { type PluginAPI } from "tailwindcss/plugin";
 
-module.exports = createPlugin((args: PluginAPI) => {
+export default createPlugin((args: PluginAPI) => {
   const { addBase, addComponents } = args;
 
   const themeCSS = fs.readFileSync(
