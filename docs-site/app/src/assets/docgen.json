@@ -20007,13 +20007,13 @@
           "name": "Header<any, any>"
         }
       },
-      "initPinToLeft": {
+      "initPins": {
         "defaultValue": null,
-        "description": "",
-        "name": "initPinToLeft",
+        "description": "初始的pin列的二元元组\n格式: [lefts,rights]",
+        "name": "initPins",
         "required": false,
         "type": {
-          "name": "string[] | undefined"
+          "name": "[string[], string[]] | undefined"
         }
       },
       "scrollingTrigger": {

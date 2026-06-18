@@ -4,7 +4,7 @@ import chalk from "chalk";
 import { createLogger } from "../utils/signale";
 import { locatePackage } from "../packages/locate-package";
 import { getPackageName } from "../packages/get-package-name";
-import { createPackageConfig } from "./rollup/create-package-config";
+import { createPackageConfig } from "./rolldown/create-package-config";
 import { compile } from "./compile";
 import { generateDts } from "./generate-dts";
 import { getBuildTime } from "./get-build-time";

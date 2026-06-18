@@ -12,9 +12,9 @@
   "dependencies": {
     "@faker-js/faker": "^10.4.0",
     "@mjackson/form-data-parser": "^0.5.1",
-    "@react-router/fs-routes": "^7.17.0",
-    "@react-router/node": "^7.17.0",
-    "@react-router/remix-routes-option-adapter": "^7.17.0",
+    "@react-router/fs-routes": "^8.0.0",
+    "@react-router/node": "^8.0.0",
+    "@react-router/remix-routes-option-adapter": "^8.0.0",
     "@rtdui/core": "workspace:*",
     "@rtdui/datatable": "workspace:*",
     "@rtdui/dates": "workspace:*",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@mdx-js/rollup": "catalog:",
-    "@react-router/dev": "^7.17.0",
+    "@react-router/dev": "^8.0.0",
     "@rtdui/tailwind-plugin": "workspace:*",
     "@shikijs/rehype": "catalog:",
     "@shikijs/colorized-brackets": "catalog:",
