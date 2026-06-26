@@ -40,6 +40,7 @@
     "access": "public"
   },
   "dependencies": {
+    "clsx": "catalog:",
     "signature_pad": "^5.0.0"
   },
   "peerDependencies": {

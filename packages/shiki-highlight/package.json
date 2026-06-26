@@ -45,8 +45,9 @@
     "@shikijs/colorized-brackets": "catalog:",
     "@shikijs/transformers": "catalog:",
     "@shikijs/types": "catalog:",
-    "shiki": "catalog:",
-    "@tabler/icons-react": "catalog:"
+    "@tabler/icons-react": "catalog:",
+    "clsx": "catalog:",
+    "shiki": "catalog:"
   },
   "peerDependencies": {
     "@rtdui/core": "workspace:*",

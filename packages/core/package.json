@@ -47,6 +47,7 @@
   "dependencies": {
     "@date-fns/tz": "catalog:",
     "@floating-ui/react": "catalog:",
+    "@floating-ui/react-dom": "catalog:",
     "@tabler/icons-react": "catalog:",
     "clsx": "catalog:",
     "colorjs.io": "^0.6.1",
@@ -58,7 +59,8 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "@types/react-transition-group": "^4.4.7"
+    "@types/react-transition-group": "^4.4.7",
+    "@rtdui/tailwind-plugin": "workspace:*"
   },
   "peerDependencies": {
     "@rtdui/hooks": "workspace:*",

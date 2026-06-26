@@ -46,6 +46,9 @@
   },
   "dependencies": {
     "@date-fns/tz": "catalog:",
+    "@tabler/icons-react": "catalog:",
+    "clsx": "catalog:",
+    "date-fns": "catalog:",
     "keen-slider": "^6.8.6"
   },
   "peerDependencies": {

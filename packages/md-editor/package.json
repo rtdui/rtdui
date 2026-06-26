@@ -42,13 +42,25 @@
     "access": "public"
   },
   "dependencies": {
+    "@codemirror/autocomplete": "^6.20.3",
+    "@codemirror/commands": "^6.10.4",
     "@codemirror/lang-markdown": "^6.2.5",
+    "@codemirror/language": "^6.12.4",
     "@codemirror/language-data": "^6.5.1",
+    "@codemirror/search": "^6.7.1",
+    "@codemirror/state": "^6.7.0",
+    "@codemirror/view": "^6.43.3",
+    "@lezer/highlight": "^1.2.3",
     "@rtdui/shiki-highlight": "workspace:*",
     "@shikijs/rehype": "catalog:",
+    "@tabler/icons-react": "catalog:",
     "allotment": "^1.20.2",
-    "codemirror": "^6.0.1",
-    "mermaid": "^11.15.0",
+    "clsx": "catalog:",
+    "codemirror": "^6.0.2",
+    "mermaid": "^11.16.0",
+    "mdast": "^3.0.0",
+    "hast": "^1.0.0",
+    "hast-util-sanitize": "^5.0.2",
     "rehype-katex": "^7.0.0",
     "rehype-raw": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
@@ -63,7 +75,12 @@
     "remark-toc": "^9.0.0",
     "select-files": "^1.0.1",
     "unified": "^11.0.4",
+    "unist-util-visit": "^5.1.0",
     "word-count": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/hast": "^3.0.4"
   },
   "peerDependencies": {
     "@rtdui/core": "workspace:*",

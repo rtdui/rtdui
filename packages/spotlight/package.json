@@ -37,6 +37,10 @@
   "sideEffects": [
     "*.css"
   ],
+  "dependencies": {
+    "@tabler/icons-react": "catalog:",
+    "clsx": "catalog:"
+  },
   "peerDependencies": {
     "@rtdui/core": "workspace:*",
     "@rtdui/hooks": "workspace:*",

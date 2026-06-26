@@ -51,6 +51,12 @@
     "@hocuspocus/extension-redis": "^4.3.0",
     "@hocuspocus/provider": "^4.3.0",
     "@hocuspocus/server": "^4.3.0",
+    "prosemirror-model": "^1.25.9",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-view": "^1.41.9",
+    "@tabler/icons-react": "catalog:",
+    "@tiptap/core": "^3.27.1",
+    "@tiptap/extension-code-block": "^3.27.1",
     "@tiptap/extension-collaboration": "^3.27.1",
     "@tiptap/extension-collaboration-caret": "^3.27.1",
     "@tiptap/extension-highlight": "^3.27.1",
@@ -74,7 +80,8 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "catalog:",
-    "@types/markdown-it": "^14.1.2"
+    "@types/markdown-it": "^14.1.2",
+    "clsx": "catalog:"
   },
   "peerDependencies": {
     "@rtdui/core": "workspace:*",

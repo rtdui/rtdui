@@ -47,8 +47,11 @@
     "access": "public"
   },
   "dependencies": {
+    "@tabler/icons-react": "catalog:",
+    "@tanstack/table-core": "^8.21.3",
     "@tanstack/react-table": "^8.21.3",
     "@tanstack/react-virtual": "^3.14.3",
+    "clsx": "catalog:",
     "klona": "^2.0.6",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",

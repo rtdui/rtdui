@@ -33,6 +33,7 @@
     "access": "public"
   },
   "dependencies": {
+    "clsx": "catalog:",
     "postcss": "^8.4.31",
     "postcss-js": "^5.1.0",
     "fs-extra": "^11.2.0",
