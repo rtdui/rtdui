@@ -5,12 +5,12 @@ import type {
   FloatingAxesOffsets,
   FloatingPosition,
   FloatingStrategy,
-} from "./Popover.types";
+} from "./types";
 import { getFloatingPosition } from "./Floating/get-floating-position/get-floating-position";
 import type { PortalProps } from "../Portal";
 import type { TransitionProps } from "../Transition";
 import { PopoverContextProvider } from "./context";
-import type { PopoverMiddlewares, PopoverWidth } from "./Popover.types";
+import type { PopoverMiddlewares, PopoverWidth } from "./types";
 import { PopoverDropdown } from "./PopoverDropdown/PopoverDropdown";
 import { PopoverTarget } from "./PopoverTarget/PopoverTarget";
 import { usePopover } from "./use-popover";

@@ -1,4 +1,4 @@
-import type { ArrowPosition, FloatingPosition } from "../../Popover.types";
+import type { ArrowPosition, FloatingPosition } from "../../types";
 import { getArrowPositionStyles } from "./get-arrow-position-styles";
 import { useDirection } from "@rtdui/hooks";
 import clsx from "clsx";

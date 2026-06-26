@@ -2,7 +2,7 @@ import type {
   FloatingPlacement,
   FloatingPosition,
   FloatingSide,
-} from "../../Popover.types";
+} from "../../types";
 
 export function getFloatingPosition(
   dir: "rtl" | "ltr",

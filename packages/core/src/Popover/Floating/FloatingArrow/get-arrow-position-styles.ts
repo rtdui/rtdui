@@ -4,7 +4,7 @@ import type {
   FloatingPlacement,
   FloatingPosition,
   FloatingSide,
-} from "../../Popover.types";
+} from "../../types";
 
 function horizontalSide(
   placement: FloatingPlacement | "center",

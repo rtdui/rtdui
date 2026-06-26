@@ -18,7 +18,7 @@ import type {
   FloatingAxesOffsets,
   FloatingPosition,
   FloatingStrategy,
-} from "./Popover.types";
+} from "./types";
 
 interface UsePopoverOptions {
   offset: number | FloatingAxesOffsets;

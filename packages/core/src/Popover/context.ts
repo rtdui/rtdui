@@ -2,11 +2,7 @@ import type { PortalProps } from "../Portal";
 import type { TransitionProps } from "../Transition";
 import type { ThemeColor, ThemeRadius, ThemeShadow } from "../theme.types";
 import { createSafeContext } from "../utils";
-import type {
-  PopoverWidth,
-  ArrowPosition,
-  FloatingPosition,
-} from "./Popover.types";
+import type { PopoverWidth, ArrowPosition, FloatingPosition } from "./types";
 
 interface PopoverContext {
   /** disabled will not dropdown */
