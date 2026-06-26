@@ -1,13 +1,8 @@
 import { useImperativeHandle } from "react";
 import clsx from "clsx";
 import type { EditorOptions } from "@tiptap/core";
-import {
-  useEditor,
-  EditorContent,
-  FloatingMenu as FloatingMenuComponent,
-  findParentNodeClosestToPos,
-  posToDOMRect,
-} from "@tiptap/react";
+import { useEditor, EditorContent, useEditorState } from "@tiptap/react";
+import { FloatingMenu } from "@tiptap/react/menus";
 import {
   IconBoxAlignLeft,
   IconBoxAlignTop,
@@ -25,18 +20,16 @@ import {
 } from "@tabler/icons-react";
 import {
   StarterKit,
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  Link,
-  TaskList,
+  TableKit,
   TaskItem,
-  SuperScript,
-  SubScript,
+  TaskList,
+  Superscript,
+  Subscript,
   Highlight,
+  TextStyleKit,
   TextAlign,
   Placeholder,
+  CharacterCount,
   CodeBlockShiki,
   // Collaboration,
   // CollaborationCursor,
@@ -49,11 +42,13 @@ import {
   MathKatexBlock,
 } from "./tiptap";
 import { EditorControl } from "./tiptap_controls/EditorControl";
-import { HelperControl } from "./tiptap_controls/HelperControl";
+import { Toolbar } from "./toolbar";
 
 export interface RichTextEditorProps extends React.ComponentProps<"div"> {
   editable?: boolean;
   placeholder?: string;
+  /** 内容文字限制长度 */
+  limit?: number;
   uploadImageUrl?: string;
   imageResizable?: boolean;
   slots?: { toolbar?: string; content?: string };
@@ -64,8 +59,10 @@ export function RichTextEditor(props: RichTextEditorProps) {
     slots,
     editable = true,
     placeholder = "输入内容或者从剪贴板粘贴, 复制粘贴支持Markdown",
+    limit,
     uploadImageUrl,
     imageResizable = true,
+    className,
     ...other
   } = props;
 
@@ -83,20 +80,21 @@ export function RichTextEditor(props: RichTextEditorProps) {
       StarterKit.configure({
         // history: false, // The Collaboration extension comes with its own history handling
         codeBlock: false, // 会使用CodeBlockHighlight替代
+        link: {
+          openOnClick: !editable,
+        },
       }),
-      Table.configure({
-        resizable: true,
+      TableKit.configure({
+        table: { resizable: true },
+        tableCell: { HTMLAttributes: { class: "not-prose" } },
+        tableHeader: { HTMLAttributes: { class: "not-prose" } },
       }),
-      TableRow,
-      TableHeader,
-      TableCell,
-      Link,
-      TaskList,
       TaskItem.configure({
         nested: true,
       }),
-      SuperScript,
-      SubScript,
+      TaskList,
+      Superscript,
+      Subscript,
       Highlight,
       Placeholder.configure({
         placeholder,
@@ -104,6 +102,7 @@ export function RichTextEditor(props: RichTextEditorProps) {
       TextAlign.configure({
         types: ["heading", "paragraph", "tableHeader", "tableCell"],
       }),
+      TextStyleKit,
       CodeBlockShiki,
       // Register the document with Tiptap
       // Collaboration.configure({
@@ -129,7 +128,24 @@ export function RichTextEditor(props: RichTextEditorProps) {
     ],
     editable,
   };
+
+  if (limit) {
+    editorOptions.extensions?.push(
+      CharacterCount.configure({
+        limit,
+      }),
+    );
+  }
+
   const editor = useEditor(editorOptions);
+
+  const { charactersCount, wordsCount } = useEditorState({
+    editor,
+    selector: (context) => ({
+      charactersCount: context.editor?.storage?.characterCount?.characters(),
+      wordsCount: context.editor?.storage?.characterCount?.words(),
+    }),
+  });
 
   useImperativeHandle<any, any>(ref, () => ({
     getJSON: () => {
@@ -150,74 +166,22 @@ export function RichTextEditor(props: RichTextEditorProps) {
   }
 
   return (
-    <div {...other}>
-      {editor && editable && (
+    <div {...other} className={clsx(className)}>
+      {editable && (
         <>
-          <EditorControl editor={editor}>
-            <EditorControl.Toolbar sticky className={clsx(slots?.toolbar)}>
-              <EditorControl.ControlsGroup>
-                <EditorControl.Bold />
-                <EditorControl.Italic />
-                {/* <RichTextEditor.Underline /> */}
-                <EditorControl.Strikethrough />
-                <EditorControl.Highlight />
-                <EditorControl.Code />
-                <EditorControl.ClearFormatting />
-              </EditorControl.ControlsGroup>
-              <EditorControl.ControlsGroup>
-                <EditorControl.H1 />
-                <EditorControl.H2 />
-                <EditorControl.H3 />
-                <EditorControl.H4 />
-              </EditorControl.ControlsGroup>
-              <EditorControl.ControlsGroup>
-                <EditorControl.Blockquote />
-                <EditorControl.Hr />
-                <EditorControl.BulletList />
-                <EditorControl.OrderedList />
-                <EditorControl.Subscript />
-                <EditorControl.Superscript />
-              </EditorControl.ControlsGroup>
-              {/* <EditorControl.ControlsGroup>
-                    <EditorControl.Link />
-                    <EditorControl.Unlink />
-                  </EditorControl.ControlsGroup> */}
-              <EditorControl.ControlsGroup>
-                <EditorControl.AlignLeft />
-                <EditorControl.AlignCenter />
-                <EditorControl.AlignRight />
-                <EditorControl.AlignJustify />
-              </EditorControl.ControlsGroup>
-              <EditorControl.ControlsGroup>
-                <EditorControl.Image />
-                <EditorControl.Table />
-              </EditorControl.ControlsGroup>
-              <EditorControl.ControlsGroup>
-                <HelperControl />
-              </EditorControl.ControlsGroup>
-            </EditorControl.Toolbar>
-          </EditorControl>
-
-          <FloatingMenuComponent
+          <Toolbar
+            editor={editor}
+            className={clsx("editor-content", slots?.toolbar)}
+          />
+          <FloatingMenu
             editor={editor}
             shouldShow={({ editor }) =>
               editor.isActive("tableCell") || editor.isActive("tableHeader")
             }
-            tippyOptions={{
-              placement: "top",
-              getReferenceClientRect: () => {
-                // return document
-                //   .querySelector(".tableWrapper > table")!
-                //   .getBoundingClientRect();
-                const tableNode = findParentNodeClosestToPos(
-                  editor.view.state.selection.$from,
-                  (node) => node.type.name === "table",
-                );
-                return posToDOMRect(
-                  editor.view,
-                  tableNode?.start as any,
-                  tableNode?.start as any,
-                );
+            options={{
+              // placement: "top",
+              autoPlacement: {
+                allowedPlacements: ["top-start", "top-end"],
               },
             }}
           >
@@ -373,13 +337,22 @@ export function RichTextEditor(props: RichTextEditorProps) {
               跳到前一个单元格
             </button> */}
             </div>
-          </FloatingMenuComponent>
+          </FloatingMenu>
         </>
       )}
       <EditorContent
         editor={editor}
-        className={clsx("editor-content prose max-w-none!", slots?.content)}
+        className={clsx(
+          "editor-content prose max-w-none! overflow-y-auto",
+          slots?.content,
+        )}
       />
+
+      {limit && (
+        <div className="character-count text-xs flex flex-row-reverse px-1.5">
+          {charactersCount} / {limit}
+        </div>
+      )}
     </div>
   );
 }

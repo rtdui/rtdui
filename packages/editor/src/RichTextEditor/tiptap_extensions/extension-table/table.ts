@@ -1,6 +1,7 @@
 import { Table } from "@tiptap/extension-table";
 import { Plugin } from "@tiptap/pm/state";
 
+/** 只留作例子, 未使用 */
 export const CustomTable = Table.extend({
   addProseMirrorPlugins() {
     const { View, cellMinWidth } = this.options;
