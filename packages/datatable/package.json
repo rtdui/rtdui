@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@tanstack/react-table": "^8.21.3",
-    "@tanstack/react-virtual": "^3.13.26",
+    "@tanstack/react-virtual": "^3.14.3",
     "klona": "^2.0.6",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",

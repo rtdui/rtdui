@@ -44,7 +44,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@mantine/hooks": "^9.2.1"
+    "@mantine/hooks": "^9.4.0"
   },
   "peerDependencies": {
     "react": "catalog:"

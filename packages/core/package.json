@@ -45,13 +45,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.1",
-    "@tabler/icons-react": "catalog:",
-    "@tailwindcss/postcss": "^4.0.11",
-    "clsx": "catalog:",
-    "colorjs.io": "^0.5.2",
-    "date-fns": "catalog:",
     "@date-fns/tz": "catalog:",
+    "@floating-ui/react": "catalog:",
+    "@tabler/icons-react": "catalog:",
+    "clsx": "catalog:",
+    "colorjs.io": "^0.6.1",
+    "date-fns": "catalog:",
     "ms": "catalog:",
     "react-number-format": "^5.3.1",
     "react-remove-scroll": "^2.5.9",
