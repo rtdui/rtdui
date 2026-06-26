@@ -44,11 +44,6 @@ const basicShikiTransformers = [
   transformerAddLangDataAttr(),
 ];
 
-const EXCLUDE_USE_CLIENT = ["index"].reduce<string[]>((acc, name) => {
-  acc.push(`${name}.js`, `${name}.mjs`, `${name}.cjs`);
-  return acc;
-}, []);
-
 export async function createPackageConfig(
   packagePath: string,
 ): Promise<RolldownOptions> {
@@ -60,7 +55,14 @@ export async function createPackageConfig(
     sourcemap: false,
     // 支持React v19
     postBanner: (chunk) => {
-      if (!EXCLUDE_USE_CLIENT.includes(chunk.fileName)) {
+      // console.log(structuredClone(chunk));
+
+      // 模块的原始文件名
+      const facadeModuleBaseName = path.basename(chunk.facadeModuleId ?? "");
+      if (
+        path.extname(facadeModuleBaseName) === ".tsx" &&
+        !facadeModuleBaseName.startsWith("use")
+      ) {
         return "'use client';";
       }
 
@@ -68,12 +70,15 @@ export async function createPackageConfig(
     },
   };
 
+  // 只输出cjs格式的包, tailwindcss的插件只支持cjs格式
+  const onlyCjsPackages = ["tailwind-plugin"];
+
   const config: RolldownOptions = {
     input: [path.join(packagePath, "/src/index.ts")],
     // All bare module IDs (not starting with `.` or `/`, or `~` or `C:\`)
     external: /^[^./~](?!:[/\\])/,
     transform: {
-      reactCompiler: true, // 体验功能
+      // reactCompiler: true, // 体验功能
     },
     plugins: [
       mdx({
@@ -101,20 +106,27 @@ export async function createPackageConfig(
         ],
       }), // 支持导入mdx
     ],
-    output: [
-      {
-        ...baseOutputOptions,
-        format: "esm",
-        entryFileNames: "[name].mjs",
-        dir: path.join(packagePath, "esm"),
-      },
-      {
-        ...baseOutputOptions,
-        format: "cjs",
-        entryFileNames: "[name].cjs",
-        dir: path.join(packagePath, "cjs"),
-      },
-    ],
+    output: onlyCjsPackages.some((d) => path.basename(packagePath) === d)
+      ? {
+          ...baseOutputOptions,
+          format: "cjs",
+          entryFileNames: "[name].cjs",
+          dir: path.join(packagePath, "cjs"),
+        }
+      : [
+          {
+            ...baseOutputOptions,
+            format: "esm",
+            entryFileNames: "[name].mjs",
+            dir: path.join(packagePath, "esm"),
+          },
+          {
+            ...baseOutputOptions,
+            format: "cjs",
+            entryFileNames: "[name].cjs",
+            dir: path.join(packagePath, "cjs"),
+          },
+        ],
   };
 
   return defineConfig(config);
