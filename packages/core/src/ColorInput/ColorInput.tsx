@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { useDidUpdate, useEyeDropper, useUncontrolled } from "@rtdui/hooks";
 import { IconColorPicker } from "@tabler/icons-react";
 import { ColorPicker, type ColorPickerProps } from "../ColorPicker";
-import { convertHsvaTo, isColorFormatValid, parseColorToHsva } from "../utils";
+import { convertTo, isColorFormatValid } from "../utils";
 import { ColorSwatch } from "../ColorSwatch";
 import { Popover } from "../Popover";
 import { TextInput, type TextInputProps } from "../TextInput";
@@ -101,10 +101,7 @@ export function ColorInput(props: ColorInputProps) {
         openEyeDropper()
           .then((payload) => {
             if (payload?.sRGBHex) {
-              const color = convertHsvaTo(
-                format!,
-                parseColorToHsva(payload.sRGBHex),
-              );
+              const color = convertTo(format, payload.sRGBHex);
               setValue(color);
               onChangeEnd?.(color);
             }
@@ -128,7 +125,7 @@ export function ColorInput(props: ColorInputProps) {
 
   useDidUpdate(() => {
     if (isColorFormatValid(_value, format)) {
-      setValue(convertHsvaTo(format!, parseColorToHsva(_value)));
+      setValue(convertTo(format, _value));
     }
   }, [format]);
 
@@ -160,9 +157,7 @@ export function ColorInput(props: ColorInputProps) {
             const inputValue = event.currentTarget.value;
             setValue(inputValue);
             if (isColorFormatValid(inputValue, format)) {
-              onChangeEnd?.(
-                convertHsvaTo(format!, parseColorToHsva(inputValue)),
-              );
+              onChangeEnd?.(convertTo(format, inputValue));
             }
           }}
           leftSection={

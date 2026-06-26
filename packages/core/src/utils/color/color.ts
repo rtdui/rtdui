@@ -77,13 +77,21 @@ export function convertHsvaTo(format: ColorFormat, color: HsvaColor) {
   return hsvColor.to(space!).toString({ format });
 }
 
+/**
+ * 解析颜色值到HSV格式, 是选色盘组件使用的格式
+ * HSV格式由三个分量组成:
+ * - Hue（色调、色相）
+ * - Saturation（饱和度、色彩纯净度）
+ * - Value（明度）
+ * @param colorLike CSS支持的颜色值
+ */
 export function parseColorToHsva(colorLike: string): HsvaColor {
   try {
     const hsvColor = parseColor(colorLike).to("hsv");
     return {
-      h: Number.isNaN(hsvColor.h) ? 0 : hsvColor.h,
-      s: hsvColor.s,
-      v: hsvColor.v,
+      h: hsvColor.h ?? 0,
+      s: hsvColor.s ?? 0,
+      v: hsvColor.v ?? 0,
       a: hsvColor.alpha,
     };
   } catch (error) {

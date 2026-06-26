@@ -13,6 +13,7 @@ import {
   parseColorToHsva,
   type ColorFormat,
   type HsvaColor,
+  convertTo,
 } from "../utils";
 
 export type ColorPickerStylesNames =
@@ -139,6 +140,7 @@ export function ColorPicker(props: ColorPickerProps) {
     onChange,
   });
 
+  // 选色盘使用Hsv
   const [parsed, setParsed] = useState<HsvaColor>(parseColorToHsva(_value));
 
   const startScrubbing = () => {
@@ -300,10 +302,7 @@ export function ColorPicker(props: ColorPickerProps) {
           focusable={focusable}
           setValue={setValue}
           onChangeEnd={(color) => {
-            const convertedColor = convertHsvaTo(
-              format!,
-              parseColorToHsva(color),
-            );
+            const convertedColor = convertTo(format, color);
             onColorSwatchClick?.(convertedColor);
             onChangeEnd?.(convertedColor);
             if (!controlled) {
