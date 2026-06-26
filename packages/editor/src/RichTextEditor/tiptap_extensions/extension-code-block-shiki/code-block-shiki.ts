@@ -2,14 +2,17 @@ import { CodeBlock, type CodeBlockOptions } from "@tiptap/extension-code-block";
 import { ProseMirrorShikiPlugin } from "./prosemirror-shiki-plugin.js";
 import type { BundledLanguage, BundledTheme } from "shiki";
 
-export interface CodeBlockShikiOptions extends CodeBlockOptions {
-  defaultLanguage: BundledLanguage | null | undefined;
-  defaultTheme: BundledTheme;
+export interface CodeBlockShikiOptions extends Omit<
+  CodeBlockOptions,
+  "defaultLanguage"
+> {
+  defaultLanguage?: BundledLanguage | null;
+  defaultTheme?: BundledTheme;
 }
 /**
  * 这个扩展完全按'@tiptap'官方的@tiptap/extension-code-block-lowlight扩展修改.
  */
-export const CodeBlockShiki = CodeBlock.extend<CodeBlockShikiOptions>({
+export const CodeBlockShiki = CodeBlock.extend<Partial<CodeBlockShikiOptions>>({
   addOptions() {
     return {
       ...this.parent?.(),
@@ -32,8 +35,8 @@ export const CodeBlockShiki = CodeBlock.extend<CodeBlockShikiOptions>({
               []),
           ];
           const languages = classNames
-            .filter((className) => className.startsWith(languageClassPrefix))
-            .map((className) => className.replace(languageClassPrefix, ""));
+            .filter((className) => className.startsWith(languageClassPrefix!))
+            .map((className) => className.replace(languageClassPrefix!, ""));
           const language = languages[0];
           // const language = element.dataset.language;
           return language ?? this.options.defaultLanguage;
@@ -53,7 +56,7 @@ export const CodeBlockShiki = CodeBlock.extend<CodeBlockShikiOptions>({
       ProseMirrorShikiPlugin({
         name: this.name,
         defaultLanguage: this.options.defaultLanguage,
-        defaultTheme: this.options.defaultTheme,
+        defaultTheme: this.options.defaultTheme ?? "one-dark-pro",
       }),
     ];
   },

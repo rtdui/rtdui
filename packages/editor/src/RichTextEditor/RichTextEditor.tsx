@@ -41,7 +41,6 @@ import {
   MathKatexInline,
   MathKatexBlock,
 } from "./tiptap";
-import { EditorControl } from "./tiptap_controls/EditorControl";
 import { Toolbar } from "./toolbar";
 
 export interface RichTextEditorProps extends React.ComponentProps<"div"> {
