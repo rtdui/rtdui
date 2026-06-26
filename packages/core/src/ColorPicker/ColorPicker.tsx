@@ -122,6 +122,7 @@ export function ColorPicker(props: ColorPickerProps) {
     swatchesPerRow = 7,
     fullWidth = false,
     onColorSwatchClick,
+    children,
     ...others
   } = props;
 
@@ -217,6 +218,7 @@ export function ColorPicker(props: ColorPickerProps) {
       }
       {...others}
     >
+      {children}
       {withPicker && (
         <>
           <Saturation
