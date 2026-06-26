@@ -916,7 +916,7 @@ export function DataTable(props: DataTableProps) {
                       showHeader={showHeader}
                       debouncedWait={debouncedWait}
                       scrollingTrigger={scrollingTrigger}
-                      initPins={[initPinToLeft, initPinToRight]}
+                      initPins={[getInitFinalLeftPinning(), initPinToRight]}
                     />
                   ))}
                 </tr>

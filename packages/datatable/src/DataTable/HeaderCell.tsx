@@ -90,8 +90,6 @@ export function HeaderCell(props: HeaderCellProps) {
   const uniqueValueFilterPopoverId = useId();
   const uniqueValueFilterPopoverAnchor = `--${useId()}`;
 
-  console.log(initPins?.flat());
-
   return (
     <th
       ref={dropRef as any}
