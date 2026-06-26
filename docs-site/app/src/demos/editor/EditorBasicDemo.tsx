@@ -14,8 +14,8 @@ export default function Demo() {
       <RichTextEditor
         ref={ref}
         uploadImageUrl="/kv/upload"
-        className="border border-base-200 rounded-box bg-base-100 overflow-hidden"
-        slots={{ toolbar: "border-b" }}
+        className="border border-base-200 rounded-box bg-base-100"
+        slots={{ toolbar: "border-b", content: "max-h-160" }}
       />
       <div className="my-4 flex items-center gap-2">
         <Button color="primary" onClick={handleBtnClick}>
@@ -31,7 +31,7 @@ export default function Demo() {
         ref={refTarget}
         editable={false}
         className="border border-base-200 rounded-box bg-base-100 overflow-hidden"
-        slots={{ toolbar: "border-b" }}
+        slots={{ toolbar: "border-b", content: "max-h-160" }}
       />
     </div>
   );

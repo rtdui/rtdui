@@ -1,5 +1,4 @@
 import clsx from "clsx";
-//@ts-expect-error no types
 import wordCount from "word-count";
 import { useMdEditorContext } from "./context";
 
