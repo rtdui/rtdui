@@ -64,6 +64,7 @@
     "combobox": "Combobox (复合框)",
     "input": "Input (基础输入)",
     "nativeSelect": "NativeSelect (原生选择)",
+    "otpInput": "OtpInput (验证码输入)",
     "autoComplete": "AutoComplete (自动完成)",
     "select": "Select (单选框)",
     "multiSelect": "MutilSelect (多选框)",
@@ -111,6 +112,7 @@
     "mdeditor": "MdEditor (Markdown 编辑器)",
     "qrCode": "QRCode (二维码生成)",
     "signaturePad": "SignaturePad (手写签名)",
+    "aura": "Aura (动效光环)",
     "dates": {
       "introduce": "$t(common.introduce)",
       "common": "公共基础",

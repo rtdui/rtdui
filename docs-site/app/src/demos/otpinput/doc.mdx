@@ -1,0 +1,31 @@
+---
+meta:
+  - title: Otp input Component
+  - description: OtpInput document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/OtpInput.tsx"
+  componentName: "OtpInput"
+---
+
+import Demo from "../../components/Demo";
+import OtpInputBasicDemo from "./OtpInputBasicDemo";
+import OtpInputSizeDemo from "./OtpInputSizeDemo";
+import OtpInputColorDemo from "./OtpInputColorDemo";
+
+# 使用
+
+OTP验证码的输入组件.
+
+`digits`属性指定验证码的位数
+
+<Demo data={{ Component: OtpInputBasicDemo }} />
+
+`size`属性指定组件的语义化尺寸:
+
+<Demo data={{ Component: OtpInputSizeDemo }} />
+
+`color`属性指定组件的语义化颜色:
+
+<Demo data={{ Component: OtpInputColorDemo }} />

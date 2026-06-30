@@ -3,7 +3,6 @@ import { NativeSelect } from "@rtdui/core";
 export default function Demo() {
   return (
     <NativeSelect
-      label="with data prop"
       data={[
         {
           group: "Frontend libraries",

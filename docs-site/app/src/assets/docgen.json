@@ -3206,6 +3206,76 @@
       }
     }
   },
+  "Aura": {
+    "filePath": "D:/sources/github/rtdui/packages/core/src/Aura/Aura.tsx",
+    "description": "",
+    "displayName": "Aura",
+    "props": {
+      "effect": {
+        "defaultValue": null,
+        "description": "特效",
+        "name": "effect",
+        "required": false,
+        "type": {
+          "name": "\"gold\" | \"silver\" | \"dual\" | \"rainbow\" | \"holo\" | \"glow\" | undefined",
+          "raw": "\"gold\" | \"silver\" | \"dual\" | \"rainbow\" | \"holo\" | \"glow\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"gold\""
+            },
+            {
+              "value": "\"silver\""
+            },
+            {
+              "value": "\"dual\""
+            },
+            {
+              "value": "\"rainbow\""
+            },
+            {
+              "value": "\"holo\""
+            },
+            {
+              "value": "\"glow\""
+            }
+          ]
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "ThemeBaseSize | undefined",
+          "raw": "ThemeBaseSize | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            },
+            {
+              "value": "\"xl\""
+            }
+          ]
+        }
+      }
+    }
+  },
   "AutoComplete": {
     "filePath": "D:/sources/github/rtdui/packages/core/src/AutoComplete/AutoComplete.tsx",
     "description": "",
@@ -14305,6 +14375,93 @@
         "required": false,
         "type": {
           "name": "Record<string, any> | undefined"
+        }
+      }
+    }
+  },
+  "OtpInput": {
+    "filePath": "D:/sources/github/rtdui/packages/core/src/OtpInput/OtpInput.tsx",
+    "description": "",
+    "displayName": "OtpInput",
+    "props": {
+      "color": {
+        "defaultValue": null,
+        "description": "主题的语义化颜色",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "ThemeSemanticColor | undefined",
+          "raw": "ThemeSemanticColor | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"accent\""
+            },
+            {
+              "value": "\"info\""
+            },
+            {
+              "value": "\"success\""
+            },
+            {
+              "value": "\"warning\""
+            },
+            {
+              "value": "\"error\""
+            },
+            {
+              "value": "\"neutral\""
+            }
+          ]
+        }
+      },
+      "digits": {
+        "defaultValue": {
+          "value": "6"
+        },
+        "description": "输入数字个数",
+        "name": "digits",
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "主题的语义化尺寸",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "ThemeBaseSize | undefined",
+          "raw": "ThemeBaseSize | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"xs\""
+            },
+            {
+              "value": "\"sm\""
+            },
+            {
+              "value": "\"md\""
+            },
+            {
+              "value": "\"lg\""
+            },
+            {
+              "value": "\"xl\""
+            }
+          ]
         }
       }
     }

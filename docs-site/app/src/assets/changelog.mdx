@@ -1,15 +1,21 @@
 # Version 6.1.0 (2026-6-26)
 
-## Chore
+## New Components
 
-- Adjust the project to meet Bun's isolated installation strategy to prevent phantom dependencies.
-  Now, to install dependencies for project use `bun i`
+- [@rtdui/core] New `OtpInput` component for OTP input
+- [@rtdui/core] New `Aura` component for aura effect of Button or Card
 
 ## Components changed
 
 - [@rtdui/core] The `ColorPicker` component can add custom elements through `children` prop
-- [@rtdui/editor] upgrade Tiptap v2 to v3
+- [@rtdui/core] The `NativeSelect` component use the simplest structure
+- [@rtdui/editor] Upgrade Tiptap v2 to v3
 - [@rtdui/editor] The active state of buttons in the toolbar is synchronized with the selection in the editor
+
+## Chores
+
+- Adjust the project to meet Bun's isolated installation strategy to prevent phantom dependencies.
+  Now, you can use `bun i` to install project dependencies in isolated mode, or use `bun i --linker hoisted` to install project dependencies in hoisted mode
 - Updated some dependencies
 
 # Version 6.0.2 (2026-6-15)
@@ -30,7 +36,7 @@ Rtdui v6 requires React v19.2.0. All components have been rewritten using the ne
 - All context render `<Context>` as a provider instead of `<Context.Provider>`
 - Instead of using useMemo/useCallback/React.Memo, rely on the React Compiler for memoization.
 
-## Chore
+## Chores
 
 - Using Bun package management, it implements the `workspace` and `catalog` protocols, simplifying the version management of dependencies.
   Now, to install dependencies for project must use `bun i --linker hoisted`

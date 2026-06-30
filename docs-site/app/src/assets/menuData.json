@@ -81,7 +81,12 @@
       {
         "label": "nativeSelect",
         "url": "/components/nativeselect",
-        "flag": "v4.2 new"
+        "flag": "v6.1 updated"
+      },
+      {
+        "label": "otpInput",
+        "url": "/components/otpInput",
+        "flag": "v6.1 new"
       }
     ]
   },
@@ -143,7 +148,12 @@
       { "label": "portal", "url": "/components/portal" },
       { "label": "skeleton", "url": "/components/skeleton" },
       { "label": "transition", "url": "/components/transition" },
-      { "label": "modal", "url": "/components/modal" }
+      { "label": "modal", "url": "/components/modal" },
+      {
+        "label": "aura",
+        "url": "/components/aura",
+        "flag": "v6.1 new"
+      }
     ]
   },
   {

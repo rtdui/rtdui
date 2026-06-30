@@ -1,6 +1,13 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { AppShell, Button, Popover, StatPanel, TextInput } from "@rtdui/core";
+import {
+  AppShell,
+  Aura,
+  Button,
+  Popover,
+  StatPanel,
+  TextInput,
+} from "@rtdui/core";
 import {
   IconBrandGithub,
   IconBrandTailwind,
@@ -128,12 +135,14 @@ export default function Index() {
                 </h1>
                 <p className="py-6 text-xl">{t("rtdui.describe")}</p>
                 <div className="flex justify-center gap-8">
-                  <a
-                    href="/getting-started"
-                    className="btn btn-primary min-w-35"
-                  >
-                    {t("rtdui.get-started")}
-                  </a>
+                  <Aura effect="rainbow" size="lg">
+                    <a
+                      href="/getting-started"
+                      className="btn btn-primary min-w-35"
+                    >
+                      {t("rtdui.get-started")}
+                    </a>
+                  </Aura>
                   <a
                     href="https://github.com/rtdui/rtdui"
                     className="btn btn-neutral min-w-35"

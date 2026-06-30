@@ -1,0 +1,40 @@
+---
+meta:
+  - title: Aura Component
+  - description: Aura document, demo and API
+headers:
+  Cache-Control: no-cache
+handle:
+  source: "app/src/components/core/Aura.tsx"
+  componentName: "Aura"
+---
+
+import Demo from "../../components/Demo";
+import AuraBaseDemo from "./AuraBaseDemo";
+import AuraEffectsDemo from "./AuraEffectsDemo";
+import AuraSizeDemo from "./AuraSizeDemo";
+import AuraCustomDemo from "./AuraCustomDemo";
+
+# 使用
+
+Aura 为按钮或卡片的轮廓框呈现动效光环.
+
+<Demo data={{ Component: AuraBaseDemo }} />
+
+## 特效
+
+`effect`属性支持"dual" | "rainbow" | "holo" | "gold" | "silver" | "glow"特效
+
+<Demo data={{ Component: AuraEffectsDemo }} />
+
+## 尺寸
+
+`size`属性支持语义化的尺寸
+
+<Demo data={{ Component: AuraSizeDemo }} />
+
+## 自定义
+
+可以自定义颜色和动画持续时间.
+
+<Demo data={{ Component: AuraCustomDemo }} />

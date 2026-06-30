@@ -12,12 +12,13 @@ handle:
 import Demo from "../../components/Demo";
 import NativeSelectDataDemo from "./NativeSelectDataDemo";
 import NativeSelectChildrenDemo from "./NativeSelectChildrenDemo";
+import NativeSelectSizeDemo from "./NativeSelectSizeDemo";
+import NativeSelectColorDemo from "./NativeSelectColorDemo";
+import NativeSelectFieldsetDemo from "./NativeSelectFieldsetDemo";
 
 # 使用
 
-在有些情况下, 尤其只针对移动端的应用(如小程序), 你可能倾向于使用原生的下拉选项. 这种场景下可以使用`NativeSelect`组件. 它使用原生的`option`元素作为下拉选项, 但提供了额外的功能.
-
-`NativeSelect`组件也是基于`InputBase`构建, `Input`的功能全部支持, 本文档没有包含所有的功能和用例, 详细请查看`Input`文档.
+在有些情况下, 尤其只针对移动端的应用(如小程序), 你可能倾向于使用原生的下拉选择. 这种场景下可以使用`NativeSelect`组件. 它使用原生的`option`元素作为下拉选项, 但提供了额外的功能.
 
 `NativeSelect`支持两种形式提供选项:
 
@@ -148,3 +149,15 @@ function Demo() {
 ```
 
 <Demo data={{ Component: NativeSelectChildrenDemo }} />
+
+## 语义化尺寸
+
+<Demo data={{ Component: NativeSelectSizeDemo }} />
+
+## 语义化颜色
+
+<Demo data={{ Component: NativeSelectColorDemo }} />
+
+## fieldset 和 labels
+
+<Demo data={{ Component: NativeSelectFieldsetDemo }} />

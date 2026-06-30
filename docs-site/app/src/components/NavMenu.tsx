@@ -40,7 +40,7 @@ export default function NavMenu(props: NavMenuProps) {
                     >
                       {t(`navMenu.${dd.label}`)}
                       {dd.flag && (
-                        <span className="text-secondary text-right">
+                        <span className="text-secondary text-xs text-right">
                           {dd.flag}
                         </span>
                       )}

@@ -63,6 +63,7 @@
     "numberInput": "NumberInput",
     "input": "Input",
     "nativeSelect": "NativeSelect",
+    "otpInput": "OTP Input",
     "combobox": "Combobox",
     "autoComplete": "AutoComplete",
     "select": "Select",
@@ -111,6 +112,7 @@
     "mdeditor": "Markdown Editor",
     "qrCode": "QRCode",
     "signaturePad": "SignaturePad",
+    "aura": "Aura",
     "dates": {
       "introduce": "$t(common.introduce)",
       "common": "Common",

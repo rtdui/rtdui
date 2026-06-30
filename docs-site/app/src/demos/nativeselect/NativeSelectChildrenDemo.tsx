@@ -2,7 +2,7 @@ import { NativeSelect } from "@rtdui/core";
 
 export default function Demo() {
   return (
-    <NativeSelect label="With children options">
+    <NativeSelect>
       <optgroup label="Frontend libraries">
         <option value="react">React</option>
         <option value="angular">Angular</option>

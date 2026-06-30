@@ -44,6 +44,22 @@
     "code": "import { AspectRatio } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <AspectRatio ratio=\"16/9\" className=\"w-56\">\n      <img src=\"/photo-1609621838510-5ad474b7d25d.jpg\" alt=\"\" />\n    </AspectRatio>\n  );\n}\nDemo.displayName = \"AspectRatioImageDemo\";\n"
   },
   {
+    "name": "AuraBaseDemo",
+    "code": "import { Aura, Button } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <Aura>\n      <Button>Button</Button>\n    </Aura>\n  );\n}\nDemo.displayName = \"AuraBaseDemo\";\n"
+  },
+  {
+    "name": "AuraCustomDemo",
+    "code": "import { Aura, Button } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col items-start gap-3\">\n      自定义动画持续时间:\n      <Aura className=\"duration-1000\">\n        <Button>Button</Button>\n      </Aura>\n      自定义颜色(使用currentColor作为渐变背景图像):\n      <Aura className=\"text-orange-600 bg-yellow-200\">\n        <Button>Button</Button>\n      </Aura>\n    </div>\n  );\n}\nDemo.displayName = \"AuraCustomDemo\";\n"
+  },
+  {
+    "name": "AuraEffectsDemo",
+    "code": "import { Aura, Button } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-start gap-3\">\n      <Aura effect=\"dual\">\n        <Button>dual</Button>\n      </Aura>\n      <Aura effect=\"glow\">\n        <Button>glow</Button>\n      </Aura>\n      <Aura effect=\"holo\">\n        <Button>holo</Button>\n      </Aura>\n      <Aura effect=\"gold\">\n        <Button>gold</Button>\n      </Aura>\n      <Aura effect=\"silver\">\n        <Button>silver</Button>\n      </Aura>\n      <Aura effect=\"rainbow\">\n        <Button>rainbow</Button>\n      </Aura>\n    </div>\n  );\n}\nDemo.displayName = \"AuraEffectsDemo\";\n"
+  },
+  {
+    "name": "AuraSizeDemo",
+    "code": "import { Aura, Button } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <Aura size=\"xs\">\n        <Button>xs</Button>\n      </Aura>\n      <Aura size=\"sm\">\n        <Button>sm</Button>\n      </Aura>\n      <Aura size=\"md\">\n        <Button>md(默认)</Button>\n      </Aura>\n      <Aura size=\"lg\">\n        <Button>lg</Button>\n      </Aura>\n      <Aura size=\"xl\">\n        <Button>xl</Button>\n      </Aura>\n    </div>\n  );\n}\nDemo.displayName = \"AuraSizeDemo\";\n"
+  },
+  {
     "name": "AutoCompleteBasicDemo",
     "code": "import { AutoComplete } from \"@rtdui/core\";\n\nconst fruits = [\n  \"Apple\",\n  \"Banana\",\n  \"Cabbage\",\n  \"Dates\",\n  \"Endive\",\n  \"Fennel\",\n  \"Garlic\",\n  \"Hominy\",\n  \"Iceberg Lettuce\",\n  \"Jicama\",\n  \"Kale\",\n  \"Lemons\",\n  \"Madarins\",\n  \"Napa\",\n  \"Oranges\",\n  \"Pears\",\n  \"Quince\",\n  \"Radicchio\",\n  \"Shallots\",\n  \"Tangelo\",\n  \"Ugli Fruit\",\n  \"Watermelon\",\n  \"Yams\",\n  \"Zucchini Squash\",\n];\n\nexport default function Demo() {\n  return <AutoComplete data={fruits} />;\n}\nDemo.displayName = \"AutoCompleteBasicDemo\";\n"
   },
@@ -626,6 +642,18 @@
   {
     "name": "NumberInputThousandsGroupDemo",
     "code": "import { NumberInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <NumberInput\n        thousandsGroupStyle=\"thousand\"\n        placeholder=\"自动千分位显示\"\n      />\n      <NumberInput thousandsGroupStyle=\"wan\" placeholder=\"自动万分位显示\" />\n      <NumberInput thousandsGroupStyle=\"lakh\" placeholder=\"自动百分位显示\" />\n    </div>\n  );\n}\nDemo.displayName = \"NumberInputThousandsGroupDemo\";\n"
+  },
+  {
+    "name": "OtpInputBasicDemo",
+    "code": "import { OtpInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      4位验证码:\n      <OtpInput digits={4} />\n      6位验证码(默认):\n      <OtpInput />\n      8位验证码:\n      <OtpInput digits={8} />\n    </div>\n  );\n}\nDemo.displayName = \"OtpInputBasicDemo\";\n"
+  },
+  {
+    "name": "OtpInputColorDemo",
+    "code": "import { OtpInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      neutral:\n      <OtpInput color=\"neutral\" />\n      primary:\n      <OtpInput color=\"primary\" />\n      secondary:\n      <OtpInput color=\"secondary\" />\n      accent:\n      <OtpInput color=\"accent\" />\n      success:\n      <OtpInput color=\"success\" />\n      error:\n      <OtpInput color=\"error\" />\n      info:\n      <OtpInput color=\"info\" />\n      warning:\n      <OtpInput color=\"warning\" />\n    </div>\n  );\n}\nDemo.displayName = \"OtpInputColorDemo\";\n"
+  },
+  {
+    "name": "OtpInputSizeDemo",
+    "code": "import { OtpInput } from \"@rtdui/core\";\n\nexport default function Demo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      xs:\n      <OtpInput size=\"xs\" />\n      sm:\n      <OtpInput size=\"sm\" />\n      md(默认):\n      <OtpInput />\n      lg:\n      <OtpInput size=\"lg\" />\n      xl:\n      <OtpInput size=\"xl\" />\n    </div>\n  );\n}\nDemo.displayName = \"OtpInputSizeDemo\";\n"
   },
   {
     "name": "PaginationBasicDemo",
