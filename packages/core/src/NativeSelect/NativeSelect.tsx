@@ -1,37 +1,53 @@
 import clsx from "clsx";
-import { InputBase, type InputBaseOwnProps } from "../InputBase";
-import {
-  ComboboxChevron,
-  type ComboboxData,
-  getParsedComboboxData,
-} from "../Combobox";
+import { type ComboboxData, getParsedComboboxData } from "../Combobox";
 import { NativeSelectOption } from "./NativeSelectOption";
+import { ThemeBaseSize, ThemeSemanticColor } from "../theme.types";
 
-export interface SelectNativeProps
-  extends InputBaseOwnProps, Omit<React.ComponentProps<"select">, "size"> {
+export interface NativeSelectProps extends Omit<
+  React.ComponentProps<"select">,
+  "size"
+> {
+  size?: ThemeBaseSize;
+  color?: ThemeSemanticColor;
+  ghost?: boolean;
   data?: ComboboxData;
 }
 
-export function NativeSelect(props: SelectNativeProps) {
-  const { ref, size, rightSection, error, data, children, ...others } = props;
+export function NativeSelect(props: NativeSelectProps) {
+  const { ref, size, color, ghost, data, className, children, ...others } =
+    props;
 
   const options = getParsedComboboxData(data).map((item, index) => (
     <NativeSelectOption key={index} data={item} />
   ));
 
   return (
-    <InputBase
-      as="select"
+    <select
       ref={ref}
       {...others}
-      size={size as any}
-      pointer
-      error={error}
-      rightSection={
-        rightSection || <ComboboxChevron size={size} error={error} />
-      }
+      className={clsx(
+        "select",
+        {
+          "select-xs": size === "xs",
+          "select-sm": size === "sm",
+          "select-lg": size === "lg",
+          "select-xl": size === "xl",
+
+          "select-neutral": color === "neutral",
+          "select-primary": color === "primary",
+          "select-secondary": color === "secondary",
+          "select-accent": color === "accent",
+          "select-info": color === "info",
+          "select-warning": color === "warning",
+          "select-success": color === "success",
+          "select-error": color === "error",
+
+          "select-ghost": !!ghost,
+        },
+        className,
+      )}
     >
       {children || options}
-    </InputBase>
+    </select>
   );
 }
