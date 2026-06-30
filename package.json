@@ -63,7 +63,7 @@
     "test": "bun test",
     "docs:docgen": "bun scripts/docgen/index.ts && bun scripts/codegen/index.ts",
     "release:check": "npm run clean:build && npm run check && bun scripts/release/index.ts",
-    "release": "bun run clean:build && bun scripts/release/index.ts",
+    "release": "npm run clean:build && bun scripts/release/index.ts",
     "release:alpha:patch": "npm run release patch --stage alpha --tag next",
     "release:alpha:minor": "npm run release minor --stage alpha --tag next",
     "release:alpha:major": "npm run release major --stage alpha --tag next",
