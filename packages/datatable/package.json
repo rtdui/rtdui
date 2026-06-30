@@ -50,7 +50,7 @@
     "@tabler/icons-react": "catalog:",
     "@tanstack/table-core": "^8.21.3",
     "@tanstack/react-table": "^8.21.3",
-    "@tanstack/react-virtual": "^3.14.3",
+    "@tanstack/react-virtual": "^3.14.4",
     "clsx": "catalog:",
     "klona": "^2.0.6",
     "react-dnd": "^16.0.1",

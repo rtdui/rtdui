@@ -12,8 +12,8 @@
     "@types/react-dom": "19.2.3",
     "autoprefixer": "10.5.2",
     "clsx": "2.1.1",
-    "daisyui": "5.6.0",
-    "lucide-react": "1.21.0",
+    "daisyui": "5.6.3",
+    "lucide-react": "1.22.0",
     "@mdx-js/rollup": "3.1.1",
     "@tabler/icons-react": "3.44.0",
     "date-fns": "4.4.0",
@@ -96,7 +96,7 @@
     "fast-glob": "^3.2.5",
     "fs-extra": "^11.2.0",
     "gh-pages": "^6.1.1",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.1",
     "react": "catalog:",
     "react-docgen-typescript": "2.4.0",
     "react-dom": "catalog:",
@@ -117,14 +117,6 @@
     "yargs": "^18.0.0"
   },
   "overrides": {
-    "@codemirror/autocomplete": "^6.20.3",
-    "@codemirror/commands": "^6.10.4",
-    "@codemirror/lang-markdown": "^6.2.5",
-    "@codemirror/language": "^6.12.4",
-    "@codemirror/language-data": "^6.5.1",
-    "@codemirror/search": "^6.7.1",
-    "@codemirror/state": "^6.7.0",
-    "@codemirror/view": "^6.43.3",
     "react": "catalog:",
     "react-dom": "catalog:"
   }
