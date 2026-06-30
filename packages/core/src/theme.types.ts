@@ -2,7 +2,7 @@ export type ThemeBaseSize = "xs" | "sm" | "md" | "lg" | "xl"; // button, badge, 
 export type ThemeSize = ThemeBaseSize | string;
 export type ThemeRadius = ThemeBaseSize | "circle" | string;
 export type ThemeShadow = ThemeBaseSize | "2xl";
-export type ThemeColor =
+export type ThemeSemanticColor =
   | "primary"
   | "secondary"
   | "accent"
@@ -10,11 +10,9 @@ export type ThemeColor =
   | "success"
   | "warning"
   | "error"
-  | "neutral"
-  | "base1"
-  | "base2"
-  | "base3"
-  | string;
+  | "neutral";
+export type ThemeColor =
+  ThemeSemanticColor | "base1" | "base2" | "base3" | string;
 
 export type ThemeBreakpoint = ThemeBaseSize | "base" | "2xl" | string;
 

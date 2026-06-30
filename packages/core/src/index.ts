@@ -74,4 +74,7 @@ export * from "./InputBase";
 
 export * from "./TagsInput";
 
+export * from "./OtpInput";
+export * from "./Aura";
+
 export * from "./theme.types";
