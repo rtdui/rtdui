@@ -36,7 +36,7 @@
     "clsx": "catalog:",
     "postcss": "^8.5.16",
     "postcss-js": "^5.1.0",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.6",
     "tailwindcss": "catalog:"
   },
   "devDependencies": {
