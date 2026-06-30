@@ -39,12 +39,12 @@ const { argv }: { argv: any } = yargs(hideBin(process.argv))
  *  5. Git提交并推送到远程
  */
 async function release() {
-  // const status = await git.status();
+  const status = await git.status();
 
-  // if (status.files.length !== 0) {
-  //   logger.error("Working tree is not clean");
-  //   process.exit(1);
-  // }
+  if (status.files.length !== 0) {
+    logger.error("Working tree is not clean");
+    process.exit(1);
+  }
 
   // 1.
   logger.log("Setup new version");
@@ -67,37 +67,37 @@ async function release() {
   await fs.writeJSON("bun.lock", bunLock, { spaces: 2 });
   //#endregion
 
-  // // 4.
-  // logger.log("Building all packages");
-  // await buildAllPackages();
-  // logger.success("All packages have been built successfully");
+  // 4.
+  logger.log("Building all packages");
+  await buildAllPackages();
+  logger.success("All packages have been built successfully");
 
-  // // 5.
-  // logger.log("Publishing packages to npm");
-  // if (argv.stage && argv.tag === "latest") {
-  //   argv.tag = "next";
-  // }
-  // // const packages = getPackagesList();
-  // await Promise.all(
-  //   packages.map((p) =>
-  //     publishPackage({
-  //       packagePath: p.path,
-  //       name: p.packageJson.name!,
-  //       tag: argv.tag,
-  //     }),
-  //   ),
-  // );
-  // logger.success("All packages have been published successfully");
-  // // 6.
-  // logger.log("Git commit and push");
-  // await git.add([
-  //   getPath("packages"),
-  //   getPath("package.json"),
-  //   getPath("bun.lock"),
-  //   getPath("docs-site/package.json"),
-  // ]);
-  // await git.commit(`[release] Version: ${newVersion}`);
-  // await git.push();
+  // 5.
+  logger.log("Publishing packages to npm");
+  if (argv.stage && argv.tag === "latest") {
+    argv.tag = "next";
+  }
+  // const packages = getPackagesList();
+  await Promise.all(
+    packages.map((p) =>
+      publishPackage({
+        packagePath: p.path,
+        name: p.packageJson.name!,
+        tag: argv.tag,
+      }),
+    ),
+  );
+  logger.success("All packages have been published successfully");
+  // 6.
+  logger.log("Git commit and push");
+  await git.add([
+    getPath("packages"),
+    getPath("package.json"),
+    getPath("bun.lock"),
+    getPath("docs-site/package.json"),
+  ]);
+  await git.commit(`[release] Version: ${newVersion}`);
+  await git.push();
 }
 
 release();
