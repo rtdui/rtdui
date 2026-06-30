@@ -30,9 +30,10 @@ const { argv }: { argv: any } = yargs(hideBin(process.argv))
 
 /**
  * 步骤：
- *  1. build all packages
- *  2. 更新版本号
- *  3. 执行 `bun i` 安装依赖, 这会更新bun.lock中的工作区的版本号, bun 发布时使用bun.lock中工作区的版本号替代`workspace:*`的版本.
+ *
+ *  1. 执行 `bun i` 安装依赖, 这会更新bun.lock中的工作区的版本号, bun 发布时使用bun.lock中工作区的版本号替代`workspace:*`的版本.
+ *  2. build all packages
+ *  3. 更新版本号
  *  4. 每个包独立发布到NPM
  *  5. Git提交并推送到远程
  */
@@ -45,19 +46,19 @@ async function release() {
   }
 
   logger.log("Releasing all packages");
-
   // 1.
+  await execa("bun", ["i"]);
+  // 2.
   await buildAllPackages();
   logger.success("All packages have been built successfully");
-  // 2.
+  // 3.
   const newVersion = getNextVersion(packageJson.version, {
     type: argv._[0],
     stage: argv.stage,
   });
   logger.log(`New version: ${chalk.cyan(newVersion)}`);
   await setPackagesVersion(newVersion);
-  // 3.
-  await execa("bun", ["i"]);
+
   // 4.
   logger.log("Publishing packages to npm");
   if (argv.stage && argv.tag === "latest") {
